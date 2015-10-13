@@ -6,3 +6,6 @@ AllCops:
     - db/migrate/*
     - bin/*
   RunRailsCops: true
+
+Documentation:
+  Enabled: false

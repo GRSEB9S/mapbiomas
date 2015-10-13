@@ -1,0 +1,12 @@
+{
+  "name": "mapbiomas",
+  "scripts": {
+    "postdeploy": "bin/setup"
+  },
+  "env": {},
+  "addons": [
+    "papertrail",
+    "heroku-postgresql",
+    "heroku-redis"
+  ]
+}
