@@ -48,6 +48,10 @@ GEM
       execjs (~> 2.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bitters (1.0.0)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
     bourbon (3.2.4)
       sass (~> 3.2)
       thor
@@ -244,6 +248,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bitters
   bourbon
   byebug
   capybara
