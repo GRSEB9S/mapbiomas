@@ -4,12 +4,15 @@
 // MIT License
 
 @import "variables";
-
-// Neat Settings -- uncomment if using Neat -- must be imported before Neat
 @import "grid-settings";
-
 @import "buttons";
 @import "forms";
 @import "lists";
 @import "tables";
 @import "typography";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
