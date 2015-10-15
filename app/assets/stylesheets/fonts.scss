@@ -1,0 +1,16 @@
+// TITLES AND HEADERS
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+.amatic-font{
+  font-family: 'Amatic SC', cursive;
+}
+// TEXT AND CONTENTS
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+div, p, span {
+  font-family: 'Open Sans', sans-serif;
+      font-weight: 300 !important;
+    font-size: 14px;
+}
+strong, b {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700 !important;
+}
