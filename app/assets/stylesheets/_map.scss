@@ -1,0 +1,11 @@
+.map__wrapper,
+.map,
+.map__canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.map {
+  position: relative;
+  z-index: 1;
+}
