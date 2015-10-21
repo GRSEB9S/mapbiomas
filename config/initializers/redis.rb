@@ -1,2 +1,2 @@
-$redis = Redis.new
-HTTParty::HTTPCache.redis = $redis
+redis = Redis.new
+HTTParty::HTTPCache.redis = redis
