@@ -13,8 +13,7 @@ class TerrasAPI
   end
 
   def self.coverage(year, territory_id, classification_ids)
-    get("/coverage", query:
-    {
+    get("/coverage", query: {
       year: year,
       territory_id: territory_id,
       classification_ids: classification_ids
@@ -22,8 +21,7 @@ class TerrasAPI
   end
 
   def self.transitions(year, territory_id)
-    get("/transitions", query:
-    {
+    get("/transitions", query: {
       year: year,
       territory_id: territory_id
     })
