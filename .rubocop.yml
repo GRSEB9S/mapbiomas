@@ -9,3 +9,6 @@ AllCops:
 
 Documentation:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
