@@ -1,7 +1,7 @@
 class TerrasAPI
   include HTTParty
 
-  base_uri 'private-da67e-mapbiomas.apiary-mock.com'
+  base_uri ENV['TERRAS_API_URL']
   format :json
 
   def self.territories
