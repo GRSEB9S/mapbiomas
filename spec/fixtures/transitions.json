@@ -1,0 +1,18 @@
+{
+  "transitions": [
+    {
+      "from": 1,
+      "to": 2,
+      "percentage": 10,
+      "area": 1000
+    }
+  ],
+  "coverages": [
+    {
+      "id": 1,
+      "year": 2012,
+      "percentage": 10,
+      "area": 1000
+    }
+  ]
+}
