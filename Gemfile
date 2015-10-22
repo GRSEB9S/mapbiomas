@@ -21,6 +21,7 @@ gem 'rack-timeout'
 gem 'httparty'
 gem 'redis'
 gem 'cachebar'
+gem 'responders'
 
 group :production do
   gem 'newrelic_rpm'
