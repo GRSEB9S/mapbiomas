@@ -1,0 +1,57 @@
+.wrapper
+{
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.outer-container
+{
+  @include outer-container;
+  @media (max-width: 1200px)
+  {
+    padding: 0 15px;
+  }
+}
+
+.header
+{
+  color: #fff;
+  background: #015367;
+}
+
+.header__nav
+{
+  padding: 15px 0;
+
+  @include clearfix;
+}
+
+.header__logo
+{
+  float: left;
+}
+
+.header__menu-trigger
+{
+  line-height: 50px;
+
+  display: none;
+  float: right;
+
+  @media (max-width: 768px)
+  {
+    display: block;
+  }
+}
+
+.trigger
+{
+  font-size: 28px;
+
+  padding: 10px 0px;
+  border: none;
+  outline: none;
+  background: transparent !important;
+}

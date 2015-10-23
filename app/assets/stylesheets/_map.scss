@@ -1,7 +1,9 @@
+$map-height: calc(100% - 29px);
+
 .map__wrapper,
 .map,
 .map__canvas {
-  height: 100%;
+  height: $map-height;
   width: 100%;
 }
 

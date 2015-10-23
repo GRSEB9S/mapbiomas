@@ -1,0 +1,7 @@
+pt-BR:
+  views:
+    layouts:
+      header:
+        home: início
+        metodology: metodologia
+        contact: contato
