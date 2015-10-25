@@ -3,7 +3,7 @@ pt-BR:
     layouts:
       header:
         home: início
-        metodology: metodologia
+        methodology: metodologia
         contact: contato
       footer:
         copyright: Todos os direitos reservados.
