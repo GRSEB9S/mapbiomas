@@ -1,9 +1,11 @@
-$map-height: calc(100% - 29px);
+.map__wrapper {
+  display: table-row;
+}
 
 .map__wrapper,
 .map,
 .map__canvas {
-  height: $map-height;
+  height: 100%;
   width: 100%;
 }
 

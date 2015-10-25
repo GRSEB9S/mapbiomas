@@ -4,6 +4,8 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  display: table;
+  position: absolute;
 }
 
 .outer-container
@@ -19,6 +21,7 @@
 {
   color: #fff;
   background: #015367;
+  display: table-row;
 }
 
 .header__nav
@@ -49,7 +52,6 @@
 .trigger
 {
   font-size: 28px;
-
   padding: 10px 0px;
   border: none;
   outline: none;
