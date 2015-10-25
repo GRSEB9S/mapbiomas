@@ -1,0 +1,22 @@
+.footer {
+  display: table-row;
+  background-color: $footer-color;
+
+  &__copyright, &__ecostage {
+    @include span-columns(6);
+    padding: 2px 15px;
+  }
+
+  &__copyright {
+    font-size: 14px;
+    color: #cfcfcf;
+  }
+
+  &__ecostage {
+    text-align: right;
+  }
+
+  &__image {
+    height: 14px;
+  }
+}
