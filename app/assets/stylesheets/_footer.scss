@@ -10,13 +10,30 @@
   &__copyright {
     font-size: 14px;
     color: #cfcfcf;
+
+    @media (max-width: 768px)
+    {
+      @include span-columns(8);
+      padding: 5px 15px 0px;
+      font-size: 12px;
+    }
   }
 
   &__ecostage {
     text-align: right;
+
+    @media (max-width: 768px)
+    {
+      @include span-columns(4);
+    }
   }
 
   &__image {
     height: 14px;
+
+    @media (max-width: 768px)
+    {
+      height: 12px;
+    }
   }
 }
