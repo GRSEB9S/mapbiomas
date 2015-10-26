@@ -1,11 +1,9 @@
-.header__nav .menu
-{
+.header__nav .menu {
   line-height: 50px;
 
   float: right;
 
-  @media (max-width: 768px)
-  {
+  @media (max-width: 768px) {
     position: fixed;
     z-index: 10;
     top: 0;
@@ -21,15 +19,13 @@
   }
 }
 
-.header__nav .menu.state--expanded
-{
+.header__nav .menu.state--expanded {
   left: 0;
 
   @include transition(all .5s ease-in-out);
 }
 
-.menu__header
-{
+.menu__header {
   font-size: 20px;
 
   display: none;
@@ -42,22 +38,20 @@
 
   color: #f7f7f7;
 
-  @media (max-width: 768px)
-  {
+  @media (max-width: 768px) {
     display: block;
 
     width: 100%;
 
     border-bottom: 1px solid #015367;
   }
-  .trigger
-  {
+
+  .trigger {
     float: right;
   }
 }
 
-.menu__item
-{
+.menu__item {
   font-size: 16px;
 
   padding: 0 0 0 20px;
@@ -68,16 +62,15 @@
 
   color: #cfcfcf;
 
-  @media (max-width: 768px)
-  {
+  @media (max-width: 768px) {
     display: block;
 
     width: 100%;
 
     border-bottom: 1px solid #015367;
   }
-  &:hover
-  {
+
+  &:hover {
     color: #d0d0d0;
   }
 }
