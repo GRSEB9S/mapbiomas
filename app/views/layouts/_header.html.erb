@@ -5,17 +5,7 @@
         <img src="http://placehold.it/200x50?text=LOGO">
       </div>
 
-      <div class="header__menu-trigger">
-        <button class="trigger" data-target="#main-menu" data-attr="state--expanded"><span class="fa fa-navicon"></span></button>
-      </div>
-
-      <nav id="main-menu" class="menu">
-        <div class="menu__header">Menu <button class="trigger" data-target=".menu" data-attr="state--expanded"><span class="fa fa-close"></span></button></div>
-
-        <%= link_to(t("views.layouts.header.home"), root_path, class: 'menu__item') %>
-        <%= link_to(t("views.layouts.header.methodology"), '#', class: 'menu__item') %>
-        <%= link_to(t("views.layouts.header.contact"), '#', class: 'menu__item') %>
-      </nav>
+      <%= react_component('Menu') %>
     </div>
   </div>
 </div>
