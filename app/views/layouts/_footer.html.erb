@@ -1,10 +1,12 @@
 <div class="footer">
-  <div class="footer__copyright">
-    &copy; <%= Time.zone.now.year %>. <small><%= t('views.layouts.footer.copyright') %></small>
-  </div>
-  <div class="footer__ecostage">
-    <a href="http://www.tracersoft.com.br" target="_blank" class="ecostage">
-      <img class="footer__image" src="<%= image_url 'tracersoft.png' %>">
-    </a>
+  <div class="outer-container">
+    <div class="footer__copyright">
+      &copy; <%= Time.zone.now.year %>. <small><%= t('views.layouts.footer.copyright') %></small>
+    </div>
+    <div class="footer__ecostage">
+      <a href="http://www.tracersoft.com.br" target="_blank" class="ecostage">
+        <img class="footer__image" src="<%= image_url 'tracersoft.png' %>">
+      </a>
+    </div>
   </div>
 </div>
