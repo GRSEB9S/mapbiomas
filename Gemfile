@@ -14,6 +14,7 @@ gem 'bitters'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'react-rails'
+gem "i18n-js", ">= 3.0.0.rc11"
 gem "underscore-rails"
 gem "leaflet-rails"
 gem 'jbuilder', '~> 2.0'
