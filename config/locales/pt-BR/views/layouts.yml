@@ -2,8 +2,8 @@ pt-BR:
   views:
     layouts:
       header:
-        home: início
-        methodology: metodologia
-        contact: contato
+        home: Início
+        methodology: Metodologia
+        contact: Contato
       footer:
         copyright: Todos os direitos reservados.

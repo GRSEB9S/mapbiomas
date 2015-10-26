@@ -1,0 +1,9 @@
+en:
+  views:
+    layouts:
+      header:
+        home: Home
+        methodology: Methodology
+        contact: Contact
+      footer:
+        copyright: All rights reserved.
