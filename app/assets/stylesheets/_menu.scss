@@ -36,7 +36,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
 
-  color: #f7f7f7;
+  color: $menu-header-color;
 
   @media (max-width: 768px) {
     display: block;
