@@ -25,6 +25,11 @@ gem 'redis'
 gem 'cachebar'
 gem 'responders'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-underscore'
+  gem 'rails-assets-classnames'
+end
+
 group :production do
   gem 'newrelic_rpm'
 end

@@ -6,6 +6,9 @@
 //= require react_ujs
 //= require i18n.js
 //= require i18n/translations
+//= require classnames
+//= require underscore
+//= require react-toggle
 
 //= require components
 

@@ -1,7 +1,6 @@
 class Map extends React.Component {
-  get layersControlProps() {
-    return {
-    };
+  onChangeClassifications(ids) {
+    console.log(ids);
   }
 
   render() {
@@ -9,13 +8,11 @@ class Map extends React.Component {
       <div className="map">
         <MapCanvas />
         <div className="map-control-wrapper left">
-          <div className="map-control">
-            <h3 className="map-control__header">
-              Camadas
-            </h3>
-            <div className="map-control__content">
-            </div>
-          </div>
+          <ClassificationsControl
+            classifications={this.props.classifications}
+            defaultChecked={this.props.defaultClassifications}
+            onChange={this.onChangeClassifications.bind(this)}
+          />
         </div>
         <div className="map-control-wrapper">
           <div className="map-control">
