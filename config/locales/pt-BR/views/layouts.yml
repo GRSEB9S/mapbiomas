@@ -1,0 +1,9 @@
+pt-BR:
+  views:
+    layouts:
+      header:
+        home: Início
+        methodology: Metodologia
+        contact: Contato
+      footer:
+        copyright: Todos os direitos reservados.

@@ -4,6 +4,7 @@ ruby '2.2.2'
 gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
+gem 'font-awesome-sass'
 gem 'bourbon'
 gem 'neat'
 gem 'uglifier', '>= 1.3.0'
@@ -13,6 +14,7 @@ gem 'bitters'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'react-rails'
+gem "i18n-js", ">= 3.0.0.rc11"
 gem "underscore-rails"
 gem "leaflet-rails"
 gem 'jbuilder', '~> 2.0'

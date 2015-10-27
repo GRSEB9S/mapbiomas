@@ -93,12 +93,16 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    font-awesome-sass (4.4.0)
+      sass (>= 3.2)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
     i18n (0.7.0)
+    i18n-js (3.0.0.rc11)
+      i18n (~> 0.6)
     jbuilder (2.3.2)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -276,7 +280,9 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_girl_rails
+  font-awesome-sass
   httparty
+  i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.0)
   jquery-rails
   leaflet-rails
