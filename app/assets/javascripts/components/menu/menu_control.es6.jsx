@@ -1,10 +1,10 @@
 class MenuControl extends React.Component {
   render() {
     return (
-      <nav id="main-menu" className="menu">
+      <nav className={this.props.menu_on ? "menu state--expanded" : "menu"}>
         <div className="menu__header">
           Menu
-          <button className="trigger" data-target=".menu" data-attr="state--expanded">
+          <button className="trigger" onClick={this.props.menu_fn}>
             <span className="fa fa-close"></span>
           </button>
         </div>
