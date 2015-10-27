@@ -1,4 +1,4 @@
-class TerrasAPI::TransitionsController < ApplicationController
+class API::TransitionsController < ApplicationController
   respond_to :json
 
   def index

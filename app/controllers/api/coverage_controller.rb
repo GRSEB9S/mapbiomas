@@ -1,4 +1,4 @@
-class TerrasAPI::CoverageController < ApplicationController
+class API::CoverageController < ApplicationController
   respond_to :json
 
   def index
