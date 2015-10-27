@@ -1,17 +1,17 @@
 class Menu extends React.Component {
   componentWillMount() {
-    this.setState({menu_open: false})
+    this.setState({menuOpen: false})
   }
 
   toggleMenu() {
-    this.setState({menu_open: !this.state.menu_open})
+    this.setState({menuOpen: !this.state.menuOpen})
   }
 
   render() {
     return (
       <div>
-        <MenuButton menu_fn={this.toggleMenu.bind(this)} menu_on={this.state.menu_open}/>
-        <MenuControl menu_fn={this.toggleMenu.bind(this)} menu_on={this.state.menu_open}/>
+        <MenuButton menu_fn={this.toggleMenu.bind(this)} menu_on={this.state.menuOpen}/>
+        <MenuControl menu_fn={this.toggleMenu.bind(this)} menu_on={this.state.menuOpen}/>
       </div>
     )
   }
