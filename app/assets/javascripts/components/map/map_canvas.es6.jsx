@@ -10,8 +10,8 @@ class MapCanvas extends React.Component {
     let node = React.findDOMNode(this.refs.element);
     this.map = L.map(node).setView([-20, -45], 4);
 
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    L.tileLayer(this.options.url, {
+        attribution: 'Mapbox'
     }).addTo(this.map);
   }
 

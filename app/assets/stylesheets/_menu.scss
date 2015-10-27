@@ -1,6 +1,5 @@
 .header__nav .menu {
-  line-height: 50px;
-
+  line-height: 58px;
   float: right;
 
   @media (max-width: 768px) {
@@ -8,12 +7,12 @@
     z-index: 10;
     top: 0;
     left: -300px;
-
     width: 300px;
     height: 100%;
 
     background: $header-color;
     box-shadow: 5px 0 8px rgba(39, 39, 39, .51);
+    line-height: 40px;
 
     @include transition(all .5s ease-in-out);
   }
@@ -26,24 +25,15 @@
 }
 
 .menu__header {
-  font-size: 20px;
-
+  font-size: 1.2rem;
   display: none;
-
   padding: 0 20px;
-
   text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  color: $menu-header-color;
 
   @media (max-width: 768px) {
     display: block;
-
     width: 100%;
-
-    border-bottom: 1px solid #015367;
+    border-bottom: 1px solid $light-blue;
   }
 
   .trigger {
@@ -51,26 +41,45 @@
   }
 }
 
-.menu__item {
-  font-size: 16px;
+.header__menu-trigger {
+  line-height: 58px;
 
-  padding: 0 0 0 20px;
-
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  color: #cfcfcf;
+  display: none;
+  float: right;
 
   @media (max-width: 768px) {
     display: block;
+  }
+}
 
+.trigger {
+  font-size: 28px;
+  padding: 4px 0px;
+  border: none;
+  outline: none;
+  color: $medium-gray;
+  background: transparent !important;
+
+  &:hover, &:active, &:focus {
+    color: $dark-gray;
+  }
+}
+
+.menu__item {
+  padding: 0 0 0 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: $heading-font-family;
+  font-size: 0.8rem;
+  color: $medium-gray;
+
+  @media (max-width: 768px) {
+    display: block;
     width: 100%;
-
-    border-bottom: 1px solid #015367;
+    border-bottom: 1px solid $light-gray;
   }
 
   &:hover {
-    color: #d0d0d0;
+    color: $dark-gray;
   }
 }

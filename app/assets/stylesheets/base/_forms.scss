@@ -14,8 +14,9 @@ select {
 }
 
 label {
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: $small-spacing / 2;
+  color: $medium-gray;
 
   &.required::after {
     content: "*";
