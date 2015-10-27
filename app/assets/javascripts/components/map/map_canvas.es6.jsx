@@ -3,7 +3,7 @@ class MapCanvas extends React.Component {
     let defaultOptions = {
       url: 'https://{s}.tiles.mapbox.com/v3/mpivaa.kgcn043g/{z}/{x}/{y}.png'
     };
-    return _.defaults({}, this.props.options, defaultOptions);
+    return _.defaults({}, this.props, defaultOptions);
   }
 
   setup() {
