@@ -1,4 +1,4 @@
-class TerrasAPI::ClassificationsController < ApplicationController
+class API::ClassificationsController < ApplicationController
   respond_to :json
 
   def index

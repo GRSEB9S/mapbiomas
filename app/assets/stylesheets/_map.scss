@@ -2,8 +2,8 @@
   display: table-row;
 }
 
-.map__wrapper,
 .map,
+.map__wrapper,
 .map__canvas {
   height: 100%;
   width: 100%;
@@ -12,4 +12,35 @@
 .map {
   position: relative;
   z-index: 1;
+}
+
+.map-control-wrapper {
+  position: absolute;
+  margin: $base-spacing;
+  top: 60px;
+  width: 300px;
+  right: 0;
+
+  &.left {
+    left: 0;
+  }
+}
+
+.map-control {
+  width: 100%;
+  background: $white;
+  padding: $small-spacing;
+  margin-bottom: $base-spacing;
+  box-shadow: 1px 1px 8px rgba($dark-gray, 0.2);
+
+  &__header {
+    text-align: center;
+  }
+
+  &__content {
+    button {
+      width: 100%;
+      margin-top: $small-spacing;
+    }
+  }
 }

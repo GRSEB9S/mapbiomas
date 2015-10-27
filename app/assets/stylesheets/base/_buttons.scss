@@ -21,11 +21,21 @@ button {
   &:hover,
   &:focus {
     background-color: darken($action-color, 15%);
-    color: #fff;
+    color: $white;
   }
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
+  }
+
+  &.primary {
+    background-color: $primary-action-color;
+
+    &:hover,
+    &:focus {
+      background-color: darken($primary-action-color, 15%);
+      color: $white;
+    }
   }
 }

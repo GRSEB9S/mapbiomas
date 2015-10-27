@@ -1,34 +1,16 @@
 .header {
-  color: #fff;
-  background: #015367;
-  display: table-row;
-}
+  background: $header-color;
+  margin: 0 $base-spacing;
 
-.header__nav {
-  padding: 15px 0;
-
-  @include clearfix;
-}
-
-.header__logo {
-  float: left;
-}
-
-.header__menu-trigger {
-  line-height: 50px;
-
-  display: none;
-  float: right;
-
-  @media (max-width: 768px) {
-    display: block;
+  &__nav {
+    padding: 6px 0;
+    @include clearfix;
   }
-}
 
-.trigger {
-  font-size: 28px;
-  padding: 10px 0px;
-  border: none;
-  outline: none;
-  background: transparent !important;
+  &__logo > img {
+    float: left;
+    margin-top: -2px;
+    margin-left: -2px;
+    height: 64px;
+  }
 }

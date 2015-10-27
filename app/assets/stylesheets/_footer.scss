@@ -1,36 +1,38 @@
 .footer {
-  display: table-row;
   background-color: $footer-color;
-
-  &__copyright, &__ecostage {
-    @include span-columns(6);
-    padding: 2px 15px;
-  }
+  @include clearfix;
 
   &__copyright {
-    font-size: 14px;
-    color: #cfcfcf;
+    color: $light-gray;
+    text-align: center;
+    padding: $small-spacing;
+  }
 
-    @media (max-width: 768px) {
-      @include span-columns(8);
-      padding: 5px 15px 0px;
-      font-size: 12px;
-    }
+  &__seeg {
+    float: left;
   }
 
   &__ecostage {
-    text-align: right;
+    float: right;
+  }
 
-    @media (max-width: 768px) {
-      @include span-columns(4);
-    }
+  &__seeg,
+  &__ecostage {
+    padding: $small-spacing;
+  }
+
+  .ecostage-label,
+  .seeg-label {
+    display: inline-block;
+    color: $white;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    vertical-align: middle;
+    margin: 0 $small-spacing 0 0;
   }
 
   &__image {
-    height: 14px;
-
-    @media (max-width: 768px) {
-      height: 12px;
-    }
+    height: 24px;
+    vertical-align: middle;
   }
 }
