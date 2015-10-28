@@ -1,0 +1,7 @@
+pt-BR:
+  map:
+    index:
+      classifications: Coberturas
+      coverage_analysis: Análise de cobertura
+      search: 'Busque cidades, estados, áreas protegidas...'
+      analyze: Analisar

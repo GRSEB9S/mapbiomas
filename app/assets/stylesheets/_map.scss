@@ -44,3 +44,14 @@
     }
   }
 }
+
+.timeline-control-wrapper {
+  position: absolute;
+  margin: $base-spacing 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.timeline-control {
+  margin: 0 $base-spacing;
+}
