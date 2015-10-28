@@ -2,7 +2,8 @@
 //= require jquery_ujs
 //= require leaflet
 //= require underscore
-//= require react
+//= require react-0.14.0/react
+//= require react-0.14.0/react-dom
 //= require react_ujs
 //= require i18n.js
 //= require i18n/translations
