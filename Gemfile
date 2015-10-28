@@ -24,10 +24,13 @@ gem 'httparty'
 gem 'redis'
 gem 'cachebar'
 gem 'responders'
+gem 'js-routes'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
   gem 'rails-assets-classnames'
+  gem 'rails-assets-highcharts'
+  gem 'rails-assets-react-input-autosize'
 end
 
 group :production do

@@ -2,7 +2,7 @@ class ClassificationsControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checkedIds: null
+      classificationIds: null
     }
   }
 
@@ -10,25 +10,25 @@ class ClassificationsControl extends React.Component {
     return this.props.classifications;
   }
 
-  get checkedIds() {
-    return this.state.checkedIds || this.props.defaultChecked;
+  get classificationIds() {
+    return this.state.classificationIds || this.props.defaultClassifications;
   }
 
   isChecked(id) {
-    return this.checkedIds.indexOf(id) != -1;
+    return this.classificationIds.indexOf(id) != -1;
   }
 
   handleCheck(id, e) {
     if(e.target.checked && !this.isChecked(id)) {
-      let checkedIds = this.checkedIds;
-      checkedIds.push(id);
-      this.setState({ checkedIds: checkedIds }, () => {
-        this.props.onChange(checkedIds);
+      let classificationIds = this.classificationIds;
+      classificationIds.push(id);
+      this.setState({ classificationIds: classificationIds }, () => {
+        this.props.onChange(classificationIds);
       })
     } else if(!e.target.checked && this.isChecked(id)) {
-      let checkedIds = _.without(this.checkedIds, id);
-      this.setState({ checkedIds: checkedIds }, () => {
-        this.props.onChange(checkedIds);
+      let classificationIds = _.without(this.classificationIds, id);
+      this.setState({ classificationIds: classificationIds }, () => {
+        this.props.onChange(classificationIds);
       })
     }
   }

@@ -18,7 +18,6 @@ class Map extends React.Component {
   get url() {
     let ids = this.state.classifications || this.props.defaultClassifications;
     let url = 'https://{s}.tiles.mapbox.com/v3/mpivaa.kgcn043g/{z}/{x}/{y}.png'
-    console.log(`${url}?classification_ids=${ids.join(',')}`);
     return (`${url}?classification_ids=${ids.join(',')}`);
   }
 
@@ -30,24 +29,17 @@ class Map extends React.Component {
           <div className="map-control-wrapper left">
             <ClassificationsControl
               classifications={this.props.classifications}
-              defaultChecked={this.props.defaultClassifications}
+              defaultClassifications={this.props.defaultClassifications}
               onChange={this.onChangeClassifications.bind(this)}
             />
           </div>
           <div className="map-control-wrapper">
-            <div className="map-control">
-              <h3 className="map-control__header">
-                Análise de cobertura
-              </h3>
-              <div className="map-control__content">
-                <label>busque uma cidade, estado, areas protegidas, biomas, etc...</label>
-                <input type="text" />
-                <button className="primary" onClick={this.setMode.bind(this, 'transition')}>
-                  Analise de transição
-                </button>
-                <button>Baixe os dados</button>
-              </div>
-            </div>
+            <CoverageControl
+              classifications={this.props.classifications}
+              defaultTerritory={this.props.defaultTerritory}
+              territories={this.props.territories}
+              setMode={this.setMode.bind(this, 'transition')}
+            />
           </div>
         </div>
       );

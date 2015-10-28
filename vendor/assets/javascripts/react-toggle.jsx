@@ -60,7 +60,7 @@
     },
 
     handleClick(event) {
-      var checkbox = this.refs.input.getDOMNode();
+      var checkbox = this.refs.input;
       if (event.target !== checkbox)
       {
         event.preventDefault()

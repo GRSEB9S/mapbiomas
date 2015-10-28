@@ -7,7 +7,7 @@ class MapCanvas extends React.Component {
   }
 
   setup() {
-    let node = React.findDOMNode(this.refs.element);
+    let node = this.refs.element;
     this.map = L.map(node).setView([-20, -45], 4);
 
     L.tileLayer(this.options.url, {
