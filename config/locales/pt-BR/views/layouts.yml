@@ -1,9 +1,8 @@
 pt-BR:
-  views:
-    layouts:
-      header:
-        home: Início
-        methodology: Metodologia
-        contact: Contato
-      footer:
-        copyright: MapBiomas
+  layouts:
+    header:
+      home: Início
+      methodology: Metodologia
+      contact: Contato
+    footer:
+      copyright: MapBiomas

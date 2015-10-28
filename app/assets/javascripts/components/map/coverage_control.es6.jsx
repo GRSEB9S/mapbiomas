@@ -117,10 +117,10 @@ class CoverageControl extends React.Component {
     return (
       <div className="map-control">
         <h3 className="map-control__header">
-          Análise de cobertura
+          {I18n.t('map.index.coverage_analysis')}
         </h3>
         <div className="map-control__content">
-          <label>busque uma cidade, estado, areas protegidas, biomas, etc...</label>
+          <label>{I18n.t('map.index.search')}</label>
           <Select
             name="territory-select"
             value={this.territoryId}
@@ -130,9 +130,11 @@ class CoverageControl extends React.Component {
           />
           {this.renderCoverage()}
           <button className="primary" onClick={this.props.setMode}>
-            Analise de transição
+            {I18n.t('map.index.transitions_analysis')}
           </button>
-          <button>Baixe os dados</button>
+          <button>
+            {I18n.t('map.index.download')}
+          </button>
         </div>
       </div>
     );

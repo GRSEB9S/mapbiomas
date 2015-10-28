@@ -38,6 +38,11 @@ class Map extends React.Component {
               setMode={this.setMode.bind(this, 'transition')}
             />
           </div>
+          <div className="timeline-control-wrapper">
+            <div className="timeline-control">
+              <ReactTimelineSlider range={[2010, 2011, 2012]}/>
+            </div>
+          </div>
         </div>
       );
     } else {
@@ -47,16 +52,23 @@ class Map extends React.Component {
           <div className="map-control-wrapper">
             <div className="map-control">
               <h3 className="map-control__header">
-                Análise de transição
+                {I18n.t('map.index.transitions_analysis')}
               </h3>
               <div className="map-control__content">
-                <label>busque uma cidade, estado, areas protegidas, biomas, etc...</label>
+                <label>{I18n.t('map.index.search')}</label>
                 <input type="text" />
                 <button className="primary" onClick={this.setMode.bind(this, 'coverage')}>
-                  Analise de cobertura
+                  {I18n.t('map.index.coverage_analysis')}
                 </button>
-                <button>Baixe os dados</button>
+                <button>
+                  {I18n.t('map.index.download')}
+                </button>
               </div>
+            </div>
+          </div>
+          <div className="timeline-control-wrapper">
+            <div className="timeline-control">
+              <ReactTimelineSlider range={[2010, 2011, 2012]}/>
             </div>
           </div>
         </div>
