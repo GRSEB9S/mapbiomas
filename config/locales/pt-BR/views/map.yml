@@ -1,7 +1,9 @@
 pt-BR:
   map:
     index:
-      classifications: Coberturas
+      classifications: Classificações
       coverage_analysis: Análise de cobertura
+      transitions_analysis: Análise de transição
       search: 'Busque cidades, estados, áreas protegidas...'
       analyze: Analisar
+      download: Baixe os dados

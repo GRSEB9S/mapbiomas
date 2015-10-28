@@ -3,5 +3,7 @@ en:
     index:
       classifications: Classifications
       coverage_analysis: Coverage analysis
+      transitions_analysis: Transitions analysis
       search: 'Search for cities, states, protected areas...'
       analyze: Analyze
+      download: Download data

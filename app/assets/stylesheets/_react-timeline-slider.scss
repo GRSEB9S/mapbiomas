@@ -5,6 +5,7 @@ $connector-color: 'green';
 .react-timeline-slider {
   &__background {
     fill: $background-color;
+    user-select: none;
   }
 
   &__tick-point {
@@ -13,9 +14,11 @@ $connector-color: 'green';
 
   &__tick-text {
     font-size: 10px;
+    user-select: none;
   }
 
   &__handler {
+    user-select: none;
     r: 7;
     fill: $handler-color;
     transition: r 0.4s;
