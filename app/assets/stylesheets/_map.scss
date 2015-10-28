@@ -21,8 +21,26 @@
   width: 300px;
   right: 0;
 
-  &.left {
+  @include media($tablet) {
+    top: 0;
+  }
+
+  @include media($mobile) {
+    top: 0;
+  }
+
+  &--left {
     left: 0;
+  }
+
+  &--bottom {
+    top: auto;
+    bottom: 0;
+
+    & > .map-control {
+      margin-bottom: 0;
+      margin-top: $base-spacing;
+    }
   }
 }
 
@@ -32,6 +50,14 @@
   padding: $base-spacing;
   margin-bottom: $base-spacing;
   box-shadow: 1px 1px 8px rgba($dark-gray, 0.2);
+
+  @include media($mobile-landscape) {
+    display: none;
+  }
+
+  @include media($mobile) {
+    display: none;
+  }
 
   &__header {
     text-align: center;
@@ -70,6 +96,7 @@
   width: 40%;
   height: 110px;
   display: inline-block;
+
 }
 
 .coverage-legend {
@@ -79,4 +106,10 @@
   padding: 6px;
   margin-top: 14px;
   font-size: 0.8rem;
+}
+
+.leaflet-control-zoom {
+  @include media($tablet) {
+    display: none;
+  }
 }

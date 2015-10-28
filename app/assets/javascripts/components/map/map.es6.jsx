@@ -26,7 +26,7 @@ class Map extends React.Component {
       return (
         <div className="map">
           <MapCanvas url={this.url} />
-          <div className="map-control-wrapper left">
+          <div className="map-control-wrapper map-control-wrapper--left map-control-wrapper--bottom">
             <ClassificationsControl
               {...this.props}
               onChange={this.onChangeClassifications.bind(this)}
