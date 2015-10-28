@@ -30,6 +30,11 @@ class Map extends React.Component {
             </div>
           </div>
         </div>
+        <div className="timeline-control-wrapper">
+          <div className="timeline-control">
+            <ReactTimelineSlider range={[2010, 2011, 2012]}/>
+          </div>
+        </div>
       </div>
     );
   }
