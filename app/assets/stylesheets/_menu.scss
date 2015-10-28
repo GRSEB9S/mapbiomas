@@ -11,7 +11,7 @@
     height: 100%;
 
     background: $header-color;
-    box-shadow: 5px 0 8px rgba(39, 39, 39, .51);
+    box-shadow: 4px 0 8px rgba($medium-gray, .4);
     line-height: 40px;
 
     @include transition(all .5s ease-in-out);
@@ -27,17 +27,23 @@
 .menu__header {
   font-size: 1.2rem;
   display: none;
-  padding: 0 20px;
+  padding: $small-spacing/2 $base-spacing;
+  margin-bottom: $small-spacing/2;
   text-decoration: none;
+  background: $light-green;
+  color: $white;
 
   @include media ($tablet) {
     display: block;
     width: 100%;
-    border-bottom: 1px solid $light-green;
+    border-bottom: 1px solid rgba($light-green, 0.4);
   }
 
   .trigger {
-    float: right;
+    &, &:active, &:focus, &:hover {
+      float: right;
+      color: $white;
+    }
   }
 }
 
@@ -70,7 +76,7 @@
 }
 
 .menu__item {
-  padding: 0 0 0 20px;
+  padding: 0 $base-spacing;
   text-decoration: none;
   text-transform: uppercase;
   font-family: $heading-font-family;
@@ -80,7 +86,6 @@
   @include media ($tablet) {
     display: block;
     width: 100%;
-    border-bottom: 1px solid $light-gray;
   }
 
   &:hover {
