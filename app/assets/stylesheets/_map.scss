@@ -45,6 +45,11 @@
   }
 }
 
+.classifications-control {
+  width: 256px;
+  bottom: 0px
+}
+
 .classifications-list {
   .classification-item {
     position: relative;
@@ -59,4 +64,19 @@
     right: 0;
     top: 1px;
   }
+}
+
+.coverage-chart {
+  width: 40%;
+  height: 110px;
+  display: inline-block;
+}
+
+.coverage-legend {
+  display: inline-block;
+  width: 60%;
+  vertical-align: top;
+  padding: 6px;
+  margin-top: 14px;
+  font-size: 0.8rem;
 }

@@ -36,6 +36,12 @@ class CoverageControl extends React.Component {
     this.draw();
   }
 
+  findCoverageClassification(coverageItem) {
+    return this.props.classifications.find((classification) => {
+      return classification.id === coverageItem.id;
+    });
+  }
+
   get territoryId() {
     return this.state.territoryId || this.props.defaultTerritory;
   }
@@ -50,14 +56,12 @@ class CoverageControl extends React.Component {
   }
 
   get chartSeries() {
-    console.log(this.state.coverage);
     let data = this.state.coverage.map((coverageItem) => {
-      let classificationName = this.props.classifications.find((classification) => {
-        return classification.id === coverageItem.id;
-      }).name;
+      let classification = this.findCoverageClassification(coverageItem);
       return {
         y: coverageItem.area,
-        name: classificationName
+        name: classification.name,
+        color: classification.color
       }
     });
 
@@ -90,22 +94,21 @@ class CoverageControl extends React.Component {
 
   renderCoverage() {
     let coverageClassifications = this.state.coverage.map((coverageItem) => {
-      let classificationName = this.props.classifications.find((classification) => {
-        return classification.id === coverageItem.id;
-      }).name;
+      let classification = this.findCoverageClassification(coverageItem);
+      let itemStyle = {
+        color: classification.color
+      };
       return (
-        <li key={coverageItem.id}>
-          {classificationName} {coverageItem.area} ha ({coverageItem.percentage}%)
+        <li key={coverageItem.id} style={itemStyle}>
+          {classification.name} {coverageItem.area} ha ({coverageItem.percentage}%)
         </li>
       )
     });
 
     return (
       <div className="coverage">
-        <div className="coverage-chart chart"
-          style={{height: '128px', width: '40%', display: 'inline-block'}}
-          ref="chartElement"></div>
-        <ul style={{width: '60%', display: 'inline-block', 'vertical-align': 'top'}}>{coverageClassifications}</ul>
+        <div className="coverage-chart chart" ref="chartElement"></div>
+        <ul className="coverage-legend">{coverageClassifications}</ul>
       </div>
     );
   }

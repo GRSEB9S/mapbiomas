@@ -28,16 +28,13 @@ class Map extends React.Component {
           <MapCanvas url={this.url} />
           <div className="map-control-wrapper left">
             <ClassificationsControl
-              classifications={this.props.classifications}
-              defaultClassifications={this.props.defaultClassifications}
+              {...this.props}
               onChange={this.onChangeClassifications.bind(this)}
             />
           </div>
           <div className="map-control-wrapper">
             <CoverageControl
-              classifications={this.props.classifications}
-              defaultTerritory={this.props.defaultTerritory}
-              territories={this.props.territories}
+              {...this.props}
               setMode={this.setMode.bind(this, 'transition')}
             />
           </div>

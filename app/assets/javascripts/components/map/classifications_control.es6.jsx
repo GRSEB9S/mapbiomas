@@ -46,7 +46,7 @@ class ClassificationsControl extends React.Component {
     });
 
     return (
-      <div className="map-control">
+      <div className="map-control classifications-control">
         <h3 className="map-control__header">
           Classificações
         </h3>
