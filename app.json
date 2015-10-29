@@ -3,7 +3,9 @@
   "scripts": {
     "postdeploy": "bin/setup"
   },
-  "env": {},
+  "env": {
+    "TERRAS_API_URL"
+  },
   "addons": [
     "papertrail",
     "heroku-postgresql",
