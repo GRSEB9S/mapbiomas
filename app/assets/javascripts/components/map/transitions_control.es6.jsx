@@ -7,6 +7,71 @@ class TransitionsControl extends React.Component {
     };
   }
 
+  get territoriesOptions() {
+    return this.props.availableTerritories.map((territory) => {
+      return {
+        label: territory.name,
+        value: territory.id
+      };
+    });
+  }
+
+  get chartCategories() {
+    return _.range(this.props.years[0], this.props.years[1] + 1);
+  }
+
+  get chartSeries() {
+    var series = this.state.coverages
+      .reduce((series, coverage) => {
+        let classification = this.findClassification(coverage.id);
+        let serie = series[classification.id] || {
+          name: classification.name,
+          color: classification.color,
+          data: []
+        };
+
+        series[classification.id] = serie;
+        return series;
+      }, {});
+
+    return Object.keys(series).map((k) => {
+      let serie = series[k];
+      serie.data = this.chartCategories.map((c) => {
+        let coverage = this.state.coverages.find((coverage) => {
+          return coverage.year === c && coverage.id == k;
+        });
+        if(coverage) {
+          return coverage.area;
+        } else {
+          return 0;
+        }
+      })
+      return serie;
+    });
+  }
+
+  get chartOptions() {
+    let el = this.refs.chartElement;
+    return {
+      chart: {
+        renderTo: el,
+        type: 'line',
+      },
+      title: false,
+      yAxis: {
+        title: false
+      },
+      legend: {
+        enabled: false
+      },
+      exporting: { enabled: false },
+      series: this.chartSeries,
+      xAxis: {
+        categories: this.chartCategories
+      }
+    };
+  }
+
   loadTransitions(props) {
     API.transitions({
       territory_id: props.territory.id,
@@ -38,67 +103,25 @@ class TransitionsControl extends React.Component {
     });
   }
 
-  get territoriesOptions() {
-    return this.props.availableTerritories.map((territory) => {
-      return {
-        label: territory.name,
-        value: territory.id
-      };
+  download() {
+    let header = ["Classificação"];
+    this.chartCategories.forEach((c) => {
+      header.push(c);
     });
-  }
+    let rows = [header];
 
-  get chartCategories() {
-    return _.range(this.props.years[0], this.props.years[1] + 1);
-  }
+    this.chartSeries.forEach((serie) => {
+      let row = [serie.name];
+      this.chartCategories.forEach((c, i) => {
+        row.push(serie.data[i]);
+      });
+      rows.push(row);
+    }, rows);
 
-  get chartSeries() {
-    var series = this.state.coverages
-      .reduce((series, coverage) => {
-        let classification = this.findClassification(coverage.id);
-        let serie = series[classification.id] || {
-          name: classification.name,
-          color: classification.color,
-          data: []
-        };
-
-        series[classification.id] = serie;
-        return series;
-      }, {});
-
-    return Object.keys(series).map((k) => {
-      let serie = series[k];
-      serie.data = this.chartCategories.map((c) => {
-        let coverage = this.state.coverages.find((coverage) => coverage.year === c);
-        if(coverage) {
-          return coverage.area;
-        } else {
-          return 0;
-        }
-      })
-      return serie;
-    })
-  }
-
-  get chartOptions() {
-    let el = this.refs.chartElement;
-    return {
-      chart: {
-        renderTo: el,
-        type: 'line',
-      },
-      title: false,
-      yAxis: {
-        title: false
-      },
-      legend: {
-        enabled: false
-      },
-      exporting: { enabled: false },
-      series: this.chartSeries,
-      xAxis: {
-        categories: this.chartCategories
-      }
-    };
+    XLSXUtils.arrayToXLSX(
+      `Transição-${this.props.territory.name}-${this.props.years.join('-')}`,
+      rows
+    );
   }
 
   renderTransitions() {
@@ -146,7 +169,7 @@ class TransitionsControl extends React.Component {
             clearable={false}
           />
           {this.renderTransitions()}
-          <button>
+          <button onClick={this.download.bind(this)}>
             {I18n.t('map.index.download')}
           </button>
           <button className="primary" onClick={this.props.setMode}>

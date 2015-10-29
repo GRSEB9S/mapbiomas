@@ -13,6 +13,18 @@ class MapCanvas extends React.Component {
     L.tileLayer(this.options.url, {
         attribution: 'Mapbox'
     }).addTo(this.map);
+
+    this.fitTerritory();
+  }
+
+  fitTerritory() {
+    this.map.fitBounds(this.props.territory.bounds);
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.territory.id != this.props.territory.id) {
+      this.fitTerritory();
+    }
   }
 
   componentDidMount() {

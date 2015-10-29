@@ -96,7 +96,7 @@ class Map extends React.Component {
     } else {
       return (
         <div className="map">
-          <MapCanvas url={this.url} />
+          <MapCanvas url={this.url} territory={this.territory} />
           <div className="map-control-wrapper">
             <TransitionsControl
               {...this.props}
