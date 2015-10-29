@@ -2,7 +2,7 @@
   line-height: 58px;
   float: right;
 
-  @media (max-width: 768px) {
+  @include media ($tablet) {
     position: fixed;
     z-index: 10;
     top: 0;
@@ -11,7 +11,7 @@
     height: 100%;
 
     background: $header-color;
-    box-shadow: 5px 0 8px rgba(39, 39, 39, .51);
+    box-shadow: 4px 0 8px rgba($medium-gray, .4);
     line-height: 40px;
 
     @include transition(all .5s ease-in-out);
@@ -27,17 +27,23 @@
 .menu__header {
   font-size: 1.2rem;
   display: none;
-  padding: 0 20px;
+  padding: $small-spacing/2 $base-spacing;
+  margin-bottom: $small-spacing/2;
   text-decoration: none;
+  background: $light-green;
+  color: $white;
 
-  @media (max-width: 768px) {
+  @include media ($tablet) {
     display: block;
     width: 100%;
-    border-bottom: 1px solid $light-blue;
+    border-bottom: 1px solid rgba($light-green, 0.4);
   }
 
   .trigger {
-    float: right;
+    &, &:active, &:focus, &:hover {
+      float: right;
+      color: $white;
+    }
   }
 }
 
@@ -47,7 +53,7 @@
   display: none;
   float: right;
 
-  @media (max-width: 768px) {
+  @include media ($tablet) {
     display: block;
   }
 }
@@ -60,23 +66,26 @@
   color: $medium-gray;
   background: transparent !important;
 
-  &:hover, &:active, &:focus {
+  &:active, &:focus {
+    color: $medium-gray;
+  }
+
+  &:hover {
     color: $dark-gray;
   }
 }
 
 .menu__item {
-  padding: 0 0 0 20px;
+  padding: 0 $base-spacing;
   text-decoration: none;
   text-transform: uppercase;
   font-family: $heading-font-family;
   font-size: 0.8rem;
   color: $medium-gray;
 
-  @media (max-width: 768px) {
+  @include media ($tablet) {
     display: block;
     width: 100%;
-    border-bottom: 1px solid $light-gray;
   }
 
   &:hover {

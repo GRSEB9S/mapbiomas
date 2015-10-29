@@ -2,10 +2,21 @@
   background-color: $footer-color;
   @include clearfix;
 
+  @include media($mobile) {
+    height: 40px;
+  }
+
   &__copyright {
     color: $light-gray;
     text-align: center;
     padding: $small-spacing;
+    white-space: nowrap;
+
+    @include media($mobile) {
+      font-size: 0.6rem;
+      padding-top: 2.2em;
+      padding-bottom: 0;
+    }
   }
 
   &__seeg {
@@ -19,6 +30,10 @@
   &__seeg,
   &__ecostage {
     padding: $small-spacing;
+
+    @include media($mobile) {
+      padding: 0 ($small-spacing / 2) 0 ($small-spacing / 2);
+    }
   }
 
   .ecostage-label,
@@ -29,10 +44,18 @@
     font-size: 0.8rem;
     vertical-align: middle;
     margin: 0 $small-spacing 0 0;
+
+    @include media($mobile) {
+      font-size: 0.5rem;
+    }
   }
 
   &__image {
     height: 24px;
     vertical-align: middle;
+
+    @include media($mobile) {
+      height: 16px;
+    }
   }
 }
