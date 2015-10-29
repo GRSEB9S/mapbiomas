@@ -25,6 +25,7 @@ gem 'redis'
 gem 'cachebar'
 gem 'responders'
 gem 'js-routes'
+gem "rails-settings-cached", "~> 0.4.0"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'

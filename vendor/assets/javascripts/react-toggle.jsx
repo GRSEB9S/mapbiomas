@@ -35,6 +35,7 @@
       onChange: React.PropTypes.func,
       name: React.PropTypes.string,
       value: React.PropTypes.string,
+      toggleColor: React.PropTypes.string,
       id: React.PropTypes.string,
       'aria-labelledby': React.PropTypes.string,
       'aria-label': React.PropTypes.string
@@ -89,9 +90,13 @@
         'react-toggle--disabled': this.props.disabled
       })
 
+      let toggleStyle = {
+        backgroundColor: (this.state.checked ? this.props.toggleColor : '')
+      }
+
       return (
         <div className={classes} onClick={this.handleClick}>
-          <div className="react-toggle-track">
+          <div className="react-toggle-track" style={toggleStyle}>
             <div className="react-toggle-track-check">
               <Check />
             </div>

@@ -34,4 +34,20 @@
     stroke: $connector-color;
     stroke-width: 4px;
   }
+
+  &__control-bg {
+    fill: transparent;
+  }
+
+  &__control-button {
+    fill: rgba($background-color, 1);
+  }
+
+  &__control-pause {
+    fill: $control-color;
+  }
+
+  &__control-play {
+    fill:  $control-color;
+  }
 }

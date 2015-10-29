@@ -27,14 +27,17 @@ class Map extends React.Component {
   }
 
   get year() {
-    return this.state.year || this.props.defaultYear;
+    return this.state.year || this.props.availableYears[this.props.availableYears.length-1];
   }
 
   get years() {
     if(this.state.years.length == 2) {
       return this.state.years;
     } else {
-      return [2010, 2014];
+      let min = Math.min.apply(Math, this.props.availableYears);
+      let max = Math.max.apply(Math, this.props.availableYears);
+
+      return [min, max];
     }
   }
 
@@ -57,7 +60,7 @@ class Map extends React.Component {
   }
 
   setMode(mode) {
-    this.setState({ mode: mode });
+    this.setState({ mode: mode, year: null, years: [] });
   }
 
   render() {
@@ -84,8 +87,9 @@ class Map extends React.Component {
           </div>
           <div className="timeline-control">
             <ReactTimelineSlider
+              playStop={true}
               onValueChange={this.handleYearChange.bind(this)}
-              range={[2010, 2011, 2012, 2013, 2014, 2015]} />
+              range={this.props.availableYears} />
           </div>
         </div>
       );
@@ -106,8 +110,9 @@ class Map extends React.Component {
           <div className="timeline-control">
             <ReactTimelineSlider
               multi={true}
+              playStop={true}
               onValueChange={this.handleYearChange.bind(this)}
-              range={[2010, 2011, 2012, 2013, 2014, 2015]} />
+              range={this.props.availableYears} />
           </div>
         </div>
       );

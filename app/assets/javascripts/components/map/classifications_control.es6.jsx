@@ -27,6 +27,7 @@ class ClassificationsControl extends React.Component {
         <li key={classification.id} className="classification-item">
           <label style={itemStyle}>{classification.name}</label>
           <Toggle
+            toggleColor={classification.color}
             defaultChecked={this.isChecked(classification.id)}
             onChange={this.handleCheck.bind(this, classification.id)} />
         </li>
