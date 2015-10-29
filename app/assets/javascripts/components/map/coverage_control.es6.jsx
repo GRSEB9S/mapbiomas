@@ -6,39 +6,6 @@ class CoverageControl extends React.Component {
     };
   }
 
-  loadCoverage(props) {
-    API.coverage({
-      territory_id: props.territory.id,
-      classification_ids: props.classifications.map((c) => c.id).join(','),
-      year: props.year
-    }).then((coverage) => {
-      this.setState({ coverage: coverage }, () => {
-        this.draw()
-      });
-    })
-  }
-
-  componentDidMount() {
-    this.loadCoverage(this.props);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props, nextProps)) {
-      this.loadCoverage(nextProps)
-    }
-  }
-
-  draw() {
-    this.chart = new Highcharts.Chart(this.chartOptions);
-  }
-
-  findCoverageClassification(coverageItem) {
-    return this.props.availableClassifications.find((classification) => {
-      return classification.id === coverageItem.id;
-    });
-  }
-
-
   get territoriesOptions() {
     return this.props.availableTerritories.map((territory) => {
       return {
@@ -85,6 +52,48 @@ class CoverageControl extends React.Component {
     };
   }
 
+  loadCoverage(props) {
+    API.coverage({
+      territory_id: props.territory.id,
+      classification_ids: props.classifications.map((c) => c.id).join(','),
+      year: props.year
+    }).then((coverage) => {
+      this.setState({ coverage: coverage }, () => {
+        this.draw()
+      });
+    })
+  }
+
+  componentDidMount() {
+    this.loadCoverage(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!_.isEqual(this.props, nextProps)) {
+      this.loadCoverage(nextProps)
+    }
+  }
+
+  draw() {
+    this.chart = new Highcharts.Chart(this.chartOptions);
+  }
+
+  findCoverageClassification(coverageItem) {
+    return this.props.availableClassifications.find((classification) => {
+      return classification.id === coverageItem.id;
+    });
+  }
+
+  download() {
+    let rows = [["Classificação", "Área", "Porcentagem sobre área total"]];
+    this.state.coverage.forEach((coverageItem) => {
+      let classification = this.findCoverageClassification(coverageItem);
+      rows.push([classification.name, coverageItem.area, coverageItem.percentage]);
+    });
+
+    XLSXUtils.arrayToXLSX(`Cobertura-${this.props.territory.name}-${this.props.year}`, rows);
+  }
+
   renderCoverage() {
     let coverageClassifications = this.state.coverage.map((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
@@ -122,7 +131,7 @@ class CoverageControl extends React.Component {
             clearable={false}
           />
           {this.renderCoverage()}
-          <button>
+          <button onClick={this.download.bind(this)}>
             {I18n.t('map.index.download')}
           </button>
           <button className="primary" onClick={this.props.setMode}>

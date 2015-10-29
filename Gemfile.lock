@@ -168,6 +168,8 @@ GEM
     rails-assets-classnames (2.2.0)
     rails-assets-es6-shim (0.33.8)
     rails-assets-highcharts (4.1.9)
+    rails-assets-js-xlsx (0.8.0)
+    rails-assets-jszip (2.5.0)
     rails-assets-react-input-autosize (0.6.2)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
@@ -310,6 +312,8 @@ DEPENDENCIES
   rails-assets-classnames!
   rails-assets-es6-shim!
   rails-assets-highcharts!
+  rails-assets-js-xlsx!
+  rails-assets-jszip!
   rails-assets-react-input-autosize!
   rails-assets-underscore!
   rails-settings-cached (~> 0.4.0)

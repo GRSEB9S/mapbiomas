@@ -15,10 +15,16 @@
 //= require react-input-autosize
 //= require react-select
 //= require js-routes
+//= require FileSaver.min
 //= require react-timeline-slider
+//= require jszip
+//= require js-xlsx
 
 //= require highcharts_config
 //= require i18n_config
+
 //= require lib/api
+//= require lib/xlsx_utils
+
 //= require components
 
