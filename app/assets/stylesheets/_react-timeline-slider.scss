@@ -43,11 +43,11 @@
     fill: rgba($background-color, 1);
   }
 
+  &__control-play,
   &__control-pause {
-    fill: $control-color;
-  }
-
-  &__control-play {
     fill:  $control-color;
+    &:hover {
+      fill:  darken($control-color, 12%);
+    }
   }
 }
