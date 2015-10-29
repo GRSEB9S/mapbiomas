@@ -1,11 +1,9 @@
-$background-color: 'gray';
-$handler-color: 'blue';
-$connector-color: 'green';
 
 .react-timeline-slider {
   &__background {
     fill: $background-color;
     user-select: none;
+    --webkit-user-select: none;
   }
 
   &__tick-point {
@@ -35,5 +33,21 @@ $connector-color: 'green';
   &__line-between-handlers {
     stroke: $connector-color;
     stroke-width: 4px;
+  }
+
+  &__control-bg {
+    fill: transparent;
+  }
+
+  &__control-button {
+    fill: rgba($background-color, 1);
+  }
+
+  &__control-pause {
+    fill: $control-color;
+  }
+
+  &__control-play {
+    fill:  $control-color;
   }
 }

@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require leaflet
+//= require es6-shim
 //= require underscore
 //= require react-0.14.0/react
 //= require react-0.14.0/react-dom

@@ -1,44 +1,33 @@
 class ClassificationsControl extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      classificationIds: null
-    }
-  }
-
-  get classifications() {
-    return this.props.classifications;
-  }
-
-  get classificationIds() {
-    return this.state.classificationIds || this.props.defaultClassifications;
+  get ids() {
+    return this.props.classifications.map((c) => c.id);
   }
 
   isChecked(id) {
-    return this.classificationIds.indexOf(id) != -1;
+    return this.ids.indexOf(id) != -1;
   }
 
   handleCheck(id, e) {
     if(e.target.checked && !this.isChecked(id)) {
-      let classificationIds = this.classificationIds;
-      classificationIds.push(id);
-      this.setState({ classificationIds: classificationIds }, () => {
-        this.props.onChange(classificationIds);
-      })
+      let ids = this.ids;
+      ids.push(id);
+      this.props.onChange(ids);
     } else if(!e.target.checked && this.isChecked(id)) {
-      let classificationIds = _.without(this.classificationIds, id);
-      this.setState({ classificationIds: classificationIds }, () => {
-        this.props.onChange(classificationIds);
-      })
+      let ids = _.without(this.ids, id);
+      this.props.onChange(ids);
     }
   }
 
   render() {
-    let classificationsNodes = this.classifications.map((classification)=>{
+    let classificationsNodes = this.props.availableClassifications.map((classification)=>{
+      let itemStyle = {
+        color: classification.color
+      }
       return (
         <li key={classification.id} className="classification-item">
-          <label>{classification.name}</label>
+          <label style={itemStyle}>{classification.name}</label>
           <Toggle
+            toggleColor={classification.color}
             defaultChecked={this.isChecked(classification.id)}
             onChange={this.handleCheck.bind(this, classification.id)} />
         </li>

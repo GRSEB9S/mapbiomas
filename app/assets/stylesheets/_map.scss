@@ -17,17 +17,9 @@
 .map-control-wrapper {
   position: absolute;
   margin: $base-spacing;
-  top: 60px;
+  top: 0;
   width: 300px;
   right: 0;
-
-  @include media($tablet) {
-    top: 0;
-  }
-
-  @include media($mobile) {
-    top: 0;
-  }
 
   &--left {
     left: 0;
@@ -35,7 +27,7 @@
 
   &--bottom {
     top: auto;
-    bottom: 0;
+    bottom: 80px;
 
     & > .map-control {
       margin-bottom: 0;
@@ -122,5 +114,6 @@
   position: absolute;
   margin: $base-spacing;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
 }
