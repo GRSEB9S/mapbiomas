@@ -15,6 +15,7 @@
 //= require react-input-autosize
 //= require react-select
 //= require js-routes
+//= require react-timeline-slider
 
 //= require highcharts_config
 //= require i18n_config

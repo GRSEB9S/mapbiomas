@@ -33,7 +33,7 @@ class ClassificationsControl extends React.Component {
     return (
       <div className="map-control classifications-control">
         <h3 className="map-control__header">
-          Classificações
+          {I18n.t('map.index.classifications')}
         </h3>
 
         <div className="map-control__content">

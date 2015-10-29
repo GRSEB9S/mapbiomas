@@ -117,3 +117,10 @@
     display: none;
   }
 }
+
+.timeline-control {
+  position: absolute;
+  margin: $base-spacing;
+  bottom: 0;
+  width: 100%;
+}
