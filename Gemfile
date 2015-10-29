@@ -31,6 +31,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-classnames'
   gem 'rails-assets-highcharts'
   gem 'rails-assets-react-input-autosize'
+  gem 'rails-assets-es6-shim'
 end
 
 group :production do

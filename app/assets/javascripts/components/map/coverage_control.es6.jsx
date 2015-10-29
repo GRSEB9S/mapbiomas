@@ -2,52 +2,45 @@ class CoverageControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      territoryId: null,
       coverage: []
     };
   }
 
-  territoryChange(v) {
-    if(v) {
-      this.loadTerritoryCoverage(v);
-    }
-  }
-
-  loadTerritoryCoverage(territoryId) {
+  loadCoverage(props) {
     API.coverage({
-      territory_id: territoryId,
-      classification_ids: this.props.classificationIds,
-      year: this.props.year
+      territory_id: props.territory.id,
+      classification_ids: props.classifications.map((c) => c.id).join(','),
+      year: props.year
     }).then((coverage) => {
-      this.setState({ territoryId: territoryId, coverage: coverage });
+      this.setState({ coverage: coverage }, () => {
+        this.draw()
+      });
     })
   }
 
   componentDidMount() {
-    this.loadTerritoryCoverage(this.territoryId);
-    this.draw();
+    this.loadCoverage(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!_.isEqual(this.props, nextProps)) {
+      this.loadCoverage(nextProps)
+    }
   }
 
   draw() {
     this.chart = new Highcharts.Chart(this.chartOptions);
   }
 
-  componentDidUpdate() {
-    this.draw();
-  }
-
   findCoverageClassification(coverageItem) {
-    return this.props.classifications.find((classification) => {
+    return this.props.availableClassifications.find((classification) => {
       return classification.id === coverageItem.id;
     });
   }
 
-  get territoryId() {
-    return this.state.territoryId || this.props.defaultTerritory;
-  }
 
   get territoriesOptions() {
-    return this.props.territories.map((territory) => {
+    return this.props.availableTerritories.map((territory) => {
       return {
         label: territory.name,
         value: territory.id
@@ -117,22 +110,24 @@ class CoverageControl extends React.Component {
     return (
       <div className="map-control">
         <h3 className="map-control__header">
-          Análise de cobertura
+          {I18n.t('map.index.coverage_analysis')}
         </h3>
         <div className="map-control__content">
-          <label>busque uma cidade, estado, areas protegidas, biomas, etc...</label>
+          <label>{I18n.t('map.index.search')}</label>
           <Select
             name="territory-select"
-            value={this.territoryId}
+            value={this.props.territory.id}
             options={this.territoriesOptions}
-            onChange={this.territoryChange.bind(this)}
+            onChange={this.props.onTerritoryChange}
             clearable={false}
           />
           {this.renderCoverage()}
-          <button className="primary" onClick={this.props.setMode}>
-            Analise de transição
+          <button>
+            {I18n.t('map.index.download')}
           </button>
-          <button>Baixe os dados</button>
+          <button className="primary" onClick={this.props.setMode}>
+            {I18n.t('map.index.transitions_analysis')}
+          </button>
         </div>
       </div>
     );
