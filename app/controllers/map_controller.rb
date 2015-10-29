@@ -1,10 +1,10 @@
 class MapController < ApplicationController
   def index
     @map_props = {
-      classifications: TerrasAPI.classifications,
-      defaultClassifications: TerrasAPI.classifications.map { |c| c['id'] },
-      territories: TerrasAPI.territories,
-      defaultTerritory: TerrasAPI.territories.first['id']
+      availableClassifications: TerrasAPI.classifications,
+      defaultClassifications: TerrasAPI.classifications,
+      availableTerritories: TerrasAPI.territories,
+      defaultTerritory: TerrasAPI.territories.first
     }
   end
 end

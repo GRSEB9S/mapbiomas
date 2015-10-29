@@ -127,12 +127,6 @@ class CoverageControl extends React.Component {
           </button>
           <button className="primary" onClick={this.props.setMode}>
             {I18n.t('map.index.transitions_analysis')}
-<<<<<<< HEAD
-=======
-          </button>
-          <button>
-            {I18n.t('map.index.download')}
->>>>>>> master
           </button>
         </div>
       </div>

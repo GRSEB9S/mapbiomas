@@ -1,6 +1,6 @@
 class ClassificationsControl extends React.Component {
   get ids() {
-    this.props.classifications.map((c) => c.id);
+    return this.props.classifications.map((c) => c.id);
   }
 
   isChecked(id) {
@@ -19,9 +19,12 @@ class ClassificationsControl extends React.Component {
   }
 
   render() {
-    let classificationsNodes = this.classifications.map((classification)=>{
+    let classificationsNodes = this.props.availableClassifications.map((classification)=>{
+      let itemStyle = {
+        color: classification.color
+      }
       return (
-        <li key={classification.id} className="classification-item">
+        <li key={classification.id} style={itemStyle} className="classification-item">
           <label>{classification.name}</label>
           <Toggle
             defaultChecked={this.isChecked(classification.id)}
