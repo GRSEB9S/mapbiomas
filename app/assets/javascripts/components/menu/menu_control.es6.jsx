@@ -11,7 +11,7 @@ class MenuControl extends React.Component {
 
         <a className="menu__item" href="/">{I18n.t('layouts.header.about_mapbiomas')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.methodology')}</a>
-        <a className="menu__item" href="/">{I18n.t('layouts.header.land_usage')}</a>
+        <a className="menu__item" href="/">{I18n.t('layouts.header.land_use')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.database')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.workspace')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.contact')}</a>
