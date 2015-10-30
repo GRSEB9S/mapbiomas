@@ -21,6 +21,10 @@
   width: 300px;
   right: 0;
 
+  @include media($mobile) {
+    width: 250px;
+  }
+
   &--left {
     left: 0;
   }

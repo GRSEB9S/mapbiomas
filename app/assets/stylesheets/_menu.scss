@@ -56,6 +56,10 @@
   @include media ($tablet) {
     display: block;
   }
+
+  @include media($mobile) {
+    line-height: 44px;
+  }
 }
 
 .trigger {
