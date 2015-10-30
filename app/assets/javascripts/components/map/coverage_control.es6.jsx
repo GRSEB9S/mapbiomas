@@ -109,7 +109,8 @@ class CoverageControl extends React.Component {
         <li key={coverageItem.id} style={itemStyle}>
           <span className="coverage-label">{classification.name}</span>
           <span className="coverage-value">
-            {coverageItem.area} ha ({coverageItem.percentage}%)
+            {Highcharts.numberFormat(coverageItem.area)} ha
+            ({Highcharts.numberFormat(coverageItem.percentage)}%)
           </span>
         </li>
       )

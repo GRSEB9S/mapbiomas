@@ -65,7 +65,7 @@ class TransitionsControl extends React.Component {
         title: false
       },
       tooltip: {
-        pointFormat: '{series.name}: {point.y} ha'
+        pointFormat: '{series.name}: {point.y:,.2f} ha'
       },
       legend: {
         enabled: false
@@ -149,7 +149,8 @@ class TransitionsControl extends React.Component {
             <span style={toStyle}>{to.name}</span>
           </span>
           <span className="transition-value">
-            {transition.area} ha ({transition.percentage}%)
+            {Highcharts.numberFormat(transition.area)} ha
+            ({Highcharts.numberFormat(transition.percentage)}%)
           </span>
         </li>
       )
