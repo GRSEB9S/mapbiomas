@@ -56,6 +56,10 @@
   @include media ($tablet) {
     display: block;
   }
+
+  @include media($mobile) {
+    line-height: 44px;
+  }
 }
 
 .trigger {
@@ -76,7 +80,7 @@
 }
 
 .menu__item {
-  padding: 0 $base-spacing;
+  padding: 0 0 0 $base-spacing;
   text-decoration: none;
   text-transform: uppercase;
   font-family: $heading-font-family;
