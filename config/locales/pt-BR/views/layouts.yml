@@ -1,8 +1,11 @@
 pt-BR:
   layouts:
     header:
-      home: Início
+      about_mapbiomas: MapBiomas
       methodology: Metodologia
+      land_usage: Uso da Terra
+      database: Base de dados
+      workspace: Ambiente de Trabalho
       contact: Contato
     footer:
       provided_by: Realização

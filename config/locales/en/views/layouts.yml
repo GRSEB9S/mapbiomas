@@ -1,9 +1,12 @@
 en:
   layouts:
     header:
-      home: Home
-      methodology: Methodology
-      contact: Contact
+      about_mapbiomas: About MapBiomas
+      methodology: Metodologia
+      land_usage: Entenda o Uso da Terra
+      database: Base de dados
+      workspace: Ambiente de Trabalho
+      contact: Fale conosco
     footer:
       provided_by: Provided by
       copyright: All rights reserved.
