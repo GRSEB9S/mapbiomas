@@ -180,7 +180,7 @@ class TransitionsControl extends React.Component {
           />
           {this.renderTransitions()}
           <button onClick={this.download.bind(this)}>
-            {I18n.t('map.index.download')}
+            {I18n.t('map.index.download.title')}
           </button>
           <button className="primary" onClick={this.props.setMode}>
             {I18n.t('map.index.coverage_analysis')}
