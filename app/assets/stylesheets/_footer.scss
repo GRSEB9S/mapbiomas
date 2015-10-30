@@ -9,13 +9,17 @@
   &__copyright {
     color: $light-gray;
     text-align: center;
-    padding: $small-spacing;
+    padding-top: $small-spacing;
     white-space: nowrap;
+    font-size: 0.6rem;
+    margin-top: 6px;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px;
+    width: 200px;
 
     @include media($mobile) {
-      font-size: 0.6rem;
-      padding-top: 2.2em;
-      padding-bottom: 0;
+      font-size: 0.5rem;
     }
   }
 
@@ -29,7 +33,7 @@
 
   &__seeg,
   &__ecostage {
-    padding: $small-spacing;
+    padding: $small-spacing $base-spacing;
 
     @include media($mobile) {
       padding: 0 ($small-spacing / 2) 0 ($small-spacing / 2);

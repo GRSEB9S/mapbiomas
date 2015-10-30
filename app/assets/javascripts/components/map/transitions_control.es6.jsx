@@ -59,7 +59,13 @@ class TransitionsControl extends React.Component {
       },
       title: false,
       yAxis: {
+        labels: {
+          enabled: false,
+        },
         title: false
+      },
+      tooltip: {
+        pointFormat: '{series.name}: {point.y} ha'
       },
       legend: {
         enabled: false
@@ -137,10 +143,14 @@ class TransitionsControl extends React.Component {
 
       return (
         <li key={`${transition.from}-${transition.to}`}>
-          <span style={fromStyle}>{from.name}</span>
-          ->
-          <span style={toStyle}>{to.name}</span>
-          {transition.area} ha ({transition.percentage}%)
+          <span className="transition-label">
+            <span style={fromStyle}>{from.name}</span>
+            <i className="material-icons transition-arrow">arrow_forward</i>
+            <span style={toStyle}>{to.name}</span>
+          </span>
+          <span className="transition-value">
+            {transition.area} ha ({transition.percentage}%)
+          </span>
         </li>
       )
     });

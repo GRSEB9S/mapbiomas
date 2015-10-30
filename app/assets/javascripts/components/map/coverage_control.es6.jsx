@@ -102,7 +102,10 @@ class CoverageControl extends React.Component {
       };
       return (
         <li key={coverageItem.id} style={itemStyle}>
-          {classification.name} {coverageItem.area} ha ({coverageItem.percentage}%)
+          <span className="coverage-label">{classification.name}</span>
+          <span className="coverage-value">
+            {coverageItem.area} ha ({coverageItem.percentage}%)
+          </span>
         </li>
       )
     });

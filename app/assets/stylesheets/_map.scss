@@ -21,6 +21,10 @@
   width: 300px;
   right: 0;
 
+  @include media($mobile) {
+    width: 250px;
+  }
+
   &--left {
     left: 0;
   }
@@ -38,10 +42,11 @@
 
 .map-control {
   width: 100%;
+  border-radius: $base-border-radius;
   background: $white;
   padding: $base-spacing;
   margin-bottom: $base-spacing;
-  box-shadow: 1px 1px 8px rgba($dark-gray, 0.2);
+  box-shadow: $base-box-shadow;
 
   @include media($mobile-landscape) {
     display: none;
@@ -99,12 +104,46 @@
   display: inline-block;
   width: 60%;
   vertical-align: top;
-  padding: 6px;
-  margin-top: 14px;
+  padding: $small-spacing / 2;
+  margin-top: $small-spacing;
   font-size: 0.8rem;
 }
 
+.transitions-legend {
+  margin: $small-spacing 0;
+  font-size: 0.8rem;
+}
+
+.transition-label,
+.coverage-label {
+  margin-right: 6px;
+}
+
+.transition-value,
+.coverage-value {
+  font-weight: 600;
+}
+
+.transition-value {
+  color: $light-gray;
+}
+
+.transition-arrow {
+  font-size: 1em;
+  vertical-align: middle;
+  margin: 0 4px;
+  color: $light-gray;
+}
+
 .leaflet-control-zoom {
+  margin-left: $base-spacing !important;
+  margin-top: $base-spacing !important;
+  box-shadow: $base-box-shadow;
+
+  a {
+    border-radius: $base-border-radius !important;
+  }
+
   @include media($tablet) {
     display: none;
   }
