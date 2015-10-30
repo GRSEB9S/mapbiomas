@@ -17,7 +17,7 @@ class TransitionsControl extends React.Component {
   }
 
   get chartCategories() {
-    return _.range(this.props.years[0], this.props.years[1] + 1);
+    return [this.props.years[0], this.props.years[1]];
   }
 
   get chartSeries() {
