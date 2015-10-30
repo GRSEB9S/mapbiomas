@@ -6,4 +6,8 @@ en:
       transitions_analysis: Transitions analysis
       search: 'Search for cities, states, protected areas...'
       analyze: Analyze
-      download: Download data
+      download:
+        title: Download data
+        classification: Classification
+        area: Area
+        percentage: Percentage of total area
