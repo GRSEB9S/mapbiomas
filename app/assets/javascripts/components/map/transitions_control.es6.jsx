@@ -55,7 +55,7 @@ class TransitionsControl extends React.Component {
     return {
       chart: {
         renderTo: el,
-        type: 'line',
+        type: 'line'
       },
       title: false,
       yAxis: {

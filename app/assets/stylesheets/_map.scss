@@ -91,12 +91,12 @@
 
 .transitions-chart {
   width: 100%;
-  height: 110px;
+  height: 150px;
 }
 
 .coverage-chart {
   width: 100%;
-  height: 110px;
+  height: 150px;
   display: inline-block;
 }
 
@@ -104,7 +104,6 @@
   display: inline-block;
   width: 100%;
   vertical-align: top;
-  padding: $small-spacing / 2;
   margin-top: $small-spacing;
   font-size: 0.8rem;
 }
