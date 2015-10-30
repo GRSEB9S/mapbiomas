@@ -29,7 +29,7 @@
 
   &__seeg,
   &__ecostage {
-    padding: $small-spacing;
+    padding: $small-spacing $base-spacing;
 
     @include media($mobile) {
       padding: 0 ($small-spacing / 2) 0 ($small-spacing / 2);
