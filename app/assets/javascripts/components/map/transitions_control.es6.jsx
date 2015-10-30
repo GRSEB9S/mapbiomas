@@ -56,6 +56,8 @@ class TransitionsControl extends React.Component {
       chart: {
         renderTo: el,
         type: 'line',
+        spacingLeft: 0,
+        spacingRight: 0
       },
       title: false,
       yAxis: {
@@ -65,7 +67,7 @@ class TransitionsControl extends React.Component {
         title: false
       },
       tooltip: {
-        pointFormat: '{series.name}: {point.y} ha'
+        pointFormat: '{series.name}: {point.y:,.0f} ha'
       },
       legend: {
         enabled: false
@@ -149,7 +151,8 @@ class TransitionsControl extends React.Component {
             <span style={toStyle}>{to.name}</span>
           </span>
           <span className="transition-value">
-            {transition.area} ha ({transition.percentage}%)
+            {Highcharts.numberFormat(transition.area, 0, '.')} ha
+            ({transition.percentage}%)
           </span>
         </li>
       )
@@ -180,7 +183,7 @@ class TransitionsControl extends React.Component {
           />
           {this.renderTransitions()}
           <button onClick={this.download.bind(this)}>
-            {I18n.t('map.index.download')}
+            {I18n.t('map.index.download.title')}
           </button>
           <button className="primary" onClick={this.props.setMode}>
             {I18n.t('map.index.coverage_analysis')}
