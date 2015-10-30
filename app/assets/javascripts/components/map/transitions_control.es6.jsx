@@ -17,7 +17,7 @@ class TransitionsControl extends React.Component {
   }
 
   get chartCategories() {
-    return _.range(this.props.years[0], this.props.years[1] + 1);
+    return [this.props.years[0], this.props.years[1]];
   }
 
   get chartSeries() {
@@ -55,7 +55,7 @@ class TransitionsControl extends React.Component {
     return {
       chart: {
         renderTo: el,
-        type: 'line',
+        type: 'column',
         spacingLeft: 0,
         spacingRight: 0
       },
@@ -68,6 +68,11 @@ class TransitionsControl extends React.Component {
       },
       tooltip: {
         pointFormat: '{series.name}: {point.y:,.0f} ha'
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal'
+        }
       },
       legend: {
         enabled: false
