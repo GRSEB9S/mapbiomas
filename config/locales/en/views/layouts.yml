@@ -2,7 +2,7 @@ en:
   layouts:
     header:
       menu: Menu
-      about_mapbiomas: About MapBiomas
+      about: About
       methodology: Methodology
       land_use: Land Use
       database: Database
