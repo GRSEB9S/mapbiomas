@@ -3,7 +3,7 @@ class TerrasAPI
 
   base_uri ENV['TERRAS_API_URL']
   format :json
-  caches_api_responses :key_name => "terras", :expire_in => 1.month
+  caches_api_responses key_name: "terras", expire_in: 1.month
 
   def self.territories
     get("/territories")
