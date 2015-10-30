@@ -6,6 +6,9 @@
   "env": {
     "TERRAS_API_URL": {
       "required": true
+    },
+    "REDIS_URL": {
+      "required": true
     }
   },
   "addons": [
