@@ -64,6 +64,9 @@ class TransitionsControl extends React.Component {
         },
         title: false
       },
+      tooltip: {
+        pointFormat: '{series.name}: {point.y} ha'
+      },
       legend: {
         enabled: false
       },
