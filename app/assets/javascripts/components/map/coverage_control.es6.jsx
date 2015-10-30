@@ -36,7 +36,9 @@ class CoverageControl extends React.Component {
     return {
       chart: {
         renderTo: el,
-        type: 'pie'
+        type: 'pie',
+        spacingLeft: 0,
+        spacingRight: 0
       },
       tooltip: false,
       plotOptions: {
@@ -109,7 +111,8 @@ class CoverageControl extends React.Component {
         <li key={coverageItem.id} style={itemStyle}>
           <span className="coverage-label">{classification.name}</span>
           <span className="coverage-value">
-            {coverageItem.area} ha ({coverageItem.percentage}%)
+            {Highcharts.numberFormat(coverageItem.area, 0, '.')} ha
+            ({coverageItem.percentage}%)
           </span>
         </li>
       )
