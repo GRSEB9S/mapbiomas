@@ -3,7 +3,7 @@ class MenuControl extends React.Component {
     return (
       <nav className={this.props.menu_on ? "menu state--expanded" : "menu"}>
         <div className="menu__header">
-          Menu
+          {I18n.t('layouts.header.menu')}
           <button className="trigger" onClick={this.props.menu_fn}>
             <span className="fa fa-close"></span>
           </button>

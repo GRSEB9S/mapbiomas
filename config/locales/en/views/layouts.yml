@@ -1,6 +1,7 @@
 en:
   layouts:
     header:
+      menu: Menu
       about_mapbiomas: About MapBiomas
       methodology: Methodology
       land_use: Land Use

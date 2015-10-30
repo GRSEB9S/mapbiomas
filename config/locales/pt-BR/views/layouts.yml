@@ -1,6 +1,7 @@
 pt-BR:
   layouts:
     header:
+      menu: Menu
       about_mapbiomas: MapBiomas
       methodology: Metodologia
       land_use: Uso da Terra
