@@ -85,7 +85,12 @@ class CoverageControl extends React.Component {
   }
 
   download() {
-    let rows = [["Classificação", "Área", "Porcentagem sobre área total"]];
+    let rows = [[
+                  I18n.t('map.index.download.classification'),
+                  I18n.t('map.index.download.area'),
+                  I18n.t('map.index.download.percentage')
+               ]];
+
     this.state.coverage.forEach((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
       rows.push([classification.name, coverageItem.area, coverageItem.percentage]);
@@ -135,7 +140,7 @@ class CoverageControl extends React.Component {
           />
           {this.renderCoverage()}
           <button onClick={this.download.bind(this)}>
-            {I18n.t('map.index.download')}
+            {I18n.t('map.index.download.title')}
           </button>
           <button className="primary" onClick={this.props.setMode}>
             {I18n.t('map.index.transitions_analysis')}

@@ -6,4 +6,8 @@ pt-BR:
       transitions_analysis: Análise de transição
       search: 'Busque cidades, estados, biomas...'
       analyze: Analisar
-      download: Baixe os dados
+      download:
+        title: Baixe os dados
+        classification: Classificação
+        area: Área
+        percentage: Porcentagem sobre área total
