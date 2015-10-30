@@ -1,8 +1,12 @@
 pt-BR:
   layouts:
     header:
-      home: Início
+      menu: Menu
+      about: Sobre
       methodology: Metodologia
+      land_use: Uso da Terra
+      database: Base de dados
+      workspace: Ambiente de Trabalho
       contact: Contato
     footer:
       provided_by: Realização
