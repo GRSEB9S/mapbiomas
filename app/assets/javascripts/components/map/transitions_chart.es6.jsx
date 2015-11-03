@@ -1,6 +1,6 @@
 class TransitionsChart extends React.Component {
   get categories() {
-    return [this.props.years[0], this.props.years[1] + 1];
+    return [this.props.years[0], this.props.years[1]];
   }
 
   get series() {
