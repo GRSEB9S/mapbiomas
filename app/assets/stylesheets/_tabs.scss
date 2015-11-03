@@ -1,0 +1,18 @@
+.tabs {
+  margin-bottom: $base-spacing;
+  border-bottom: 1px solid lighten($action-color, 20%);
+
+  &__item {
+    text-transform: uppercase;
+    padding: $small-spacing $small-spacing ($small-spacing/2) $small-spacing;
+    color: $action-color;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+
+    &--active {
+      border-bottom: 2px solid $primary-action-color;
+      color: $primary-action-color;
+    }
+  }
+}

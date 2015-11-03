@@ -2,86 +2,9 @@ class TransitionsControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      expanded: false,
       transitions: [],
       coverages: []
-    };
-  }
-
-  get territoriesOptions() {
-    return this.props.availableTerritories.map((territory) => {
-      return {
-        label: territory.name,
-        value: territory.id
-      };
-    });
-  }
-
-  get chartCategories() {
-    return [this.props.years[0], this.props.years[1]];
-  }
-
-  get chartSeries() {
-    var series = this.state.coverages
-      .reduce((series, coverage) => {
-        let classification = this.findClassification(coverage.id);
-        let serie = series[classification.id] || {
-          name: classification.name,
-          color: classification.color,
-          data: []
-        };
-
-        series[classification.id] = serie;
-        return series;
-      }, {});
-
-    return Object.keys(series).map((k) => {
-      let serie = series[k];
-      serie.data = this.chartCategories.map((c) => {
-        let coverage = this.state.coverages.find((coverage) => {
-          return coverage.year === c && coverage.id == k;
-        });
-        if(coverage) {
-          return coverage.area;
-        } else {
-          return 0;
-        }
-      })
-      return serie;
-    });
-  }
-
-  get chartOptions() {
-    let el = this.refs.chartElement;
-    return {
-      chart: {
-        renderTo: el,
-        type: 'column',
-        spacingLeft: 0,
-        spacingRight: 0
-      },
-      title: false,
-      yAxis: {
-        labels: {
-          enabled: false,
-        },
-        title: false
-      },
-      tooltip: {
-        pointFormat: '{series.name}: {point.y:,.0f} ha'
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal'
-        }
-      },
-      legend: {
-        enabled: false
-      },
-      exporting: { enabled: false },
-      series: this.chartSeries,
-      xAxis: {
-        categories: this.chartCategories
-      }
     };
   }
 
@@ -90,9 +13,7 @@ class TransitionsControl extends React.Component {
       territory_id: props.territory.id,
       year: props.years.join(',')
     }).then((transitions) => {
-      this.setState(transitions, () => {
-        this.draw()
-      });
+      this.setState(transitions);
     })
   }
 
@@ -106,41 +27,11 @@ class TransitionsControl extends React.Component {
     }
   }
 
-  draw() {
-    this.chart = new Highcharts.Chart(this.chartOptions);
-  }
-
-  findClassification(classificationId) {
-    return this.props.availableClassifications.find((classification) => {
-      return classification.id === classificationId;
-    });
-  }
-
-  download() {
-    let header = ["Classificação"];
-    this.chartCategories.forEach((c) => {
-      header.push(c);
-    });
-    let rows = [header];
-
-    this.chartSeries.forEach((serie) => {
-      let row = [serie.name];
-      this.chartCategories.forEach((c, i) => {
-        row.push(serie.data[i]);
-      });
-      rows.push(row);
-    }, rows);
-
-    XLSXUtils.arrayToXLSX(
-      `Transição-${this.props.territory.name}-${this.props.years.join('-')}`,
-      rows
-    );
-  }
-
   renderTransitions() {
+    let classifications = new Classifications(this.props.availableClassifications);
     let transitionsClassifications = this.state.transitions.map((transition) => {
-      let from = this.findClassification(transition.from);
-      let to = this.findClassification(transition.to);
+      let from = classifications.findById(transition.from);
+      let to = classifications.findById(transition.to);
       let fromStyle = {
         color: from.color
       };
@@ -165,33 +56,58 @@ class TransitionsControl extends React.Component {
 
     return (
       <div className="transitions">
-        <ul className="transitions-legend">{transitionsClassifications}</ul>
-        <div className="transitions-chart chart" ref="chartElement"></div>
+        <ul className="transitions-legend">
+          <li><label>{this.props.years.join('-')}</label></li>
+          {transitionsClassifications}
+        </ul>
+        <TransitionsChart
+          years={this.props.years}
+          availableClassifications={this.props.availableClassifications}
+          coverages={this.state.coverages} />
       </div>
     );
   }
 
+  expand() {
+    this.setState({ expanded: true });
+  }
+
   render() {
+    let territories = new Territories(this.props.availableTerritories);
+    let controlClass = classNames('map-control', { 'map-control--expanded': this.state.expanded });
+
     return (
-      <div className="map-control">
+      <div className={controlClass}>
+        <div className="tabs map-control__tabs">
+          <div className="tabs__item" onClick={this.props.setMode}>
+            {I18n.t('map.index.coverage')}
+          </div>
+
+          <div className="tabs__item tabs__item--active">
+            {I18n.t('map.index.transitions')}
+          </div>
+
+          <div className="tabs__item">
+            {I18n.t('map.index.quality')}
+          </div>
+        </div>
+
         <h3 className="map-control__header">
           {I18n.t('map.index.transitions_analysis')}
         </h3>
+
         <div className="map-control__content">
           <label>{I18n.t('map.index.search')}</label>
           <Select
             name="territory-select"
             value={this.props.territory.id}
-            options={this.territoriesOptions}
+            options={territories.toOptions()}
             onChange={this.props.onTerritoryChange}
             clearable={false}
           />
           {this.renderTransitions()}
-          <button onClick={this.download.bind(this)}>
-            {I18n.t('map.index.download.title')}
-          </button>
-          <button className="primary" onClick={this.props.setMode}>
-            {I18n.t('map.index.coverage_analysis')}
+          <button className="primary" onClick={this.expand.bind(this)}>
+            {I18n.t('map.index.transitions_matrix')}
           </button>
         </div>
       </div>

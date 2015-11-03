@@ -69,6 +69,7 @@
   outline: none;
   color: $medium-gray;
   background: transparent !important;
+  box-shadow: none;
 
   &:active, &:focus {
     color: $medium-gray;
