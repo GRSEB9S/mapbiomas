@@ -24,6 +24,8 @@
 //= require i18n_config
 
 //= require lib/api
+//= require lib/classifications
+//= require lib/territories
 //= require lib/xlsx_utils
 
 //= require components
