@@ -153,6 +153,7 @@ class CoverageControl extends React.Component {
           {this.renderCoverage()}
           <button onClick={this.download.bind(this)}>
             {I18n.t('map.index.download.title')}
+            <i className="material-icons button__icon">&#xE2C0;</i>
           </button>
         </div>
       </div>

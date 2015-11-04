@@ -6,7 +6,9 @@ class Map extends React.Component {
       mode: 'coverage',
       year: null,
       years: [],
-      territory: null
+      territory: null,
+      transitions: [],
+      transitionsMatrixExpanded: false
     };
   }
 
@@ -60,7 +62,30 @@ class Map extends React.Component {
   }
 
   setMode(mode) {
-    this.setState({ mode: mode, year: null, years: [] });
+    this.setState({ mode: mode, year: null, years: [],
+                  transitions: [], transitionsMatrixExpanded: false });
+  }
+
+  expandTransitionsMatrix(transitions) {
+    this.setState({ transitions: transitions, transitionsMatrixExpanded: true });
+  }
+
+  closeTransitionsMatrix() {
+    this.setState({ transitions: [], transitionsMatrixExpanded: false });
+  }
+
+  renderTransitionsMatrix() {
+    if(this.state.transitionsMatrixExpanded) {
+      return (
+        <MapModal title={I18n.t('map.index.transitions_matrix')}
+          onClose={this.closeTransitionsMatrix.bind(this)}>
+          <TransitionsMatrix 
+            years={this.years}
+            transitions={this.state.transitions}
+            classifications={this.classifications} />
+        </MapModal>
+      );
+    }
   }
 
   render() {
@@ -102,6 +127,7 @@ class Map extends React.Component {
               {...this.props}
               territory={this.territory}
               years={this.years}
+              onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
               classifications={this.classifications}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
               setMode={this.setMode.bind(this, 'coverage')}
@@ -114,6 +140,8 @@ class Map extends React.Component {
               onValueChange={this.handleYearChange.bind(this)}
               range={this.props.availableYears} />
           </div>
+
+          {this.renderTransitionsMatrix()}
         </div>
       );
     }

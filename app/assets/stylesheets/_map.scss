@@ -18,7 +18,7 @@
   position: absolute;
   margin: $base-spacing;
   top: 0;
-  width: 300px;
+  width: 340px;
   right: 0;
 
   @include media($mobile) {
@@ -106,6 +106,7 @@
 .coverage-chart {
   width: 30%;
   height: 125px;
+  margin-left: -12px;
   display: inline-block;
 }
 
@@ -124,6 +125,10 @@
 .transitions-legend {
   margin: $small-spacing 0;
   font-size: 0.8rem;
+
+  .transition-value {
+    color: $light-gray;
+  }
 }
 
 .transition-label,
@@ -136,9 +141,6 @@
   font-weight: 600;
 }
 
-.transition-value {
-  color: $light-gray;
-}
 
 .transition-arrow {
   font-size: 1em;
@@ -167,4 +169,42 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.map-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: $base-spacing;
+  box-shadow: $base-box-shadow;
+  border-radius: $base-border-radius;
+  background: $white;
+  padding: $base-spacing;
+  z-index: 5;
+
+  &__header {
+    text-align: center;
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: $small-spacing;
+    margin-bottom: $base-spacing;
+  }
+
+  &__content {
+    overflow: auto;
+  }
+
+  &__close {
+    right: 0;
+    top: 0;
+    position: absolute;
+    cursor: pointer;
+    margin: $small-spacing;
+    color: $medium-gray;
+
+    &:hover, &:active, &:focus {
+      color: $dark-gray;
+    }
+  }
 }

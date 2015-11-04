@@ -1,0 +1,38 @@
+.transitions-matrix {
+  table-layout: auto;
+  font-size: 0.8rem;
+  margin: 0;
+
+  td {
+    padding: $small-spacing/2 $small-spacing;
+    border: 1px solid lighten($light-gray, 10%);
+
+    &:empty {
+      visibility: hidden;
+    }
+
+    &.highlight {
+      font-weight: 600;
+      opacity: 1 !important;
+    }
+
+    &.from-classification,
+    &.to-classification,
+    &.transition-value {
+      opacity: 0.4;
+    }
+  }
+
+  .to-year, .from-year {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .to-classification {
+    text-align: center;
+  }
+
+  .transition-value {
+    text-align: center;
+  }
+}

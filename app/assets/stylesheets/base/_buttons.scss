@@ -20,6 +20,7 @@ button {
   text-transform: uppercase;
   box-shadow: $base-box-shadow;
 
+
   &:hover,
   &:focus {
     background-color: darken($action-color, 15%);
@@ -39,5 +40,14 @@ button {
       background-color: darken($primary-action-color, 15%);
       color: $white;
     }
+  }
+}
+
+.button {
+  &__icon {
+    line-height: 0.8rem;
+    font-size: 1rem;
+    vertical-align: sub;
+    margin-left: $small-spacing;
   }
 }
