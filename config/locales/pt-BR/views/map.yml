@@ -1,7 +1,7 @@
 pt-BR:
   map:
     index:
-      classifications: Classificações
+      classifications: Classes
       coverage_analysis: Análise de cobertura
       coverage: Cobertura
       transitions: Transições
@@ -12,6 +12,6 @@ pt-BR:
       analyze: Analisar
       download:
         title: Baixe os dados
-        classification: Classificação
+        classification: Classe
         area: Área
         percentage: Porcentagem sobre área total
