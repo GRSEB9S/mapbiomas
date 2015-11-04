@@ -163,6 +163,10 @@
   }
 }
 
+.leaflet-top, .leaflet-bottom {
+  z-index: 5;
+}
+
 .timeline-control {
   position: absolute;
   margin: $base-spacing;
