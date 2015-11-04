@@ -152,7 +152,7 @@ class TransitionsControl extends React.Component {
         <li key={`${transition.from}-${transition.to}`}>
           <span className="transition-label">
             <span style={fromStyle}>{from.name}</span>
-            <i className="material-icons transition-arrow">arrow_forward</i>
+            <i className="material-icons transition-arrow">&#xE5C8;</i>
             <span style={toStyle}>{to.name}</span>
           </span>
           <span className="transition-value">
@@ -171,6 +171,10 @@ class TransitionsControl extends React.Component {
     );
   }
 
+  expandMatrix() {
+    this.props.onExpandMatrix(this.state.transitions);
+  }
+
   render() {
     return (
       <div className="map-control">
@@ -187,11 +191,8 @@ class TransitionsControl extends React.Component {
             clearable={false}
           />
           {this.renderTransitions()}
-          <button onClick={this.download.bind(this)}>
-            {I18n.t('map.index.download.title')}
-          </button>
-          <button className="primary" onClick={this.props.setMode}>
-            {I18n.t('map.index.coverage_analysis')}
+          <button className="primary" onClick={this.expandMatrix.bind(this)}>
+            {I18n.t('map.index.transitions_matrix')}
           </button>
         </div>
       </div>
