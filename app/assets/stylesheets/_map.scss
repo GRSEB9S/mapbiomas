@@ -66,6 +66,15 @@
       margin-top: $small-spacing;
     }
   }
+
+  &__tabs {
+    margin: (-$base-spacing) (-$base-spacing) auto (-$base-spacing);
+    font-size: 0.75rem;
+
+    & > .tabs__item {
+      width: 33.33%;
+    }
+  }
 }
 
 .classifications-control {
@@ -107,6 +116,10 @@
   vertical-align: top;
   margin-top: $small-spacing;
   font-size: 0.8rem;
+}
+
+.transitions-chart {
+  height: 125px;
 }
 
 .transitions-legend {

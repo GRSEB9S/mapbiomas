@@ -3,7 +3,11 @@ pt-BR:
     index:
       classifications: Classificações
       coverage_analysis: Análise de cobertura
+      coverage: Cobertura
+      transitions: Transições
+      quality: Qualidade
       transitions_analysis: Análise de transição
+      transitions_matrix: Matriz de transições
       search: 'Busque cidades, estados, biomas...'
       analyze: Analisar
       download:

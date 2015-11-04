@@ -17,6 +17,8 @@ button {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  text-transform: uppercase;
+  box-shadow: $base-box-shadow;
 
 
   &:hover,

@@ -6,15 +6,6 @@ class CoverageControl extends React.Component {
     };
   }
 
-  get territoriesOptions() {
-    return this.props.availableTerritories.map((territory) => {
-      return {
-        label: territory.name,
-        value: territory.id
-      };
-    });
-  }
-
   get chartSeries() {
     let data = this.state.coverage.map((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
@@ -121,14 +112,32 @@ class CoverageControl extends React.Component {
     return (
       <div className="coverage">
         <div className="coverage-chart chart" ref="chartElement"></div>
-        <ul className="coverage-legend">{coverageClassifications}</ul>
+        <ul className="coverage-legend">
+          <li><label>{this.props.year}</label></li>
+          {coverageClassifications}
+        </ul>
       </div>
     );
   }
 
   render() {
+    let territories = new Territories(this.props.availableTerritories);
     return (
       <div className="map-control">
+        <div className="tabs map-control__tabs">
+          <div className="tabs__item tabs__item--active" >
+            {I18n.t('map.index.coverage')}
+          </div>
+
+          <div className="tabs__item" onClick={this.props.setMode}>
+            {I18n.t('map.index.transitions')}
+          </div>
+
+          <div className="tabs__item">
+            {I18n.t('map.index.quality')}
+          </div>
+        </div>
+
         <h3 className="map-control__header">
           {I18n.t('map.index.coverage_analysis')}
         </h3>
@@ -137,7 +146,7 @@ class CoverageControl extends React.Component {
           <Select
             name="territory-select"
             value={this.props.territory.id}
-            options={this.territoriesOptions}
+            options={territories.toOptions()}
             onChange={this.props.onTerritoryChange}
             clearable={false}
           />
@@ -145,9 +154,6 @@ class CoverageControl extends React.Component {
           <button onClick={this.download.bind(this)}>
             {I18n.t('map.index.download.title')}
             <i className="material-icons button__icon">&#xE2C0;</i>
-          </button>
-          <button className="primary" onClick={this.props.setMode}>
-            {I18n.t('map.index.transitions_analysis')}
           </button>
         </div>
       </div>
