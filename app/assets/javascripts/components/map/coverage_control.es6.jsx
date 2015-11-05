@@ -48,7 +48,7 @@ class CoverageControl extends React.Component {
   loadCoverage(props) {
     API.coverage({
       territory_id: props.territory.id,
-      classification_ids: props.classifications.map((c) => c.id).join(','),
+      classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
       year: props.year
     }).then((coverage) => {
       this.setState({ coverage: coverage }, () => {
@@ -62,7 +62,7 @@ class CoverageControl extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props, nextProps)) {
+    if(!_.isEqual(this.props.year, nextProps.year) || !_.isEqual(this.props.territory, nextProps.territory)) {
       this.loadCoverage(nextProps)
     }
   }
