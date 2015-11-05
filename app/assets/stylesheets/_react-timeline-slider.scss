@@ -1,9 +1,12 @@
-
 .react-timeline-slider {
   &__background {
     fill: $background-color;
     user-select: none;
     --webkit-user-select: none;
+  }
+
+  &__tick {
+    cursor: pointer;
   }
 
   &__tick-point {
