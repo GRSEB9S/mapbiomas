@@ -28,7 +28,7 @@ class TransitionsControl extends React.Component {
   }
 
   renderTransitions() {
-    let classifications = new Classifications(this.props.availableClassifications);
+    let classifications = new Classifications(this.props.classifications);
     let transitionsClassifications = this.state.transitions.map((transition) => {
       let from = classifications.findById(transition.from);
       let to = classifications.findById(transition.to);
