@@ -7,7 +7,9 @@ pt-BR:
       transitions: Transições
       quality: Qualidade
       transitions_analysis: Análise de transição
-      transitions_matrix: Matriz de transições
+      transitions_matrix:
+        title: Matriz de transições
+        total: Total
       search: 'Busque municípios, estados, biomas...'
       analyze: Analisar
       download:

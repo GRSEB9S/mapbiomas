@@ -3,7 +3,13 @@ en:
     index:
       classifications: Classifications
       coverage_analysis: Coverage analysis
+      coverage: Coverage
+      transitions: Transitions
+      quality: Quality
       transitions_analysis: Transitions analysis
+      transitions_matrix:
+        title: Transitions matrix
+        total: Total
       search: 'Search for cities, states, protected areas...'
       analyze: Analyze
       download:

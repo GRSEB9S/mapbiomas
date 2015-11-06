@@ -107,7 +107,7 @@ class TransitionsControl extends React.Component {
           />
           {this.renderTransitions()}
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
-            {I18n.t('map.index.transitions_matrix')}
+            {I18n.t('map.index.transitions_matrix.title')}
           </button>
         </div>
       </div>

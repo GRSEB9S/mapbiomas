@@ -77,9 +77,9 @@ class Map extends React.Component {
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
-        <MapModal title={I18n.t('map.index.transitions_matrix')}
+        <MapModal title={I18n.t('map.index.transitions_matrix.title')}
           onClose={this.closeTransitionsMatrix.bind(this)}>
-          <TransitionsMatrix 
+          <TransitionsMatrix
             years={this.years}
             transitions={this.state.transitions}
             classifications={this.classifications} />
