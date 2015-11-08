@@ -66,6 +66,8 @@ class TransitionsMatrix extends React.Component {
   }
 
   renderData(fromClassification) {
+    let lastClassification = _.last(this.props.classifications);
+
     return this.props.classifications.map((toClassification) => {
       let transition = this.props.matrixTransitions.find((t) => {
         return t.to == toClassification.id && t.from == fromClassification.id;
@@ -73,12 +75,20 @@ class TransitionsMatrix extends React.Component {
       let key = `transition-${toClassification.id}-${fromClassification.id}`;
 
       if(transition) {
-        return (
-          <td key={key} className="transition-value highlight">
-            {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            ({transition.percentage}%)
-          </td>
-        );
+        if (fromClassification === lastClassification || toClassification === lastClassification) {
+          return (
+            <td key={key} className="transition-value highlight">
+              {Highcharts.numberFormat(transition.area, 0, '.')} ha
+            </td>
+          );
+        } else {
+          return (
+            <td key={key} className="transition-value highlight">
+              {Highcharts.numberFormat(transition.area, 0, '.')} ha
+              ({transition.percentage}%)
+            </td>
+          );
+        }
       } else {
         return <td key={key} className="transition-value">--</td>
       }
