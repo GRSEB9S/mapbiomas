@@ -1,0 +1,22 @@
+.sankey {
+  .node rect {
+    shape-rendering: crispEdges;
+  }
+
+  .node text {
+    pointer-events: none;
+    font-size: $base-font-size;
+  }
+
+  .link {
+    fill: none;
+    stroke: $medium-gray;
+    stroke-opacity: .2;
+    cursor: pointer;
+  }
+
+  .link:hover,
+  .link--active {
+    stroke-opacity: .5;
+  }
+}

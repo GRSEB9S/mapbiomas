@@ -13,13 +13,7 @@
 
   &__logo img {
     float: left;
-    margin-top: -2px;
-    margin-left: -2px;
-    height: 46px;
+    height: 36px;
     margin: 6px 0;
-
-    @include media($mobile) {
-      height: 36px;
-    }
   }
 }

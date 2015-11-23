@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/tooltip
 //= require leaflet
 //= require es6-shim
 //= require underscore
@@ -15,10 +16,9 @@
 //= require react-input-autosize
 //= require react-select
 //= require js-routes
-//= require FileSaver.min
 //= require react-timeline-slider
-//= require jszip
-//= require js-xlsx
+//= require d3
+//= require d3-sankey
 
 //= require highcharts_config
 //= require i18n_config

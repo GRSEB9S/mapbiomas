@@ -45,7 +45,7 @@
     display: inline-block;
     color: $white;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: $small-font-size;
     vertical-align: middle;
     margin: 0 $small-spacing 0 0;
 
@@ -55,7 +55,7 @@
   }
 
   &__image {
-    height: 24px;
+    height: 20px;
     vertical-align: middle;
 
     @include media($mobile) {

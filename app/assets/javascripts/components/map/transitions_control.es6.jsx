@@ -28,43 +28,57 @@ class TransitionsControl extends React.Component {
   }
 
   renderTransitions() {
-    let classifications = new Classifications(this.props.availableClassifications);
-    let transitionsClassifications = this.state.transitions.map((transition) => {
+    let classifications = new Classifications(
+      this.props.availableClassifications
+    );
+    let transitions = this.state.transitions;
+    let nodes = transitions.reduce((memo, transition) => {
       let from = classifications.findById(transition.from);
       let to = classifications.findById(transition.to);
-      let fromStyle = {
-        color: from.color
-      };
-      let toStyle = {
-        color: to.color
-      };
+      return memo.concat([
+        {
+          name: from.name,
+          id: from.id,
+          type: 'from',
+          color: from.color
+        },
+        {
+          name: to.name,
+          id: to.id,
+          color: to.color,
+          type: 'to'
+        }
+      ]);
+    }, []);
 
-      return (
-        <li key={`${transition.from}-${transition.to}`}>
-          <span className="transition-label">
-            <span style={fromStyle}>{from.name}</span>
-            <i className="material-icons transition-arrow">&#xE5C8;</i>
-            <span style={toStyle}>{to.name}</span>
-          </span>
-          <span className="transition-value">
-            {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            ({transition.percentage}%)
-          </span>
-        </li>
-      )
+    nodes = _.uniq(nodes, (n) => `${n.type}->${n.name}`);
+
+    let links = transitions.map((transition) => {
+      let fromIndex = _.findIndex(nodes, (n) => {
+        return n.id == transition.from && n.type == 'from';
+      });
+      let toIndex = _.findIndex(nodes, (n) => {
+        return n.id == transition.to && n.type == 'to';
+      });
+
+      return {
+        source: fromIndex,
+        target: toIndex,
+        value: transition.area
+      };
     });
 
     return (
-      <div className="transitions">
-        <ul className="transitions-legend">
-          <li><label>{this.props.years.join('-')}</label></li>
-          {transitionsClassifications}
-        </ul>
-        <TransitionsChart
-          years={this.props.years}
-          availableClassifications={this.props.availableClassifications}
-          coverages={this.state.coverages} />
-      </div>
+      <ul className="transitions-legend">
+        <li><label>{this.props.years.join('-')}</label></li>
+        <li>
+          <TransitionsChart
+            transition={this.props.transition || this.state.transitions[0]}
+            setTransition={this.props.setTransition}
+            nodes={nodes}
+            links={links} />
+        </li>
+      </ul>
     );
   }
 

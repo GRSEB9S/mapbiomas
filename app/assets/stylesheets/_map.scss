@@ -29,6 +29,10 @@
     left: 0;
   }
 
+  &--smaller {
+    width: 250px;
+  }
+
   &--bottom {
     top: auto;
     bottom: 80px;
@@ -69,7 +73,7 @@
 
   &__tabs {
     margin: (-$base-spacing) (-$base-spacing) auto (-$base-spacing);
-    font-size: 0.75rem;
+    font-size: $small-font-size;
 
     & > .tabs__item {
       width: 33.33%;
@@ -78,7 +82,6 @@
 }
 
 .classifications-control {
-  width: 256px;
   bottom: 0px
 }
 
@@ -98,11 +101,6 @@
   }
 }
 
-.transitions-chart {
-  width: 100%;
-  height: 150px;
-}
-
 .coverage-chart {
   width: 30%;
   height: 125px;
@@ -115,16 +113,12 @@
   width: 70%;
   vertical-align: top;
   margin-top: $small-spacing;
-  font-size: 0.8rem;
-}
-
-.transitions-chart {
-  height: 125px;
+  font-size: $small-font-size;
 }
 
 .transitions-legend {
   margin: $small-spacing 0;
-  font-size: 0.8rem;
+  font-size: $small-font-size;
 
   .transition-value {
     color: $light-gray;
@@ -143,7 +137,7 @@
 
 
 .transition-arrow {
-  font-size: 1em;
+  font-size: $base-font-size;
   vertical-align: middle;
   margin: 0 4px;
   color: $light-gray;

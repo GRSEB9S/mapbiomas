@@ -22,10 +22,24 @@ class Map extends React.Component {
   }
 
   get url() {
+    switch(this.state.mode) {
+      case 'coverage':
+        return "wms/classification/coverage.map";
+      default:
+        return "wms/classification/coverage.map";
+    }
+  }
+
+  get tileOptions() {
     let ids = this.classifications.map((c) => c.id);
-    let url = 'https://{s}.tiles.mapbox.com/v3/mpivaa.kgcn043g/{z}/{x}/{y}.png'
     let year = this.state.mode == 'coverage' ? this.year : this.years.join(',');
-    return (`${url}?year=${year}&classification_ids=${ids.join(',')}`);
+    return {
+      layers: this.state.mode,
+      map: this.url,
+      year: year,
+      territory_id: this.territory.id,
+      classification_ids: ids.join(','),
+    };
   }
 
   get year() {
@@ -61,6 +75,10 @@ class Map extends React.Component {
     this.setState({ classifications: classifications });
   }
 
+  handleTransitionChange(transition) {
+    this.setState( { transition: transition });
+  }
+
   setMode(mode) {
     this.setState({ mode: mode, year: null, years: [],
                   transitions: [], transitionsMatrixExpanded: false });
@@ -92,8 +110,11 @@ class Map extends React.Component {
     if(this.state.mode == 'coverage') {
       return (
         <div className="map">
-          <MapCanvas url={this.url} territory={this.territory}/>
-          <div className="map-control-wrapper map-control-wrapper--left map-control-wrapper--bottom">
+          <MapCanvas {...this.tileOptions} territory={this.territory}/>
+          <div className="map-control-wrapper
+              map-control-wrapper--smaller
+              map-control-wrapper--left
+              map-control-wrapper--bottom">
             <ClassificationsControl
               {...this.props}
               classifications={this.classifications}
@@ -125,6 +146,8 @@ class Map extends React.Component {
           <div className="map-control-wrapper">
             <TransitionsControl
               {...this.props}
+              transition={this.state.transition}
+              setTransition={this.handleTransitionChange.bind(this)}
               territory={this.territory}
               years={this.years}
               onExpandMatrix={this.expandTransitionsMatrix.bind(this)}

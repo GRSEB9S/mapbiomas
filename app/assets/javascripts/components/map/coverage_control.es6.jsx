@@ -9,8 +9,12 @@ class CoverageControl extends React.Component {
   get chartSeries() {
     let data = this.state.coverage.map((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
+      let y = parseFloat(coverageItem.area);
+      if(isNaN(y)) {
+        y = 0;
+      }
       return {
-        y: coverageItem.area,
+        y: y,
         name: classification.name,
         color: classification.color
       }
@@ -73,7 +77,7 @@ class CoverageControl extends React.Component {
 
   findCoverageClassification(coverageItem) {
     return this.props.availableClassifications.find((classification) => {
-      return classification.id === coverageItem.id;
+      return classification.id == coverageItem.id;
     });
   }
 

@@ -25,7 +25,8 @@ gem 'redis'
 gem 'cachebar'
 gem 'responders'
 gem 'js-routes'
-gem "rails-settings-cached", "~> 0.4.0"
+gem 'jquery-ui-rails'
+gem 'rails-settings-cached', "~> 0.4.0"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
@@ -33,8 +34,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-highcharts'
   gem 'rails-assets-react-input-autosize'
   gem 'rails-assets-es6-shim'
-  gem 'rails-assets-js-xlsx'
-  gem 'rails-assets-jszip'
+  gem 'rails-assets-d3'
 end
 
 group :production do

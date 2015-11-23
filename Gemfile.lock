@@ -111,6 +111,8 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
     js-routes (1.1.2)
       railties (>= 3.2)
       sprockets-rails
@@ -166,10 +168,9 @@ GEM
       railties (= 4.2.3)
       sprockets-rails
     rails-assets-classnames (2.2.0)
+    rails-assets-d3 (3.5.9)
     rails-assets-es6-shim (0.33.8)
     rails-assets-highcharts (4.1.9)
-    rails-assets-js-xlsx (0.8.0)
-    rails-assets-jszip (2.5.0)
     rails-assets-react-input-autosize (0.6.2)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
@@ -298,6 +299,7 @@ DEPENDENCIES
   i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-ui-rails
   js-routes
   leaflet-rails
   letter_opener
@@ -310,10 +312,9 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.2.3)
   rails-assets-classnames!
+  rails-assets-d3!
   rails-assets-es6-shim!
   rails-assets-highcharts!
-  rails-assets-js-xlsx!
-  rails-assets-jszip!
   rails-assets-react-input-autosize!
   rails-assets-underscore!
   rails-settings-cached (~> 0.4.0)

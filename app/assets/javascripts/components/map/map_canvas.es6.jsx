@@ -1,18 +1,24 @@
 class MapCanvas extends React.Component {
   get options() {
     let defaultOptions = {
-      url: 'https://{s}.tiles.mapbox.com/v3/mpivaa.kgcn043g/{z}/{x}/{y}.png'
-    };
+        format: 'image/png',
+        transparent: true,
+        attribution: "MapBiomas Workspace"
+    }
     return _.defaults({}, this.props, defaultOptions);
   }
 
   setup() {
     let node = this.refs.element;
-    this.map = L.map(node).setView([-20, -45], 4);
-
-    L.tileLayer(this.options.url, {
-        attribution: 'Mapbox'
+    this.map = L.map(node).setView([-20, -45], 6);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
+
+    this.layer =L.tileLayer.wms(
+      "http://seeg-mapbiomas.terras.agr.br/cgi-bin/mapserv",
+      this.options
+    ).addTo(this.map);
 
     this.fitTerritory();
   }
@@ -25,6 +31,7 @@ class MapCanvas extends React.Component {
     if(prevProps.territory.id != this.props.territory.id) {
       this.fitTerritory();
     }
+    this.layer.setParams(this.options);
   }
 
   componentDidMount() {

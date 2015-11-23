@@ -7,6 +7,9 @@
 @import "leaflet";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "jquery-ui";
+@import "jquery-ui/core";
+@import "jquery-ui/theme";
 
 @import "react-timeline-slider";
 @import "react-select";
@@ -18,4 +21,6 @@
 @import "menu";
 @import "footer";
 @import "tabs";
+@import "sankey";
+@import "tooltip";
 @import "transitions-matrix";

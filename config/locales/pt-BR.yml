@@ -1,4 +1,8 @@
 pt-BR:
+  number:
+    format:
+      delimiter: '.'
+      separator: ','
   map:
     index:
       classifications: Classificações
@@ -15,3 +19,16 @@ pt-BR:
         classification: Classificação
         area: Área
         percentage: Porcentagem sobre área total
+  layouts:
+    header:
+      menu: Menu
+      about: Sobre
+      methodology: Metodologia
+      land_use: Entenda o Uso da Terra
+      database: Base de dados
+      workspace: Ambiente de Trabalho
+      contact: Contato
+    footer:
+      provided_by: Realização
+      copyright: MapBiomas
+      development: Desenvolvimento

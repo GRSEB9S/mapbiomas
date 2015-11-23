@@ -1,5 +1,5 @@
 .header__nav .menu {
-  line-height: 58px;
+  line-height: 48px;
   float: right;
 
   @include media ($tablet) {
@@ -48,17 +48,13 @@
 }
 
 .header__menu-trigger {
-  line-height: 58px;
+  line-height: 44px;
 
   display: none;
   float: right;
 
   @include media ($tablet) {
     display: block;
-  }
-
-  @include media($mobile) {
-    line-height: 44px;
   }
 }
 

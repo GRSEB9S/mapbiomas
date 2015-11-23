@@ -1,76 +1,87 @@
 class TransitionsChart extends React.Component {
-  get categories() {
-    return [this.props.years[0], this.props.years[1]];
-  }
-
-  get series() {
-    let classifications = new Classifications(this.props.availableClassifications);
-    var series = this.props.coverages
-      .reduce((series, coverage) => {
-        let classification = classifications.findById(coverage.id);
-        let serie = series[classification.id] || {
-          name: classification.name,
-          color: classification.color,
-          data: []
-        };
-
-        series[classification.id] = serie;
-        return series;
-      }, {});
-
-    return Object.keys(series).map((k) => {
-      let serie = series[k];
-      serie.data = this.categories.map((c) => {
-        let coverage = this.props.coverages.find((coverage) => {
-          return coverage.year === c && coverage.id == k;
-        });
-        if(coverage) {
-          return coverage.area;
-        } else {
-          return 0;
-        }
-      })
-      return serie;
-    });
-  }
-
-  get options() {
-    let el = this.refs.element;
-    return {
-      chart: {
-        renderTo: el,
-        type: 'column',
-        spacingLeft: 0,
-        spacingRight: 0
-      },
-      title: false,
-      yAxis: {
-        labels: {
-          enabled: false,
-        },
-        title: false
-      },
-      tooltip: {
-        pointFormat: '{series.name}: {point.y:,.0f} ha'
-      },
-      legend: {
-        enabled: false
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal'
-        }
-      },
-      exporting: { enabled: false },
-      series: this.series,
-      xAxis: {
-        categories: this.categories
-      }
-    };
+  constructor(props) {
+    super(props);
+    this.formatNumber = (n) => I18n.toNumber(n, { precision: 0 });
+    this.format = (d) => `${this.formatNumber(d)} ha`;
   }
 
   draw() {
-    this.chart = new Highcharts.Chart(this.options);
+    let element = ReactDOM.findDOMNode(this.refs.element);
+    element.innerHTML = '';
+    let width = this.props.width,
+        height = 220;
+
+    let svg = d3.select(element).append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g");
+
+    let sankey = d3.sankey()
+        .nodeWidth(12)
+        .nodePadding(10)
+        .size([width, height]);
+
+    let path = sankey.link();
+
+    sankey
+        .nodes(this.props.nodes)
+        .links(this.props.links)
+        .layout(16);
+
+    let link = svg.append("g")
+        .selectAll(".link")
+        .data(this.props.links)
+        .enter()
+        .append("path")
+        .attr("class", (d) => {
+          if(this.props.transition) {
+            var active = (d.source.id == this.props.transition.from
+                          && d.target.id == this.props.transition.to);
+          }
+          return classNames("link", "tooltip", { "link--active": active });
+        })
+        .attr("title", (d) => {
+          return (
+            `${d.source.name} → ${d.target.name} ${this.format(d.value)}`
+          );
+        })
+        .attr("d", path)
+        .style("stroke-width", (d) => Math.max(1, d.dy))
+        .sort((a, b) => b.dy - a.dy)
+        .on('click', (d) => {
+          this.props.setTransition({
+            from: d.source.id,
+            to: d.target.id
+          })
+        });
+
+    let node = svg.append("g")
+        .selectAll(".node")
+        .data(this.props.nodes)
+        .enter()
+        .append("g")
+        .attr("class", "node")
+        .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
+
+    node.append("rect")
+        .attr("class", "tooltip")
+        .attr("title", (d) => `${d.name} ${this.format(d.value)}`)
+        .attr("height", (d) => d.dy)
+        .attr("width", sankey.nodeWidth())
+        .style("fill", (d) => d.color)
+
+    node.append("text")
+        .attr("x", -6)
+        .attr("y", (d) => d.dy / 2)
+        .attr("dy", ".35em")
+        .attr("text-anchor", "end")
+        .attr("transform", null)
+        .text((d) => d.name)
+        .filter((d) => d.x < width / 2)
+        .attr("x", 6 + sankey.nodeWidth())
+        .attr("text-anchor", "start");
+
+    $(".tooltip").tooltip({ track: true });
   }
 
   componentDidMount() {
@@ -79,11 +90,14 @@ class TransitionsChart extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(!_.isEqual(this.props, prevProps)) {
+      $(".tooltip").tooltip('destroy');
       this.draw();
     }
   }
 
   render() {
-    return <div ref="element" className="transitions-chart chart"></div>;
+    return <div ref="element" className="transitions-chart chart sankey"></div>;
   }
 }
+
+TransitionsChart = AutoWidth(TransitionsChart);
