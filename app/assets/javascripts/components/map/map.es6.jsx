@@ -84,23 +84,68 @@ class Map extends React.Component {
                   transitions: [], transitionsMatrixExpanded: false });
   }
 
+  totalClassificationData(arr, from, to) {
+    return {
+      area: _.reduce(arr, function(memo, num){
+          return memo + num.area;
+        }, 0
+      ),
+      from: from,
+      percentage: _.reduce(arr, function(memo, num){
+          return memo + num.percentage;
+        }, 0
+      ),
+      to: to
+    }
+  }
+
   expandTransitionsMatrix(transitions) {
-    this.setState({ transitions: transitions, transitionsMatrixExpanded: true });
+    let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
+    let matrixTransitions = _.clone(transitions);
+
+    this.props.defaultClassifications.forEach((element) => {
+      let fromTransitions = _.where(transitions, {from: element.id});
+      let fromClassificationToTotal = this.totalClassificationData(fromTransitions, element.id, totalClassificationId);
+      matrixTransitions.push(fromClassificationToTotal);
+
+      let toTransitions = _.where(transitions, {to: element.id});
+      let fromToTotalToClassification = this.totalClassificationData(toTransitions, totalClassificationId, element.id);
+      matrixTransitions.push(fromToTotalToClassification);
+    });
+
+    this.setState({ transitions: transitions,
+                    matrixTransitions: matrixTransitions,
+                    transitionsMatrixExpanded: true
+    });
   }
 
   closeTransitionsMatrix() {
     this.setState({ transitions: [], transitionsMatrixExpanded: false });
   }
 
+  componentDidMount() {
+    let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
+    let matrixClassifications = _.clone(this.classifications);
+    let total = {
+                  id: totalClassificationId,
+                  name: I18n.t('map.index.transitions_matrix.total'),
+                  color: "#000000"
+                };
+
+    matrixClassifications.push(total);
+    this.setState({ matrixClassifications: matrixClassifications });
+  }
+
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
-        <MapModal title={I18n.t('map.index.transitions_matrix')}
+        <MapModal title={I18n.t('map.index.transitions_matrix.title')}
           onClose={this.closeTransitionsMatrix.bind(this)}>
-          <TransitionsMatrix 
+          <TransitionsMatrix
             years={this.years}
             transitions={this.state.transitions}
-            classifications={this.classifications} />
+            matrixTransitions={this.state.matrixTransitions}
+            classifications={this.state.matrixClassifications} />
         </MapModal>
       );
     }
@@ -151,7 +196,7 @@ class Map extends React.Component {
               territory={this.territory}
               years={this.years}
               onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-              classifications={this.classifications}
+              matrixClassifications={this.state.matrixClassifications}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
               setMode={this.setMode.bind(this, 'coverage')}
             />

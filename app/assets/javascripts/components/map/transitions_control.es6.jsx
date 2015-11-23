@@ -28,9 +28,7 @@ class TransitionsControl extends React.Component {
   }
 
   renderTransitions() {
-    let classifications = new Classifications(
-      this.props.availableClassifications
-    );
+    let classifications = new Classifications(this.props.matrixClassifications);
     let transitions = this.state.transitions;
     let nodes = transitions.reduce((memo, transition) => {
       let from = classifications.findById(transition.from);
@@ -121,7 +119,7 @@ class TransitionsControl extends React.Component {
           />
           {this.renderTransitions()}
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
-            {I18n.t('map.index.transitions_matrix')}
+            {I18n.t('map.index.transitions_matrix.title')}
           </button>
         </div>
       </div>

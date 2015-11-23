@@ -5,18 +5,20 @@ pt-BR:
       separator: ','
   map:
     index:
-      classifications: Classificações
+      classifications: Classes
       coverage_analysis: Análise de cobertura
       coverage: Cobertura
       transitions: Transições
       quality: Qualidade
       transitions_analysis: Análise de transição
-      transitions_matrix: Matriz de transições
-      search: 'Busque cidades, estados, biomas...'
+      transitions_matrix:
+        title: Matriz de transições
+        total: Total
+      search: 'Busque municípios, estados, biomas...'
       analyze: Analisar
       download:
         title: Baixe os dados
-        classification: Classificação
+        classification: Classe
         area: Área
         percentage: Porcentagem sobre área total
   layouts:

@@ -10,11 +10,18 @@ class TransitionsMatrix extends React.Component {
   renderToClassifications() {
     return this.props.classifications.map((c) => {
       let transition = this.props.transitions.find((t) => t.to == c.id);
-      let classes = classNames('to-classification',
-                               { highlight: !!transition });
+
+      let classes = classNames(
+        'to-classification',
+        {
+          highlight: c === _.last(this.props.classifications) ? true : !!transition
+        }
+      );
+
       let styles = {
         color: c.color
       };
+
       return (
         <td key={`to-${c.id}`} className={classes} style={styles}>
           {c.name}
@@ -26,8 +33,14 @@ class TransitionsMatrix extends React.Component {
   renderFromClassifications() {
     return this.props.classifications.map((c, i) => {
       let transition = this.props.transitions.find((t) => t.from == c.id);
-      let classes = classNames('from-classification',
-                               { highlight: !!transition });
+
+      let classes = classNames(
+        'from-classification',
+        {
+          highlight: c === _.last(this.props.classifications) ? true : !!transition
+        }
+      );
+
       let styles = {
         color: c.color
       };
@@ -53,19 +66,29 @@ class TransitionsMatrix extends React.Component {
   }
 
   renderData(fromClassification) {
+    let lastClassification = _.last(this.props.classifications);
+
     return this.props.classifications.map((toClassification) => {
-      let transition = this.props.transitions.find((t) => {
+      let transition = this.props.matrixTransitions.find((t) => {
         return t.to == toClassification.id && t.from == fromClassification.id;
       });
       let key = `transition-${toClassification.id}-${fromClassification.id}`;
 
       if(transition) {
-        return (
-          <td key={key} className="transition-value highlight">
-            {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            ({transition.percentage}%)
-          </td>
-        );
+        if (fromClassification === lastClassification || toClassification === lastClassification) {
+          return (
+            <td key={key} className="transition-value highlight">
+              {Highcharts.numberFormat(transition.area, 0, '.')} ha
+            </td>
+          );
+        } else {
+          return (
+            <td key={key} className="transition-value highlight">
+              {Highcharts.numberFormat(transition.area, 0, '.')} ha
+              ({transition.percentage}%)
+            </td>
+          );
+        }
       } else {
         return <td key={key} className="transition-value">--</td>
       }
