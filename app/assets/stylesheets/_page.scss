@@ -1,0 +1,22 @@
+.page {
+  margin: $big-spacing $small-spacing;
+
+  img {
+    display: block;
+    margin: $base-spacing auto 0 auto;
+    max-width: 100%;
+  }
+
+  &__title {
+    font-size: $title-font-size;
+    margin: $base-spacing 0 $small-spacing 0;
+  }
+
+  &__subtitle {
+    margin: 0 0 $base-spacing 0;
+  }
+
+  &__container {
+    @include outer-container;
+  }
+}
