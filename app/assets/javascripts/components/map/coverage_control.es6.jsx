@@ -81,21 +81,6 @@ class CoverageControl extends React.Component {
     });
   }
 
-  download() {
-    let rows = [[
-                  I18n.t('map.index.download.classification'),
-                  I18n.t('map.index.download.area'),
-                  I18n.t('map.index.download.percentage')
-               ]];
-
-    this.state.coverage.forEach((coverageItem) => {
-      let classification = this.findCoverageClassification(coverageItem);
-      rows.push([classification.name, coverageItem.area, coverageItem.percentage]);
-    });
-
-    XLSXUtils.arrayToXLSX(`Cobertura-${this.props.territory.name}-${this.props.year}`, rows);
-  }
-
   renderCoverage() {
     let coverageClassifications = this.state.coverage.map((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
@@ -155,10 +140,6 @@ class CoverageControl extends React.Component {
             clearable={false}
           />
           {this.renderCoverage()}
-          <button>
-            {I18n.t('map.index.download.title')}
-            <i className="material-icons button__icon">&#xE2C0;</i>
-          </button>
         </div>
       </div>
     );

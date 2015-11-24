@@ -6,15 +6,15 @@ class TerrasAPI
   caches_api_responses key_name: "terras", expire_in: 1.month
 
   def self.territories
-    get("/territories")
+    get("/dashboard/services/territories")
   end
 
   def self.classifications
-    get("/classifications")
+    get("/dashboard/services/classifications")
   end
 
   def self.coverage(year, territory_id, classification_ids)
-    get("/coverage", query: {
+    get("/dashboard/services/coverage", query: {
       year: year,
       territory_id: territory_id,
       classification_ids: classification_ids
@@ -22,7 +22,7 @@ class TerrasAPI
   end
 
   def self.transitions(year, territory_id)
-    get("/transitions", query: {
+    get("/dashboard/services/transitions", query: {
       year: year,
       territory_id: territory_id
     })
