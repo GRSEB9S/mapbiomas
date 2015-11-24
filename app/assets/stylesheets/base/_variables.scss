@@ -5,6 +5,8 @@ $heading-font-family: "Lato", sans-serif;
 // Font Sizes
 $base-font-size: 0.9em;
 $small-font-size: 0.75rem;
+$title-font-size: 2.5rem;
+$subtitle-font-size: 2rem;
 
 // Line height
 $base-line-height: 1.5;
@@ -26,6 +28,7 @@ $footer-color: $dark-gray;
 $base-border-radius: 1px;
 $base-spacing: 1.2rem;
 $small-spacing: $base-spacing / 2;
+$big-spacing: 2 * $base-spacing;
 $base-z-index: 0;
 $base-box-shadow: 1px 1px 1px rgba($medium-gray, 0.25);
 
