@@ -9,11 +9,12 @@
 
   &__title {
     font-size: $title-font-size;
-    margin: $base-spacing 0 $small-spacing 0;
+    margin: $big-spacing 0 $small-spacing 0;
   }
 
   &__subtitle {
-    margin: 0 0 $base-spacing 0;
+    font-size: $subtitle-font-size;
+    margin: $base-spacing 0 $small-spacing 0;
   }
 
   &__container {
