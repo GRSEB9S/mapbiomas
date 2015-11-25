@@ -29,7 +29,12 @@ pt-BR:
       land_use: Entenda o Uso da Terra
       database: Base de dados
       workspace: Ambiente de Trabalho
-      contact: Contato
+      contact:
+        title: Contato
+        name: Nome
+        email: Email
+        content: Mensagem
+        submit: Enviar
     footer:
       provided_by: Realização
       copyright: MapBiomas
