@@ -62,9 +62,9 @@ class TransitionsControl extends React.Component {
       return {
         source: fromIndex,
         target: toIndex,
-        value: transition.area
+        value: parseFloat(transition.area)
       };
-    });
+    }).filter((t) => parseFloat(t.value) != 0);
 
     return (
       <ul className="transitions-legend">

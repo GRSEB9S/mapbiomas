@@ -139,10 +139,10 @@ class Map extends React.Component {
     let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
     let matrixClassifications = _.clone(this.classifications);
     let total = {
-                  id: totalClassificationId,
-                  name: I18n.t('map.index.transitions_matrix.total'),
-                  color: "#000000"
-                };
+      id: totalClassificationId,
+      name: I18n.t('map.index.transitions_matrix.total'),
+      color: "#000000"
+    };
 
     matrixClassifications.push(total);
     this.setState({ matrixClassifications: matrixClassifications });
@@ -186,7 +186,7 @@ class Map extends React.Component {
               year={this.year}
               classifications={this.classifications}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
-              setMode={this.setMode.bind(this, 'transition')}
+              setMode={this.setMode.bind(this, 'transitions')}
             />
           </div>
           <div className="timeline-control">
@@ -200,7 +200,7 @@ class Map extends React.Component {
     } else {
       return (
         <div className="map">
-          <MapCanvas url={this.url} territory={this.territory} />
+          <MapCanvas {...this.tileOptions} territory={this.territory} />
           <div className="map-control-wrapper">
             <TransitionsControl
               {...this.props}
