@@ -9,8 +9,8 @@ class MenuControl extends React.Component {
           </button>
         </div>
 
-        <a className="menu__item" href="/pages/about">{I18n.t('layouts.header.about')}</a>
-        <a className="menu__item" href="/pages/methodology">{I18n.t('layouts.header.methodology')}</a>
+        <a className="menu__item" href={Routes.pages_about_path()}>{I18n.t('layouts.header.about')}</a>
+        <a className="menu__item" href={Routes.pages_methodology_path()}>{I18n.t('layouts.header.methodology')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.land_use')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.database')}</a>
         <a className="menu__item" href="/">{I18n.t('layouts.header.workspace')}</a>
