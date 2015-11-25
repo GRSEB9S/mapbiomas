@@ -27,14 +27,14 @@ p {
 }
 
 a {
-  color: $action-color;
+  color: $primary-action-color;
   text-decoration: none;
   transition: color 0.1s linear;
 
   &:active,
   &:focus,
   &:hover {
-    color: darken($action-color, 15%);
+    color: darken($primary-action-color, 15%);
   }
 
   &:active,

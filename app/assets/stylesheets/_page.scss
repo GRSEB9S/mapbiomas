@@ -3,17 +3,28 @@
 
   img {
     display: block;
-    margin: $base-spacing auto 0 auto;
+    margin: $page-base-spacing auto 0 auto;
     max-width: 100%;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin: $small-spacing;
+    padding: 0 $big-spacing;
+  }
+
+  li {
+    margin: 0 0 $small-spacing 0;
   }
 
   &__title {
     font-size: $title-font-size;
-    margin: $base-spacing 0;
+    margin: $big-spacing 0 $small-spacing 0;
   }
 
   &__subtitle {
-    margin: 0 0 $base-spacing 0;
+    font-size: $page-subtitle-font-size;
+    margin: $page-base-spacing 0 $small-spacing 0;
   }
 
   &__container {
