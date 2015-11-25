@@ -1,11 +1,22 @@
-threads_count = Integer(ENV['MAX_THREADS'] || 5)
-threads threads_count, threads_count
+shared_path = ENV['APP_SHARED_PATH']
+workers 2
 
-preload_app!
+# Min and Max threads per worker
+threads 1, 6
 
-rackup      DefaultRackup
-port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || 'development'
+# Default to production
+environment = ENV['RAILS_ENV'] || "production"
+
+# Set up socket location
+bind "unix://#{shared_path}/sockets/puma.sock"
+
+# Logging
+stdout_redirect "#{shared_path}/log/puma.stdout.log", "#{shared_path}/log/puma.stderr.log", true
+
+# Set master PID and state locations
+pidfile "#{shared_path}/pids/puma.pid"
+state_path "#{shared_path}/pids/puma.state"
+activate_control_app
 
 on_worker_boot do
   # Worker specific setup for Rails 4.1+

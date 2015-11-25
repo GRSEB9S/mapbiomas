@@ -27,6 +27,8 @@ gem 'js-routes'
 gem 'jquery-ui-rails'
 gem 'rails-settings-cached', "~> 0.4.0"
 gem 'high_voltage'
+gem 'mina', :require => false
+gem 'mina-puma', :require => false
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'
