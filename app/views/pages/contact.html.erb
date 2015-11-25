@@ -1,15 +1,15 @@
 <article class="page">
   <div class="page__container">
-    <h1 class="page__title">Contato</h1>
+    <h1 class="page__title"><%= I18n.t('layouts.header.contact.title') %></h1>
 
     <form action="//formspree.io/<%= ENV["CONTACT_EMAIL"] %>" method="POST">
-      <label for="name">Nome</label>
+      <label for="name"><%= I18n.t('layouts.header.contact.name') %></label>
       <input type="text" name="name">
-      <label for="_replyto">Email</label>
+      <label for="_replyto"><%= I18n.t('layouts.header.contact.email') %></label>
       <input type="email" name="_replyto">
-      <label for="body">Mensagem</label>
+      <label for="body"><%= I18n.t('layouts.header.contact.content') %></label>
       <textarea rows="15" name="body"></textarea>
-      <input type="submit" class="primary" value="Enviar">
+      <input type="submit" class="primary" value="<%= I18n.t('layouts.header.contact.submit') %>">
     </form>
   </div>
 </article>
