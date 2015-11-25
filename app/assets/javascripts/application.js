@@ -19,6 +19,8 @@
 //= require react-timeline-slider
 //= require d3
 //= require d3-sankey
+//= require mapbox-gl
+//= require leaflet-mapbox-gl
 
 //= require highcharts_config
 //= require i18n_config
