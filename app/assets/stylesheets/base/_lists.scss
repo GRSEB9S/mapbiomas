@@ -1,7 +1,8 @@
 ul,
 ol {
-  margin: $small-spacing;
-  padding: 0 $big-spacing;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 
   &%default-ul {
     list-style-type: disc;

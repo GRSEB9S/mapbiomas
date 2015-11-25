@@ -6,7 +6,7 @@ $heading-font-family: "Lato", sans-serif;
 $base-font-size: 0.9em;
 $small-font-size: 0.75rem;
 $title-font-size: 2.5rem;
-$subtitle-font-size: 1.75rem;
+$subtitle-font-size: 2rem;
 
 // Line height
 $base-line-height: 1.5;
@@ -31,6 +31,10 @@ $small-spacing: $base-spacing / 2;
 $big-spacing: 2 * $base-spacing;
 $base-z-index: 0;
 $base-box-shadow: 1px 1px 1px rgba($medium-gray, 0.25);
+
+// Static Page Sizes
+$page-subtitle-font-size: 1.3rem;
+$page-base-spacing: 1.4rem;
 
 // Font Colors
 $base-background-color: #fff;
