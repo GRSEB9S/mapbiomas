@@ -1,0 +1,6 @@
+<form action="//formspree.io/<%= ENV["CONTACT_EMAIL"] %>" method="POST">
+    <input type="text" name="name">
+    <input type="email" name="_replyto">
+    <textarea name="body"></textarea>
+    <input type="submit" value="Send">
+</form>

@@ -5,7 +5,8 @@ class MapController < ApplicationController
       defaultClassifications: TerrasAPI.classifications,
       availableTerritories: TerrasAPI.territories,
       defaultTerritory: TerrasAPI.territories.first,
-      availableYears: Setting.available_years
+      availableYears: Setting.available_years,
+      url: ENV['TERRAS_API_URL']
     }
   end
 end

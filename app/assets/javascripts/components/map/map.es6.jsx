@@ -21,10 +21,12 @@ class Map extends React.Component {
     return this.state.territory || this.props.defaultTerritory;
   }
 
-  get url() {
+  get urlpath() {
     switch(this.state.mode) {
       case 'coverage':
         return "wms/classification/coverage.map";
+      case 'transitions':
+        return "wms/classification/transitions.map";
       default:
         return "wms/classification/coverage.map";
     }
@@ -35,7 +37,8 @@ class Map extends React.Component {
     let year = this.state.mode == 'coverage' ? this.year : this.years.join(',');
     return {
       layers: this.state.mode,
-      map: this.url,
+      url: this.props.url,
+      map: this.urlpath,
       year: year,
       territory_id: this.territory.id,
       classification_ids: ids.join(','),
@@ -55,6 +58,15 @@ class Map extends React.Component {
 
       return [min, max];
     }
+  }
+
+  get territories() {
+    return this.props.availableTerritories.map((t) => {
+      return {
+        id: t.id,
+        name: `${t.name} (${t.category})`
+      };
+    });
   }
 
   //Handlers
@@ -127,10 +139,10 @@ class Map extends React.Component {
     let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
     let matrixClassifications = _.clone(this.classifications);
     let total = {
-                  id: totalClassificationId,
-                  name: I18n.t('map.index.transitions_matrix.total'),
-                  color: "#000000"
-                };
+      id: totalClassificationId,
+      name: I18n.t('map.index.transitions_matrix.total'),
+      color: "#000000"
+    };
 
     matrixClassifications.push(total);
     this.setState({ matrixClassifications: matrixClassifications });
@@ -169,11 +181,12 @@ class Map extends React.Component {
           <div className="map-control-wrapper">
             <CoverageControl
               {...this.props}
+              availableTerritories={this.territories}
               territory={this.territory}
               year={this.year}
               classifications={this.classifications}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
-              setMode={this.setMode.bind(this, 'transition')}
+              setMode={this.setMode.bind(this, 'transitions')}
             />
           </div>
           <div className="timeline-control">
@@ -187,10 +200,11 @@ class Map extends React.Component {
     } else {
       return (
         <div className="map">
-          <MapCanvas url={this.url} territory={this.territory} />
+          <MapCanvas {...this.tileOptions} territory={this.territory} />
           <div className="map-control-wrapper">
             <TransitionsControl
               {...this.props}
+              availableTerritories={this.territories}
               transition={this.state.transition}
               setTransition={this.handleTransitionChange.bind(this)}
               territory={this.territory}

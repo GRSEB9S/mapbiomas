@@ -16,7 +16,7 @@ class MapCanvas extends React.Component {
     }).addTo(this.map);
 
     this.layer =L.tileLayer.wms(
-      "http://seeg-mapbiomas.terras.agr.br/cgi-bin/mapserv",
+      `${this.props.url}/cgi-bin/mapserv`,
       this.options
     ).addTo(this.map);
 
