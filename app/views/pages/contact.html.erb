@@ -1,6 +1,15 @@
-<form action="//formspree.io/<%= ENV["CONTACT_EMAIL"] %>" method="POST">
-    <input type="text" name="name">
-    <input type="email" name="_replyto">
-    <textarea name="body"></textarea>
-    <input type="submit" value="Send">
-</form>
+<article class="page">
+  <div class="page__container">
+    <h1 class="page__title">Contato</h1>
+
+    <form action="//formspree.io/<%= ENV["CONTACT_EMAIL"] %>" method="POST">
+      <label for="name">Nome</label>
+      <input type="text" name="name">
+      <label for="_replyto">Email</label>
+      <input type="email" name="_replyto">
+      <label for="body">Mensagem</label>
+      <textarea rows="15" name="body"></textarea>
+      <input type="submit" class="primary" value="Enviar">
+    </form>
+  </div>
+</article>
