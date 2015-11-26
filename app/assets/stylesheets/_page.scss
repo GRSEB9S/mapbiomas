@@ -19,12 +19,12 @@
 
   &__title {
     font-size: $title-font-size;
-    margin: $big-spacing 0 $small-spacing 0;
+    margin: $big-spacing 0 $base-spacing 0;
   }
 
   &__subtitle {
     font-size: $page-subtitle-font-size;
-    margin: $page-base-spacing 0 $small-spacing 0;
+    margin: 0 0 $small-spacing 0;
   }
 
   &__container {
