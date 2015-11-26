@@ -27,7 +27,11 @@ pt-BR:
       about: Sobre
       methodology: Metodologia
       land_use: Entenda o Uso da Terra
-      database: Base de dados
+      database:
+        title: Base de dados
+        reference: Mapas de Referência
+        mosaics: Mosaicos Landsat
+        collection: Coleção MapBiomas
       workspace: Ambiente de Trabalho
       contact:
         title: Contato

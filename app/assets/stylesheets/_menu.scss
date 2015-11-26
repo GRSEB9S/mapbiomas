@@ -93,3 +93,34 @@
     color: $dark-gray;
   }
 }
+
+ul.menu {
+  margin: 0;
+  display: inline;
+  list-style: none;
+
+  li {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  li ul {
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 300px;
+    visibility: hidden;
+  }
+
+  li ul li {
+    display: block;
+    padding: 0;
+  }
+
+  li:hover ul {
+    display: block;
+    visibility: visible;
+  }
+}
