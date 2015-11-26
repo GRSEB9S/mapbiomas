@@ -38,6 +38,7 @@
     @include outer-container;
     @include clearfix;
   }
+  
   &__item {
     @include span-columns(3);
     text-align: center;
@@ -51,10 +52,12 @@
       @include span-columns(2);
     }
   }
+  
   &__personal {
     padding: 0px;
     margin: 0px;
   }
+  
   &__image {
     width: 180px;
     height: 180px;
@@ -65,13 +68,16 @@
     background-position: center top;
     border: 1px solid $light-gray;
   }
+  
   &__name {
     height:60px;
   }
+  
   &__small {
     display: block;
     color: $light-gray;
   }
+  
   &__title {
     font-size: 1.8em;
     margin: $page-base-spacing 0;
