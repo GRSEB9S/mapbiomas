@@ -8,7 +8,8 @@ class Map extends React.Component {
       years: [],
       territory: null,
       transitions: [],
-      transitionsMatrixExpanded: false
+      transitionsMatrixExpanded: false,
+      showWarning: (localStorage["showWarning"] != "false")
     };
   }
 
@@ -164,9 +165,21 @@ class Map extends React.Component {
   }
 
   render() {
+    if(this.state.showWarning) {
+      //TODO
+      var warning = (
+        <MapModal title={I18n.t('map.warning.title')} onClose={() => {
+          localStorage["showWarning"] = false;
+          this.setState({ showWarning: false });
+        }}>
+        <div dangerouslySetInnerHTML={{__html: I18n.t('map.warning.body')}}></div>
+        </MapModal>
+      );
+    }
     if(this.state.mode == 'coverage') {
       return (
         <div className="map">
+          {warning}
           <MapCanvas {...this.tileOptions} territory={this.territory}/>
           <div className="map-control-wrapper
               map-control-wrapper--smaller
@@ -200,6 +213,7 @@ class Map extends React.Component {
     } else {
       return (
         <div className="map">
+          {warning}
           <MapCanvas {...this.tileOptions} territory={this.territory} />
           <div className="map-control-wrapper">
             <TransitionsControl
