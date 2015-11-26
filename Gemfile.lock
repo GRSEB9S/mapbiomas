@@ -147,6 +147,7 @@ GEM
     open4 (1.3.4)
     parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
+    pg (0.18.4)
     poltergeist (1.7.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -314,6 +315,7 @@ DEPENDENCIES
   mina-puma
   neat
   newrelic_rpm
+  pg
   poltergeist
   pry
   puma

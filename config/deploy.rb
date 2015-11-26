@@ -51,9 +51,7 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
 
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/database.yml"]
   queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
-  queue  %[echo "-----> Be sure to edit '#{deploy_to}/#{shared_path}/config/database.yml' and 'secrets.yml'."]
 
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets")
@@ -62,8 +60,11 @@ task :setup => :environment do
 
   queue! %(echo "\nAdd by Mina" >> ~/.bashrc)
   queue! %(echo 'while read p; do eval "export $p"; done < #{deploy_to}/#{shared_path}/config/env' >> ~/.bashrc)
-  queue! %(echo 'APP_PATH=#{deploy_to}' >> #{deploy_to}/#{shared_path}/config/env)
+  queue! %(echo 'APP_DEPLOY_PATH=#{deploy_to}' >> #{deploy_to}/#{shared_path}/config/env)
   queue! %(echo 'APP_SHARED_PATH=#{deploy_to}/#{shared_path}' >> #{deploy_to}/#{shared_path}/config/env)
+  queue! %(echo 'APP_PATH=#{current_path}' >> #{deploy_to}/#{shared_path}/config/env)
+
+  queue  %[echo "-----> Be sure to edit 'database.yml', secrets.yml' and 'env'."]
 
   if repository
       repo_host = repository.split(%r{@|://}).last.split(%r{:|\/}).first
@@ -88,7 +89,6 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
-    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
