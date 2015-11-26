@@ -33,34 +33,47 @@
 
   &__team {
 
-    &--item {
-      text-align: center;
+    &__line {
+      @include outer-container;
+      @include clearfix;
     }
-    &--personal {
+    &__item {
+      @include span-columns(3);
+      text-align: center;
+      margin-right: 0px !important;
+      padding-right: $page-base-spacing;
+
+      @include media($tablet) {
+        @include span-columns(2);
+      }
+      @include media($mobile) {
+        @include span-columns(2);
+      }
+    }
+    &__personal {
       padding: 0px;
       margin: 0px;
     }
-    &--image {
+    &__image {
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      margin: 0 auto 10px;
+      margin: 0 auto $page-base-spacing;
       background-image: image-url('profile.png');
       background-size: cover;
       background-position: center top;
       border: 1px solid $light-gray;
     }
-    &--name {
+    &__name {
       height:60px;
-
-      small {
-        display: block;
-        color: $light-gray;
-      }
     }
-    &--title {
+    &__small {
+      display: block;
+      color: $light-gray;
+    }
+    &__title {
       font-size: 1.8em;
-      margin: 20px 0;
+      margin: $page-base-spacing 0;
       color: $medium-green;
     }
   }
