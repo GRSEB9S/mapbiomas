@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'map#index'
+  root 'high_voltage/pages#show', id: 'home'
+  get '/map'=>'map#index', as: :map
 
   namespace :api, defaults: { format: :json } do
     resources :classifications, only: :index

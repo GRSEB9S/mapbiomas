@@ -11,6 +11,11 @@ class MenuControl extends React.Component {
 
         <ul className="menu__items">
           <li className="menu__item">
+            <a className="menu__link" href={Routes.map_path()}>
+              {I18n.t('layouts.header.map')}
+            </a>
+          </li>
+          <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('about')}>
               {I18n.t('layouts.header.about')}
             </a>

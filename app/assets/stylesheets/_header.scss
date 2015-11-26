@@ -1,6 +1,7 @@
 .header {
   background: $header-color;
-  margin: 0 $base-spacing;
+  padding: 0 $base-spacing;
+  border-bottom: 1px solid rgba($light-gray, .4);
 
   @include media($mobile) {
     margin: 0 $small-spacing;

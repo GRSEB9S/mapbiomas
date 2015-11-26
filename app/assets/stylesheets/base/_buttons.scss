@@ -1,5 +1,6 @@
 #{$all-button-inputs},
-button {
+button,
+%button {
   @include appearance(none);
   -webkit-font-smoothing: antialiased;
   background-color: $action-color;
@@ -44,6 +45,18 @@ button {
 }
 
 .button {
+  @extend %button;
+
+  &--primary {
+    background-color: $primary-action-color;
+
+    &:hover,
+    &:focus {
+      background-color: darken($primary-action-color, 15%);
+      color: $white;
+    }
+  }
+
   &__icon {
     line-height: 0.8rem;
     font-size: 1rem;

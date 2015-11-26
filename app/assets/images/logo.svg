@@ -12,8 +12,8 @@
 	.st6{fill:#C5C56C;}
 	.st7{fill:#F7963F;}
 	.st8{fill:#E18837;}
-	.st9{font-family:'Lato-Light';}
-	.st10{font-size:13.5247px;}
+	.st9{font-family:'Lato-Regular';}
+	.st10{font-size:14.5171px;}
 </style>
 <g>
 	<g>
@@ -82,8 +82,8 @@
 	</g>
 </g>
 <g>
-	<path class="st0" d="M433.6,414.9h1.7v1.4H432v-15h3.2v1.4h-1.7V414.9z"/>
-	<path class="st0" d="M471.3,402.7h-1.7v-1.3h3.2v14.9h-3.2v-1.4h1.7V402.7z"/>
+	<path class="st0" d="M429.7,414.8h1.8v1.5H428v-16.1h3.5v1.5h-1.8V414.8z"/>
+	<path class="st0" d="M470.2,401.7h-1.8v-1.4h3.5v16h-3.5v-1.5h1.8V401.7z"/>
 </g>
-<text transform="matrix(1 0 0 1 436.1904 413.4904)" class="st0 st9 st10">BETA</text>
+<text transform="matrix(1 0 0 1 432.4981 413.2844)" class="st0 st9 st10">BETA</text>
 </svg>

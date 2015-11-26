@@ -1,18 +1,19 @@
 .page {
   margin: $big-spacing $small-spacing;
+
   ul {
     @extend %default-ul;
   }
 
   img {
     display: block;
-    margin: $page-base-spacing auto 0 auto;
+    margin: 0 auto 0 auto;
     max-width: 100%;
   }
 
   &__title {
     font-size: $title-font-size;
-    margin: $big-spacing 0 $base-spacing 0;
+    margin: 0 0 $base-spacing 0;
   }
 
   &__subtitle {
@@ -22,5 +23,23 @@
 
   &__container {
     @include outer-container;
+  }
+
+  &__section {
+    padding: $big-spacing 0;
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &-text,
+    &-media {
+      @include span-columns(6)
+    }
+
+    @include clearfix;
+  }
+
+  &--home {
+    text-align: center;
   }
 }
