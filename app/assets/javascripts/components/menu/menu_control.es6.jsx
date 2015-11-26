@@ -31,17 +31,17 @@ class MenuControl extends React.Component {
             </a>
             <ul className="submenu__items">
               <li className="menu__item" >
-                <a className="menu__link" href="/">
+                <a className="menu__link" href={Routes.page_path("database/reference_maps")}>
                   {I18n.t('layouts.header.database.reference')}
                 </a>
               </li>
               <li className="menu__item" >
-                <a className="menu__link" href="/">
+                <a className="menu__link" href={Routes.page_path("database/landsat_mosaics")}>
                   {I18n.t('layouts.header.database.mosaics')}
                   </a>
               </li>
               <li className="menu__item" >
-                <a className="menu__link" href="/">
+                <a className="menu__link" href={Routes.page_path("database/mapbiomas_collection")}>
                   {I18n.t('layouts.header.database.collection')}
                 </a>
               </li>
