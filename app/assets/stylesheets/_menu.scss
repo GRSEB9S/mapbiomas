@@ -54,7 +54,7 @@
   @include media($desktop) {
     display: none;
     position: absolute;
-    right: 0;
+    left: 0;
     top: 40px;
     background-color: $light-green;
     z-index: $base-z-index + 5;

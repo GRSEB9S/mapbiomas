@@ -16,9 +16,27 @@ class MenuControl extends React.Component {
             </a>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href={Routes.page_path('about')}>
+            <a className="menu__link" href='#'>
               {I18n.t('layouts.header.about')}
             </a>
+            <ul className="submenu__items">
+              <li className="menu__item" >
+                <a className="menu__link" href={Routes.page_path("about")}>
+                  Sobre o mapbiomas
+                </a>
+              </li>
+
+              <li className="menu__item" >
+                <a className="menu__link" href={Routes.page_path("products")}>
+                  Produtos
+                </a>
+              </li>
+              <li className="menu__item" >
+                <a className="menu__link" href={Routes.page_path("about-us")}>
+                  Quem somos
+                </a>
+              </li>
+            </ul>
           </li>
           <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('methodology')}>

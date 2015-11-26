@@ -19,6 +19,7 @@
   &__subtitle {
     font-size: $page-subtitle-font-size;
     margin: 0 0 $small-spacing 0;
+    color: $light-green;
   }
 
   &__container {
@@ -38,7 +39,12 @@
 
     &-text,
     &-media {
-      @include span-columns(6)
+      @include span-columns(6);
+
+      @include media($mobile) {
+        margin: $small-spacing 0;
+        @include span-columns(2);
+      }
     }
 
     @include clearfix;

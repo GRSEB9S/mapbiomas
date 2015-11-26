@@ -113,12 +113,12 @@
   width: 70%;
   vertical-align: top;
   margin-top: $small-spacing;
-  font-size: $small-font-size;
+  font-size: $base-font-size !important;
 }
 
 .transitions-legend {
   margin: $small-spacing 0;
-  font-size: $small-font-size;
+  font-size: $base-font-size !important;
 
   .transition-value {
     color: $light-gray;
@@ -180,6 +180,31 @@
   background: $white;
   padding: $base-spacing;
   z-index: 10;
+
+  &--smaller {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 0;
+    margin: $base-spacing auto $base-spacing -210px;
+    width: 420px;
+
+    @include media($mobile) {
+      width: 300px;
+      margin: $base-spacing auto $base-spacing -150px;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.4;
+    z-index: 9;
+  }
 
   &__header {
     text-align: center;

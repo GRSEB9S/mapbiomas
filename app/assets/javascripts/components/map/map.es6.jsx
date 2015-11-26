@@ -168,10 +168,13 @@ class Map extends React.Component {
     if(this.state.showWarning) {
       //TODO
       var warning = (
-        <MapModal title={I18n.t('map.warning.title')} onClose={() => {
-          localStorage["showWarning"] = false;
-          this.setState({ showWarning: false });
-        }}>
+        <MapModal title={I18n.t('map.warning.title')} 
+          smaller={true}
+          overlay={true}
+          onClose={() => {
+            this.setState({ showWarning: false });
+            localStorage["showWarning"] = false;
+          }}>
         <div dangerouslySetInnerHTML={{__html: I18n.t('map.warning.body')}}></div>
         </MapModal>
       );
