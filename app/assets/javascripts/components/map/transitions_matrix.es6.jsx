@@ -18,12 +18,8 @@ class TransitionsMatrix extends React.Component {
         }
       );
 
-      let styles = {
-        color: c.color
-      };
-
       return (
-        <td key={`to-${c.id}`} className={classes} style={styles}>
+        <td key={`to-${c.id}`} className={classes}>
           {c.name}
         </td>
       );
@@ -41,10 +37,6 @@ class TransitionsMatrix extends React.Component {
         }
       );
 
-      let styles = {
-        color: c.color
-      };
-
       if(i == 0) {
         var fromYearColumn = (
           <td rowSpan={this.rowSpan} className="from-year">
@@ -56,7 +48,7 @@ class TransitionsMatrix extends React.Component {
       return (
         <tr key={`from-${c.id}`}>
           {fromYearColumn}
-          <td className={classes} style={styles}>
+          <td className={classes}>
             {c.name}
           </td>
           {this.renderData(c)}

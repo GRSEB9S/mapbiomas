@@ -99,13 +99,13 @@ class Map extends React.Component {
 
   totalClassificationData(arr, from, to) {
     return {
-      area: _.reduce(arr, function(memo, num){
-          return memo + num.area;
+      area: _.reduce(arr, (memo, num) => {
+          return memo + parseFloat(num.area);
         }, 0
       ),
       from: from,
-      percentage: _.reduce(arr, function(memo, num){
-          return memo + num.percentage;
+      percentage: _.reduce(arr, (memo, num) => {
+          return memo + parseFloat(num.percentage);
         }, 0
       ),
       to: to
