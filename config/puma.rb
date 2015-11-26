@@ -1,3 +1,4 @@
+preload_app!
 shared_path = ENV['APP_SHARED_PATH']
 workers 2
 
