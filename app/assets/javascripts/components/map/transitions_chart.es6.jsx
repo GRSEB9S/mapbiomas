@@ -13,7 +13,7 @@ class TransitionsChart extends React.Component {
 
     let svg = d3.select(element).append("svg")
         .attr("width", width)
-        .attr("height", height)
+        .attr("height", height+5)
         .append("g");
 
     let sankey = d3.sankey()

@@ -3,10 +3,11 @@ $base-font-family: "Open Sans", sans-serif;
 $heading-font-family: "Lato", sans-serif;
 
 // Font Sizes
-$base-font-size: 0.9em;
-$small-font-size: 0.75rem;
-$title-font-size: 2.5rem;
-$subtitle-font-size: 2rem;
+$base-font-size: rem(12px);
+$small-font-size: rem(10px);
+$title-font-size: rem(32px);
+$subtitle-font-size: rem(24px);
+$heading-font-size: rem(20px);
 
 // Line height
 $base-line-height: 1.5;
