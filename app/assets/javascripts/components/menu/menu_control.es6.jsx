@@ -53,7 +53,7 @@ class MenuControl extends React.Component {
             </ul>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="/">
+            <a className="menu__link" href={Routes.page_path("workspace")}>
               {I18n.t('layouts.header.workspace')}
             </a>
           </li>
