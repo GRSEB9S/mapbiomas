@@ -1,4 +1,4 @@
-.header__nav .menu {
+.menu {
   line-height: 48px;
   float: right;
 
@@ -13,22 +13,83 @@
     background: $header-color;
     box-shadow: 4px 0 8px rgba($medium-gray, .4);
     line-height: 40px;
-
     @include transition(all .5s ease-in-out);
+  }
+
+  &--expanded {
+    left: 0;
+  }
+
+  &__item {
+    padding: 0 0 0 $base-spacing;
+    display: inline-block;
+    position: relative;
+
+    &:hover {
+      .submenu__items {
+        display: block;
+      }
+    }
+
+    @include media ($tablet) {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: $heading-font-family;
+    font-size: 0.8rem;
+    color: $medium-gray;
+
+    &:hover {
+      color: $dark-gray;
+    }
   }
 }
 
-.header__nav .menu.state--expanded {
-  left: 0;
+.submenu__items {
+  @include media($desktop) {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: $light-green;
+    z-index: $base-z-index + 5;
+    box-shadow: $base-box-shadow;
 
-  @include transition(all .5s ease-in-out);
+    .menu__item {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 300px;
+      line-height: $base-font-size;
+      display: block;
+      padding: 0;
+
+      &:hover {
+        background: $medium-green;
+      }
+    }
+
+    .menu__link {
+      display: block;
+      padding: $base-spacing;
+      color: #fff;
+    }
+
+    &:hover {
+      display: block;
+    }
+  }
 }
 
 .menu__header {
   font-size: 1.2rem;
   display: none;
-  padding: $small-spacing/2 $base-spacing;
-  margin-bottom: $small-spacing/2;
+  padding: $micro-spacing $base-spacing;
+  margin-bottom: $micro-spacing;
   text-decoration: none;
   background: $light-green;
   color: $white;
@@ -73,54 +134,5 @@
 
   &:hover {
     color: $dark-gray;
-  }
-}
-
-.menu__item {
-  padding: 0 0 0 $base-spacing;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-family: $heading-font-family;
-  font-size: 0.8rem;
-  color: $medium-gray;
-
-  @include media ($tablet) {
-    display: block;
-    width: 100%;
-  }
-
-  &:hover {
-    color: $dark-gray;
-  }
-}
-
-ul.menu {
-  margin: 0;
-  display: inline;
-  list-style: none;
-
-  li {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-  }
-
-  li ul {
-    padding: 0;
-    position: absolute;
-    top: 48px;
-    left: 0;
-    width: 300px;
-    visibility: hidden;
-  }
-
-  li ul li {
-    display: block;
-    padding: 0;
-  }
-
-  li:hover ul {
-    display: block;
-    visibility: visible;
   }
 }

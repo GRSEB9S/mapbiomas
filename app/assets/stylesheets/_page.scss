@@ -1,5 +1,8 @@
 .page {
   margin: $big-spacing $small-spacing;
+  ul {
+    @extend %default-ul;
+  }
 
   img {
     display: block;
