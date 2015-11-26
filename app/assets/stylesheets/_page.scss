@@ -30,4 +30,38 @@
   &__container {
     @include outer-container;
   }
+
+  &__team {
+
+    &--item {
+      text-align: center;
+    }
+    &--personal {
+      padding: 0px;
+      margin: 0px;
+    }
+    &--image {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      background-image: image-url('profile.png');
+      background-size: cover;
+      background-position: center top;
+      border: 1px solid $light-gray;
+    }
+    &--name {
+      height:60px;
+
+      small {
+        display: block;
+        color: $light-gray;
+      }
+    }
+    &--title {
+      font-size: 1.8em;
+      margin: 20px 0;
+      color: $medium-green;
+    }
+  }
 }

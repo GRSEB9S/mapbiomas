@@ -1,0 +1,34 @@
+.row {
+  @include outer-container;
+  @include clearfix;
+  
+  [class*="col-"] {
+    float: left;
+    display: inline-block;
+    position: relative;
+    min-height: 1px;
+    margin-right: 0px !important;
+    padding-right: 10px;
+
+    @include media($tablet) {
+      width: 33% !important;
+    }
+    @include media($mobile) {
+      width: 100% !important;
+    }
+  }
+
+  
+  .col-1 { @include span-columns(1);}
+  .col-2 { @include span-columns(2);}
+  .col-3 { @include span-columns(3);}
+  .col-4 { @include span-columns(4);}
+  .col-5 { @include span-columns(5);}
+  .col-6 { @include span-columns(6);}
+  .col-7 { @include span-columns(7);}
+  .col-8 { @include span-columns(8);}
+  .col-9 { @include span-columns(9);}
+  .col-10 { @include span-columns(10);}
+  .col-11 { @include span-columns(11);}
+  .col-12 { @include span-columns(12);}
+}
