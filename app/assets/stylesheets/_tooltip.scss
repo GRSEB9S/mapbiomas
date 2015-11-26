@@ -1,20 +1,5 @@
-.ui-tooltip {
-  padding: 4px 8px;
-  position: absolute;
-  z-index: 9999;
-  -o-box-shadow: 0 0 3px #ECF0F0;
-  -moz-box-shadow: 0 0 3px #ECF0F0;
-  -webkit-box-shadow: 0 0 3px #ECF0F0;
-  box-shadow: 0 0 3px #ECF0F0;
-  font-size: 12px;
+.tooltip {
+  font-size: $base-font-size;
+  margin: 0 $micro-spacing;
+  cursor: pointer;
 }
-
-body .ui-tooltip {
-  border-width: 2px;
-}
-
-.ui-widget-content {
-  border: 1px solid #ECF0F0;
-  background: #fff;
-  color: #333;
-} 

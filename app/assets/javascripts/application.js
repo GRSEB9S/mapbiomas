@@ -31,4 +31,3 @@
 //= require lib/xlsx_utils
 
 //= require components
-

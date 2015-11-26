@@ -33,7 +33,11 @@ pt-BR:
       about: Sobre
       methodology: Metodologia
       land_use: Entenda o Uso da Terra
-      database: Base de dados
+      database:
+        title: Base de dados
+        reference: Mapas de Referência
+        mosaics: Mosaicos Landsat
+        collection: Coleção MapBiomas
       workspace: Ambiente de Trabalho
       contact:
         title: Contato
@@ -45,3 +49,10 @@ pt-BR:
       provided_by: Realização
       copyright: MapBiomas
       development: Desenvolvimento
+  tooltips:
+    floresta: Formações florestais com  porte arbóreo superior a seis metros de altura e cobertura do dossel superior a  50%.
+    floresta-plantada: "Plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso."
+    agricultura: "Áreas de culturas temporárias com grandes extensõe,  além de cana de açúcar na região sudeste e centro oeste."
+    pastagem: Pastos nativos ou cultivados.
+    agua: "Lagos, lagoas, reservatórios artificiais e rios com largura superior a 30 metros de largura."
+    default: "Outras formações vegetais naturais, áreas não vegetadas, áreas não observadas e áreas não classificadas."
