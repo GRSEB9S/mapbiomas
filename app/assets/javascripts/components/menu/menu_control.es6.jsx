@@ -15,9 +15,15 @@ class MenuControl extends React.Component {
         <li>
           <a className="menu__item" href="/">{I18n.t('layouts.header.database.title')}</a>
           <ul>
-            <li className="menu__item" ><a className="menu__item" href="/">{I18n.t('layouts.header.database.reference')}</a></li>
-            <li className="menu__item" ><a className="menu__item" href="/">{I18n.t('layouts.header.database.mosaics')}</a></li>
-            <li className="menu__item" ><a className="menu__item" href="/">{I18n.t('layouts.header.database.collection')}</a></li>
+            <li className="menu__item" >
+              <a className="menu__item" href={Routes.page_path("database/reference_maps")}>{I18n.t('layouts.header.database.reference')}</a>
+            </li>
+            <li className="menu__item" >
+              <a className="menu__item" href={Routes.page_path("database/landsat_mosaics")}>{I18n.t('layouts.header.database.mosaics')}</a>
+            </li>
+            <li className="menu__item" >
+              <a className="menu__item" href={Routes.page_path("database/mapbiomas_collection")}>{I18n.t('layouts.header.database.collection')}</a>
+            </li>
           </ul>
         </li>
         <li><a className="menu__item" href="/">{I18n.t('layouts.header.workspace')}</a></li>
