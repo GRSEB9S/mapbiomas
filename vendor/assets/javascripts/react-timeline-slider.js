@@ -1103,7 +1103,7 @@ var XAxis = (function (_React$Component) {
       if (this.props.isPlaying != nextProps.isPlaying) {
         if (nextProps.isPlaying) {
           this.move();
-          this.interval = setInterval(this.move.bind(this), 1000);
+          this.interval = setInterval(this.move.bind(this), 3000);
         } else {
           clearInterval(this.interval);
         }

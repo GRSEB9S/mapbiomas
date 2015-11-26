@@ -1,5 +1,8 @@
 .page {
   margin: $big-spacing $small-spacing;
+  ul {
+    @extend %default-ul;
+  }
 
   img {
     display: block;
@@ -7,27 +10,70 @@
     max-width: 100%;
   }
 
-  ul {
-    list-style-type: disc;
-    margin: $small-spacing;
-    padding: 0 $big-spacing;
-  }
-
-  li {
-    margin: 0 0 $small-spacing 0;
-  }
-
   &__title {
     font-size: $title-font-size;
-    margin: $big-spacing 0 $small-spacing 0;
+    margin: $big-spacing 0 $base-spacing 0;
   }
 
   &__subtitle {
     font-size: $page-subtitle-font-size;
-    margin: $page-base-spacing 0 $small-spacing 0;
+    margin: 0 0 $small-spacing 0;
   }
 
   &__container {
     @include outer-container;
+  }
+}
+
+.team {
+
+  &__line {
+    @include outer-container;
+    @include clearfix;
+  }
+  
+  &__item {
+    @include span-columns(3);
+    text-align: center;
+    margin-right: 0px !important;
+    padding-right: $page-base-spacing;
+
+    @include media($tablet) {
+      @include span-columns(2);
+    }
+    @include media($mobile) {
+      @include span-columns(2);
+    }
+  }
+  
+  &__personal {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  &__image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto $page-base-spacing;
+    background-image: image-url('profile.png');
+    background-size: cover;
+    background-position: center top;
+    border: 1px solid $light-gray;
+  }
+  
+  &__name {
+    height:60px;
+  }
+  
+  &__small {
+    display: block;
+    color: $light-gray;
+  }
+  
+  &__title {
+    font-size: 1.8em;
+    margin: $page-base-spacing 0;
+    color: $medium-green;
   }
 }

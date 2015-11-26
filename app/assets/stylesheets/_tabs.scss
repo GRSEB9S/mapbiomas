@@ -4,7 +4,7 @@
 
   &__item {
     text-transform: uppercase;
-    padding: $small-spacing $small-spacing ($small-spacing/2) $small-spacing;
+    padding: $small-spacing $small-spacing $micro-spacing $small-spacing;
     color: $action-color;
     display: inline-block;
     cursor: pointer;

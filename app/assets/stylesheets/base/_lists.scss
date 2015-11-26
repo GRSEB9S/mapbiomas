@@ -6,7 +6,7 @@ ol {
 
   &%default-ul {
     list-style-type: disc;
-    margin-bottom: $small-spacing;
+    margin: $small-spacing 0 $small-spacing $base-spacing;
     padding-left: $base-spacing;
   }
 

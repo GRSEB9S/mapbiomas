@@ -12,7 +12,7 @@ require 'mina/puma'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :user, 'app'
-set :domain, '104.196.63.178'
+set :domain, '104.196.6.140'
 set :deploy_to, '/var/www/mapbiomas'
 set :repository, 'git@github.com:ecostage/mapbiomas.git'
 set :branch, 'master'
@@ -22,7 +22,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['log', 'tmp/pids']
+set :shared_paths, ['log', 'tmp/pids', 'config/puma.rb']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -56,7 +56,7 @@ task :setup => :environment do
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids")
 
-  queue! %(echo "\nAdd by Mina" >> ~/.bashrc)
+  queue! %(echo "#Add by Mina" >> ~/.bashrc)
   queue! %(echo 'while read p; do eval "export $p"; done < #{deploy_to}/#{shared_path}/config/env' >> ~/.bashrc)
   queue! %(echo 'APP_DEPLOY_PATH=#{deploy_to}' >> #{deploy_to}/#{shared_path}/config/env)
   queue! %(echo 'APP_SHARED_PATH=#{deploy_to}/#{shared_path}' >> #{deploy_to}/#{shared_path}/config/env)
