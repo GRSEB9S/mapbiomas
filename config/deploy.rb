@@ -22,7 +22,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'config/secrets.yml', 'log', 'tmp/pids']
+set :shared_paths, ['log', 'tmp/pids']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -51,8 +51,6 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
 
-  queue! %[touch "#{deploy_to}/#{shared_path}/config/secrets.yml"]
-
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets")
   queue! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets")
   queue! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids")
@@ -63,8 +61,6 @@ task :setup => :environment do
   queue! %(echo 'APP_DEPLOY_PATH=#{deploy_to}' >> #{deploy_to}/#{shared_path}/config/env)
   queue! %(echo 'APP_SHARED_PATH=#{deploy_to}/#{shared_path}' >> #{deploy_to}/#{shared_path}/config/env)
   queue! %(echo 'APP_PATH=#{current_path}' >> #{deploy_to}/#{shared_path}/config/env)
-
-  queue  %[echo "-----> Be sure to edit 'database.yml', secrets.yml' and 'env'."]
 
   if repository
       repo_host = repository.split(%r{@|://}).last.split(%r{:|\/}).first
@@ -89,6 +85,7 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
