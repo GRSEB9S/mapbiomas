@@ -180,18 +180,23 @@
   background: $white;
   padding: $base-spacing;
   z-index: 10;
+  max-height: 100%;
 
   &--smaller {
     left: 50%;
     right: auto;
     bottom: auto;
     top: 0;
-    margin: $base-spacing auto $base-spacing -210px;
-    width: 420px;
+    margin: $base-spacing auto $base-spacing -350px;
+    width: 700px;
 
     @include media($mobile) {
-      width: 300px;
-      margin: $base-spacing auto $base-spacing -150px;
+      top: $base-spacing;
+      left: $base-spacing;
+      right: $base-spacing;
+      bottom: $base-spacing;
+      margin: 0;
+      width: auto;
     }
   }
 
@@ -215,6 +220,11 @@
 
   &__content {
     overflow: auto;
+    max-height: 100%;
+
+    @include media($mobile) {
+      height: calc(100% - 40px);
+    }
   }
 
   &__close {

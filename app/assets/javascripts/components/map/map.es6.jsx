@@ -9,7 +9,7 @@ class Map extends React.Component {
       territory: null,
       transitions: [],
       transitionsMatrixExpanded: false,
-      showWarning: (localStorage["showWarning"] != "false")
+      showWarning: true
     };
   }
 
@@ -173,7 +173,6 @@ class Map extends React.Component {
           overlay={true}
           onClose={() => {
             this.setState({ showWarning: false });
-            localStorage["showWarning"] = false;
           }}>
         <div dangerouslySetInnerHTML={{__html: I18n.t('map.warning.body')}}></div>
         </MapModal>
