@@ -5,9 +5,18 @@ en:
       about: About
       methodology: Methodology
       land_use: Understand Land Use
-      database: Database
+      database:
+        title: Database
+        reference: Reference Maps
+        mosaics: Landsat Mosaics
+        collection: MapBiomas Collection
       workspace: Workspace
-      contact: Contact us
+      contact:
+        title: Contact us
+        name: Name
+        email: Email
+        content: Message
+        submit: Submit
     footer:
       provided_by: Provided by
       copyright: All rights reserved.

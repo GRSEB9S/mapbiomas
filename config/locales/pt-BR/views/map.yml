@@ -1,4 +1,4 @@
-en:
+pt-BR:
   map:
     warning:
       title: Importante
@@ -7,22 +7,22 @@ en:
         <p>Os produtos apresentados na versão Beta ainda são incompletos e ainda não foram validados. Eles mostram inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem).</p>
         <p>Os mapas serão disponibilizados por coleções, à medida que sejam validados e corrigidos, de acordo com as etapas de desenvolvimento dos produtos. Os mapas da Coleção 1.0 do MAPBIOMAS estão em processo de validação e serão disponibilizados no primeiro semestre de 2016 com os dados de 2008 a 2015.</p>
     index:
-      classifications: Classifications
-      coverage_analysis: Coverage analysis
-      coverage: Coverage
-      transitions: Transitions
-      quality: Quality
-      transitions_analysis: Transitions analysis
+      classifications: Classes
+      coverage_analysis: Análise de cobertura
+      coverage: Cobertura
+      transitions: Transições
+      quality: Qualidade
+      transitions_analysis: Análise de transição
       transitions_matrix:
-        title: Transitions matrix
+        title: Matriz de transições
         total: Total
-      search: "Search for cities, states, protected areas..."
-      analyze: Analyze
+      search: "Busque municípios, estados, biomas..."
+      analyze: Analisar
       download:
-        title: Download data
-        classification: Classification
-        area: Area
-        percentage: Percentage of total area
+        title: Baixe os dados
+        classification: Classe
+        area: Área
+        percentage: Porcentagem sobre área total
     tooltips:
       floresta: Formações florestais com  porte arbóreo superior a seis metros de altura e cobertura do dossel superior a  50%.
       floresta-plantada: "Plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso."
