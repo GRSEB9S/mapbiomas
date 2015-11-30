@@ -23,7 +23,6 @@
 //= require leaflet-mapbox-gl
 
 //= require highcharts_config
-//= require i18n_config
 
 //= require lib/api
 //= require lib/classifications
