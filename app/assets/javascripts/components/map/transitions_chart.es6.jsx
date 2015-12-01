@@ -13,8 +13,9 @@ class TransitionsChart extends React.Component {
 
     let svg = d3.select(element).append("svg")
         .attr("width", width)
-        .attr("height", height+5)
-        .append("g");
+        .attr("height", height+10)
+        .append("g")
+        .attr("transform", "translate(0, 5)");
 
     let sankey = d3.sankey()
         .nodeWidth(12)
