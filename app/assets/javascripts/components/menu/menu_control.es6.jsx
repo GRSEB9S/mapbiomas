@@ -57,6 +57,11 @@ class MenuControl extends React.Component {
               {I18n.t('layouts.header.contact.title')}
             </a>
           </li>
+          <li className="menu__item translation main-nav__menu__item main-nav__translation">
+            <i className="fa fa-language translation__icon"></i>
+            <a className="menu__link translation__link" href="#">PT-BR</a>
+            <a className="menu__link translation__link" href="#">EN</a>
+          </li>
         </ul>
       </nav>
     )
