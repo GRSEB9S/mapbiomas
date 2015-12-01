@@ -1,4 +1,12 @@
 class MenuControl extends React.Component {
+  setLocale(locale) {
+    Locale.setLocale({locale: locale}).done(function() {
+      window.location.reload();
+    }).error(function(){
+      alert(I18n.t("map.index.locales.warning"));
+    });
+  }
+
   render() {
     return (
       <nav className={classNames("menu", { "menu--expanded": this.props.menu_on })}>
@@ -59,8 +67,16 @@ class MenuControl extends React.Component {
           </li>
           <li className="menu__item translation main-nav__menu__item main-nav__translation">
             <i className="fa fa-language translation__icon"></i>
-            <a className="menu__link translation__link" href="#">PT-BR</a>
-            <a className="menu__link translation__link" href="#">EN</a>
+            <a className="menu__link translation__link"
+              href="#"
+              onClick={this.setLocale.bind(this, "pt-BR")}>
+              PT-BR
+            </a>
+            <a className="menu__link translation__link"
+              href="#"
+              onClick={this.setLocale.bind(this, "en")}>
+              EN
+            </a>
           </li>
         </ul>
       </nav>

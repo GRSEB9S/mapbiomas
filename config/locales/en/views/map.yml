@@ -23,6 +23,8 @@ en:
         classification: Classification
         area: Area
         percentage: Percentage of total area
+      locales:
+        warning: Language not available
     tooltips:
       floresta: Formações florestais com  porte arbóreo superior a seis metros de altura e cobertura do dossel superior a  50%.
       floresta-plantada: "Plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso."

@@ -28,5 +28,6 @@
 //= require lib/classifications
 //= require lib/territories
 //= require lib/xlsx_utils
+//= require lib/locale
 
 //= require components
