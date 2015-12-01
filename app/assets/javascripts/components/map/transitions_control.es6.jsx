@@ -3,8 +3,6 @@ class TransitionsControl extends React.Component {
     super(props);
     this.state = {
       expanded: false,
-      transitions: [],
-      coverages: []
     };
   }
 
@@ -13,7 +11,7 @@ class TransitionsControl extends React.Component {
       territory_id: props.territory.id,
       year: props.years.join(',')
     }).then((transitions) => {
-      this.setState(transitions);
+      this.props.onTransitionsLoad(transitions.transitions)
     })
   }
 
@@ -22,14 +20,15 @@ class TransitionsControl extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props, nextProps)) {
+    if(!_.isEqual(this.props.territory_id, nextProps.territory_id) ||
+       !_.isEqual(this.props.years, nextProps.years)){
       this.loadTransitions(nextProps)
     }
   }
 
   renderTransitions() {
     let classifications = new Classifications(this.props.matrixClassifications);
-    let transitions = this.state.transitions;
+    let transitions = this.props.transitions;
     let nodes = transitions.reduce((memo, transition) => {
       let from = classifications.findById(transition.from);
       let to = classifications.findById(transition.to);
@@ -71,7 +70,7 @@ class TransitionsControl extends React.Component {
         <li><label>{this.props.years.join('-')}</label></li>
         <li>
           <TransitionsChart
-            transition={this.props.transition || this.state.transitions[0]}
+            transition={this.props.transition}
             setTransition={this.props.setTransition}
             nodes={nodes}
             links={links} />
@@ -81,7 +80,7 @@ class TransitionsControl extends React.Component {
   }
 
   expandMatrix() {
-    this.props.onExpandMatrix(this.state.transitions);
+    this.props.onExpandMatrix(this.props.transitions);
   }
 
   render() {

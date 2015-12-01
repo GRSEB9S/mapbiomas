@@ -1,26 +1,57 @@
 .page {
   margin: $big-spacing $small-spacing;
+
   ul {
     @extend %default-ul;
   }
 
   img {
     display: block;
-    margin: $page-base-spacing auto 0 auto;
+    margin: 0 auto 0 auto;
     max-width: 100%;
   }
 
   &__title {
     font-size: $title-font-size;
-    margin: $big-spacing 0 $base-spacing 0;
+    margin: 0 0 $base-spacing 0;
   }
 
   &__subtitle {
     font-size: $page-subtitle-font-size;
     margin: 0 0 $small-spacing 0;
+    color: $light-green;
   }
 
   &__container {
     @include outer-container;
   }
+
+  &__section {
+    margin: ($big-spacing*2) 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .page__title {
+      color: $light-green;
+    }
+
+    &-text,
+    &-media {
+      @include span-columns(6);
+
+      @include media($mobile) {
+        margin: $small-spacing 0;
+        @include span-columns(2);
+      }
+    }
+
+    @include clearfix;
+  }
+
+  &--home {
+    text-align: center;
+  }
 }
+

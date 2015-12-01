@@ -7,9 +7,10 @@ class Map extends React.Component {
       year: null,
       years: [],
       territory: null,
+      transition: null,
       transitions: [],
       transitionsMatrixExpanded: false,
-      showWarning: (localStorage["showWarning"] != "false")
+      showWarning: true
     };
   }
 
@@ -20,6 +21,10 @@ class Map extends React.Component {
 
   get territory() {
     return this.state.territory || this.props.defaultTerritory;
+  }
+
+  get transition() {
+    return this.state.transition || this.state.transitions[0];
   }
 
   get urlpath() {
@@ -36,12 +41,17 @@ class Map extends React.Component {
   get tileOptions() {
     let ids = this.classifications.map((c) => c.id);
     let year = this.state.mode == 'coverage' ? this.year : this.years.join(',');
+    let transitionId
+    if(this.transition) {
+      transitionId = `${this.transition.from}${this.transition.to}`;
+    }
     return {
       layers: this.state.mode,
       url: this.props.url,
       map: this.urlpath,
       year: year,
       territory_id: this.territory.id,
+      transition_id: transitionId,
       classification_ids: ids.join(','),
     };
   }
@@ -89,7 +99,11 @@ class Map extends React.Component {
   }
 
   handleTransitionChange(transition) {
-    this.setState( { transition: transition });
+    this.setState({ transition: transition });
+  }
+
+  handleTransitionsLoad(transitions) {
+    this.setState({ transitions: transitions, transition: transitions[0]})
   }
 
   setMode(mode) {
@@ -126,14 +140,14 @@ class Map extends React.Component {
       matrixTransitions.push(fromToTotalToClassification);
     });
 
-    this.setState({ transitions: transitions,
-                    matrixTransitions: matrixTransitions,
-                    transitionsMatrixExpanded: true
+    this.setState({
+      matrixTransitions: matrixTransitions,
+      transitionsMatrixExpanded: true
     });
   }
 
   closeTransitionsMatrix() {
-    this.setState({ transitions: [], transitionsMatrixExpanded: false });
+    this.setState({ matrixTransitions: [], transitionsMatrixExpanded: false });
   }
 
   componentDidMount() {
@@ -168,10 +182,12 @@ class Map extends React.Component {
     if(this.state.showWarning) {
       //TODO
       var warning = (
-        <MapModal title={I18n.t('map.warning.title')} onClose={() => {
-          localStorage["showWarning"] = false;
-          this.setState({ showWarning: false });
-        }}>
+        <MapModal title={I18n.t('map.warning.title')} 
+          smaller={true}
+          overlay={true}
+          onClose={() => {
+            this.setState({ showWarning: false });
+          }}>
         <div dangerouslySetInnerHTML={{__html: I18n.t('map.warning.body')}}></div>
         </MapModal>
       );
@@ -219,13 +235,15 @@ class Map extends React.Component {
             <TransitionsControl
               {...this.props}
               availableTerritories={this.territories}
-              transition={this.state.transition}
+              transition={this.transition}
+              transitions={this.state.transitions}
               setTransition={this.handleTransitionChange.bind(this)}
               territory={this.territory}
               years={this.years}
               onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
               matrixClassifications={this.state.matrixClassifications}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
+              onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
               setMode={this.setMode.bind(this, 'coverage')}
             />
           </div>

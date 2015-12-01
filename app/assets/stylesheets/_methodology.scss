@@ -6,13 +6,25 @@
   width: 250px;
 
   &__title {
-    font-weight: 300;
-    margin: $micro-spacing 0 0 0;
+    font-weight: 500;
+    padding: $micro-spacing 0 0 0;
     font-size: $base-font-size;
     text-align: center;
   }
 
   img {
     margin: 0;
+  }
+}
+
+.page--methodology {
+  img {
+    margin: $base-spacing auto;
+  }
+
+  h2.page__title {
+    color: $light-green;
+    margin-top: $big-spacing;
+    font-size: $subtitle-font-size;
   }
 }
