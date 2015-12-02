@@ -32,7 +32,7 @@ $small-spacing: rem(8px);
 $micro-spacing: rem(4px);
 $big-spacing: rem(40px);
 $base-z-index: 0;
-$base-box-shadow: 1px 1px 1px rgba($medium-gray, 0.25);
+$base-box-shadow: 1px 1px 2px rgba($medium-gray, 0.4);
 
 // Static Page Sizes
 $page-subtitle-font-size: 1.3rem;
@@ -45,7 +45,7 @@ $primary-action-color: $light-green;
 $action-color: $light-gray;
 
 // Border
-$base-border-color: $light-gray;
+$base-border-color: rgba($light-gray, 0.8);
 $base-border: 1px solid $base-border-color;
 
 //React timeline slider

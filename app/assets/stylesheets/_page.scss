@@ -37,6 +37,10 @@
       color: $light-green;
     }
 
+    .button {
+      margin: $small-spacing;
+    }
+
     &-text,
     &-media {
       @include span-columns(6);
@@ -45,6 +49,10 @@
         margin: $small-spacing 0;
         @include span-columns(2);
       }
+    }
+
+    &-text {
+      margin: $base-spacing auto;
     }
 
     @include clearfix;

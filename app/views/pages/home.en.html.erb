@@ -1,0 +1,39 @@
+<article class="page page--home">
+  <div class="page__container">
+    <section class="page__section">
+      <div class="page__section-media--full">
+        <iframe style="width: 100%; height: 500px" src="https://www.youtube.com/embed/RjvyvW4zXwo" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="page__section">
+      <div class="page__section-text">
+        <h2 class="page__title">Explore MapBiomas</h2>
+        <p>Get access to maps, data and reports</p>
+        <%= link_to 'View Map', map_path, class: 'button button--primary' %>
+      </div>
+      <div class="page__section-media">
+        <%= image_tag "platform-mockup.png" %>
+      </div>
+    </section>
+
+    <section class="page__section">
+      <div class="page__section-media">
+        <iframe style="width: 100%; height: 300px" src="https://www.youtube.com/embed/EccjrI_qjxA" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="page__section-text">
+        <h2 class="page__title">MapBiomas Launch Event</h2>
+        <p>New platform maps the dynamics of land use in Brazil in the last three decades. Watch the complete event!</p>
+        <%= link_to 'Press Release',
+          'https://storage.googleapis.com/mapbiomas/Release%20MapBiomas%20-%2026.11.2015.pdf', target: 
+          '_blank', class: 'button button--primary' %>
+
+      </div>
+    </section>
+
+    <section class="page__section--full">
+      <h2 class="page__title">Partners</h2>
+      <%= image_tag "partners.en.png" %>
+    </section>
+  </div>
+</article>

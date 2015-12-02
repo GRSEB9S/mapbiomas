@@ -57,7 +57,7 @@ class MenuControl extends React.Component {
               </a>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="/">
+            <a className="menu__link" href="#">
               {I18n.t('layouts.header.database.title')}
             </a>
             <ul className="submenu__items">

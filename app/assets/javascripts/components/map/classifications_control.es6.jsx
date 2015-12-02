@@ -36,6 +36,14 @@ class ClassificationsControl extends React.Component {
     return str;
   }
 
+  componendDidUpdate() {
+    $('.tooltip').tooltip({track: true});
+  }
+
+  componentDidMount() {
+    $('.tooltip').tooltip({track: true});
+  }
+
   render() {
     let classificationsNodes = this.props.availableClassifications.map((classification)=>{
       let itemStyle = {

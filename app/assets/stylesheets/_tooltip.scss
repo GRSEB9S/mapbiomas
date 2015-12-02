@@ -4,3 +4,14 @@
   cursor: pointer;
   vertical-align: middle;
 }
+
+.ui-tooltip {
+  max-width: 300px;
+  box-shadow: $base-box-shadow;
+  border: none;
+  padding: $micro-spacing;
+  background: #fff;
+  z-index: $base-z-index + 2;
+  font-size: $small-font-size;
+  border-radius: $base-border-radius;
+}
