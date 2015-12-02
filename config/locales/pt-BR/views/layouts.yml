@@ -3,7 +3,35 @@ pt-BR:
     header:
       map: Explorar
       menu: Menu
-      about: Sobre
+      about:
+        title: Sobre
+        about_mapbiomas: Sobre o MapBiomas
+        products: Produtos
+        about_us: Quem somos
+        team:
+          cerrado: Equipe Cerrado
+          amazon: Equipe Amazônia
+          atlantica_pantanal: Equipe Mata Atlântica e Pantanal
+          pampa: Equipe Pampa
+          caatinga: Equipe Caatinga
+          coastal_zone: Equipe Zona Costeira
+          pasture: Equipe Pastagem
+          agriculture: Equipe Agricultura
+          terras_developers: Equipe de Desenvolvedores - Terras
+          ecostage_developers: Equipe de Desenvolvedores - EcoStage
+          record: 'Registro, Comunicação e Administração'
+          google_partners: Parceiros Google
+          coordination: Coordenação
+          coordinator: (Coordenador)
+          workspace_coordinator: (Coordenador Workspace)
+          dashboard_coordinator: (Coordenador Dashboard)
+          designer: (Designer)
+          record_coordinator: (Coordenador Registro e Comunicação)
+          communication_counsellor: (Assessora de Comunicação)
+          project_management: (Gestão do Projeto)
+          documentarian: (Documentarista)
+          general_coordination: (Coordenação Geral)
+          scientific_coordination: (Coordenação Técnico-Científica)
       methodology: Metodologia
       land_use: Entenda o Uso da Terra
       database:

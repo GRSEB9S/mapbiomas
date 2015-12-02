@@ -3,7 +3,35 @@ en:
     header:
       map: Explore
       menu: Menu
-      about: About
+      about:
+        title: About
+        about_mapbiomas: About MapBiomas
+        products: Products
+        about_us: About us
+        team:
+          cerrado: Team Cerrado
+          amazon: Team Amazônia
+          atlantica_pantanal: Team Mata Atlântica and Pantanal
+          pampa: Team Pampa
+          caatinga: Team Caatinga
+          coastal_zone: Team Coastal Zone
+          pasture: Team Pasture
+          agriculture: Team Agriculture
+          terras_developers: Developers Team - Terras
+          ecostage_developers: Developers Team - EcoStage
+          record: 'Record, Communication and Management'
+          google_partners: Google Partners
+          coordination: Coordination
+          coordinator: (Coordinator)
+          workspace_coordinator: (Workspace Coordinator)
+          dashboard_coordinator: (Dashboard Coordinator)
+          designer: (Designer)
+          record_coordinator: (Record and Communication Coordinator)
+          communication_counsellor: (Communication Counsellor)
+          project_management: (Project Management)
+          documentarian: (Documentarian)
+          general_coordination: (General Coordination)
+          scientific_coordination: (Technical-Scientific Coordination)
       methodology: Methodology
       land_use: Understand Land Use
       database:
