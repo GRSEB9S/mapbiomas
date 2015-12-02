@@ -1,6 +1,7 @@
 en:
   layouts:
     header:
+      map: Explore
       menu: Menu
       about: About
       methodology: Methodology

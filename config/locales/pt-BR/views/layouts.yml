@@ -1,6 +1,7 @@
 pt-BR:
   layouts:
     header:
+      map: Explorar
       menu: Menu
       about: Sobre
       methodology: Metodologia

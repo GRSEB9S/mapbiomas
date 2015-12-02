@@ -1,11 +1,15 @@
 en:
   map:
     warning:
-      title: Importante
+      title: Nota de precaução | Disclaimer
       body: |
-        <p>Todos os produtos do Projeto MAPBIOMAS ora disponibilizados estão em versão beta (proof-of-concept), e são destinados apenas para testar a viabilidade a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
+        <p>Todos os produtos do Projeto MAPBIOMAS ora disponibilizados estão em versão beta (proof-of-concept), e são destinados apenas para testar a viabilidade e a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
         <p>Os produtos apresentados na versão Beta ainda são incompletos e ainda não foram validados. Eles mostram inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem).</p>
         <p>Os mapas serão disponibilizados por coleções, à medida que sejam validados e corrigidos, de acordo com as etapas de desenvolvimento dos produtos. Os mapas da Coleção 1.0 do MAPBIOMAS estão em processo de validação e serão disponibilizados no primeiro semestre de 2016 com os dados de 2008 a 2015.</p>
+        <hr />
+        <p>All products MAPBIOMAS Project now available are beta version (proof- of- concept) , and are only intended to test the feasibility and efficiency of both production methodology in series of annual land cover/use maps as well as the operability Web Platform designed to enable collaborative work.</p>
+        <p>Products presented in the Beta version are still incomplete and have not yet been validated. It show spatial inconsistencies in the thematic classifications, on the timeline ( and between cards) and between thematic classes and cross-cutting issues (agriculture and pasture).</p>
+        <p>The maps will be available in a form of collection as they are validated and corrected, according to the stages of product development. The maps MAPBIOMAS of Collection 1 are undergoing preparation and validation and will be available in the first half of 2016 with data from 2008 to 2015.</p>
     index:
       classifications: Classifications
       coverage_analysis: Coverage analysis

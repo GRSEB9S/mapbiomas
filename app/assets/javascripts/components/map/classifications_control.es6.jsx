@@ -46,8 +46,8 @@ class ClassificationsControl extends React.Component {
           <label style={itemStyle}>{classification.name}</label>
           <i className="material-icons tooltip"
             title={I18n.t(
-                `tooltips.${this.slugifyClassification(classification.name)}`, {
-                  defaultValue: I18n.t('tooltips.default')
+                `map.tooltips.${this.slugifyClassification(classification.name)}`, {
+                  defaultValue: I18n.t('map.tooltips.default')
                 }
               )}>
             &#xE88E;
