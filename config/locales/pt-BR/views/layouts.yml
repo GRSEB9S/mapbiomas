@@ -1,0 +1,24 @@
+pt-BR:
+  layouts:
+    header:
+      map: Explorar
+      menu: Menu
+      about: Sobre
+      methodology: Metodologia
+      land_use: Entenda o Uso da Terra
+      database:
+        title: Base de dados
+        reference: Mapas de Referência
+        mosaics: Mosaicos Landsat
+        collection: Coleção MapBiomas
+      workspace: Ambiente de Trabalho
+      contact:
+        title: Contato
+        name: Nome
+        email: Email
+        content: Mensagem
+        submit: Enviar
+    footer:
+      provided_by: Realização
+      copyright: MapBiomas
+      development: Desenvolvimento

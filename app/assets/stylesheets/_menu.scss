@@ -137,3 +137,31 @@
     color: $dark-gray;
   }
 }
+
+.translation {
+  padding-left: $big-spacing;
+
+  @include media ($tablet) {
+    padding-left: $base-spacing;
+  }
+
+  &__icon {
+    color: $medium-gray;
+    margin-right: 8px;
+    font-size: em(20);
+  }
+
+  &__link {
+    margin-right: 5px;
+
+    &::after {
+      content: '|';
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+}

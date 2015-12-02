@@ -30,6 +30,7 @@ gem 'rails-settings-cached', "~> 0.4.0"
 gem 'high_voltage'
 gem 'mina', :require => false
 gem 'mina-puma', :require => false
+gem 'http_accept_language'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-underscore'

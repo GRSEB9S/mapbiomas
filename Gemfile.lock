@@ -99,6 +99,7 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     high_voltage (2.4.0)
+    http_accept_language (2.0.5)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -303,6 +304,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-sass
   high_voltage
+  http_accept_language
   httparty
   i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.0)
