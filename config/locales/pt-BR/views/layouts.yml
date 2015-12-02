@@ -3,7 +3,11 @@ pt-BR:
     header:
       map: Explorar
       menu: Menu
-      about: Sobre
+      about:
+        title: Sobre
+        about_mapbiomas: Sobre o MapBiomas
+        products: Produtos
+        about_us: Quem somos
       methodology: Metodologia
       land_use: Entenda o Uso da Terra
       database:

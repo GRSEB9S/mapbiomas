@@ -25,23 +25,23 @@ class MenuControl extends React.Component {
           </li>
           <li className="menu__item">
             <a className="menu__link" href='#'>
-              {I18n.t('layouts.header.about')}
+              {I18n.t('layouts.header.about.title')}
             </a>
             <ul className="submenu__items">
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("about")}>
-                  Sobre o mapbiomas
+                  {I18n.t('layouts.header.about.about_mapbiomas')}
                 </a>
               </li>
 
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("products")}>
-                  Produtos
+                  {I18n.t('layouts.header.about.products')}
                 </a>
               </li>
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("about-us")}>
-                  Quem somos
+                  {I18n.t('layouts.header.about.about_us')}
                 </a>
               </li>
             </ul>

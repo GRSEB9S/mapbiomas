@@ -3,7 +3,11 @@ en:
     header:
       map: Explore
       menu: Menu
-      about: About
+      about:
+        title: About
+        about_mapbiomas: About MapBiomas
+        products: Products
+        about_us: About us
       methodology: Methodology
       land_use: Understand Land Use
       database:

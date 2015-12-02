@@ -1,7 +1,7 @@
 pt-BR:
   map:
     warning:
-      title: Nota de precaução | Disclaimer
+      title: Nota de precaução
       body: |
         <p>Todos os produtos do Projeto MAPBIOMAS ora disponibilizados estão em versão beta (proof-of-concept), e são destinados apenas para testar a viabilidade e a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
         <p>Os produtos apresentados na versão Beta ainda são incompletos e ainda não foram validados. Eles mostram inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem).</p>
