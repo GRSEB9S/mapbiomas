@@ -89,7 +89,7 @@ class MenuControl extends React.Component {
             </a>
           </li>
           <li className="menu__item translation main-nav__menu__item main-nav__translation">
-            <i className="fa fa-language translation__icon"></i>
+            <i className="material-icons translation__icon">&#xE8E2;</i>
             <a className="menu__link translation__link"
               href="#"
               onClick={this.setLocale.bind(this, "pt-BR")}>
