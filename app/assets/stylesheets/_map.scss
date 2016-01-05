@@ -182,21 +182,22 @@
   z-index: 10;
   max-height: 100%;
 
-  &--smaller {
-    left: 50%;
-    right: auto;
+
+  &--vertical-smaller {
     bottom: auto;
-    top: 0;
-    margin: $base-spacing auto $base-spacing -350px;
+    margin: $base-spacing;
+
+    @include media($mobile) {
+      @include map-modal-smaller;
+    }
+  }
+
+  &--horizontal-smaller {
+    margin: $base-spacing auto;
     width: 700px;
 
     @include media($mobile) {
-      top: $base-spacing;
-      left: $base-spacing;
-      right: $base-spacing;
-      bottom: $base-spacing;
-      margin: 0;
-      width: auto;
+      @include map-modal-smaller;
     }
   }
 

@@ -167,7 +167,9 @@ class Map extends React.Component {
     if(this.state.transitionsMatrixExpanded) {
       return (
         <MapModal title={I18n.t('map.index.transitions_matrix.title')}
-          onClose={this.closeTransitionsMatrix.bind(this)}>
+          onClose={this.closeTransitionsMatrix.bind(this)}
+          verticalSmaller={true}
+          overlay={true}>
           <TransitionsMatrix
             years={this.years}
             transitions={this.state.transitions}
@@ -182,8 +184,9 @@ class Map extends React.Component {
     if(this.state.showWarning) {
       //TODO
       var warning = (
-        <MapModal title={I18n.t('map.warning.title')} 
-          smaller={true}
+        <MapModal title={I18n.t('map.warning.title')}
+          verticalSmaller={true}
+          horizontalSmaller={true}
           overlay={true}
           onClose={() => {
             this.setState({ showWarning: false });
