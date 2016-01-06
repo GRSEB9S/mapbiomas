@@ -221,6 +221,7 @@
 
   &__content {
     overflow: auto;
+    padding: $micro-spacing;
     max-height: 100%;
 
     @include media($mobile) {
