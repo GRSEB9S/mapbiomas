@@ -179,7 +179,10 @@ GEM
     rails-assets-d3 (3.5.9)
     rails-assets-es6-shim (0.33.8)
     rails-assets-highcharts (4.1.9)
+    rails-assets-jquery (2.1.4)
     rails-assets-react-input-autosize (0.6.2)
+    rails-assets-tooltipster (3.3.0)
+      rails-assets-jquery (>= 1.7)
     rails-assets-underscore (1.8.3)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -328,6 +331,7 @@ DEPENDENCIES
   rails-assets-es6-shim!
   rails-assets-highcharts!
   rails-assets-react-input-autosize!
+  rails-assets-tooltipster!
   rails-assets-underscore!
   rails-settings-cached (~> 0.4.0)
   rails_12factor

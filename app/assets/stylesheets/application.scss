@@ -8,6 +8,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "mapbox-gl";
+*= require tooltipster
 
 @import "react-timeline-slider";
 @import "react-select";

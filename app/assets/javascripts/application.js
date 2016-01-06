@@ -20,6 +20,7 @@
 //= require d3-sankey
 //= require mapbox-gl
 //= require leaflet-mapbox-gl
+//= require tooltipster
 
 //= require highcharts_config
 
