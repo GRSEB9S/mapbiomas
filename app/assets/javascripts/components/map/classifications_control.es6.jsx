@@ -36,14 +36,6 @@ class ClassificationsControl extends React.Component {
     return str;
   }
 
-  componendDidUpdate() {
-    $('.tooltip').tooltip({track: true});
-  }
-
-  componentDidMount() {
-    $('.tooltip').tooltip({track: true});
-  }
-
   render() {
     let classificationsNodes = this.props.availableClassifications.map((classification)=>{
       let itemStyle = {
@@ -52,14 +44,6 @@ class ClassificationsControl extends React.Component {
       return (
         <li key={classification.id} className="classification-item">
           <label style={itemStyle}>{classification.name}</label>
-          <i className="material-icons tooltip"
-            title={I18n.t(
-                `map.tooltips.${this.slugifyClassification(classification.name)}`, {
-                  defaultValue: I18n.t('map.tooltips.default')
-                }
-              )}>
-            &#xE88E;
-          </i>
           <Toggle
             toggleColor={classification.color}
             defaultChecked={this.isChecked(classification.id)}

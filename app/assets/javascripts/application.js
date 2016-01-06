@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/tooltip
 //= require leaflet
 //= require es6-shim
 //= require underscore
@@ -29,6 +28,5 @@
 //= require lib/territories
 //= require lib/xlsx_utils
 //= require lib/locale
-//= require tooltip
 
 //= require components

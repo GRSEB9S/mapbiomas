@@ -39,7 +39,7 @@ class TransitionsChart extends React.Component {
             var active = (d.source.id == this.props.transition.from
                           && d.target.id == this.props.transition.to);
           }
-          return classNames("link", "tooltip", { "link--active": active });
+          return classNames("link", { "link--active": active });
         })
         .attr("title", (d) => {
           return (
@@ -65,7 +65,6 @@ class TransitionsChart extends React.Component {
         .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
 
     node.append("rect")
-        .attr("class", "tooltip")
         .attr("title", (d) => `${d.name} ${this.format(d.value)}`)
         .attr("height", (d) => d.dy)
         .attr("width", sankey.nodeWidth())
@@ -81,8 +80,6 @@ class TransitionsChart extends React.Component {
         .filter((d) => d.x < width / 2)
         .attr("x", 6 + sankey.nodeWidth())
         .attr("text-anchor", "start");
-
-    $(".tooltip").tooltip({ track: true });
   }
 
   componentDidMount() {
@@ -91,7 +88,6 @@ class TransitionsChart extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(!_.isEqual(this.props, prevProps)) {
-      $(".tooltip").tooltip('destroy');
       this.draw();
     }
   }
