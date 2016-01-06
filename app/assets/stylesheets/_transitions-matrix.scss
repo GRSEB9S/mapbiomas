@@ -29,11 +29,14 @@
     font-weight: 600;
   }
 
-  .to-classification {
+  .to-classification,
+  .from-total-classification {
     text-align: center;
   }
 
-  .transition-value {
+  .transition-value,
+  .transition-total-value,
+  .total-sum-value {
     text-align: center;
   }
 }
