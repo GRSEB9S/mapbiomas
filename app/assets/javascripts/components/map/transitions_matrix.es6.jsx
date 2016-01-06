@@ -38,6 +38,18 @@ class TransitionsMatrix extends React.Component {
     });
   }
 
+  renderTotalSum() {
+    let sum = _.reduce(
+      this.props.toTotalData, (mem, num) => {return mem + num.area}, 0
+    )
+
+    return (
+      <td className="total-sum-value highlight">
+        {Highcharts.numberFormat(sum, 0, '.')} ha
+      </td>
+    );
+  }
+
   renderToTotalData() {
     return(
       <tr>
@@ -47,6 +59,7 @@ class TransitionsMatrix extends React.Component {
         </td>
 
         {this.renderTotalRow()}
+        {this.renderTotalSum()}
       </tr>
     );
   }
