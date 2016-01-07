@@ -28,8 +28,9 @@ pt-BR:
     tooltip: |
       <ul>
         <li><strong>Floresta:</strong> formações florestais com  porte arbóreo superior a seis metros de altura e cobertura do dossel superior a  50%.</li>
-        <li><strong>Floresta plantada:</strong> Plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso.</li>
+        <li><strong>Floresta plantada:</strong> plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso.</li>
         <li><strong>Agricultura:</strong> áreas de culturas temporárias com grandes extensões,  além de cana de açúcar na região sudeste e centro oeste.</li>
         <li><strong>Pastagem:</strong> pastos nativos ou cultivados.</li>
         <li><strong>Água:</strong> lagos, lagoas, reservatórios artificiais e rios com largura superior a 30 metros de largura.</li>
+        <li><strong>Outros:</strong> outras formações vegetais naturais, áreas não vegetadas, áreas não observadas e áreas não classificadas.</li>
       </ul>
