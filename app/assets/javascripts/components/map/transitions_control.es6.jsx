@@ -27,7 +27,7 @@ class TransitionsControl extends React.Component {
   }
 
   renderTransitions() {
-    let classifications = new Classifications(this.props.matrixClassifications);
+    let classifications = new Classifications(this.props.classifications);
     let transitions = this.props.transitions;
     let nodes = transitions.reduce((memo, transition) => {
       let from = classifications.findById(transition.from);

@@ -126,53 +126,63 @@ class Map extends React.Component {
     }
   }
 
-  expandTransitionsMatrix(transitions) {
+  toTotalData() {
+    let transitions = this.state.transitions;
     let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
-    let matrixTransitions = _.clone(transitions);
 
-    this.props.defaultClassifications.forEach((element) => {
-      let fromTransitions = _.where(transitions, {from: element.id});
-      let fromClassificationToTotal = this.totalClassificationData(fromTransitions, element.id, totalClassificationId);
-      matrixTransitions.push(fromClassificationToTotal);
-
+    return this.props.defaultClassifications.map((element) => {
       let toTransitions = _.where(transitions, {to: element.id});
-      let fromToTotalToClassification = this.totalClassificationData(toTransitions, totalClassificationId, element.id);
-      matrixTransitions.push(fromToTotalToClassification);
-    });
+      let fromToTotalToClassification = this.totalClassificationData(
+        toTransitions,
+        totalClassificationId,
+        element.id
+      );
 
+      return fromToTotalToClassification;
+    });
+  }
+
+  fromTotalData() {
+    let transitions = this.state.transitions;
+    let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
+
+    return this.props.defaultClassifications.map((element) => {
+      let fromTransitions = _.where(transitions, {from: element.id});
+      let fromClassificationToTotal = this.totalClassificationData(
+        fromTransitions,
+        element.id,
+        totalClassificationId
+      );
+
+      return fromClassificationToTotal;
+    });
+  }
+
+  expandTransitionsMatrix(transitions) {
     this.setState({
-      matrixTransitions: matrixTransitions,
       transitionsMatrixExpanded: true
     });
   }
 
   closeTransitionsMatrix() {
-    this.setState({ matrixTransitions: [], transitionsMatrixExpanded: false });
-  }
-
-  componentDidMount() {
-    let totalClassificationId = _.last(this.props.defaultClassifications).id + 1;
-    let matrixClassifications = _.clone(this.classifications);
-    let total = {
-      id: totalClassificationId,
-      name: I18n.t('map.index.transitions_matrix.total'),
-      color: "#000000"
-    };
-
-    matrixClassifications.push(total);
-    this.setState({ matrixClassifications: matrixClassifications });
+    this.setState({
+      transitionsMatrixExpanded: false }
+    );
   }
 
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
         <MapModal title={I18n.t('map.index.transitions_matrix.title')}
-          onClose={this.closeTransitionsMatrix.bind(this)}>
+          onClose={this.closeTransitionsMatrix.bind(this)}
+          verticalSmaller={true}
+          overlay={true}>
           <TransitionsMatrix
             years={this.years}
             transitions={this.state.transitions}
-            matrixTransitions={this.state.matrixTransitions}
-            classifications={this.state.matrixClassifications} />
+            classifications={this.classifications}
+            toTotalData={this.toTotalData()}
+            fromTotalData={this.fromTotalData()} />
         </MapModal>
       );
     }
@@ -182,8 +192,9 @@ class Map extends React.Component {
     if(this.state.showWarning) {
       //TODO
       var warning = (
-        <MapModal title={I18n.t('map.warning.title')} 
-          smaller={true}
+        <MapModal title={I18n.t('map.warning.title')}
+          verticalSmaller={true}
+          horizontalSmaller={true}
           overlay={true}
           onClose={() => {
             this.setState({ showWarning: false });
@@ -237,13 +248,13 @@ class Map extends React.Component {
               availableTerritories={this.territories}
               transition={this.transition}
               transitions={this.state.transitions}
-              setTransition={this.handleTransitionChange.bind(this)}
+              classifications={this.classifications}
               territory={this.territory}
               years={this.years}
               onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-              matrixClassifications={this.state.matrixClassifications}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
               onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+              setTransition={this.handleTransitionChange.bind(this)}
               setMode={this.setMode.bind(this, 'coverage')}
             />
           </div>

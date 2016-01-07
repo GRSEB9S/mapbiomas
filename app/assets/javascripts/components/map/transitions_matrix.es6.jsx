@@ -1,10 +1,10 @@
 class TransitionsMatrix extends React.Component {
   get colSpan() {
-    return this.props.classifications.length + 1;
+    return this.props.classifications.length;
   }
 
   get rowSpan() {
-    return this.props.classifications.length + 1;
+    return this.props.classifications.length;
   }
 
   renderToClassifications() {
@@ -14,7 +14,7 @@ class TransitionsMatrix extends React.Component {
       let classes = classNames(
         'to-classification',
         {
-          highlight: c === _.last(this.props.classifications) ? true : !!transition
+          highlight: !!transition
         }
       );
 
@@ -26,6 +26,56 @@ class TransitionsMatrix extends React.Component {
     });
   }
 
+  renderTotalRow() {
+    return this.props.toTotalData.map((data) => {
+      let key = `transition-${data.to}-${data.from}`;
+
+      return(
+        <td key={key} className="transition-total-value highlight">
+          {Highcharts.numberFormat(data.area, 0, '.')} ha
+        </td>
+      );
+    });
+  }
+
+  renderTotalSum() {
+    let sum = _.reduce(
+      this.props.toTotalData, (mem, num) => {return mem + num.area}, 0
+    )
+
+    return (
+      <td className="total-sum-value highlight">
+        {Highcharts.numberFormat(sum, 0, '.')} ha
+      </td>
+    );
+  }
+
+  renderToTotalData() {
+    return(
+      <tr>
+        <td></td>
+        <td className="to-total-classification highlight">
+          {I18n.t('map.index.transitions_matrix.total')}
+        </td>
+
+        {this.renderTotalRow()}
+        {this.renderTotalSum()}
+      </tr>
+    );
+  }
+
+  renderFromTotalData(fromClassification) {
+    let data = _.first(
+      _.where(this.props.fromTotalData, {from: fromClassification.id})
+    );
+
+    return(
+      <td className="transition-total-value highlight">
+        {Highcharts.numberFormat(data.area, 0, '.')} ha
+      </td>
+    );
+  }
+
   renderFromClassifications() {
     return this.props.classifications.map((c, i) => {
       let transition = this.props.transitions.find((t) => t.from == c.id);
@@ -33,7 +83,7 @@ class TransitionsMatrix extends React.Component {
       let classes = classNames(
         'from-classification',
         {
-          highlight: c === _.last(this.props.classifications) ? true : !!transition
+          highlight: !!transition
         }
       );
 
@@ -52,6 +102,7 @@ class TransitionsMatrix extends React.Component {
             {c.name}
           </td>
           {this.renderData(c)}
+          {this.renderFromTotalData(c)}
         </tr>
       );
     });
@@ -61,26 +112,18 @@ class TransitionsMatrix extends React.Component {
     let lastClassification = _.last(this.props.classifications);
 
     return this.props.classifications.map((toClassification) => {
-      let transition = this.props.matrixTransitions.find((t) => {
+      let transition = this.props.transitions.find((t) => {
         return t.to == toClassification.id && t.from == fromClassification.id;
       });
       let key = `transition-${toClassification.id}-${fromClassification.id}`;
 
       if(transition) {
-        if (fromClassification === lastClassification || toClassification === lastClassification) {
-          return (
-            <td key={key} className="transition-value highlight">
-              {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            </td>
-          );
-        } else {
-          return (
-            <td key={key} className="transition-value highlight">
-              {Highcharts.numberFormat(transition.area, 0, '.')} ha
-              ({transition.percentage}%)
-            </td>
-          );
-        }
+        return (
+          <td key={key} className="transition-value highlight">
+            {Highcharts.numberFormat(transition.area, 0, '.')} ha
+            ({transition.percentage}%)
+          </td>
+        );
       } else {
         return <td key={key} className="transition-value">--</td>
       }
@@ -102,8 +145,13 @@ class TransitionsMatrix extends React.Component {
             <td></td>
             <td></td>
             {this.renderToClassifications()}
+            <td className="from-total-classification highlight">
+              {I18n.t('map.index.transitions_matrix.total')}
+            </td>
           </tr>
           {this.renderFromClassifications()}
+          <tr></tr>
+          {this.renderToTotalData()}
         </tbody>
       </table>
     );

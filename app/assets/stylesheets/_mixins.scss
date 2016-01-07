@@ -1,0 +1,7 @@
+@mixin map-modal-smaller {
+  top: $base-spacing;
+  left: $base-spacing;
+  right: $base-spacing;
+  margin: 0;
+  width: auto;
+}

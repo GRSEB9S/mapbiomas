@@ -1,9 +1,14 @@
 class MapModal extends React.Component {
   render() {
-    var classes = classNames("map-modal", { "map-modal--smaller": this.props.smaller });
+    var classes = classNames("map-modal", {
+      "map-modal--vertical-smaller": this.props.verticalSmaller,
+      "map-modal--horizontal-smaller": this.props.horizontalSmaller
+    });
+
     if(this.props.overlay) {
       var overlay = <div className="map-modal__overlay"></div>;
     }
+
     return (
       <div className="map-modal__wrapper">
         {overlay}

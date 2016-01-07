@@ -1,4 +1,5 @@
 .transitions-matrix {
+  width: 100%;
   table-layout: auto;
   font-size: 0.8rem;
   margin: 0;
@@ -28,11 +29,14 @@
     font-weight: 600;
   }
 
-  .to-classification {
+  .to-classification,
+  .from-total-classification {
     text-align: center;
   }
 
-  .transition-value {
+  .transition-value,
+  .transition-total-value,
+  .total-sum-value {
     text-align: center;
   }
 }
