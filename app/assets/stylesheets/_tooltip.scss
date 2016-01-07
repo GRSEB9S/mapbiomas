@@ -1,0 +1,24 @@
+.tooltip {
+  font-size: $base-font-size;
+  margin: 0 $micro-spacing;
+  color: $dark-gray;
+  cursor: help;
+  vertical-align: middle;
+}
+
+.tooltip-custom-theme {
+  background: $white;
+  color: $medium-gray;
+  max-width: 350px;
+
+  .tooltipster-content {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: 16px;
+    margin: $micro-spacing;
+
+    ul li {
+      margin: $micro-spacing;
+    }
+  }
+}

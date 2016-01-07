@@ -36,6 +36,13 @@ class ClassificationsControl extends React.Component {
     return str;
   }
 
+  componentDidMount() {
+    $('#classifications-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      content: $(I18n.t('map.tooltip'))
+    });
+  }
+
   render() {
     let classificationsNodes = this.props.availableClassifications.map((classification)=>{
       let itemStyle = {
@@ -56,8 +63,11 @@ class ClassificationsControl extends React.Component {
       <div className="map-control classifications-control">
         <h3 className="map-control__header">
           {I18n.t('map.index.classifications')}
+          <i id="classifications-tooltip"
+            className="material-icons tooltip">
+            &#xE88E;
+          </i>
         </h3>
-
         <div className="map-control__content">
           <ul className="classifications-list">
             {classificationsNodes}

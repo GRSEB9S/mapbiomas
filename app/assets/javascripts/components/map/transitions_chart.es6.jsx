@@ -39,12 +39,7 @@ class TransitionsChart extends React.Component {
             var active = (d.source.id == this.props.transition.from
                           && d.target.id == this.props.transition.to);
           }
-          return classNames("link", { "link--active": active });
-        })
-        .attr("title", (d) => {
-          return (
-            `${d.source.name} → ${d.target.name} ${this.format(d.value)}`
-          );
+          return classNames("link", "tooltip", { "link--active": active });
         })
         .attr("d", path)
         .style("stroke-width", (d) => Math.max(1, d.dy))
@@ -56,6 +51,13 @@ class TransitionsChart extends React.Component {
           })
         });
 
+    link.append("title")
+        .text((d) => {
+          return (
+            `${d.source.name} → ${d.target.name}: ${this.format(d.value)}`
+          );
+        })
+
     let node = svg.append("g")
         .selectAll(".node")
         .data(this.props.nodes)
@@ -65,10 +67,17 @@ class TransitionsChart extends React.Component {
         .attr("transform", (d) => `translate(${d.x}, ${d.y})`)
 
     node.append("rect")
-        .attr("title", (d) => `${d.name} ${this.format(d.value)}`)
+        .attr("class", "tooltip")
         .attr("height", (d) => d.dy)
         .attr("width", sankey.nodeWidth())
         .style("fill", (d) => d.color)
+
+    node.append("title")
+        .text((d) => {
+          return (
+            `${d.name}: ${this.format(d.value)}`
+          );
+        })
 
     node.append("text")
         .attr("x", -6)

@@ -8,7 +8,7 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "mapbox-gl";
-*= require tooltipster
+@import "tooltipster";
 
 @import "react-timeline-slider";
 @import "react-select";
@@ -21,6 +21,7 @@
 @import "menu";
 @import "footer";
 @import "tabs";
+@import "tooltip";
 @import "sankey";
 @import "transitions-matrix";
 @import "page";
