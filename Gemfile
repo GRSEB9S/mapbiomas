@@ -39,6 +39,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-react-input-autosize'
   gem 'rails-assets-es6-shim'
   gem 'rails-assets-d3'
+  gem 'rails-assets-tooltipster'
 end
 
 group :production do

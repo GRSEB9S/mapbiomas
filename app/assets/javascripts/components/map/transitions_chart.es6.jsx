@@ -41,11 +41,6 @@ class TransitionsChart extends React.Component {
           }
           return classNames("link", "tooltip", { "link--active": active });
         })
-        .attr("title", (d) => {
-          return (
-            `${d.source.name} → ${d.target.name} ${this.format(d.value)}`
-          );
-        })
         .attr("d", path)
         .style("stroke-width", (d) => Math.max(1, d.dy))
         .sort((a, b) => b.dy - a.dy)
@@ -55,6 +50,13 @@ class TransitionsChart extends React.Component {
             to: d.target.id
           })
         });
+
+    link.append("title")
+        .text((d) => {
+          return (
+            `${d.source.name} → ${d.target.name}: ${this.format(d.value)}`
+          );
+        })
 
     let node = svg.append("g")
         .selectAll(".node")
@@ -66,10 +68,16 @@ class TransitionsChart extends React.Component {
 
     node.append("rect")
         .attr("class", "tooltip")
-        .attr("title", (d) => `${d.name} ${this.format(d.value)}`)
         .attr("height", (d) => d.dy)
         .attr("width", sankey.nodeWidth())
         .style("fill", (d) => d.color)
+
+    node.append("title")
+        .text((d) => {
+          return (
+            `${d.name}: ${this.format(d.value)}`
+          );
+        })
 
     node.append("text")
         .attr("x", -6)
@@ -81,8 +89,6 @@ class TransitionsChart extends React.Component {
         .filter((d) => d.x < width / 2)
         .attr("x", 6 + sankey.nodeWidth())
         .attr("text-anchor", "start");
-
-    $(".tooltip").tooltip({ track: true });
   }
 
   componentDidMount() {
@@ -91,7 +97,6 @@ class TransitionsChart extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(!_.isEqual(this.props, prevProps)) {
-      $(".tooltip").tooltip('destroy');
       this.draw();
     }
   }

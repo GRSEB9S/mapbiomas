@@ -16,10 +16,12 @@ class MapModal extends React.Component {
           <h2 className="map-modal__header">
             {this.props.title}
           </h2>
-          <i className="material-icons map-modal__close"
+          {
+          /*<i className="material-icons map-modal__close"
               onClick={this.props.onClose}>
             &#xE5CD;
-          </i>
+          </i>*/
+          }
           <div className="map-modal__content">
             { this.props.children }
           </div>

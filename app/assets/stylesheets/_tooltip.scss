@@ -1,17 +1,24 @@
 .tooltip {
   font-size: $base-font-size;
   margin: 0 $micro-spacing;
-  cursor: pointer;
+  color: $dark-gray;
+  cursor: help;
   vertical-align: middle;
 }
 
-.ui-tooltip {
-  max-width: 300px;
-  box-shadow: $base-box-shadow;
-  border: none;
-  padding: $micro-spacing;
-  background: #fff;
-  z-index: $base-z-index + 2;
-  font-size: $small-font-size;
-  border-radius: $base-border-radius;
+.tooltip-custom-theme {
+  background: $white;
+  color: $medium-gray;
+  max-width: 350px;
+
+  .tooltipster-content {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+    line-height: 16px;
+    margin: $micro-spacing;
+
+    ul li {
+      margin: $micro-spacing;
+    }
+  }
 }

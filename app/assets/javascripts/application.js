@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/tooltip
 //= require leaflet
 //= require es6-shim
 //= require underscore
@@ -21,6 +20,7 @@
 //= require d3-sankey
 //= require mapbox-gl
 //= require leaflet-mapbox-gl
+//= require tooltipster
 
 //= require highcharts_config
 
@@ -29,6 +29,5 @@
 //= require lib/territories
 //= require lib/xlsx_utils
 //= require lib/locale
-//= require tooltip
 
 //= require components
