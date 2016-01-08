@@ -34,3 +34,5 @@ pt-BR:
         <li><strong>Água:</strong> lagos, lagoas, reservatórios artificiais e rios com largura superior a 30 metros de largura.</li>
         <li><strong>Outros:</strong> outras formações vegetais naturais, áreas não vegetadas, áreas não observadas e áreas não classificadas.</li>
       </ul>
+    modal:
+      ok: OK
