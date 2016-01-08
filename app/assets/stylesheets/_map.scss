@@ -230,6 +230,12 @@
     }
   }
 
+  &__ok {
+    float: right;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   &__close {
     right: 0;
     top: 0;
