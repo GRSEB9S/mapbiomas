@@ -121,7 +121,7 @@ class TransitionsMatrix extends React.Component {
         return (
           <td key={key} className="transition-value highlight">
             {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            ({transition.percentage}%)
+            {/*({transition.percentage}%)*/}
           </td>
         );
       } else {
