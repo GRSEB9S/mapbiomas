@@ -12,7 +12,7 @@ require 'mina/puma'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :user, 'app'
-set :domain, '104.196.6.140'
+set :domain, '104.196.62.76'
 set :deploy_to, '/var/www/mapbiomas'
 set :repository, 'git@github.com:ecostage/mapbiomas.git'
 set :branch, 'master'
