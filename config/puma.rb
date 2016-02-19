@@ -1,26 +1,21 @@
-preload_app!
 shared_path = ENV['APP_SHARED_PATH']
+
+preload_app!
 workers 2
-
-# Min and Max threads per worker
 threads 1, 6
+environment ENV['RAILS_ENV'] || "production"
 
-# Default to production
-environment = ENV['RAILS_ENV'] || "production"
-
-# Set up socket location
-bind "unix://#{shared_path}/tmp/sockets/puma.sock"
-
-# Logging
-stdout_redirect "#{shared_path}/log/puma.stdout.log", "#{shared_path}/log/puma.stderr.log", true
-
-# Set master PID and state locations
-pidfile "#{shared_path}/tmp/pids/puma.pid"
-state_path "#{shared_path}/tmp/sockets/puma.state"
-activate_control_app
+unless ENV["HEROKU"]
+  bind "unix://#{shared_path}/tmp/sockets/puma.sock"
+  stdout_redirect "#{shared_path}/log/puma.stdout.log", "#{shared_path}/log/puma.stderr.log", true
+  pidfile "#{shared_path}/tmp/pids/puma.pid"
+  state_path "#{shared_path}/tmp/sockets/puma.state"
+  activate_control_app
+else
+  rackup      DefaultRackup
+  port        ENV['PORT']     || 3000
+end
 
 on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
   ActiveRecord::Base.establish_connection
 end
