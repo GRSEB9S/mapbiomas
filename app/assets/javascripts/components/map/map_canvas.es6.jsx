@@ -3,6 +3,7 @@ class MapCanvas extends React.Component {
     let defaultOptions = {
         format: 'image/png',
         transparent: true,
+        opacity: 0.6,
         attribution: "MapBiomas Workspace"
     }
     return _.defaults({}, this.props, defaultOptions);
@@ -11,11 +12,11 @@ class MapCanvas extends React.Component {
   setup() {
     let node = this.refs.element;
     this.map = L.map(node).setView([-20, -45], 6);
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
     }).addTo(this.map);
 
-    this.layer =L.tileLayer.wms(
+    this.layer = L.tileLayer.wms(
       `${this.props.url}/cgi-bin/mapserv`,
       this.options
     ).addTo(this.map);
