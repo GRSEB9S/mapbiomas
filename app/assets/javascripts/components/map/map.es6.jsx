@@ -30,11 +30,11 @@ class Map extends React.Component {
   get urlpath() {
     switch(this.state.mode) {
       case 'coverage':
-        return "wms/classification/coverage.map";
+        return "wms-b/classification/coverage.map";
       case 'transitions':
-        return "wms/classification/transitions.map";
+        return "wms-b/classification/transitions.map";
       default:
-        return "wms/classification/coverage.map";
+        return "wms-b/classification/coverage.map";
     }
   }
 
