@@ -2,6 +2,7 @@ class Map extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      opacity: 0.6,
       classificatios: [],
       mode: 'coverage',
       year: null,
@@ -10,7 +11,8 @@ class Map extends React.Component {
       transition: null,
       transitions: [],
       transitionsMatrixExpanded: false,
-      showWarning: true
+      showWarning: true,
+      backgroundLayerActive: true
     };
   }
 
@@ -46,6 +48,7 @@ class Map extends React.Component {
       transitionId = `${this.transition.from}${this.transition.to}`;
     }
     return {
+      opacity: this.state.opacity,
       layers: this.state.mode,
       url: this.props.url,
       map: this.urlpath,
@@ -53,6 +56,7 @@ class Map extends React.Component {
       territory_id: this.territory.id,
       transition_id: transitionId,
       classification_ids: ids.join(','),
+      backgroundLayerActive: this.state.backgroundLayerActive
     };
   }
 
@@ -95,20 +99,31 @@ class Map extends React.Component {
       return this.props.availableClassifications.find((c) => c.id === id);
     })
 
-    this.setState({ classifications: classifications });
+    this.setState({ classifications });
   }
 
   handleTransitionChange(transition) {
-    this.setState({ transition: transition });
+    this.setState({ transition });
   }
 
   handleTransitionsLoad(transitions) {
-    this.setState({ transitions: transitions, transition: transitions[0]})
+    this.setState({ transitions, transition: transitions[0]})
+  }
+
+  handleOpacityChange(e) {
+    const opacity = e.target.value / 100;
+    this.setState({ opacity });
   }
 
   setMode(mode) {
-    this.setState({ mode: mode, year: null, years: [],
+    this.setState({ mode, year: null, years: [],
                   transitions: [], transitionsMatrixExpanded: false });
+  }
+
+  toggle() {
+    const backgroundLayerActive = !this.state.backgroundLayerActive;
+
+    this.setState({ backgroundLayerActive });
   }
 
   totalClassificationData(arr, from, to) {
@@ -192,7 +207,6 @@ class Map extends React.Component {
 
   render() {
     if(this.state.showWarning) {
-      //TODO
       var warning = (
         <MapModal title={I18n.t('map.warning.title')}
           showCloseButton={false}
@@ -207,6 +221,7 @@ class Map extends React.Component {
         </MapModal>
       );
     }
+
     if(this.state.mode == 'coverage') {
       return (
         <div className="map">
@@ -216,6 +231,11 @@ class Map extends React.Component {
               map-control-wrapper--smaller
               map-control-wrapper--left
               map-control-wrapper--bottom">
+            <LayerToggler toggle={this.toggle.bind(this)}/>
+            <OpacityControl
+              {...this.props}
+              opacity={this.state.opacity*100}
+              onChange={this.handleOpacityChange.bind(this)} />
             <ClassificationsControl
               {...this.props}
               classifications={this.classifications}

@@ -7,6 +7,7 @@ en:
         <p>The beta version products are still incomplete and have not yet been validated. Therefore, many spatial inconsistencies in the thematic classifications(between classes and between years) are likely to be encountered.</p>
         <p>The maps will be made as collections as they are validated and corrected, according to the stages of product development. The Collection 1 are currently in preparation and will be launched, as a validated product, in the first semester of 2016, comprising data from 2008 to 2015.</p>
     index:
+      opacity: Opacity
       classifications: Classifications
       coverage_analysis: Coverage analysis
       coverage: Coverage

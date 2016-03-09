@@ -7,6 +7,7 @@ pt-BR:
         <p>Os produtos apresentados na versão Beta ainda são incompletos e ainda não foram validados. Eles mostram inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem).</p>
         <p>Os mapas serão disponibilizados por coleções, à medida que sejam validados e corrigidos, de acordo com as etapas de desenvolvimento dos produtos. Os mapas da Coleção 1.0 do MAPBIOMAS estão em processo de validação e serão disponibilizados no primeiro semestre de 2016 com os dados de 2008 a 2015.</p>
     index:
+      opacity: Opacidade
       classifications: Classes
       coverage_analysis: Análise de cobertura
       coverage: Cobertura
