@@ -6,14 +6,14 @@ class MapCanvas extends React.Component {
       opacity: 0.6,
       attribution: "MapBiomas Workspace"
     }
-    return _.defaults({}, this.props, defaultOptions);
+    return _.defaults({}, this.props.layerOptions, defaultOptions);
   }
 
   setup() {
     let node = this.refs.element;
     this.map = L.map(node).setView([-20, -45], 6);
 
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
     }).addTo(this.map);
 
@@ -22,7 +22,7 @@ class MapCanvas extends React.Component {
     }).addTo(this.map);
 
     this.layer = L.tileLayer.wms(
-      `${this.props.url}/cgi-bin/mapserv`,
+      `${this.options.url}/cgi-bin/mapserv`,
       this.options
     ).addTo(this.map);
 
@@ -41,15 +41,19 @@ class MapCanvas extends React.Component {
       this.fitTerritory();
     }
 
-    this.layer.setOpacity(this.props.opacity);
+    if(!_.isEqual(this.props, prevProps)) {
+      this.layer.setOpacity(this.props.opacity);
 
-    if(this.props.backgroundLayerActive) {
-      this.backgroundLayer.setOpacity(1);
-    } else {
-      this.backgroundLayer.setOpacity(0);
+      if(this.props.backgroundLayerActive) {
+        this.backgroundLayer.setOpacity(1);
+      } else {
+        this.backgroundLayer.setOpacity(0);
+      }
+
+      if(!_.isEqual(this.props.layerOptions, prevProps.layerOptions)) {
+        this.layer.setParams(this.options);
+      }
     }
-
-    this.layer.setParams(this.options);
   }
 
   componentDidMount() {

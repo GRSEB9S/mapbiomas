@@ -48,14 +48,16 @@ class Map extends React.Component {
       transitionId = `${this.transition.from}${this.transition.to}`;
     }
     return {
+      layerOptions: {
+        layers: this.state.mode,
+        url: this.props.url,
+        map: this.urlpath,
+        year: year,
+        territory_id: this.territory.id,
+        transition_id: transitionId,
+        classification_ids: ids.join(','),
+      },
       opacity: this.state.opacity,
-      layers: this.state.mode,
-      url: this.props.url,
-      map: this.urlpath,
-      year: year,
-      territory_id: this.territory.id,
-      transition_id: transitionId,
-      classification_ids: ids.join(','),
       backgroundLayerActive: this.state.backgroundLayerActive
     };
   }
