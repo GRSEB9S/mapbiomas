@@ -14,7 +14,7 @@ class MapCanvas extends React.Component {
     this.map = L.map(node).setView([-20, -45], 6);
 
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
     }).addTo(this.map);
 
     this.backgroundLayer = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
@@ -25,6 +25,9 @@ class MapCanvas extends React.Component {
       `${this.props.url}/cgi-bin/mapserv`,
       this.options
     ).addTo(this.map);
+
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png')
+      .addTo(this.map);
 
     this.fitTerritory();
   }
