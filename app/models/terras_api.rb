@@ -6,11 +6,11 @@ class TerrasAPI
   caches_api_responses key_name: "terras", expire_in: 1.month
 
   def self.territories
-    get("/dashboard/services/territories")
+    get("/dev-dashboard-b/dashboard/services/territories")
   end
 
   def self.classifications
-    get("/dashboard/services/classifications")
+    get("/dev-dashboard-b/dashboard/services/classifications")
   end
 
   def self.coverage(year, territory_id, classification_ids)
