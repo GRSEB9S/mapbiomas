@@ -11,8 +11,7 @@ class Map extends React.Component {
       transition: null,
       transitions: [],
       transitionsMatrixExpanded: false,
-      showWarning: true,
-      backgroundLayerActive: true
+      showWarning: true
     };
   }
 
@@ -57,8 +56,7 @@ class Map extends React.Component {
         transition_id: transitionId,
         classification_ids: ids.join(','),
       },
-      opacity: this.state.opacity,
-      backgroundLayerActive: this.state.backgroundLayerActive
+      opacity: this.state.opacity
     };
   }
 
@@ -120,12 +118,6 @@ class Map extends React.Component {
   setMode(mode) {
     this.setState({ mode, year: null, years: [],
                   transitions: [], transitionsMatrixExpanded: false });
-  }
-
-  toggle() {
-    const backgroundLayerActive = !this.state.backgroundLayerActive;
-
-    this.setState({ backgroundLayerActive });
   }
 
   totalClassificationData(arr, from, to) {
@@ -233,7 +225,6 @@ class Map extends React.Component {
               map-control-wrapper--smaller
               map-control-wrapper--left
               map-control-wrapper--bottom">
-            <LayerToggler toggle={this.toggle.bind(this)}/>
             <OpacityControl
               {...this.props}
               opacity={this.state.opacity*100}

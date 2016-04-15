@@ -13,11 +13,7 @@ class MapCanvas extends React.Component {
     let node = this.refs.element;
     this.map = L.map(node).setView([-20, -45], 6);
 
-    L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution: '&copy; Esri &mdash; Source: Esri, USDA, USGS'
-    }).addTo(this.map);
-
-    this.backgroundLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
     }).addTo(this.map);
 
@@ -55,12 +51,6 @@ class MapCanvas extends React.Component {
 
     if(!_.isEqual(this.props, prevProps)) {
       this.layer.setOpacity(this.props.opacity);
-
-      if(this.props.backgroundLayerActive) {
-        this.backgroundLayer.setOpacity(1);
-      } else {
-        this.backgroundLayer.setOpacity(0);
-      }
 
       if(!_.isEqual(this.props.layerOptions, prevProps.layerOptions)) {
         this.layer.setParams(this.options);
