@@ -1,8 +1,10 @@
 class Map extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      index: 0,
+      mainMenuIndex: 0,
+      viewOptionsIndex: 0,
       opacity: 0.6,
       classificatios: [],
       year: null,
@@ -11,7 +13,13 @@ class Map extends React.Component {
       transition: null,
       transitions: [],
       transitionsMatrixExpanded: false,
-      showWarning: true
+      showWarning: true,
+      layers: {
+        states: false,
+        cities: false,
+        contourMaps: false,
+        biomes: false
+      }
     };
   }
 
@@ -31,7 +39,7 @@ class Map extends React.Component {
   get mode() {
     let modes = ['coverage', 'transitions', 'quality'];
 
-    return modes[this.state.index];
+    return modes[this.state.mainMenuIndex];
   }
 
   get urlpath() {
@@ -49,9 +57,11 @@ class Map extends React.Component {
     let ids = this.classifications.map((c) => c.id);
     let year = this.mode == 'coverage' ? this.year : this.years.join(',');
     let transitionId
+
     if(this.transition) {
       transitionId = `${this.transition.from}${this.transition.to}`;
     }
+
     return {
       layerOptions: {
         layers: this.mode,
@@ -121,8 +131,19 @@ class Map extends React.Component {
     this.setState({ opacity });
   }
 
-  handleIndexSelect(index) {
-    this.setState({ index: index });
+  handleMainMenuIndexSelect(index) {
+    this.setState({ mainMenuIndex: index });
+  }
+
+  handleViewOptionsIndexSelect(index) {
+    this.setState({ viewOptionsIndex: index });
+  }
+
+  handleLayerChange(key, value) {
+    let layers = _.clone(this.state.layers);
+    layers[key] = value;
+
+    this.setState({ layers });
   }
 
   isMulti() {
@@ -229,7 +250,7 @@ class Map extends React.Component {
     }
   }
 
-  renderAuxiliarControls() {
+  renderCoverageAuxiliarControls() {
     if(this.mode == 'coverage') {
       return(
         <div className="map-control-wrapper
@@ -240,14 +261,78 @@ class Map extends React.Component {
             {...this.props}
             opacity={this.state.opacity*100}
             onChange={this.handleOpacityChange.bind(this)} />
-          <ClassificationsControl
-            {...this.props}
-            classifications={this.classifications}
-            onChange={this.handleClassificationsChange.bind(this)}
-          />
+
+          <ReactTabs.Tabs
+              selectedIndex={this.state.viewOptionsIndex}
+              onSelect={this.handleViewOptionsIndexSelect.bind(this)}
+              className="map-control">
+            <ReactTabs.TabList >
+              <ReactTabs.Tab>{I18n.t('map.index.classifications')}</ReactTabs.Tab>
+              <ReactTabs.Tab>{I18n.t('map.index.layers.title')}</ReactTabs.Tab>
+            </ReactTabs.TabList>
+
+            <ReactTabs.TabPanel>
+              <ClassificationsControl
+                {...this.props}
+                classifications={this.classifications}
+                onChange={this.handleClassificationsChange.bind(this)}
+              />
+            </ReactTabs.TabPanel>
+
+            <ReactTabs.TabPanel>
+              <LayersControl
+                layers={this.state.layers}
+                onLayerChange={this.handleLayerChange.bind(this)}
+              />
+            </ReactTabs.TabPanel>
+          </ReactTabs.Tabs>
         </div>
       );
     }
+  }
+
+  renderMainMenu() {
+    return(
+      <ReactTabs.Tabs
+          selectedIndex={this.state.mainMenuIndex}
+          onSelect={this.handleMainMenuIndexSelect.bind(this)}
+          className="map-control-wrapper">
+        <ReactTabs.TabList >
+          <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
+          <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
+          <ReactTabs.Tab disabled={true}>{I18n.t('map.index.quality')}</ReactTabs.Tab>
+        </ReactTabs.TabList>
+
+        <ReactTabs.TabPanel>
+          <CoverageControl
+            {...this.props}
+            availableTerritories={this.territories}
+            territory={this.territory}
+            year={this.year}
+            classifications={this.classifications}
+            onTerritoryChange={this.handleTerritoryChange.bind(this)}
+          />
+        </ReactTabs.TabPanel>
+
+        <ReactTabs.TabPanel>
+          <TransitionsControl
+            {...this.props}
+            availableTerritories={this.territories}
+            transition={this.transition}
+            transitions={this.state.transitions}
+            classifications={this.classifications}
+            territory={this.territory}
+            years={this.years}
+            onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+            onTerritoryChange={this.handleTerritoryChange.bind(this)}
+            onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+            setTransition={this.handleTransitionChange.bind(this)}
+          />
+        </ReactTabs.TabPanel>
+
+        <ReactTabs.TabPanel></ReactTabs.TabPanel>
+      </ReactTabs.Tabs>
+    );
   }
 
   render() {
@@ -255,50 +340,14 @@ class Map extends React.Component {
       <div className="map">
         {this.renderWarning()}
 
-        <MapCanvas {...this.tileOptions} territory={this.territory}/>
+        <MapCanvas
+          {...this.tileOptions}
+          territory={this.territory}
+          layers={this.state.layers}
+        />
 
-        {this.renderAuxiliarControls()}
-
-        <ReactTabs.Tabs
-            selectedIndex={this.state.index}
-            onSelect={this.handleIndexSelect.bind(this)}
-            className="map-control-wrapper">
-          <ReactTabs.TabList >
-            <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
-            <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
-            <ReactTabs.Tab disabled={true}>{I18n.t('map.index.quality')}</ReactTabs.Tab>
-          </ReactTabs.TabList>
-
-          <ReactTabs.TabPanel>
-            <CoverageControl
-              {...this.props}
-              availableTerritories={this.territories}
-              territory={this.territory}
-              year={this.year}
-              classifications={this.classifications}
-              onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            />
-          </ReactTabs.TabPanel>
-
-          <ReactTabs.TabPanel>
-            <TransitionsControl
-              {...this.props}
-              availableTerritories={this.territories}
-              transition={this.transition}
-              transitions={this.state.transitions}
-              classifications={this.classifications}
-              territory={this.territory}
-              years={this.years}
-              onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-              onTerritoryChange={this.handleTerritoryChange.bind(this)}
-              onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-              setTransition={this.handleTransitionChange.bind(this)}
-            />
-          </ReactTabs.TabPanel>
-
-          <ReactTabs.TabPanel></ReactTabs.TabPanel>
-        </ReactTabs.Tabs>
-
+        {this.renderCoverageAuxiliarControls()}
+        {this.renderMainMenu()}
         {this.renderTransitionsMatrix()}
 
         <div className="timeline-control">

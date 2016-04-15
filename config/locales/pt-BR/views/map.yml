@@ -9,6 +9,12 @@ pt-BR:
     index:
       opacity: Opacidade
       classifications: Classes
+      layers:
+        title: Camadas
+        states: Estados
+        cities: Municípios
+        biomes: Biomas
+        contour_maps: Cartas
       coverage_analysis: Análise de cobertura
       coverage: Cobertura
       transitions: Transições

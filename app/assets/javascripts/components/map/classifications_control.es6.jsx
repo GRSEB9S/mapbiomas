@@ -44,7 +44,7 @@ class ClassificationsControl extends React.Component {
   }
 
   render() {
-    let classificationsNodes = this.props.availableClassifications.map((classification)=>{
+    let classificationsNodes = this.props.availableClassifications.map((classification) => {
       let itemStyle = {
         color: classification.color
       }
@@ -60,7 +60,7 @@ class ClassificationsControl extends React.Component {
     });
 
     return (
-      <div className="map-control classifications-control">
+      <div className="classifications-control">
         <h3 className="map-control__header">
           {I18n.t('map.index.classifications')}
           <i id="classifications-tooltip"
