@@ -180,6 +180,7 @@ GEM
     rails-assets-highcharts (4.1.9)
     rails-assets-jquery (2.1.4)
     rails-assets-react-input-autosize (0.6.2)
+    rails-assets-react-tabs (0.5.3)
     rails-assets-tooltipster (3.3.0)
       rails-assets-jquery (>= 1.7)
     rails-assets-underscore (1.8.3)
@@ -329,6 +330,7 @@ DEPENDENCIES
   rails-assets-es6-shim!
   rails-assets-highcharts!
   rails-assets-react-input-autosize!
+  rails-assets-react-tabs!
   rails-assets-tooltipster!
   rails-assets-underscore!
   rails-settings-cached (~> 0.4.0)

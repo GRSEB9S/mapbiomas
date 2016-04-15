@@ -15,6 +15,7 @@
 //= require react-select
 //= require js-routes
 //= require react-timeline-slider
+//= require react-tabs
 //= require d3
 //= require d3-sankey
 //= require tooltipster
@@ -28,3 +29,5 @@
 //= require lib/locale
 
 //= require components
+
+ReactTabs.Tabs.setUseDefaultStyles(false);

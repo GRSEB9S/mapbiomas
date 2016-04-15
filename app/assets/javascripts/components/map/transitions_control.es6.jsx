@@ -89,20 +89,6 @@ class TransitionsControl extends React.Component {
 
     return (
       <div className={controlClass}>
-        <div className="tabs map-control__tabs">
-          <div className="tabs__item" onClick={this.props.setMode}>
-            {I18n.t('map.index.coverage')}
-          </div>
-
-          <div className="tabs__item tabs__item--active">
-            {I18n.t('map.index.transitions')}
-          </div>
-
-          <div className="tabs__item">
-            {I18n.t('map.index.quality')}
-          </div>
-        </div>
-
         <h3 className="map-control__header">
           {I18n.t('map.index.transitions_analysis')}
         </h3>

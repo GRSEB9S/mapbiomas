@@ -92,7 +92,6 @@ class CoverageControl extends React.Component {
           <span className="coverage-label">{classification.name}</span>
           <span className="coverage-value">
             {Highcharts.numberFormat(coverageItem.area, 0, '.')} ha
-            {/*({coverageItem.percentage}%)*/}
           </span>
         </li>
       )
@@ -113,20 +112,6 @@ class CoverageControl extends React.Component {
     let territories = new Territories(this.props.availableTerritories);
     return (
       <div className="map-control">
-        <div className="tabs map-control__tabs">
-          <div className="tabs__item tabs__item--active" >
-            {I18n.t('map.index.coverage')}
-          </div>
-
-          <div className="tabs__item" onClick={this.props.setMode}>
-            {I18n.t('map.index.transitions')}
-          </div>
-
-          <div className="tabs__item">
-            {I18n.t('map.index.quality')}
-          </div>
-        </div>
-
         <h3 className="map-control__header">
           {I18n.t('map.index.coverage_analysis')}
         </h3>

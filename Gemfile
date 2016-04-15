@@ -36,6 +36,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-classnames'
   gem 'rails-assets-highcharts'
   gem 'rails-assets-react-input-autosize'
+  gem 'rails-assets-react-tabs'
   gem 'rails-assets-es6-shim'
   gem 'rails-assets-d3'
   gem 'rails-assets-tooltipster'
