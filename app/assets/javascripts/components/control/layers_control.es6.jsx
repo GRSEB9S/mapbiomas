@@ -18,28 +18,28 @@ class LayersControl extends React.Component {
             <li className="classification-item">
               <label>{I18n.t('map.index.layers.states')}</label>
               <Toggle
-                toggleColor="#b3b3b3"
+                toggleColor="#77b893"
                 defaultChecked={this.props.layers.states}
                 onChange={this.handleCheck.bind(this, 'states')} />
             </li>
             <li className="classification-item">
               <label>{I18n.t('map.index.layers.cities')}</label>
               <Toggle
-                toggleColor="#c8c8c8"
+                toggleColor="#77b893"
                 defaultChecked={this.props.layers.cities}
                 onChange={this.handleCheck.bind(this, 'cities')} />
             </li>
             <li className="classification-item">
               <label>{I18n.t('map.index.layers.biomes')}</label>
               <Toggle
-                toggleColor="#aaa"
+                toggleColor="#77b893"
                 defaultChecked={this.props.layers.biomes}
                 onChange={this.handleCheck.bind(this, 'biomes')} />
             </li>
             <li className="classification-item">
               <label>{I18n.t('map.index.layers.contour_maps')}</label>
               <Toggle
-                toggleColor="#aaa"
+                toggleColor="#77b893"
                 defaultChecked={this.props.layers.contourMaps}
                 onChange={this.handleCheck.bind(this, 'contourMaps')} />
             </li>

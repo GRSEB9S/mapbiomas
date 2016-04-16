@@ -18,24 +18,6 @@ class ClassificationsControl extends React.Component {
     }
   }
 
-  slugifyClassification(str) {
-    str = str.replace(/^\s+|\s+$/g, ''); // trim
-    str = str.toLowerCase();
-
-    // remove accents, swap ñ for n, etc
-    var from = "ãàáäâèéëêìíïîòóöôùúüûñç·/_,:;";
-    var to   = "aaaaaeeeeiiiioooouuuunc------";
-    for (var i = 0, l = from.length ; i < l ; i++) {
-      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
-    }
-
-    str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
-      .replace(/\s+/g, '-') // collapse whitespace and replace by -
-      .replace(/-+/g, '-'); // collapse dashes
-
-    return str;
-  }
-
   componentDidMount() {
     $('#classifications-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',
@@ -45,12 +27,9 @@ class ClassificationsControl extends React.Component {
 
   render() {
     let classificationsNodes = this.props.availableClassifications.map((classification) => {
-      let itemStyle = {
-        color: classification.color
-      }
       return (
         <li key={classification.id} className="classification-item">
-          <label style={itemStyle}>{classification.name}</label>
+          <label>{classification.name}</label>
           <Toggle
             toggleColor={classification.color}
             defaultChecked={this.isChecked(classification.id)}
