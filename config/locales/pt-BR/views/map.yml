@@ -9,13 +9,15 @@ pt-BR:
     index:
       opacity: Opacidade
       classifications: Classes
+      base_maps:
+        title: Mapas
+        google_earth: Google Earth
       layers:
         title: Camadas
         states: Estados
         cities: Municípios
         biomes: Biomas
         contour_maps: Cartas
-      base_maps: Mapas
       coverage_analysis: Análise de cobertura
       coverage: Cobertura
       transitions: Transições

@@ -7,6 +7,7 @@ class Map extends React.Component {
       viewOptionsIndex: 0,
       opacity: 0.6,
       classifications: null,
+      baseMaps: null,
       layers: null,
       year: null,
       years: [],
@@ -21,6 +22,10 @@ class Map extends React.Component {
   //Props
   get classifications() {
     return this.state.classifications || this.props.defaultClassifications;
+  }
+
+  get baseMaps() {
+    return this.state.baseMaps || this.props.defaultBaseMaps;
   }
 
   get layers() {
@@ -115,6 +120,14 @@ class Map extends React.Component {
     })
 
     this.setState({ classifications });
+  }
+
+  handleBaseMapsChange(ids) {
+    let baseMaps = ids.map((id) => {
+      return this.props.availableBaseMaps.find((c) => c.id === id);
+    })
+
+    this.setState({ baseMaps });
   }
 
   handleLayersChange(ids) {
@@ -268,6 +281,7 @@ class Map extends React.Component {
 
             <ReactTabs.TabList >
               <ReactTabs.Tab>{I18n.t('map.index.classifications')}</ReactTabs.Tab>
+              <ReactTabs.Tab>{I18n.t('map.index.base_maps.title')}</ReactTabs.Tab>
               <ReactTabs.Tab>{I18n.t('map.index.layers.title')}</ReactTabs.Tab>
             </ReactTabs.TabList>
 
@@ -278,6 +292,15 @@ class Map extends React.Component {
                 title={I18n.t('map.index.classifications')}
                 tooltip={I18n.t('map.tooltip')}
                 onChange={this.handleClassificationsChange.bind(this)}
+              />
+            </ReactTabs.TabPanel>
+
+            <ReactTabs.TabPanel>
+              <TogglesControl
+                options={this.baseMaps}
+                availableOptions={this.props.availableBaseMaps}
+                title={I18n.t('map.index.base_maps.title')}
+                onChange={this.handleBaseMapsChange.bind(this)}
               />
             </ReactTabs.TabPanel>
 
@@ -347,6 +370,8 @@ class Map extends React.Component {
 
         <MapCanvas
           {...this.tileOptions}
+          baseMaps={this.props.availableBaseMaps}
+          selectedBaseMaps={this.state.baseMaps}
           territory={this.territory}
           layers={this.props.availableLayers}
           selectedLayers={this.state.layers}

@@ -3,6 +3,8 @@ class MapPresenter
     {
       availableClassifications: TerrasAPI.classifications,
       defaultClassifications: TerrasAPI.classifications,
+      availableBaseMaps: base_maps,
+      defaultBaseMaps: [],
       availableLayers: layers,
       defaultLayers: [],
       availableTerritories: TerrasAPI.territories,
@@ -13,6 +15,18 @@ class MapPresenter
   end
 
   private
+
+  def base_maps
+    [
+      {
+        id: 0,
+        slug: 'googleEarth',
+        name: I18n.t('map.index.base_maps.google_earth'),
+        link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        attribution: '&copy; Esri &mdash; Source: Esri, USDA, USGS'
+      }
+    ]
+  end
 
   def layers
     [
