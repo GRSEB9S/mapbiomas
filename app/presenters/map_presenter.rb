@@ -53,6 +53,18 @@ class MapPresenter
         slug: 'biomes',
         name: I18n.t('map.index.layers.biomes'),
         link: 'https://karydja.cartodb.com/api/v2/viz/201bcb2a-026c-11e6-9f9a-0e3ff518bd15/viz.json'
+      },
+      {
+        id: 4,
+        slug: 'indigenousLands',
+        name: I18n.t('map.index.layers.indigenous_lands'),
+        link: 'https://karydja.cartodb.com/api/v2/viz/9294ef0a-04f2-11e6-8a00-0e31c9be1b51/viz.json'
+      },
+      {
+        id: 5,
+        slug: 'conservationUnits',
+        name: I18n.t('map.index.layers.conservation_units'),
+        link: 'https://karydja.cartodb.com/api/v2/viz/c6f498c2-04f2-11e6-bedf-0ecd1babdde5/viz.json'
       }
     ]
   end
