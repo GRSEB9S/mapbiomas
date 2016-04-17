@@ -1,20 +1,12 @@
-shared_path = ENV['APP_SHARED_PATH']
+workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+threads_count = Integer(ENV['MAX_THREADS'] || 4)
+threads threads_count, threads_count
 
 preload_app!
-workers 2
-threads 1, 6
-environment ENV['RAILS_ENV'] || "production"
 
-if ENV["HEROKU"]
-  rackup DefaultRackup
-  port ENV['PORT'] || 3000
-else
-  bind "unix://#{shared_path}/tmp/sockets/puma.sock"
-  stdout_redirect "#{shared_path}/log/puma.stdout.log", "#{shared_path}/log/puma.stderr.log", true
-  pidfile "#{shared_path}/tmp/pids/puma.pid"
-  state_path "#{shared_path}/tmp/sockets/puma.state"
-  activate_control_app
-end
+rackup DefaultRackup
+port ENV['PORT'] || 3000
+environment ENV['RACK_ENV'] || 'development'
 
 on_worker_boot do
   ActiveRecord::Base.establish_connection
