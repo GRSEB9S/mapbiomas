@@ -6,7 +6,8 @@ class Map extends React.Component {
       mainMenuIndex: 0,
       viewOptionsIndex: 0,
       opacity: 0.6,
-      classificatios: [],
+      classifications: null,
+      layers: null,
       year: null,
       years: [],
       territory: null,
@@ -14,18 +15,16 @@ class Map extends React.Component {
       transitions: [],
       transitionsMatrixExpanded: false,
       showWarning: true,
-      layers: {
-        states: false,
-        cities: false,
-        contourMaps: false,
-        biomes: false
-      }
     };
   }
 
   //Props
   get classifications() {
     return this.state.classifications || this.props.defaultClassifications;
+  }
+
+  get layers() {
+    return this.state.layers || this.props.defaultLayers;
   }
 
   get territory() {
@@ -118,6 +117,14 @@ class Map extends React.Component {
     this.setState({ classifications });
   }
 
+  handleLayersChange(ids) {
+    let layers = ids.map((id) => {
+      return this.props.availableLayers.find((c) => c.id === id);
+    })
+
+    this.setState({ layers });
+  }
+
   handleTransitionChange(transition) {
     this.setState({ transition });
   }
@@ -137,13 +144,6 @@ class Map extends React.Component {
 
   handleViewOptionsIndexSelect(index) {
     this.setState({ viewOptionsIndex: index });
-  }
-
-  handleLayerChange(key, value) {
-    let layers = _.clone(this.state.layers);
-    layers[key] = value;
-
-    this.setState({ layers });
   }
 
   isMulti() {
@@ -264,25 +264,29 @@ class Map extends React.Component {
 
           <ReactTabs.Tabs
               selectedIndex={this.state.viewOptionsIndex}
-              onSelect={this.handleViewOptionsIndexSelect.bind(this)}
-              className="map-control">
+              onSelect={this.handleViewOptionsIndexSelect.bind(this)}>
+
             <ReactTabs.TabList >
               <ReactTabs.Tab>{I18n.t('map.index.classifications')}</ReactTabs.Tab>
               <ReactTabs.Tab>{I18n.t('map.index.layers.title')}</ReactTabs.Tab>
             </ReactTabs.TabList>
 
             <ReactTabs.TabPanel>
-              <ClassificationsControl
-                {...this.props}
-                classifications={this.classifications}
+              <TogglesControl
+                options={this.classifications}
+                availableOptions={this.props.availableClassifications}
+                title={I18n.t('map.index.classifications')}
+                tooltip={I18n.t('map.tooltip')}
                 onChange={this.handleClassificationsChange.bind(this)}
               />
             </ReactTabs.TabPanel>
 
             <ReactTabs.TabPanel>
-              <LayersControl
-                layers={this.state.layers}
-                onLayerChange={this.handleLayerChange.bind(this)}
+              <TogglesControl
+                options={this.layers}
+                availableOptions={this.props.availableLayers}
+                title={I18n.t('map.index.layers.title')}
+                onChange={this.handleLayersChange.bind(this)}
               />
             </ReactTabs.TabPanel>
           </ReactTabs.Tabs>
@@ -297,6 +301,7 @@ class Map extends React.Component {
           selectedIndex={this.state.mainMenuIndex}
           onSelect={this.handleMainMenuIndexSelect.bind(this)}
           className="map-control-wrapper">
+
         <ReactTabs.TabList >
           <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
           <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
@@ -343,7 +348,8 @@ class Map extends React.Component {
         <MapCanvas
           {...this.tileOptions}
           territory={this.territory}
-          layers={this.state.layers}
+          layers={this.props.availableLayers}
+          selectedLayers={this.state.layers}
         />
 
         {this.renderCoverageAuxiliarControls()}

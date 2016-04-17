@@ -1,11 +1,10 @@
 .ReactTabs {
   background-color: $white;
   box-shadow: $base-box-shadow;
-  padding-top: $small-spacing;
   @include clearfix;
 
   &__TabList {
-    padding: 0 $base-spacing;
+    padding: $small-spacing $small-spacing 0;
     border-bottom: $base-border;
   }
 

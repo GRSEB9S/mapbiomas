@@ -3,12 +3,6 @@ class MapCanvas extends React.Component {
     super();
 
     this.layers = {};
-    this.layersLinks = {
-      states: 'https://karydja.cartodb.com/api/v2/viz/4dd47a54-01a8-11e6-86a9-0e31c9be1b51/viz.json',
-      cities: 'https://karydja.cartodb.com/api/v2/viz/72b94172-0263-11e6-a087-0e5db1731f59/viz.json',
-      contourMaps: 'https://karydja.cartodb.com/api/v2/viz/1413c17c-0274-11e6-ae17-0e787de82d45/viz.json',
-      biomes: 'https://karydja.cartodb.com/api/v2/viz/201bcb2a-026c-11e6-9f9a-0e3ff518bd15/viz.json'
-    }
   }
 
   get options() {
@@ -21,13 +15,19 @@ class MapCanvas extends React.Component {
     return _.defaults({}, this.props.layerOptions, defaultOptions);
   }
 
+  get layersSlugs() {
+    return _.map(this.props.selectedLayers, (layer) => {
+      return layer.slug;
+    });
+  }
+
   addLayers(map) {
-    _.each(this.layersLinks, (link, key) => {
-      cartodb.createLayer(map, link)
+    _.each(this.props.layers, (layer) => {
+      cartodb.createLayer(map, layer.link)
         .addTo(map)
-        .done((layer) => {
-          this.layers[key] = layer;
-          layer.setOpacity(0);
+        .done((mapLayer) => {
+          this.layers[layer.slug] = mapLayer;
+          mapLayer.setOpacity(0);
         })
     });
   }
@@ -58,8 +58,8 @@ class MapCanvas extends React.Component {
   }
 
   setLayersOpacity() {
-    _.each(this.props.layers, (value, key) => {
-      if(value) {
+    _.each(this.layers, (value, key) => {
+      if(_.contains(this.layersSlugs, key)) {
         this.layers[key].setOpacity(1);
       } else {
         this.layers[key].setOpacity(0);
