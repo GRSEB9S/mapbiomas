@@ -10,8 +10,8 @@ pt-BR:
       opacity: Opacidade
       classifications: Classes
       base_maps:
-        title: Mapas
-        google_earth: Google Earth
+        title: Imagens
+        satellite: Satélite
       layers:
         title: Camadas
         states: Estados

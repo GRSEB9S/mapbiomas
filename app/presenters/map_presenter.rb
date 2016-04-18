@@ -20,8 +20,8 @@ class MapPresenter
     [
       {
         id: 0,
-        slug: 'googleEarth',
-        name: I18n.t('map.index.base_maps.google_earth'),
+        slug: 'satellite',
+        name: I18n.t('map.index.base_maps.satellite'),
         link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
         attribution: '&copy; Esri &mdash; Source: Esri, USDA, USGS'
       }
