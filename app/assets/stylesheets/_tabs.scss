@@ -1,18 +1,46 @@
-.tabs {
-  margin-bottom: $base-spacing;
-  border-bottom: 1px solid lighten($action-color, 20%);
+.ReactTabs {
+  background-color: $white;
+  box-shadow: $base-box-shadow;
+  @include clearfix;
 
-  &__item {
-    text-transform: uppercase;
-    padding: $small-spacing $small-spacing $micro-spacing $small-spacing;
-    color: $action-color;
+  &__TabList {
+    padding: $small-spacing $small-spacing 0;
+    border-bottom: $base-border;
+  }
+
+  &__Tab {
     display: inline-block;
+    bottom: rem(-1px);
+    position: relative;
+    list-style: none;
+    padding: $micro-spacing $base-spacing;
     cursor: pointer;
-    text-align: center;
+    color: $light-gray;
 
-    &--active {
-      border-bottom: 2px solid $primary-action-color;
-      color: $primary-action-color;
+    &:focus {
+      outline: none;
+    }
+
+    &[aria-disabled=true] {
+      cursor: default;
+    }
+
+    &--selected {
+      border-bottom: rem(3px) solid $medium-green;
+      color: $medium-green;
+    }
+  }
+
+  .nav-buttons {
+    text-align: right;
+    top: rem(70px);
+    right: initial;
+    left: rem(-10px);
+  }
+
+  &__TabPanel {
+    .map-control {
+      box-shadow: none;
     }
   }
 }

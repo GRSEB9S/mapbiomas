@@ -16,7 +16,6 @@ gem 'sprockets-es6'
 gem 'react-rails'
 gem "i18n-js", ">= 3.0.0.rc11"
 gem "underscore-rails"
-gem "leaflet-rails"
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rack-timeout'
@@ -37,6 +36,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-classnames'
   gem 'rails-assets-highcharts'
   gem 'rails-assets-react-input-autosize'
+  gem 'rails-assets-react-tabs'
   gem 'rails-assets-es6-shim'
   gem 'rails-assets-d3'
   gem 'rails-assets-tooltipster'

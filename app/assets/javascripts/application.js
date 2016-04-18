@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require leaflet
 //= require es6-shim
 //= require underscore
 //= require react-0.14.0/react
@@ -16,10 +15,9 @@
 //= require react-select
 //= require js-routes
 //= require react-timeline-slider
+//= require react-tabs
 //= require d3
 //= require d3-sankey
-//= require mapbox-gl
-//= require leaflet-mapbox-gl
 //= require tooltipster
 
 //= require highcharts_config
@@ -31,3 +29,5 @@
 //= require lib/locale
 
 //= require components
+
+ReactTabs.Tabs.setUseDefaultStyles(false);

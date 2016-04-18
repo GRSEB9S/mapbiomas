@@ -33,6 +33,7 @@
   height: 18px;
   padding: 0;
   border-radius: 30px;
+  border: 1px solid $light-gray;
   background-color: $light-gray;
   transition: all 0.2s ease;
 }
@@ -74,6 +75,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
+  border: 1px solid $light-gray;
   background-color: #FAFAFA;
 
   box-sizing: border-box;

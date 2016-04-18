@@ -121,7 +121,6 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
-    leaflet-rails (0.7.4)
     letter_opener (1.4.1)
       launchy (~> 2.2)
     loofah (2.0.3)
@@ -181,6 +180,7 @@ GEM
     rails-assets-highcharts (4.1.9)
     rails-assets-jquery (2.1.4)
     rails-assets-react-input-autosize (0.6.2)
+    rails-assets-react-tabs (0.5.3)
     rails-assets-tooltipster (3.3.0)
       rails-assets-jquery (>= 1.7)
     rails-assets-underscore (1.8.3)
@@ -314,7 +314,6 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   js-routes
-  leaflet-rails
   letter_opener
   mina
   mina-puma
@@ -331,6 +330,7 @@ DEPENDENCIES
   rails-assets-es6-shim!
   rails-assets-highcharts!
   rails-assets-react-input-autosize!
+  rails-assets-react-tabs!
   rails-assets-tooltipster!
   rails-assets-underscore!
   rails-settings-cached (~> 0.4.0)
@@ -351,4 +351,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
