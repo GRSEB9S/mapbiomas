@@ -244,3 +244,10 @@
     }
   }
 }
+
+.tab-triple{
+  & > li{
+    width: calc(100% / 3);
+    text-align: center;
+  }
+}

@@ -279,7 +279,7 @@ class Map extends React.Component {
               selectedIndex={this.state.viewOptionsIndex}
               onSelect={this.handleViewOptionsIndexSelect.bind(this)}>
 
-            <ReactTabs.TabList >
+            <ReactTabs.TabList className="tab-triple">
               <ReactTabs.Tab>{I18n.t('map.index.classifications')}</ReactTabs.Tab>
               <ReactTabs.Tab>{I18n.t('map.index.base_maps.title')}</ReactTabs.Tab>
               <ReactTabs.Tab>{I18n.t('map.index.layers.title')}</ReactTabs.Tab>
@@ -325,7 +325,7 @@ class Map extends React.Component {
           onSelect={this.handleMainMenuIndexSelect.bind(this)}
           className="map-control-wrapper">
 
-        <ReactTabs.TabList >
+        <ReactTabs.TabList className="tab-triple">
           <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
           <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
           <ReactTabs.Tab disabled={true}>{I18n.t('map.index.quality')}</ReactTabs.Tab>
