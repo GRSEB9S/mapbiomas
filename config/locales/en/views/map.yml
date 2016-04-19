@@ -8,7 +8,18 @@ en:
         <p>The maps will be made as collections as they are validated and corrected, according to the stages of product development. The Collection 1 are currently in preparation and will be launched, as a validated product, in the first semester of 2016, comprising data from 2008 to 2015.</p>
     index:
       opacity: Opacity
-      classifications: Classifications
+      classifications: Classes
+      base_maps:
+        title: Images
+        satellite: Satellite
+      layers:
+        title: Layers
+        states: States
+        cities: Cities
+        biomes: Biomes
+        contour_maps: Contour maps
+        indigenous_lands: Terras indígenas
+        conservation_units: Unidades de conservação
       coverage_analysis: Coverage analysis
       coverage: Coverage
       transitions: Transitions
