@@ -66,9 +66,6 @@ class MapCanvas extends React.Component {
       this.options
     ).addTo(this.map);
 
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}.png')
-      .addTo(this.map);
-
     this.fitTerritory();
   }
 
