@@ -3,6 +3,14 @@
   box-shadow: $base-box-shadow;
   @include clearfix;
 
+  @include media($mobile-landscape) {
+    display: none;
+  }
+
+  @include media($mobile) {
+    display: none;
+  }
+
   &__TabList {
     padding: $small-spacing $small-spacing 0;
     border-bottom: $base-border;
