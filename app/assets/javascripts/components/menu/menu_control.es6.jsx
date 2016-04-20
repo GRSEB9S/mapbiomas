@@ -76,6 +76,11 @@ class MenuControl extends React.Component {
                   {I18n.t('layouts.header.database.collection')}
                 </a>
               </li>
+              <li className="menu__item" >
+                <a className="menu__link" href={Routes.page_path("database/general_data")}>
+                  {I18n.t('layouts.header.database.general_data')}
+                </a>
+              </li>
             </ul>
           </li>
           <li className="menu__item">
