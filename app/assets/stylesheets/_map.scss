@@ -97,11 +97,12 @@
   }
 }
 
+.chart-tooltip {
+  margin-top: $base-spacing;
+}
+
 .coverage-chart {
-  width: 30%;
-  height: 125px;
-  margin-left: -12px;
-  display: inline-block;
+  height: 250px;
 }
 
 .coverage-legend {

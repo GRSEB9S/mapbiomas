@@ -10,9 +10,11 @@ class CoverageControl extends React.Component {
     let data = this.state.coverage.map((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
       let y = parseFloat(coverageItem.area);
+
       if(isNaN(y)) {
         y = 0;
       }
+
       return {
         y: y,
         name: classification.name,
@@ -35,13 +37,18 @@ class CoverageControl extends React.Component {
         spacingLeft: 0,
         spacingRight: 0
       },
-      tooltip: false,
       plotOptions: {
         pie: {
           dataLabels: {
             enabled: false
           },
-        }
+          borderColor: '#DDDDDD'
+        },
+      },
+      tooltip: {
+        pointFormat: '<b>' + I18n.t('map.index.coverage') + '</b>: {point.y}',
+        valueSuffix: ' ha',
+        valueDecimals: 2
       },
       exporting: { enabled: false },
       title: false,
@@ -81,33 +88,6 @@ class CoverageControl extends React.Component {
     });
   }
 
-  renderCoverage() {
-    let coverageClassifications = this.state.coverage.map((coverageItem) => {
-      let classification = this.findCoverageClassification(coverageItem);
-      let itemStyle = {
-        color: classification.color
-      };
-      return (
-        <li key={coverageItem.id} style={itemStyle}>
-          <span className="coverage-label">{classification.name}</span>
-          <span className="coverage-value">
-            {Highcharts.numberFormat(coverageItem.area, 0, '.')} ha
-          </span>
-        </li>
-      )
-    });
-
-    return (
-      <div className="coverage">
-        <div className="coverage-chart chart" ref="chartElement"></div>
-        <ul className="coverage-legend">
-          <li><label>{this.props.year}</label></li>
-          {coverageClassifications}
-        </ul>
-      </div>
-    );
-  }
-
   render() {
     let territories = new Territories(this.props.availableTerritories);
     return (
@@ -124,7 +104,9 @@ class CoverageControl extends React.Component {
             onChange={this.props.onTerritoryChange}
             clearable={false}
           />
-          {this.renderCoverage()}
+          <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
+          <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
+          <div className="coverage-chart" ref="chartElement"></div>
         </div>
       </div>
     );

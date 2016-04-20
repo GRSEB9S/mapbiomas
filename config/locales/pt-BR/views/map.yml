@@ -29,6 +29,9 @@ pt-BR:
         title: Matriz de transições
         total: Total
       search: "Busque municípios, estados, biomas..."
+      chart:
+        tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.
+        year: "Ano: %{year}"
       analyze: Analisar
       download:
         title: Baixe os dados

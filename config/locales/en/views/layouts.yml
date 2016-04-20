@@ -39,6 +39,7 @@ en:
         reference: Reference Maps
         mosaics: Landsat Mosaics
         collection: MapBiomas Collections
+        general_data: General data
       workspace: Workspace
       contact:
         title: Contact us
