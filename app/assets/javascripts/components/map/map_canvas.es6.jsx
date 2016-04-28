@@ -126,7 +126,7 @@ class MapCanvas extends React.Component {
         if(quality) {
           switch(quality.quality) {
             case 1: return { ...style, fillColor: '#008800' };
-            case 2: return { ...style, fillColor: '#008888' };
+            case 2: return { ...style, fillColor: '#FCF35B' };
             case 3: return { ...style, fillColor: '#880000' };
             default: return style;
           }
