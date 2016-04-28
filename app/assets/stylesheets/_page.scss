@@ -5,6 +5,12 @@
     @extend %default-ul;
   }
 
+  h2.page__title {
+    color: $light-green;
+    margin-top: $big-spacing;
+    font-size: $subtitle-font-size;
+  }
+
   img {
     display: block;
     margin: 0 auto 0 auto;
@@ -62,4 +68,3 @@
     text-align: center;
   }
 }
-
