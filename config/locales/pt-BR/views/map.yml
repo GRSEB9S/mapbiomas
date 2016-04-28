@@ -3,9 +3,9 @@ pt-BR:
     warning:
       title: Nota de precaução
       body: |
-        <p>Todos os produtos do Projeto MAPBIOMAS ora disponibilizados estão em versão beta (proof-of-concept), e são destinados apenas para testar a viabilidade e a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
-        <p>Os produtos apresentados na versão Beta ainda são incompletos e ainda não foram validados. Eles mostram inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem).</p>
-        <p>Os mapas serão disponibilizados por coleções, à medida que sejam validados e corrigidos, de acordo com as etapas de desenvolvimento dos produtos. Os mapas da Coleção 1.0 do MAPBIOMAS estão em processo de validação e serão disponibilizados no primeiro semestre de 2016 com os dados de 2008 a 2015.</p>
+        <p>Todos os mapas do Projeto MAPBIOMAS fazem parte da Coleção 1 que incluem dados anuais no período 2008 a 2015.</p>
+        <p>Esta coleção é fruto do primeiro ano de trabalho do projeto MapBiomas que foi destinado a testar a viabilidade e a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
+        <p>Os mapas apresentados ainda possuem uma séria de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem). Um processo de validação com utilização de pontos de amostragem para análise de acurácia esta em implementação para aplicação nas próximas coleções.</p>
     index:
       opacity: Opacidade
       classifications: Classes

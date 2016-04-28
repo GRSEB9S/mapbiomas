@@ -41,6 +41,14 @@ a {
   &:focus {
     outline: none;
   }
+
+  &.link-overflow {
+    display: block;
+    white-space: nowrap; 
+    width: 16em; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  }
 }
 
 hr {
@@ -49,6 +57,12 @@ hr {
   border-right: none;
   border-top: none;
   margin: $base-spacing 0;
+}
+
+blockquote {
+  background-color: rgba($light-gray, 0.4);
+  padding: $base-spacing;
+  margin: $base-spacing;
 }
 
 img,
