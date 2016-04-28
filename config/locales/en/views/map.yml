@@ -3,9 +3,9 @@ en:
     warning:
       title: Cautionary Note
       body: |
-        <p>All MAPBIOMAS Project products available are beta version (proof of concept) and are only intended to test the feasibility and efficiency of both the production methodology of annual land cover/land use maps, as well as the performance and operational capability of the Web Platform designed to enable collaborative work.</p>
-        <p>The beta version products are still incomplete and have not yet been validated. Therefore, many spatial inconsistencies in the thematic classifications(between classes and between years) are likely to be encountered.</p>
-        <p>The maps will be made as collections as they are validated and corrected, according to the stages of product development. The Collection 1 are currently in preparation and will be launched, as a validated product, in the first semester of 2016, comprising data from 2008 to 2015.</p>
+        <p>All maps of MAPBIOMAS Project are part of the collection 1 that includes annual data for the period 2008-2015.</p>
+        <p>This collection is the result of the first work year of MapBiomas project that was intended to test the feasibility and efficiency of both production methodology of annual series of maps cover and land use as the operation of the Web platform designed to facilitate collaborative work of the different partners involved.</p>
+        <p>The maps still have a series of imperfections among which stand out possible spatial inconsistencies in the thematic classifications, the timeline ( and between cards) and between thematic classes and cross-cutting issues (agriculture and pasture) . A validation process with the use of sampling plots for accuracy analysis is in implementation for application in the next collections.</p>
     index:
       opacity: Opacity
       classifications: Classes
