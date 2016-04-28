@@ -88,10 +88,11 @@ class Map extends React.Component {
     if(this.state.years.length == 2) {
       return this.state.years;
     } else {
-      let min = Math.min.apply(Math, this.props.availableYears);
-      let max = Math.max.apply(Math, this.props.availableYears);
+      let availableYears =_.sortBy(this.props.availableYears, (year) => {
+        return year;
+      })
 
-      return [min, max];
+      return _.last(availableYears, 2)
     }
   }
 
@@ -160,7 +161,7 @@ class Map extends React.Component {
   }
 
   isMulti() {
-    return !(this.mode == 'coverage');
+    return this.mode == 'transitions';
   }
 
   totalClassificationData(arr, from, to) {
