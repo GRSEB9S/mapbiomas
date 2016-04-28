@@ -9,6 +9,8 @@ class Map extends React.Component {
       classifications: null,
       baseMaps: null,
       layers: null,
+      cards: null,
+      qualities: [],
       year: null,
       years: [],
       territory: null,
@@ -227,6 +229,13 @@ class Map extends React.Component {
     this.setState({ showWarning: false });
   }
 
+  loadQualities() {
+    API.qualities({year: this.state.year})
+    .then((qualities) => {
+      this.setState({ qualities });
+    });
+  }
+
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
@@ -373,6 +382,12 @@ class Map extends React.Component {
     );
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    if(this.state.year != nextState.year || this.mode == 'quality') {
+      this.loadQualities();
+    }
+  }
+
   render() {
     return (
       <div className="map">
@@ -382,9 +397,11 @@ class Map extends React.Component {
           {...this.tileOptions}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
+          mode={this.mode}
           territory={this.territory}
           layers={this.props.availableLayers}
           selectedLayers={this.state.layers}
+          qualities={this.state.qualities}
         />
 
         {this.renderCoverageAuxiliarControls()}

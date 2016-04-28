@@ -2,8 +2,13 @@ class MapCanvas extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      cards: null
+    }
+
     this.baseMaps = {};
     this.layers = {};
+    this.cardsLayer = null;
   }
 
   get options() {
@@ -25,6 +30,16 @@ class MapCanvas extends React.Component {
   get layersSlugs() {
     return _.map(this.props.selectedLayers, (layer) => {
       return layer.slug;
+    });
+  }
+
+  addCardsLayer() {
+    $.getJSON("https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/cartas_ibge_250000.geojson", (cards) => {
+      this.setState({
+        cards,
+      }, () => {
+        this.setQualityLayer();
+      });
     });
   }
 
@@ -58,6 +73,7 @@ class MapCanvas extends React.Component {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
     }).addTo(this.map);
 
+    this.addCardsLayer();
     this.addBaseMaps(this.map);
     this.addLayers(this.map);
 
@@ -93,6 +109,35 @@ class MapCanvas extends React.Component {
     });
   }
 
+  setCardsLayerOpacity() {
+    if(this.cardsLayers) {
+      if(this.props.mode == 'quality') {
+        this.cardsLayer.setOpacity(1);
+      } else {
+        this.cardsLayer.setOpacity(0);
+      }
+    }
+  }
+
+  setQualityLayer() {
+    if(this.cardsLayer) {
+      this.map.removeLayer(this.cardsLayer);
+    }
+
+    let cardsLayer = L.geoJson(this.state.cards, {
+      onEachFeature: (feature) => {
+      }
+    }).addTo(this.map);
+
+    this.cardsLayer = cardsLayer;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!_.isEqual(this.props.qualities, nextProps.qualities)) {
+      this.setQualityLayer();
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if(prevProps.territory.id != this.props.territory.id) {
       this.fitTerritory();
@@ -102,6 +147,7 @@ class MapCanvas extends React.Component {
       this.dataLayer.setOpacity(this.props.opacity);
       this.setBaseMapsOpacity();
       this.setLayersOpacity();
+      this.setCardsLayerOpacity();
 
       if(!_.isEqual(this.props.layerOptions, prevProps.layerOptions)) {
         this.dataLayer.setParams(this.options);

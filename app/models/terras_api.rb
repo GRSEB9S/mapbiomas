@@ -27,4 +27,10 @@ class TerrasAPI
       territory_id: territory_id
     })
   end
+
+  def self.qualities(year)
+    get("/dashboard/services/qualities", query: {
+      year: year
+    })
+  end
 end
