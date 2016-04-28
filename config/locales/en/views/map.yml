@@ -28,6 +28,7 @@ en:
       transitions_matrix:
         title: Transitions matrix
         total: Total
+      quality_analysis: Quality analysis
       search: "Search for cities, states, protected areas..."
       chart:
         tooltip: Move your mouse over the chart to see its values.

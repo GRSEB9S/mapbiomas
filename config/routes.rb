@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :coverage, only: :index
     resources :territories, only: :index
     resources :transitions, only: :index
+    resources :qualities, only: :index
   end
 end

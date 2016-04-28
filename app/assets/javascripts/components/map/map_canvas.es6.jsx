@@ -2,8 +2,13 @@ class MapCanvas extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      cards: null
+    }
+
     this.baseMaps = {};
     this.layers = {};
+    this.cardsLayer = null;
   }
 
   get options() {
@@ -25,6 +30,16 @@ class MapCanvas extends React.Component {
   get layersSlugs() {
     return _.map(this.props.selectedLayers, (layer) => {
       return layer.slug;
+    });
+  }
+
+  loadCards() {
+    $.getJSON("https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson", (cards) => {
+      this.setState({
+        cards,
+      }, () => {
+        this.setQualityLayer();
+      });
     });
   }
 
@@ -58,6 +73,7 @@ class MapCanvas extends React.Component {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
     }).addTo(this.map);
 
+    this.loadCards();
     this.addBaseMaps(this.map);
     this.addLayers(this.map);
 
@@ -93,6 +109,42 @@ class MapCanvas extends React.Component {
     });
   }
 
+  setQualityLayer() {
+    if(this.cardsLayer) {
+      this.map.removeLayer(this.cardsLayer);
+    }
+    if(this.props.mode !== 'quality') return;
+    const style = {
+      color: '#000',
+      fillColor: '#aaa',
+      weight: 0.2
+    };
+
+    const cardsLayer = L.geoJson(this.state.cards, {
+      style: (feature) => {
+        const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
+        if(quality) {
+          switch(quality.quality) {
+            case 1: return { ...style, fillColor: '#008800' };
+            case 2: return { ...style, fillColor: '#FCF35B' };
+            case 3: return { ...style, fillColor: '#880000' };
+            default: return style;
+          }
+        } else {
+          return style;
+        }
+      }
+    }).addTo(this.map);
+
+    this.cardsLayer = cardsLayer;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!_.isEqual(this.props.qualities, nextProps.qualities)) {
+      this.setQualityLayer();
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if(prevProps.territory.id != this.props.territory.id) {
       this.fitTerritory();
@@ -102,6 +154,7 @@ class MapCanvas extends React.Component {
       this.dataLayer.setOpacity(this.props.opacity);
       this.setBaseMapsOpacity();
       this.setLayersOpacity();
+      this.setQualityLayer();
 
       if(!_.isEqual(this.props.layerOptions, prevProps.layerOptions)) {
         this.dataLayer.setParams(this.options);

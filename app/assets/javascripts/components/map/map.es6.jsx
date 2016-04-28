@@ -9,6 +9,8 @@ class Map extends React.Component {
       classifications: null,
       baseMaps: null,
       layers: null,
+      cards: null,
+      qualities: [],
       year: null,
       years: [],
       territory: null,
@@ -88,10 +90,11 @@ class Map extends React.Component {
     if(this.state.years.length == 2) {
       return this.state.years;
     } else {
-      let min = Math.min.apply(Math, this.props.availableYears);
-      let max = Math.max.apply(Math, this.props.availableYears);
+      let availableYears =_.sortBy(this.props.availableYears, (year) => {
+        return year;
+      })
 
-      return [min, max];
+      return _.last(availableYears, 2)
     }
   }
 
@@ -160,7 +163,7 @@ class Map extends React.Component {
   }
 
   isMulti() {
-    return !(this.mode == 'coverage');
+    return this.mode == 'transitions';
   }
 
   totalClassificationData(arr, from, to) {
@@ -224,6 +227,21 @@ class Map extends React.Component {
 
   closeWarning() {
     this.setState({ showWarning: false });
+  }
+
+  loadQualities() {
+    API.qualities({year: this.year})
+    .then((qualities) => {
+      return _.map(qualities, (q) => {
+        return {
+          ...q,
+          name: q.chart
+        };
+      });
+    })
+    .then((qualities) => {
+      this.setState({ qualities });
+    });
   }
 
   renderTransitionsMatrix() {
@@ -328,7 +346,7 @@ class Map extends React.Component {
         <ReactTabs.TabList className="tab-triple">
           <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
           <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
-          <ReactTabs.Tab disabled={true}>{I18n.t('map.index.quality')}</ReactTabs.Tab>
+          <ReactTabs.Tab>{I18n.t('map.index.quality')}</ReactTabs.Tab>
         </ReactTabs.TabList>
 
         <ReactTabs.TabPanel>
@@ -358,9 +376,24 @@ class Map extends React.Component {
           />
         </ReactTabs.TabPanel>
 
-        <ReactTabs.TabPanel></ReactTabs.TabPanel>
+        <ReactTabs.TabPanel>
+          <QualityControl
+            {...this.props}
+            availableTerritories={this.territories}
+            territory={this.territory}
+            year={this.year}
+            classifications={this.classifications}
+            onTerritoryChange={this.handleTerritoryChange.bind(this)}
+          />
+        </ReactTabs.TabPanel>
       </ReactTabs.Tabs>
     );
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(!_.isEqual(prevState, this.state) &&  this.mode == 'quality') {
+      this.loadQualities();
+    }
   }
 
   render() {
@@ -372,9 +405,11 @@ class Map extends React.Component {
           {...this.tileOptions}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
+          mode={this.mode}
           territory={this.territory}
           layers={this.props.availableLayers}
           selectedLayers={this.state.layers}
+          qualities={this.state.qualities}
         />
 
         {this.renderCoverageAuxiliarControls()}

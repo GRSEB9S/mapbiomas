@@ -90,6 +90,7 @@ class CoverageControl extends React.Component {
 
   render() {
     let territories = new Territories(this.props.availableTerritories);
+
     return (
       <div className="map-control">
         <h3 className="map-control__header">
