@@ -230,7 +230,15 @@ class Map extends React.Component {
   }
 
   loadQualities() {
-    API.qualities({year: this.state.year})
+    API.qualities({year: this.year})
+    .then((qualities) => {
+      return _.map(qualities, (q) => {
+        return {
+          ...q,
+          name: q.chart
+        };
+      });
+    })
     .then((qualities) => {
       this.setState({ qualities });
     });
@@ -382,8 +390,8 @@ class Map extends React.Component {
     );
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if(this.state.year != nextState.year || this.mode == 'quality') {
+  componentDidUpdate(prevProps, prevState) {
+    if(!_.isEqual(prevState, this.state) &&  this.mode == 'quality') {
       this.loadQualities();
     }
   }
