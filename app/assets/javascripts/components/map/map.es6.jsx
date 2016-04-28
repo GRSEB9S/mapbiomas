@@ -329,7 +329,7 @@ class Map extends React.Component {
         <ReactTabs.TabList className="tab-triple">
           <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
           <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
-          <ReactTabs.Tab disabled={true}>{I18n.t('map.index.quality')}</ReactTabs.Tab>
+          <ReactTabs.Tab>{I18n.t('map.index.quality')}</ReactTabs.Tab>
         </ReactTabs.TabList>
 
         <ReactTabs.TabPanel>
@@ -359,7 +359,16 @@ class Map extends React.Component {
           />
         </ReactTabs.TabPanel>
 
-        <ReactTabs.TabPanel></ReactTabs.TabPanel>
+        <ReactTabs.TabPanel>
+          <QualityControl
+            {...this.props}
+            availableTerritories={this.territories}
+            territory={this.territory}
+            year={this.year}
+            classifications={this.classifications}
+            onTerritoryChange={this.handleTerritoryChange.bind(this)}
+          />
+        </ReactTabs.TabPanel>
       </ReactTabs.Tabs>
     );
   }
