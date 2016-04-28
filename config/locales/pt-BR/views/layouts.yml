@@ -38,8 +38,8 @@ pt-BR:
         title: Base de dados
         reference: Mapas de Referência
         mosaics: Mosaicos Landsat
-        collection: Coleção MapBiomas
-        general_data: Dados gerais
+        collection: Mapas Coleção 1
+        general_data: Estatísticas Coleção 1
       workspace: Ambiente de Trabalho
       contact:
         title: Contato
