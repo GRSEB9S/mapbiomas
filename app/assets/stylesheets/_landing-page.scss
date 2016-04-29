@@ -98,13 +98,19 @@
   position: absolute;
   top: 43%;
   font-size: rem(70px);
-  left: 15%;
 }
 .carousel-control.left {
+  .material-icons {
+    left: 15%;
+  }
 }
 .carousel-control.right {
   left: auto;
   right: 0;
+
+  .material-icons {
+    right: 15%;
+  }
 }
 .carousel-control:hover,
 .carousel-control:focus {
@@ -169,6 +175,7 @@
   position: absolute;
   left: 15%;
   right: 15%;
+  width: rem(400px);
   bottom: rem(20px);
   z-index: 10;
   padding-top: rem(20px);
@@ -176,8 +183,15 @@
   color: $white;
   text-shadow: 0 1px 2px rgba($black, 0.6);
 
-  h2 {
+  @media (max-width: 640px) {
+    width: auto;
+  }
+
+  &, h2, a {
     color: $white;
+  }
+
+  h2 {
     font-size: rem(26px);
     font-weight: 400;
   }
