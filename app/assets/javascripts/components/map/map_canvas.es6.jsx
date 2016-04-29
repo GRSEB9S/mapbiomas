@@ -113,7 +113,9 @@ class MapCanvas extends React.Component {
     if(this.cardsLayer) {
       this.map.removeLayer(this.cardsLayer);
     }
+
     if(this.props.mode !== 'quality') return;
+
     const style = {
       color: '#000',
       fillColor: '#aaa',
