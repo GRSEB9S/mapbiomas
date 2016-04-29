@@ -110,7 +110,7 @@ class Map extends React.Component {
   //Handlers
   handleTerritoryChange(id) {
     let territory = this.props.availableTerritories.find((t) => t.id == id);
-    this.setState({ territory: territory })
+    this.setState({ territory })
   }
 
   handleYearChange(v) {

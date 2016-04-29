@@ -1,6 +1,23 @@
 class LandsatDownload extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      year: null
+    }
+  }
+
+  get years() {
+    return this.props.availableYears.map((t, index) => {
+      return {
+        id: index + 1,
+        name: t
+      };
+    });
+  }
+
+  get year() {
+    return this.state.year || _.last(this.years);
   }
 
   addBaseMap(map) {
@@ -17,12 +34,20 @@ class LandsatDownload extends React.Component {
     };
 
     L.geoJson(cards, {
-      style: style
+      style: style,
+      onEachFeature: (feature, layer) => {
+        layer.on('mouseover', (e) => {
+          e.target.bindPopup(feature.properties.name).openPopup();
+        });
+        layer.on('click', (e) => {
+          window.open(`http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/landsat/${feature.properties.name}/${this.year.name}`, '_blank');
+        });
+      }
     }).addTo(map);
   }
 
   addCardsLayer(map) {
-    $.getJSON("https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson", (cards) => {
+    $.getJSON(this.props.cardsUrl, (cards) => {
       this.setState({ cards }, () => {
         this.setCardsLayer(cards, map);
       });
@@ -39,14 +64,43 @@ class LandsatDownload extends React.Component {
     this.addCardsLayer(this.map);
   }
 
+  handleYearChange(id) {
+    let year = this.years.find((t) => t.id == id);
+    this.setState({ year });
+  }
+
+  onYearChange(id) {
+    let year = _.findWhere(this.years, {value: id});
+    this.setState({ year });
+  }
+
   componentDidMount() {
     this.setup();
+  }
+
+  renderSelect() {
+    let years = new Years(this.years);
+
+    return (
+      <div className="map-control-wrapper year-select-wrapper">
+        <Select
+          name="territory-select"
+          value={this.year.id}
+          options={years.toOptions()}
+          onChange={this.handleYearChange.bind(this)}
+          clearable={false}
+        />
+      </div>
+    );
   }
 
   render() {
     return (
       <div className="landsat-download">
-        <div className="map__canvas" ref="element"></div>
+        <div className="map">
+          <div className="map__canvas" ref="element"></div>
+          {this.renderSelect()}
+        </div>
       </div>
     );
   }

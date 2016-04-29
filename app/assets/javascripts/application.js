@@ -25,6 +25,7 @@
 //= require lib/api
 //= require lib/classifications
 //= require lib/territories
+//= require lib/years
 //= require lib/xlsx_utils
 //= require lib/locale
 
