@@ -125,9 +125,9 @@ class MapCanvas extends React.Component {
         const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
         if(quality) {
           switch(quality.quality) {
-            case 1: return { ...style, fillColor: '#008800' };
+            case 3: return { ...style, fillColor: '#008800' };
             case 2: return { ...style, fillColor: '#FCF35B' };
-            case 3: return { ...style, fillColor: '#880000' };
+            case 1: return { ...style, fillColor: '#880000' };
             default: return style;
           }
         } else {
