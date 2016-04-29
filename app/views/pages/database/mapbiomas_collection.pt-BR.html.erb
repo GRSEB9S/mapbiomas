@@ -15,7 +15,47 @@
       <strong>Importante:</strong> Ao compor um mosaico único ou calcular estatísticas para o bioma deve ser observado que:  (i) Existe uma zona de sobreposição de 5km entre todas as cartas; (ii) As cartas de fronteira entre biomas são compostas por classificações específicas para cada bioma; (iii) Os dados não estão clipados com o limite dos biomas; (iv) Para cálculo de área é necessário utilizar uma projeção métrica adequada; (v) Todos os dados estão no formato GeoTiff e possuem compressão LZW.
     </blockquote>
 
-    <p><strong>[Em Breve]</strong></p>
+    <label>Selecione o ano</label>
+    <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+
+    <div class="methodology-presentation">
+      <%= image_tag "amazonia.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Amazônia', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/AMAZONIA/'+$('#year').val(), '_blank')"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pantanal.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Pantanal', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PANTANAL/'+$('#year').val(), '_blank')"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "caatinga.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Caatinga', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/CAATINGA/'+$('#year').val(), '_blank')"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "mata_atlantica.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Mata Atlântica', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/MATAATLANTICA/'+$('#year').val(), '_blank')"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "cerrado.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Cerrado', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/CERRADO/'+$('#year').val(), '_blank')"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pampa.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Pampa', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PAMPA/'+$('#year').val(), '_blank')"} %>
+      </div>
+    </div>
+
+    <br />
 
     <h2>QUALIDADE DOS MOSAICOS LANDSAT</h2>
     <p>Os mosaicos usam informações de centenas de cenas landsat. A quantidade de nuvens e outros pontos de interferência afetam a qualidade do mosaico. Uma avaliação da qualidade destes mosaicos pode ser observada através do download da tabela abaixo.</p>
