@@ -1,37 +1,54 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<article id="carousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox">
+    <div class="item active" style="background-image: url(<%= image_url "amazonia-slider.jpg" %>);">
+      <div class="carousel-caption">
+        <a href="/pages/about/about">
+          <h2>MapBiomas</h2>
+          <p>Conheça o projeto de mapeamento anual de cobertura e uso da terra no Brasil </p>
+        </a>
+      </div>
+    </div>
+    <div class="item" style="background-image: url(<%= image_url "continente-slider.png" %>);">
+      <div class="carousel-caption">
+        <a href="/map">
+          <h2>Mapas</h2>
+          <p>Navegue pelos mapas anuais de cobertura e uso do solo do Brasil de 2008 a 2015 produzidos pelo MapBiomas</p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+    <i class="material-icons">keyboard_arrow_left</i>
+  </a>
+  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+    <i class="material-icons">keyboard_arrow_right</i>
+  </a>
+</article>
+
+<article class="links">
+  <div class="links__item orange">
+    <a href="/pages/methodology">
+      <h2>Metodologia</h2>
+      <p>Entenda como são produzidos os mapas do MapBiomas</p>
+    </a>
+  </div>
+  <div class="links__item blue">
+    <a href="/pages/database/reference_maps">
+      <h2>Base de dados</h2>
+      <p>Acesse as bases de dados do projeto MapBiomas</p>
+    </a>
+  </div>
+  <div class="links__item green">
+    <a href="/map">
+      <h2>Mapas</h2>
+      <p>Navegue pelos mapas de cobertura e uso do solo do Brasil</p>
+    </a>
+  </div>
+</article>
+
 <article class="page page--home">
   <div class="page__container">
-    <section class="page__section">
-      <div class="page__section-media--full">
-        <iframe style="width: 100%; height: 500px" src="https://www.youtube.com/embed/UDobZ3oB5TY" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <section class="page__section">
-      <div class="page__section-text">
-        <h2 class="page__title">Explore o Mapa</h2>
-        <p>Acesse aqui os mapas, dados e relatórios</p>
-        <%= link_to 'Ver Mapa', map_path, class: 'button button--primary' %>
-      </div>
-      <div class="page__section-media">
-        <%= image_tag "platform-mockup.png" %>
-      </div>
-    </section>
-
-    <section class="page__section">
-      <div class="page__section-media">
-        <iframe style="width: 100%; height: 300px" src="https://www.youtube.com/embed/rmz5BsZfPjE" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="page__section-text">
-        <h2 class="page__title">Lançamento do MapBiomas</h2>
-        <p>Nova plataforma vai mapear a dinâmica de uso da terra em todo o Brasil nas últimas três décadas. Veja o lançamento ao lado!</p>
-
-        <%= link_to 'Press Release',
-          'https://storage.googleapis.com/mapbiomas/Release%20MapBiomas%20-%2026.11.2015.pdf', target: 
-          '_blank', class: 'button button--primary' %>
-
-      </div>
-    </section>
-
     <section class="page__section--full">
       <h2 class="page__title">Parceiros</h2>
       <%= image_tag "partners.png" %>
