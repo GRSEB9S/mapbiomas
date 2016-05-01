@@ -1,4 +1,4 @@
-class Territories {
+export class Territories {
   constructor(territories) {
     this.territories = territories;
   }

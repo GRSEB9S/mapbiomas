@@ -1,4 +1,9 @@
-class TogglesControl extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import Toggle from '../../../../../vendor/assets/javascripts/react-toggle.jsx';
+import tooltipster from 'tooltipster';
+
+export class TogglesControl extends React.Component {
   get ids() {
     return this.props.options.map((c) => c.id);
   }

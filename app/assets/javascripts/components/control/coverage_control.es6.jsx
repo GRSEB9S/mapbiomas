@@ -1,4 +1,11 @@
-class CoverageControl extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import Highcharts from 'highcharts';
+import Select from 'react-select';
+import { API } from '../../lib/api';
+import { Territories } from '../../lib/territories';
+
+export class CoverageControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

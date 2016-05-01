@@ -1,4 +1,4 @@
-class Years {
+export class Years {
   constructor(years) {
     this.years = years;
   }

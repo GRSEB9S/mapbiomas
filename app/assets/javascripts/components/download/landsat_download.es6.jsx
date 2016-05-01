@@ -1,4 +1,8 @@
-class LandsatDownload extends React.Component {
+import React from 'react';
+import Select from 'react-select';
+import { Years } from '../../lib/years';
+
+export default class LandsatDownload extends React.Component {
   constructor() {
     super();
 
@@ -64,8 +68,8 @@ class LandsatDownload extends React.Component {
     this.addCardsLayer(this.map);
   }
 
-  handleYearChange(id) {
-    let year = this.years.find((t) => t.id == id);
+  handleYearChange(newYear) {
+    let year = this.years.find((t) => t.id == newYear.value);
     this.setState({ year });
   }
 

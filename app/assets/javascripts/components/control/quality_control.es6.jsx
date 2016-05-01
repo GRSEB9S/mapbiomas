@@ -1,4 +1,8 @@
-class QualityControl extends React.Component {
+import React from 'react';
+import Select from 'react-select';
+import { Territories } from '../../lib/territories';
+
+export class QualityControl extends React.Component {
   render() {
     let territories = new Territories(this.props.availableTerritories);
 

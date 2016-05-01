@@ -1,4 +1,7 @@
-class MapCanvas extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+
+export class MapCanvas extends React.Component {
   constructor() {
     super();
 
