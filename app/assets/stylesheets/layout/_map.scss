@@ -1,0 +1,95 @@
+.map__wrapper {
+  display: table-row;
+}
+
+.map,
+.map__wrapper,
+.map__canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.map {
+  position: relative;
+  z-index: 1;
+}
+
+.map-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: $base-spacing;
+  box-shadow: $base-box-shadow;
+  border-radius: $base-border-radius;
+  background: $white;
+  padding: $base-spacing;
+  z-index: 10;
+  max-height: 100%;
+
+  &--vertical-smaller {
+    bottom: auto;
+    margin: $base-spacing;
+
+    @include media($mobile) {
+      @include map-modal-smaller;
+    }
+  }
+
+  &--horizontal-smaller {
+    margin: $base-spacing auto;
+    width: 700px;
+
+    @include media($mobile) {
+      @include map-modal-smaller;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.4;
+    z-index: 9;
+  }
+
+  &__header {
+    text-align: center;
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: $small-spacing;
+    margin-bottom: $base-spacing;
+  }
+
+  &__content {
+    overflow: auto;
+    padding: $micro-spacing;
+    max-height: 100%;
+
+    @include media($mobile) {
+      height: calc(100% - 40px);
+    }
+  }
+
+  &__ok {
+    float: right;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  &__close {
+    right: 0;
+    top: 0;
+    position: absolute;
+    cursor: pointer;
+    margin: $small-spacing;
+    color: $medium-gray;
+
+    &:hover, &:active, &:focus {
+      color: $dark-gray;
+    }
+  }
+}

@@ -4,21 +4,5 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
-@import "react-timeline-slider";
-@import "react-toggle";
-
-@import "layout";
-@import "landing-page";
-@import "mixins";
-@import "map";
-@import "header";
-@import "menu";
-@import "footer";
-@import "tabs";
-@import "tooltip";
-@import "sankey";
-@import "transitions-matrix";
-@import "page";
-@import "methodology";
-@import "team";
-@import "landsat-mosaics";
+@import "./layout/layout";
+@import "./modules/modules";

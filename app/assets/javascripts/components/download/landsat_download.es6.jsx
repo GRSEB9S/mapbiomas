@@ -88,7 +88,7 @@ export default class LandsatDownload extends React.Component {
     return (
       <div className="map-control-wrapper year-select-wrapper">
         <Select
-          name="territory-select"
+          name="year-select"
           value={this.year.id}
           options={years.toOptions()}
           onChange={this.handleYearChange.bind(this)}

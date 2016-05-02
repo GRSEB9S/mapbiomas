@@ -313,7 +313,7 @@ export default class Map extends React.Component {
               selectedIndex={this.state.viewOptionsIndex}
               onSelect={this.handleViewOptionsIndexSelect.bind(this)}>
 
-            <TabList className="tab-triple">
+            <TabList className="three-tabbed">
               <Tab>{I18n.t('map.index.classifications')}</Tab>
               <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
               <Tab>{I18n.t('map.index.layers.title')}</Tab>
@@ -359,7 +359,7 @@ export default class Map extends React.Component {
           onSelect={this.handleMainMenuIndexSelect.bind(this)}
           className="map-control-wrapper">
 
-        <TabList className="tab-triple">
+        <TabList className="three-tabbed">
           <Tab>{I18n.t('map.index.coverage')}</Tab>
           <Tab>{I18n.t('map.index.transitions')}</Tab>
           <Tab>{I18n.t('map.index.quality')}</Tab>
