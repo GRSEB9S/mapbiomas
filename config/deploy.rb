@@ -1,6 +1,7 @@
 require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
+require 'mina/npm'
 # require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 require 'mina/rvm'    # for rvm support. (http://rvm.io)
 require 'mina/puma'
@@ -85,6 +86,9 @@ task :deploy => :environment do
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
+    invoke :'npm:install'
+    queue! %(npm install --only=dev)
+    queue! %(npm run webpack -- --config webpack.production.js)
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'

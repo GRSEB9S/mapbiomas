@@ -22,5 +22,8 @@ module Mapbiomas
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.assets.precompile.shift
+    config.assets.precompile.unshift(proc { |file| !File.extname(file).in? %w(.css .js .es6 .jsx) })
   end
 end

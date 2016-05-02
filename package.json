@@ -2,7 +2,8 @@
   "name": "mapbiomas",
   "scripts": {
     "start": "webpack-dev-server && rails",
-    "heroku-postbuild": "webpack -p"
+    "webpack": "webpack",
+    "heroku-postbuild": "webpack --config webpack.production.js"
   },
   "dependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
