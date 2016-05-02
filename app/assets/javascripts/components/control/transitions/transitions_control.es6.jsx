@@ -1,4 +1,13 @@
-class TransitionsControl extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import classNames from 'classnames';
+import Select from 'react-select';
+import { API } from '../../../lib/api';
+import { Classifications } from '../../../lib/classifications';
+import { Territories } from '../../../lib/territories';
+import { TransitionsChart } from './transitions_chart';
+
+export class TransitionsControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

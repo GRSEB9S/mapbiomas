@@ -1,4 +1,20 @@
-class Map extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import ReactTimelineSlider from 'react-timeline-slider';
+import { API } from '../../lib/api';
+import { CoverageControl } from '../control/coverage_control';
+import { MapCanvas } from '../map/map_canvas';
+import { MapModal } from '../map/map_modal';
+import { OpacityControl } from '../control/opacity_control';
+import { QualityControl } from '../control/quality_control';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { TogglesControl } from '../control/toggles_control';
+import { TransitionsControl } from '../control/transitions/transitions_control';
+import { TransitionsMatrix } from '../control/transitions/transitions_matrix';
+
+Tabs.setUseDefaultStyles(false);
+
+export default class Map extends React.Component {
   constructor(props) {
     super(props);
 
@@ -108,8 +124,8 @@ class Map extends React.Component {
   }
 
   //Handlers
-  handleTerritoryChange(id) {
-    let territory = this.props.availableTerritories.find((t) => t.id == id);
+  handleTerritoryChange(newTerritory) {
+    let territory = this.props.availableTerritories.find((t) => t.id == newTerritory.value);
     this.setState({ territory })
   }
 
@@ -293,17 +309,17 @@ class Map extends React.Component {
             opacity={this.state.opacity*100}
             onChange={this.handleOpacityChange.bind(this)} />
 
-          <ReactTabs.Tabs
+          <Tabs
               selectedIndex={this.state.viewOptionsIndex}
               onSelect={this.handleViewOptionsIndexSelect.bind(this)}>
 
-            <ReactTabs.TabList className="tab-triple">
-              <ReactTabs.Tab>{I18n.t('map.index.classifications')}</ReactTabs.Tab>
-              <ReactTabs.Tab>{I18n.t('map.index.base_maps.title')}</ReactTabs.Tab>
-              <ReactTabs.Tab>{I18n.t('map.index.layers.title')}</ReactTabs.Tab>
-            </ReactTabs.TabList>
+            <TabList className="tab-triple">
+              <Tab>{I18n.t('map.index.classifications')}</Tab>
+              <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
+              <Tab>{I18n.t('map.index.layers.title')}</Tab>
+            </TabList>
 
-            <ReactTabs.TabPanel>
+            <TabPanel>
               <TogglesControl
                 options={this.classifications}
                 availableOptions={this.props.availableClassifications}
@@ -311,26 +327,26 @@ class Map extends React.Component {
                 tooltip={I18n.t('map.tooltip')}
                 onChange={this.handleClassificationsChange.bind(this)}
               />
-            </ReactTabs.TabPanel>
+            </TabPanel>
 
-            <ReactTabs.TabPanel>
+            <TabPanel>
               <TogglesControl
                 options={this.baseMaps}
                 availableOptions={this.props.availableBaseMaps}
                 title={I18n.t('map.index.base_maps.title')}
                 onChange={this.handleBaseMapsChange.bind(this)}
               />
-            </ReactTabs.TabPanel>
+            </TabPanel>
 
-            <ReactTabs.TabPanel>
+            <TabPanel>
               <TogglesControl
                 options={this.layers}
                 availableOptions={this.props.availableLayers}
                 title={I18n.t('map.index.layers.title')}
                 onChange={this.handleLayersChange.bind(this)}
               />
-            </ReactTabs.TabPanel>
-          </ReactTabs.Tabs>
+            </TabPanel>
+          </Tabs>
         </div>
       );
     }
@@ -338,18 +354,18 @@ class Map extends React.Component {
 
   renderMainMenu() {
     return(
-      <ReactTabs.Tabs
+      <Tabs
           selectedIndex={this.state.mainMenuIndex}
           onSelect={this.handleMainMenuIndexSelect.bind(this)}
           className="map-control-wrapper">
 
-        <ReactTabs.TabList className="tab-triple">
-          <ReactTabs.Tab>{I18n.t('map.index.coverage')}</ReactTabs.Tab>
-          <ReactTabs.Tab>{I18n.t('map.index.transitions')}</ReactTabs.Tab>
-          <ReactTabs.Tab>{I18n.t('map.index.quality')}</ReactTabs.Tab>
-        </ReactTabs.TabList>
+        <TabList className="tab-triple">
+          <Tab>{I18n.t('map.index.coverage')}</Tab>
+          <Tab>{I18n.t('map.index.transitions')}</Tab>
+          <Tab>{I18n.t('map.index.quality')}</Tab>
+        </TabList>
 
-        <ReactTabs.TabPanel>
+        <TabPanel>
           <CoverageControl
             {...this.props}
             availableTerritories={this.territories}
@@ -358,9 +374,9 @@ class Map extends React.Component {
             classifications={this.classifications}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
           />
-        </ReactTabs.TabPanel>
+        </TabPanel>
 
-        <ReactTabs.TabPanel>
+        <TabPanel>
           <TransitionsControl
             {...this.props}
             availableTerritories={this.territories}
@@ -374,9 +390,9 @@ class Map extends React.Component {
             onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
             setTransition={this.handleTransitionChange.bind(this)}
           />
-        </ReactTabs.TabPanel>
+        </TabPanel>
 
-        <ReactTabs.TabPanel>
+        <TabPanel>
           <QualityControl
             {...this.props}
             availableTerritories={this.territories}
@@ -385,8 +401,8 @@ class Map extends React.Component {
             classifications={this.classifications}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
           />
-        </ReactTabs.TabPanel>
-      </ReactTabs.Tabs>
+        </TabPanel>
+      </Tabs>
     );
   }
 

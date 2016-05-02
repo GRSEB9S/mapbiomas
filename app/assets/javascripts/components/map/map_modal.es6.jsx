@@ -1,4 +1,7 @@
-class MapModal extends React.Component {
+import React from 'react';
+import classNames from 'classnames';
+
+export class MapModal extends React.Component {
   renderCloseButton() {
     if(this.props.showCloseButton) {
       return (

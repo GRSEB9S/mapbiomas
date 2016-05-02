@@ -1,46 +1,34 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
-gem 'pg'
-gem 'rails', '4.2.3'
-gem 'sass-rails', '~> 5.0'
-gem 'font-awesome-sass'
-gem 'bourbon'
-gem 'neat'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
 gem 'bitters'
-gem 'sprockets', '>= 3.0.0'
-gem 'sprockets-es6'
-gem 'react-rails'
-gem "i18n-js", ">= 3.0.0.rc11"
-gem "underscore-rails"
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'rack-timeout'
-gem 'httparty'
-gem 'redis'
+gem 'bourbon'
 gem 'cachebar'
-gem 'responders'
-gem 'js-routes'
-gem 'jquery-ui-rails'
-gem 'rails-settings-cached', "~> 0.4.0"
+gem 'coffee-rails', '~> 4.0.0'
+gem 'font-awesome-sass'
 gem 'high_voltage'
+gem 'http_accept_language'
+gem 'httparty'
+gem 'i18n-js', '>= 3.0.0.rc11'
+gem 'jbuilder', '~> 2.0'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'js-routes'
 gem 'mina', :require => false
 gem 'mina-puma', :require => false
-gem 'http_accept_language'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-underscore'
-  gem 'rails-assets-classnames'
-  gem 'rails-assets-highcharts'
-  gem 'rails-assets-react-input-autosize'
-  gem 'rails-assets-react-tabs'
-  gem 'rails-assets-es6-shim'
-  gem 'rails-assets-d3'
-  gem 'rails-assets-tooltipster'
-end
+gem 'neat'
+gem 'pg'
+gem 'rack-timeout'
+gem 'rails', '4.2.3'
+gem 'rails-settings-cached', '~> 0.4.0'
+gem 'react-rails'
+gem 'redis'
+gem 'responders'
+gem 'sass-rails', '~> 5.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sprockets', '>= 3.0.0'
+gem 'sprockets-es6'
+gem 'uglifier', '>= 1.3.0'
 
 group :production do
   gem 'newrelic_rpm'

@@ -1,4 +1,8 @@
-class MenuControl extends React.Component {
+import React from 'react';
+import classNames from 'classnames';
+import { Locale } from '../../lib/locale';
+
+export class MenuControl extends React.Component {
   setLocale(locale) {
     Locale.setLocale({locale: locale}).done(function() {
       window.location.reload();

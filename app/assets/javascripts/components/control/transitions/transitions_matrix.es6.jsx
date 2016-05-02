@@ -1,4 +1,9 @@
-class TransitionsMatrix extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import classNames from 'classnames';
+import Highcharts from 'highcharts';
+
+export class TransitionsMatrix extends React.Component {
   get colSpan() {
     return this.props.classifications.length;
   }
@@ -121,7 +126,6 @@ class TransitionsMatrix extends React.Component {
         return (
           <td key={key} className="transition-value highlight">
             {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            {/*({transition.percentage}%)*/}
           </td>
         );
       } else {

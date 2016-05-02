@@ -1,4 +1,8 @@
-class Menu extends React.Component {
+import React from 'react';
+import { MenuButton } from './menu_button';
+import { MenuControl } from './menu_control';
+
+export default class Menu extends React.Component {
   componentWillMount() {
     this.setState({menuOpen: false})
   }
