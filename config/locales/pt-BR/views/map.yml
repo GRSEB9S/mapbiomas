@@ -20,20 +20,24 @@ pt-BR:
         contour_maps: Cartas
         indigenous_lands: Terras indígenas
         conservation_units: Unidades de conservação
-      coverage_analysis: Análise de cobertura
       coverage: Cobertura
+      coverage_analysis: Análise de cobertura
       transitions: Transições
-      quality: Qualidade
       transitions_analysis: Análise de transição
       transitions_matrix:
         title: Matriz de transições
         total: Total
+      quality: Qualidade
       quality_analysis: Análise de qualidade
+      quality_labels:
+        title: Legenda
+        bad: Ruim
+        regular: Regular
+        good: Boa
       search: "Busque municípios, estados, biomas..."
       chart:
         tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.
         year: "Ano: %{year}"
-      analyze: Analisar
       download:
         title: Baixe os dados
         classification: Classe
