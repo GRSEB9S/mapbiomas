@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import Toggle from '../../../../../vendor/assets/javascripts/react-toggle.jsx';
+import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
 
 export class TogglesControl extends React.Component {
