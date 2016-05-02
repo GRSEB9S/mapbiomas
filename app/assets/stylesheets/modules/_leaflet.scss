@@ -1,0 +1,17 @@
+.leaflet-control-zoom {
+  margin-left: $base-spacing !important;
+  margin-top: $base-spacing !important;
+  box-shadow: $base-box-shadow;
+
+  a {
+    border-radius: $base-border-radius !important;
+  }
+
+  @include media($tablet) {
+    display: none;
+  }
+}
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 5;
+}

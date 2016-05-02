@@ -1,0 +1,16 @@
+.toggles-list {
+  .toggle {
+    position: relative;
+    padding-right: 45px;
+  }
+
+  label {
+    display: inline-block;
+  }
+
+  .react-toggle {
+    position: absolute;
+    right: 0;
+    top: 1px;
+  }
+}

@@ -1,0 +1,12 @@
+.transitions-sankey {
+  margin: $small-spacing 0;
+  font-size: $base-font-size !important;
+
+  &__label {
+    padding-bottom: $micro-spacing;
+  }
+
+  .transition-value {
+    color: $light-gray;
+  }
+}

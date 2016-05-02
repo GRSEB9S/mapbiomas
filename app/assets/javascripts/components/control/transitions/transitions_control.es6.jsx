@@ -75,8 +75,8 @@ export class TransitionsControl extends React.Component {
     }).filter((t) => parseFloat(t.value) != 0);
 
     return (
-      <ul className="transitions-legend">
-        <li><label>{this.props.years.join('-')}</label></li>
+      <ul className="transitions-sankey">
+        <li className="transitions-sankey__label"><label>{this.props.years.join('-')}</label></li>
         <li>
           <TransitionsChart
             transition={this.props.transition}
