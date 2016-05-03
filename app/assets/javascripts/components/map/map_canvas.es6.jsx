@@ -36,16 +36,6 @@ export class MapCanvas extends React.Component {
     });
   }
 
-  loadCards() {
-    $.getJSON("https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson", (cards) => {
-      this.setState({
-        cards,
-      }, () => {
-        this.setQualityLayer();
-      });
-    });
-  }
-
   addBaseMaps(map) {
     _.each(this.props.baseMaps, (baseMap) => {
       let newMap = L.tileLayer(baseMap.link, {
@@ -76,7 +66,7 @@ export class MapCanvas extends React.Component {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
     }).addTo(this.map);
 
-    this.loadCards();
+    this.setQualityLayer();
     this.addBaseMaps(this.map);
     this.addLayers(this.map);
 
@@ -126,7 +116,7 @@ export class MapCanvas extends React.Component {
       weight: 0.2
     };
 
-    const cardsLayer = L.geoJson(this.state.cards, {
+    const cardsLayer = L.geoJson(this.props.cards, {
       style: (feature) => {
         const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
         if(quality) {

@@ -32,7 +32,8 @@ class MapPresenter
       availableTerritories: TerrasAPI.territories,
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
-      url: ENV['TERRAS_API_URL']
+      qualityCardsUrl: "https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson",
+      apiUrl: ENV['TERRAS_API_URL']
     }
   end
 

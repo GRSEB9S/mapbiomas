@@ -88,7 +88,7 @@ export default class Map extends React.Component {
     return {
       layerOptions: {
         layers: this.mode,
-        url: this.props.url,
+        url: this.props.apiUrl,
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
@@ -409,6 +409,7 @@ export default class Map extends React.Component {
         <TabPanel>
           <QualityControl
             {...this.props}
+            cards={this.state.cards}
             availableTerritories={this.territories}
             territory={this.territory}
             year={this.year}
@@ -418,6 +419,12 @@ export default class Map extends React.Component {
         </TabPanel>
       </Tabs>
     );
+  }
+
+  componentDidMount() {
+    $.getJSON(this.props.qualityCardsUrl, (cards) => {
+      this.setState({ cards });
+    });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -433,6 +440,7 @@ export default class Map extends React.Component {
 
         <MapCanvas
           {...this.tileOptions}
+          cards={this.state.cards}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
           mode={this.mode}
