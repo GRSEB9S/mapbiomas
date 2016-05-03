@@ -6,7 +6,8 @@ import { CoverageControl } from '../control/coverage_control';
 import { MapCanvas } from '../map/map_canvas';
 import { MapModal } from '../map/map_modal';
 import { OpacityControl } from '../control/opacity_control';
-import { QualityControl } from '../control/quality_control';
+import { QualityControl } from '../control/quality/quality_control';
+import { QualityLabels } from '../control/quality/quality_labels';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { TogglesControl } from '../control/toggles_control';
 import { TransitionsControl } from '../control/transitions/transitions_control';
@@ -306,7 +307,7 @@ export default class Map extends React.Component {
             map-control-wrapper--bottom">
           <OpacityControl
             {...this.props}
-            opacity={this.state.opacity*100}
+            opacity={this.state.opacity * 100}
             onChange={this.handleOpacityChange.bind(this)} />
 
           <Tabs
@@ -347,6 +348,19 @@ export default class Map extends React.Component {
               />
             </TabPanel>
           </Tabs>
+        </div>
+      );
+    }
+  }
+
+  renderQualityAuxiliarControls() {
+    if(this.mode == 'quality') {
+      return(
+        <div className="map-control-wrapper
+            map-control-wrapper--smaller
+            map-control-wrapper--left
+            map-control-wrapper--bottom">
+          <QualityLabels />
         </div>
       );
     }
@@ -431,6 +445,7 @@ export default class Map extends React.Component {
         {this.renderCoverageAuxiliarControls()}
         {this.renderMainMenu()}
         {this.renderTransitionsMatrix()}
+        {this.renderQualityAuxiliarControls()}
 
         <div className="timeline-control">
           <ReactTimelineSlider

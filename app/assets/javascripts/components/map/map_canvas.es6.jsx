@@ -122,6 +122,7 @@ export class MapCanvas extends React.Component {
     const style = {
       color: '#000',
       fillColor: '#aaa',
+      fillOpacity: 0.5,
       weight: 0.2
     };
 
