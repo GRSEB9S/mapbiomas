@@ -19,9 +19,9 @@ export class QualityLabels extends React.Component {
           {I18n.t('map.index.quality_labels.title')}
         </h3>
 
-        {this.renderItem('bad')}
-        {this.renderItem('regular')}
         {this.renderItem('good')}
+        {this.renderItem('regular')}
+        {this.renderItem('bad')}
       </div>
     );
   }
