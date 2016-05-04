@@ -26,7 +26,6 @@ export default class Map extends React.Component {
       classifications: null,
       baseMaps: null,
       layers: null,
-      cards: null,
       qualities: [],
       year: null,
       years: [],
@@ -88,7 +87,7 @@ export default class Map extends React.Component {
     return {
       layerOptions: {
         layers: this.mode,
-        url: this.props.url,
+        url: this.props.apiUrl,
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
@@ -130,8 +129,9 @@ export default class Map extends React.Component {
     this.setState({ territory })
   }
 
-  handleYearChange(v) {
-    this.setState({ year: v, years: v });
+  handleYearChange(newYear) {
+    this.setState({ year: newYear, years: newYear });
+    this.loadQualities(newYear);
   }
 
   handleClassificationsChange(ids) {
@@ -246,8 +246,14 @@ export default class Map extends React.Component {
     this.setState({ showWarning: false });
   }
 
-  loadQualities() {
-    API.qualities({year: this.year})
+  loadCards() {
+    $.getJSON(this.props.qualityCardsUrl, (cards) => {
+      this.setState({ cards });
+    });
+  }
+
+  loadQualities(year) {
+    API.qualities({year: year})
     .then((qualities) => {
       return _.map(qualities, (q) => {
         return {
@@ -409,10 +415,13 @@ export default class Map extends React.Component {
         <TabPanel>
           <QualityControl
             {...this.props}
+            cards={this.state.cards}
             availableTerritories={this.territories}
             territory={this.territory}
             year={this.year}
             classifications={this.classifications}
+            qualities={this.state.qualities}
+            qualityInfo={this.props.qualityInfo}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
           />
         </TabPanel>
@@ -420,10 +429,9 @@ export default class Map extends React.Component {
     );
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(!_.isEqual(prevState, this.state) &&  this.mode == 'quality') {
-      this.loadQualities();
-    }
+  componentDidMount() {
+    this.loadCards();
+    this.loadQualities(this.year);
   }
 
   render() {
@@ -433,6 +441,7 @@ export default class Map extends React.Component {
 
         <MapCanvas
           {...this.tileOptions}
+          cards={this.state.cards}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
           mode={this.mode}
@@ -440,6 +449,8 @@ export default class Map extends React.Component {
           layers={this.props.availableLayers}
           selectedLayers={this.state.layers}
           qualities={this.state.qualities}
+          qualityInfo={this.props.qualityInfo}
+          qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
         {this.renderCoverageAuxiliarControls()}

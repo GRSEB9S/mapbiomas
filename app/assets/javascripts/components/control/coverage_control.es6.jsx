@@ -37,6 +37,7 @@ export class CoverageControl extends React.Component {
 
   get chartOptions() {
     let el = this.refs.chartElement;
+
     return {
       chart: {
         renderTo: el,
@@ -57,7 +58,9 @@ export class CoverageControl extends React.Component {
         valueSuffix: ' ha',
         valueDecimals: 2
       },
-      exporting: { enabled: false },
+      exporting: {
+        enabled: false
+      },
       title: false,
       series: this.chartSeries
     };
@@ -70,7 +73,7 @@ export class CoverageControl extends React.Component {
       year: props.year
     }).then((coverage) => {
       this.setState({ coverage: coverage }, () => {
-        this.draw()
+        this.drawChart()
       });
     })
   }
@@ -85,7 +88,7 @@ export class CoverageControl extends React.Component {
     }
   }
 
-  draw() {
+  drawChart() {
     this.chart = new Highcharts.Chart(this.chartOptions);
   }
 
