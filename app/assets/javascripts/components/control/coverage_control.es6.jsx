@@ -58,7 +58,9 @@ export class CoverageControl extends React.Component {
         valueSuffix: ' ha',
         valueDecimals: 2
       },
-      exporting: { enabled: false },
+      exporting: {
+        enabled: false
+      },
       title: false,
       series: this.chartSeries
     };

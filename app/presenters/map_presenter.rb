@@ -3,6 +3,34 @@ class MapPresenter
     satellite: '#081B47'
   }
 
+  QUALITY_INFO = [
+    {
+      api_name: '1',
+      label: I18n.t('map.index.quality_labels.bad'),
+      color: '#880000'
+    },
+    {
+      api_name: '2',
+      label: I18n.t('map.index.quality_labels.regular'),
+      color: '#FCF35B'
+    },
+    {
+      api_name: '3',
+      label: I18n.t('map.index.quality_labels.good'),
+      color: '#008800'
+    },
+    {
+      api_name: 'null',
+      label: I18n.t('map.index.quality_labels.undefined'),
+      color: '#AAAAAA'
+    },
+    {
+      api_name: '0',
+      label: I18n.t('map.index.quality_labels.undefined'),
+      color: '#AAAAAA'
+    }
+  ].freeze
+
   LAYERS_COLORS = {
     states: '#012700',
     cities: '#FF9900',
@@ -32,6 +60,7 @@ class MapPresenter
       availableTerritories: TerrasAPI.territories,
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
+      qualityInfo: QUALITY_INFO,
       qualityCardsUrl: "https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson",
       apiUrl: ENV['TERRAS_API_URL']
     }

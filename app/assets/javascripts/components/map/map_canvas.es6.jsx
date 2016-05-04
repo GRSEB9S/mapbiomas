@@ -119,13 +119,12 @@ export class MapCanvas extends React.Component {
     const cardsLayer = L.geoJson(this.props.cards, {
       style: (feature) => {
         const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
+
         if(quality) {
-          switch(quality.quality) {
-            case 3: return { ...style, fillColor: '#008800' };
-            case 2: return { ...style, fillColor: '#FCF35B' };
-            case 1: return { ...style, fillColor: '#880000' };
-            default: return style;
-          }
+          return {
+            ...style,
+            fillColor: _.findWhere(this.props.qualityInfo, { api_name: String(quality.quality) }).color
+          };
         } else {
           return style;
         }

@@ -34,6 +34,9 @@ pt-BR:
         bad: Ruim
         regular: Regular
         good: Boa
+        undefined: Não informado
+      quality_chart:
+        tooltip: Cartas nesta categoria
       search: "Busque municípios, estados, biomas..."
       chart:
         tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.

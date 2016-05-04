@@ -26,7 +26,6 @@ export default class Map extends React.Component {
       classifications: null,
       baseMaps: null,
       layers: null,
-      cards: null,
       qualities: [],
       year: null,
       years: [],
@@ -130,8 +129,9 @@ export default class Map extends React.Component {
     this.setState({ territory })
   }
 
-  handleYearChange(v) {
-    this.setState({ year: v, years: v });
+  handleYearChange(newYear) {
+    this.setState({ year: newYear, years: newYear });
+    this.loadQualities(newYear);
   }
 
   handleClassificationsChange(ids) {
@@ -246,8 +246,14 @@ export default class Map extends React.Component {
     this.setState({ showWarning: false });
   }
 
-  loadQualities() {
-    API.qualities({year: this.year})
+  loadCards() {
+    $.getJSON(this.props.qualityCardsUrl, (cards) => {
+      this.setState({ cards });
+    });
+  }
+
+  loadQualities(year) {
+    API.qualities({year: year})
     .then((qualities) => {
       return _.map(qualities, (q) => {
         return {
@@ -414,6 +420,8 @@ export default class Map extends React.Component {
             territory={this.territory}
             year={this.year}
             classifications={this.classifications}
+            qualities={this.state.qualities}
+            qualityInfo={this.props.qualityInfo}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
           />
         </TabPanel>
@@ -422,15 +430,8 @@ export default class Map extends React.Component {
   }
 
   componentDidMount() {
-    $.getJSON(this.props.qualityCardsUrl, (cards) => {
-      this.setState({ cards });
-    });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if(!_.isEqual(prevState, this.state) &&  this.mode == 'quality') {
-      this.loadQualities();
-    }
+    this.loadCards();
+    this.loadQualities(this.year);
   }
 
   render() {
@@ -448,6 +449,8 @@ export default class Map extends React.Component {
           layers={this.props.availableLayers}
           selectedLayers={this.state.layers}
           qualities={this.state.qualities}
+          qualityInfo={this.props.qualityInfo}
+          qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
         {this.renderCoverageAuxiliarControls()}
