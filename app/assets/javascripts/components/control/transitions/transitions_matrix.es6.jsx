@@ -60,7 +60,7 @@ export class TransitionsMatrix extends React.Component {
       <tr>
         <td></td>
         <td className="to-total-classification highlight">
-          {I18n.t('map.index.transitions_matrix.total')}
+          {I18n.t('map.index.transitions.matrix.total')}
         </td>
 
         {this.renderTotalRow()}
@@ -150,7 +150,7 @@ export class TransitionsMatrix extends React.Component {
             <td></td>
             {this.renderToClassifications()}
             <td className="from-total-classification highlight">
-              {I18n.t('map.index.transitions_matrix.total')}
+              {I18n.t('map.index.transitions.matrix.total')}
             </td>
           </tr>
           {this.renderFromClassifications()}

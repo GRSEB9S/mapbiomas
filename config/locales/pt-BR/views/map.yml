@@ -46,24 +46,28 @@ pt-BR:
         contour_maps: Cartas
         indigenous_lands: Terras indígenas
         conservation_units: Unidades de conservação
-      coverage: Cobertura
-      coverage_analysis: Análise de cobertura
-      transitions: Transições
-      transitions_analysis: Análise de transição
-      transitions_matrix:
-        title: Matriz de transições
-        total: Total
-      quality: Qualidade
-      quality_analysis: Qualidade do mosaico
-      quality_labels:
-        title: Legenda
-        subtitle: Porcentagem de nuvens ou interferências aceita nas imagens que compuseram o mosaico
-        bad: "Ruim: > 30%"
-        regular: "Regular: entre 10 e 30%"
-        good: "Boa: < 10%"
-        undefined: Não informado
-      quality_chart:
-        tooltip: Cartas nesta categoria
+      coverage:
+        title: Cobertura
+        analysis: Análise de cobertura
+      transitions:
+        title: Transições
+        analysis: Análise de transição
+        matrix:
+          title: Matriz de transições
+          total: Total
+      quality:
+        title: Qualidade
+        analysis: Qualidade do mosaico
+        labels:
+          title: Legenda
+          subtitle: Porcentagem de nuvens ou interferências aceita nas imagens que compuseram o mosaico
+          bad: "Ruim: > 30%"
+          regular: "Regular: entre 10 e 30%"
+          good: "Boa: < 10%"
+          undefined: Não informado
+        chart:
+          tooltip: Cartas nesta categoria
+        download: Download dos dados
       search: "Busque municípios, estados, biomas..."
       chart:
         tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.
