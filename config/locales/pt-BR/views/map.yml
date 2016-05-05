@@ -51,12 +51,13 @@ pt-BR:
         title: Matriz de transições
         total: Total
       quality: Qualidade
-      quality_analysis: Análise de qualidade
+      quality_analysis: Qualidade do mosaico
       quality_labels:
         title: Legenda
-        bad: Ruim
-        regular: Regular
-        good: Boa
+        subtitle: Porcentagem de nuvens ou interferências aceita nas imagens que compuseram o mosaico
+        bad: "Ruim: > 30%"
+        regular: "Regular: entre 10 e 30%"
+        good: "Boa: < 10%"
         undefined: Não informado
       quality_chart:
         tooltip: Cartas nesta categoria

@@ -18,6 +18,7 @@ export class QualityLabels extends React.Component {
         <h3 className="map-control__header">
           {I18n.t('map.index.quality_labels.title')}
         </h3>
+        <label className="quality-labels__subtitle">{I18n.t('map.index.quality_labels.subtitle')}</label>
 
         {this.renderItem('good')}
         {this.renderItem('regular')}
