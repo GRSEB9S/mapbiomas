@@ -44,12 +44,11 @@ export class QualityControl extends React.Component {
     return {
       chart: {
         renderTo: el,
-        type: 'column'
+        type: 'pie'
       },
       plotOptions: {
-        column: {
+        pie: {
           colors: seriesColors,
-          colorByPoint: true,
           dataLabels: {
             enabled: false
           }
