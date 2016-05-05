@@ -13,7 +13,10 @@ pt-BR:
           <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas de qualquer par de anos consecutivos (ex. 2008-2009; 2011-2012). Selecione dois anos consecutivos na barra inferior e observe o diagrama de Sankey indicando as transições de cobertura identificadas.</p>
           <p>É possível visualizar no mapa onde estão estas diferenças entre anos clicando na faixa/linha que liga os dois lados do diagrama. Para ver a matriz completa de transição clique no botão “Matriz de Transição”.</p>
           <p>Esta representação de transição entre classes de um ano para outro é feita a partir da comparação pixel a pixel.</p>
-          <p><strong>ATENÇÃO:</strong> Na Coleção 1 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+          <p class="warning"><strong>ATENÇÃO:</strong>
+          <blockquote>
+            Na Coleção 1 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+          </blockquote>
       quality:
         title: Qualidade do Mosaico
         body: |
