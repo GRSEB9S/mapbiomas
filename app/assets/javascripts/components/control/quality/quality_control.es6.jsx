@@ -88,6 +88,11 @@ export class QualityControl extends React.Component {
   componentDidMount() {
     this.updateQualityNames(this.props.qualities);
     this.renderChart();
+
+    $('#quality-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      content: $(I18n.t('map.warning.quality.body'))
+    });
   }
 
   render() {
@@ -97,6 +102,10 @@ export class QualityControl extends React.Component {
       <div className="map-control">
         <h3 className="map-control__header">
           {I18n.t('map.index.quality_analysis')}
+          <i id="quality-tooltip"
+            className="material-icons tooltip">
+            &#xE88E;
+          </i>
         </h3>
         <div className="map-control__content">
           <label>{I18n.t('map.index.search')}</label>

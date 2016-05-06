@@ -92,6 +92,13 @@ export class TransitionsControl extends React.Component {
     this.props.onExpandMatrix(this.props.transitions);
   }
 
+  componentDidMount() {
+    $('#transitions-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      content: $(I18n.t('map.warning.transitions.body'))
+    });
+  }
+
   render() {
     let territories = new Territories(this.props.availableTerritories);
     let controlClass = classNames('map-control', { 'map-control--expanded': this.state.expanded });
@@ -100,6 +107,10 @@ export class TransitionsControl extends React.Component {
       <div className={controlClass}>
         <h3 className="map-control__header">
           {I18n.t('map.index.transitions_analysis')}
+          <i id="transitions-tooltip"
+            className="material-icons tooltip">
+            &#xE88E;
+          </i>
         </h3>
 
         <div className="map-control__content">

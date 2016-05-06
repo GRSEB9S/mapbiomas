@@ -69,6 +69,11 @@
     padding: $micro-spacing;
     max-height: 100%;
 
+    ul {
+      list-style-type: none;
+      margin: $small-spacing 0 $small-spacing $base-spacing;
+    }
+
     @include media($mobile) {
       height: calc(100% - 40px);
     }

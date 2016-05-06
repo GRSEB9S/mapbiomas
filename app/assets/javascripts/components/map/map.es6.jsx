@@ -33,7 +33,11 @@ export default class Map extends React.Component {
       transition: null,
       transitions: [],
       transitionsMatrixExpanded: false,
-      showWarning: true,
+      showWarning: {
+        coverage: true,
+        transitions: true,
+        quality: true
+      }
     };
   }
 
@@ -242,8 +246,11 @@ export default class Map extends React.Component {
     );
   }
 
-  closeWarning() {
-    this.setState({ showWarning: false });
+  closeWarning(key) {
+    let state = _.clone(this.state);
+    state.showWarning[key] = false;
+
+    this.setState(state);
   }
 
   loadCards() {
@@ -287,18 +294,18 @@ export default class Map extends React.Component {
     }
   }
 
-  renderWarning() {
-    if(this.state.showWarning) {
+  renderWarning(key) {
+    if(this.mode == key && this.state.showWarning[key]) {
       return(
-        <MapModal title={I18n.t('map.warning.title')}
+        <MapModal title={I18n.t(`map.warning.${key}.title`)}
           showCloseButton={false}
           showOkButton={true}
           verticalSmaller={true}
           horizontalSmaller={true}
           overlay={true}
-          onClose={this.closeWarning.bind(this)}>
+          onClose={this.closeWarning.bind(this, key)}>
 
-          <div dangerouslySetInnerHTML={{__html: I18n.t('map.warning.body')}}></div>
+          <div dangerouslySetInnerHTML={{__html: I18n.t(`map.warning.${key}.body`)}}></div>
         </MapModal>
       );
     }
@@ -437,7 +444,9 @@ export default class Map extends React.Component {
   render() {
     return (
       <div className="map">
-        {this.renderWarning()}
+        {this.renderWarning('coverage')}
+        {this.renderWarning('transitions')}
+        {this.renderWarning('quality')}
 
         <MapCanvas
           {...this.tileOptions}
