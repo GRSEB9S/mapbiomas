@@ -38,9 +38,12 @@ en:
           bad: "Bad: > 30%"
           regular: "Regular: between 10 and 30%"
           good: "Good: < 10%"
-          undefined: Undefined
         chart:
           tooltip: Cards on this category
+          bad: Bad
+          regular: Regular
+          good: Good
+          undefined: Undefined
         download: Download data
       search: "Search for cities, states, protected areas..."
       chart:

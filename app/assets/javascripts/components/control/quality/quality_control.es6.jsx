@@ -54,6 +54,9 @@ export class QualityControl extends React.Component {
           }
         },
       },
+      tooltip: {
+        valueSuffix: ' ({point.percentage:.2f}%)</b>'
+      },
       legend: {
         enabled: false
       },

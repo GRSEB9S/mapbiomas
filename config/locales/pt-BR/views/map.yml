@@ -64,9 +64,12 @@ pt-BR:
           bad: "Ruim: > 30%"
           regular: "Regular: entre 10 e 30%"
           good: "Boa: < 10%"
-          undefined: Não informado
         chart:
           tooltip: Cartas nesta categoria
+          bad: Ruim
+          regular: Regular
+          good: Boa
+          undefined: Não informado
         download: Download dos dados
       search: "Busque municípios, estados, biomas..."
       chart:

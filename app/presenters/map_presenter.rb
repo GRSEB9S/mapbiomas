@@ -6,27 +6,27 @@ class MapPresenter
   QUALITY_INFO = [
     {
       api_name: '1',
-      label: I18n.t('map.index.quality.labels.bad'),
+      label: I18n.t('map.index.quality.chart.bad'),
       color: '#880000'
     },
     {
       api_name: '2',
-      label: I18n.t('map.index.quality.labels.regular'),
+      label: I18n.t('map.index.quality.chart.regular'),
       color: '#FCF35B'
     },
     {
       api_name: '3',
-      label: I18n.t('map.index.quality.labels.good'),
+      label: I18n.t('map.index.quality.chart.good'),
       color: '#008800'
     },
     {
       api_name: 'null',
-      label: I18n.t('map.index.quality.labels.undefined'),
+      label: I18n.t('map.index.quality.chart.undefined'),
       color: '#AAAAAA'
     },
     {
       api_name: '0',
-      label: I18n.t('map.index.quality.labels.undefined'),
+      label: I18n.t('map.index.quality.chart.undefined'),
       color: '#AAAAAA'
     }
   ].freeze

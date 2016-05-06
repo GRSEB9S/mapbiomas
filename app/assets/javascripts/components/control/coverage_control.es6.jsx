@@ -54,7 +54,7 @@ export class CoverageControl extends React.Component {
         },
       },
       tooltip: {
-        pointFormat: '<b>' + I18n.t('map.index.coverage.title') + '</b>: {point.y}',
+        pointFormat: I18n.t('map.index.coverage.title') + ': <b>{point.y}</b>',
         valueSuffix: ' ha',
         valueDecimals: 2
       },
