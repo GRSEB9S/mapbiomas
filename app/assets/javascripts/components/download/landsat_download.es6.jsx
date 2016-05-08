@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import { Cards } from '../../lib/cards';
 import { Years } from '../../lib/years';
 
 export default class LandsatDownload extends React.Component {
@@ -24,6 +25,32 @@ export default class LandsatDownload extends React.Component {
     return this.state.year || _.last(this.years);
   }
 
+  get cards() {
+    if(this.state.cards) {
+      return this.state.cards.features.map((c, index) => {
+        return {
+          id: index + 1,
+          name: c.properties.name
+        };
+      });
+    } else {
+      return [];
+    }
+  }
+
+  get card() {
+    let fakeCard = {
+      id: null,
+      name: null
+    };
+
+    return this.state.card || _.first(this.cards) || fakeCard;
+  }
+
+  handleClick(cardName) {
+    window.open(`http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/landsat/${cardName}/${this.year.name}`, '_blank');
+  }
+
   addBaseMap(map) {
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
@@ -44,7 +71,7 @@ export default class LandsatDownload extends React.Component {
           e.target.bindPopup(feature.properties.name).openPopup();
         });
         layer.on('click', (e) => {
-          window.open(`http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/landsat/${feature.properties.name}/${this.year.name}`, '_blank');
+          this.handleClick(feature.properties.name);
         });
       }
     }).addTo(map);
@@ -73,28 +100,40 @@ export default class LandsatDownload extends React.Component {
     this.setState({ year });
   }
 
-  onYearChange(id) {
-    let year = _.findWhere(this.years, {value: id});
-    this.setState({ year });
+  handleCardChange(newCard) {
+    let card = this.cards.find((c) => c.id == newCard.value);
+    this.setState({ card });
   }
 
   componentDidMount() {
     this.setup();
   }
 
-  renderSelect() {
+  renderYearSelect() {
     let years = new Years(this.years);
 
     return (
-      <div className="map-control-wrapper year-select-wrapper">
-        <Select
-          name="year-select"
-          value={this.year.id}
-          options={years.toOptions()}
-          onChange={this.handleYearChange.bind(this)}
-          clearable={false}
-        />
-      </div>
+      <Select
+        name="year-select"
+        value={this.year.id}
+        options={years.toOptions()}
+        onChange={this.handleYearChange.bind(this)}
+        clearable={false}
+      />
+    );
+  }
+
+  renderCardSelect() {
+    let cards = new Cards(this.cards);
+
+    return (
+      <Select
+        name="card-select"
+        value={this.card.id}
+        options={cards.toOptions()}
+        onChange={this.handleCardChange.bind(this)}
+        clearable={false}
+      />
     );
   }
 
@@ -103,7 +142,18 @@ export default class LandsatDownload extends React.Component {
       <div className="landsat-download">
         <div className="map">
           <div className="map__canvas" ref="element"></div>
-          {this.renderSelect()}
+          <div className="map-control-wrapper card-select-wrapper">
+            <div className="map-control__content">
+              {this.renderYearSelect()}
+              {this.renderCardSelect()}
+
+              <button
+                  className="primary"
+                  onClick={this.handleClick.bind(this, this.card.name)}>
+                {I18n.t('landsat_mosaics.download')}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
