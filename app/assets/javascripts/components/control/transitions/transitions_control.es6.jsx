@@ -106,7 +106,7 @@ export class TransitionsControl extends React.Component {
     return (
       <div className={controlClass}>
         <h3 className="map-control__header">
-          {I18n.t('map.index.transitions_analysis')}
+          {I18n.t('map.index.transitions.analysis')}
           <i id="transitions-tooltip"
             className="material-icons tooltip">
             &#xE88E;
@@ -124,7 +124,7 @@ export class TransitionsControl extends React.Component {
           />
           {this.renderTransitions()}
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
-            {I18n.t('map.index.transitions_matrix.title')}
+            {I18n.t('map.index.transitions.matrix.title')}
           </button>
         </div>
       </div>

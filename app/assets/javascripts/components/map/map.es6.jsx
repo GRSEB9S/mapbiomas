@@ -277,7 +277,7 @@ export default class Map extends React.Component {
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
-        <MapModal title={I18n.t('map.index.transitions_matrix.title')}
+        <MapModal title={I18n.t('map.index.transitions.matrix.title')}
           showCloseButton={true}
           showOkButton={false}
           onClose={this.closeTransitionsMatrix.bind(this)}
@@ -387,9 +387,9 @@ export default class Map extends React.Component {
           className="map-control-wrapper">
 
         <TabList className="three-tabbed">
-          <Tab>{I18n.t('map.index.coverage')}</Tab>
-          <Tab>{I18n.t('map.index.transitions')}</Tab>
-          <Tab>{I18n.t('map.index.quality')}</Tab>
+          <Tab>{I18n.t('map.index.coverage.title')}</Tab>
+          <Tab>{I18n.t('map.index.transitions.title')}</Tab>
+          <Tab>{I18n.t('map.index.quality.title')}</Tab>
         </TabList>
 
         <TabPanel>

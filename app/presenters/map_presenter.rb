@@ -6,27 +6,27 @@ class MapPresenter
   QUALITY_INFO = [
     {
       api_name: '1',
-      label: I18n.t('map.index.quality_labels.bad'),
+      label: I18n.t('map.index.quality.chart.bad'),
       color: '#880000'
     },
     {
       api_name: '2',
-      label: I18n.t('map.index.quality_labels.regular'),
+      label: I18n.t('map.index.quality.chart.regular'),
       color: '#FCF35B'
     },
     {
       api_name: '3',
-      label: I18n.t('map.index.quality_labels.good'),
+      label: I18n.t('map.index.quality.chart.good'),
       color: '#008800'
     },
     {
       api_name: 'null',
-      label: I18n.t('map.index.quality_labels.undefined'),
+      label: I18n.t('map.index.quality.chart.undefined'),
       color: '#AAAAAA'
     },
     {
       api_name: '0',
-      label: I18n.t('map.index.quality_labels.undefined'),
+      label: I18n.t('map.index.quality.chart.undefined'),
       color: '#AAAAAA'
     }
   ].freeze
@@ -61,7 +61,8 @@ class MapPresenter
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
       qualityInfo: QUALITY_INFO,
-      qualityCardsUrl: "https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson",
+      qualityCardsUrl: 'https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson',
+      qualityDataUrl: 'https://s3.amazonaws.com/mapbiomas-ecostage/Avalia%C3%A7%C3%A3o_Qualitativa_Mosaicos_COLECAO++1+-+V3.xlsx',
       apiUrl: ENV['TERRAS_API_URL']
     }
   end

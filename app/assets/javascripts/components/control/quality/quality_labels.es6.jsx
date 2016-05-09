@@ -6,7 +6,7 @@ export class QualityLabels extends React.Component {
       <div className="quality-labels__item">
         <div className={`quality-labels__item--icon ${key}`}></div>
           <label>
-            {I18n.t(`map.index.quality_labels.${key}`)}
+            {I18n.t(`map.index.quality.labels.${key}`)}
           </label>
       </div>
     );
@@ -16,8 +16,9 @@ export class QualityLabels extends React.Component {
     return (
       <div className="map-control quality-labels">
         <h3 className="map-control__header">
-          {I18n.t('map.index.quality_labels.title')}
+          {I18n.t('map.index.quality.labels.title')}
         </h3>
+        <label className="quality-labels__subtitle">{I18n.t('map.index.quality.labels.subtitle')}</label>
 
         {this.renderItem('good')}
         {this.renderItem('regular')}

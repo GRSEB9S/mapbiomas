@@ -1,3 +1,5 @@
+import 'highcharts_config';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import LandsatDownload from './components/download/landsat_download';

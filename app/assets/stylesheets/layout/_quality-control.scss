@@ -1,6 +1,10 @@
 .quality-labels {
   margin: 0px !important;
 
+  &__subtitle {
+    margin-bottom: $small-spacing;
+  }
+
   &__item {
     position: relative;
     padding-left: $medium-spacing;

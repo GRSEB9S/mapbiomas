@@ -6,14 +6,17 @@ pt-BR:
         body: |
           <p>Todos os mapas do Projeto MAPBIOMAS fazem parte da Coleção 1 que incluem dados anuais no período 2008 a 2015.</p>
           <p>Esta coleção é fruto do primeiro ano de trabalho do projeto MapBiomas que foi destinado a testar a viabilidade e a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
-          <p>Os mapas apresentados ainda possuem uma séria de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem). Um processo de validação com utilização de pontos de amostragem para análise de acurácia esta em implementação para aplicação nas próximas coleções.</p>
+          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem). Um processo de validação com utilização de pontos de amostragem para análise de acurácia está em implementação para aplicação nas próximas coleções.</p>
       transitions:
         title: Análise de Transição
         body: |
           <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas de qualquer par de anos consecutivos (ex. 2008-2009; 2011-2012). Selecione dois anos consecutivos na barra inferior e observe o diagrama de Sankey indicando as transições de cobertura identificadas.</p>
           <p>É possível visualizar no mapa onde estão estas diferenças entre anos clicando na faixa/linha que liga os dois lados do diagrama. Para ver a matriz completa de transição clique no botão “Matriz de Transição”.</p>
           <p>Esta representação de transição entre classes de um ano para outro é feita a partir da comparação pixel a pixel.</p>
-          <p><strong>ATENÇÃO:</strong> Na Coleção 1 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+          <p class="warning"><strong>ATENÇÃO:</strong>
+          <blockquote>
+            Na Coleção 1 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+          </blockquote>
       quality:
         title: Qualidade do Mosaico
         body: |
@@ -43,23 +46,31 @@ pt-BR:
         contour_maps: Cartas
         indigenous_lands: Terras indígenas
         conservation_units: Unidades de conservação
-      coverage: Cobertura
-      coverage_analysis: Análise de cobertura
-      transitions: Transições
-      transitions_analysis: Análise de transição
-      transitions_matrix:
-        title: Matriz de transições
-        total: Total
-      quality: Qualidade
-      quality_analysis: Análise de qualidade
-      quality_labels:
-        title: Legenda
-        bad: Ruim
-        regular: Regular
-        good: Boa
-        undefined: Não informado
-      quality_chart:
-        tooltip: Cartas nesta categoria
+      coverage:
+        title: Cobertura
+        analysis: Análise de cobertura
+      transitions:
+        title: Transições
+        analysis: Análise de transição
+        matrix:
+          title: Matriz de transições
+          total: Total
+      quality:
+        title: Qualidade
+        analysis: Qualidade do mosaico
+        labels:
+          title: Legenda
+          subtitle: Porcentagem de nuvens ou interferências aceita nas imagens que compuseram o mosaico
+          bad: "Ruim: > 30%"
+          regular: "Regular: entre 10 e 30%"
+          good: "Boa: < 10%"
+        chart:
+          tooltip: Cartas nesta categoria
+          bad: Ruim
+          regular: Regular
+          good: Boa
+          undefined: Não informado
+        download: Download dos dados
       search: "Busque municípios, estados, biomas..."
       chart:
         tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.
@@ -74,11 +85,13 @@ pt-BR:
     tooltip: |
       <ul>
         <li><strong>Floresta:</strong> formações florestais com  porte arbóreo superior a seis metros de altura e cobertura do dossel superior a  50%.</li>
+        <li><strong>Floresta da Zona Costeira:</strong> inclui principalmente mangue mas pode incluir outras formações da costa como partes da restinga.</li>
         <li><strong>Floresta plantada:</strong> plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso.</li>
-        <li><strong>Agricultura:</strong> áreas de culturas temporárias com grandes extensões,  além de cana de açúcar na região sudeste e centro oeste.</li>
         <li><strong>Pastagem:</strong> pastos nativos ou cultivados.</li>
+        <li><strong>Agricultura:</strong> áreas de culturas temporárias com grandes extensões,  além de cana de açúcar na região sudeste e centro oeste.</li>
         <li><strong>Água:</strong> lagos, lagoas, reservatórios artificiais e rios com largura superior a 30 metros de largura.</li>
         <li><strong>Outros:</strong> outras formações vegetais naturais, áreas não vegetadas, áreas não observadas e áreas não classificadas.</li>
+        <li><strong>Áreas não observadas:</strong> áreas com cobertura de nuvem ou outra interferencia que não puderam ser corrigidas pelos filtros espacial e temporal.</li>
       </ul>
     modal:
       ok: OK

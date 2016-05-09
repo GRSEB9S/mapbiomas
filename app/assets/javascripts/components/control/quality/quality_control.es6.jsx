@@ -27,7 +27,7 @@ export class QualityControl extends React.Component {
     return (
       [
         {
-          name: I18n.t('map.index.quality_chart.tooltip'),
+          name: I18n.t('map.index.quality.chart.tooltip'),
           data: this.qualitiesGroupedByCards,
         }
       ]
@@ -44,16 +44,18 @@ export class QualityControl extends React.Component {
     return {
       chart: {
         renderTo: el,
-        type: 'column'
+        type: 'pie'
       },
       plotOptions: {
-        column: {
+        pie: {
           colors: seriesColors,
-          colorByPoint: true,
           dataLabels: {
             enabled: false
           }
         },
+      },
+      tooltip: {
+        valueSuffix: ' ({point.percentage:.2f}%)</b>'
       },
       legend: {
         enabled: false
@@ -72,6 +74,10 @@ export class QualityControl extends React.Component {
       names[quality] = _.findWhere(this.props.qualityInfo, {api_name: quality}).label;
       return names;
     }, {});
+  }
+
+  handleDownloadButton() {
+    window.open(this.props.qualityDataUrl, '_blank');
   }
 
   renderChart() {
@@ -101,7 +107,7 @@ export class QualityControl extends React.Component {
     return (
       <div className="map-control">
         <h3 className="map-control__header">
-          {I18n.t('map.index.quality_analysis')}
+          {I18n.t('map.index.quality.analysis')}
           <i id="quality-tooltip"
             className="material-icons tooltip">
             &#xE88E;
@@ -119,6 +125,11 @@ export class QualityControl extends React.Component {
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
           <div className="quality-chart" ref="chartElement"></div>
+          <button
+              className="primary"
+              onClick={this.handleDownloadButton.bind(this)}>
+            {I18n.t('map.index.quality.download')}
+          </button>
         </div>
       </div>
     );
