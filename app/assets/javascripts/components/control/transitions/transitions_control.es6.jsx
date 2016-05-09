@@ -100,7 +100,6 @@ export class TransitionsControl extends React.Component {
   }
 
   render() {
-    let territories = new Territories(this.props.availableTerritories);
     let controlClass = classNames('map-control', { 'map-control--expanded': this.state.expanded });
 
     return (
@@ -115,12 +114,16 @@ export class TransitionsControl extends React.Component {
 
         <div className="map-control__content">
           <label>{I18n.t('map.index.search')}</label>
-          <Select
+          <Select.Async
             name="territory-select"
-            value={this.props.territory.id}
-            options={territories.toOptions()}
+            value={this.props.territory.value}
+            loadOptions={this.props.loadTerritories}
             onChange={this.props.onTerritoryChange}
             clearable={false}
+            ignoreAccents={false}
+            noResultsText={false}
+            searchingText={I18n.t('map.index.searching')}
+            placeholder={this.props.territory.label}
           />
           {this.renderTransitions()}
           <button className="primary" onClick={this.expandMatrix.bind(this)}>

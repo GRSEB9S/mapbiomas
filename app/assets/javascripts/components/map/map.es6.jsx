@@ -9,6 +9,7 @@ import { OpacityControl } from '../control/opacity_control';
 import { QualityControl } from '../control/quality/quality_control';
 import { QualityLabels } from '../control/quality/quality_labels';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Territories } from '../../lib/territories';
 import { TogglesControl } from '../control/toggles_control';
 import { TransitionsControl } from '../control/transitions/transitions_control';
 import { TransitionsMatrix } from '../control/transitions/transitions_matrix';
@@ -55,7 +56,13 @@ export default class Map extends React.Component {
   }
 
   get territory() {
-    return this.state.territory || this.props.defaultTerritory;
+    if(_.isEmpty(this.state.territory)) {
+      let defaultTerritory = new Territories([this.props.defaultTerritory]).withOptions();
+
+      return _.first(defaultTerritory);
+    } else {
+      return this.state.territory;
+    }
   }
 
   get transition() {
@@ -118,18 +125,8 @@ export default class Map extends React.Component {
     }
   }
 
-  get territories() {
-    return this.props.availableTerritories.map((t) => {
-      return {
-        id: t.id,
-        name: `${t.name} (${t.category})`
-      };
-    });
-  }
-
   //Handlers
-  handleTerritoryChange(newTerritory) {
-    let territory = this.props.availableTerritories.find((t) => t.id == newTerritory.value);
+  handleTerritoryChange(territory) {
     this.setState({ territory })
   }
 
@@ -274,6 +271,21 @@ export default class Map extends React.Component {
     });
   }
 
+  loadTerritories(input, callback) {
+    clearTimeout(this.timeoutId);
+
+    if (input) {
+      this.timeoutId = setTimeout(() => {
+        API.territories({name: input})
+        .then((territories) => {
+          callback(null, { options: new Territories(territories).withOptions() });
+        });
+      }, 500);
+    } else {
+      callback(null, { options: [] });
+    }
+  }
+
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
@@ -395,18 +407,17 @@ export default class Map extends React.Component {
         <TabPanel>
           <CoverageControl
             {...this.props}
-            availableTerritories={this.territories}
             territory={this.territory}
             year={this.year}
             classifications={this.classifications}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
+            loadTerritories={this.loadTerritories.bind(this)}
           />
         </TabPanel>
 
         <TabPanel>
           <TransitionsControl
             {...this.props}
-            availableTerritories={this.territories}
             transition={this.transition}
             transitions={this.state.transitions}
             classifications={this.classifications}
@@ -414,6 +425,7 @@ export default class Map extends React.Component {
             years={this.years}
             onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
+            loadTerritories={this.loadTerritories.bind(this)}
             onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
             setTransition={this.handleTransitionChange.bind(this)}
           />
@@ -423,13 +435,13 @@ export default class Map extends React.Component {
           <QualityControl
             {...this.props}
             cards={this.state.cards}
-            availableTerritories={this.territories}
             territory={this.territory}
             year={this.year}
             classifications={this.classifications}
             qualities={this.state.qualities}
             qualityInfo={this.props.qualityInfo}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
+            loadTerritories={this.loadTerritories.bind(this)}
           />
         </TabPanel>
       </Tabs>

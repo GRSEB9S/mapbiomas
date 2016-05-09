@@ -46,6 +46,7 @@ en:
           undefined: Undefined
         download: Download data
       search: "Search for cities, states, protected areas..."
+      searching: "Searching..."
       chart:
         tooltip: Move your mouse over the chart to see its values.
         year: "Year: %{year}"

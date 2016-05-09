@@ -72,6 +72,7 @@ pt-BR:
           undefined: Não informado
         download: Download dos dados
       search: "Busque municípios, estados, biomas..."
+      searching: "Procurando..."
       chart:
         tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.
         year: "Ano: %{year}"

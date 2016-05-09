@@ -57,7 +57,6 @@ class MapPresenter
       defaultBaseMaps: [],
       availableLayers: layers,
       defaultLayers: [],
-      availableTerritories: TerrasAPI.territories,
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
       qualityInfo: QUALITY_INFO,
