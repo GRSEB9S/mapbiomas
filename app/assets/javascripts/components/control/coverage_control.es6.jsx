@@ -99,8 +99,6 @@ export class CoverageControl extends React.Component {
   }
 
   render() {
-    let territories = new Territories(this.props.availableTerritories);
-
     return (
       <div className="map-control">
         <h3 className="map-control__header">
@@ -108,12 +106,16 @@ export class CoverageControl extends React.Component {
         </h3>
         <div className="map-control__content">
           <label>{I18n.t('map.index.search')}</label>
-          <Select
+          <Select.Async
             name="territory-select"
-            value={this.props.territory.id}
-            options={territories.toOptions()}
+            value={this.props.territory.value}
+            loadOptions={this.props.loadTerritories}
             onChange={this.props.onTerritoryChange}
             clearable={false}
+            ignoreAccents={false}
+            noResultsText={false}
+            searchingText={I18n.t('map.index.searching')}
+            placeholder={this.props.territory.label}
           />
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>

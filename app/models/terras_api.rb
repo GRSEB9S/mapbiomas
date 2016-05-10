@@ -5,8 +5,10 @@ class TerrasAPI
   format :json
   caches_api_responses key_name: "terras", expire_in: 1.month
 
-  def self.territories
-    get("/dashboard/services/territories")
+  def self.territories(name = nil)
+    get("/dashboard/services/territories", query: {
+      name: name
+    })
   end
 
   def self.classifications
