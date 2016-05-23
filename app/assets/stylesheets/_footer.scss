@@ -23,7 +23,8 @@
     }
   }
 
-  &__seeg {
+  &__seeg,
+  &__gee {
     float: left;
   }
 
@@ -31,6 +32,7 @@
     float: right;
   }
 
+  &__gee,
   &__seeg,
   &__ecostage {
     padding: $small-spacing $base-spacing;
@@ -41,6 +43,7 @@
   }
 
   .ecostage-label,
+  .gee-label,
   .seeg-label {
     display: inline-block;
     color: $white;
