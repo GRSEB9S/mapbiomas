@@ -15,12 +15,15 @@ $heading-line-height: 1.2;
 
 // Colors
 $white: #fff;
+$black: #000;
+$red: #ed1f09;
 $light-blue: #75c7e0;
 $medium-blue: #62a5bb;
 $light-green: #84caa0;
 $medium-green: #77b893;
 $dark-gray: #333;
 $medium-gray: #7f8184;
+$medium-orange: #e18837;
 $light-gray: #bbb;
 $header-color: $white;
 $footer-color: $dark-gray;
@@ -30,6 +33,7 @@ $base-border-radius: 1px;
 $base-spacing: rem(16px);
 $small-spacing: rem(8px);
 $micro-spacing: rem(4px);
+$medium-spacing: rem(30px);
 $big-spacing: rem(40px);
 $large-spacing: rem(48px);
 $base-z-index: 0;

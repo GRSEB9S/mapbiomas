@@ -20,20 +20,36 @@ en:
         contour_maps: Contour maps
         indigenous_lands: Terras indígenas
         conservation_units: Unidades de conservação
-      coverage_analysis: Coverage analysis
-      coverage: Coverage
-      transitions: Transitions
-      quality: Quality
-      transitions_analysis: Transitions analysis
-      transitions_matrix:
-        title: Transitions matrix
-        total: Total
-      quality_analysis: Quality analysis
+      coverage:
+        title: Coverage
+        analysis: Coverage analysis
+      transitions:
+        title: Transitions
+        analysis: Transitions analysis
+        matrix:
+          title: Transitions matrix
+          total: Total
+      quality:
+        title: Quality
+        analysis: Quality analysis
+        labels:
+          title: Labels
+          subtitle: Threshold for accepted percentage of clouds and other interferences accepted in the images that form the mosaic
+          bad: "Bad: > 30%"
+          regular: "Regular: between 10 and 30%"
+          good: "Good: < 10%"
+        chart:
+          tooltip: Cards on this category
+          bad: Bad
+          regular: Regular
+          good: Good
+          undefined: Undefined
+        download: Download data
       search: "Search for cities, states, protected areas..."
+      searching: "Searching..."
       chart:
         tooltip: Move your mouse over the chart to see its values.
         year: "Year: %{year}"
-      analyze: Analyze
       download:
         title: Download data
         classification: Classification

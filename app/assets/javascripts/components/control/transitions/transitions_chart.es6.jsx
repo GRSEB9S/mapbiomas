@@ -1,4 +1,11 @@
-class TransitionsChart extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import { AutoWidth } from 'react-timeline-slider';
+import classNames from 'classnames';
+import d3 from 'd3';
+import d3Sankey from 'd3-sankey';
+
+export class TransitionsChart extends React.Component {
   constructor(props) {
     super(props);
     this.formatNumber = (n) => I18n.toNumber(n, { precision: 0 });
@@ -11,13 +18,14 @@ class TransitionsChart extends React.Component {
     let width = this.props.width,
         height = 220;
 
-    let svg = d3.select(element).append("svg")
+    let svg = d3.select(element)
+        .append("svg")
         .attr("width", width)
         .attr("height", height+10)
         .append("g")
         .attr("transform", "translate(0, 5)");
 
-    let sankey = d3.sankey()
+    let sankey = d3Sankey.sankey()
         .nodeWidth(12)
         .nodePadding(10)
         .size([width, height]);

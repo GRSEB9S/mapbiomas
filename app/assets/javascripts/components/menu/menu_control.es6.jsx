@@ -1,4 +1,8 @@
-class MenuControl extends React.Component {
+import React from 'react';
+import classNames from 'classnames';
+import { Locale } from '../../lib/locale';
+
+export class MenuControl extends React.Component {
   setLocale(locale) {
     Locale.setLocale({locale: locale}).done(function() {
       window.location.reload();
@@ -91,19 +95,6 @@ class MenuControl extends React.Component {
           <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('contact')}>
               {I18n.t('layouts.header.contact.title')}
-            </a>
-          </li>
-          <li className="menu__item translation main-nav__menu__item main-nav__translation">
-            <i className="material-icons translation__icon">&#xE8E2;</i>
-            <a className="menu__link translation__link"
-              href="#"
-              onClick={this.setLocale.bind(this, "pt-BR")}>
-              PT-BR
-            </a>
-            <a className="menu__link translation__link"
-              href="#"
-              onClick={this.setLocale.bind(this, "en")}>
-              EN
             </a>
           </li>
         </ul>

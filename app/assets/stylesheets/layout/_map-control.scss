@@ -1,0 +1,65 @@
+.map-control-wrapper {
+  position: absolute;
+  margin: $base-spacing;
+  top: 0;
+  width: 340px;
+  right: 0;
+
+  @include media($mobile) {
+    width: 250px;
+  }
+
+  &--left {
+    left: 0;
+  }
+
+  &--smaller {
+    width: 250px;
+  }
+
+  &--bottom {
+    top: auto;
+    bottom: 80px;
+
+    & > .map-control {
+      margin-top: $base-spacing;
+      margin-bottom: $base-spacing;
+    }
+  }
+}
+
+.map-control {
+  width: 100%;
+  border-radius: $base-border-radius;
+  background: $white;
+  padding: $base-spacing;
+  box-shadow: $base-box-shadow;
+
+  @include media($mobile-landscape) {
+    display: none;
+  }
+
+  @include media($mobile) {
+    display: none;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__content {
+    button {
+      width: 100%;
+      margin-top: $small-spacing;
+    }
+  }
+
+  &__tabs {
+    margin: (-$base-spacing) (-$base-spacing) auto (-$base-spacing);
+    font-size: $small-font-size;
+
+    & > .tabs__item {
+      width: 33.33%;
+    }
+  }
+}

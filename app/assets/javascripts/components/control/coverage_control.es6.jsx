@@ -1,4 +1,11 @@
-class CoverageControl extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import Highcharts from 'highcharts';
+import Select from 'react-select';
+import { API } from '../../lib/api';
+import { Territories } from '../../lib/territories';
+
+export class CoverageControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +37,7 @@ class CoverageControl extends React.Component {
 
   get chartOptions() {
     let el = this.refs.chartElement;
+
     return {
       chart: {
         renderTo: el,
@@ -46,11 +54,13 @@ class CoverageControl extends React.Component {
         },
       },
       tooltip: {
-        pointFormat: '<b>' + I18n.t('map.index.coverage') + '</b>: {point.y}',
+        pointFormat: I18n.t('map.index.coverage.title') + ': <b>{point.y}</b>',
         valueSuffix: ' ha',
         valueDecimals: 2
       },
-      exporting: { enabled: false },
+      exporting: {
+        enabled: false
+      },
       title: false,
       series: this.chartSeries
     };
@@ -63,7 +73,7 @@ class CoverageControl extends React.Component {
       year: props.year
     }).then((coverage) => {
       this.setState({ coverage: coverage }, () => {
-        this.draw()
+        this.drawChart()
       });
     })
   }
@@ -78,7 +88,7 @@ class CoverageControl extends React.Component {
     }
   }
 
-  draw() {
+  drawChart() {
     this.chart = new Highcharts.Chart(this.chartOptions);
   }
 
@@ -89,21 +99,23 @@ class CoverageControl extends React.Component {
   }
 
   render() {
-    let territories = new Territories(this.props.availableTerritories);
-
     return (
       <div className="map-control">
         <h3 className="map-control__header">
-          {I18n.t('map.index.coverage_analysis')}
+          {I18n.t('map.index.coverage.analysis')}
         </h3>
         <div className="map-control__content">
           <label>{I18n.t('map.index.search')}</label>
-          <Select
+          <Select.Async
             name="territory-select"
-            value={this.props.territory.id}
-            options={territories.toOptions()}
+            value={this.props.territory.value}
+            loadOptions={this.props.loadTerritories}
             onChange={this.props.onTerritoryChange}
             clearable={false}
+            ignoreAccents={false}
+            noResultsText={false}
+            searchingText={I18n.t('map.index.searching')}
+            placeholder={this.props.territory.label}
           />
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>

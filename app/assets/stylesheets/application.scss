@@ -3,22 +3,6 @@
 @import "neat";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "tooltipster";
 
-@import "react-timeline-slider";
-@import "react-select";
-@import "react-toggle";
-
-@import "layout";
-@import "mixins";
-@import "map";
-@import "header";
-@import "menu";
-@import "footer";
-@import "tabs";
-@import "tooltip";
-@import "sankey";
-@import "transitions-matrix";
-@import "page";
-@import "methodology";
-@import "team";
+@import "./layout/layout";
+@import "./modules/modules";

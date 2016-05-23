@@ -11,6 +11,13 @@
     display: none;
   }
 
+  .three-tabbed {
+    & > li{
+      width: calc(100% / 3);
+      text-align: center;
+    }
+  }
+
   &__TabList {
     padding: $small-spacing $small-spacing 0;
     border-bottom: $base-border;

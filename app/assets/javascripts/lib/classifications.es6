@@ -1,4 +1,4 @@
-class Classifications {
+export class Classifications {
   constructor(classifications) {
     this.classifications = classifications;
   }

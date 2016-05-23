@@ -1,4 +1,9 @@
-class TransitionsMatrix extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import classNames from 'classnames';
+import Highcharts from 'highcharts';
+
+export class TransitionsMatrix extends React.Component {
   get colSpan() {
     return this.props.classifications.length;
   }
@@ -55,7 +60,7 @@ class TransitionsMatrix extends React.Component {
       <tr>
         <td></td>
         <td className="to-total-classification highlight">
-          {I18n.t('map.index.transitions_matrix.total')}
+          {I18n.t('map.index.transitions.matrix.total')}
         </td>
 
         {this.renderTotalRow()}
@@ -121,7 +126,6 @@ class TransitionsMatrix extends React.Component {
         return (
           <td key={key} className="transition-value highlight">
             {Highcharts.numberFormat(transition.area, 0, '.')} ha
-            {/*({transition.percentage}%)*/}
           </td>
         );
       } else {
@@ -146,7 +150,7 @@ class TransitionsMatrix extends React.Component {
             <td></td>
             {this.renderToClassifications()}
             <td className="from-total-classification highlight">
-              {I18n.t('map.index.transitions_matrix.total')}
+              {I18n.t('map.index.transitions.matrix.total')}
             </td>
           </tr>
           {this.renderFromClassifications()}

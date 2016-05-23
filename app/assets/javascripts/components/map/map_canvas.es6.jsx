@@ -1,4 +1,7 @@
-class MapCanvas extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+
+export class MapCanvas extends React.Component {
   constructor() {
     super();
 
@@ -33,16 +36,6 @@ class MapCanvas extends React.Component {
     });
   }
 
-  loadCards() {
-    $.getJSON("https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson", (cards) => {
-      this.setState({
-        cards,
-      }, () => {
-        this.setQualityLayer();
-      });
-    });
-  }
-
   addBaseMaps(map) {
     _.each(this.props.baseMaps, (baseMap) => {
       let newMap = L.tileLayer(baseMap.link, {
@@ -73,7 +66,7 @@ class MapCanvas extends React.Component {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
-    this.loadCards();
+    this.setQualityLayer();
     this.addBaseMaps(this.map);
     this.addLayers(this.map);
 
@@ -113,23 +106,25 @@ class MapCanvas extends React.Component {
     if(this.cardsLayer) {
       this.map.removeLayer(this.cardsLayer);
     }
+
     if(this.props.mode !== 'quality') return;
+
     const style = {
       color: '#000',
       fillColor: '#aaa',
+      fillOpacity: 0.5,
       weight: 0.2
     };
 
-    const cardsLayer = L.geoJson(this.state.cards, {
+    const cardsLayer = L.geoJson(this.props.cards, {
       style: (feature) => {
         const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
+
         if(quality) {
-          switch(quality.quality) {
-            case 3: return { ...style, fillColor: '#008800' };
-            case 2: return { ...style, fillColor: '#FCF35B' };
-            case 1: return { ...style, fillColor: '#880000' };
-            default: return style;
-          }
+          return {
+            ...style,
+            fillColor: _.findWhere(this.props.qualityInfo, { api_name: String(quality.quality) }).color
+          };
         } else {
           return style;
         }

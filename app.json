@@ -9,11 +9,25 @@
     },
     "REDIS_URL": {
       "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
     }
   },
   "addons": [
     "papertrail",
     "heroku-postgresql",
     "heroku-redis"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
   ]
 }

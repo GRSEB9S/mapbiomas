@@ -1,4 +1,9 @@
-class TogglesControl extends React.Component {
+import React from 'react';
+import _ from 'underscore';
+import Toggle from 'react-toggle.jsx';
+import tooltipster from 'tooltipster';
+
+export class TogglesControl extends React.Component {
   get ids() {
     return this.props.options.map((c) => c.id);
   }
@@ -41,7 +46,7 @@ class TogglesControl extends React.Component {
   render() {
     let options = this.props.availableOptions.map((option) => {
       return (
-        <li key={option.id} className="classification-item">
+        <li key={option.id} className="toggle">
           <label>{option.name}</label>
           <Toggle
             toggleColor={option.color}
@@ -58,7 +63,7 @@ class TogglesControl extends React.Component {
           {this.renderTooltip()}
         </h3>
         <div className="map-control__content">
-          <ul className="classifications-list">
+          <ul className="toggles-list">
             {options}
           </ul>
         </div>
