@@ -36,7 +36,6 @@
   &__seeg,
   &__ecostage {
     padding: $small-spacing $base-spacing;
-    cursor: pointer;
 
     @include media($mobile) {
       padding: 0 ($small-spacing / 2) 0 ($small-spacing / 2);
@@ -61,6 +60,7 @@
   &__image {
     height: 20px;
     vertical-align: middle;
+    cursor: pointer;
 
     @include media($mobile) {
       height: 16px;
