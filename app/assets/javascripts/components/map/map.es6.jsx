@@ -184,6 +184,12 @@ export default class Map extends React.Component {
     return this.mode == 'transitions';
   }
 
+  timelineDefaultValue() {
+    if(this.mode == 'transitions') {
+      return _.last(this.props.availableYears, 2);
+    }
+  }
+
   totalClassificationData(arr, from, to) {
     return {
       area: _.reduce(arr, (memo, num) => {
@@ -484,6 +490,7 @@ export default class Map extends React.Component {
             multi={this.isMulti()}
             playStop={true}
             onValueChange={this.handleYearChange.bind(this)}
+            defaultValue={this.timelineDefaultValue()}
             range={this.props.availableYears} />
         </div>
       </div>
