@@ -24,10 +24,6 @@ export class TransitionsControl extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.loadTransitions(this.props);
-  }
-
   componentWillReceiveProps(nextProps) {
     if(!_.isEqual(this.props.territory_id, nextProps.territory_id) ||
        !_.isEqual(this.props.years, nextProps.years)){
@@ -93,6 +89,8 @@ export class TransitionsControl extends React.Component {
   }
 
   componentDidMount() {
+    this.loadTransitions(this.props);
+
     $('#transitions-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',
       content: $(I18n.t('map.warning.transitions.body'))
