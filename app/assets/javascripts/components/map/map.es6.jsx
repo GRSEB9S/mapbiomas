@@ -262,6 +262,7 @@ export default class Map extends React.Component {
   downloadSpreadsheet() {
     let params = {
       territory_id: this.territory.id,
+      territory_name: this.territory.name,
       year: this.years.join(',')
     };
     return Routes.download_path(params);

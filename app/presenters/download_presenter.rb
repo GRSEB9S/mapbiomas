@@ -2,6 +2,7 @@ class DownloadPresenter
   def initialize(params)
     @year = params[:year]
     @territory_id = params[:territory_id]
+    @territory_name = params[:territory_name]
   end
 
   def headers
@@ -17,6 +18,7 @@ class DownloadPresenter
   end
 
   def filename
+    "[#{@territory_name}] " +
     I18n.t('map.index.transitions.matrix.download_file',
       from_year: years.first,
       to_year: years.last
