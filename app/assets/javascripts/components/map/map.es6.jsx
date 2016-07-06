@@ -110,19 +110,23 @@ export default class Map extends React.Component {
   }
 
   get year() {
-    return this.state.year || this.props.availableYears[this.props.availableYears.length-1];
+    return this.state.year || this.lastAvailableYears();
   }
 
   get years() {
-    if(this.state.years.length == 2) {
-      return this.state.years;
+    if(_.isEmpty(this.state.years)) {
+      return this.lastAvailableYears(2);
     } else {
-      let availableYears =_.sortBy(this.props.availableYears, (year) => {
-        return year;
-      })
-
-      return _.last(availableYears, 2)
+      return this.state.years
     }
+  }
+
+  lastAvailableYears(limit = null) {
+    let availableYears =_.sortBy(this.props.availableYears, (year) => {
+      return year;
+    })
+
+    return _.last(availableYears, limit)
   }
 
   //Handlers
@@ -131,8 +135,12 @@ export default class Map extends React.Component {
   }
 
   handleYearChange(newYear) {
-    this.setState({ year: newYear, years: newYear });
-    this.loadQualities(newYear);
+    if(newYear instanceof Array) {
+      this.setState({ years: newYear });
+    } else {
+      this.setState({ year: newYear });
+      this.loadQualities(newYear);
+    }
   }
 
   handleClassificationsChange(ids) {
@@ -186,7 +194,9 @@ export default class Map extends React.Component {
 
   timelineDefaultValue() {
     if(this.mode == 'transitions') {
-      return _.last(this.props.availableYears, 2);
+      return this.years;
+    } else {
+      return [this.year];
     }
   }
 

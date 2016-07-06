@@ -24,13 +24,6 @@ export class TransitionsControl extends React.Component {
     })
   }
 
-  componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props.territory_id, nextProps.territory_id) ||
-       !_.isEqual(this.props.years, nextProps.years)){
-      this.loadTransitions(nextProps)
-    }
-  }
-
   renderTransitions() {
     let classifications = new Classifications(this.props.classifications);
     let transitions = this.props.transitions;
@@ -95,6 +88,13 @@ export class TransitionsControl extends React.Component {
       theme: 'tooltip-custom-theme',
       content: $(I18n.t('map.warning.transitions.body'))
     });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(!_.isEqual(this.props.territory, nextProps.territory) ||
+       !_.isEqual(this.props.years, nextProps.years)){
+      this.loadTransitions(nextProps)
+    }
   }
 
   render() {
