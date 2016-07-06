@@ -1,0 +1,21 @@
+workbook = xlsx_package.workbook
+center = workbook.styles.add_style(
+  alignment: {
+    horizontal: :center,
+    vertical: :center,
+    wrap_text: true
+  }
+)
+
+workbook.add_worksheet(:name => 'Transições') do |sheet|
+  @download_presenter.headers.each do |header|
+    sheet.add_row(header, style: center)
+  end
+
+  @download_presenter.value_rows.each do |row|
+    sheet.add_row(row, style: center)
+  end
+
+  sheet.merge_cells(sheet.rows.first.cells[2..@download_presenter.span])
+  sheet.merge_cells(sheet.cols.first[2..@download_presenter.span])
+end

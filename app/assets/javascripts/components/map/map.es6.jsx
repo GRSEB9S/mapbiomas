@@ -249,6 +249,14 @@ export default class Map extends React.Component {
     );
   }
 
+  downloadSpreadsheet() {
+    let params = {
+      territory_id: this.territory.id,
+      year: this.years.join(',')
+    };
+    return Routes.download_path(params);
+  }
+
   closeWarning(key) {
     let state = _.clone(this.state);
     state.showWarning[key] = false;
@@ -303,6 +311,7 @@ export default class Map extends React.Component {
           overlay={true}>
           <TransitionsMatrix
             years={this.years}
+            download={this.downloadSpreadsheet()}
             transitions={this.state.transitions}
             classifications={this.classifications}
             toTotalData={this.toTotalData()}

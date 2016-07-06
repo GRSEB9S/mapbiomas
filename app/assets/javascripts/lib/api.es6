@@ -12,6 +12,6 @@ export class API {
   }
 
   static qualities(params) {
-     return $.get(Routes.api_qualities_path(params));
+    return $.get(Routes.api_qualities_path(params));
   }
 }

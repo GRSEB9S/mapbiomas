@@ -55,6 +55,8 @@ pt-BR:
         matrix:
           title: Matriz de transições
           total: Total
+          download: Download
+          download_file: "Matriz de Transição %{from_year} - %{to_year}"
       quality:
         title: Qualidade
         analysis: Qualidade do mosaico

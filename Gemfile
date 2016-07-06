@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
 
+gem 'axlsx', '= 2.0.1'
+gem 'axlsx_rails'
 gem 'bitters'
 gem 'bourbon'
 gem 'cachebar'
@@ -24,6 +26,7 @@ gem 'rails-settings-cached', '~> 0.4.0'
 gem 'react-rails'
 gem 'redis'
 gem 'responders'
+gem 'rubyzip', '= 1.0.0'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sprockets', '>= 3.0.0'
