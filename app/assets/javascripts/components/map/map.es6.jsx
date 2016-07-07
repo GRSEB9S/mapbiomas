@@ -322,7 +322,7 @@ export default class Map extends React.Component {
           overlay={true}>
           <TransitionsMatrix
             years={this.years}
-            download={this.downloadSpreadsheet()}
+            downloadUrl={this.downloadSpreadsheet()}
             transitions={this.state.transitions}
             classifications={this.classifications}
             toTotalData={this.toTotalData()}

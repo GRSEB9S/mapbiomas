@@ -13,7 +13,7 @@ export class TransitionsMatrix extends React.Component {
   }
 
   startDownload() {
-    window.location.href = `${this.props.download}`;
+    window.location.href = this.props.downloadUrl;
   }
 
   renderToClassifications() {
