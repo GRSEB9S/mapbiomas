@@ -12,6 +12,10 @@ export class TransitionsMatrix extends React.Component {
     return this.props.classifications.length;
   }
 
+  startDownload() {
+    window.location.href = this.props.downloadUrl;
+  }
+
   renderToClassifications() {
     return this.props.classifications.map((c) => {
       let transition = this.props.transitions.find((t) => t.to == c.id);
@@ -114,8 +118,6 @@ export class TransitionsMatrix extends React.Component {
   }
 
   renderData(fromClassification) {
-    let lastClassification = _.last(this.props.classifications);
-
     return this.props.classifications.map((toClassification) => {
       let transition = this.props.transitions.find((t) => {
         return t.to == toClassification.id && t.from == fromClassification.id;
@@ -136,28 +138,33 @@ export class TransitionsMatrix extends React.Component {
 
   render() {
     return (
-      <table className="transitions-matrix">
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td colSpan={this.colSpan} className="to-year">
-              {this.props.years[1]}
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            {this.renderToClassifications()}
-            <td className="from-total-classification highlight">
-              {I18n.t('map.index.transitions.matrix.total')}
-            </td>
-          </tr>
-          {this.renderFromClassifications()}
-          <tr></tr>
-          {this.renderToTotalData()}
-        </tbody>
-      </table>
+      <div>
+        <table className="transitions-matrix">
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td colSpan={this.colSpan} className="to-year">
+                {this.props.years[1]}
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              {this.renderToClassifications()}
+              <td className="from-total-classification highlight">
+                {I18n.t('map.index.transitions.matrix.total')}
+              </td>
+            </tr>
+            {this.renderFromClassifications()}
+            <tr></tr>
+            {this.renderToTotalData()}
+          </tbody>
+        </table>
+        <button className="map-modal__download primary" onClick={this.startDownload.bind(this)}>
+          {I18n.t('map.index.transitions.matrix.download')}
+        </button>
+      </div>
     );
   }
 }

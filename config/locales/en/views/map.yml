@@ -29,6 +29,8 @@ en:
         matrix:
           title: Transitions matrix
           total: Total
+          download: Download
+          download_file: "Transitions Matrix %{from_year} - %{to_year}"
       quality:
         title: Quality
         analysis: Quality analysis
