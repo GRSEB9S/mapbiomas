@@ -19,10 +19,10 @@ class DownloadPresenter
 
   def filename
     "[#{@territory_name}] " +
-    I18n.t('map.index.transitions.matrix.download_file',
-      from_year: years.first,
-      to_year: years.last
-    ) + ".xlsx"
+      I18n.t('map.index.transitions.matrix.download_file',
+             from_year: years.first,
+             to_year: years.last
+            ) + ".xlsx"
   end
 
   private
@@ -75,11 +75,11 @@ class DownloadPresenter
   end
 
   def transition_area(from, to)
-     transition = transitions.find do |t|
-        t["from"] == from["id"] && t["to"] == to["id"]
-     end
+    transition = transitions.find do |t|
+      t["from"] == from["id"] && t["to"] == to["id"]
+    end
 
-     return transition["area"] if transition
-     '-'
+    return transition["area"] if transition
+    '-'
   end
 end
