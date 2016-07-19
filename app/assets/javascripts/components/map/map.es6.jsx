@@ -89,10 +89,10 @@ export default class Map extends React.Component {
   get tileOptions() {
     let ids = this.classifications.map((c) => c.id);
     let year = this.mode == 'coverage' ? this.year : this.years.join(',');
-    let transitionId
+    let transitionId;
 
-    if(this.transition) {
-      transitionId = `${this.transition.from}${this.transition.to}`;
+    if(this.state.transition) {
+      transitionId = `${this.state.transition.from}${this.state.transition.to}`;
     }
 
     return {
@@ -102,7 +102,7 @@ export default class Map extends React.Component {
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
-        transition_id: transitionId,
+        transition_id: transitionId || '11',
         classification_ids: ids.join(','),
       },
       opacity: this.state.opacity
@@ -172,7 +172,7 @@ export default class Map extends React.Component {
   }
 
   handleTransitionsLoad(transitions) {
-    this.setState({ transitions, transition: transitions[0]})
+    this.setState({ transitions });
   }
 
   handleOpacityChange(e) {
