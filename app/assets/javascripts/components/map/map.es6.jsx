@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'underscore';
 import ReactTimelineSlider from 'react-timeline-slider';
+import classNames from 'classnames';
 import { API } from '../../lib/api';
 import { CoverageControl } from '../control/coverage_control';
 import { MapCanvas } from '../map/map_canvas';
@@ -418,11 +419,15 @@ export default class Map extends React.Component {
   }
 
   renderMainMenu() {
+    let classes = classNames("map-control-wrapper", {
+      "map-control-wrapper--bigger": this.mode == 'transitions'
+    });
+
     return(
       <Tabs
           selectedIndex={this.state.mainMenuIndex}
           onSelect={this.handleMainMenuIndexSelect.bind(this)}
-          className="map-control-wrapper">
+          className={classes}>
 
         <TabList className="three-tabbed">
           <Tab>{I18n.t('map.index.coverage.title')}</Tab>
