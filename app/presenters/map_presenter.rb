@@ -62,7 +62,7 @@ class MapPresenter
       qualityInfo: QUALITY_INFO,
       qualityCardsUrl: 'https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson',
       qualityDataUrl: 'https://s3.amazonaws.com/mapbiomas-ecostage/Avalia%C3%A7%C3%A3o_Qualitativa_Mosaicos_COLECAO++1+-+V3.xlsx',
-      apiUrl: ENV['TERRAS_API_URL']
+      apiUrl: ENV['TERRAS_MAP_API_URL']
     }
   end
 
@@ -81,15 +81,29 @@ class MapPresenter
     ]
   end
 
+  def rgb_landsat_layer
+    {
+      id: 0,
+      slug: 'rgb-landsat',
+      name: I18n.t('map.index.layers.rgb_landsat'),
+      color: nil,
+      fromCarto: false,
+      link: 'http://seeg-mapbiomas.terras.agr.br:3000'
+    }
+  end
+
   def layers
-    LAYERS_KEYS.each_with_index.map do |(layer, key), id|
+    carto_layers = LAYERS_KEYS.each_with_index.map do |(layer, key), id|
       {
-        id: id,
+        id: id + 1,
         slug: layer.to_s.camelize(:lower),
         name: I18n.t(layer, scope: 'map.index.layers'),
         color: LAYERS_COLORS[layer],
+        fromCarto: true,
         link: "https://karydja.cartodb.com/api/v2/viz/#{key}/viz.json"
       }
     end
+
+    carto_layers.unshift(rgb_landsat_layer)
   end
 end

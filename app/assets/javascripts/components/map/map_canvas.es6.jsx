@@ -49,12 +49,25 @@ export class MapCanvas extends React.Component {
 
   addLayers(map) {
     _.each(this.props.layers, (layer) => {
-      cartodb.createLayer(map, layer.link)
-        .addTo(map)
-        .done((mapLayer) => {
-          this.layers[layer.slug] = mapLayer;
-          mapLayer.setOpacity(0);
-        });
+      if(layer.fromCarto) {
+        cartodb.createLayer(map, layer.link)
+          .addTo(map)
+          .done((mapLayer) => {
+            this.layers[layer.slug] = mapLayer;
+            mapLayer.setOpacity(0);
+          });
+      } else {
+        let mapLayer = L.tileLayer.wms(layer.link, {
+          layers: 'rgb',
+          map: "wms/classification/rgb.map",
+          year: this.props.year,
+          format: 'image/png',
+          transparent: true
+        }).addTo(map);
+
+        this.layers[layer.slug] = mapLayer;
+        mapLayer.setOpacity(0);
+      }
     });
   }
 
