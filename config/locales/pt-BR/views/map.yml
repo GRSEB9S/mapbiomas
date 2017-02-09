@@ -39,6 +39,7 @@ pt-BR:
         title: Imagens
         satellite: Satélite
       layers:
+        rgb_landsat: Landsat RGB
         title: Camadas
         states: Estados
         cities: Municípios
