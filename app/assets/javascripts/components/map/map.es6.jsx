@@ -367,7 +367,7 @@ export default class Map extends React.Component {
               onSelect={this.handleViewOptionsIndexSelect.bind(this)}>
 
             <TabList className="three-tabbed">
-              <Tab>{I18n.t('map.index.classifications')}</Tab>
+              <Tab>{I18n.t('map.index.classifications.title')}</Tab>
               <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
               <Tab>{I18n.t('map.index.layers.title')}</Tab>
             </TabList>
@@ -376,8 +376,8 @@ export default class Map extends React.Component {
               <TogglesControl
                 options={this.classifications}
                 availableOptions={this.props.availableClassifications}
-                title={I18n.t('map.index.classifications')}
-                tooltip={I18n.t('map.tooltip')}
+                title={I18n.t('map.index.classifications.title')}
+                tooltip={I18n.t('map.index.classifications.tooltip')}
                 onChange={this.handleClassificationsChange.bind(this)}
               />
             </TabPanel>
@@ -387,6 +387,7 @@ export default class Map extends React.Component {
                 options={this.baseMaps}
                 availableOptions={this.props.availableBaseMaps}
                 title={I18n.t('map.index.base_maps.title')}
+                tooltip={I18n.t('map.index.base_maps.tooltip')}
                 onChange={this.handleBaseMapsChange.bind(this)}
               />
             </TabPanel>

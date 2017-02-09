@@ -68,34 +68,39 @@ class MapPresenter
 
   private
 
-  def base_maps
-    [
-      {
-        id: 0,
-        slug: 'satellite',
-        name: I18n.t('map.index.base_maps.satellite'),
-        color: MAPS_COLORS[:satellite],
-        link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-        attribution: '&copy; Esri &mdash; Source: Esri, USDA, USGS'
-      }
-    ]
-  end
-
-  def rgb_landsat_layer
+  def rgb_landsat
     {
       id: 0,
       slug: 'rgb-landsat',
-      name: I18n.t('map.index.layers.rgb_landsat'),
+      name: I18n.t('map.index.base_maps.rgb_landsat'),
+      wms: true,
       color: nil,
-      fromCarto: false,
       link: 'http://seeg-mapbiomas.terras.agr.br:3000'
     }
   end
 
+  def satellite_map
+    {
+      id: 1,
+      slug: 'satellite',
+      name: I18n.t('map.index.base_maps.satellite'),
+      color: MAPS_COLORS[:satellite],
+      link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      attribution: '&copy; Esri &mdash; Source: Esri, USDA, USGS'
+    }
+  end
+
+  def base_maps
+    [
+      rgb_landsat,
+      satellite_map
+    ]
+  end
+
   def layers
-    carto_layers = LAYERS_KEYS.each_with_index.map do |(layer, key), id|
+    LAYERS_KEYS.each_with_index.map do |(layer, key), id|
       {
-        id: id + 1,
+        id: id,
         slug: layer.to_s.camelize(:lower),
         name: I18n.t(layer, scope: 'map.index.layers'),
         color: LAYERS_COLORS[layer],
@@ -103,7 +108,5 @@ class MapPresenter
         link: "https://karydja.cartodb.com/api/v2/viz/#{key}/viz.json"
       }
     end
-
-    carto_layers.unshift(rgb_landsat_layer)
   end
 end

@@ -36,11 +36,33 @@ export class MapCanvas extends React.Component {
     });
   }
 
+  get wmsMaps() {
+    return _.filter(this.props.baseMaps, (map) => {
+      return map.wms;
+    });
+  }
+
+  get wmsMapOptions() {
+    return {
+      layers: 'rgb',
+      map: "wms/classification/rgb.map",
+      year: this.props.year,
+      format: 'image/png',
+      transparent: true
+    };
+  }
+
   addBaseMaps(map) {
     _.each(this.props.baseMaps, (baseMap) => {
-      let newMap = L.tileLayer(baseMap.link, {
-        attribution: baseMap.attribution
-      }).addTo(this.map);
+      let newMap;
+
+      if(baseMap.wms) {
+        newMap = L.tileLayer.wms(baseMap.link, this.wmsMapOptions).addTo(map);
+      } else {
+        newMap = L.tileLayer(baseMap.link, {
+          attribution: baseMap.attribution
+        }).addTo(this.map);
+      }
 
       this.baseMaps[baseMap.slug] = newMap;
       newMap.setOpacity(0);
@@ -49,25 +71,12 @@ export class MapCanvas extends React.Component {
 
   addLayers(map) {
     _.each(this.props.layers, (layer) => {
-      if(layer.fromCarto) {
-        cartodb.createLayer(map, layer.link)
-          .addTo(map)
-          .done((mapLayer) => {
-            this.layers[layer.slug] = mapLayer;
-            mapLayer.setOpacity(0);
-          });
-      } else {
-        let mapLayer = L.tileLayer.wms(layer.link, {
-          layers: 'rgb',
-          map: "wms/classification/rgb.map",
-          year: this.props.year,
-          format: 'image/png',
-          transparent: true
-        }).addTo(map);
-
-        this.layers[layer.slug] = mapLayer;
-        mapLayer.setOpacity(0);
-      }
+      cartodb.createLayer(map, layer.link)
+        .addTo(map)
+        .done((mapLayer) => {
+          this.layers[layer.slug] = mapLayer;
+          mapLayer.setOpacity(0);
+        });
     });
   }
 
@@ -89,6 +98,14 @@ export class MapCanvas extends React.Component {
     ).addTo(this.map);
 
     this.fitTerritory();
+  }
+
+  updateWmsMaps() {
+    _.each(this.wmsMaps, (map) => {
+      let wmsMap = this.baseMaps[map.slug];
+
+      wmsMap.setParams(this.wmsMapOptions);
+    });
   }
 
   fitTerritory() {
@@ -166,6 +183,10 @@ export class MapCanvas extends React.Component {
 
       if(!_.isEqual(this.props.layerOptions, prevProps.layerOptions)) {
         this.dataLayer.setParams(this.options);
+      }
+
+      if(!_.isEqual(this.props.year, prevProps.year)) {
+        this.updateWmsMaps();
       }
     }
   }
