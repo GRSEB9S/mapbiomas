@@ -15,7 +15,7 @@
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-input-autosize": "^0.6.13",
-    "react-select": "^1.0.0-beta12",
+    "react-select": "^1.0.0-rc.3",
     "react-tabs": "ecostage/react-tabs",
     "react-timeline-slider": "0.0.4",
     "tooltipster": "^1.0.9",

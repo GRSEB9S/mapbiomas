@@ -302,7 +302,7 @@ export default class Map extends React.Component {
 
     if (input) {
       this.timeoutId = setTimeout(() => {
-        API.territories({name: input})
+        API.territories({name: input.toUpperCase()})
         .then((territories) => {
           callback(null, { options: new Territories(territories).withOptions() });
         });
