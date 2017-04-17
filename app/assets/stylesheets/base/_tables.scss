@@ -11,3 +11,15 @@ table {
     border-bottom: 2px solid $light-gray;
   }
 }
+
+.table {
+  tbody {
+    tr:nth-child(odd){
+      background-color: whitesmoke;
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
