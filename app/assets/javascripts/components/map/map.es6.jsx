@@ -14,6 +14,7 @@ import { Territories } from '../../lib/territories';
 
 import WarningModal from './modals/warning';
 import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
+import TerritoryPanel from './panels/territory';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -296,19 +297,26 @@ export default class Map extends React.Component {
     });
   }
 
-  loadTerritories(input, callback) {
-    clearTimeout(this.timeoutId);
+  loadTerritories(category, preload) {
+    return (input, callback) => {
+      clearTimeout(this.timeoutId);
 
-    if (input) {
-      this.timeoutId = setTimeout(() => {
-        API.territories({name: input.toUpperCase()})
-        .then((territories) => {
-          callback(null, { options: new Territories(territories).withOptions() });
-        });
-      }, 500);
-    } else {
-      callback(null, { options: [] });
-    }
+      if (input || preload === true) {
+        this.timeoutId = setTimeout(() => {
+          API.territories({
+            category,
+            name: input.toUpperCase()
+          })
+          .then((territories) => {
+            callback(null, {
+              options: new Territories(territories).withOptions()
+            });
+          });
+        }, 500);
+      } else {
+        callback(null, { options: [] });
+      }
+    };
   }
 
   renderTransitionsMatrix() {
@@ -428,13 +436,21 @@ export default class Map extends React.Component {
         />
 
         <ZoomAndOpacityPanel
-          className="map-panels--zoom-and-opacity-panel"
+          className="map-panel map-panel--left map-panel--top"
           zoomIn={this.zoomIn.bind(this)}
           zoomOut={this.zoomOut.bind(this)}
           opacity={this.state.opacity}
           setOpacity={this.setOpacity.bind(this)}
         />
-        
+
+        <div className="map-panel map-panel--left map-panel--bottom">
+          <TerritoryPanel
+            territory={this.territory}
+            loadTerritories={this.loadTerritories.bind(this)}
+            onTerritoryChange={this.handleTerritoryChange.bind(this)}
+          />
+        </div>
+
         {/*
         {this.renderCoverageAuxiliarControls()}
         {this.renderMainMenu()}

@@ -6,11 +6,16 @@ export class Territories {
   }
 
   withOptions() {
-    return this.territories.map((territory) => {
-      return _.extend(territory, {
-        label: `${territory.name} (${territory.category})`,
-        value: territory.id
-      });
-    });
+    return this.territories.reduce((acc, territory) => {
+      if(!territory) return acc;
+      
+      return [
+        ...acc, {
+          ...territory,
+          label: `${territory.name} (${territory.category})`,
+          value: territory.id
+        }
+      ];
+    }, []);
   }
 }

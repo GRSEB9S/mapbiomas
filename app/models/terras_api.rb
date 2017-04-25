@@ -5,10 +5,11 @@ class TerrasAPI
   format :json
   caches_api_responses key_name: "terras", expire_in: 1.month
 
-  def self.territories(name = nil)
+  def self.territories(name = nil, category = nil)
     get("/dashboard/services/territories", query: {
+      category: category,
       name: name
-    })
+    }.compact)
   end
 
   def self.classifications
