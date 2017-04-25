@@ -31,7 +31,7 @@ class ZoomAndOpacityControl extends Component {
           className={cx('button button--primary', showOpacityDropdown && 'active')}
           onClick={this.toggleOpacityDropdown.bind(this)}
         >
-          Opacidade
+          {I18n.t('map.index.opacity')}
         </button>
         {showOpacityDropdown && (
           <div className="map-panels--zoom-and-opacity-panel--opacity-dropdown">
