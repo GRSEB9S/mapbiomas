@@ -17,10 +17,10 @@ class ZoomAndOpacityControl extends Component {
 
   render() {
     const { showOpacityDropdown } = this.state;
-    const { zoomIn, zoomOut, opacity } = this.props;
+    const { className, zoomIn, zoomOut, opacity } = this.props;
 
     return (
-      <div className="map-panel">
+      <div className={cx('map-panel', className)}>
         <button className="button button--primary" onClick={zoomIn}>
           <i className="fa fa-plus" />
         </button>
@@ -34,7 +34,7 @@ class ZoomAndOpacityControl extends Component {
           Opacidade
         </button>
         {showOpacityDropdown && (
-          <div className="zoom-and-opacity--opacity-dropdown">
+          <div className="map-panels--zoom-and-opacity-panel--opacity-dropdown">
             <input
               min="0"
               max="100"

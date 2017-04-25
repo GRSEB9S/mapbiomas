@@ -1,24 +1,13 @@
-.map-panels-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  padding: 20px;
-}
-
-.map-panels-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 .map-panel {
-  position: relative;
+  position: absolute;
 }
 
-.zoom-and-opacity--opacity-dropdown {
+.map-panels--zoom-and-opacity-panel {
+  top: 20px;
+  left: 20px;
+}
+
+.map-panels--zoom-and-opacity-panel--opacity-dropdown {
   position: absolute;
   top: 100%;
   background-color: darken($primary-action-color, 15%);

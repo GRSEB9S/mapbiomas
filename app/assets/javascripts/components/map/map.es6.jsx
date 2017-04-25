@@ -427,21 +427,14 @@ export default class Map extends React.Component {
           qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
-        <div className="map-panels-wrapper">
-          <div className="map-panels-column">
-            <ZoomAndOpacityPanel
-              zoomIn={this.zoomIn.bind(this)}
-              zoomOut={this.zoomOut.bind(this)}
-              opacity={this.state.opacity}
-              setOpacity={this.setOpacity.bind(this)}
-            />
-          </div>
-          <div className="map-panels-column">
-          </div>
-          <div className="map-panels-column">
-          </div>
-        </div>
-
+        <ZoomAndOpacityPanel
+          className="map-panels--zoom-and-opacity-panel"
+          zoomIn={this.zoomIn.bind(this)}
+          zoomOut={this.zoomOut.bind(this)}
+          opacity={this.state.opacity}
+          setOpacity={this.setOpacity.bind(this)}
+        />
+        
         {/*
         {this.renderCoverageAuxiliarControls()}
         {this.renderMainMenu()}
