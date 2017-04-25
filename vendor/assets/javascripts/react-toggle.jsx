@@ -86,17 +86,20 @@ export default React.createClass({
   },
 
   render() {
-    var classes = classNames('react-toggle', {
+    const { toggleColor, ...inputProps } = this.props;
+
+    const classes = classNames('react-toggle', {
       'react-toggle--checked': this.state.checked,
       'react-toggle--focus': this.state.hasFocus,
       'react-toggle--disabled': this.props.disabled
-    })
+    });
 
-    let toggleStyle = {
+    const toggleStyle = {
       backgroundColor: (this.state.checked ? this.props.toggleColor : '')
-    }
+    };
 
     return (
+
       <div className={classes} onClick={this.handleClick}>
         <div className="react-toggle-track" style={toggleStyle}>
           <div className="react-toggle-track-check">
@@ -114,8 +117,8 @@ export default React.createClass({
           onBlur={this.handleBlur}
           className="react-toggle-screenreader-only"
           type="checkbox"
-          {...this.props} />
+          {...inputProps} />
       </div>
-    )
+    );
   }
 });

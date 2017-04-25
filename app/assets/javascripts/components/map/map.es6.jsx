@@ -3,17 +3,16 @@ import _ from 'underscore';
 import ReactTimelineSlider from 'react-timeline-slider';
 import classNames from 'classnames';
 import { API } from '../../lib/api';
-import { CoverageControl } from '../control/coverage_control';
 import { MapCanvas } from '../map/map_canvas';
 import { MapModal } from '../map/map_modal';
 import { OpacityControl } from '../control/opacity_control';
-import { QualityControl } from '../control/quality/quality_control';
 import { QualityLabels } from '../control/quality/quality_labels';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
 import { TogglesControl } from '../control/toggles_control';
-import { TransitionsControl } from '../control/transitions/transitions_control';
 import { TransitionsMatrix } from '../control/transitions/transitions_matrix';
+
+import MainMenu from './panels/main_menu'
 
 Tabs.setUseDefaultStyles(false);
 
@@ -420,63 +419,27 @@ export default class Map extends React.Component {
   }
 
   renderMainMenu() {
-    let classes = classNames("map-control-wrapper", {
-      "map-control-wrapper--bigger": this.mode == 'transitions'
-    });
-
-    return(
-      <Tabs
-          selectedIndex={this.state.mainMenuIndex}
-          onSelect={this.handleMainMenuIndexSelect.bind(this)}
-          className={classes}>
-
-        <TabList className="three-tabbed">
-          <Tab>{I18n.t('map.index.coverage.title')}</Tab>
-          <Tab>{I18n.t('map.index.transitions.title')}</Tab>
-          <Tab>{I18n.t('map.index.quality.title')}</Tab>
-        </TabList>
-
-        <TabPanel>
-          <CoverageControl
-            {...this.props}
-            territory={this.territory}
-            year={this.year}
-            classifications={this.classifications}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            loadTerritories={this.loadTerritories.bind(this)}
-          />
-        </TabPanel>
-
-        <TabPanel>
-          <TransitionsControl
-            {...this.props}
-            transition={this.transition}
-            transitions={this.state.transitions}
-            classifications={this.classifications}
-            territory={this.territory}
-            years={this.years}
-            onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            loadTerritories={this.loadTerritories.bind(this)}
-            onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-            setTransition={this.handleTransitionChange.bind(this)}
-          />
-        </TabPanel>
-
-        <TabPanel>
-          <QualityControl
-            {...this.props}
-            cards={this.state.cards}
-            territory={this.territory}
-            year={this.year}
-            classifications={this.classifications}
-            qualities={this.state.qualities}
-            qualityInfo={this.props.qualityInfo}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            loadTerritories={this.loadTerritories.bind(this)}
-          />
-        </TabPanel>
-      </Tabs>
+    return (
+      <MainMenu
+        mapProps={this.props}
+        mode={this.mode}
+        menuIndex={this.state.mainMenuIndex}
+        onSelect={this.handleMainMenuIndexSelect.bind(this)}
+        transition={this.transition}
+        transitions={this.state.transitions}
+        years={this.years}
+        onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+        onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+        setTransition={this.handleTransitionChange.bind(this)}
+        cards={this.state.cards}
+        territory={this.territory}
+        year={this.year}
+        classifications={this.classifications}
+        qualities={this.state.qualities}
+        qualityInfo={this.props.qualityInfo}
+        onTerritoryChange={this.handleTerritoryChange.bind(this)}
+        loadTerritories={this.loadTerritories.bind(this)}
+      />
     );
   }
 
