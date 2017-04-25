@@ -7,11 +7,13 @@ import { MapCanvas } from '../map/map_canvas';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
 
-import MainMenu from './panels/main_menu';
-import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
-import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
-import TransitionsMatrixModal from './modals/transitions_matrix';
+// import MainMenu from './panels/main_menu';
+// import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
+// import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
+// import TransitionsMatrixModal from './modals/transitions_matrix';
+
 import WarningModal from './modals/warning';
+import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -174,8 +176,7 @@ export default class Map extends React.Component {
     this.setState({ transitions });
   }
 
-  handleOpacityChange(e) {
-    const opacity = e.target.value / 100;
+  setOpacity(opacity) {
     this.setState({ opacity });
   }
 
@@ -395,6 +396,14 @@ export default class Map extends React.Component {
     this.loadQualities(this.year);
   }
 
+  zoomIn() {
+    this.refs.canvas.zoomIn();
+  }
+
+  zoomOut() {
+    this.refs.canvas.zoomOut();
+  }
+
   render() {
     return (
       <div className="map">
@@ -404,6 +413,7 @@ export default class Map extends React.Component {
 
         <MapCanvas
           {...this.tileOptions}
+          ref="canvas"
           cards={this.state.cards}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
@@ -417,10 +427,19 @@ export default class Map extends React.Component {
           qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
+        <ZoomAndOpacityPanel
+          className="map-panels--zoom-and-opacity-panel"
+          zoomIn={this.zoomIn.bind(this)}
+          zoomOut={this.zoomOut.bind(this)}
+          opacity={this.state.opacity}
+          setOpacity={this.setOpacity.bind(this)}
+        />
+        
+        {/*
         {this.renderCoverageAuxiliarControls()}
         {this.renderMainMenu()}
         {this.renderTransitionsMatrix()}
-        {this.renderQualityAuxiliarControls()}
+        {this.renderQualityAuxiliarControls()} 
 
         <div className="timeline-control">
           <ReactTimelineSlider
@@ -430,6 +449,7 @@ export default class Map extends React.Component {
             defaultValue={this.timelineDefaultValue()}
             range={this.props.availableYears} />
         </div>
+        */}
       </div>
     );
   }

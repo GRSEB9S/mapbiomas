@@ -21,11 +21,12 @@ button,
   text-transform: uppercase;
   box-shadow: $base-box-shadow;
 
-
+  &.active,
   &:hover,
   &:focus {
     background-color: darken($action-color, 15%);
     color: $white;
+    outline: none;
   }
 
   &:disabled {
@@ -36,6 +37,7 @@ button,
   &.primary {
     background-color: $primary-action-color;
 
+    &.active,
     &:hover,
     &:focus {
       background-color: darken($primary-action-color, 15%);
@@ -50,6 +52,7 @@ button,
   &--primary {
     background-color: $primary-action-color;
 
+    &.active,
     &:hover,
     &:focus {
       background-color: darken($primary-action-color, 15%);
