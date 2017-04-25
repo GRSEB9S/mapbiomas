@@ -12,7 +12,7 @@ export class Territories {
       return [
         ...acc, {
           ...territory,
-          label: `${territory.name} (${territory.category})`,
+          label: territory.name,
           value: territory.id
         }
       ];
