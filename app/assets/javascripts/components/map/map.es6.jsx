@@ -3,17 +3,15 @@ import _ from 'underscore';
 import ReactTimelineSlider from 'react-timeline-slider';
 import classNames from 'classnames';
 import { API } from '../../lib/api';
-import { CoverageControl } from '../control/coverage_control';
 import { MapCanvas } from '../map/map_canvas';
-import { MapModal } from '../map/map_modal';
-import { OpacityControl } from '../control/opacity_control';
-import { QualityControl } from '../control/quality/quality_control';
-import { QualityLabels } from '../control/quality/quality_labels';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
-import { TogglesControl } from '../control/toggles_control';
-import { TransitionsControl } from '../control/transitions/transitions_control';
-import { TransitionsMatrix } from '../control/transitions/transitions_matrix';
+
+import MainMenu from './panels/main_menu';
+import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
+import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
+import TransitionsMatrixModal from './modals/transitions_matrix';
+import WarningModal from './modals/warning';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -315,20 +313,14 @@ export default class Map extends React.Component {
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
-        <MapModal title={I18n.t('map.index.transitions.matrix.title')}
-          showCloseButton={true}
-          showOkButton={false}
+        <TransitionsMatrixModal
           onClose={this.closeTransitionsMatrix.bind(this)}
-          verticalSmaller={true}
-          overlay={true}>
-          <TransitionsMatrix
-            years={this.years}
-            downloadUrl={this.downloadSpreadsheet()}
-            transitions={this.state.transitions}
-            classifications={this.classifications}
-            toTotalData={this.toTotalData()}
-            fromTotalData={this.fromTotalData()} />
-        </MapModal>
+          years={this.years}
+          downloadUrl={this.downloadSpreadsheet()}
+          transitions={this.state.transitions}
+          classifications={this.classifications}
+          toTotalData={this.toTotalData()}
+          fromTotalData={this.fromTotalData()} />
       );
     }
   }
@@ -336,147 +328,65 @@ export default class Map extends React.Component {
   renderWarning(key) {
     if(this.mode == key && this.state.showWarning[key]) {
       return(
-        <MapModal title={I18n.t(`map.warning.${key}.title`)}
-          showCloseButton={false}
-          showOkButton={true}
-          verticalSmaller={true}
-          horizontalSmaller={true}
-          overlay={true}
-          onClose={this.closeWarning.bind(this, key)}>
-
-          <div dangerouslySetInnerHTML={{__html: I18n.t(`map.warning.${key}.body`)}}></div>
-        </MapModal>
+        <WarningModal
+          title={I18n.t(`map.warning.${key}.title`)}
+          onClose={this.closeWarning.bind(this, key)}
+          html={I18n.t(`map.warning.${key}.body`)}
+        />
       );
     }
   }
 
   renderCoverageAuxiliarControls() {
-    if(this.mode == 'coverage') {
-      return(
-        <div className="map-control-wrapper
-            map-control-wrapper--smaller
-            map-control-wrapper--left
-            map-control-wrapper--bottom">
-          <OpacityControl
-            {...this.props}
-            opacity={this.state.opacity * 100}
-            onChange={this.handleOpacityChange.bind(this)} />
-
-          <Tabs
-              selectedIndex={this.state.viewOptionsIndex}
-              onSelect={this.handleViewOptionsIndexSelect.bind(this)}>
-
-            <TabList className="three-tabbed">
-              <Tab>{I18n.t('map.index.classifications.title')}</Tab>
-              <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
-              <Tab>{I18n.t('map.index.layers.title')}</Tab>
-            </TabList>
-
-            <TabPanel>
-              <TogglesControl
-                options={this.classifications}
-                availableOptions={this.props.availableClassifications}
-                title={I18n.t('map.index.classifications.title')}
-                tooltip={I18n.t('map.index.classifications.tooltip')}
-                onChange={this.handleClassificationsChange.bind(this)}
-              />
-            </TabPanel>
-
-            <TabPanel>
-              <TogglesControl
-                options={this.baseMaps}
-                availableOptions={this.props.availableBaseMaps}
-                title={I18n.t('map.index.base_maps.title')}
-                tooltip={I18n.t('map.index.base_maps.tooltip')}
-                onChange={this.handleBaseMapsChange.bind(this)}
-              />
-            </TabPanel>
-
-            <TabPanel>
-              <TogglesControl
-                options={this.layers}
-                availableOptions={this.props.availableLayers}
-                title={I18n.t('map.index.layers.title')}
-                onChange={this.handleLayersChange.bind(this)}
-              />
-            </TabPanel>
-          </Tabs>
-        </div>
-      );
-    }
+    return (
+      <CoverageAuxiliarControls
+        mode={this.mode}
+        mapProps={this.props}
+        opacity={this.state.opacity}
+        handleOpacityChange={this.handleOpacityChange.bind(this)}
+        viewOptionsIndex={this.state.viewOptionsIndex}
+        handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
+        classifications={this.classifications}
+        availableClassifications={this.props.availableClassifications}
+        handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+        baseMaps={this.baseMaps}
+        availableBaseMaps={this.props.availableBaseMaps}
+        handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+        layers={this.layers}
+        availableLayers={this.props.availableLayers}
+        handleLayersChange={this.handleLayersChange.bind(this)}
+      />
+    );
   }
 
   renderQualityAuxiliarControls() {
-    if(this.mode == 'quality') {
-      return(
-        <div className="map-control-wrapper
-            map-control-wrapper--smaller
-            map-control-wrapper--left
-            map-control-wrapper--bottom">
-          <QualityLabels />
-        </div>
-      );
-    }
+    return (
+      <QualityAuxiliarControls mode={this.mode} />
+    );
   }
 
   renderMainMenu() {
-    let classes = classNames("map-control-wrapper", {
-      "map-control-wrapper--bigger": this.mode == 'transitions'
-    });
-
-    return(
-      <Tabs
-          selectedIndex={this.state.mainMenuIndex}
-          onSelect={this.handleMainMenuIndexSelect.bind(this)}
-          className={classes}>
-
-        <TabList className="three-tabbed">
-          <Tab>{I18n.t('map.index.coverage.title')}</Tab>
-          <Tab>{I18n.t('map.index.transitions.title')}</Tab>
-          <Tab>{I18n.t('map.index.quality.title')}</Tab>
-        </TabList>
-
-        <TabPanel>
-          <CoverageControl
-            {...this.props}
-            territory={this.territory}
-            year={this.year}
-            classifications={this.classifications}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            loadTerritories={this.loadTerritories.bind(this)}
-          />
-        </TabPanel>
-
-        <TabPanel>
-          <TransitionsControl
-            {...this.props}
-            transition={this.transition}
-            transitions={this.state.transitions}
-            classifications={this.classifications}
-            territory={this.territory}
-            years={this.years}
-            onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            loadTerritories={this.loadTerritories.bind(this)}
-            onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-            setTransition={this.handleTransitionChange.bind(this)}
-          />
-        </TabPanel>
-
-        <TabPanel>
-          <QualityControl
-            {...this.props}
-            cards={this.state.cards}
-            territory={this.territory}
-            year={this.year}
-            classifications={this.classifications}
-            qualities={this.state.qualities}
-            qualityInfo={this.props.qualityInfo}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            loadTerritories={this.loadTerritories.bind(this)}
-          />
-        </TabPanel>
-      </Tabs>
+    return (
+      <MainMenu
+        mapProps={this.props}
+        mode={this.mode}
+        menuIndex={this.state.mainMenuIndex}
+        onSelect={this.handleMainMenuIndexSelect.bind(this)}
+        transition={this.transition}
+        transitions={this.state.transitions}
+        years={this.years}
+        onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+        onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+        setTransition={this.handleTransitionChange.bind(this)}
+        cards={this.state.cards}
+        territory={this.territory}
+        year={this.year}
+        classifications={this.classifications}
+        qualities={this.state.qualities}
+        qualityInfo={this.props.qualityInfo}
+        onTerritoryChange={this.handleTerritoryChange.bind(this)}
+        loadTerritories={this.loadTerritories.bind(this)}
+      />
     );
   }
 
