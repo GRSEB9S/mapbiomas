@@ -3,10 +3,26 @@ import _ from 'underscore';
 import cx from 'classnames';
 import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
+import scrollbar from 'jquery.scrollbar';
 
 export class TogglesControl extends React.Component {
   get ids() {
     return this.props.options.map((c) => c.id);
+  }
+
+  componentDidMount() {
+    if(this.props.tooltip) {
+      $('#options-tooltip').tooltipster({
+        theme: 'tooltip-custom-theme',
+        content: $(this.props.tooltip)
+      });
+    }
+
+    $(this.refs.content).scrollbar();
+  }
+
+  componentWillUnmount() {
+    $(this.refs.content).scrollbar('destroy');
   }
 
   isChecked(id) {
@@ -21,15 +37,6 @@ export class TogglesControl extends React.Component {
     } else if(!e.target.checked && this.isChecked(id)) {
       let ids = _.without(this.ids, id);
       this.props.onChange(ids);
-    }
-  }
-
-  componentDidMount() {
-    if(this.props.tooltip) {
-      $('#options-tooltip').tooltipster({
-        theme: 'tooltip-custom-theme',
-        content: $(this.props.tooltip)
-      });
     }
   }
 
@@ -65,7 +72,7 @@ export class TogglesControl extends React.Component {
             {this.renderTooltip()}
           </h3>
         )}
-        <div className="map-control__content">
+        <div className="map-control__content scrollbar-dynamic" ref="content">
           <ul className="toggles-list">
             {options}
           </ul>

@@ -1,6 +1,6 @@
 .map-panel {
   position: absolute;
-  max-width: 300px;
+  width: 300px;
 }
 
 .map-panel--left {
@@ -17,6 +17,10 @@
 
 .map-panel--bottom {
   bottom: 20px;
+}
+
+.map-panel__item {
+  width: 100%;
 }
 
 .map-panel__item:not(:last-child) {
@@ -45,6 +49,29 @@
   width: 300px;
 }
 
+.map-control__content.scrollbar-dynamic .toggles-list {
+  padding-right: 16px;
+}
+
+.map-control__content.scrollbar-dynamic > .scroll-element .scroll-bar {
+  background: $primary-action-color;
+}
+
+.map-control__content.scrollbar-dynamic > .scroll-element .scroll-element_size {
+  background: #f0f0f0;
+}
+
+.map-control__content.scrollbar-dynamic > .scroll-element .scroll-element_outer,
+.map-control__content.scrollbar-dynamic > .scroll-element:hover .scroll-element_outer {
+  opacity: 1;
+}
+
+.map-control__content.scrollbar-dynamic > .scroll-element.scroll-y:hover .scroll-element_outer,
+.map-control__content.scrollbar-dynamic > .scroll-element.scroll-y.scroll-draggable .scroll-element_outer {
+  min-width: 7px;
+  width: 7px;
+}
+
 // .map-control-wrapper {
 //   position: absolute;
 //   margin: $base-spacing;
@@ -52,7 +79,7 @@
 //   width: 340px;
 //   right: 0;
 
-//   @include media($mobile) {
+//   @include media($mobile {
 //     width: 250px;
 //   }
 
@@ -86,11 +113,11 @@
 //   padding: $base-spacing;
 //   box-shadow: $base-box-shadow;
 
-//   @include media($mobile-landscape) {
+//   @include media($mobile-landscape {
 //     display: none;
 //   }
 
-//   @include media($mobile) {
+//   @include media($mobile {
 //     display: none;
 //   }
 
