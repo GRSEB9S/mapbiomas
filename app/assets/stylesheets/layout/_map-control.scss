@@ -1,10 +1,30 @@
 .map-panel {
   position: absolute;
+  max-width: 300px;
 }
 
-.map-panels--zoom-and-opacity-panel {
-  top: 20px;
+.map-panel--left {
   left: 20px;
+}
+
+.map-panel--right {
+  right: 20px;
+}
+
+.map-panel--top {
+  top: 20px;
+}
+
+.map-panel--bottom {
+  bottom: 20px;
+}
+
+.map-panel-content {
+  padding: 10px;
+}
+
+.map-panel .ReactTabs__TabList {
+  font-size: 10px;
 }
 
 .map-panels--zoom-and-opacity-panel--opacity-dropdown {

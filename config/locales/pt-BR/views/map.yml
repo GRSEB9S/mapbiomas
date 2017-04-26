@@ -58,6 +58,7 @@ pt-BR:
         rgb_landsat: Mosaico landsat (RGB)
       layers:
         title: Camadas
+        countries: Países
         states: Estados
         cities: Municípios
         biomes: Biomas
