@@ -1,6 +1,7 @@
 .map-panel {
   position: absolute;
   width: 300px;
+  z-index: 1;
 }
 
 .map-panel--left {
