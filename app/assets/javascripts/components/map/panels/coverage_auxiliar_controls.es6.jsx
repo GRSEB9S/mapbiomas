@@ -20,7 +20,7 @@ const CoverageAuxiliarControls = ({
   availableLayers,
   handleLayersChange
 }) => {
-  if(mode == 'coverage') {
+  if(mode == 'coverage') {    
     return (
       <Tabs
           className="map-panel__item"

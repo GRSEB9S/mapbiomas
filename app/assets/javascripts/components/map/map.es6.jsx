@@ -80,7 +80,7 @@ export default class Map extends React.Component {
   get urlpath() {
     switch(this.mode) {
       case 'coverage':
-        return "wms/classification/coverage.map";
+        return "wms-c2/classification/coverage.map";
       case 'transitions':
         return "wms/classification/transitions.map";
       default:
@@ -100,12 +100,13 @@ export default class Map extends React.Component {
     return {
       layerOptions: {
         layers: this.mode,
-        url: this.props.apiUrl,
+        // url: this.props.apiUrl,
+        url: 'http://seeg-mapbiomas.terras.agr.br/cgi-bin/mapserv',
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
         transition_id: transitionId || '11',
-        classification_ids: ids.join(','),
+        classification_ids: ids,
       },
       opacity: this.state.opacity
     };
@@ -146,11 +147,11 @@ export default class Map extends React.Component {
   }
 
   handleClassificationsChange(ids) {
-    let classifications = ids.map((id) => {
-      return this.props.availableClassifications.find((c) => c.id === id);
-    })
-
-    this.setState({ classifications });
+    this.setState({
+      classifications: ids.map((id) => (
+        this.props.availableClassifications.find((c) => c.id === id)
+      ))
+    });
   }
 
   handleBaseMapsChange(ids) {
@@ -413,15 +414,14 @@ export default class Map extends React.Component {
           qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
-        <ZoomAndOpacityPanel
-          className="map-panel map-panel--left map-panel--top"
-          zoomIn={this.zoomIn.bind(this)}
-          zoomOut={this.zoomOut.bind(this)}
-          opacity={this.state.opacity}
-          setOpacity={this.setOpacity.bind(this)}
-        />
+        <div className="map-panel map-panel--left map-panel--top">
+          <ZoomAndOpacityPanel
+            zoomIn={this.zoomIn.bind(this)}
+            zoomOut={this.zoomOut.bind(this)}
+            opacity={this.state.opacity}
+            setOpacity={this.setOpacity.bind(this)}
+          />
 
-        <div className="map-panel map-panel--left map-panel--bottom">
           <TerritoryPanel
             territory={this.territory}
             loadTerritories={this.loadTerritories.bind(this)}
