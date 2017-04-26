@@ -19,12 +19,21 @@
   bottom: 20px;
 }
 
-.map-panel-content {
+.map-panel__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.map-panel__item-content {
   padding: 10px;
 }
 
 .map-panel .ReactTabs__TabList {
   font-size: 10px;
+}
+
+.map-control__content {
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .map-panels--zoom-and-opacity-panel--opacity-dropdown {

@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import cx from 'classnames';
 import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
 
@@ -57,11 +58,13 @@ export class TogglesControl extends React.Component {
     });
 
     return (
-      <div className="map-control">
-        <h3 className="map-control__header">
-          {this.props.title}
-          {this.renderTooltip()}
-        </h3>
+      <div className={cx('map-control', this.props.className)}>
+        {this.props.title && (
+          <h3 className="map-control__header">
+            {this.props.title}
+            {this.renderTooltip()}
+          </h3>
+        )}
         <div className="map-control__content">
           <ul className="toggles-list">
             {options}

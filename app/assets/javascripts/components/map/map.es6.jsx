@@ -8,13 +8,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
 
 // import MainMenu from './panels/main_menu';
-// import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 // import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
 // import TransitionsMatrixModal from './modals/transitions_matrix';
 
 import WarningModal from './modals/warning';
 import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
 import TerritoryPanel from './panels/territory';
+import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -346,28 +346,6 @@ export default class Map extends React.Component {
     }
   }
 
-  renderCoverageAuxiliarControls() {
-    return (
-      <CoverageAuxiliarControls
-        mode={this.mode}
-        mapProps={this.props}
-        opacity={this.state.opacity}
-        handleOpacityChange={this.handleOpacityChange.bind(this)}
-        viewOptionsIndex={this.state.viewOptionsIndex}
-        handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
-        classifications={this.classifications}
-        availableClassifications={this.props.availableClassifications}
-        handleClassificationsChange={this.handleClassificationsChange.bind(this)}
-        baseMaps={this.baseMaps}
-        availableBaseMaps={this.props.availableBaseMaps}
-        handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-        layers={this.layers}
-        availableLayers={this.props.availableLayers}
-        handleLayersChange={this.handleLayersChange.bind(this)}
-      />
-    );
-  }
-
   renderQualityAuxiliarControls() {
     return (
       <QualityAuxiliarControls mode={this.mode} />
@@ -448,6 +426,23 @@ export default class Map extends React.Component {
             territory={this.territory}
             loadTerritories={this.loadTerritories.bind(this)}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
+          />
+          
+          <CoverageAuxiliarControls
+            mode={this.mode}
+            mapProps={this.props}
+            opacity={this.state.opacity}
+            viewOptionsIndex={this.state.viewOptionsIndex}
+            handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
+            classifications={this.classifications}
+            availableClassifications={this.props.availableClassifications}
+            handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+            baseMaps={this.baseMaps}
+            availableBaseMaps={this.props.availableBaseMaps}
+            handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+            layers={this.layers}
+            availableLayers={this.props.availableLayers}
+            handleLayersChange={this.handleLayersChange.bind(this)}
           />
         </div>
 
