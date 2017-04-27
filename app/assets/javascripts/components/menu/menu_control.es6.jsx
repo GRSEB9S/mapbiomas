@@ -72,31 +72,9 @@ export class MenuControl extends React.Component {
                   </a>
               </li>
               <li className="menu__item">
-                <a className="menu__link" href='#'>
-                  {I18n.t('layouts.header.map_data.downloads.title')}
+                <a className="menu__link" href={Routes.page_path("downloads")}>
+                  {I18n.t('layouts.header.map_data.downloads')}
                   </a>
-                  <ul className="submenu__items">
-                    <li className="menu__item">
-                      <a className="menu__link" href='#'>
-                        {I18n.t('layouts.header.map_data.downloads.disclaimer')}
-                        </a>
-                    </li>
-                    <li className="menu__item">
-                      <a className="menu__link" href='#'>
-                        {I18n.t('layouts.header.map_data.downloads.maps_collections')}
-                        </a>
-                    </li>
-                    <li className="menu__item">
-                      <a className="menu__link" href='#'>
-                        {I18n.t('layouts.header.map_data.downloads.reference')}
-                        </a>
-                    </li>
-                    <li className="menu__item">
-                      <a className="menu__link" href='#'>
-                        {I18n.t('layouts.header.map_data.downloads.mosaics')}
-                        </a>
-                    </li>
-                  </ul>
               </li>
             </ul>
           </li>

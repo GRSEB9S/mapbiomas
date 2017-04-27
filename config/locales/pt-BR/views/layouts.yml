@@ -7,12 +7,7 @@ pt-BR:
         land_use_change: Mudanças de cobertura e uso
         statistics: Estatísticas
         quality_and_accuracy: Qualidade e Acurácia
-        downloads:
-          title: Downloads
-          disclaimer: disclaimer
-          maps_collections: Mapas da coleção 1 e 2
-          reference: Mapas de Referência
-          mosaics: Mosaicos Landsat 1 e 2
+        downloads: Downloads
       map: Explorar
       menu: Menu
       about:

@@ -7,12 +7,7 @@ en:
         land_use_change: Land use change
         statistics: Statistics
         quality_and_accuracy: Quality and accuracy
-        downloads:
-          title: Downloads
-          disclaimer: disclaimer
-          maps_collections: Maps of collections 1 and 2
-          reference: Reference Maps
-          mosaics: Landsat Mosaics 1 and 2
+        downloads: Downloads
       map: Explore
       menu: Menu
       about:
