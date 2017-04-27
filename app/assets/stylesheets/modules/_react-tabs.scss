@@ -11,6 +11,13 @@
     display: none;
   }
 
+  .two-tabbed {
+    & > li{
+      width: 50%;
+      text-align: center;
+    }
+  }
+
   .three-tabbed {
     & > li{
       width: calc(100% / 3);

@@ -15,8 +15,8 @@ export class TransitionsChart extends React.Component {
   draw() {
     let element = ReactDOM.findDOMNode(this.refs.element);
     element.innerHTML = '';
-    let width = this.props.width,
-        height = 400;
+    let width = 800,
+        height = 1000;
 
     let svg = d3.select(element)
         .append("svg")
@@ -27,7 +27,7 @@ export class TransitionsChart extends React.Component {
 
     let sankey = d3Sankey.sankey()
         .nodeWidth(12)
-        .nodePadding(10)
+        .nodePadding(20)
         .size([width, height]);
 
     let path = sankey.link();
@@ -50,7 +50,7 @@ export class TransitionsChart extends React.Component {
           return classNames("link", "tooltip", { "link--active": active });
         })
         .attr("d", path)
-        .style("stroke-width", (d) => Math.max(4, d.dy))
+        .style("stroke-width", (d) => Math.max(1, d.dy))
         .sort((a, b) => b.dy - a.dy)
         .on('click', (d) => {
           this.props.setTransition({

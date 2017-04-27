@@ -205,7 +205,10 @@ export default class Map extends React.Component {
   }
 
   handleTransitionChange(transition) {
-    this.setState({ transition });
+    this.setState({
+      transition: transition,
+      transitionsMatrixExpanded: false
+    });
   }
 
   handleTransitionsLoad(transitions) {
@@ -358,9 +361,11 @@ export default class Map extends React.Component {
     if(this.state.transitionsMatrixExpanded) {
       return (
         <TransitionsMatrixModal
+          setTransition={this.handleTransitionChange.bind(this)}
           onClose={this.closeTransitionsMatrix.bind(this)}
           years={this.years}
           downloadUrl={this.downloadSpreadsheet()}
+          transition={this.transition}
           transitions={this.state.transitions}
           classifications={this.classifications}
           toTotalData={this.toTotalData()}
