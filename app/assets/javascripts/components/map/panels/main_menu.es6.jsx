@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Scrollable from '../../scrollable';
 
 const TAB_INDEX_MAP = {
   coverage: 0,
@@ -19,9 +20,10 @@ const MainMenu = ({
   onModeChange,
   coveragePanel,
   transitionsPanel,
-  qualityPanel
+  qualityPanel,
+  calcMaxHeight
 }) => (
-  <div className="map-panel__item">
+  <div className="map-panel__action-panel map-panel__tab-panel">
     <Tabs
       selectedIndex={TAB_INDEX_MAP[mode]}
       onSelect={(index) => onModeChange(INDEX_TAB_MAP[index])}
@@ -31,9 +33,21 @@ const MainMenu = ({
         <Tab>{I18n.t('map.index.transitions.title')}</Tab>
         <Tab>{I18n.t('map.index.quality.title')}</Tab>
       </TabList>
-      <TabPanel>{coveragePanel}</TabPanel>
-      <TabPanel>{transitionsPanel}</TabPanel>
-      <TabPanel>{qualityPanel}</TabPanel>
+      <TabPanel>
+        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
+          {coveragePanel}
+        </Scrollable>
+      </TabPanel>
+      <TabPanel>
+        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
+          {transitionsPanel}
+        </Scrollable>
+      </TabPanel>
+      <TabPanel>
+        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
+          {qualityPanel}
+        </Scrollable>
+      </TabPanel>
     </Tabs>
   </div>
 );

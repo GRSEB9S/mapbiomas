@@ -22,7 +22,7 @@ const CoverageAuxiliarControls = ({
   handleLayersChange
 }) => (
   <Tabs
-      className={cx(className, 'map-panel__tab-panel')}
+      className="map-panel__action-panel map-panel__tab-panel"
       selectedIndex={viewOptionsIndex}
       onSelect={handleViewOptionsIndexSelect}>
     <TabList className="three-tabbed">

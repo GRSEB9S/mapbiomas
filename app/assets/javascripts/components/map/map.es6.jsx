@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'underscore';
-import ReactTimelineSlider from 'react-timeline-slider';
 import classNames from 'classnames';
 import { API } from '../../lib/api';
 import { MapCanvas } from '../map/map_canvas';
@@ -17,6 +16,7 @@ import QualityLabels from './panels/quality_labels';
 import CoveragePieChart from '../control/coverage_pie_chart';
 import QualityChart from '../control/quality_chart';
 import TransitionsControl from '../control/transitions/transitions_control';
+import YearControl from './panels/year_control';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -396,14 +396,12 @@ export default class Map extends React.Component {
         <div className="map-panel__wrapper">
           <div className="map-panel__area map-panel__sidebar">
             <ZoomAndOpacityPanel
-              className="map-panel__action-panel"
               zoomIn={this.zoomIn.bind(this)}
               zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
               setOpacity={this.setOpacity.bind(this)}
             />
             <TerritoryPanel
-              className="map-panel__action-panel"
               territory={this.territory}
               loadTerritories={this.loadTerritories.bind(this)}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
@@ -412,7 +410,6 @@ export default class Map extends React.Component {
             {COVERAGE && (
               <div className="map-panel__grow" id="left-sidebar-grown-panel">
                 <CoverageAuxiliarControls
-                  className="map-panel__action-panel"
                   mode={this.mode}
                   mapProps={this.props}
                   opacity={this.state.opacity}
@@ -432,8 +429,65 @@ export default class Map extends React.Component {
             )}
           </div>
           <div className="map-panel__area map-panel__main">
+            <YearControl
+              className="map-panel__bottom"
+              multi={this.isMulti()}
+              playStop={true}
+              onValueChange={this.handleYearChange.bind(this)}
+              defaultValue={this.timelineDefaultValue()}
+              range={this.props.availableYears} />
           </div>
           <div className="map-panel__area map-panel__sidebar">
+            <div className="map-panel__grow" id="right-sidebar-grown-panel">
+              <MainMenu
+                mode={this.mode}
+                onModeChange={this.handleModeChange.bind(this)}
+                calcMaxHeight={() => (
+                  $('#right-sidebar-grown-panel').height() - (
+                    this.mode === 'quality' ? 65 : 55
+                  )
+                )}
+                coveragePanel={(
+                  <div>
+                    <CoveragePieChart
+                      {...this.props}
+                      territory={this.territory}
+                      year={this.year}
+                      classifications={this.classifications}
+                    />
+                    {/* Line Chart goes here */}
+                  </div>
+                )}
+                transitionsPanel={(
+                  <TransitionsControl
+                    {...this.props}
+                    transition={this.transition}
+                    transitions={this.state.transitions}
+                    classifications={this.classifications}
+                    territory={this.territory}
+                    years={this.years}
+                    onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+                    onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+                    setTransition={this.handleTransitionChange.bind(this)}
+                  />
+                )}
+                qualityPanel={(
+                  <QualityChart
+                    {...this.props}
+                    cards={this.state.cards}
+                    territory={this.territory}
+                    year={this.year}
+                    classifications={this.classifications}
+                    qualities={this.state.qualities}
+                    qualityInfo={this.props.qualityInfo}
+                  />
+                )}
+              />
+            </div>
+
+            {QUALITY && (
+              <QualityLabels />
+            )}
           </div>
         </div>
 

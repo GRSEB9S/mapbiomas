@@ -16,12 +16,13 @@ export default class Scrollable extends Component {
   }
 
   onResize() {
-    if(this.props.calcMaxHeight) {
-      const maxHeight = this.props.calcMaxHeight();
-      setTimeout(() => {
-        this.refs.content.parentNode.style.height = `${maxHeight}px`;
-      }, 1);
-    }
+    if(!this.props.calcMaxHeight) return;
+
+    const maxHeight = this.props.calcMaxHeight();
+    const innerHeight = $(this.refs.inner).height();
+    const height = Math.min(innerHeight, maxHeight);
+
+    this.refs.content.parentNode.style.height = `${height}px`;
   }
 
   render() {
@@ -30,7 +31,9 @@ export default class Scrollable extends Component {
     return (
       <div className={className}>
         <div ref="content" className={cx('scrollbar-dynamic')}>
-          {children}
+          <div ref="inner">
+            {children}
+          </div>
         </div>
       </div>
     );
