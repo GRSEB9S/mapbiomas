@@ -1,6 +1,13 @@
 en:
   layouts:
     header:
+      map_data:
+        title: Maps and Data
+        coverage_of_land_use: Coverage of land use
+        land_use_change: Land use change
+        statistics: Statistics
+        quality_and_accuracy: Quality and accuracy
+        downloads: Downloads
       map: Explore
       menu: Menu
       about:
