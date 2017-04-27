@@ -3,8 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # before_action :set_language
+  before_action :check_maintenance
 
   private
+
+  def check_maintenance
+    render file: 'public/maintenance', layout: false if ENV['MAINTENANCE_MODE']
+  end
 
   def set_language
     available_locales = I18n.available_locales

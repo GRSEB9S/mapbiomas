@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'underscore';
-import ReactTimelineSlider from 'react-timeline-slider';
 import classNames from 'classnames';
 import { API } from '../../lib/api';
 import { MapCanvas } from '../map/map_canvas';
@@ -18,8 +17,11 @@ import CoveragePieChart from '../control/coverage_pie_chart';
 import CoverageLineChart from '../control/coverage_line_chart';
 import QualityChart from '../control/quality_chart';
 import TransitionsControl from '../control/transitions/transitions_control';
+import YearControl from './panels/year_control';
 
 Tabs.setUseDefaultStyles(false);
+
+const DENSE_FOREST_ID = 3;
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -84,9 +86,32 @@ export default class Map extends React.Component {
   get urlpath() {
     switch(this.mode) {
       case 'transitions':
-        return 'wms/classification/transitions.map';
+        return 'wms-c2/classification/transitions.map';
       default:
         return 'wms-c2/classification/coverage.map';
+    }
+  }
+
+  get transitionsOptions() {
+    let fromId, toId;
+
+    if(this.state.transition) {
+      fromId = this.state.transition.from;
+      toId = this.state.transition.to;
+    }
+
+    return {
+      layerOptions: {
+        layers: 'transitions',
+        map: "wms-c2/classification/transitions.map",
+        territory_id: this.territory.id,
+        year_t0: this.years[0],
+        year_t1: this.years[1],
+        transition_c0: fromId || DENSE_FOREST_ID,
+        transition_c1: toId || DENSE_FOREST_ID,
+        format: 'image/png',
+        transparent: true
+      }
     }
   }
 
@@ -95,6 +120,10 @@ export default class Map extends React.Component {
     let year = this.mode == 'coverage' ? this.year : this.years.join(',');
     let transitionId;
 
+    if(this.mode == 'transitions') {
+      return this.transitionsOptions;
+    }
+
     if(this.state.transition) {
       transitionId = `${this.state.transition.from}${this.state.transition.to}`;
     }
@@ -102,8 +131,7 @@ export default class Map extends React.Component {
     return {
       layerOptions: {
         layers: this.mode,
-        // url: this.props.apiUrl,
-        url: 'http://seeg-mapbiomas.terras.agr.br/cgi-bin/mapserv',
+        url: this.props.apiUrl,
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
@@ -137,6 +165,7 @@ export default class Map extends React.Component {
   //Handlers
   handleModeChange(mode) {
     this.setState({ mode });
+    window.location.hash = `#${mode}`;
   }
 
   handleTerritoryChange(territory) {
@@ -394,51 +423,43 @@ export default class Map extends React.Component {
           qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
-        <div className="map-panel map-panel--left map-panel--top">
-          <ZoomAndOpacityPanel
-            zoomIn={this.zoomIn.bind(this)}
-            zoomOut={this.zoomOut.bind(this)}
-            opacity={this.state.opacity}
-            setOpacity={this.setOpacity.bind(this)}
-          />
-
-          <TerritoryPanel
-            territory={this.territory}
-            loadTerritories={this.loadTerritories.bind(this)}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-          />
-
-          {COVERAGE && (
-            <CoverageAuxiliarControls
-              mode={this.mode}
-              mapProps={this.props}
+        <div className="map-panel__wrapper">
+          <div className="map-panel__area map-panel__sidebar">
+            <ZoomAndOpacityPanel
+              zoomIn={this.zoomIn.bind(this)}
+              zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
-              viewOptionsIndex={this.state.viewOptionsIndex}
-              handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
-              classifications={this.classifications}
-              availableClassifications={this.props.availableClassifications}
-              handleClassificationsChange={this.handleClassificationsChange.bind(this)}
-              baseMaps={this.baseMaps}
-              availableBaseMaps={this.props.availableBaseMaps}
-              handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-              layers={this.layers}
-              availableLayers={this.props.availableLayers}
-              handleLayersChange={this.handleLayersChange.bind(this)}
+              setOpacity={this.setOpacity.bind(this)}
             />
-          )}
-        </div>
+            <TerritoryPanel
+              territory={this.territory}
+              loadTerritories={this.loadTerritories.bind(this)}
+              onTerritoryChange={this.handleTerritoryChange.bind(this)}
+            />
 
-        <div className="map-panel map-panel--right map-panel--top">
-          <MainMenu
-            mode={this.mode}
-            onModeChange={this.handleModeChange.bind(this)}
-            coveragePanel={(
-              <div>
-                <CoveragePieChart
-                  {...this.props}
-                  territory={this.territory}
-                  year={this.year}
+            {QUALITY && (
+              <div id="quality-labels">
+                <QualityLabels />
+              </div>
+            )}
+
+            {COVERAGE && (
+              <div className="map-panel__grow" id="left-sidebar-grown-panel">
+                <CoverageAuxiliarControls
+                  mode={this.mode}
+                  mapProps={this.props}
+                  opacity={this.state.opacity}
+                  viewOptionsIndex={this.state.viewOptionsIndex}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
                   classifications={this.classifications}
+                  availableClassifications={this.props.availableClassifications}
+                  handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+                  baseMaps={this.baseMaps}
+                  availableBaseMaps={this.props.availableBaseMaps}
+                  handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+                  layers={this.layers}
+                  availableLayers={this.props.availableLayers}
+                  handleLayersChange={this.handleLayersChange.bind(this)}
                 />
                 <CoverageLineChart
                   {...this.props}
@@ -448,44 +469,69 @@ export default class Map extends React.Component {
                 />
               </div>
             )}
-            transitionsPanel={(
-              <TransitionsControl
-                {...this.props}
-                transition={this.transition}
-                transitions={this.state.transitions}
-                classifications={this.classifications}
-                territory={this.territory}
-                years={this.years}
-                onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-                onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-                setTransition={this.handleTransitionChange.bind(this)}
+          </div>
+          <div className="map-panel__area map-panel__main">
+            <YearControl
+              className="map-panel__bottom"
+              multi={this.isMulti()}
+              playStop={true}
+              onValueChange={this.handleYearChange.bind(this)}
+              defaultValue={this.timelineDefaultValue()}
+              range={this.props.availableYears} />
+          </div>
+          <div className="map-panel__area map-panel__sidebar">
+            <div className="map-panel__grow" id="right-sidebar-grown-panel">
+              <MainMenu
+                mode={this.mode}
+                onModeChange={this.handleModeChange.bind(this)}
+                calcMaxHeight={() => (
+                  $('#right-sidebar-grown-panel').height() - (
+                    this.mode === 'quality' ? (
+                      $('#quality-labels').height() + 55
+                    ) : 55
+                  )
+                )}
+                coveragePanel={(
+                  <div>
+                    <CoveragePieChart
+                      {...this.props}
+                      territory={this.territory}
+                      year={this.year}
+                      classifications={this.classifications}
+                    />
+                    {/* Line Chart goes here */}
+                  </div>
+                )}
+                transitionsPanel={(
+                  <TransitionsControl
+                    {...this.props}
+                    transition={this.transition}
+                    transitions={this.state.transitions}
+                    classifications={this.classifications}
+                    territory={this.territory}
+                    years={this.years}
+                    onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+                    onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+                    setTransition={this.handleTransitionChange.bind(this)}
+                  />
+                )}
+                qualityPanel={(
+                  <QualityChart
+                    {...this.props}
+                    cards={this.state.cards}
+                    territory={this.territory}
+                    year={this.year}
+                    classifications={this.classifications}
+                    qualities={this.state.qualities}
+                    qualityInfo={this.props.qualityInfo}
+                  />
+                )}
               />
-            )}
-            qualityPanel={(
-              <QualityChart
-                {...this.props}
-                cards={this.state.cards}
-                territory={this.territory}
-                year={this.year}
-                classifications={this.classifications}
-                qualities={this.state.qualities}
-                qualityInfo={this.props.qualityInfo}
-              />
-            )}
-          />
 
-          {QUALITY && <QualityLabels />}
+            </div>
+          </div>
         </div>
 
-        
-        <div className="timeline-control">
-          <ReactTimelineSlider
-            multi={this.isMulti()}
-            playStop={true}
-            onValueChange={this.handleYearChange.bind(this)}
-            defaultValue={this.timelineDefaultValue()}
-            range={this.props.availableYears} />
-        </div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Select from 'react-select';
 
@@ -17,7 +18,7 @@ const renderTabPanel = (
 
   return (
     <TabPanel>
-      <div className="map-panel__item-content">
+      <div className="map-panel__content">
         <Select.Async
           name="territory-select"
           value={value}
@@ -39,7 +40,7 @@ const Territory = ({
   loadTerritories,
   onTerritoryChange
 }) => (
-  <Tabs className="map-panel__item">
+  <Tabs className="map-panel__action-panel map-panel__tab-panel">
     <TabList className="four-tabbed">
       <Tab>{I18n.t('map.index.layers.countries')}</Tab>
       <Tab>{I18n.t('map.index.layers.states')}</Tab>

@@ -5,6 +5,7 @@ import ClassificationControl from '../../control/classification_control';
 import { TogglesControl } from '../../control/toggles_control';
 
 const CoverageAuxiliarControls = ({
+  className,
   mode,
   mapProps,
   opacity,
@@ -21,7 +22,7 @@ const CoverageAuxiliarControls = ({
   handleLayersChange
 }) => (
   <Tabs
-      className="map-panel__item"
+      className="map-panel__action-panel map-panel__tab-panel"
       selectedIndex={viewOptionsIndex}
       onSelect={handleViewOptionsIndexSelect}>
     <TabList className="three-tabbed">
@@ -31,15 +32,18 @@ const CoverageAuxiliarControls = ({
     </TabList>
     <TabPanel>
       <ClassificationControl
-        className="map-panel__item-content"
+        className="map-panel__content"
         options={classifications}
         availableOptions={availableClassifications}
         onChange={handleClassificationsChange}
+        calcMaxHeight={() => (
+          $('#left-sidebar-grown-panel').height() - 55
+        )}
       />
     </TabPanel>
     <TabPanel>
       <TogglesControl
-        className="map-panel__item-content"
+        className="map-panel__content"
         options={baseMaps}
         availableOptions={availableBaseMaps}
         tooltip={I18n.t('map.index.base_maps.tooltip')}
@@ -48,7 +52,7 @@ const CoverageAuxiliarControls = ({
     </TabPanel>
     <TabPanel>
       <TogglesControl
-        className="map-panel__item-content"
+        className="map-panel__content"
         options={layers}
         availableOptions={availableLayers}
         onChange={handleLayersChange}

@@ -20,9 +20,10 @@ const MainMenu = ({
   onModeChange,
   coveragePanel,
   transitionsPanel,
-  qualityPanel
+  qualityPanel,
+  calcMaxHeight
 }) => (
-  <div className="map-panel__item">
+  <div className="map-panel__action-panel map-panel__tab-panel">
     <Tabs
       selectedIndex={TAB_INDEX_MAP[mode]}
       onSelect={(index) => onModeChange(INDEX_TAB_MAP[index])}
@@ -33,17 +34,17 @@ const MainMenu = ({
         <Tab>{I18n.t('map.index.quality.title')}</Tab>
       </TabList>
       <TabPanel>
-        <Scrollable scrollContainerClassName="map-control__content">
+        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
           {coveragePanel}
         </Scrollable>
       </TabPanel>
       <TabPanel>
-        <Scrollable scrollContainerClassName="map-control__content">
+        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
           {transitionsPanel}
         </Scrollable>
       </TabPanel>
       <TabPanel>
-        <Scrollable scrollContainerClassName="map-control__content">
+        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
           {qualityPanel}
         </Scrollable>
       </TabPanel>

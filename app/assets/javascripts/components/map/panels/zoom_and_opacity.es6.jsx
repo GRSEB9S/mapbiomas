@@ -25,7 +25,7 @@ class ZoomAndOpacityControl extends Component {
     const { className, zoomIn, zoomOut, opacity } = this.props;
 
     return (
-      <div className={cx('map-panel__item', className)} style={positionRelative}>
+      <div className="map-panel__action-panel" style={positionRelative}>
         <button className="button button--primary" onClick={zoomIn}>
           <i className="fa fa-plus" />
         </button>
