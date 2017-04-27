@@ -1,13 +1,11 @@
 import React from 'react';
 import _ from 'underscore';
 import classNames from 'classnames';
-import Select from 'react-select';
 import { API } from '../../../lib/api';
 import { Classifications } from '../../../lib/classifications';
-import { Territories } from '../../../lib/territories';
 import { TransitionsChart } from './transitions_chart';
 
-export class TransitionsControl extends React.Component {
+export default class TransitionsControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,6 +28,8 @@ export class TransitionsControl extends React.Component {
     let nodes = transitions.reduce((memo, transition) => {
       let from = classifications.findById(transition.from);
       let to = classifications.findById(transition.to);
+
+      if(_.isUndefined(from) || _.isUndefined(to)) return memo;
       return memo.concat([
         {
           name: from.name,
@@ -56,12 +56,14 @@ export class TransitionsControl extends React.Component {
         return n.id == transition.to && n.type == 'to';
       });
 
+      if(fromIndex === -1 || toIndex === -1) return;
+
       return {
         source: fromIndex,
         target: toIndex,
         value: parseFloat(transition.area)
       };
-    }).filter((t) => parseFloat(t.value) != 0);
+    }).filter((t) => !_.isUndefined(t) && parseFloat(t.value) != 0);
 
     return (
       <ul className="transitions-sankey">
@@ -98,10 +100,8 @@ export class TransitionsControl extends React.Component {
   }
 
   render() {
-    let controlClass = classNames('map-control', { 'map-control--expanded': this.state.expanded });
-
     return (
-      <div className={controlClass}>
+      <div className="map-panel__item-content">
         <h3 className="map-control__header">
           {I18n.t('map.index.transitions.analysis')}
           <i id="transitions-tooltip"
@@ -110,19 +110,7 @@ export class TransitionsControl extends React.Component {
           </i>
         </h3>
 
-        <div className="map-control__content">
-          <label>{I18n.t('map.index.search')}</label>
-          <Select.Async
-            name="territory-select"
-            value={this.props.territory.value}
-            loadOptions={this.props.loadTerritories}
-            onChange={this.props.onTerritoryChange}
-            clearable={false}
-            ignoreAccents={false}
-            noResultsText={false}
-            searchingText={I18n.t('map.index.searching')}
-            placeholder={this.props.territory.label}
-          />
+        <div className="map-control__content map-control__content-no-max-height">
           {this.renderTransitions()}
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
             {I18n.t('map.index.transitions.matrix.title')}

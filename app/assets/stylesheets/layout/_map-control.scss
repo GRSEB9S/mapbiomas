@@ -37,7 +37,7 @@
   font-size: 10px;
 }
 
-.map-control__content {
+.map-control__content:not(.map-control__content-no-max-height) {
   max-height: 300px;
   overflow-y: auto;
 }
