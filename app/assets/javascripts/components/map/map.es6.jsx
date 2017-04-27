@@ -444,7 +444,9 @@ export default class Map extends React.Component {
                 onModeChange={this.handleModeChange.bind(this)}
                 calcMaxHeight={() => (
                   $('#right-sidebar-grown-panel').height() - (
-                    this.mode === 'quality' ? 65 : 55
+                    this.mode === 'quality' ? (
+                      $('#quality-labels').height() + 55
+                    ) : 55
                   )
                 )}
                 coveragePanel={(
@@ -483,11 +485,12 @@ export default class Map extends React.Component {
                   />
                 )}
               />
+              {QUALITY && (
+                <div id="quality-labels">
+                  <QualityLabels />
+                </div>
+              )}
             </div>
-
-            {QUALITY && (
-              <QualityLabels />
-            )}
           </div>
         </div>
 
