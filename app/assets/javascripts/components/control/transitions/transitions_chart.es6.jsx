@@ -50,7 +50,7 @@ export class TransitionsChart extends React.Component {
           return classNames("link", "tooltip", { "link--active": active });
         })
         .attr("d", path)
-        .style("stroke-width", (d) => Math.max(8, d.dy))
+        .style("stroke-width", (d) => Math.max(4, d.dy))
         .sort((a, b) => b.dy - a.dy)
         .on('click', (d) => {
           this.props.setTransition({

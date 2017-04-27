@@ -103,7 +103,6 @@ class CoveragePieChart extends Component {
           {I18n.t('map.index.coverage.analysis')}
         </h3>
         <div className="map-control__content map-control__content-no-max-height">
-          <label>{I18n.t('map.index.search')}</label>
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
           <div className="coverage-chart" ref="chartElement"></div>

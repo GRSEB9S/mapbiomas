@@ -28,6 +28,8 @@ export default class TransitionsControl extends React.Component {
     let nodes = transitions.reduce((memo, transition) => {
       let from = classifications.findById(transition.from);
       let to = classifications.findById(transition.to);
+
+      if(_.isUndefined(from) || _.isUndefined(to)) return memo;
       return memo.concat([
         {
           name: from.name,
@@ -54,12 +56,14 @@ export default class TransitionsControl extends React.Component {
         return n.id == transition.to && n.type == 'to';
       });
 
+      if(fromIndex === -1 || toIndex === -1) return;
+
       return {
         source: fromIndex,
         target: toIndex,
         value: parseFloat(transition.area)
       };
-    }).filter((t) => parseFloat(t.value) != 0);
+    }).filter((t) => !_.isUndefined(t) && parseFloat(t.value) != 0);
 
     return (
       <ul className="transitions-sankey">
