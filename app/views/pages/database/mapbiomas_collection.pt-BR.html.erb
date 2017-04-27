@@ -15,8 +15,9 @@
       <strong>Importante:</strong> Ao compor um mosaico único ou calcular estatísticas para o bioma deve ser observado que:  (i) Existe uma zona de sobreposição de 5km entre todas as cartas; (ii) As cartas de fronteira entre biomas são compostas por classificações específicas para cada bioma; (iii) Os dados não estão clipados com o limite dos biomas; (iv) Para cálculo de área é necessário utilizar uma projeção métrica adequada; (v) Todos os dados estão no formato GeoTiff e possuem compressão LZW.
     </blockquote>
 
-    <label>Selecione o ano</label>
-    <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+    <div class="page__box-download">
+      <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+    </div>
 
     <div class="methodology-presentation">
       <%= image_tag "amazonia.png" %>
@@ -54,11 +55,6 @@
         <%= link_to 'Pampa', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PAMPA/'+$('#year').val(), '_blank')"} %>
       </div>
     </div>
-
-    <h2 class="page__title">QUALIDADE DOS MOSAICOS LANDSAT</h2>
-    <p>Os mosaicos usam informações de centenas de cenas landsat. A quantidade de nuvens e outros pontos de interferência afetam a qualidade do mosaico. Uma avaliação da qualidade destes mosaicos pode ser observada através do download da tabela abaixo.</p>
-
-    <p><a href="https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Cole%C3%A7%C3%A3o+1/Avalia%C3%A7%C3%A3o_Qualitativa_Biomas_COLECAO++1+-+V3.xlsx" target="_blank">[Clique aqui para fazer download do arquivo]</a></p>
 
   </div>
 </article>

@@ -1,0 +1,25 @@
+.downloads {
+  margin: 40px 0;
+
+  &__mapbiomas_collection,
+  &__reference_maps,
+  &__landsat_mosaics
+   {
+    display: inline-block;
+    text-align: center;
+    width: 270px;
+
+    a {
+      font-size: rem(20px);
+    }
+  }
+  &__icon {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 0 auto $page-base-spacing;
+    background-size: cover;
+    background-position: center top;
+    overflow: hidden;
+  }
+}
