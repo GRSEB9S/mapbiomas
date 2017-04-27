@@ -1,48 +1,18 @@
-import React from 'react';
 import _ from 'underscore';
+import React from 'react';
 
 export class MapCanvas extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      cards: null
-    }
-
-    this.baseMaps = {};
-    this.layers = {};
+    this.baseLayers = {};
+    this.mapLayers = {};
+    this.classificationLayers = {};
+    this.dataLayer = null;;
     this.cardsLayer = null;
   }
 
-  get options() {
-    let defaultOptions = {
-      format: 'image/png',
-      transparent: true,
-      opacity: 0.6,
-      attribution: "MapBiomas Workspace"
-    }
-    return _.defaults({}, this.props.layerOptions, defaultOptions);
-  }
-
-  get baseMapsSlugs() {
-    return _.map(this.props.selectedBaseMaps, (baseMap) => {
-      return baseMap.slug;
-    });
-  }
-
-  get layersSlugs() {
-    return _.map(this.props.selectedLayers, (layer) => {
-      return layer.slug;
-    });
-  }
-
-  get wmsMaps() {
-    return _.filter(this.props.baseMaps, (map) => {
-      return map.wms;
-    });
-  }
-
-  get wmsMapOptions() {
+  getBaseLayerOptions() {
     return {
       layers: 'rgb',
       map: "wms/classification/rgb.map",
@@ -52,92 +22,126 @@ export class MapCanvas extends React.Component {
     };
   }
 
-  addBaseMaps(map) {
-    _.each(this.props.baseMaps, (baseMap) => {
-      let newMap;
+  addBaseLayer(baseMap) {
+    if (this.baseLayers[baseMap.slug]) {
+      return;
+    }
 
-      if(baseMap.wms) {
-        newMap = L.tileLayer.wms(baseMap.link, this.wmsMapOptions).addTo(map);
-      } else {
-        newMap = L.tileLayer(baseMap.link, {
-          attribution: baseMap.attribution
-        }).addTo(this.map);
+    let layer;
+
+    if (baseMap.wms) {
+      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions())
+      .addTo(this.map);
+    } else {
+      layer = L.tileLayer(baseMap.link, {
+        zIndex: 1,
+        attribution: baseMap.attribution
+      }).addTo(this.map);
+    }
+
+    this.baseLayers[baseMap.slug] = layer;
+  }
+
+  removeBaseLayer(slug) {
+    if (this.baseLayers[slug]) {
+      const layer = this.baseLayers[slug];
+      delete this.baseLayers[slug];
+      this.map.removeLayer(layer);
+    }
+  }
+
+  updateBaseLayers() {
+    _.each(this.baseLayers, (layer) => {
+      layer.setParams(this.getBaseLayerOptions());
+    });
+  }
+
+  setupBaseLayers() {
+    const baseMaps = this.props.selectedBaseMaps;
+    const baseMapsSlugs = _.reduce(baseMaps, (acc, { slug }) => (
+      {...acc, [slug]: true}
+    ), {});
+
+    _.each(baseMaps, this.addBaseLayer.bind(this));
+    _.each(this.baseLayers, (layer, slug) => {
+      if (!baseMapsSlugs[slug]) {
+        this.removeBaseLayer(slug);
       }
-
-      this.baseMaps[baseMap.slug] = newMap;
-      newMap.setOpacity(0);
     });
   }
 
-  addLayers(map) {
-    _.each(this.props.layers, (layer) => {
-      cartodb.createLayer(map, layer.link)
-        .addTo(map)
-        .done((mapLayer) => {
-          this.layers[layer.slug] = mapLayer;
-          mapLayer.setOpacity(0);
-        });
-    });
-  }
-
-  setup() {
-    let node = this.refs.element;
-    this.map = L.map(node, { zoomControl: false }).setView([-20, -45], 6);
-
-    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(this.map);
-
-    this.setQualityLayer();
-    this.addBaseMaps(this.map);
-    this.addLayers(this.map);
-
-    this.dataLayer = L.tileLayer.wms(
-      `${this.options.url}/cgi-bin/mapserv`,
-      this.options
-    ).addTo(this.map);
-
-    this.fitTerritory();
-  }
-
-  updateWmsMaps() {
-    _.each(this.wmsMaps, (map) => {
-      let wmsMap = this.baseMaps[map.slug];
-
-      wmsMap.setParams(this.wmsMapOptions);
-    });
-  }
-
-  fitTerritory() {
+  setupTerritory() {
     this.map.fitBounds(this.props.territory.bounds);
   }
 
-  setBaseMapsOpacity() {
-    _.each(this.baseMaps, (value, key) => {
-      if(_.contains(this.baseMapsSlugs, key)) {
-        this.baseMaps[key].setOpacity(1);
+  addMapLayer(mapLayer) {
+    if (this.mapLayers[mapLayer.slug]) {
+      return;
+    }
+
+    cartodb.createLayer(this.map, mapLayer.link)
+    .addTo(this.map)
+    .done((layer) => {
+      if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
+        layer.setZIndex(2);
+        this.mapLayers[mapLayer.slug] = layer;
       } else {
-        this.baseMaps[key].setOpacity(0);
+        this.map.removeLayer(layer);
       }
     });
   }
 
-  setLayersOpacity() {
-    _.each(this.layers, (value, key) => {
-      if(_.contains(this.layersSlugs, key)) {
-        this.layers[key].setOpacity(1);
-      } else {
-        this.layers[key].setOpacity(0);
+  removeMapLayer(slug) {
+    if (this.mapLayers[slug]) {
+      const layer = this.mapLayers[slug];
+      delete this.mapLayers[slug];
+      this.map.removeLayer(layer);
+    }
+  }
+
+  setupMapLayers() {
+    const mapLayers = this.props.selectedLayers;
+    const mapLayersSlugs = _.reduce(mapLayers, (acc, { slug }) => (
+      {...acc, [slug]: true}
+    ), {});
+
+    _.each(mapLayers, this.addMapLayer.bind(this));
+    _.each(this.mapLayers, (layer, slug) => {
+      if (!mapLayersSlugs[slug]) {
+        this.removeMapLayer(slug);
       }
     });
   }
 
-  setQualityLayer() {
-    if(this.cardsLayer) {
+  setupDataLayer() {
+    const { url, ...layerOptions } = this.props.layerOptions;
+    const options = {
+      ...{
+        format: 'image/png',
+        transparent: true,
+        opacity: 0.6,
+        attribution: 'MapBiomas Workspace',
+        zIndex: 3
+      },
+      ...layerOptions
+    };
+
+    if (this.dataLayer) {
+      this.dataLayer.setParams(options);
+    } else {
+      this.dataLayer = L.tileLayer.wms(`${url}/cgi-bin/mapserv`, options)
+      .addTo(this.map);
+    }
+  }
+
+  setupCardsLayer() {
+    if (this.cardsLayer) {
       this.map.removeLayer(this.cardsLayer);
     }
 
-    if(this.props.mode !== 'quality') return;
+    if (this.props.mode !== 'quality') {
+      return;
+    }
 
     const style = {
       color: '#000',
@@ -146,11 +150,11 @@ export class MapCanvas extends React.Component {
       weight: 0.2
     };
 
-    const cardsLayer = L.geoJson(this.props.cards, {
+    this.cardsLayer = L.geoJson(this.props.cards, {
       style: (feature) => {
         const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
 
-        if(quality) {
+        if (quality) {
           return {
             ...style,
             fillColor: _.findWhere(this.props.qualityInfo, { api_name: String(quality.quality) }).color
@@ -159,40 +163,52 @@ export class MapCanvas extends React.Component {
           return style;
         }
       }
-    }).addTo(this.map);
-
-    this.cardsLayer = cardsLayer;
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props.qualities, nextProps.qualities)) {
-      this.setQualityLayer();
-    }
+    })
+    .addTo(this.map);
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.territory.id != this.props.territory.id) {
-      this.fitTerritory();
+    if (prevProps.territory.id != this.props.territory.id) {
+      this.setupTerritory();
     }
 
-    if(!_.isEqual(this.props, prevProps)) {
+    if (prevProps.selectedBaseMaps != this.props.selectedBaseMaps) {
+      this.setupBaseLayers();
+    }
+
+    if (prevProps.selectedLayers != this.props.selectedLayers) {
+      this.setupMapLayers();
+    }
+
+    if (prevProps.year != this.props.year) {
+      this.updateBaseLayers();
+    }
+
+    if (!_.isEqual(prevProps.layerOptions, this.props.layerOptions)) {
+      this.setupDataLayer();
+    }
+
+    if (prevProps.opacity != this.props.opacity) {
       this.dataLayer.setOpacity(this.props.opacity);
-      this.setBaseMapsOpacity();
-      this.setLayersOpacity();
-      this.setQualityLayer();
+    }
 
-      if(!_.isEqual(this.props.layerOptions, prevProps.layerOptions)) {
-        this.dataLayer.setParams(this.options);
-      }
-
-      if(!_.isEqual(this.props.year, prevProps.year)) {
-        this.updateWmsMaps();
-      }
+    if (!_.isEqual(prevProps.qualities, this.props.qualities)) {
+      this.setupCardsLayer();
     }
   }
 
   componentDidMount() {
-    this.setup();
+    const node = this.refs.element;
+    this.map = L.map(node, { zoomControl: false }).setView([-20, -45], 6);
+
+    L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(this.map);
+
+    this.setupTerritory();
+    this.setupBaseLayers();
+    this.setupDataLayer();
+    this.setupCardsLayer();
   }
 
   zoomIn() {
@@ -205,7 +221,7 @@ export class MapCanvas extends React.Component {
 
   render() {
     return (
-      <div className="map__canvas" ref="element"></div>
+      <div className="map__canvas" ref="element" />
     );
   }
 }

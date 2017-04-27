@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
 
+const positionRelative = {
+  position: 'relative',
+  zIndex: 1
+};
+
 class ZoomAndOpacityControl extends Component {
   constructor(props, context) {
     super(props, context);
@@ -20,7 +25,7 @@ class ZoomAndOpacityControl extends Component {
     const { className, zoomIn, zoomOut, opacity } = this.props;
 
     return (
-      <div className={cx('map-panel', className)}>
+      <div className={cx('map-panel__item', className)} style={positionRelative}>
         <button className="button button--primary" onClick={zoomIn}>
           <i className="fa fa-plus" />
         </button>

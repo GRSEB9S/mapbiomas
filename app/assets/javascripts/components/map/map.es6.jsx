@@ -8,13 +8,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
 
 // import MainMenu from './panels/main_menu';
-// import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 // import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
 // import TransitionsMatrixModal from './modals/transitions_matrix';
 
 import WarningModal from './modals/warning';
 import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
 import TerritoryPanel from './panels/territory';
+import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -80,7 +80,7 @@ export default class Map extends React.Component {
   get urlpath() {
     switch(this.mode) {
       case 'coverage':
-        return "wms/classification/coverage.map";
+        return "wms-c2/classification/coverage.map";
       case 'transitions':
         return "wms/classification/transitions.map";
       default:
@@ -100,12 +100,13 @@ export default class Map extends React.Component {
     return {
       layerOptions: {
         layers: this.mode,
-        url: this.props.apiUrl,
+        // url: this.props.apiUrl,
+        url: 'http://seeg-mapbiomas.terras.agr.br/cgi-bin/mapserv',
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
         transition_id: transitionId || '11',
-        classification_ids: ids.join(','),
+        classification_ids: ids,
       },
       opacity: this.state.opacity
     };
@@ -146,11 +147,11 @@ export default class Map extends React.Component {
   }
 
   handleClassificationsChange(ids) {
-    let classifications = ids.map((id) => {
-      return this.props.availableClassifications.find((c) => c.id === id);
-    })
-
-    this.setState({ classifications });
+    this.setState({
+      classifications: ids.map((id) => (
+        this.props.availableClassifications.find((c) => c.id === id)
+      ))
+    });
   }
 
   handleBaseMapsChange(ids) {
@@ -346,28 +347,6 @@ export default class Map extends React.Component {
     }
   }
 
-  renderCoverageAuxiliarControls() {
-    return (
-      <CoverageAuxiliarControls
-        mode={this.mode}
-        mapProps={this.props}
-        opacity={this.state.opacity}
-        handleOpacityChange={this.handleOpacityChange.bind(this)}
-        viewOptionsIndex={this.state.viewOptionsIndex}
-        handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
-        classifications={this.classifications}
-        availableClassifications={this.props.availableClassifications}
-        handleClassificationsChange={this.handleClassificationsChange.bind(this)}
-        baseMaps={this.baseMaps}
-        availableBaseMaps={this.props.availableBaseMaps}
-        handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-        layers={this.layers}
-        availableLayers={this.props.availableLayers}
-        handleLayersChange={this.handleLayersChange.bind(this)}
-      />
-    );
-  }
-
   renderQualityAuxiliarControls() {
     return (
       <QualityAuxiliarControls mode={this.mode} />
@@ -435,19 +414,35 @@ export default class Map extends React.Component {
           qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
-        <ZoomAndOpacityPanel
-          className="map-panel map-panel--left map-panel--top"
-          zoomIn={this.zoomIn.bind(this)}
-          zoomOut={this.zoomOut.bind(this)}
-          opacity={this.state.opacity}
-          setOpacity={this.setOpacity.bind(this)}
-        />
+        <div className="map-panel map-panel--left map-panel--top">
+          <ZoomAndOpacityPanel
+            zoomIn={this.zoomIn.bind(this)}
+            zoomOut={this.zoomOut.bind(this)}
+            opacity={this.state.opacity}
+            setOpacity={this.setOpacity.bind(this)}
+          />
 
-        <div className="map-panel map-panel--left map-panel--bottom">
           <TerritoryPanel
             territory={this.territory}
             loadTerritories={this.loadTerritories.bind(this)}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
+          />
+          
+          <CoverageAuxiliarControls
+            mode={this.mode}
+            mapProps={this.props}
+            opacity={this.state.opacity}
+            viewOptionsIndex={this.state.viewOptionsIndex}
+            handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
+            classifications={this.classifications}
+            availableClassifications={this.props.availableClassifications}
+            handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+            baseMaps={this.baseMaps}
+            availableBaseMaps={this.props.availableBaseMaps}
+            handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+            layers={this.layers}
+            availableLayers={this.props.availableLayers}
+            handleLayersChange={this.handleLayersChange.bind(this)}
           />
         </div>
 

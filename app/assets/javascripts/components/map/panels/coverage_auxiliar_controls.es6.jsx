@@ -8,7 +8,6 @@ const CoverageAuxiliarControls = ({
   mode,
   mapProps,
   opacity,
-  handleOpacityChange,
   viewOptionsIndex,
   handleViewOptionsIndexSelect,
   classifications,
@@ -21,52 +20,44 @@ const CoverageAuxiliarControls = ({
   availableLayers,
   handleLayersChange
 }) => {
-  if(mode == 'coverage') {
+  if(mode == 'coverage') {    
     return (
-      <div className="map-control-wrapper
-          map-control-wrapper--smaller
-          map-control-wrapper--left
-          map-control-wrapper--bottom">
-        <OpacityControl
-          {...mapProps}
-          opacity={opacity * 100}
-          onChange={handleOpacityChange} />
-        <Tabs
-            selectedIndex={viewOptionsIndex}
-            onSelect={handleViewOptionsIndexSelect}>
-          <TabList className="three-tabbed">
-            <Tab>{I18n.t('map.index.classifications.title')}</Tab>
-            <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
-            <Tab>{I18n.t('map.index.layers.title')}</Tab>
-          </TabList>
-          <TabPanel>
-            <TogglesControl
-              options={classifications}
-              availableOptions={availableClassifications}
-              title={I18n.t('map.index.classifications.title')}
-              tooltip={I18n.t('map.index.classifications.tooltip')}
-              onChange={handleClassificationsChange}
-            />
-          </TabPanel>
-          <TabPanel>
-            <TogglesControl
-              options={baseMaps}
-              availableOptions={availableBaseMaps}
-              title={I18n.t('map.index.base_maps.title')}
-              tooltip={I18n.t('map.index.base_maps.tooltip')}
-              onChange={handleBaseMapsChange}
-            />
-          </TabPanel>
-          <TabPanel>
-            <TogglesControl
-              options={layers}
-              availableOptions={availableLayers}
-              title={I18n.t('map.index.layers.title')}
-              onChange={handleLayersChange}
-            />
-          </TabPanel>
-        </Tabs>
-      </div>
+      <Tabs
+          className="map-panel__item"
+          selectedIndex={viewOptionsIndex}
+          onSelect={handleViewOptionsIndexSelect}>
+        <TabList className="three-tabbed">
+          <Tab>{I18n.t('map.index.classifications.title')}</Tab>
+          <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
+          <Tab>{I18n.t('map.index.layers.title')}</Tab>
+        </TabList>
+        <TabPanel>
+          <TogglesControl
+            className="map-panel__item-content"
+            options={classifications}
+            availableOptions={availableClassifications}
+            tooltip={I18n.t('map.index.classifications.tooltip')}
+            onChange={handleClassificationsChange}
+          />
+        </TabPanel>
+        <TabPanel>
+          <TogglesControl
+            className="map-panel__item-content"
+            options={baseMaps}
+            availableOptions={availableBaseMaps}
+            tooltip={I18n.t('map.index.base_maps.tooltip')}
+            onChange={handleBaseMapsChange}
+          />
+        </TabPanel>
+        <TabPanel>
+          <TogglesControl
+            className="map-panel__item-content"
+            options={layers}
+            availableOptions={availableLayers}
+            onChange={handleLayersChange}
+          />
+        </TabPanel>
+      </Tabs>
     );
   }
 

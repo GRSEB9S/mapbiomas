@@ -12,7 +12,10 @@ module.exports = {
    devtool: 'source-map',
    resolve: {
       modulesDirectories: ['node_modules', 'app/assets/javascripts', 'vendor/assets/javascripts'],
-      extensions: ['', '.js', '.jsx', '.es6', '.es6.jsx']
+      extensions: ['', '.js', '.jsx', '.es6', '.es6.jsx'],
+      alias: {
+        jquery: path.join(sourcePath, 'jquery_alias.js')
+      }
    },
    module: {
       loaders: [

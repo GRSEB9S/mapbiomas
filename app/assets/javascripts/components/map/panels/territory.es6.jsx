@@ -17,7 +17,7 @@ const renderTabPanel = (
 
   return (
     <TabPanel>
-      <div className="map-panel-content">
+      <div className="map-panel__item-content">
         <Select.Async
           name="territory-select"
           value={value}
@@ -39,7 +39,7 @@ const Territory = ({
   loadTerritories,
   onTerritoryChange
 }) => (
-  <Tabs>
+  <Tabs className="map-panel__item">
     <TabList className="four-tabbed">
       <Tab>{I18n.t('map.index.layers.countries')}</Tab>
       <Tab>{I18n.t('map.index.layers.states')}</Tab>
