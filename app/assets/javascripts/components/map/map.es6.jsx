@@ -488,7 +488,7 @@ export default class Map extends React.Component {
           {QUALITY && <QualityLabels />}
         </div>
 
-        {/*
+        
         <div className="timeline-control">
           <ReactTimelineSlider
             multi={this.isMulti()}
@@ -497,7 +497,6 @@ export default class Map extends React.Component {
             defaultValue={this.timelineDefaultValue()}
             range={this.props.availableYears} />
         </div>
-        */}
       </div>
     );
   }
