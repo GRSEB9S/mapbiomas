@@ -23,11 +23,6 @@ export class MenuControl extends React.Component {
 
         <ul className="menu__items">
           <li className="menu__item">
-            <a className="menu__link" href={Routes.map_path()}>
-              {I18n.t('layouts.header.map')}
-            </a>
-          </li>
-          <li className="menu__item">
             <a className="menu__link" href='#'>
               {I18n.t('layouts.header.about.title')}
             </a>
@@ -50,48 +45,58 @@ export class MenuControl extends React.Component {
               </li>
             </ul>
           </li>
+
+          <li className="menu__item">
+            <a className="menu__link" href='#'>
+              {I18n.t('layouts.header.map_data.title')}
+            </a>
+            <ul className="submenu__items">
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('land_use')}>
+                  {I18n.t('layouts.header.map_data.coverage_of_land_use')}
+                  </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href='#'>
+                  {I18n.t('layouts.header.map_data.land_use_change')}
+                  </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href='#'>
+                  {I18n.t('layouts.header.map_data.statistics')}
+                  </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href='#'>
+                  {I18n.t('layouts.header.map_data.quality_and_accuracy')}
+                  </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href='#'>
+                  {I18n.t('layouts.header.map_data.downloads.title')}
+                  </a>
+                  <ul className="submenu__items">
+                    <li className="menu__item">
+                      <a className="menu__link" href='#'>
+                        {I18n.t('layouts.header.map_data.downloads.disclaimer')}
+                        </a>
+                    </li>
+                    <li className="menu__item">
+                      <a className="menu__link" href='#'>
+                        {I18n.t('layouts.header.map_data.downloads.maps_and_collections')}
+                        </a>
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+          </li>
+
           <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('methodology')}>
               {I18n.t('layouts.header.methodology')}
             </a>
           </li>
-          <li className="menu__item">
-            <a className="menu__link" href={Routes.page_path('land_use')}>
-              {I18n.t('layouts.header.land_use')}
-              </a>
-          </li>
-          <li className="menu__item">
-            <a className="menu__link" href="#">
-              {I18n.t('layouts.header.database.title')}
-            </a>
-            <ul className="submenu__items">
-              <li className="menu__item" >
-                <a className="menu__link" href={Routes.page_path("database/reference_maps")}>
-                  {I18n.t('layouts.header.database.reference')}
-                </a>
-              </li>
-              <li className="menu__item" >
-                <a className="menu__link" href={Routes.page_path("database/landsat_mosaics")}>
-                  {I18n.t('layouts.header.database.mosaics')}
-                  </a>
-              </li>
-              <li className="menu__item" >
-                <a className="menu__link" href={Routes.page_path("database/mapbiomas_collection")}>
-                  {I18n.t('layouts.header.database.collection')}
-                </a>
-              </li>
-              <li className="menu__item" >
-                <a className="menu__link" href={Routes.page_path("database/general_data")}>
-                  {I18n.t('layouts.header.database.general_data')}
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li className="menu__item">
-            <a className="menu__link" href={Routes.page_path("workspace")}>
-              {I18n.t('layouts.header.workspace')}
-            </a>
-          </li>
+
           <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('contact')}>
               {I18n.t('layouts.header.contact.title')}
