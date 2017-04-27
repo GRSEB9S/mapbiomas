@@ -7,7 +7,6 @@ import { MapCanvas } from '../map/map_canvas';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
 
-// import MainMenu from './panels/main_menu';
 // import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
 // import TransitionsMatrixModal from './modals/transitions_matrix';
 
@@ -15,6 +14,9 @@ import WarningModal from './modals/warning';
 import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
 import TerritoryPanel from './panels/territory';
 import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
+import MainMenu from './panels/main_menu';
+import QualityLabels from './panels/quality_labels';
+import QualityControl from '../control/quality/quality_control';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -23,7 +25,7 @@ export default class Map extends React.Component {
     super(props);
 
     this.state = {
-      mainMenuIndex: 0,
+      mode: 'coverage',
       viewOptionsIndex: 0,
       opacity: 0.6,
       classifications: null,
@@ -72,19 +74,18 @@ export default class Map extends React.Component {
   }
 
   get mode() {
-    let modes = ['coverage', 'transitions', 'quality'];
+    // let modes = ['coverage', 'transitions', 'quality'];
 
-    return modes[this.state.mainMenuIndex];
+    // return modes[this.state.mainMenuIndex];
+    return this.state.mode;
   }
 
   get urlpath() {
     switch(this.mode) {
-      case 'coverage':
-        return "wms-c2/classification/coverage.map";
       case 'transitions':
-        return "wms/classification/transitions.map";
+        return 'wms/classification/transitions.map';
       default:
-        return "wms/classification/coverage.map";
+        return 'wms-c2/classification/coverage.map';
     }
   }
 
@@ -133,6 +134,10 @@ export default class Map extends React.Component {
   }
 
   //Handlers
+  handleModeChange(mode) {
+    this.setState({ mode });
+  }
+
   handleTerritoryChange(territory) {
     this.setState({ territory })
   }
@@ -392,6 +397,10 @@ export default class Map extends React.Component {
   }
 
   render() {
+    const COVERAGE = this.mode === 'coverage';
+    const TRANSITIONS = this.mode === 'transitions';
+    const QUALITY = this.mode === 'quality';
+
     return (
       <div className="map">
         {this.renderWarning('coverage')}
@@ -427,31 +436,59 @@ export default class Map extends React.Component {
             loadTerritories={this.loadTerritories.bind(this)}
             onTerritoryChange={this.handleTerritoryChange.bind(this)}
           />
-          
-          <CoverageAuxiliarControls
+
+          {COVERAGE && (
+            <CoverageAuxiliarControls
+              mode={this.mode}
+              mapProps={this.props}
+              opacity={this.state.opacity}
+              viewOptionsIndex={this.state.viewOptionsIndex}
+              handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
+              classifications={this.classifications}
+              availableClassifications={this.props.availableClassifications}
+              handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+              baseMaps={this.baseMaps}
+              availableBaseMaps={this.props.availableBaseMaps}
+              handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+              layers={this.layers}
+              availableLayers={this.props.availableLayers}
+              handleLayersChange={this.handleLayersChange.bind(this)}
+            />
+          )}
+        </div>
+
+        <div className="map-panel map-panel--right map-panel--top">
+          <MainMenu
             mode={this.mode}
-            mapProps={this.props}
-            opacity={this.state.opacity}
-            viewOptionsIndex={this.state.viewOptionsIndex}
-            handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
-            classifications={this.classifications}
-            availableClassifications={this.props.availableClassifications}
-            handleClassificationsChange={this.handleClassificationsChange.bind(this)}
-            baseMaps={this.baseMaps}
-            availableBaseMaps={this.props.availableBaseMaps}
-            handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-            layers={this.layers}
-            availableLayers={this.props.availableLayers}
-            handleLayersChange={this.handleLayersChange.bind(this)}
+            onModeChange={this.handleModeChange.bind(this)}
+            coveragePanel={(
+              <ul>
+                <li>Pie Chart</li>
+                <li>Line Chart</li>
+              </ul>
+            )}
+            transitionsPanel={(
+              <ul>
+                <li>Sankey Diagram</li>
+              </ul>
+            )}
+            qualityPanel={(
+              <QualityControl
+                {...this.props}
+                cards={this.state.cards}
+                territory={this.territory}
+                year={this.year}
+                classifications={this.classifications}
+                qualities={this.state.qualities}
+                qualityInfo={this.props.qualityInfo}
+              />
+            )}
           />
+
+          {QUALITY && <QualityLabels />}
         </div>
 
         {/*
-        {this.renderCoverageAuxiliarControls()}
-        {this.renderMainMenu()}
-        {this.renderTransitionsMatrix()}
-        {this.renderQualityAuxiliarControls()} 
-
         <div className="timeline-control">
           <ReactTimelineSlider
             multi={this.isMulti()}

@@ -2,12 +2,10 @@ import React from 'react';
 import _ from 'underscore';
 import Highcharts from 'highcharts';
 import Select from 'react-select';
-import { Territories } from '../../../lib/territories';
 
-export class QualityControl extends React.Component {
+class QualityControl extends React.Component {
   constructor(props) {
     super(props);
-
     this.qualityNames = {};
   }
 
@@ -103,37 +101,25 @@ export class QualityControl extends React.Component {
 
   render() {
     return (
-      <div className="map-control">
+      <div className="map-panel__item-content" style={{ maxHeight: 'auto' }}>
         <h3 className="map-control__header">
           {I18n.t('map.index.quality.analysis')}
-          <i id="quality-tooltip"
-            className="material-icons tooltip">
+          <i id="quality-tooltip" className="material-icons tooltip">
             &#xE88E;
           </i>
         </h3>
-        <div className="map-control__content">
-          <label>{I18n.t('map.index.search')}</label>
-          <Select.Async
-            name="territory-select"
-            value={this.props.territory.value}
-            loadOptions={this.props.loadTerritories}
-            onChange={this.props.onTerritoryChange}
-            clearable={false}
-            ignoreAccents={false}
-            noResultsText={false}
-            searchingText={I18n.t('map.index.searching')}
-            placeholder={this.props.territory.label}
-          />
-          <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
-          <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
-          <div className="quality-chart" ref="chartElement"></div>
-          <button
-              className="primary"
-              onClick={this.handleDownloadButton.bind(this)}>
-            {I18n.t('map.index.quality.download')}
-          </button>
-        </div>
+        <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
+        <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
+        <div className="quality-chart" ref="chartElement"></div>
+        <button
+          className="primary"
+          onClick={this.handleDownloadButton.bind(this)}
+        >
+          {I18n.t('map.index.quality.download')}
+        </button>
       </div>
     );
   }
 }
+
+export default QualityControl;

@@ -192,7 +192,10 @@ export class MapCanvas extends React.Component {
       this.dataLayer.setOpacity(this.props.opacity);
     }
 
-    if (!_.isEqual(prevProps.qualities, this.props.qualities)) {
+    if (
+      (prevProps.mode !== this.props.mode) ||
+      (!_.isEqual(prevProps.qualities, this.props.qualities))
+    ) {
       this.setupCardsLayer();
     }
   }
