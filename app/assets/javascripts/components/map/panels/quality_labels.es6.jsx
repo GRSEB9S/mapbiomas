@@ -10,8 +10,8 @@ const QualityLabel = ({ label }) => (
 )
 
 const QualityLabels = ({ mode }) => (
-  <div className="map-panel__item">
-      <div className="map-panel__item-content">
+  <div className="map-panel__action-panel">
+      <div className="map-panel__content">
         <h3 className="map-panel__header">
           {I18n.t('map.index.quality.labels.title')}
         </h3>
