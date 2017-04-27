@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import _ from 'underscore';
 import Highcharts from 'highcharts';
-import Select from 'react-select';
 import { API } from '../../lib/api';
-import { Territories } from '../../lib/territories';
 
-export class CoverageControl extends React.Component {
+class CoveragePieChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -100,23 +98,12 @@ export class CoverageControl extends React.Component {
 
   render() {
     return (
-      <div className="map-control">
+      <div className="map-panel__item-content">
         <h3 className="map-control__header">
           {I18n.t('map.index.coverage.analysis')}
         </h3>
-        <div className="map-control__content">
+        <div className="map-control__content map-control__content-no-max-height">
           <label>{I18n.t('map.index.search')}</label>
-          <Select.Async
-            name="territory-select"
-            value={this.props.territory.value}
-            loadOptions={this.props.loadTerritories}
-            onChange={this.props.onTerritoryChange}
-            clearable={false}
-            ignoreAccents={false}
-            noResultsText={false}
-            searchingText={I18n.t('map.index.searching')}
-            placeholder={this.props.territory.label}
-          />
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
           <div className="coverage-chart" ref="chartElement"></div>
@@ -125,3 +112,5 @@ export class CoverageControl extends React.Component {
     );
   }
 }
+
+export default CoveragePieChart;

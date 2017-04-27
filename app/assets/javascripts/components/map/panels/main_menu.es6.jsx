@@ -20,28 +20,22 @@ const MainMenu = ({
   coveragePanel,
   transitionsPanel,
   qualityPanel
-}) => {
-  // const classes = cx("map-control-wrapper", {
-  //   "map-control-wrapper--bigger": mode == 'transitions'
-  // });
-
-  return(
-    <div className="map-panel__item">
-      <Tabs
-        selectedIndex={TAB_INDEX_MAP[mode]}
-        onSelect={(index) => onModeChange(INDEX_TAB_MAP[index])}
-      >
-        <TabList className="three-tabbed">
-          <Tab>{I18n.t('map.index.coverage.title')}</Tab>
-          <Tab>{I18n.t('map.index.transitions.title')}</Tab>
-          <Tab>{I18n.t('map.index.quality.title')}</Tab>
-        </TabList>
-        <TabPanel>{coveragePanel}</TabPanel>
-        <TabPanel>{transitionsPanel}</TabPanel>
-        <TabPanel>{qualityPanel}</TabPanel>
-      </Tabs>
-    </div>
-  );
-};
+}) => (
+  <div className="map-panel__item">
+    <Tabs
+      selectedIndex={TAB_INDEX_MAP[mode]}
+      onSelect={(index) => onModeChange(INDEX_TAB_MAP[index])}
+    >
+      <TabList className="three-tabbed">
+        <Tab>{I18n.t('map.index.coverage.title')}</Tab>
+        <Tab>{I18n.t('map.index.transitions.title')}</Tab>
+        <Tab>{I18n.t('map.index.quality.title')}</Tab>
+      </TabList>
+      <TabPanel>{coveragePanel}</TabPanel>
+      <TabPanel>{transitionsPanel}</TabPanel>
+      <TabPanel>{qualityPanel}</TabPanel>
+    </Tabs>
+  </div>
+);
 
 export default MainMenu;

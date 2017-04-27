@@ -3,7 +3,7 @@ import _ from 'underscore';
 import Highcharts from 'highcharts';
 import Select from 'react-select';
 
-class QualityControl extends React.Component {
+class QualityChart extends React.Component {
   constructor(props) {
     super(props);
     this.qualityNames = {};
@@ -101,7 +101,7 @@ class QualityControl extends React.Component {
 
   render() {
     return (
-      <div className="map-panel__item-content" style={{ maxHeight: 'auto' }}>
+      <div className="map-panel__item-content">
         <h3 className="map-control__header">
           {I18n.t('map.index.quality.analysis')}
           <i id="quality-tooltip" className="material-icons tooltip">
@@ -122,4 +122,4 @@ class QualityControl extends React.Component {
   }
 }
 
-export default QualityControl;
+export default QualityChart;

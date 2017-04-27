@@ -7,16 +7,16 @@ import { MapCanvas } from '../map/map_canvas';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Territories } from '../../lib/territories';
 
-// import QualityAuxiliarControls from './panels/quality_auxiliar_controls';
-// import TransitionsMatrixModal from './modals/transitions_matrix';
-
+import TransitionsMatrixModal from './modals/transitions_matrix';
 import WarningModal from './modals/warning';
 import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
 import TerritoryPanel from './panels/territory';
 import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 import MainMenu from './panels/main_menu';
 import QualityLabels from './panels/quality_labels';
-import QualityControl from '../control/quality/quality_control';
+import CoveragePieChart from '../control/coverage_pie_chart';
+import QualityChart from '../control/quality_chart';
+import TransitionsControl from '../control/transitions/transitions_control';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -372,6 +372,7 @@ export default class Map extends React.Component {
 
     return (
       <div className="map">
+        {this.renderTransitionsMatrix()}
         {this.renderWarning('coverage')}
         {this.renderWarning('transitions')}
         {this.renderWarning('quality')}
@@ -431,18 +432,31 @@ export default class Map extends React.Component {
             mode={this.mode}
             onModeChange={this.handleModeChange.bind(this)}
             coveragePanel={(
-              <ul>
-                <li>Pie Chart</li>
-                <li>Line Chart</li>
-              </ul>
+              <div>
+                <CoveragePieChart
+                  {...this.props}
+                  territory={this.territory}
+                  year={this.year}
+                  classifications={this.classifications}
+                />
+                {/* Line Chart goes here */}
+              </div>
             )}
             transitionsPanel={(
-              <ul>
-                <li>Sankey Diagram</li>
-              </ul>
+              <TransitionsControl
+                {...this.props}
+                transition={this.transition}
+                transitions={this.state.transitions}
+                classifications={this.classifications}
+                territory={this.territory}
+                years={this.years}
+                onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+                onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+                setTransition={this.handleTransitionChange.bind(this)}
+              />
             )}
             qualityPanel={(
-              <QualityControl
+              <QualityChart
                 {...this.props}
                 cards={this.state.cards}
                 territory={this.territory}
