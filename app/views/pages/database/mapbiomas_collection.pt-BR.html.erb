@@ -1,3 +1,48 @@
+<script type="text/javascript">
+  function buildUrl(biome, collection, year){
+    if(collection == '1'){
+      return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
+    }else{
+      return 'http://maps.lapig.iesa.ufg.br/mapbiomas/'+ year + '/' + biome + '.tif';
+    }
+  }
+
+  function refreshUrls(){
+    var collection = $('#collection').val();
+    var year = $('#year').val();
+    
+    var url = ''
+    
+    $('a[biome]').each(function(){
+      var biome = $(this).attr('biome');
+      var url = buildUrl(biome, collection, year);
+
+      $(this).attr('href', url);
+    });
+  }
+
+  $(document).on('change', '#collection', function(){
+    if($(this).val() == '1'){
+      $('#year').find('option[value="2016"]').prop('disabled', true);
+    }else{
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+    }
+    $('#year').find('option:first-child').prop('selected', true)
+    $('#year').trigger('change');
+    
+    refreshUrls();
+  });
+
+  $(document).on('change', '#year', function(){
+    refreshUrls();
+  });
+
+  $(function(){
+    $('#collection').trigger('change');
+    refreshUrls();
+  });
+</script>
+
 <article class="page">
   <div class="page__container">
     <h1 class="page__title">Mapas Coleção 1</h1>
@@ -16,43 +61,44 @@
     </blockquote>
 
     <div class="page__box-download">
+      <%= select_tag "collection", options_for_select([["Coleção 1", 1], ["Coleção 2", 2]]), id: "collection" %>
       <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
     </div>
 
     <div class="methodology-presentation">
       <%= image_tag "amazonia.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Amazônia', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/AMAZONIA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='AMAZONIA' target="_blank">Amazônia</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "pantanal.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Pantanal', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PANTANAL/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='PANTANAL' target="_blank">Pantanal</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "caatinga.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Caatinga', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/CAATINGA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='CAATINGA' target="_blank">Caatinga</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "mata_atlantica.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Mata Atlântica', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/MATAATLANTICA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='MATAATLANTICA' target="_blank">Mata Atlântica</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "cerrado.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Cerrado', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/CERRADO/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='CERRADO' target="_blank">Cerrado</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "pampa.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Pampa', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PAMPA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='PAMPA' target="_blank">Pampa</a>
       </div>
     </div>
 
