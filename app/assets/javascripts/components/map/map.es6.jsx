@@ -393,93 +393,50 @@ export default class Map extends React.Component {
           qualityCardsUrl={this.props.qualityCardsUrl}
         />
 
-        <div className="map-panel map-panel--left map-panel--top">
-          <ZoomAndOpacityPanel
-            zoomIn={this.zoomIn.bind(this)}
-            zoomOut={this.zoomOut.bind(this)}
-            opacity={this.state.opacity}
-            setOpacity={this.setOpacity.bind(this)}
-          />
-
-          <TerritoryPanel
-            territory={this.territory}
-            loadTerritories={this.loadTerritories.bind(this)}
-            onTerritoryChange={this.handleTerritoryChange.bind(this)}
-          />
-
-          {COVERAGE && (
-            <CoverageAuxiliarControls
-              mode={this.mode}
-              mapProps={this.props}
+        <div className="map-panel__wrapper">
+          <div className="map-panel__area map-panel__sidebar">
+            <ZoomAndOpacityPanel
+              className="map-panel__action-panel"
+              zoomIn={this.zoomIn.bind(this)}
+              zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
-              viewOptionsIndex={this.state.viewOptionsIndex}
-              handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
-              classifications={this.classifications}
-              availableClassifications={this.props.availableClassifications}
-              handleClassificationsChange={this.handleClassificationsChange.bind(this)}
-              baseMaps={this.baseMaps}
-              availableBaseMaps={this.props.availableBaseMaps}
-              handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-              layers={this.layers}
-              availableLayers={this.props.availableLayers}
-              handleLayersChange={this.handleLayersChange.bind(this)}
+              setOpacity={this.setOpacity.bind(this)}
             />
-          )}
-        </div>
+            <TerritoryPanel
+              className="map-panel__action-panel"
+              territory={this.territory}
+              loadTerritories={this.loadTerritories.bind(this)}
+              onTerritoryChange={this.handleTerritoryChange.bind(this)}
+            />
 
-        <div className="map-panel map-panel--right map-panel--top">
-          <MainMenu
-            mode={this.mode}
-            onModeChange={this.handleModeChange.bind(this)}
-            coveragePanel={(
-              <div>
-                <CoveragePieChart
-                  {...this.props}
-                  territory={this.territory}
-                  year={this.year}
+            {COVERAGE && (
+              <div className="map-panel__grow" id="left-sidebar-grown-panel">
+                <CoverageAuxiliarControls
+                  className="map-panel__action-panel"
+                  mode={this.mode}
+                  mapProps={this.props}
+                  opacity={this.state.opacity}
+                  viewOptionsIndex={this.state.viewOptionsIndex}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
                   classifications={this.classifications}
+                  availableClassifications={this.props.availableClassifications}
+                  handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+                  baseMaps={this.baseMaps}
+                  availableBaseMaps={this.props.availableBaseMaps}
+                  handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+                  layers={this.layers}
+                  availableLayers={this.props.availableLayers}
+                  handleLayersChange={this.handleLayersChange.bind(this)}
                 />
-                {/* Line Chart goes here */}
               </div>
             )}
-            transitionsPanel={(
-              <TransitionsControl
-                {...this.props}
-                transition={this.transition}
-                transitions={this.state.transitions}
-                classifications={this.classifications}
-                territory={this.territory}
-                years={this.years}
-                onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-                onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-                setTransition={this.handleTransitionChange.bind(this)}
-              />
-            )}
-            qualityPanel={(
-              <QualityChart
-                {...this.props}
-                cards={this.state.cards}
-                territory={this.territory}
-                year={this.year}
-                classifications={this.classifications}
-                qualities={this.state.qualities}
-                qualityInfo={this.props.qualityInfo}
-              />
-            )}
-          />
-
-          {QUALITY && <QualityLabels />}
+          </div>
+          <div className="map-panel__area map-panel__main">
+          </div>
+          <div className="map-panel__area map-panel__sidebar">
+          </div>
         </div>
 
-        
-        <div className="timeline-control">
-          <ReactTimelineSlider
-            multi={this.isMulti()}
-            playStop={true}
-            onValueChange={this.handleYearChange.bind(this)}
-            defaultValue={this.timelineDefaultValue()}
-            range={this.props.availableYears} />
-        </div>
       </div>
     );
   }

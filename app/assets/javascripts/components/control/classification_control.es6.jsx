@@ -3,7 +3,7 @@ import _ from 'underscore';
 import cx from 'classnames';
 import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
-import scrollbar from 'jquery.scrollbar';
+import Scrollable from '../scrollable';
 
 const buildTree = _.memoize((nodes, idProp = 'id', parentIdProp = 'parentId') => {
   const { _tree, _map } = _.reduce(nodes, (acc, node) => {
@@ -30,21 +30,6 @@ class ClassificationControl extends Component {
     return this.props.options.map((c) => c.id);
   }
 
-  componentDidMount() {
-    if(this.props.tooltip) {
-      $('#options-tooltip').tooltipster({
-        theme: 'tooltip-custom-theme',
-        content: $(this.props.tooltip)
-      });
-    }
-
-    $(this.refs.content).scrollbar();
-  }
-
-  componentWillUnmount() {
-    $(this.refs.content).scrollbar('destroy');
-  }
-
   isChecked(id) {
     return this.ids.indexOf(id) != -1;
   }
@@ -59,17 +44,6 @@ class ClassificationControl extends Component {
     }
 
     this.props.onChange(ids);
-  }
-
-  renderTooltip() {
-    if(this.props.tooltip) {
-      return (
-        <i id="options-tooltip"
-          className="material-icons tooltip">
-          &#xE88E;
-        </i>
-      );
-    }
   }
 
   renderNode(node, index, parentSummary) {
@@ -124,42 +98,13 @@ class ClassificationControl extends Component {
 
     return (
       <div className={this.props.className}>
-        <div className="scrollbar-dynamic map-control__content" ref="content">
+        <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
           <ul className="classification-control__inner">
             {_.map(tree, (node) => this.renderNode(node, index++))}
           </ul>
-        </div>
+        </Scrollable>
       </div>
     );
-
-    // let options = this.props.availableOptions.map((option) => {
-    //   return (
-    //     <li key={option.id} className="toggle">
-    //       <label>{option.name}</label>
-    //       <Toggle
-    //         toggleColor={option.color}
-    //         defaultChecked={this.isChecked(option.id)}
-    //         onChange={this.handleCheck.bind(this, option.id)} />
-    //     </li>
-    //   );
-    // });
-
-    // return (
-    //   <div className={cx('map-control', this.props.className)}>
-    //     {this.props.title && (
-    //       <h3 className="map-control__header">
-    //         {this.props.title}
-    //         {this.renderTooltip()}
-        // tooltip={I18n.t('map.index.classifications.tooltip')}
-    //       </h3>
-    //     )}
-    //     <div className="map-control__content scrollbar-dynamic" ref="content">
-    //       <ul className="toggles-list">
-    //         {options}
-    //       </ul>
-    //     </div>
-    //   </div>
-    // );
   }
 }
 
