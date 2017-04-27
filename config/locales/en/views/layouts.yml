@@ -26,6 +26,7 @@ en:
           agriculture: Team Agriculture
           terras_developers: Developers Team - Terras
           ecostage_developers: Developers Team - EcoStage
+          support: Suporte Técnico
           record: 'Record, Communication and Management'
           google_partners: Google Partners
           coordination: Coordination
@@ -39,6 +40,8 @@ en:
           documentarian: (Documentary Filmmaker)
           general_coordination: (General Coordination)
           scientific_coordination: (Technical-Scientific Coordination)
+          programming_process: (Programação e processamento)
+          statistical: Estatístico
       methodology: Methodology
       land_use: Understand Land Use
       database:

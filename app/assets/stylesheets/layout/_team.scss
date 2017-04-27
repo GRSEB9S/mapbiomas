@@ -39,6 +39,11 @@
     height:60px;
   }
 
+  &__collection {
+    font-weight: bold;
+    color: $medium-blue;
+  }
+
   &__small {
     display: block;
     color: $light-gray;
