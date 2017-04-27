@@ -2573,7 +2573,7 @@ react-tabs@ecostage/react-tabs:
     classnames "^2.2"
     js-stylesheet "^0.0.1"
 
-react-timeline-slider@0.0.4:
+react-timeline-slider@^0.0.4:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/react-timeline-slider/-/react-timeline-slider-0.0.4.tgz#9a1b948a604d266c8bdb59b9f8181b349ed27ebc"
   dependencies:
