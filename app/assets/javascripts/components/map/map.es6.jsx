@@ -25,7 +25,7 @@ export default class Map extends React.Component {
     super(props);
 
     this.state = {
-      mode: 'coverage',
+      mode: location.hash.replace('#', '') || 'coverage',
       viewOptionsIndex: 0,
       opacity: 0.6,
       classifications: null,

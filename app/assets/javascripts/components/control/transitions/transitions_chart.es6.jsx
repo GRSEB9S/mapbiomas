@@ -16,7 +16,7 @@ export class TransitionsChart extends React.Component {
     let element = ReactDOM.findDOMNode(this.refs.element);
     element.innerHTML = '';
     let width = this.props.width,
-        height = 350;
+        height = 400;
 
     let svg = d3.select(element)
         .append("svg")
