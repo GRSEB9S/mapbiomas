@@ -15,6 +15,7 @@ import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 import MainMenu from './panels/main_menu';
 import QualityLabels from './panels/quality_labels';
 import CoveragePieChart from '../control/coverage_pie_chart';
+import CoverageLineChart from '../control/coverage_line_chart';
 import QualityChart from '../control/quality_chart';
 import TransitionsControl from '../control/transitions/transitions_control';
 
@@ -439,7 +440,12 @@ export default class Map extends React.Component {
                   year={this.year}
                   classifications={this.classifications}
                 />
-                {/* Line Chart goes here */}
+                <CoverageLineChart
+                  {...this.props}
+                  territory={this.territory}
+                  year={this.year}
+                  classifications={this.classifications}
+                />
               </div>
             )}
             transitionsPanel={(

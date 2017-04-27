@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Scrollable from '../../scrollable';
 
 const TAB_INDEX_MAP = {
   coverage: 0,
@@ -31,9 +32,21 @@ const MainMenu = ({
         <Tab>{I18n.t('map.index.transitions.title')}</Tab>
         <Tab>{I18n.t('map.index.quality.title')}</Tab>
       </TabList>
-      <TabPanel>{coveragePanel}</TabPanel>
-      <TabPanel>{transitionsPanel}</TabPanel>
-      <TabPanel>{qualityPanel}</TabPanel>
+      <TabPanel>
+        <Scrollable scrollContainerClassName="map-control__content">
+          {coveragePanel}
+        </Scrollable>
+      </TabPanel>
+      <TabPanel>
+        <Scrollable scrollContainerClassName="map-control__content">
+          {transitionsPanel}
+        </Scrollable>
+      </TabPanel>
+      <TabPanel>
+        <Scrollable scrollContainerClassName="map-control__content">
+          {qualityPanel}
+        </Scrollable>
+      </TabPanel>
     </Tabs>
   </div>
 );
