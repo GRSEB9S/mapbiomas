@@ -16,6 +16,7 @@ import TerritoryPanel from './panels/territory';
 import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 import MainMenu from './panels/main_menu';
 import QualityLabels from './panels/quality_labels';
+import QualityControl from '../control/quality/quality_control';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -460,17 +461,34 @@ export default class Map extends React.Component {
           <MainMenu
             mode={this.mode}
             onModeChange={this.handleModeChange.bind(this)}
+            coveragePanel={(
+              <ul>
+                <li>Pie Chart</li>
+                <li>Line Chart</li>
+              </ul>
+            )}
+            transitionsPanel={(
+              <ul>
+                <li>Sankey Diagram</li>
+              </ul>
+            )}
+            qualityPanel={(
+              <QualityControl
+                {...this.props}
+                cards={this.state.cards}
+                territory={this.territory}
+                year={this.year}
+                classifications={this.classifications}
+                qualities={this.state.qualities}
+                qualityInfo={this.props.qualityInfo}
+              />
+            )}
           />
 
           {QUALITY && <QualityLabels />}
         </div>
 
         {/*
-        {this.renderCoverageAuxiliarControls()}
-        {this.renderMainMenu()}
-        {this.renderTransitionsMatrix()}
-        {this.renderQualityAuxiliarControls()} 
-
         <div className="timeline-control">
           <ReactTimelineSlider
             multi={this.isMulti()}

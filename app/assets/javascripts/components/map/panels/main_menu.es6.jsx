@@ -16,7 +16,10 @@ const INDEX_TAB_MAP = {
 
 const MainMenu = ({
   mode,
-  onModeChange
+  onModeChange,
+  coveragePanel,
+  transitionsPanel,
+  qualityPanel
 }) => {
   // const classes = cx("map-control-wrapper", {
   //   "map-control-wrapper--bigger": mode == 'transitions'
@@ -33,22 +36,9 @@ const MainMenu = ({
           <Tab>{I18n.t('map.index.transitions.title')}</Tab>
           <Tab>{I18n.t('map.index.quality.title')}</Tab>
         </TabList>
-        <TabPanel>
-          <ul className="map-panel__item-content">
-            <li>Pie Chart</li>
-            <li>Line Chart</li>
-          </ul>
-        </TabPanel>
-        <TabPanel>
-          <ul className="map-panel__item-content">
-            <li>Transitions</li>
-          </ul>
-        </TabPanel>
-        <TabPanel>
-          <ul className="map-panel__item-content">
-            <li>Quality</li>
-          </ul>
-        </TabPanel>
+        <TabPanel>{coveragePanel}</TabPanel>
+        <TabPanel>{transitionsPanel}</TabPanel>
+        <TabPanel>{qualityPanel}</TabPanel>
       </Tabs>
     </div>
   );
