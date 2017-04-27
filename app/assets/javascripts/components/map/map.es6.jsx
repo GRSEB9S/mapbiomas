@@ -164,6 +164,7 @@ export default class Map extends React.Component {
   //Handlers
   handleModeChange(mode) {
     this.setState({ mode });
+    window.location.hash = `#${mode}`;
   }
 
   handleTerritoryChange(territory) {
@@ -435,6 +436,12 @@ export default class Map extends React.Component {
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
             />
 
+            {QUALITY && (
+              <div id="quality-labels">
+                <QualityLabels />
+              </div>
+            )}
+
             {COVERAGE && (
               <div className="map-panel__grow" id="left-sidebar-grown-panel">
                 <CoverageAuxiliarControls
@@ -513,11 +520,7 @@ export default class Map extends React.Component {
                   />
                 )}
               />
-              {QUALITY && (
-                <div id="quality-labels">
-                  <QualityLabels />
-                </div>
-              )}
+
             </div>
           </div>
         </div>
