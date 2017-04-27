@@ -20,6 +20,8 @@ import TransitionsControl from '../control/transitions/transitions_control';
 
 Tabs.setUseDefaultStyles(false);
 
+const DENSE_FOREST_ID = 3;
+
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -83,9 +85,32 @@ export default class Map extends React.Component {
   get urlpath() {
     switch(this.mode) {
       case 'transitions':
-        return 'wms/classification/transitions.map';
+        return 'wms-c2/classification/transitions.map';
       default:
         return 'wms-c2/classification/coverage.map';
+    }
+  }
+
+  get transitionsOptions() {
+    let fromId, toId;
+
+    if(this.state.transition) {
+      fromId = this.state.transition.from;
+      toId = this.state.transition.to;
+    }
+
+    return {
+      layerOptions: {
+        layers: 'transitions',
+        map: "wms-c2/classification/transitions.map",
+        territory_id: this.territory.id,
+        year_t0: this.years[0],
+        year_t1: this.years[1],
+        transition_c0: fromId || DENSE_FOREST_ID,
+        transition_c1: toId || DENSE_FOREST_ID,
+        format: 'image/png',
+        transparent: true
+      }
     }
   }
 
@@ -94,6 +119,10 @@ export default class Map extends React.Component {
     let year = this.mode == 'coverage' ? this.year : this.years.join(',');
     let transitionId;
 
+    if(this.mode == 'transitions') {
+      return this.transitionsOptions;
+    }
+
     if(this.state.transition) {
       transitionId = `${this.state.transition.from}${this.state.transition.to}`;
     }
@@ -101,8 +130,7 @@ export default class Map extends React.Component {
     return {
       layerOptions: {
         layers: this.mode,
-        // url: this.props.apiUrl,
-        url: 'http://seeg-mapbiomas.terras.agr.br/cgi-bin/mapserv',
+        url: this.props.apiUrl,
         map: this.urlpath,
         year: year,
         territory_id: this.territory.id,
