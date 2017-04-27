@@ -1,6 +1,5 @@
 .ReactTabs {
   background-color: $white;
-  box-shadow: $base-box-shadow;
   @include clearfix;
 
   @include media($mobile-landscape) {
