@@ -10,7 +10,9 @@ pt-BR:
         downloads:
           title: Downloads
           disclaimer: disclaimer
-          maps_and_collections: Mapas e Coleções
+          maps_collections: Mapas da coleção 1 e 2
+          reference: Mapas de Referência
+          mosaics: Mosaicos Landsat 1 e 2
       map: Explorar
       menu: Menu
       about:

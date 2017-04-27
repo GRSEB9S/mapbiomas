@@ -52,7 +52,7 @@ export class MenuControl extends React.Component {
             </a>
             <ul className="submenu__items">
               <li className="menu__item">
-                <a className="menu__link" href={Routes.page_path('land_use')}>
+                <a className="menu__link" href='#'>
                   {I18n.t('layouts.header.map_data.coverage_of_land_use')}
                   </a>
               </li>
@@ -83,7 +83,17 @@ export class MenuControl extends React.Component {
                     </li>
                     <li className="menu__item">
                       <a className="menu__link" href='#'>
-                        {I18n.t('layouts.header.map_data.downloads.maps_and_collections')}
+                        {I18n.t('layouts.header.map_data.downloads.maps_collections')}
+                        </a>
+                    </li>
+                    <li className="menu__item">
+                      <a className="menu__link" href='#'>
+                        {I18n.t('layouts.header.map_data.downloads.reference')}
+                        </a>
+                    </li>
+                    <li className="menu__item">
+                      <a className="menu__link" href='#'>
+                        {I18n.t('layouts.header.map_data.downloads.mosaics')}
                         </a>
                     </li>
                   </ul>
