@@ -499,7 +499,12 @@ export default class Map extends React.Component {
                       year={this.year}
                       classifications={this.classifications}
                     />
-                    {/* Line Chart goes here */}
+                    <CoverageLineChart
+                      {...this.props}
+                      territory={this.territory}
+                      year={this.year}
+                      classifications={this.classifications}
+                    />
                   </div>
                 )}
                 transitionsPanel={(
