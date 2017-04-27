@@ -352,37 +352,6 @@ export default class Map extends React.Component {
     }
   }
 
-  renderQualityAuxiliarControls() {
-    return (
-      <QualityAuxiliarControls mode={this.mode} />
-    );
-  }
-
-  renderMainMenu() {
-    return (
-      <MainMenu
-        mapProps={this.props}
-        mode={this.mode}
-        menuIndex={this.state.mainMenuIndex}
-        onSelect={this.handleMainMenuIndexSelect.bind(this)}
-        transition={this.transition}
-        transitions={this.state.transitions}
-        years={this.years}
-        onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
-        onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-        setTransition={this.handleTransitionChange.bind(this)}
-        cards={this.state.cards}
-        territory={this.territory}
-        year={this.year}
-        classifications={this.classifications}
-        qualities={this.state.qualities}
-        qualityInfo={this.props.qualityInfo}
-        onTerritoryChange={this.handleTerritoryChange.bind(this)}
-        loadTerritories={this.loadTerritories.bind(this)}
-      />
-    );
-  }
-
   componentDidMount() {
     this.loadCards();
     this.loadQualities(this.year);
