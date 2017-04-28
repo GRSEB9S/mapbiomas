@@ -85,9 +85,21 @@ export class MenuControl extends React.Component {
           </li>
 
           <li className="menu__item">
-            <a className="menu__link" href={Routes.page_path('methodology')}>
-              {I18n.t('layouts.header.methodology')}
+            <a className="menu__link" href='#'>
+              {I18n.t('layouts.header.methodology.title')}
             </a>
+            <ul className="submenu__items">
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('methodology')}>
+                  {I18n.t('layouts.header.methodology.atbd')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('workspace')}>
+                  {I18n.t('layouts.header.methodology.tools')}
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li className="menu__item">

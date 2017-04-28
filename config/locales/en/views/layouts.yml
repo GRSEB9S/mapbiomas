@@ -43,7 +43,10 @@ en:
           scientific_coordination: (Technical-Scientific Coordination)
           programming_process: (Programação e processamento)
           statistical: Estatístico
-      methodology: Methodology
+      methodology:
+        title: Metodologia
+        atbd: ATBD
+        tools: Ferramentas
       land_use: Understand Land Use
       database:
         title: Database
