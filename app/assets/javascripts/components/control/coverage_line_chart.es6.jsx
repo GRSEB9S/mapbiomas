@@ -3,6 +3,16 @@ import _ from 'underscore';
 import Highcharts from 'highcharts';
 import { API } from '../../lib/api';
 
+const parseArea = (area) => {
+  let y = parseFloat(area);
+
+  if(isNaN(y)) {
+    y = 0;
+  }
+
+  return y;
+};
+
 class CoverageLineChart extends Component {
   constructor(props) {
     super(props);
@@ -11,46 +21,25 @@ class CoverageLineChart extends Component {
     };
   }
 
-  get chartSeries() {
-    let data = this.state.coverage.map((coverageItem) => {
-      let classification = this.findCoverageClassification(coverageItem);
-      let y = parseFloat(coverageItem.area);
-
-      if(isNaN(y)) {
-        y = 0;
-      }
-
-      return {
-        y: y,
-        name: classification.name,
-        color: classification.color
-      }
-    });
-
-    return [{
-      name: 'Coverage',
-      data: data
-    }];
-  }
-
   get chartOptions() {
     let el = this.refs.chartElement;
 
     return {
       chart: {
         renderTo: el,
-        type: 'pie',
+        type: 'line',
         spacingLeft: 0,
-        spacingRight: 0
+        spacingRight: 20
       },
       plotOptions: {
-        pie: {
-          dataLabels: {
-            enabled: false
-          },
-          borderColor: '#DDDDDD'
-        },
+        series: {
+          pointStart: 2000
+        }
       },
+      yAxis: {
+        title: false
+      },
+      legend: false,
       tooltip: {
         pointFormat: I18n.t('map.index.coverage.title') + ': <b>{point.y}</b>',
         valueSuffix: ' ha',
@@ -60,18 +49,35 @@ class CoverageLineChart extends Component {
         enabled: false
       },
       title: false,
-      series: this.chartSeries
+      series: this.state.coverage
     };
+  }
+
+  parseCoverage(coverage) {
+    return _.chain(coverage)
+    .groupBy('id')
+    .map((group) => {
+      const classification = this.findCoverageClassification(group[0]);
+
+      return {
+        name: classification.name,
+        color: classification.color,
+        data: _.chain(group)
+        .sortBy('year')
+        .map(({ area }) => parseArea(area))
+        .value()
+      };
+    })
+    .toArray()
+    .value();
   }
 
   loadCoverage(props) {
     API.coverage({
       territory_id: props.territory.id,
       classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
-      // year: props.year
     }).then((coverage) => {
-      console.log(coverage);
-      this.setState({ coverage: coverage }, () => {
+      this.setState({ coverage: this.parseCoverage(coverage) }, () => {
         this.drawChart()
       });
     })
@@ -92,22 +98,16 @@ class CoverageLineChart extends Component {
   }
 
   findCoverageClassification(coverageItem) {
-    return this.props.availableClassifications.find((classification) => {
-      return classification.id == coverageItem.id;
-    });
+    return this.props.availableClassifications.find((classification) => (
+      classification.id === coverageItem.id
+    ));
   }
 
   render() {
     return (
       <div className="map-panel__item-content">
-        <h3 className="map-control__header">
-          {I18n.t('map.index.coverage.analysis')}
-        </h3>
-        <div className="map-control__content map-control__content-no-max-height">
-          <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
-          <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
-          <div className="coverage-chart" ref="chartElement"></div>
-        </div>
+        <div className="coverage-chart" ref="chartElement"></div>
+        <a href="/stats" className="button primary">{I18n.t('map.index.coverage.details')}</a>
       </div>
     );
   }
