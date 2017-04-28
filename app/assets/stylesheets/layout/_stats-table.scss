@@ -1,0 +1,17 @@
+.stats-table {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+  }
+
+  th {
+    font-weight: bolder;
+    border-bottom-width: 2px;
+  }
+
+  th, td {
+    padding: 4px 6px;
+    white-space: nowrap;
+  }
+}
