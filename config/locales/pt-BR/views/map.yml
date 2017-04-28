@@ -4,18 +4,19 @@ pt-BR:
       coverage:
         title: Nota de precaução
         body: |
-          <p>Todos os mapas do Projeto MAPBIOMAS fazem parte da Coleção 1 que incluem dados anuais no período 2008 a 2015.</p>
-          <p>Esta coleção é fruto do primeiro ano de trabalho do projeto MapBiomas que foi destinado a testar a viabilidade e a eficiência tanto da metodologia de produção em série de mapas anuais de cobertura e uso do solo como da operacionalidade da Plataforma Web desenvolvida para possibilitar o trabalho colaborativo em rede.</p>
-          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (agricultura e pastagem). Um processo de validação com utilização de pontos de amostragem para análise de acurácia está em implementação para aplicação nas próximas coleções.</p>
+          <p>Esta é Coleção 2 do MapBiomas que incluem dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
+          <p>Esta coleção é fruto dos primeiros 20 meses de trabalho do projeto MapBiomas e esta em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018.</p>
+          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
+          <p>Caso tenha sugestões, críticas e idéias aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
         title: Análise de Transição
         body: |
-          <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas de qualquer par de anos consecutivos (ex. 2008-2009; 2011-2012). Selecione dois anos consecutivos na barra inferior e observe o diagrama de Sankey indicando as transições de cobertura identificadas.</p>
-          <p>É possível visualizar no mapa onde estão estas diferenças entre anos clicando na faixa/linha que liga os dois lados do diagrama. Para ver a matriz completa de transição clique no botão “Matriz de Transição”.</p>
-          <p>Esta representação de transição entre classes de um ano para outro é feita a partir da comparação pixel a pixel.</p>
+          <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas dos seguintes períodos: (a) quaisquer anos consecutivos (ex. 2001-2002); (b) períodos de cinco anos 2000-2005/ 2005-2010 / 2010-2015; (c) 2008-2015 e (d) 2000-2016.</p>
+          <p>Selecione o período desejado e observe as mudanças no mapa e no diagrama de Sankey. Clique nas diferentes transições do diagrama para ver as diferentes transições no mapa.</p>
+          <p>Esta representação de transição entre classes de um ano para outro é feita a partir da comparação pixel a pixel. Você também podem visualizar uma matriz de transições.</p>
           <p class="warning"><strong>ATENÇÃO:</strong>
           <blockquote>
-            Na Coleção 1 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+            Na Coleção 2 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
           </blockquote>
       quality:
         title: Qualidade do Mosaico
@@ -26,12 +27,6 @@ pt-BR:
               <li>2 – Regular:  10 a 30%</li>
               <li>3 – Bom: <10%</li>
             </ul>
-          <p>Para gerar a avaliação da carta para todo o período (2008-2015) utilizou-se o valor médio de classificação:</p>
-          <ul>
-            <li>Ruim: < 1,90</li>
-            <li>Regular: 1,90 a 2,75</li>
-            <li>Bom: > 2,75</li>
-          </ul>
     index:
       opacity: Opacidade
       classifications:

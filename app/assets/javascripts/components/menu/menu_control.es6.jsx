@@ -43,6 +43,11 @@ export class MenuControl extends React.Component {
                   {I18n.t('layouts.header.about.about_us')}
                 </a>
               </li>
+              <li className="menu__item" >
+                <a className="menu__link" href={Routes.page_path("team")}>
+                  {I18n.t('layouts.header.about.team.title')}
+                </a>
+              </li>
             </ul>
           </li>
 
