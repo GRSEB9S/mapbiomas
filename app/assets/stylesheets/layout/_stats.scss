@@ -1,0 +1,18 @@
+.stats {
+  &__filter-box {
+    margin: $big-spacing 0;
+    padding: $big-spacing;
+    background-color: $lighter-gray;
+    border-radius: 2px;
+  }
+
+  &__filter {
+    width: 47.5%;
+    display: inline-block;
+    margin-right: 5%;
+  }
+
+  &__filter:last-child {
+    margin-right: 0;
+  }
+}
