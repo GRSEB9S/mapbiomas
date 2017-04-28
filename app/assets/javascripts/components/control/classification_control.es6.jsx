@@ -99,6 +99,8 @@ class ClassificationControl extends Component {
     return (
       <div className={this.props.className}>
         <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
+          Clique <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/Descri%C3%A7%C3%A3o_Legenda_Cole%C3%A7%C3%A3o_2.pdf">aqui</a> e veja a descrição das classes
+
           <ul className="classification-control__inner">
             {_.map(tree, (node) => this.renderNode(node, index++))}
           </ul>
