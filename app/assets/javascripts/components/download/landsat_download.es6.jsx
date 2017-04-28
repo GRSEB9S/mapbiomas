@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import Select from 'react-select-plus';
 import { Cards } from '../../lib/cards';
 import { Years } from '../../lib/years';
 

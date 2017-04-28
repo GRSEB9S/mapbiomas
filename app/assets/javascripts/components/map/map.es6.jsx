@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import Select from 'react-select-plus';
 import classNames from 'classnames';
 import { API } from '../../lib/api';
 import { MapCanvas } from '../map/map_canvas';
@@ -227,8 +228,8 @@ export default class Map extends React.Component {
     this.setState({ viewOptionsIndex: index });
   }
 
-  isMulti() {
-    return this.mode == 'transitions';
+  handleTransitionsPeriodChange(period) {
+    this.setState({ years: period.value });
   }
 
   timelineDefaultValue() {
@@ -406,6 +407,54 @@ export default class Map extends React.Component {
     const TRANSITIONS = this.mode === 'transitions';
     const QUALITY = this.mode === 'quality';
 
+    let subsequentYears = _.range(0, this.props.availableYears.length - 1).map((i) => {
+      let firstYear = this.props.availableYears[i];
+      let secondYear = this.props.availableYears[i + 1];
+
+      return {
+        label: I18n.t('map.index.transitions.period', {first_year: firstYear, second_year: secondYear}),
+        value: [firstYear, secondYear]
+      }
+    });
+
+    let periodOptions = [
+      {
+        label: I18n.t('map.index.transitions.all_years'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2016}),
+          value: [2000, 2016]
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.forest_code'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2015}),
+          value: [2008, 2015]
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.subsequent_years'),
+        options: subsequentYears
+      },
+      {
+        label: I18n.t('map.index.transitions.five_years'),
+        options: [
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2005}),
+            value: [2000, 2005]
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2005, second_year: 2010}),
+            value: [2005, 2010]
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2010, second_year: 2015}),
+            value: [2010, 2015]
+          }
+        ]
+      }
+    ]
+
     return (
       <div className="map">
         {this.renderTransitionsMatrix()}
@@ -443,9 +492,14 @@ export default class Map extends React.Component {
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
             />
 
-            {QUALITY && (
-              <div id="quality-labels">
-                <QualityLabels />
+            {TRANSITIONS && (
+              <div className="map-panel__content map-panel__action-panel">
+                <Select
+                  options={periodOptions}
+                  onChange={this.handleTransitionsPeriodChange.bind(this)}
+                  placeholder="Selecione um período"
+                  value={this.state.transitionsPeriod}
+                />
               </div>
             )}
 
@@ -469,16 +523,23 @@ export default class Map extends React.Component {
                 />
               </div>
             )}
+
+            {QUALITY && (
+              <div id="quality-labels">
+                <QualityLabels />
+              </div>
+            )}
           </div>
-          <div className="map-panel__area map-panel__main">
-            <YearControl
-              className="map-panel__bottom"
-              multi={this.isMulti()}
-              playStop={true}
-              onValueChange={this.handleYearChange.bind(this)}
-              defaultValue={this.timelineDefaultValue()}
-              range={this.props.availableYears} />
-          </div>
+            <div className="map-panel__area map-panel__main">
+              {!TRANSITIONS && (
+                  <YearControl
+                    className="map-panel__bottom"
+                    playStop={true}
+                    onValueChange={this.handleYearChange.bind(this)}
+                    defaultValue={this.timelineDefaultValue()}
+                    range={this.props.availableYears} />
+              )}
+            </div>
           <div className="map-panel__area map-panel__sidebar">
             <div className="map-panel__grow" id="right-sidebar-grown-panel">
               <MainMenu
