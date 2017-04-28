@@ -16,6 +16,7 @@ pt-BR:
         products: Produtos
         about_us: Quem somos
         team:
+          title: Equipe
           cerrado: Equipe Cerrado
           amazon: Equipe Amazônia
           atlantica_pantanal: Equipe Mata Atlântica e Pantanal
@@ -26,6 +27,7 @@ pt-BR:
           agriculture: Equipe Agricultura
           terras_developers: Equipe de Desenvolvedores - Terras
           ecostage_developers: Equipe de Desenvolvedores - EcoStage
+          support: Acessoria Técnica
           record: 'Registro, Comunicação e Administração'
           google_partners: Parceiros Google
           coordination: Coordenação
