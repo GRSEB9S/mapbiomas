@@ -384,6 +384,8 @@ export default class Map extends React.Component {
   componentDidMount() {
     this.loadCards();
     this.loadQualities(this.year);
+    window.addEventListener("hashchange", () =>
+      this.setState({ mode: location.hash.replace('#', '') }), false);
   }
 
   zoomIn() {
