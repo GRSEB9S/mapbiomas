@@ -76,6 +76,11 @@ pt-BR:
           total: Total
           download: Download
           download_file: "Matriz de Transição %{from_year} - %{to_year}"
+        all_years: Todos os anos
+        forest_code: Código florestal
+        subsequent_years: Anos subsequentes
+        five_years: 5 em 5 anos
+        period: "%{first_year} a %{second_year}"
       quality:
         title: Qualidade
         analysis: Qualidade do mosaico
