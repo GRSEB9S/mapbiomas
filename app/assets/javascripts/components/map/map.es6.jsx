@@ -103,6 +103,7 @@ export default class Map extends React.Component {
 
     return {
       layerOptions: {
+        url: this.props.apiUrl,
         layers: 'transitions',
         map: "wms-c2/classification/transitions.map",
         territory_id: this.territory.id,

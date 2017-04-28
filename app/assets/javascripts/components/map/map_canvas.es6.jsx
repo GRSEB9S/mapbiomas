@@ -116,13 +116,11 @@ export class MapCanvas extends React.Component {
   setupDataLayer() {
     const { url, ...layerOptions } = this.props.layerOptions;
     const options = {
-      ...{
-        format: 'image/png',
-        transparent: true,
-        opacity: 0.6,
-        attribution: 'MapBiomas Workspace',
-        zIndex: 3
-      },
+      format: 'image/png',
+      transparent: true,
+      opacity: 0.6,
+      attribution: 'MapBiomas Workspace',
+      zIndex: 3,
       ...layerOptions
     };
 
@@ -130,7 +128,7 @@ export class MapCanvas extends React.Component {
       this.dataLayer.setParams(options);
     } else {
       this.dataLayer = L.tileLayer.wms(`${url}/cgi-bin/mapserv`, options)
-      .addTo(this.map);
+        .addTo(this.map);
     }
   }
 
