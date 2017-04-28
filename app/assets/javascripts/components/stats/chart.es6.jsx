@@ -3,6 +3,13 @@ import _ from 'underscore';
 import { API } from '../../lib/api';
 import Highcharts from 'highcharts';
 
+const formatNumber = (number) => (
+  number
+  .toFixed(2)
+  .replace(".", ",")
+  .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+);
+
 export default class Chart extends React.Component {
   constructor(props) {
     super(props);
@@ -60,6 +67,9 @@ export default class Chart extends React.Component {
   }
 
   buildOptions() {
+    const series = this.buildSeries();
+    this.setState({ series });
+
     return {
       title: {
         text: this.props.territories.map(t => t.label).join(', ')
@@ -73,7 +83,7 @@ export default class Chart extends React.Component {
         valueSuffix: ' ha',
         valueDecimals: 2
       },
-      series: this.buildSeries(),
+      series: series,
       xAxis: {
         categories: this.props.years
       }
@@ -81,8 +91,36 @@ export default class Chart extends React.Component {
   }
 
   render() {
+    const { series } = this.state;
+
     return (
-      <div className="stats__chart" ref="chart" />
+      <div>
+        <div className="stats__chart" ref="chart" />
+        { series && (
+          <div className="stats-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Classes</th>
+                  {this.props.years.map((year) => (
+                    <th key={year}>{year}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {_.map(series, (serie, i) => (
+                  <tr key={i}>
+                    <td>{serie.name}</td>
+                    {_.map(serie.data, (area, j) => (
+                      <td key={j}>{formatNumber(area)} ha</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
     );
   }
 }
