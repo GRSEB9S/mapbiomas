@@ -54,27 +54,27 @@ export class MenuControl extends React.Component {
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'coverage'})}>
                   {I18n.t('layouts.header.map_data.coverage_of_land_use')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'transitions'})}>
                   {I18n.t('layouts.header.map_data.land_use_change')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'quality'})}>
                   {I18n.t('layouts.header.map_data.quality_and_accuracy')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
-                <a className="menu__link" href='#'>
+                <a className="menu__link" href={Routes.stats_path()}>
                   {I18n.t('layouts.header.map_data.statistics')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path("downloads")}>
                   {I18n.t('layouts.header.map_data.downloads')}
-                  </a>
+                </a>
               </li>
             </ul>
           </li>

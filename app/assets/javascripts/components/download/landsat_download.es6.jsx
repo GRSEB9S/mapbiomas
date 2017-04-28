@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from 'react-select';
+import Select from 'react-select-plus';
 import { Cards } from '../../lib/cards';
 import { Years } from '../../lib/years';
 
@@ -141,19 +141,22 @@ export default class LandsatDownload extends React.Component {
     return (
       <div className="landsat-download">
         <div className="map">
-          <div className="map__canvas" ref="element"></div>
-          <div className="map-control-wrapper card-select-wrapper">
-            <div className="map-control__content">
-              {this.renderYearSelect()}
-              {this.renderCardSelect()}
-
-              <button
-                  className="primary"
-                  onClick={this.handleClick.bind(this, this.card.name)}>
-                {I18n.t('landsat_mosaics.download')}
-              </button>
+          <div className="page__box-download">
+            <div className="map-control-wrapper landsat-download__select">
+              <div className="map-control__content">
+                {this.renderYearSelect()}
+                {this.renderCardSelect()}
+                <div className="Select">
+                  <button
+                      className="primary"
+                      onClick={this.handleClick.bind(this, this.card.name)}>
+                    {I18n.t('landsat_mosaics.download')}
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+          <div className="map__canvas" ref="element"></div>
         </div>
       </div>
     );

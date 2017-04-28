@@ -1,6 +1,23 @@
 .landsat-download {
   height: 500px;
   padding-top: $base-spacing;
+  margin-bottom: $large-spacing*2;
+
+  &__select {
+    text-align: center;
+
+    .Select-value,
+    .Select {
+      text-align: left;
+      display: inline-block;
+      margin-right: rem(15px);
+    }
+
+    button {
+      position: relative;
+      top: -15px;
+    }
+  }
 }
 
 .year-select-wrapper, .card-select-wrapper {

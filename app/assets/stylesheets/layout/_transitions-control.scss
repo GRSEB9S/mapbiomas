@@ -1,4 +1,7 @@
 .transitions-sankey {
+  height: 500px;
+  text-align: center;
+  overflow: auto;
   margin: $small-spacing 0;
   font-size: $base-font-size !important;
 
@@ -8,5 +11,12 @@
 
   .transition-value {
     color: $light-gray;
+  }
+}
+
+.transitions-control {
+  button {
+    margin-top: $micro-spacing;
+    width: 100%;
   }
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
 import Highcharts from 'highcharts';
-import Select from 'react-select';
 
 class QualityChart extends React.Component {
   constructor(props) {
