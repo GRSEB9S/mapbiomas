@@ -40,6 +40,7 @@ export default class Map extends React.Component {
       territory: null,
       transition: null,
       transitions: [],
+      transitionsPeriod: '',
       transitionsMatrixExpanded: false,
       showWarning: {
         coverage: true,
@@ -154,6 +155,15 @@ export default class Map extends React.Component {
     }
   }
 
+  get transitionsPeriod() {
+    if(_.isEmpty(this.state.transitionsPeriod)) {
+      return `${this.years[0]}-${this.years[1]}`
+      return { years: this.years };
+    } else {
+      return this.state.transitionsPeriod;
+    }
+  }
+
   lastAvailableYears(limit = null) {
     let availableYears =_.sortBy(this.props.availableYears, (year) => {
       return year;
@@ -229,7 +239,10 @@ export default class Map extends React.Component {
   }
 
   handleTransitionsPeriodChange(period) {
-    this.setState({ years: period.value });
+    this.setState({
+      years: period.value.years,
+      transitionsPeriod: period.value
+    });
   }
 
   timelineDefaultValue() {
@@ -413,7 +426,7 @@ export default class Map extends React.Component {
 
       return {
         label: I18n.t('map.index.transitions.period', {first_year: firstYear, second_year: secondYear}),
-        value: [firstYear, secondYear]
+        value: `${firstYear}-${secondYear}`
       }
     });
 
@@ -422,14 +435,14 @@ export default class Map extends React.Component {
         label: I18n.t('map.index.transitions.all_years'),
         options: [{
           label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2016}),
-          value: [2000, 2016]
+          value: '2000-2016'
         }]
       },
       {
         label: I18n.t('map.index.transitions.forest_code'),
         options: [{
           label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2015}),
-          value: [2008, 2015]
+          value: '2008-2015'
         }]
       },
       {
@@ -441,15 +454,15 @@ export default class Map extends React.Component {
         options: [
           {
             label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2005}),
-            value: [2000, 2005]
+            value: '2000-2005'
           },
           {
             label: I18n.t('map.index.transitions.period', {first_year: 2005, second_year: 2010}),
-            value: [2005, 2010]
+            value: '2005-2010'
           },
           {
             label: I18n.t('map.index.transitions.period', {first_year: 2010, second_year: 2015}),
-            value: [2010, 2015]
+            value: '2010-2015'
           }
         ]
       }
@@ -498,7 +511,7 @@ export default class Map extends React.Component {
                   options={periodOptions}
                   onChange={this.handleTransitionsPeriodChange.bind(this)}
                   placeholder="Selecione um período"
-                  value={this.state.transitionsPeriod}
+                  value={this.transitionsPeriod}
                 />
               </div>
             )}
@@ -530,16 +543,16 @@ export default class Map extends React.Component {
               </div>
             )}
           </div>
-            <div className="map-panel__area map-panel__main">
-              {!TRANSITIONS && (
-                  <YearControl
-                    className="map-panel__bottom"
-                    playStop={true}
-                    onValueChange={this.handleYearChange.bind(this)}
-                    defaultValue={this.timelineDefaultValue()}
-                    range={this.props.availableYears} />
-              )}
-            </div>
+          <div className="map-panel__area map-panel__main">
+            {!TRANSITIONS && (
+                <YearControl
+                  className="map-panel__bottom"
+                  playStop={true}
+                  onValueChange={this.handleYearChange.bind(this)}
+                  defaultValue={this.timelineDefaultValue()}
+                  range={this.props.availableYears} />
+            )}
+          </div>
           <div className="map-panel__area map-panel__sidebar">
             <div className="map-panel__grow" id="right-sidebar-grown-panel">
               <MainMenu
