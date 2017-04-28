@@ -29,14 +29,14 @@ html, body {
       text-shadow: 0px 0px 10px rgba($black, 0.34);
       text-align: center;
       color: white;
-      padding: 15vh 30vh;
+      padding: 11vh 30vh;
       font-family: 'Roboto', sans-serif;
-      font-weight: bold;
+      font-weight: 400;
       font-size: 25px;
       line-height: 140%;
 
       @media (max-width: 999px) {
-        padding: 15vh 10vh;
+        padding: 11vh 10vh;
       }
 
       @media (max-width: 630px) {
@@ -52,17 +52,40 @@ html, body {
           width: 200px;
         }
       }
+
+      .button {
+        margin: 10px 0;
+      }
     }
   }
 
   &__coating {
-    padding: $large-spacing 0 0;
+    padding: 0 0 $large-spacing !important;
+  }
+
+  &__coating,
+  &__numbers {
+    padding: $large-spacing 0;
 
     &-content {
       @include outer-container;
+      padding: 0 $base-spacing;
 
       h1 {
-        padding-top: $large-spacing;
+        padding-top: $base-spacing;
+
+        @media (max-width: 767px) {
+          padding: 0;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: $base-spacing;
+
+        @media (max-width: 767px) {
+          font-size: 16px;
+        }
       }
     }
 
@@ -70,70 +93,79 @@ html, body {
       float: left;
       height: 200px;
       margin-right: 90px;
-    }
-  }
 
-  &__changes {
-    padding: $large-spacing 0 0;
-    background-color: rgba($light-gray, 0.2);
-
-    &-content {
-      @include outer-container;
-
-      h1 {
-        padding-top: $large-spacing;
+      @media (max-width: 767px) {
+        float: none;
+        display: inline-block;
+        margin: 0 auto 10px;
       }
     }
-
-    &-image {
-      float: right;
-    }
   }
 
-  &__numbers {
-    padding: $large-spacing 0 0;
-
-    &-content {
-      @include outer-container;
-
-      h1 {
-        padding-top: $large-spacing;
-      }
-    }
-
-    &-image {
-      float: left;
-      height: 200px;
-      margin-right: 60px;
-    }
-  }
-
+  &__changes,
   &__quality {
-    padding: $large-spacing 0 0;
+    padding: $large-spacing 0;
     background-color: rgba($light-gray, 0.2);
 
     &-content {
       @include outer-container;
+      padding: 0 $base-spacing;
 
       h1 {
         padding-top: $large-spacing;
+
+        @media (max-width: 767px) {
+          padding: 0;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: $base-spacing;
+
+        @media (max-width: 767px) {
+          font-size: 16px;
+        }
       }
     }
 
     &-image {
       float: right;
-      margin: 0 80px;
+
+      @media (max-width: 767px) {
+        float: none;
+        display: inline-block;
+        margin: 0 auto 30px;
+      }
     }
   }
 
   &__partners {
     &-content {
       @include outer-container;
+      padding: 0 $base-spacing;
       padding-top: $large-spacing;
+      text-align: center;
 
       img {
-        width: 200px;
+        width: 192px;
         margin: 20px 9px;
+      }
+
+      h1 {
+        text-align: center;
+        color: $medium-green;
+        font-size: 26px;
+        margin-top: $large-spacing;
+
+        @media (max-width: 767px) {
+          margin-top: 0;
+        }
+
+        &.page__title {
+          font-size: 32px;
+          margin-top: 0;
+        }
       }
     }
 

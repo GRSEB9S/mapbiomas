@@ -17,7 +17,7 @@ h6 {
   font-size: $heading-font-size;
   line-height: $heading-line-height;
   margin: 0 0 $small-spacing;
-  font-weight: 300;
+  font-weight: 400;
   color: $medium-gray;
   text-transform: uppercase;
 }
@@ -44,10 +44,10 @@ a {
 
   &.link-overflow {
     display: block;
-    white-space: nowrap; 
-    width: 16em; 
+    white-space: nowrap;
+    width: 16em;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
   }
 }
 
