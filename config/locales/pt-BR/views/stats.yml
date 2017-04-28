@@ -4,4 +4,7 @@ pt-BR:
     searching: 'Procurando...'
     territories: 'Territórios'
     classes: 'Classes'
+    chart:
+      yAxis:
+        title: 'Área'
 

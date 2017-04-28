@@ -15,4 +15,9 @@
   &__filter:last-child {
     margin-right: 0;
   }
+
+  &__chart {
+    margin-bottom: $base-spacing;
+    min-height: 400px;
+  }
 }

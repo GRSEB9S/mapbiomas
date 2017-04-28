@@ -23,8 +23,8 @@ class Chart extends React.Component {
     if(!_.isEqual(prevProps, this.props)) {
       this.fetchData();
     }
-    if(!_.isEqual(prevProps.data, this.props.data)) {
-      new Highcharts.Chart(this.refs.chart, this.buildOptions());
+    if(!_.isEqual(prevState.data, this.state.data)) {
+      this.chart = new Highcharts.Chart(this.refs.chart, this.buildOptions());
     }
   }
 
@@ -53,7 +53,7 @@ class Chart extends React.Component {
           name: c.label,
           color: c.color,
           data: this.props.years.map(y => {
-            const d = _.find(this.state.data, { year: y, id: c.id });
+            const d = _.find(this.state.data, { year: y, id: c.value });
             if(d && _.isNumber(d.area)) return d.area;
             return 0;
           })
@@ -64,13 +64,28 @@ class Chart extends React.Component {
 
   buildOptions() {
     return {
-      series: this.buildSeries()
+      title: {
+        text: this.props.territories.map(t => t.label).join(', ')
+      },
+      yAxis: {
+        title: {
+          text: I18n.t('stats.chart.yAxis.title')
+        }
+      },
+      tooltip: {
+        valueSuffix: ' ha',
+        valueDecimals: 2
+      },
+      series: this.buildSeries(),
+      xAxis: {
+        categories: this.props.years
+      }
     };
   }
 
   render() {
     return (
-      <div ref="chart" />
+      <div className="stats__chart" ref="chart" />
     );
   }
 }
@@ -104,7 +119,7 @@ export default class Stats extends React.Component {
           })
           .then((territories) => {
             callback(null, {
-              options: new Territories(territories).withOptions()
+              options: new Territories(territories).withCategory()
             });
           });
         }, 500);
@@ -125,10 +140,17 @@ export default class Stats extends React.Component {
   renderCharts() {
     if(this.state.selectedTerritories.length > 1 && this.state.selectedClasses.length > 1) {
       return this.state.selectedTerritories.map((territory, i) =>
-        <Chart key={i} territories={[territory]} classes={this.state.selectedClasses} />);
+        <Chart
+          key={i}
+          years={this.props.years.sort()}
+          territories={[territory]}
+          classes={this.state.selectedClasses}
+        />
+      );
     } else {
       return (
         <Chart
+          years={this.props.years.sort()}
           territories={this.state.selectedTerritories}
           classes={this.state.selectedClasses}
         />

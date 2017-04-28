@@ -17,11 +17,18 @@ class TerrasAPI
   end
 
   def self.coverage(year, territory_id, classification_ids)
-    get("/dashboard/services/statistics/coverage", query: {
-      year: year,
-      territory_id: territory_id,
-      classification_ids: classification_ids
-    })
+    if year.present?
+      get("/dashboard/services/statistics/coverage", query: {
+        year: year,
+        territory_id: territory_id,
+        classification_ids: classification_ids
+      })
+    else
+      get("/dashboard/services/statistics/coverage", query: {
+        territory_id: territory_id,
+        classification_ids: classification_ids
+      })
+    end
   end
 
   def self.transitions(year, territory_id)
