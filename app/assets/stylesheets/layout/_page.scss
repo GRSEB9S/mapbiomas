@@ -67,4 +67,21 @@
   &--home {
     text-align: center;
   }
+
+  &__box-download {
+    background: rgba($light-gray, 0.2);
+    padding: 10px 10px 0;
+    margin: 0 auto 20px;
+    border-radius: 6px;
+    text-align: center;
+    width: 80%;
+
+    select {
+      background-color: white;
+      border: 1px solid $light-gray;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+  }
 }

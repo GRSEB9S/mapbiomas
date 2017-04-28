@@ -2,13 +2,26 @@
   <div class="page__container">
     <h1 class="page__title">Downloads</h1>
 
-    <p>Disclaimer </p>
-
-    <p><a href="#">Mapas de coleção 1</a></p>
-    <p><a href="#">Mapas de coleção 2</a></p>
-    <p><%= link_to 'Mapas de referência', page_path('database/reference_maps') %></p>
-    <p><a href="#">Mosaicos Landsat 1</a></p>
-    <p><a href="#">Mosaicos Landsat 2</a></p>
-
+    <p>Aqui é possível baixar os mapas e mosaicos de imagens Landsat das coleções 1 e 2 do MapBiomas. Também são fornecidos acessos a plataforma de downloads dos mapas de referencia utilizados pelo MapBiomas.</p>
+    <div class="downloads">
+      <div class="downloads__mapbiomas_collection">
+        <div class="downloads__icon">
+          <%= link_to (image_tag "icon-collection.png"), page_path('database/mapbiomas_collection') %>
+        </div>
+        <strong><%= link_to 'Mapas das coleções', page_path('database/mapbiomas_collection') %></strong>
+      </div>
+      <div class="downloads__reference_maps">
+        <div class="downloads__icon">
+          <%= link_to (image_tag "icon-reference-pb.png"), page_path('database/reference_maps') %>
+        </div>
+        <strong><%= link_to 'Mapas de referência', page_path('database/reference_maps') %></strong>
+      </div>
+      <div class="downloads__landsat_mosaics">
+        <div class="downloads__icon">
+          <%= link_to (image_tag "icon-landsat.png"), page_path('database/landsat_mosaics') %>
+        </div>
+        <strong><%= link_to 'Mosaicos Landsat', page_path('database/landsat_mosaics') %></strong>
+      </div>
+    </div>
   </div>
 </article>

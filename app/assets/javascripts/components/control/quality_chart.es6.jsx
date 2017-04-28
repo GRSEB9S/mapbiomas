@@ -1,43 +1,37 @@
 import React from 'react';
 import _ from 'underscore';
 import Highcharts from 'highcharts';
-import Select from 'react-select';
 
 class QualityChart extends React.Component {
   constructor(props) {
     super(props);
-    this.qualityNames = {};
   }
 
-  get qualitiesGroupedByCards() {
-    let cardsNames = _.map(this.props.cards.features, (c) => c.properties.name);
-
-    let qualities = _.map(cardsNames, (c) =>
-      _.findWhere(this.props.qualities, {name: c}) || { name: 'undefined', quality: null });
-
-    let groupedByCount = _.countBy(qualities, (q) => this.qualityNames[q.quality]);
-
-    return _.sortBy(_.pairs(groupedByCount), (quality) =>
-      _.findIndex(this.props.qualityInfo, { label: quality[0]}));
+  seriesData() {
+    return this.props.qualityInfo.map(qi => {
+      const count = _.filter(this.props.qualities, { quality: Number(qi.api_name) }).length;
+      return {
+        name: qi.label,
+        y: count,
+        color: qi.color
+      };
+    });
   }
 
-  get chartSeries() {
+  chartSeries() {
     return (
       [
         {
           name: I18n.t('map.index.quality.chart.tooltip'),
-          data: this.qualitiesGroupedByCards,
+          data: this.seriesData(),
         }
       ]
     );
   }
 
-  get chartOptions() {
+  chartOptions() {
     let el = this.refs.chartElement;
     let colors = _.map(this.props.qualityInfo, (q) => { return q.color });
-    let seriesColors = _.map(colors, (c) => {
-      return Highcharts.Color(c).setOpacity(0.7).get('rgba');
-    });
 
     return {
       chart: {
@@ -46,7 +40,6 @@ class QualityChart extends React.Component {
       },
       plotOptions: {
         pie: {
-          colors: seriesColors,
           dataLabels: {
             enabled: false
           }
@@ -62,16 +55,8 @@ class QualityChart extends React.Component {
         enabled: false
       },
       title: false,
-      series: this.chartSeries
+      series: this.chartSeries()
     };
-  }
-
-  updateQualityNames(qualities) {
-    this.qualityNames = _.reduce(qualities, (names, q) => {
-      let quality = String(q.quality);
-      names[quality] = _.findWhere(this.props.qualityInfo, {api_name: quality}).label;
-      return names;
-    }, {});
   }
 
   handleDownloadButton() {
@@ -79,18 +64,16 @@ class QualityChart extends React.Component {
   }
 
   renderChart() {
-    this.chart = new Highcharts.Chart(this.chartOptions);
+    this.chart = new Highcharts.Chart(this.chartOptions());
   }
 
   componentDidUpdate(prevProps, prevState) {
     if(!_.isEqual(this.props.qualities, prevProps.qualities)) {
-      this.updateQualityNames(this.props.qualities);
       this.renderChart();
     }
   }
 
   componentDidMount() {
-    this.updateQualityNames(this.props.qualities);
     this.renderChart();
 
     $('#quality-tooltip').tooltipster({
@@ -111,12 +94,12 @@ class QualityChart extends React.Component {
         <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
         <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
         <div className="quality-chart" ref="chartElement"></div>
-        <button
+        {/*<button
           className="primary"
           onClick={this.handleDownloadButton.bind(this)}
         >
           {I18n.t('map.index.quality.download')}
-        </button>
+        </button>*/}
       </div>
     );
   }

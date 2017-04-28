@@ -83,7 +83,7 @@ export class MapCanvas extends React.Component {
     .addTo(this.map)
     .done((layer) => {
       if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
-        layer.setZIndex(2);
+        layer.setZIndex(10);
         this.mapLayers[mapLayer.slug] = layer;
       } else {
         this.map.removeLayer(layer);
@@ -116,13 +116,11 @@ export class MapCanvas extends React.Component {
   setupDataLayer() {
     const { url, ...layerOptions } = this.props.layerOptions;
     const options = {
-      ...{
-        format: 'image/png',
-        transparent: true,
-        opacity: 0.6,
-        attribution: 'MapBiomas Workspace',
-        zIndex: 3
-      },
+      format: 'image/png',
+      transparent: true,
+      opacity: 0.6,
+      attribution: 'MapBiomas Workspace',
+      zIndex: 3,
       ...layerOptions
     };
 
@@ -130,7 +128,7 @@ export class MapCanvas extends React.Component {
       this.dataLayer.setParams(options);
     } else {
       this.dataLayer = L.tileLayer.wms(`${url}/cgi-bin/mapserv`, options)
-      .addTo(this.map);
+        .addTo(this.map);
     }
   }
 
@@ -176,10 +174,6 @@ export class MapCanvas extends React.Component {
       this.setupBaseLayers();
     }
 
-    if (prevProps.selectedLayers != this.props.selectedLayers) {
-      this.setupMapLayers();
-    }
-
     if (prevProps.year != this.props.year) {
       this.updateBaseLayers();
     }
@@ -194,9 +188,14 @@ export class MapCanvas extends React.Component {
 
     if (
       (prevProps.mode !== this.props.mode) ||
-      (!_.isEqual(prevProps.qualities, this.props.qualities))
+      (!_.isEqual(prevProps.qualities, this.props.qualities)) ||
+      (!_.isEqual(prevProps.cards, this.props.cards))
     ) {
       this.setupCardsLayer();
+    }
+
+    if (prevProps.selectedLayers != this.props.selectedLayers) {
+      this.setupMapLayers();
     }
   }
 
@@ -209,9 +208,10 @@ export class MapCanvas extends React.Component {
     }).addTo(this.map);
 
     this.setupTerritory();
-    this.setupBaseLayers();
-    this.setupDataLayer();
     this.setupCardsLayer();
+    this.setupDataLayer();
+    this.setupBaseLayers();
+    this.setupMapLayers();
   }
 
   zoomIn() {

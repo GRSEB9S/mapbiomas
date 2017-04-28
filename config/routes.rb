@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/map', to: 'map#index', as: :map
   get 'locales/set_language', to: 'locales#set_language', as: :set_language
   get '/download', to: 'downloads#download', as: :download, defaults: { format: :xlsx }
+  get '/stats', to: 'stats#show', as: :stats
 
   namespace :api, defaults: { format: :json } do
     resources :classifications, only: :index

@@ -1,64 +1,106 @@
+<script type="text/javascript">
+  function buildUrl(biome, collection, year){
+    if(collection == '1'){
+      return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
+    }else{
+      return 'http://maps.lapig.iesa.ufg.br/mapbiomas/'+ year + '/' + biome + '.tif';
+    }
+  }
+
+  function refreshUrls(){
+    var collection = $('#collection').val();
+    var year = $('#year').val();
+    
+    var url = ''
+    
+    $('a[biome]').each(function(){
+      var biome = $(this).attr('biome');
+      var url = buildUrl(biome, collection, year);
+
+      $(this).attr('href', url);
+    });
+  }
+
+  $(document).on('change', '#collection', function(){
+    if($(this).val() == '1'){
+      $('#year').find('option[value="2016"]').prop('disabled', true);
+    }else{
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+    }
+    $('#year').find('option:first-child').prop('selected', true)
+    $('#year').trigger('change');
+    
+    refreshUrls();
+  });
+
+  $(document).on('change', '#year', function(){
+    refreshUrls();
+  });
+
+  $(function(){
+    $('#collection').trigger('change');
+    refreshUrls();
+  });
+</script>
+
 <article class="page">
   <div class="page__container">
-    <h1 class="page__title">Mapas Coleção 1</h1>
+    <h1 class="page__title">Coleções MAPBIOMAS</h1>
 
     <h2>MOSAICOS LANDSAT</h2>
-    <p>A partir dos mosaicos LANDSAT são realizadas as classificações que resultam nos mapas de cobertura e uso do solo para cada ano.</p>
+    <p>A partir dos mosaicos LANDSAT são realizadas as classificações que resultam nos mapas de cobertura e uso do solo para cada ano. Dentro da lógica proposta pelo MAPBIOMAS os mapas serão atualizados cada vez que houver um aperfeiçoamento nos algoritmos de classificação. A metodologia de classificação é dinâmica e processual, com a finalidade de aperfeiçoar a classificação de cada tipologia.</p>
 
-    <p>Dentro da lógica proposta pelo MAPBIOMAS os mapas serão atualizados cada vez que houver um aperfeiçoamento nos algoritmos de classificação. A metodologia de classificação é dinâmica e processual, com a finalidade de aperfeiçoar a classificação de cada tipologia.</p>
-
-    <p>Aqui você poderá acessar os mapas de cobertura e uso do solo separados por cartas IBGE 1:250.000 e organizados por bioma e por ano.</p>
-
-    <p>Na sessão abaixo, ao selecionar o bioma e o ano, você será direcionado para o download de um arquivo comprimido com todas as cartas para o período e bioma selecionado.</p>
+    <p>Aqui você poderá acessar os mapas de cobertura e uso do solo organizados por bioma e por ano.</p>
 
     <blockquote>
-      <strong>Importante:</strong> Ao compor um mosaico único ou calcular estatísticas para o bioma deve ser observado que:  (i) Existe uma zona de sobreposição de 5km entre todas as cartas; (ii) As cartas de fronteira entre biomas são compostas por classificações específicas para cada bioma; (iii) Os dados não estão clipados com o limite dos biomas; (iv) Para cálculo de área é necessário utilizar uma projeção métrica adequada; (v) Todos os dados estão no formato GeoTiff e possuem compressão LZW.
+      <strong>Importante:</strong> Ao compor um mosaico único ou calcular estatísticas sobre os mapas deve ser observado que:
+      <ul>
+        <li>Para cálculo de área é necessário utilizar uma projeção métrica adequada. </li>
+        <li>Todos os dados estão no formato GeoTiff e possuem compressão LZW.</li>
+      </ul>
     </blockquote>
 
-    <label>Selecione o ano</label>
-    <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+    <div class="page__box-download">
+      <%= select_tag "collection", options_for_select([["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>
+      <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+    </div>
 
     <div class="methodology-presentation">
       <%= image_tag "amazonia.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Amazônia', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/AMAZONIA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='AMAZONIA' target="_blank">Amazônia</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "pantanal.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Pantanal', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PANTANAL/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='PANTANAL' target="_blank">Pantanal</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "caatinga.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Caatinga', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/CAATINGA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='CAATINGA' target="_blank">Caatinga</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "mata_atlantica.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Mata Atlântica', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/MATAATLANTICA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='MATAATLANTICA' target="_blank">Mata Atlântica</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "cerrado.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Cerrado', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/CERRADO/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='CERRADO' target="_blank">Cerrado</a>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "pampa.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Pampa', "#", {onclick: "window.open('http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/PAMPA/'+$('#year').val(), '_blank')"} %>
+        <a href='' biome='PAMPA' target="_blank">Pampa</a>
       </div>
     </div>
-
-    <h2 class="page__title">QUALIDADE DOS MOSAICOS LANDSAT</h2>
-    <p>Os mosaicos usam informações de centenas de cenas landsat. A quantidade de nuvens e outros pontos de interferência afetam a qualidade do mosaico. Uma avaliação da qualidade destes mosaicos pode ser observada através do download da tabela abaixo.</p>
-
-    <p><a href="https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Cole%C3%A7%C3%A3o+1/Avalia%C3%A7%C3%A3o_Qualitativa_Biomas_COLECAO++1+-+V3.xlsx" target="_blank">[Clique aqui para fazer download do arquivo]</a></p>
 
   </div>
 </article>

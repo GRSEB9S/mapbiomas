@@ -104,6 +104,7 @@ export default class TransitionsControl extends React.Component {
       <div className="map-panel__item-content">
         <h3 className="map-control__header">
           {I18n.t('map.index.transitions.analysis')}
+
           <i id="transitions-tooltip"
             className="material-icons tooltip">
             &#xE88E;
@@ -111,7 +112,7 @@ export default class TransitionsControl extends React.Component {
         </h3>
 
         <div className="map-control__content map-control__content-no-max-height">
-          {this.renderTransitions()}
+          <a onClick={this.expandMatrix.bind(this)} className="sankey__preview"></a>
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
             {I18n.t('map.index.transitions.matrix.title')}
           </button>

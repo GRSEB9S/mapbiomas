@@ -4,12 +4,16 @@
 
     <p>As classificações de cobertura e uso do solo da coleção MAPBIOMAS são baseadas em mosaicos LANDSAT. Para cada carta IBGE 1:250.000, em cada um dos anos avaliados, foi produzido um mosaico específico. Cada mosaico é produzido pela integração espacial das distintas cenas LANDSAT presentes em cada carta e pela integração temporal pixel a pixel, pelo cálculo da mediana, a partir do conjunto de cenas disponíveis para um determinado intervalo temporal. Estes intervalos temporais foram definidos em função da variação da fenologia das tipologias vegetais em cada um dos biomas brasileiros, como estratégia para melhorar os resultados da classificação.</p>
 
-    <p>Aqui, no futuro, você poderá acessar os mosaicos gerados para cada uma das cartas IBGE 1:250.000. Ao todo serão 14 componentes por carta, incluindo até 8 bandas espectrais, 4 componentes do modelo de mistura e os índices NDFI e SMA.</p>
+    <p>Os mosaicos são gerados em cartas IBGE 1:250.000 para cada ano contendo 28 componentes por pixel, incluindo até 8 bandas espectrais e 20 componentes do modelo de mistura ou índices (ex. NDFI, SMA).</p>
 
-    <p>Dado o volume de dados que representa a coleção completa com todos os componentes (dezenas de terabites), inicialmente está disponível para download a composição RGB por carta e por ano. </p>
+    <p>Para os mosaicos da Coleção 1 você pode baixar a composição RGB através do painel abaixo.</p>
+    <p>Para Coleção 2, dado o volume de dados que representa (vários terabites) ainda estamos desenvolvendo um método para facilitar o download pela página do MapBiomas. </p>
+
+    <p>Por enquanto você pode acessar os mosaicos da Coleção 2 diretamente no Google Earth Engine através da seguinte coleção pública (asset): <strong>projects/mapbiomas-workspace/MOSAICOS/workspace</strong></p>
 
     <p>Selecione o ano e a carta ou clique na carta desejada.</p>
 
     <%= react_component('LandsatDownload', LandsatMosaicsPresenter.new) %>
+
   </div>
 </article>

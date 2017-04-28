@@ -19,4 +19,15 @@
   .link--active {
     stroke-opacity: .5;
   }
+
+  &__preview {
+    cursor: pointer;
+    background-image: image-url('sankey-preview.png');
+    background-repeat: no-repeat;
+    height: 300px;
+    background-size: 280px 344px;
+    margin-bottom: $base-spacing;
+    background-position: center;
+    display: block;
+  }
 }

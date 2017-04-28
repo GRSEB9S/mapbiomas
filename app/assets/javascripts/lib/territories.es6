@@ -5,6 +5,19 @@ export class Territories {
     this.territories = territories;
   }
 
+  withCategory() {
+    return this.territories.reduce((acc, territory) => {
+      if(!territory) return acc;
+      
+      return [
+        ...acc, {
+          label: `${territory.name} (${territory.category})`,
+          value: territory.id
+        }
+      ];
+    }, []);
+  }
+
   withOptions() {
     return this.territories.reduce((acc, territory) => {
       if(!territory) return acc;

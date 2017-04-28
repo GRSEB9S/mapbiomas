@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Select from 'react-select';
+import Select from 'react-select-plus';
 
 const renderTabPanel = (
   category,
@@ -40,7 +40,7 @@ const Territory = ({
   loadTerritories,
   onTerritoryChange
 }) => (
-  <Tabs className="map-panel__action-panel map-panel__tab-panel">
+  <Tabs className="map-panel__action-panel map-panel__tab-panel map-panel-can-hide">
     <TabList className="four-tabbed">
       <Tab>{I18n.t('map.index.layers.countries')}</Tab>
       <Tab>{I18n.t('map.index.layers.states')}</Tab>

@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import Select from 'react-select-plus';
 import classNames from 'classnames';
 import { API } from '../../lib/api';
 import { MapCanvas } from '../map/map_canvas';
@@ -28,9 +29,10 @@ export default class Map extends React.Component {
     super(props);
 
     this.state = {
+      hide: false,
       mode: location.hash.replace('#', '') || 'coverage',
       viewOptionsIndex: 0,
-      opacity: 0.6,
+      opacity: 1,
       classifications: null,
       baseMaps: null,
       layers: null,
@@ -40,6 +42,7 @@ export default class Map extends React.Component {
       territory: null,
       transition: null,
       transitions: [],
+      transitionsPeriod: '',
       transitionsMatrixExpanded: false,
       showWarning: {
         coverage: true,
@@ -102,6 +105,7 @@ export default class Map extends React.Component {
 
     return {
       layerOptions: {
+        url: this.props.apiUrl,
         layers: 'transitions',
         map: "wms-c2/classification/transitions.map",
         territory_id: this.territory.id,
@@ -154,6 +158,15 @@ export default class Map extends React.Component {
     }
   }
 
+  get transitionsPeriod() {
+    if(_.isEmpty(this.state.transitionsPeriod)) {
+      return `${this.years[0]}-${this.years[1]}`
+      return { years: this.years };
+    } else {
+      return this.state.transitionsPeriod;
+    }
+  }
+
   lastAvailableYears(limit = null) {
     let availableYears =_.sortBy(this.props.availableYears, (year) => {
       return year;
@@ -166,6 +179,7 @@ export default class Map extends React.Component {
   handleModeChange(mode) {
     this.setState({ mode });
     window.location.hash = `#${mode}`;
+    this.setState({ territory: null });
   }
 
   handleTerritoryChange(territory) {
@@ -206,7 +220,10 @@ export default class Map extends React.Component {
   }
 
   handleTransitionChange(transition) {
-    this.setState({ transition });
+    this.setState({
+      transition: transition,
+      transitionsMatrixExpanded: false
+    });
   }
 
   handleTransitionsLoad(transitions) {
@@ -217,6 +234,10 @@ export default class Map extends React.Component {
     this.setState({ opacity });
   }
 
+  toggleHide() {
+    this.setState({ hide: !this.state.hide });
+  }
+
   handleMainMenuIndexSelect(index) {
     this.setState({ mainMenuIndex: index });
   }
@@ -225,8 +246,11 @@ export default class Map extends React.Component {
     this.setState({ viewOptionsIndex: index });
   }
 
-  isMulti() {
-    return this.mode == 'transitions';
+  handleTransitionsPeriodChange(period) {
+    this.setState({
+      years: period.value.split('-'),
+      transitionsPeriod: period.value
+    });
   }
 
   timelineDefaultValue() {
@@ -359,9 +383,11 @@ export default class Map extends React.Component {
     if(this.state.transitionsMatrixExpanded) {
       return (
         <TransitionsMatrixModal
+          setTransition={this.handleTransitionChange.bind(this)}
           onClose={this.closeTransitionsMatrix.bind(this)}
           years={this.years}
           downloadUrl={this.downloadSpreadsheet()}
+          transition={this.transition}
           transitions={this.state.transitions}
           classifications={this.classifications}
           toTotalData={this.toTotalData()}
@@ -385,6 +411,8 @@ export default class Map extends React.Component {
   componentDidMount() {
     this.loadCards();
     this.loadQualities(this.year);
+    window.addEventListener("hashchange", () =>
+      this.setState({ mode: location.hash.replace('#', '') }), false);
   }
 
   zoomIn() {
@@ -400,8 +428,56 @@ export default class Map extends React.Component {
     const TRANSITIONS = this.mode === 'transitions';
     const QUALITY = this.mode === 'quality';
 
+    let subsequentYears = _.range(0, this.props.availableYears.length - 1).map((i) => {
+      let firstYear = this.props.availableYears[i];
+      let secondYear = this.props.availableYears[i + 1];
+
+      return {
+        label: I18n.t('map.index.transitions.period', {first_year: firstYear, second_year: secondYear}),
+        value: `${firstYear}-${secondYear}`
+      }
+    });
+
+    let periodOptions = [
+      {
+        label: I18n.t('map.index.transitions.all_years'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2016}),
+          value: '2000-2016'
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.forest_code'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2016}),
+          value: '2008-2016'
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.subsequent_years'),
+        options: subsequentYears
+      },
+      {
+        label: I18n.t('map.index.transitions.five_years'),
+        options: [
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2005}),
+            value: '2000-2005'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2005, second_year: 2010}),
+            value: '2005-2010'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2010, second_year: 2015}),
+            value: '2010-2015'
+          }
+        ]
+      }
+    ]
+
     return (
-      <div className="map">
+      <div className={`map ${this.state.hide ? 'hide-panels' : ''}`}>
         {this.renderTransitionsMatrix()}
         {this.renderWarning('coverage')}
         {this.renderWarning('transitions')}
@@ -429,7 +505,9 @@ export default class Map extends React.Component {
               zoomIn={this.zoomIn.bind(this)}
               zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
+              hiddenPanels={this.state.hide}
               setOpacity={this.setOpacity.bind(this)}
+              hidePanels={this.toggleHide.bind(this)}
             />
             <TerritoryPanel
               territory={this.territory}
@@ -437,14 +515,19 @@ export default class Map extends React.Component {
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
             />
 
-            {QUALITY && (
-              <div id="quality-labels">
-                <QualityLabels />
+            {TRANSITIONS && (
+              <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
+                <Select
+                  options={periodOptions}
+                  onChange={this.handleTransitionsPeriodChange.bind(this)}
+                  placeholder="Selecione um período"
+                  value={this.transitionsPeriod}
+                />
               </div>
             )}
 
             {COVERAGE && (
-              <div className="map-panel__grow" id="left-sidebar-grown-panel">
+              <div className="map-panel__grow map-panel-can-hide" id="left-sidebar-grown-panel">
                 <CoverageAuxiliarControls
                   mode={this.mode}
                   mapProps={this.props}
@@ -469,17 +552,24 @@ export default class Map extends React.Component {
                 />
               </div>
             )}
+
+            {QUALITY && (
+              <div className="map-panel-can-hide" id="quality-labels">
+                <QualityLabels />
+              </div>
+            )}
           </div>
-          <div className="map-panel__area map-panel__main">
-            <YearControl
-              className="map-panel__bottom"
-              multi={this.isMulti()}
-              playStop={true}
-              onValueChange={this.handleYearChange.bind(this)}
-              defaultValue={this.timelineDefaultValue()}
-              range={this.props.availableYears} />
+          <div className="map-panel__area map-panel__main map-panel-can-hide">
+            {!TRANSITIONS && (
+                <YearControl
+                  className="map-panel__bottom"
+                  playStop={true}
+                  onValueChange={this.handleYearChange.bind(this)}
+                  defaultValue={this.timelineDefaultValue()}
+                  range={this.props.availableYears} />
+            )}
           </div>
-          <div className="map-panel__area map-panel__sidebar">
+          <div className="map-panel__area map-panel__sidebar map-panel-can-hide">
             <div className="map-panel__grow" id="right-sidebar-grown-panel">
               <MainMenu
                 mode={this.mode}

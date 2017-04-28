@@ -1,6 +1,5 @@
 .ReactTabs {
   background-color: $white;
-  box-shadow: $base-box-shadow;
   @include clearfix;
 
   @include media($mobile-landscape) {
@@ -9,6 +8,13 @@
 
   @include media($mobile) {
     display: none;
+  }
+
+  .two-tabbed {
+    & > li{
+      width: 50%;
+      text-align: center;
+    }
   }
 
   .three-tabbed {

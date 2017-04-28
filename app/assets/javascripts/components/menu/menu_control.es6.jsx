@@ -43,6 +43,11 @@ export class MenuControl extends React.Component {
                   {I18n.t('layouts.header.about.about_us')}
                 </a>
               </li>
+              <li className="menu__item" >
+                <a className="menu__link" href={Routes.page_path("team")}>
+                  {I18n.t('layouts.header.about.team.title')}
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -54,35 +59,47 @@ export class MenuControl extends React.Component {
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'coverage'})}>
                   {I18n.t('layouts.header.map_data.coverage_of_land_use')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'transitions'})}>
                   {I18n.t('layouts.header.map_data.land_use_change')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'quality'})}>
                   {I18n.t('layouts.header.map_data.quality_and_accuracy')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
-                <a className="menu__link" href='#'>
+                <a className="menu__link" href={Routes.stats_path()}>
                   {I18n.t('layouts.header.map_data.statistics')}
-                  </a>
+                </a>
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path("downloads")}>
                   {I18n.t('layouts.header.map_data.downloads')}
-                  </a>
+                </a>
               </li>
             </ul>
           </li>
 
           <li className="menu__item">
-            <a className="menu__link" href={Routes.page_path('methodology')}>
-              {I18n.t('layouts.header.methodology')}
+            <a className="menu__link" href='#'>
+              {I18n.t('layouts.header.methodology.title')}
             </a>
+            <ul className="submenu__items">
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('methodology')}>
+                  {I18n.t('layouts.header.methodology.atbd')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('workspace')}>
+                  {I18n.t('layouts.header.methodology.tools')}
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li className="menu__item">
