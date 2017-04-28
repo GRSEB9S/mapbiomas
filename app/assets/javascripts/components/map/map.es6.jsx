@@ -31,7 +31,7 @@ export default class Map extends React.Component {
       hide: false,
       mode: location.hash.replace('#', '') || 'coverage',
       viewOptionsIndex: 0,
-      opacity: 0.6,
+      opacity: 1,
       classifications: null,
       baseMaps: null,
       layers: null,

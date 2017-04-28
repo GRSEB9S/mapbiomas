@@ -83,7 +83,7 @@ export class MapCanvas extends React.Component {
     .addTo(this.map)
     .done((layer) => {
       if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
-        layer.setZIndex(2);
+        layer.setZIndex(10);
         this.mapLayers[mapLayer.slug] = layer;
       } else {
         this.map.removeLayer(layer);
@@ -174,10 +174,6 @@ export class MapCanvas extends React.Component {
       this.setupBaseLayers();
     }
 
-    if (prevProps.selectedLayers != this.props.selectedLayers) {
-      this.setupMapLayers();
-    }
-
     if (prevProps.year != this.props.year) {
       this.updateBaseLayers();
     }
@@ -197,6 +193,10 @@ export class MapCanvas extends React.Component {
     ) {
       this.setupCardsLayer();
     }
+
+    if (prevProps.selectedLayers != this.props.selectedLayers) {
+      this.setupMapLayers();
+    }
   }
 
   componentDidMount() {
@@ -208,9 +208,10 @@ export class MapCanvas extends React.Component {
     }).addTo(this.map);
 
     this.setupTerritory();
-    this.setupBaseLayers();
-    this.setupDataLayer();
     this.setupCardsLayer();
+    this.setupDataLayer();
+    this.setupBaseLayers();
+    this.setupMapLayers();
   }
 
   zoomIn() {
