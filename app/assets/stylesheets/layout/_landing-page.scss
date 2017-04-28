@@ -34,7 +34,6 @@ html, body {
       font-weight: bold;
       font-size: 25px;
       line-height: 140%;
-      opacity: 0.8;
 
       @media (max-width: 999px) {
         padding: 15vh 10vh;
@@ -47,7 +46,6 @@ html, body {
 
       img {
         width: 300px;
-        opacity: 0.7;
         margin-bottom: 30px;
 
         @media (max-width: 630px) {
