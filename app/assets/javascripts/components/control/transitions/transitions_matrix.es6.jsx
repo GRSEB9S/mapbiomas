@@ -139,28 +139,31 @@ export class TransitionsMatrix extends React.Component {
   render() {
     return (
       <div>
-        <table className="transitions-matrix">
-          <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td colSpan={this.colSpan} className="to-year">
-                {this.props.years[1]}
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
-              {this.renderToClassifications()}
-              <td className="from-total-classification highlight">
-                {I18n.t('map.index.transitions.matrix.total')}
-              </td>
-            </tr>
-            {this.renderFromClassifications()}
-            <tr></tr>
-            {this.renderToTotalData()}
-          </tbody>
-        </table>
+        <div className="transitions-matrix__container">
+          <table className="transitions-matrix">
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td colSpan={this.colSpan} className="to-year">
+                  {this.props.years[1]}
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                {this.renderToClassifications()}
+                <td className="from-total-classification highlight">
+                  {I18n.t('map.index.transitions.matrix.total')}
+                </td>
+              </tr>
+              {this.renderFromClassifications()}
+              <tr></tr>
+              {this.renderToTotalData()}
+            </tbody>
+          </table>
+        </div>
+
         <button className="map-modal__download primary" onClick={this.startDownload.bind(this)}>
           {I18n.t('map.index.transitions.matrix.download')}
         </button>
