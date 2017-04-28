@@ -63,6 +63,7 @@ pt-BR:
       coverage:
         title: Cobertura
         analysis: Análise de cobertura
+        details: Ver detalhes
       transitions:
         title: Transições
         analysis: Análise de transição
