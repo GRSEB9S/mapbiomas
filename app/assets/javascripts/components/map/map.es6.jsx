@@ -176,6 +176,7 @@ export default class Map extends React.Component {
   handleModeChange(mode) {
     this.setState({ mode });
     window.location.hash = `#${mode}`;
+    this.setState({ territory: null });
   }
 
   handleTerritoryChange(territory) {

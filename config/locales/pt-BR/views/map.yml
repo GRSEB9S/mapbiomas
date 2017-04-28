@@ -80,7 +80,7 @@ pt-BR:
         forest_code: Código florestal
         subsequent_years: Anos subsequentes
         five_years: 5 em 5 anos
-        period: "%{first_year} a %{second_year}"
+        period: "%{first_year} à %{second_year}"
       quality:
         title: Qualidade
         analysis: Qualidade do mosaico

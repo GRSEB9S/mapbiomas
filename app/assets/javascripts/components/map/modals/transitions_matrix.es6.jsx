@@ -70,19 +70,9 @@ const TransitionsMatrixModal = ({
     >
       <Tabs>
         <TabList className="two-tabbed">
-          <Tab>Matriz de transições</Tab>
           <Tab>Diagrama Sankey de transições</Tab>
+          <Tab>Matriz de transições</Tab>
         </TabList>
-        <TabPanel>
-          <TransitionsMatrix
-            years={years}
-            downloadUrl={downloadUrl}
-            transitions={transitions}
-            classifications={classifications}
-            toTotalData={toTotalData}
-            fromTotalData={fromTotalData}
-          />
-        </TabPanel>
         <TabPanel>
           <ul className="transitions-sankey">
             <li className="transitions-sankey__label"><label>{years.join('-')}</label></li>
@@ -95,6 +85,16 @@ const TransitionsMatrixModal = ({
               />
             </li>
           </ul>
+        </TabPanel>
+        <TabPanel>
+          <TransitionsMatrix
+            years={years}
+            downloadUrl={downloadUrl}
+            transitions={transitions}
+            classifications={classifications}
+            toTotalData={toTotalData}
+            fromTotalData={fromTotalData}
+          />
         </TabPanel>
       </Tabs>
     </MapModal>

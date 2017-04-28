@@ -194,7 +194,8 @@ export class MapCanvas extends React.Component {
 
     if (
       (prevProps.mode !== this.props.mode) ||
-      (!_.isEqual(prevProps.qualities, this.props.qualities))
+      (!_.isEqual(prevProps.qualities, this.props.qualities)) ||
+      (!_.isEqual(prevProps.cards, this.props.cards))
     ) {
       this.setupCardsLayer();
     }

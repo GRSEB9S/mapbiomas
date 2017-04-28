@@ -26,7 +26,7 @@ export default class Chart extends React.Component {
   }
 
   fetchData() {
-    API.coverage({
+    API.groupedCoverage({
       territory_id: this.props.territories.map(t => t.value).join(','),
       classification_ids: this.props.classes.map((c) => c.value).join(',')
     }).then(data => this.setState({ data }));

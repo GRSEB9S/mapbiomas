@@ -112,6 +112,7 @@ export default class TransitionsControl extends React.Component {
         </h3>
 
         <div className="map-control__content map-control__content-no-max-height">
+          <a onClick={this.expandMatrix.bind(this)} className="sankey__preview"></a>
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
             {I18n.t('map.index.transitions.matrix.title')}
           </button>
