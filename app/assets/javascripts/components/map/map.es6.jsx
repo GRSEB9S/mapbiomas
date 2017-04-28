@@ -443,8 +443,8 @@ export default class Map extends React.Component {
       {
         label: I18n.t('map.index.transitions.forest_code'),
         options: [{
-          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2015}),
-          value: '2008-2015'
+          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2016}),
+          value: '2008-2016'
         }]
       },
       {
