@@ -240,7 +240,7 @@ export default class Map extends React.Component {
 
   handleTransitionsPeriodChange(period) {
     this.setState({
-      years: period.value.years,
+      years: period.value.split('-'),
       transitionsPeriod: period.value
     });
   }
