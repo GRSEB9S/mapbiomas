@@ -28,6 +28,7 @@ export default class Map extends React.Component {
     super(props);
 
     this.state = {
+      hide: false,
       mode: location.hash.replace('#', '') || 'coverage',
       viewOptionsIndex: 0,
       opacity: 0.6,
@@ -230,6 +231,10 @@ export default class Map extends React.Component {
 
   setOpacity(opacity) {
     this.setState({ opacity });
+  }
+
+  toggleHide() {
+    this.setState({ hide: !this.state.hide });
   }
 
   handleMainMenuIndexSelect(index) {
@@ -471,7 +476,7 @@ export default class Map extends React.Component {
     ]
 
     return (
-      <div className="map">
+      <div className={`map ${this.state.hide ? 'hide-panels' : ''}`}>
         {this.renderTransitionsMatrix()}
         {this.renderWarning('coverage')}
         {this.renderWarning('transitions')}
@@ -499,7 +504,9 @@ export default class Map extends React.Component {
               zoomIn={this.zoomIn.bind(this)}
               zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
+              hiddenPanels={this.state.hide}
               setOpacity={this.setOpacity.bind(this)}
+              hidePanels={this.toggleHide.bind(this)}
             />
             <TerritoryPanel
               territory={this.territory}
@@ -508,7 +515,7 @@ export default class Map extends React.Component {
             />
 
             {TRANSITIONS && (
-              <div className="map-panel__content map-panel__action-panel">
+              <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
                 <Select
                   options={periodOptions}
                   onChange={this.handleTransitionsPeriodChange.bind(this)}
@@ -519,7 +526,7 @@ export default class Map extends React.Component {
             )}
 
             {COVERAGE && (
-              <div className="map-panel__grow" id="left-sidebar-grown-panel">
+              <div className="map-panel__grow map-panel-can-hide" id="left-sidebar-grown-panel">
                 <CoverageAuxiliarControls
                   mode={this.mode}
                   mapProps={this.props}
@@ -540,12 +547,12 @@ export default class Map extends React.Component {
             )}
 
             {QUALITY && (
-              <div id="quality-labels">
+              <div className="map-panel-can-hide" id="quality-labels">
                 <QualityLabels />
               </div>
             )}
           </div>
-          <div className="map-panel__area map-panel__main">
+          <div className="map-panel__area map-panel__main map-panel-can-hide">
             {!TRANSITIONS && (
                 <YearControl
                   className="map-panel__bottom"
@@ -555,7 +562,7 @@ export default class Map extends React.Component {
                   range={this.props.availableYears} />
             )}
           </div>
-          <div className="map-panel__area map-panel__sidebar">
+          <div className="map-panel__area map-panel__sidebar map-panel-can-hide">
             <div className="map-panel__grow" id="right-sidebar-grown-panel">
               <MainMenu
                 mode={this.mode}

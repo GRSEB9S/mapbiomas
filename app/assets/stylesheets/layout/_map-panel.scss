@@ -1,3 +1,9 @@
+.hide-panels {
+  .map-panel-can-hide {
+    display: none !important;
+  }
+}
+
 .map-panel {
   &__wrapper {
     display: flex;
