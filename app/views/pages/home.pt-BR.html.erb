@@ -1,69 +1,79 @@
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<section class="home__video">
+  <div class="home__video-content">
+    <p><%= image_tag "brand.svg" %></p>
+    <p>O <strong>MapBiomas</strong> é uma iniciativa multi institucional envolvendo universidades, ONGs e empresas de tecnologiaque se uniram para contribuir com o entendimento das transformações do território brasileiro a partir do mapeamento anual da cobertura e uso do solo no Brasil.</p>
+  </div>
+  <video autoplay loop id="video-background" muted>
+    <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
+  </video>
+</section>
 
-<article id="carousel" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner" role="listbox">
-    <div class="item active" style="background-image: url(<%= image_url "banner_seminario-anual.png" %>);">
-      <div class="carousel-caption">
-        <a href="/pages/seminario-anual-2017">
-          <h2>2º Seminário Anual MapBiomas</h2>
-          <p>Clique aqui e veja a agenda completa.</p>
-        </a>
-      </div>
-    </div>
-    <div class="item" style="background-image: url(<%= image_url "amazonia-slider.jpg" %>);">
-      <div class="carousel-caption">
-        <a href="/pages/about/about">
-          <h2>MapBiomas</h2>
-          <p>Conheça o projeto de mapeamento anual de cobertura e uso do solo no Brasil </p>
-        </a>
-      </div>
-    </div>
-    <div class="item" style="background-image: url(<%= image_url "continente-slider.png" %>);">
-      <div class="carousel-caption">
-        <a href="/map">
-          <h2>Mapas</h2>
-          <p>Navegue pelos mapas anuais de cobertura e uso do solo do Brasil de 2008 a 2015 produzidos pelo MapBiomas</p>
-        </a>
-      </div>
-    </div>
-  </div>
-  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-    <i class="material-icons">keyboard_arrow_left</i>
-  </a>
-  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-    <i class="material-icons">keyboard_arrow_right</i>
-  </a>
-</article>
-
-<article class="links">
-  <div class="links__item orange">
-    <a href="/pages/methodology">
-      <h2>Metodologia</h2>
-      <p>Entenda como são produzidos os mapas do MapBiomas</p>
-    </a>
-  </div>
-  <div class="links__item blue">
-    <a href="/pages/database/reference_maps">
-      <h2>Base de dados</h2>
-      <p>Acesse as bases de dados do projeto MapBiomas</p>
-    </a>
-  </div>
-  <div class="links__item green">
-    <a href="/map">
-      <h2>Mapas</h2>
-      <p>Navegue pelos mapas de cobertura e uso do solo do Brasil</p>
-    </a>
+<article class="home__coating">
+  <div class="home__coating-content">
+    <%= image_tag "cobertura.png", class: "home__coating-image" %>
+    <h1 class="page__title">COBERTURA E USO DO SOLO</h1>
+    <p>Conheça a cobertura e uso do solo anual do Brasil entre 2000 e 2016 navegando na coleção 2 do MapBiomas</p>
   </div>
 </article>
 
-<article class="page page--home">
-  <div class="page__container">
-    <section class="page__section--full">
-      <div class="page__section-media--full">
-        <iframe style="width: 100%; height: 500px" src="https://www.youtube.com/embed/UDobZ3oB5TY" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <h2 class="page__title">Parceiros</h2>
-      <%= image_tag "partners.png" %>
-    </section>
+<article class="home__changes">
+  <div class="home__changes-content">
+    <%= image_tag "sankey.svg", class: "home__changes-image" %>
+    <h1 class="page__title">MUDANÇAS</h1>
+    <p>Acompanhe as mudanças do território nos últimos 17 anos</p>
+  </div>
+</article>
+
+<article class="home__numbers">
+  <div class="home__numbers-content">
+    <%= image_tag "line.svg", class: "home__numbers-image" %>
+    <h1 class="page__title">NÚMEROS</h1>
+    <p>Navegue pelas estatísticas de cobertura e uso do solo do Brasil</p>
+  </div>
+</article>
+
+<article class="home__quality">
+  <div class="home__quality-content">
+    <%= image_tag "landsat.png", class: "home__quality-image" %>
+    <h1 class="page__title">QUALIDADE DOS DADOS</h1>
+    <p>Navegue pelas estatísticas de cobertura e uso do solo do Brasil</p>
+  </div>
+</article>
+
+<article class="home__partners">
+  <div class="home__partners-content">
+    <h1 class="page__title">UMA INICIATIVA DE:</h1>
+    <%= image_tag "oc.png", class: "home__partners-image" %>
+    <%= image_tag "seeg.png", class: "home__partners-image" %>
+
+    <h1>CO-CRIADORES</h1>
+    <%= image_tag "lapig.png" %>
+    <%= image_tag "sos-pantanal.png" %>
+    <%= image_tag "sos-mata-atlantica.png" %>
+    <%= image_tag "imazon.png" %>
+    <%= image_tag "ufrgs.png" %>
+    <%= image_tag "uefs.png" %>
+    <%= image_tag "arcplan.png" %>
+    <%= image_tag "pne.png" %>
+    <%= image_tag "vale.png" %>
+    <%= image_tag "ipam.png" %>
+    <%= image_tag "agro-satelite.png" %>
+
+    <h1>FINANCIAMENTO</h1>
+    <%= image_tag "moore.png" %>
+    <%= image_tag "climate.png" %>
+    <%= image_tag "nicfi.png" %>
+    <%= image_tag "instituto-arapyau.png" %>
+
+    <h1>PARCEIROS DE TECNOLOGIA</h1>
+    <%= image_tag "ecostage.png" %>
+    <%= image_tag "google.png" %>
+    <%= image_tag "terras.png" %>
+
+    <h1>APOIO INSTITUCIONAL</h1>
+    <%= image_tag "ids.png" %>
+    <%= image_tag "avina.png" %>
+    <%= image_tag "wri.png" %>
+    <%= image_tag "tnc-brasil.png" %>
   </div>
 </article>
