@@ -1,0 +1,10 @@
+pt-BR:
+  stats:
+    title: 'Estatísticas'
+    searching: 'Procurando...'
+    territories: 'Territórios'
+    classes: 'Classes'
+    chart:
+      yAxis:
+        title: 'Área'
+

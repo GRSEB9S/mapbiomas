@@ -1,0 +1,10 @@
+en:
+  stats:
+    title: 'Stats'
+    searching: 'Searching...'
+    territories: 'Territories'
+    classes: 'Classes'
+    chart:
+      yAxis:
+        title: 'Area'
+
