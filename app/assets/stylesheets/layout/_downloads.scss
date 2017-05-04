@@ -3,11 +3,12 @@
 
   &__mapbiomas_collection,
   &__reference_maps,
-  &__landsat_mosaics
+  &__landsat_mosaics,
+  &__cod_legend
    {
     display: inline-block;
     text-align: center;
-    width: 270px;
+    width: 218px;
 
     a {
       font-size: rem(20px);
