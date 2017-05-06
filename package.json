@@ -18,7 +18,7 @@
     "react-input-autosize": "^0.6.13",
     "react-select": "^1.0.0-rc.3",
     "react-select-plus": "^1.0.0-rc.3.patch4",
-    "react-tabs": "ecostage/react-tabs",
+    "react-tabs": "^0.8.3",
     "react-timeline-slider": "^0.0.4",
     "tooltipster": "^1.0.9",
     "underscore": "^1.8.3"
