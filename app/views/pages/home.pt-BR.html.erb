@@ -1,12 +1,35 @@
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+$(function() {
+  $(".video").click(function () {
+    var theModal = $(this).data("target"),
+    videoSRC = $(this).attr("data-video"),
+    videoSRCauto = videoSRC + "?modestbranding=0&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+    $(theModal + ' iframe').attr('src', videoSRCauto);
+    $(theModal + ' button.close').click(function () {
+      $(theModal + ' iframe').attr('src', videoSRC);
+    });
+  });
+});
+</script>
+
 <section class="home__video">
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
-    <p>O <strong>MapBiomas</strong> é uma iniciativa multi institucional envolvendo universidades, ONGs e empresas de tecnologia que se uniram para contribuir com o entendimento das transformações do território brasileiro a partir do mapeamento anual da cobertura e uso do solo no Brasil.</p>  <a class="button primary" target="_blank"  href="https://youtu.be/lWavDpDekoM">Assista ao vídeo do projeto</a>
+    <p>O <strong>MapBiomas</strong> é uma iniciativa multi institucional envolvendo universidades, ONGs e empresas de tecnologia que se uniram para contribuir com o entendimento das transformações do território brasileiro a partir do mapeamento anual da cobertura e uso do solo no Brasil.</p>
+  <button class="button primary video" data-video="https://www.youtube.com/embed/UDobZ3oB5TY" data-toggle="modal" data-target="#videoModal">Assista ao vídeo do projeto</button>
   </div>
-  <video autoplay loop id="video-background" muted>
+  <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
     <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
   </video>
 </section>
+
+<div class="modal-video fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <button type="button" class="button primary close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <iframe width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
+</div>
 
 <article class="home__coating">
   <div class="home__coating-content">
