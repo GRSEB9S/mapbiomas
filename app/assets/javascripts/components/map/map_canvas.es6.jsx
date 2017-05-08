@@ -118,7 +118,7 @@ export class MapCanvas extends React.Component {
     const options = {
       format: 'image/png',
       transparent: true,
-      opacity: 0.6,
+      opacity: 1,
       attribution: 'MapBiomas Workspace',
       zIndex: 3,
       ...layerOptions
