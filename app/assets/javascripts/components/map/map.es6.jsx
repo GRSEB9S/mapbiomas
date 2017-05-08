@@ -544,12 +544,6 @@ export default class Map extends React.Component {
                   availableLayers={this.props.availableLayers}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                 />
-                <CoverageLineChart
-                  {...this.props}
-                  territory={this.territory}
-                  year={this.year}
-                  classifications={this.classifications}
-                />
               </div>
             )}
 
