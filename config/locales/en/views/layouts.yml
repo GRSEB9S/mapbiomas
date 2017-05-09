@@ -47,6 +47,10 @@ en:
         title: Metodologia
         atbd: ATBD
         tools: Ferramentas
+      communication:
+        title: Communication
+        release_collection2: Release Collection 2
+        project_video: Project Video
       land_use: Understand Land Use
       database:
         title: Database
