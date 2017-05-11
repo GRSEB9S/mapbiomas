@@ -201,7 +201,7 @@ export class MapCanvas extends React.Component {
 
   componentDidMount() {
     const node = this.refs.element;
-    this.map = L.map(node, { zoomControl: false }).setView([-20, -45], 6);
+    this.map = L.map(node, { zoomControl: false, minZoom: 4 }).setView([-20, -45], 6);
 
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
