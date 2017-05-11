@@ -26,6 +26,10 @@ const buildTree = _.memoize((nodes, idProp = 'id', parentIdProp = 'parentId') =>
 });
 
 class ClassificationControl extends Component {
+  get availableOptionsIds(){
+    return this.props.availableOptions.map((c) => c.id);
+  }
+
   get ids() {
     return this.props.options.map((c) => c.id);
   }
@@ -34,7 +38,13 @@ class ClassificationControl extends Component {
     return this.ids.indexOf(id) != -1;
   }
 
-  handleCheck(id, checked) {
+  handleAllClassificationsChange(e) {
+    let ids = e.target.checked ? this.availableOptionsIds : [];
+
+    this.props.onChange(ids);
+  }
+
+  handleClassificationCheck(id, checked) {
     let ids = this.ids;
 
     if(checked) {
@@ -56,7 +66,7 @@ class ClassificationControl extends Component {
         <div className="classification-control__node">
           <i style={{ color: node.color }}
             onClick={(e) => {
-              this.handleCheck(node.id, !checked);
+              this.handleClassificationCheck(node.id, !checked);
             }}
             className={cx(
               'classification-control__node-icon',
@@ -95,11 +105,25 @@ class ClassificationControl extends Component {
 
     const tree = _.indexBy(buildTree(parsedOptions), 'id');
     let index = 1;
+    let allClassificationsSelected = this.ids.length == this.props.availableOptions.length;
 
     return (
       <div className={this.props.className}>
         <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
-          Clique <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/Descri%C3%A7%C3%A3o_Legenda_Cole%C3%A7%C3%A3o_2.pdf">aqui</a> e veja a descrição das classes
+          <label
+            dangerouslySetInnerHTML={{
+              __html: I18n.t('map.index.classifications.classifications_description')
+            }}>
+          </label>
+
+          <label className="classifications-control__select">
+            <input
+              type="checkbox"
+              checked={allClassificationsSelected}
+              onChange={this.handleAllClassificationsChange.bind(this)}
+            />
+            Selecionar todas as classes
+          </label>
 
           <ul className="classification-control__inner">
             {_.map(tree, (node) => this.renderNode(node, index++))}
