@@ -127,7 +127,7 @@ export class MapCanvas extends React.Component {
     if (this.dataLayer) {
       this.dataLayer.setParams(options);
     } else {
-      this.dataLayer = L.tileLayer.wms(`${url}/cgi-bin/mapserv`, options)
+      this.dataLayer = L.tileLayer.wms(`${url}/wms`, options)
         .addTo(this.map);
     }
   }
