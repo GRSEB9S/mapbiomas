@@ -80,22 +80,19 @@ export default class Map extends React.Component {
   }
 
   get mode() {
-    // let modes = ['coverage', 'transitions', 'quality'];
-
-    // return modes[this.state.mainMenuIndex];
     return this.state.mode;
   }
 
-  get urlpath() {
+  get mapPath() {
     switch(this.mode) {
       case 'transitions':
-        return 'wms-c2/classification/transitions.map';
+        return 'wms/classification/transitions.map';
       default:
-        return 'wms-c2/classification/coverage.map';
+        return 'wms/classification/coverage.map';
     }
   }
 
-  get transitionsOptions() {
+  get transitionsLayerOptions() {
     let fromId, toId;
 
     if(this.state.transition) {
@@ -104,43 +101,35 @@ export default class Map extends React.Component {
     }
 
     return {
-      layerOptions: {
-        url: this.props.apiUrl,
-        layers: 'transitions',
-        map: "wms-c2/classification/transitions.map",
-        territory_id: this.territory.id,
-        year_t0: this.years[0],
-        year_t1: this.years[1],
-        transition_c0: fromId || DENSE_FOREST_ID,
-        transition_c1: toId || DENSE_FOREST_ID,
-        format: 'image/png',
-        transparent: true
-      }
+      year_t0: this.years[0],
+      year_t1: this.years[1],
+      transition_c0: fromId || DENSE_FOREST_ID,
+      transition_c1: toId || DENSE_FOREST_ID,
+      transparent: true
     }
   }
 
-  get tileOptions() {
+  get coverageLayerOptions() {
     let ids = this.classifications.map((c) => c.id);
-    let year = this.mode == 'coverage' ? this.year : this.years.join(',');
-    let transitionId;
 
-    if(this.mode == 'transitions') {
-      return this.transitionsOptions;
-    }
+    return {
+      year: this.year,
+      classification_ids: ids
+    };
+  }
 
-    if(this.state.transition) {
-      transitionId = `${this.state.transition.from}${this.state.transition.to}`;
-    }
+  get tileOptions() {
+    let layerOptions = this.mode == 'coverage' ? this.coverageLayerOptions :
+                       this.transitionsLayerOptions;
 
     return {
       layerOptions: {
-        layers: this.mode,
+        ...layerOptions,
         url: this.props.apiUrl,
-        map: this.urlpath,
-        year: year,
+        layers: this.mode,
+        map: this.mapPath,
         territory_id: this.territory.id,
-        transition_id: transitionId || '11',
-        classification_ids: ids,
+        format: 'image/png'
       },
       opacity: this.state.opacity
     };

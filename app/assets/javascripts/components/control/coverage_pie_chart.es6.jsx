@@ -105,6 +105,7 @@ class CoveragePieChart extends Component {
         <div className="map-control__content map-control__content-no-max-height">
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
+          <label>{I18n.t('map.index.chart.territory', {territory: this.props.territory.name})}</label>
           <div className="coverage-chart" ref="chartElement"></div>
         </div>
       </div>

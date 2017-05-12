@@ -1,0 +1,10 @@
+.classifications-control {
+  &__select {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin-left: 0;
+    }
+  }
+}
