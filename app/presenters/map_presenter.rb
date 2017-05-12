@@ -83,17 +83,41 @@ class MapPresenter
     {
       id: 1,
       slug: 'satellite',
+      type: 'satellite',
       name: I18n.t('map.index.base_maps.satellite'),
-      color: MAPS_COLORS[:satellite],
-      link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      attribution: '&copy; Esri &mdash; Source: Esri, USDA, USGS'
+      googleMap: true,
+      color: nil
+    }
+  end
+
+  def roadmap_map
+    {
+      id: 2,
+      slug: 'roadmap',
+      type: 'roadmap',
+      name: I18n.t('map.index.base_maps.roadmap'),
+      googleMap: true,
+      color: nil
+    }
+  end
+
+  def terrain_map
+    {
+      id: 3,
+      slug: 'terrain',
+      type: 'terrain',
+      name: I18n.t('map.index.base_maps.terrain'),
+      googleMap: true,
+      color: nil
     }
   end
 
   def base_maps
     [
       rgb_landsat,
-      satellite_map
+      satellite_map,
+      roadmap_map,
+      terrain_map
     ]
   end
 

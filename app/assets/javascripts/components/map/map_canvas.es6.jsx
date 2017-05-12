@@ -1,5 +1,7 @@
 import _ from 'underscore';
 import React from 'react';
+import L from 'leaflet';
+import 'leaflet.gridlayer.googlemutant';
 
 export class MapCanvas extends React.Component {
   constructor() {
@@ -33,10 +35,14 @@ export class MapCanvas extends React.Component {
       layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions())
       .addTo(this.map);
     } else {
-      layer = L.tileLayer(baseMap.link, {
-        zIndex: 1,
-        attribution: baseMap.attribution
-      }).addTo(this.map);
+      if(baseMap.googleMap) {
+        layer = L.gridLayer.googleMutant({ type: baseMap.type }).addTo(this.map);
+      } else {
+        layer = L.tileLayer(baseMap.link, {
+          zIndex: 1,
+          attribution: baseMap.attribution
+        }).addTo(this.map);
+      }
     }
 
     this.baseLayers[baseMap.slug] = layer;
