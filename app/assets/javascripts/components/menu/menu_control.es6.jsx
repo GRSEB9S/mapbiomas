@@ -108,6 +108,11 @@ export class MenuControl extends React.Component {
             </a>
             <ul className="submenu__items">
               <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('release_collection2')}>
+                  {I18n.t('layouts.header.communication.release_collection2')}
+                </a>
+              </li>
+              <li className="menu__item">
                 <a className="menu__link" target="_blank" href="https://www.youtube.com/watch?v=QmwI5b8aTSg">
                   {I18n.t('layouts.header.communication.project_video')}
                 </a>
