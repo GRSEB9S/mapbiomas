@@ -34,10 +34,9 @@
 
       <div class="downloads__mapbiomas_collection">
         <div class="downloads__icon">
-          <%= image_tag "icon-mural.png" %>
+          <%= link_to (image_tag "icon-mural.png"), page_path('mapa-mural') %>
         </div>
-        <strong>Mapa Mural (<%= link_to '.TIFF', "https://www.lapig.iesa.ufg.br/drive/index.php/s/6mdzr5E4wUnG2M5", target: "_blank" %>/<%= link_to '.PDF', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Mapa+Mural/Mapa_Mapbiomas_500_2015_v3.pdf", target: "_blank" %>)
-        </strong>
+        <strong><%= link_to 'Mapa Mural', page_path('mapa-mural') %></strong>
       </div>
     </div>
   </div>
