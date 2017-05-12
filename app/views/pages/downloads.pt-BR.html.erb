@@ -10,23 +10,34 @@
         </div>
         <strong><%= link_to 'Mapas das coleções', page_path('database/mapbiomas_collection') %></strong>
       </div>
+
       <div class="downloads__reference_maps">
         <div class="downloads__icon">
           <%= link_to (image_tag "icon-reference-pb.png"), page_path('database/reference_maps') %>
         </div>
         <strong><%= link_to 'Mapas de referência', page_path('database/reference_maps') %></strong>
       </div>
+
       <div class="downloads__landsat_mosaics">
         <div class="downloads__icon">
           <%= link_to (image_tag "icon-landsat.png"), page_path('database/landsat_mosaics') %>
         </div>
         <strong><%= link_to 'Mosaicos Landsat', page_path('database/landsat_mosaics') %></strong>
       </div>
+
       <div class="downloads__cod_legend">
         <div class="downloads__icon">
           <%= link_to (image_tag "icon-cod_legend.png"), "https://s3.amazonaws.com/mapbiomas-ecostage/legenda_mapbiomas.pdf", target: "_blank" %>
         </div>
         <strong><%= link_to 'Código da legenda', "https://s3.amazonaws.com/mapbiomas-ecostage/legenda_mapbiomas.pdf", target: "_blank" %></strong>
+      </div>
+
+      <div class="downloads__mapbiomas_collection">
+        <div class="downloads__icon">
+          <%= image_tag "icon-mural.png" %>
+        </div>
+        <strong>Mapa Mural (<%= link_to '.TIFF', "https://www.lapig.iesa.ufg.br/drive/index.php/s/6mdzr5E4wUnG2M5", target: "_blank" %>/<%= link_to '.PDF', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Mapa+Mural/Mapa_Mapbiomas_500_2015_v3.pdf", target: "_blank" %>)
+        </strong>
       </div>
     </div>
   </div>
