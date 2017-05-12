@@ -8,9 +8,11 @@
    {
     display: inline-block;
     text-align: center;
-    width: 218px;
+    width: rem(290px);
+    margin-bottom: $page-base-spacing;
+    color: $medium-green;
 
-    a {
+    &, a {
       font-size: rem(20px);
     }
   }
@@ -18,7 +20,7 @@
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    margin: 0 auto $page-base-spacing;
+    margin: 0 auto rem(10px);
     background-size: cover;
     background-position: center top;
     overflow: hidden;
