@@ -47,6 +47,10 @@ pt-BR:
         title: Metodologia
         atbd: ATBD
         tools: Ferramentas
+      communication:
+        title: Comunicação
+        release_collection2: Lançamento da Coleção 2
+        project_video: Vídeo do Projeto
       land_use: Entenda o Uso do Solo
       database:
         title: Base de dados
