@@ -115,9 +115,9 @@ class MapPresenter
   def base_maps
     [
       rgb_landsat,
-      satellite_map,
-      roadmap_map,
-      terrain_map
+      # satellite_map,
+      # roadmap_map,
+      # terrain_map
     ]
   end
 
