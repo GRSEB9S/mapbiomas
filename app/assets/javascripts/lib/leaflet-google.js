@@ -46,7 +46,7 @@ L.Google = L.Class.extend({
 	},
 
 	onRemove: function(map) {
-		this._map._container.removeChild(this._container);
+		this._map._tilePane.removeChild(this._container);
 		//this._container = null;
 
 		this._map.off('viewreset', this._resetCallback, this);
@@ -67,7 +67,7 @@ L.Google = L.Class.extend({
 	},
 
 	_initContainer: function() {
-		var tilePane = this._map._container;
+		var tilePane = this._map._tilePane;
 		var first = tilePane.firstChild;
 
 		if (!this._container) {
@@ -75,14 +75,13 @@ L.Google = L.Class.extend({
 			this._container.id = "_GMapContainer";
 		}
 
-		if (true) {
-			tilePane.insertBefore(this._container, first);
+		tilePane.appendChild(this._container);
 
-			this.setOpacity(this.options.opacity);
-			var size = this._map.getSize();
-			this._container.style.width = size.x + 'px';
-			this._container.style.height = size.y + 'px';
-		}
+		this.setOpacity(this.options.opacity);
+		var size = this._map.getSize();
+		this._container.style.width = size.x + 'px';
+		this._container.style.height = size.y + 'px';
+		this._container.style.zIndex = 1;
 	},
 
 	_initMapObject: function() {
