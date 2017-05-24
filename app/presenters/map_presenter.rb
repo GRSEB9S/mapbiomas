@@ -83,7 +83,7 @@ class MapPresenter
     {
       id: 1,
       slug: 'satellite',
-      type: 'satellite',
+      type: 'SATELLITE',
       name: I18n.t('map.index.base_maps.satellite'),
       googleMap: true,
       color: nil
@@ -94,7 +94,7 @@ class MapPresenter
     {
       id: 2,
       slug: 'roadmap',
-      type: 'roadmap',
+      type: 'ROADMAP',
       name: I18n.t('map.index.base_maps.roadmap'),
       googleMap: true,
       color: nil
@@ -105,7 +105,7 @@ class MapPresenter
     {
       id: 3,
       slug: 'terrain',
-      type: 'terrain',
+      type: 'TERRAIN',
       name: I18n.t('map.index.base_maps.terrain'),
       googleMap: true,
       color: nil
@@ -115,9 +115,9 @@ class MapPresenter
   def base_maps
     [
       rgb_landsat,
-      # satellite_map,
-      # roadmap_map,
-      # terrain_map
+      satellite_map,
+      roadmap_map,
+      terrain_map
     ]
   end
 
