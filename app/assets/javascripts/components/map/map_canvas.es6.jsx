@@ -58,7 +58,9 @@ export class MapCanvas extends React.Component {
 
   updateBaseLayers() {
     _.each(this.baseLayers, (layer) => {
-      layer.setParams(this.getBaseLayerOptions());
+      if (layer.wmsParams) {
+        layer.setParams(this.getBaseLayerOptions());
+      }
     });
   }
 
