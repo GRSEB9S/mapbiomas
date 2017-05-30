@@ -13,6 +13,7 @@ import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
 import TerritoryPanel from './panels/territory';
 import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
 import MainMenu from './panels/main_menu';
+import TransitionsLabels from './panels/transitions_labels';
 import QualityLabels from './panels/quality_labels';
 import CoveragePieChart from '../control/coverage_pie_chart';
 import CoverageLineChart from '../control/coverage_line_chart';
@@ -536,6 +537,12 @@ export default class Map extends React.Component {
                   availableLayers={this.props.availableLayers}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                 />
+              </div>
+            )}
+
+            {TRANSITIONS && (
+              <div className="map-panel-can-hide" id="quality-labels">
+                <TransitionsLabels />
               </div>
             )}
 

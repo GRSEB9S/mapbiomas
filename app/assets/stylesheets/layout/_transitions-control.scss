@@ -20,3 +20,25 @@
     width: 100%;
   }
 }
+
+.transitions-labels {
+  &__item {
+    &--icon {
+      &.farming {
+        background: #06FF00;
+      }
+
+      &.forest {
+        background: #FF0000;
+      }
+
+      &.no_transition {
+        background: #CECECE;
+      }
+
+      &.water {
+        background: #1E90FF;
+      }
+    }
+  }
+}

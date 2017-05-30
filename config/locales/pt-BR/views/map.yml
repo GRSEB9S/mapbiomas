@@ -60,6 +60,12 @@ pt-BR:
       transitions:
         title: Transições
         analysis: Análise de transição
+        labels:
+          title: Legenda
+          farming: Transições de classes de agropecuária ou áreas não vegetadas para cobertura florestal ou áreas naturais não florestais.
+          forest: Transições de cobertura florestal ou áreas naturais não florestais para agropecuária ou areas não vegetadas.
+          no_transition: Áreas sem transição ou transições que envolvem áreas não observadas ou transições entre classes dentro do nivel 1 de legenda.
+          water: Transições que acrescem áreas de água
         matrix:
           title: Matriz de transições
           total: Total
