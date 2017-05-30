@@ -19,6 +19,7 @@ const QualityLabels = ({ mode }) => (
 
       <QualityLabel label={'farming'} />
       <QualityLabel label={'forest'} />
+      <QualityLabel label={'forestry'} />
       <QualityLabel label={'no_transition'} />
       <QualityLabel label={'water'} />
     </div>
