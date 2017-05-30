@@ -84,27 +84,30 @@ export default class Map extends React.Component {
   }
 
   get mapPath() {
-    switch(this.mode) {
-      case 'transitions':
-        return 'wms/classification/transitions.map';
-      default:
-        return 'wms/classification/coverage.map';
+    if (this.mode == 'transitions' && !this.state.transition) {
+      return 'wms/classification/transitions_group.map';
+    } else if (this.mode == 'transitions') {
+      return 'wms/classification/transitions.map';
+    } else {
+      return 'wms/classification/coverage.map';
     }
   }
 
   get transitionsLayerOptions() {
     let fromId, toId;
+    let transitionInfo = {};
 
     if(this.state.transition) {
-      fromId = this.state.transition.from;
-      toId = this.state.transition.to;
+      transitionInfo = {
+        transition_c0: this.state.transition.from,
+        transition_c1: this.state.transition.to
+      }
     }
 
     return {
+      ...transitionInfo,
       year_t0: this.years[0],
       year_t1: this.years[1],
-      transition_c0: fromId || DENSE_FOREST_ID,
-      transition_c1: toId || DENSE_FOREST_ID,
       transparent: true
     }
   }

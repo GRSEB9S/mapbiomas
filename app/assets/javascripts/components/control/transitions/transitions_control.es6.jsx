@@ -111,14 +111,12 @@ export default class TransitionsControl extends React.Component {
           </i>
         </h3>
 
-        O módulo de transição está em revisão e consolidação e retornará em breve.
-
-        {/*<div className="map-control__content map-control__content-no-max-height">
+        <div className="map-control__content map-control__content-no-max-height">
           <a onClick={this.expandMatrix.bind(this)} className="sankey__preview"></a>
           <button className="primary" onClick={this.expandMatrix.bind(this)}>
             {I18n.t('map.index.transitions.matrix.title')}
           </button>
-        </div>*/}
+        </div>
       </div>
     );
   }
