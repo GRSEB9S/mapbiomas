@@ -140,7 +140,7 @@ export default class Map extends React.Component {
   }
 
   get year() {
-    return this.state.year || this.lastAvailableYears();
+    return this.state.year || 2015;
   }
 
   get years() {
@@ -515,6 +515,7 @@ export default class Map extends React.Component {
                   onChange={this.handleTransitionsPeriodChange.bind(this)}
                   placeholder="Selecione um período"
                   value={this.transitionsPeriod}
+                  clearable={false}
                 />
               </div>
             )}
