@@ -3,7 +3,7 @@ pt-BR:
     title: 'Estatísticas'
     searching: 'Procurando...'
     territories: 'Territórios'
-    classes: 'Classes'
+    classifications: 'Classes'
     chart:
       yAxis:
         title: 'Área'

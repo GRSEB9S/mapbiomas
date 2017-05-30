@@ -11,7 +11,7 @@ export default class Stats extends React.Component {
 
     this.state = {
       selectedTerritories: [],
-      selectedClasses: []
+      selectedClassifications: []
     };
   }
 
@@ -19,8 +19,8 @@ export default class Stats extends React.Component {
     this.setState({ selectedTerritories })
   }
 
-  onClassChange(selectedClasses) {
-    this.setState({ selectedClasses })
+  onClassificationChange(selectedClassifications) {
+    this.setState({ selectedClassifications })
   }
 
   loadTerritories() {
@@ -44,8 +44,8 @@ export default class Stats extends React.Component {
     };
   }
 
-  getClassesOptions() {
-    return this.props.classes.map(c => ({
+  getClassificationsOptions() {
+    return this.props.classifications.map(c => ({
       label: c.name,
       color: c.color,
       value: c.id
@@ -53,13 +53,13 @@ export default class Stats extends React.Component {
   }
 
   renderCharts() {
-    if(this.state.selectedTerritories.length > 1 && this.state.selectedClasses.length > 1) {
+    if(this.state.selectedTerritories.length > 1 && this.state.selectedClassifications.length > 1) {
       return this.state.selectedTerritories.map((territory, i) =>
         <Chart
           key={i}
           years={this.props.years.sort()}
           territories={[territory]}
-          classes={this.state.selectedClasses}
+          classifications={this.state.selectedClassifications}
         />
       );
     } else {
@@ -67,7 +67,7 @@ export default class Stats extends React.Component {
         <Chart
           years={this.props.years.sort()}
           territories={this.state.selectedTerritories}
-          classes={this.state.selectedClasses}
+          classifications={this.state.selectedClassifications}
         />
       );
     }
@@ -96,12 +96,12 @@ export default class Stats extends React.Component {
                 />
               </div>
               <div className="stats__filter">
-                <label>{I18n.t('stats.classes')}</label>
+                <label>{I18n.t('stats.classifications')}</label>
                 <Select
                   name="class-select"
-                  value={this.state.selectedClasses}
-                  options={this.getClassesOptions()}
-                  onChange={this.onClassChange.bind(this)}
+                  value={this.state.selectedClassifications}
+                  options={this.getClassificationsOptions()}
+                  onChange={this.onClassificationChange.bind(this)}
                   clearable={false}
                   ignoreAccents={false}
                   noResultsText={false}
