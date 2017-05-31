@@ -145,7 +145,7 @@ export default class Map extends React.Component {
 
   get years() {
     if(_.isEmpty(this.state.years)) {
-      return this.lastAvailableYears(2);
+      return [_.first(this.props.availableYears), _.last(this.props.availableYears)];
     } else {
       return this.state.years
     }
@@ -153,19 +153,62 @@ export default class Map extends React.Component {
 
   get transitionsPeriod() {
     if(_.isEmpty(this.state.transitionsPeriod)) {
-      return `${this.years[0]}-${this.years[1]}`
-      return { years: this.years };
+      return `${this.years[0]}-${this.years[1]}`;
     } else {
       return this.state.transitionsPeriod;
     }
   }
 
-  lastAvailableYears(limit = null) {
-    let availableYears =_.sortBy(this.props.availableYears, (year) => {
-      return year;
-    })
+  get subsequentYears() {
+    return _.range(0, this.props.availableYears.length - 1).map((i) => {
+      let firstYear = this.props.availableYears[i];
+      let secondYear = this.props.availableYears[i + 1];
 
-    return _.last(availableYears, limit)
+      return {
+        label: I18n.t('map.index.transitions.period', {first_year: firstYear, second_year: secondYear}),
+        value: `${firstYear}-${secondYear}`
+      }
+    });
+  }
+
+  get periodOptions() {
+    return [
+      {
+        label: I18n.t('map.index.transitions.all_years'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2016}),
+          value: '2000-2016'
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.forest_code'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2016}),
+          value: '2008-2016'
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.subsequent_years'),
+        options: this.subsequentYears
+      },
+      {
+        label: I18n.t('map.index.transitions.five_years'),
+        options: [
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2005}),
+            value: '2000-2005'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2005, second_year: 2010}),
+            value: '2005-2010'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2010, second_year: 2015}),
+            value: '2010-2015'
+          }
+        ]
+      }
+    ]
   }
 
   //Handlers
@@ -421,54 +464,6 @@ export default class Map extends React.Component {
     const TRANSITIONS = this.mode === 'transitions';
     const QUALITY = this.mode === 'quality';
 
-    let subsequentYears = _.range(0, this.props.availableYears.length - 1).map((i) => {
-      let firstYear = this.props.availableYears[i];
-      let secondYear = this.props.availableYears[i + 1];
-
-      return {
-        label: I18n.t('map.index.transitions.period', {first_year: firstYear, second_year: secondYear}),
-        value: `${firstYear}-${secondYear}`
-      }
-    });
-
-    let periodOptions = [
-      {
-        label: I18n.t('map.index.transitions.all_years'),
-        options: [{
-          label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2016}),
-          value: '2000-2016'
-        }]
-      },
-      {
-        label: I18n.t('map.index.transitions.forest_code'),
-        options: [{
-          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2016}),
-          value: '2008-2016'
-        }]
-      },
-      {
-        label: I18n.t('map.index.transitions.subsequent_years'),
-        options: subsequentYears
-      },
-      {
-        label: I18n.t('map.index.transitions.five_years'),
-        options: [
-          {
-            label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2005}),
-            value: '2000-2005'
-          },
-          {
-            label: I18n.t('map.index.transitions.period', {first_year: 2005, second_year: 2010}),
-            value: '2005-2010'
-          },
-          {
-            label: I18n.t('map.index.transitions.period', {first_year: 2010, second_year: 2015}),
-            value: '2010-2015'
-          }
-        ]
-      }
-    ]
-
     return (
       <div className={`map ${this.state.hide ? 'hide-panels' : ''}`}>
         {this.renderTransitionsMatrix()}
@@ -511,9 +506,8 @@ export default class Map extends React.Component {
             {TRANSITIONS && (
               <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
                 <Select
-                  options={periodOptions}
+                  options={this.periodOptions}
                   onChange={this.handleTransitionsPeriodChange.bind(this)}
-                  placeholder="Selecione um período"
                   value={this.transitionsPeriod}
                   clearable={false}
                 />
