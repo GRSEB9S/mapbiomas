@@ -508,7 +508,6 @@ export default class Map extends React.Component {
                 <Select
                   options={this.periodOptions}
                   onChange={this.handleTransitionsPeriodChange.bind(this)}
-                  placeholder="Selecione um período"
                   value={this.transitionsPeriod}
                   clearable={false}
                 />
