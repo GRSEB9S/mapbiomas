@@ -3,9 +3,9 @@ import _ from 'underscore';
 import classNames from 'classnames';
 import { API } from '../../../lib/api';
 import { Classifications } from '../../../lib/classifications';
-import { TransitionsChart } from './transitions_chart';
+import TransitionsChart from '../../charts/transitions';
 
-export default class TransitionsControl extends React.Component {
+export default class TransitionsMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

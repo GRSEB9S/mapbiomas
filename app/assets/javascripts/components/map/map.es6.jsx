@@ -1,25 +1,28 @@
 import React from 'react';
 import _ from 'underscore';
-import Select from 'react-select-plus';
 import classNames from 'classnames';
-import { API } from '../../lib/api';
-import { MapCanvas } from '../map/map_canvas';
+import Select from 'react-select-plus';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+
+import { MapCanvas } from '../map/map_canvas';
+
+import { API } from '../../lib/api';
 import { Territories } from '../../lib/territories';
 
-import TransitionsMatrixModal from './modals/transitions_matrix';
-import WarningModal from './modals/warning';
-import ZoomAndOpacityPanel from './panels/zoom_and_opacity';
-import TerritoryPanel from './panels/territory';
-import CoverageAuxiliarControls from './panels/coverage_auxiliar_controls';
-import MainMenu from './panels/main_menu';
-import TransitionsLabels from './panels/transitions_labels';
-import QualityLabels from './panels/quality_labels';
-import CoveragePieChart from '../control/coverage_pie_chart';
-import CoverageLineChart from '../control/coverage_line_chart';
-import QualityChart from '../control/quality_chart';
-import TransitionsControl from '../control/transitions/transitions_control';
-import YearControl from './panels/year_control';
+import TransitionsModal from '../modals/transitions_chart_and_matrix';
+import WarningModal from '../modals/warning';
+
+import TerritoryControl from '../controls/territory';
+import YearControl from '../controls/year';
+import ZoomAndOpacityControl from '../controls/zoom_and_opacity';
+
+import CoverageAuxiliarControls from '../panels/coverage/auxiliar_controls';
+import CoverageMenu from '../panels/coverage/menu';
+import MainMenu from '../panels/main_menu';
+import QualityLabels from '../panels/quality/labels';
+import QualityMenu from '../panels/quality/menu';
+import TransitionsMenu from '../panels/transitions/menu';
+import TransitionsLabels from '../panels/transitions/labels';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -362,6 +365,7 @@ export default class Map extends React.Component {
       territory_name: this.territory.name,
       year: this.years.join(',')
     };
+
     return Routes.download_path(params);
   }
 
@@ -418,7 +422,7 @@ export default class Map extends React.Component {
   renderTransitionsMatrix() {
     if(this.state.transitionsMatrixExpanded) {
       return (
-        <TransitionsMatrixModal
+        <TransitionsModal
           setTransition={this.handleTransitionChange.bind(this)}
           onClose={this.closeTransitionsMatrix.bind(this)}
           years={this.years}
@@ -489,7 +493,7 @@ export default class Map extends React.Component {
 
         <div className="map-panel__wrapper">
           <div className="map-panel__area map-panel__sidebar">
-            <ZoomAndOpacityPanel
+            <ZoomAndOpacityControl
               zoomIn={this.zoomIn.bind(this)}
               zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
@@ -497,7 +501,7 @@ export default class Map extends React.Component {
               setOpacity={this.setOpacity.bind(this)}
               hidePanels={this.toggleHide.bind(this)}
             />
-            <TerritoryPanel
+            <TerritoryControl
               territory={this.territory}
               loadTerritories={this.loadTerritories.bind(this)}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
@@ -570,23 +574,15 @@ export default class Map extends React.Component {
                   )
                 )}
                 coveragePanel={(
-                  <div>
-                    <CoveragePieChart
-                      {...this.props}
-                      territory={this.territory}
-                      year={this.year}
-                      classifications={this.classifications}
-                    />
-                    <CoverageLineChart
-                      {...this.props}
-                      territory={this.territory}
-                      year={this.year}
-                      classifications={this.classifications}
-                    />
-                  </div>
+                  <CoverageMenu
+                    {...this.props}
+                    territory={this.territory}
+                    year={this.year}
+                    classifications={this.classifications}
+                  />
                 )}
                 transitionsPanel={(
-                  <TransitionsControl
+                  <TransitionsMenu
                     {...this.props}
                     transition={this.transition}
                     transitions={this.state.transitions}
@@ -599,7 +595,7 @@ export default class Map extends React.Component {
                   />
                 )}
                 qualityPanel={(
-                  <QualityChart
+                  <QualityMenu
                     {...this.props}
                     cards={this.state.cards}
                     territory={this.territory}
@@ -610,11 +606,9 @@ export default class Map extends React.Component {
                   />
                 )}
               />
-
             </div>
           </div>
         </div>
-
       </div>
     );
   }

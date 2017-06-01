@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Scrollable from '../../scrollable';
+import Scrollable from '../scrollable';
 
 const TAB_INDEX_MAP = {
   coverage: 0,

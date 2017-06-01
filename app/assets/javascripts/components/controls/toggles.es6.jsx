@@ -3,7 +3,7 @@ import _ from 'underscore';
 import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
 
-export class TogglesControl extends React.Component {
+class TogglesControl extends React.Component {
   get ids() {
     return this.props.options.map((c) => c.id);
   }
@@ -45,3 +45,5 @@ export class TogglesControl extends React.Component {
     );
   }
 }
+
+export default TogglesControl;

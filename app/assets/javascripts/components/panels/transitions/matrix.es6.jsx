@@ -3,7 +3,7 @@ import _ from 'underscore';
 import classNames from 'classnames';
 import Highcharts from 'highcharts';
 
-export class TransitionsMatrix extends React.Component {
+class TransitionsMatrix extends React.Component {
   get colSpan() {
     return this.props.classifications.length;
   }
@@ -171,3 +171,5 @@ export class TransitionsMatrix extends React.Component {
     );
   }
 }
+
+export default TransitionsMatrix;
