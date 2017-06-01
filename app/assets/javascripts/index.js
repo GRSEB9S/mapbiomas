@@ -1,5 +1,5 @@
 import 'highcharts_config';
-import 'lib/leaflet-google';
+import 'vendor/leaflet-google';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
