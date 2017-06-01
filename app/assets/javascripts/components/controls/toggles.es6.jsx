@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
-import Toggle from 'react-toggle.jsx';
+import Toggle from 'react-toggle';
 import tooltipster from 'tooltipster';
 
 class TogglesControl extends React.Component {
@@ -29,8 +29,9 @@ class TogglesControl extends React.Component {
         <li key={option.id} className="toggle">
           <label>{option.name}</label>
           <Toggle
-            toggleColor={option.color}
+            className={`custom-toggle ${option.slug}`}
             defaultChecked={this.isChecked(option.id)}
+            icons={false}
             onChange={this.handleCheck.bind(this, option.id)} />
         </li>
       );

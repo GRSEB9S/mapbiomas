@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
 import cx from 'classnames';
-import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
 import Scrollable from '../scrollable';
 

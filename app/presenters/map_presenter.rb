@@ -31,15 +31,6 @@ class MapPresenter
     }
   ].freeze
 
-  LAYERS_COLORS = {
-    states: '#012700',
-    cities: '#FF9900',
-    contour_maps: '#5CA2D1',
-    biomes: '#F11810',
-    indigenous_lands: '#7B00B4',
-    conservation_units: '#FF6600'
-  }.freeze
-
   LAYERS_KEYS = {
     states:            '4dd47a54-01a8-11e6-86a9-0e31c9be1b51',
     cities:            '72b94172-0263-11e6-a087-0e5db1731f59',
@@ -125,9 +116,8 @@ class MapPresenter
     LAYERS_KEYS.each_with_index.map do |(layer, key), id|
       {
         id: id,
-        slug: layer.to_s.camelize(:lower),
+        slug: layer.to_s.tr('_', '-'),
         name: I18n.t(layer, scope: 'map.index.layers'),
-        color: LAYERS_COLORS[layer],
         fromCarto: true,
         link: "https://karydja.cartodb.com/api/v2/viz/#{key}/viz.json"
       }
