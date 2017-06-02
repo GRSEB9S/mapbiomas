@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Scrollable from '../scrollable';
+import Scrollable from '../../lib/scrollable';
 
 const TAB_INDEX_MAP = {
   coverage: 0,
@@ -34,17 +34,17 @@ const MainMenu = ({
         <Tab>{I18n.t('map.index.quality.title')}</Tab>
       </TabList>
       <TabPanel>
-        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
+        <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__content">
           {coveragePanel}
         </Scrollable>
       </TabPanel>
       <TabPanel>
-        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
+        <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__content">
           {transitionsPanel}
         </Scrollable>
       </TabPanel>
       <TabPanel>
-        <Scrollable calcMaxHeight={calcMaxHeight}className="map-panel__content">
+        <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__content">
           {qualityPanel}
         </Scrollable>
       </TabPanel>

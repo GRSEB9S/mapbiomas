@@ -540,8 +540,10 @@ export default class Map extends React.Component {
             )}
 
             {TRANSITIONS && (
-              <div className="map-panel-can-hide" id="quality-labels">
-                <TransitionsLabels />
+              <div className="map-panel__grow" id="transitions-labels">
+                <TransitionsLabels
+                  calcMaxHeight={() => $('#transitions-labels').height()}
+                />
               </div>
             )}
 
