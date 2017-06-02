@@ -1,8 +1,8 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import ClassificationControl from '../../control/classification_control';
-import { TogglesControl } from '../../control/toggles_control';
+import ClassificationControl from '../../controls/classification';
+import TogglesControl from '../../controls/toggles';
 
 const CoverageAuxiliarControls = ({
   className,

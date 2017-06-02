@@ -1,12 +1,12 @@
 import React from 'react';
 import _ from 'underscore';
-import { MapModal } from '../../map/map_modal';
-import { TransitionsMatrix } from '../../control/transitions/transitions_matrix';
-import { TransitionsChart } from '../../control/transitions/transitions_chart';
-import { Classifications } from '../../../lib/classifications';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { MapModal } from './modal';
+import { Classifications } from '../../lib/classifications';
+import TransitionsChart from '../charts/transitions';
+import TransitionsMatrix from '../panels/transitions/matrix';
 
-const TransitionsMatrixModal = ({
+const TransitionsModal = ({
   onClose,
   years,
   downloadUrl,
@@ -101,4 +101,4 @@ const TransitionsMatrixModal = ({
   );
 }
 
-export default TransitionsMatrixModal;
+export default TransitionsModal;

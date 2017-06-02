@@ -1,4 +1,5 @@
 import React from 'react';
+import Scrollable from '../../../lib/scrollable';
 
 const QualityLabel = ({ label }) => (
   <div className="transitions-labels__item">
@@ -10,8 +11,8 @@ const QualityLabel = ({ label }) => (
   </div>
 )
 
-const QualityLabels = ({ mode }) => (
-  <div className="map-panel__action-panel">
+const TransitionsLabels = ({ calcMaxHeight }) => (
+  <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__action-panel">
     <div className="map-panel__content">
       <h3 className="map-panel__header">
         {I18n.t('map.index.transitions.labels.title')}
@@ -23,7 +24,7 @@ const QualityLabels = ({ mode }) => (
       <QualityLabel label={'no_transition'} />
       <QualityLabel label={'water'} />
     </div>
-  </div>
+  </Scrollable>
 );
 
-export default QualityLabels;
+export default TransitionsLabels;

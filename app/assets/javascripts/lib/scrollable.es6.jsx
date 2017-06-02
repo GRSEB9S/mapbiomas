@@ -30,7 +30,7 @@ export default class Scrollable extends Component {
 
     return (
       <div className={className}>
-        <div ref="content" className={cx('scrollbar-dynamic')}>
+        <div ref="content" className={cx('scrollbar-inner')}>
           <div ref="inner">
             {children}
           </div>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
 import cx from 'classnames';
-import Toggle from 'react-toggle.jsx';
 import tooltipster from 'tooltipster';
-import Scrollable from '../scrollable';
+import Scrollable from '../../lib/scrollable';
 
 const buildTree = _.memoize((nodes, idProp = 'id', parentIdProp = 'parentId') => {
   const { _tree, _map } = _.reduce(nodes, (acc, node) => {

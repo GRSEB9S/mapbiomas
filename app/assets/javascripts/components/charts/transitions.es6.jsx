@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import d3 from 'd3';
 import d3Sankey from 'd3-sankey';
 
-export class TransitionsChart extends React.Component {
+export default class TransitionsChart extends React.Component {
   constructor(props) {
     super(props);
     this.formatNumber = (n) => I18n.toNumber(n, { precision: 0 });

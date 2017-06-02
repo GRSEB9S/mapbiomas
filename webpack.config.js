@@ -5,8 +5,7 @@ var sourcePath2 = path.resolve(__dirname, './vendor/assets/javascripts');
 module.exports = {
    entry: [
       path.resolve(sourcePath, 'index.js'),
-      path.resolve(sourcePath, 'libraries_css.js'),
-      path.resolve(sourcePath2, 'react-toggle.jsx')
+      path.resolve(sourcePath, 'libraries_css.js')
    ],
    output: { path: sourcePath, filename: 'bundle.js' },
    devtool: 'source-map',

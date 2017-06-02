@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapModal } from '../../map/map_modal';
+import { MapModal } from './modal';
 
 const TransitionsMatrixModal = ({ title, html, onClose }) => (
   <MapModal

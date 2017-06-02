@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
 import Highcharts from 'highcharts';
-import { API } from '../../lib/api';
+import { API } from '../../../lib/api';
 
 class CoveragePieChart extends Component {
   constructor(props) {

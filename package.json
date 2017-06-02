@@ -20,6 +20,7 @@
     "react-select-plus": "^1.0.0-rc.3.patch4",
     "react-tabs": "^0.8.3",
     "react-timeline-slider": "^0.0.4",
+    "react-toggle": "^4.0.1",
     "tooltipster": "^1.0.9",
     "underscore": "^1.8.3"
   },
