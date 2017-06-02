@@ -7,6 +7,9 @@
     "TERRAS_API_URL": {
       "required": true
     },
+    "TERRAS_MAP_API_URL": {
+      "required": true
+    },
     "REDIS_URL": {
       "required": true
     },
