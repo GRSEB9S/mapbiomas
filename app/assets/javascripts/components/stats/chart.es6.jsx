@@ -35,7 +35,7 @@ export default class Chart extends React.Component {
   fetchData() {
     API.groupedCoverage({
       territory_id: this.props.territories.map(t => t.value).join(','),
-      classification_id: this.props.classes.map((c) => c.value).join(',')
+      classification_id: this.props.classifications.map((c) => c.value).join(',')
     }).then(data => this.setState({ data }));
   }
 
@@ -52,7 +52,7 @@ export default class Chart extends React.Component {
         };
       });
     } else {
-      return this.props.classes.map(c => {
+      return this.props.classifications.map(c => {
         return {
           name: c.label,
           color: c.color,
