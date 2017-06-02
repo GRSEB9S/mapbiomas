@@ -285,8 +285,10 @@ export default class Map extends React.Component {
   }
 
   handleViewOptionsIndexSelect(mode, index) {
-    let viewOptionsIndex = _.clone(this.state.viewOptionsIndex);
-    viewOptionsIndex[mode] = index;
+    let viewOptionsIndex = {
+      ...this.state.viewOptionsIndex,
+      [mode]: index
+    }
 
     this.setState({ viewOptionsIndex });
   }
