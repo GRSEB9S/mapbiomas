@@ -1,3 +1,21 @@
+@mixin react-toggle-track-bg-color($color) {
+  &.react-toggle--checked,
+  &.react-toggle.react-toggle-checked:hover {
+    .react-toggle-track {
+      background-color: $color !important;
+    }
+  }
+}
+
+$layers: (
+  'states': #012700,
+  'cities': #FF9900,
+  'contour-maps': #5CA2D1,
+  'biomes': #F11810,
+  'indigenous-lands': #7B00B4,
+  'conservation-units': #FF6600
+);
+
 .custom-toggle {
   .react-toggle-track {
     width: 42px;
@@ -28,51 +46,9 @@
     left: 25px;
   }
 
-  &.states {
-    &.react-toggle--checked, &.react-toggle.react-toggle-checked:hover {
-      .react-toggle-track {
-        background-color: #012700 !important;
-      }
-    }
-  }
-
-  &.cities {
-    &.react-toggle--checked, &.react-toggle.react-toggle-checked:hover {
-      .react-toggle-track {
-        background-color: #FF9900 !important;
-      }
-    }
-  }
-
-  &.contour-maps {
-    &.react-toggle--checked, &.react-toggle.react-toggle-checked:hover {
-      .react-toggle-track {
-        background-color: #5CA2D1 !important;
-      }
-    }
-  }
-
-  &.biomes {
-    &.react-toggle--checked, &.react-toggle.react-toggle-checked:hover {
-      .react-toggle-track {
-        background-color: #F11810 !important;
-      }
-    }
-  }
-
-  &.indigenous-lands {
-    &.react-toggle--checked, &.react-toggle.react-toggle-checked:hover {
-      .react-toggle-track {
-        background-color: #7B00B4 !important;
-      }
-    }
-  }
-
-  &.conservation-units {
-    &.react-toggle--checked, &.react-toggle.react-toggle-checked:hover {
-      .react-toggle-track {
-        background-color: #FF6600 !important;
-      }
+  @each $layer, $color in $layers {
+    &.#{$layer} {
+      @include react-toggle-track-bg-color($color);
     }
   }
 }
