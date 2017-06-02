@@ -3,6 +3,7 @@ import _ from 'underscore';
 import { API } from '../../lib/api';
 import { Territories } from '../../lib/territories';
 import Select from 'react-select';
+import { Classifications } from '../../lib/classifications';
 import Chart from './chart';
 
 export default class Stats extends React.Component {
@@ -45,11 +46,7 @@ export default class Stats extends React.Component {
   }
 
   getClassificationsOptions() {
-    return this.props.classifications.map(c => ({
-      label: c.name,
-      color: c.color,
-      value: c.id
-    }));
+    return new Classifications(this.props.classifications).toOptions();
   }
 
   renderCharts() {

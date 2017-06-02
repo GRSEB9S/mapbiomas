@@ -2,27 +2,8 @@ import React, { Component } from 'react';
 import _ from 'underscore';
 import cx from 'classnames';
 import tooltipster from 'tooltipster';
+import { Classifications } from '../../lib/classifications';
 import Scrollable from '../../lib/scrollable';
-
-const buildTree = _.memoize((nodes, idProp = 'id', parentIdProp = 'parentId') => {
-  const { _tree, _map } = _.reduce(nodes, (acc, node) => {
-   const obj = {...node, children: {}};
-    acc._tree[node[idProp]] = obj;
-    acc._map[node[idProp]] = obj;
-    return acc;
-  }, { _tree: {}, _map: {} });
-
-  _.each(_map, (node, id) => {
-    if(node[parentIdProp]) {
-      delete _tree[node[idProp]];
-      if(_map[node[parentIdProp]]) {
-        _map[node[parentIdProp]].children[node[idProp]] = node;
-      }
-    }
-  });
-
-  return _tree;
-});
 
 class ClassificationControl extends Component {
   get availableOptionsIds(){
@@ -89,20 +70,7 @@ class ClassificationControl extends Component {
   }
 
   render() {
-    const parsedOptions = _.map(this.props.availableOptions, (item) => ({
-      ...item,
-      parentId: (
-        item.l3 !== item.id ? item.l3 : (
-          item.l2 !== item.id ? item.l2 : (
-            item.l1 !== item.id ? item.l1 : (
-              null
-            )
-          )
-        )
-      )
-    }));
-
-    const tree = _.indexBy(buildTree(parsedOptions), 'id');
+    const tree = new Classifications(this.props.availableOptions).buildTree();
     let index = 1;
     let allClassificationsSelected = this.ids.length == this.props.availableOptions.length;
 
