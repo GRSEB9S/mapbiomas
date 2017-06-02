@@ -1,15 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import ClassificationControl from '../../controls/classification';
 import TogglesControl from '../../controls/toggles';
+import TransitionsLabels from './labels';
 
 const CoverageAuxiliarControls = ({
   viewOptionsIndex,
   handleViewOptionsIndexSelect,
-  classifications,
-  availableClassifications,
-  handleClassificationsChange,
   baseMaps,
   availableBaseMaps,
   handleBaseMapsChange,
@@ -22,18 +19,14 @@ const CoverageAuxiliarControls = ({
       selectedIndex={viewOptionsIndex}
       onSelect={handleViewOptionsIndexSelect}>
     <TabList className="three-tabbed">
-      <Tab>{I18n.t('map.index.classifications.title')}</Tab>
+      <Tab>{I18n.t('map.index.transitions.labels.title')}</Tab>
       <Tab>{I18n.t('map.index.base_maps.title')}</Tab>
       <Tab>{I18n.t('map.index.layers.title')}</Tab>
     </TabList>
     <TabPanel>
-      <ClassificationControl
-        className="map-panel__content"
-        options={classifications}
-        availableOptions={availableClassifications}
-        onChange={handleClassificationsChange}
+      <TransitionsLabels
         calcMaxHeight={() => (
-          $('#coverage-auxiliar-controls').height() - 55
+          $('#transitions-auxiliar-controls').height() - 55
         )}
       />
     </TabPanel>
