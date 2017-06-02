@@ -22,7 +22,7 @@ import MainMenu from '../panels/main_menu';
 import QualityLabels from '../panels/quality/labels';
 import QualityMenu from '../panels/quality/menu';
 import TransitionsMenu from '../panels/transitions/menu';
-import TransitionsLabels from '../panels/transitions/labels';
+import TransitionsAuxiliarControls from '../panels/transitions/auxiliar_controls';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -33,26 +33,29 @@ export default class Map extends React.Component {
     super(props);
 
     this.state = {
-      hide: false,
-      mode: location.hash.replace('#', '') || 'coverage',
-      viewOptionsIndex: 0,
-      opacity: 1,
-      classifications: null,
       baseMaps: null,
+      classifications: null,
+      hide: false,
       layers: null,
+      mode: location.hash.replace('#', '') || 'coverage',
+      opacity: 1,
       qualities: [],
-      year: null,
-      years: [],
-      territory: null,
-      transition: null,
-      transitions: [],
-      transitionsPeriod: '',
-      transitionsMatrixExpanded: false,
       showWarning: {
         coverage: true,
         transitions: true,
         quality: true
-      }
+      },
+      territory: null,
+      transition: null,
+      transitions: [],
+      transitionsMatrixExpanded: false,
+      transitionsPeriod: '',
+      viewOptionsIndex: {
+        coverage: 0,
+        transitions: 0
+      },
+      year: null,
+      years: []
     };
   }
 
@@ -281,8 +284,11 @@ export default class Map extends React.Component {
     this.setState({ mainMenuIndex: index });
   }
 
-  handleViewOptionsIndexSelect(index) {
-    this.setState({ viewOptionsIndex: index });
+  handleViewOptionsIndexSelect(mode, index) {
+    let viewOptionsIndex = _.clone(this.state.viewOptionsIndex);
+    viewOptionsIndex[mode] = index;
+
+    this.setState({ viewOptionsIndex });
   }
 
   handleTransitionsPeriodChange(period) {
@@ -519,13 +525,10 @@ export default class Map extends React.Component {
             )}
 
             {COVERAGE && (
-              <div className="map-panel__grow map-panel-can-hide" id="left-sidebar-grown-panel">
+              <div className="map-panel__grow map-panel-can-hide" id="coverage-auxiliar-controls">
                 <CoverageAuxiliarControls
-                  mode={this.mode}
-                  mapProps={this.props}
-                  opacity={this.state.opacity}
-                  viewOptionsIndex={this.state.viewOptionsIndex}
-                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this)}
+                  viewOptionsIndex={this.state.viewOptionsIndex.coverage}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'coverage')}
                   classifications={this.classifications}
                   availableClassifications={this.props.availableClassifications}
                   handleClassificationsChange={this.handleClassificationsChange.bind(this)}
@@ -540,9 +543,16 @@ export default class Map extends React.Component {
             )}
 
             {TRANSITIONS && (
-              <div className="map-panel__grow" id="transitions-labels">
-                <TransitionsLabels
-                  calcMaxHeight={() => $('#transitions-labels').height()}
+              <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
+                <TransitionsAuxiliarControls
+                  viewOptionsIndex={this.state.viewOptionsIndex.transitions}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
+                  baseMaps={this.baseMaps}
+                  availableBaseMaps={this.props.availableBaseMaps}
+                  handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+                  layers={this.layers}
+                  availableLayers={this.props.availableLayers}
+                  handleLayersChange={this.handleLayersChange.bind(this)}
                 />
               </div>
             )}
