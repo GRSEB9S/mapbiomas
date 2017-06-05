@@ -491,6 +491,7 @@ export default class Map extends React.Component {
           selectedBaseMaps={this.state.baseMaps}
           mode={this.mode}
           year={this.year}
+          years={this.years}
           territory={this.territory}
           layers={this.props.availableLayers}
           selectedLayers={this.state.layers}

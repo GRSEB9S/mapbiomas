@@ -12,11 +12,13 @@ export class MapCanvas extends React.Component {
     this.cardsLayer = null;
   }
 
-  getBaseLayerOptions() {
+  get getBaseLayerOptions() {
+    let year = this.props.mode == 'transitions' ? this.props.years[1] : this.props.year;
+
     return {
       layers: 'rgb',
       map: "wms/classification/rgb.map",
-      year: this.props.year,
+      year: year,
       format: 'image/png',
       transparent: true
     };
@@ -30,7 +32,7 @@ export class MapCanvas extends React.Component {
     let layer;
 
     if (baseMap.wms) {
-      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions())
+      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions)
       .addTo(this.map);
     } else {
       if(baseMap.googleMap) {
@@ -59,7 +61,7 @@ export class MapCanvas extends React.Component {
   updateBaseLayers() {
     _.each(this.baseLayers, (layer) => {
       if (layer.wmsParams) {
-        layer.setParams(this.getBaseLayerOptions());
+        layer.setParams(this.getBaseLayerOptions);
       }
     });
   }
@@ -182,7 +184,11 @@ export class MapCanvas extends React.Component {
       this.setupBaseLayers();
     }
 
-    if (prevProps.year != this.props.year) {
+    if (this.props.mode != 'transitions' && prevProps.year != this.props.year) {
+      this.updateBaseLayers();
+    }
+
+    if (this.props.mode == 'transitions' && prevProps.years != this.props.years) {
       this.updateBaseLayers();
     }
 
