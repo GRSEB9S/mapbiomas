@@ -125,6 +125,20 @@ export class MenuControl extends React.Component {
               {I18n.t('layouts.header.contact.title')}
             </a>
           </li>
+
+          <li className="menu__item translation main-nav__menu__item main-nav__translation">
+            <i className="material-icons translation__icon">&#xE8E2;</i>
+            <a className="menu__link translation__link"
+              href="#"
+              onClick={this.setLocale.bind(this, "pt-BR")}>
+              PT-BR
+            </a>
+            <a className="menu__link translation__link"
+              href="#"
+              onClick={this.setLocale.bind(this, "en")}>
+              EN
+            </a>
+          </li>
         </ul>
       </nav>
     )
