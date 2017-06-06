@@ -43,25 +43,25 @@ class ClassificationControl extends Component {
 
     return (
       <li key={node.id}>
-        <div className="classification-control__node">
+        <div className="classifications-control__node">
           <i style={{ color: node.color }}
             onClick={(e) => {
               this.handleClassificationCheck(node.id, !checked);
             }}
             className={cx(
-              'classification-control__node-icon',
+              'classifications-control__node-icon',
               'fa', {
                 'fa-circle': checked,
                 'fa-circle-o': !checked
               }
             )}
           />
-          <div className="classification-control__node-label">
+          <div className="classifications-control__node-label">
             {`${summary} ${node.name}`}
           </div>
         </div>
         {(!_.isEmpty(node.children)) && (
-          <ul className="classification-control__children-tree">
+          <ul className="classifications-control__children-tree">
             {_.map(node.children, (node) => this.renderNode(node, childrenIndex++, summary))}
           </ul>
         )}
@@ -92,7 +92,7 @@ class ClassificationControl extends Component {
             Selecionar todas as classes
           </label>
 
-          <ul className="classification-control__inner">
+          <ul className="classifications-control__inner">
             {_.map(tree, (node) => this.renderNode(node, index++))}
           </ul>
         </Scrollable>

@@ -7,4 +7,25 @@
       margin-left: 0;
     }
   }
+
+  &__children-tree {
+    padding-left: 20px;
+  }
+
+  &__node {
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__node-icon {
+    margin-right: 7px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  &__inner {
+    padding-right: 12px;
+    margin-top: $small-spacing;
+  }
 }
