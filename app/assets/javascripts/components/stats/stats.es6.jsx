@@ -49,6 +49,18 @@ export default class Stats extends React.Component {
     return new Classifications(this.props.classifications).toOptions();
   }
 
+  componentDidMount() {
+    $('#territories-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      content: $(I18n.t('stats.territories.tooltip'))
+    });
+
+    $('#classifications-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      content: $(I18n.t('stats.classifications.tooltip'))
+    });
+  }
+
   renderCharts() {
     if(this.state.selectedTerritories.length > 1 && this.state.selectedClassifications.length > 1) {
       return this.state.selectedTerritories.map((territory, i) =>
@@ -75,11 +87,19 @@ export default class Stats extends React.Component {
       <article className="page">
         <div className="page__container">
           <h1 className="page__title">{I18n.t('stats.title')}</h1>
-         
+          {I18n.t('stats.subtitle')}
+
           <div className="stats">
             <div className="stats__filter-box">
               <div className="stats__filter">
-                <label>{I18n.t('stats.territories')}</label>
+                <label className="stats__label">
+                  {I18n.t('stats.territories.title')}
+                  <i id="territories-tooltip"
+                    className="material-icons tooltip">
+                    &#xE88E;
+                  </i>
+                </label>
+
                 <Select.Async
                   name="territory-select"
                   value={this.state.selectedTerritories}
@@ -93,7 +113,14 @@ export default class Stats extends React.Component {
                 />
               </div>
               <div className="stats__filter">
-                <label>{I18n.t('stats.classifications')}</label>
+                <label className="stats__label">
+                  {I18n.t('stats.classifications.title')}
+                  <i id="classifications-tooltip"
+                    className="material-icons tooltip">
+                    &#xE88E;
+                  </i>
+                </label>
+
                 <Select
                   name="class-select"
                   value={this.state.selectedClassifications}
@@ -108,7 +135,7 @@ export default class Stats extends React.Component {
               </div>
             </div>
             <div className="stats__chart-container">
-              {this.renderCharts()} 
+              {this.renderCharts()}
             </div>
           </div>
         </div>
