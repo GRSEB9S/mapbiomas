@@ -1,18 +1,10 @@
 pt-BR:
   layouts:
     header:
-      map_data:
-        title: Mapas e Dados
-        coverage_of_land_use: Cobertura e uso do solo
-        land_use_change: Mudanças de cobertura e uso
-        statistics: Estatísticas
-        quality_and_accuracy: Qualidade dos mosaicos
-        downloads: Downloads
-      map: Explorar
       menu: Menu
       about:
         title: Conheça o MapBiomas
-        about_mapbiomas: O projeto
+        project: O projeto
         products: Produtos
         about_us: Quem somos
         team:
@@ -43,6 +35,13 @@ pt-BR:
           scientific_coordination: (Coordenação Técnico-Científica)
           programming_process: (Programação e processamento)
           statistical: Estatístico
+      map_data:
+        title: Mapas e Dados
+        land_cover: Cobertura e uso do solo
+        land_use_change: Mudanças de cobertura e uso
+        statistics: Estatísticas
+        quality_and_accuracy: Qualidade dos mosaicos
+        downloads: Downloads
       methodology:
         title: Metodologia
         atbd: ATBD

@@ -1,20 +1,12 @@
 en:
   layouts:
     header:
-      map_data:
-        title: Maps and Data
-        coverage_of_land_use: Coverage of land use
-        land_use_change: Land use change
-        statistics: Statistics
-        quality_and_accuracy: Quality and accuracy
-        downloads: Downloads
-      map: Explore
       menu: Menu
       about:
-        title: About
-        about_mapbiomas: About MapBiomas
+        title: About Mapbiomas
+        project: Project
         products: Products
-        about_us: About us
+        about_us: Who we are
         team:
           title: Team
           cerrado: Team Cerrado
@@ -43,13 +35,20 @@ en:
           scientific_coordination: (Technical-Scientific Coordination)
           programming_process: (Programação e processamento)
           statistical: Estatístico
+      map_data:
+        title: Map & Data
+        land_cover: Land cover/use
+        land_use_change: Land use change
+        statistics: Statistics
+        quality_and_accuracy: Quality of mosaics
+        downloads: Downloads
       methodology:
-        title: Metodologia
+        title: Methodology
         atbd: ATBD
-        tools: Ferramentas
+        tools: Tools
       communication:
         title: Communication
-        release_collection2: Release Collection 2
+        release_collection2: Launch Collection 2
         project_video: Project Video
       land_use: Understand Land Use
       database:
@@ -60,7 +59,7 @@ en:
         general_data: General data
       workspace: Workspace
       contact:
-        title: Contact us
+        title: Contact
         name: Name
         email: Email
         content: Message

@@ -29,7 +29,7 @@ export class MenuControl extends React.Component {
             <ul className="submenu__items">
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("about/about")}>
-                  {I18n.t('layouts.header.about.about_mapbiomas')}
+                  {I18n.t('layouts.header.about.project')}
                 </a>
               </li>
 
@@ -58,7 +58,7 @@ export class MenuControl extends React.Component {
             <ul className="submenu__items">
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'coverage'})}>
-                  {I18n.t('layouts.header.map_data.coverage_of_land_use')}
+                  {I18n.t('layouts.header.map_data.land_cover')}
                 </a>
               </li>
               <li className="menu__item">
@@ -123,6 +123,20 @@ export class MenuControl extends React.Component {
           <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('contact')}>
               {I18n.t('layouts.header.contact.title')}
+            </a>
+          </li>
+
+          <li className="menu__item translation main-nav__menu__item main-nav__translation">
+            <i className="material-icons translation__icon">&#xE8E2;</i>
+            <a className="menu__link translation__link"
+              href="#"
+              onClick={this.setLocale.bind(this, "pt-BR")}>
+              PT-BR
+            </a>
+            <a className="menu__link translation__link"
+              href="#"
+              onClick={this.setLocale.bind(this, "en")}>
+              EN
             </a>
           </li>
         </ul>
