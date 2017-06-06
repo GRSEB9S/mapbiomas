@@ -29,7 +29,7 @@ export class MenuControl extends React.Component {
             <ul className="submenu__items">
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("about/about")}>
-                  {I18n.t('layouts.header.about.about_mapbiomas')}
+                  {I18n.t('layouts.header.about.project')}
                 </a>
               </li>
 
@@ -58,7 +58,7 @@ export class MenuControl extends React.Component {
             <ul className="submenu__items">
               <li className="menu__item">
                 <a className="menu__link" href={Routes.map_path({anchor: 'coverage'})}>
-                  {I18n.t('layouts.header.map_data.coverage_of_land_use')}
+                  {I18n.t('layouts.header.map_data.land_cover')}
                 </a>
               </li>
               <li className="menu__item">
