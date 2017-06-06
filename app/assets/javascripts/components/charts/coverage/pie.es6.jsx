@@ -52,7 +52,7 @@ class CoveragePieChart extends Component {
         },
       },
       tooltip: {
-        pointFormat: I18n.t('map.index.coverage.title') + ': <b>{point.y}</b>',
+        pointFormat: '<b>{point.y}</b>',
         valueSuffix: ' ha',
         valueDecimals: 2
       },
