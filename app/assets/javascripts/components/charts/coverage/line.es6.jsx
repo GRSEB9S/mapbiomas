@@ -41,7 +41,7 @@ class CoverageLineChart extends Component {
       },
       legend: false,
       tooltip: {
-        pointFormat: I18n.t('map.index.coverage.title') + ': <b>{point.y}</b>',
+        pointFormat: '{series.name}: <b>{point.y}</b>',
         valueSuffix: ' ha',
         valueDecimals: 2
       },
