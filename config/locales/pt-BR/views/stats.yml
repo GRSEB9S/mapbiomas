@@ -1,9 +1,18 @@
 pt-BR:
   stats:
     title: 'Estatísticas'
+    subtitle: Selecione nas caixas abaixo os territórios (país, estado, município ou bioma) e as classes para os quais deseja ver a estatística ao longo do período da coleção do MapBiomas.
     searching: 'Procurando...'
-    territories: 'Territórios'
-    classifications: 'Classes'
+    territories:
+      title: 'Territórios'
+      tooltip: |
+        <p>Escreva o nome do território para o qual deseja ver os dados históricos (Brasil, estado, município e bioma). É possível selecionar mais de um território, sendo os gráficos plotados um abaixo do outro (use o <i>scroll down</i> para ver).</p>
+    classifications:
+      title: 'Classes'
+      tooltip: |
+        <p>Selecione as classes para as quais quer ver os dados históricos. Note que a escala do gráfico está sempre em hectares e se adapta aos dados mostrados.</p>
+        <p>As classes são hierárquicas. A classe nível 1 inclui todos os dados do nível 2. Podem ser colocadas múltiplas classes.</p>
+        <p>Com o gráfico plotado é possível ligar e desligar classes clicando na legenda abaixo do gráfico.</p>
     chart:
       yAxis:
         title: 'Área'
