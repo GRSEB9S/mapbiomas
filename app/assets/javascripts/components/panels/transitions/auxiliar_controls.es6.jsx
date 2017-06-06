@@ -35,7 +35,6 @@ const CoverageAuxiliarControls = ({
         className="map-panel__content"
         options={baseMaps}
         availableOptions={availableBaseMaps}
-        tooltip={I18n.t('map.index.base_maps.tooltip')}
         onChange={handleBaseMapsChange}
       />
     </TabPanel>

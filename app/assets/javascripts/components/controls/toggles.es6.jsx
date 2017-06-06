@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
 import Toggle from 'react-toggle';
-import tooltipster from 'tooltipster';
 
 class TogglesControl extends React.Component {
   get ids() {
