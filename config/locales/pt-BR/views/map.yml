@@ -35,11 +35,6 @@ pt-BR:
           Clique <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/Descri%C3%A7%C3%A3o_Legenda_Cole%C3%A7%C3%A3o_2.pdf">aqui</a> e veja a descrição das classes
       base_maps:
         title: Imagem de fundo
-        tooltip: |
-          <ul>
-            <li><strong>Mosaico Landsat (RGB):</strong> mosaicos anuais de imagens landsat para classificação do MapBiomas. </li>
-            <li><strong>Satélite:</strong> imagens de satélite sem data definida. </li>
-          </ul>
         rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (específica de cada ano)
         satellite: Google Satellite
         roadmap: Google Roadmap
