@@ -23,9 +23,9 @@ pt-BR:
         body: |
           <p>O mosaico é uma composição de pixels de várias cenas do Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim cada carta em cada ano foi classificada em três categorias de acordo com a porcentagens de nuvens e interferências verificadas:</p>
             <ul>
-              <li>1 – Ruim - >30%</li>
-              <li>2 – Regular:  10 a 30%</li>
-              <li>3 – Bom: <10%</li>
+              <li>1 – Ruim: > 30%</li>
+              <li>2 – Regular: 10 a 30%</li>
+              <li>3 – Bom: < 10%</li>
             </ul>
     index:
       opacity: Opacidade

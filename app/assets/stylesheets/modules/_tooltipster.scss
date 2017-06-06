@@ -7,18 +7,26 @@
 }
 
 .tooltip-custom-theme {
-  background: $white;
-  color: $medium-gray;
+  background: rgba($dark-gray, 0.9);
+  color: $white;
   max-width: 350px;
 
   .tooltipster-content {
     font-family: $base-font-family;
     font-size: $base-font-size;
     line-height: 16px;
-    margin: $micro-spacing;
+    margin: $small-spacing;
 
     ul li {
       margin: $micro-spacing;
     }
+  }
+
+  .warning {
+    color: darken(#FFEACB, 20%);
+  }
+
+  blockquote {
+    background-color: rgba($medium-gray, 0.4);
   }
 }
