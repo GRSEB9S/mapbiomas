@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cx from 'classnames';
+import classNames from 'classnames';
 import Scrollable from '../../lib/scrollable';
 
 const labels = {
@@ -37,7 +37,7 @@ class TransitionsLabels extends Component {
           onClick={(e) => {
             this.handleLayerCheck(labelObj.id, !checked);
           }}
-          className={cx(
+          className={classNames(
             'transitions-labels__icon',
             'fa', {
               'fa-circle': checked,

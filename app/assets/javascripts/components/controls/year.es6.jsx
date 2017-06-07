@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cx from 'classnames';
+import classNames from 'classnames';
 import ReactTimelineSlider from 'react-timeline-slider';
 
 const marginBottomFix = {
@@ -48,7 +48,7 @@ class YearControl extends Component {
     const { prevInnerWidth } = this.state;
 
     return (
-      <div className={cx('map-panel__action-panel', className)} style={marginBottomFix}>
+      <div className={classNames('map-panel__action-panel', className)} style={marginBottomFix}>
         <ReactTimelineSlider key={prevInnerWidth} playStop={true} {...otherProps} />
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'underscore';
-import cx from 'classnames';
+import classNames from 'classnames';
 import tooltipster from 'tooltipster';
 import { Classifications } from '../../lib/classifications';
 import Scrollable from '../../lib/scrollable';
@@ -48,7 +48,7 @@ class ClassificationControl extends Component {
             onClick={(e) => {
               this.handleClassificationCheck(node.id, !checked);
             }}
-            className={cx(
+            className={classNames(
               'classifications-control__node-icon',
               'fa', {
                 'fa-circle': checked,

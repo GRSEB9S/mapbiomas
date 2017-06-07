@@ -1,5 +1,4 @@
 import React from 'react';
-import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Select from 'react-select-plus';
 

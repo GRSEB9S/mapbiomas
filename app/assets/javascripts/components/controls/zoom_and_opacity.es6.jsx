@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import cx from 'classnames';
+import classNames from 'classnames';
 
 const positionRelative = {
   position: 'relative',
@@ -36,7 +36,7 @@ class ZoomAndOpacityControl extends Component {
           <i className="fa fa-eye-slash" />
         </button>
         <button
-          className={cx('button button--primary', showOpacityDropdown && 'active')}
+          className={classNames('button button--primary', showOpacityDropdown && 'active')}
           onClick={this.toggleOpacityDropdown.bind(this)}
         >
           <i className="fa fa-sun-o" />
