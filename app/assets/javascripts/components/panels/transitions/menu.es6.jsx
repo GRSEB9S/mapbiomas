@@ -22,8 +22,8 @@ export default class TransitionsMenu extends React.Component {
     })
   }
 
-  expandMatrix() {
-    this.props.onExpandMatrix(this.props.transitions);
+  expandModal() {
+    this.props.onExpandModal();
   }
 
   componentDidMount() {
@@ -55,8 +55,8 @@ export default class TransitionsMenu extends React.Component {
         </h3>
 
         <div className="map-control__content map-control__content-no-max-height">
-          <a onClick={this.expandMatrix.bind(this)} className="sankey__preview"></a>
-          <button className="primary" onClick={this.expandMatrix.bind(this)}>
+          <a onClick={this.expandModal.bind(this)} className="sankey__preview"></a>
+          <button className="primary" onClick={this.expandModal.bind(this)}>
             {I18n.t('map.index.transitions.matrix.title')}
           </button>
         </div>

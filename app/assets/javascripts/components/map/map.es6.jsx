@@ -7,8 +7,10 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { MapCanvas } from '../map/map_canvas';
 
 import { API } from '../../lib/api';
+import { Classifications } from '../../lib/classifications';
 import { Territories } from '../../lib/territories';
 
+import StatsModal from '../modals/stats';
 import TransitionsModal from '../modals/transitions_chart_and_matrix';
 import WarningModal from '../modals/warning';
 
@@ -45,10 +47,13 @@ export default class Map extends React.Component {
         transitions: true,
         quality: true
       },
+      showModals: {
+        coverage: false,
+        transitions: false
+      },
       territory: null,
       transition: null,
       transitions: [],
-      transitionsMatrixExpanded: false,
       transitionsPeriod: '',
       viewOptionsIndex: {
         coverage: 0,
@@ -62,6 +67,12 @@ export default class Map extends React.Component {
   //Props
   get classifications() {
     return this.state.classifications || this.props.defaultClassifications;
+  }
+
+  get firstLevelClassifications() {
+    let tree = new Classifications(this.props.defaultClassifications).buildTree();
+
+    return _.map(tree, (c, i) => parseInt(i));
   }
 
   get baseMaps() {
@@ -264,7 +275,10 @@ export default class Map extends React.Component {
   handleTransitionChange(transition) {
     this.setState({
       transition: transition,
-      transitionsMatrixExpanded: false
+      showModals: {
+        ...this.state.showModals,
+        transitions: false
+      }
     });
   }
 
@@ -355,16 +369,31 @@ export default class Map extends React.Component {
     });
   }
 
-  expandTransitionsMatrix(transitions) {
+  closeWarning(mode) {
     this.setState({
-      transitionsMatrixExpanded: true
+      showWarning: {
+        ...this.state.showWarning,
+        [mode]: false
+      }
+    })
+  }
+
+  expandModal(mode) {
+    this.setState({
+      showModals: {
+        ...this.state.showModals,
+        [mode]: true
+      }
     });
   }
 
-  closeTransitionsMatrix() {
+  closeModal(mode) {
     this.setState({
-      transitionsMatrixExpanded: false }
-    );
+      showModals: {
+        ...this.state.showModals,
+        [mode]: false
+      }
+    });
   }
 
   downloadSpreadsheet() {
@@ -375,13 +404,6 @@ export default class Map extends React.Component {
     };
 
     return Routes.download_path(params);
-  }
-
-  closeWarning(key) {
-    let state = _.clone(this.state);
-    state.showWarning[key] = false;
-
-    this.setState(state);
   }
 
   loadCards() {
@@ -427,19 +449,34 @@ export default class Map extends React.Component {
     };
   }
 
-  renderTransitionsMatrix() {
-    if(this.state.transitionsMatrixExpanded) {
+  renderStatsModal() {
+    if(this.state.showModals.coverage) {
+      return (
+        <StatsModal
+          classifications={this.props.defaultClassifications}
+          years={this.props.availableYears}
+          selectedTerritories={[this.territory]}
+          selectedClassifications={this.firstLevelClassifications}
+          onClose={this.closeModal.bind(this, 'coverage')}
+        />
+      );
+    }
+  }
+
+  renderTransitionsModal() {
+    if(this.state.showModals.transitions) {
       return (
         <TransitionsModal
           setTransition={this.handleTransitionChange.bind(this)}
-          onClose={this.closeTransitionsMatrix.bind(this)}
+          onClose={this.closeModal.bind(this, 'transitions')}
           years={this.years}
           downloadUrl={this.downloadSpreadsheet()}
           transition={this.transition}
           transitions={this.state.transitions}
           classifications={this.classifications}
           toTotalData={this.toTotalData()}
-          fromTotalData={this.fromTotalData()} />
+          fromTotalData={this.fromTotalData()}
+        />
       );
     }
   }
@@ -478,7 +515,8 @@ export default class Map extends React.Component {
 
     return (
       <div className={`map ${this.state.hide ? 'hide-panels' : ''}`}>
-        {this.renderTransitionsMatrix()}
+        {this.renderStatsModal()}
+        {this.renderTransitionsModal()}
         {this.renderWarning('coverage')}
         {this.renderWarning('transitions')}
         {this.renderWarning('quality')}
@@ -594,6 +632,7 @@ export default class Map extends React.Component {
                     territory={this.territory}
                     year={this.year}
                     classifications={this.classifications}
+                    onExpandModal={this.expandModal.bind(this, 'coverage')}
                   />
                 )}
                 transitionsPanel={(
@@ -604,7 +643,7 @@ export default class Map extends React.Component {
                     classifications={this.classifications}
                     territory={this.territory}
                     years={this.years}
-                    onExpandMatrix={this.expandTransitionsMatrix.bind(this)}
+                    onExpandModal={this.expandModal.bind(this, 'transitions')}
                     onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
                     setTransition={this.handleTransitionChange.bind(this)}
                   />

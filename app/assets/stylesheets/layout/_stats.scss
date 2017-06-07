@@ -21,6 +21,10 @@
     margin-right: 0;
   }
 
+  &__chart-and-table {
+    margin-bottom: $medium-spacing;
+  }
+
   &__chart {
     margin-bottom: $base-spacing;
     min-height: 400px;

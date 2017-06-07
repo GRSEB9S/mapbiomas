@@ -1,9 +1,11 @@
 import React from 'react';
 import _ from 'underscore';
-import { API } from '../../lib/api';
-import { Territories } from '../../lib/territories';
 import Select from 'react-select';
+
+import { API } from '../../lib/api';
 import { Classifications } from '../../lib/classifications';
+import { Territories } from '../../lib/territories';
+
 import Chart from './chart';
 
 export default class Stats extends React.Component {
@@ -11,9 +13,31 @@ export default class Stats extends React.Component {
     super(props);
 
     this.state = {
-      selectedTerritories: [],
-      selectedClassifications: []
+      selectedTerritories: this.selectedTerritories,
+      selectedClassifications: this.selectedClassifications
     };
+  }
+
+  get selectedTerritories() {
+    if (this.props.selectedTerritories) {
+      return this.props.selectedTerritories
+    } else {
+      return [];
+    }
+  }
+
+  get selectedClassifications() {
+    if (this.props.selectedClassifications) {
+      return _.filter(this.classificationsOptions, (c) => {
+        return _.contains(this.props.selectedClassifications, c.value)
+      })
+    } else {
+      return [];
+    }
+  }
+
+  get classificationsOptions() {
+    return new Classifications(this.props.classifications).toOptions();
   }
 
   onTerritoryChange(selectedTerritories) {
@@ -43,10 +67,6 @@ export default class Stats extends React.Component {
         callback(null, { options: [] });
       }
     };
-  }
-
-  getClassificationsOptions() {
-    return new Classifications(this.props.classifications).toOptions();
   }
 
   componentDidMount() {
@@ -124,7 +144,7 @@ export default class Stats extends React.Component {
                 <Select
                   name="class-select"
                   value={this.state.selectedClassifications}
-                  options={this.getClassificationsOptions()}
+                  options={this.classificationsOptions}
                   onChange={this.onClassificationChange.bind(this)}
                   clearable={false}
                   ignoreAccents={false}
