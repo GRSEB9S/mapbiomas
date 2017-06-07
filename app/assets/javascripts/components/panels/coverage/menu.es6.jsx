@@ -5,6 +5,7 @@ import CoveragePieChart from '../../charts/coverage/pie';
 const CoverageMenu = ({
   availableClassifications,
   defaultClassifications,
+  onExpandModal,
   territory,
   year
 }) => (
@@ -20,6 +21,7 @@ const CoverageMenu = ({
       defaultClassifications={defaultClassifications}
       territory={territory}
       year={year}
+      onExpandModal={onExpandModal}
     />
   </div>
 );

@@ -83,6 +83,10 @@ class CoverageLineChart extends Component {
     })
   }
 
+  expandModal() {
+    this.props.onExpandModal();
+  }
+
   componentDidMount() {
     this.loadCoverage(this.props);
   }
@@ -107,7 +111,9 @@ class CoverageLineChart extends Component {
     return (
       <div className="map-panel__item-content">
         <div className="coverage-chart" ref="chartElement"></div>
-        <a href="/stats" className="button primary">{I18n.t('map.index.coverage.details')}</a>
+        <button className="primary" onClick={this.expandModal.bind(this)}>
+          {I18n.t('map.index.coverage.details')}
+        </button>
       </div>
     );
   }

@@ -94,7 +94,7 @@ export default class Chart extends React.Component {
     const { series } = this.state;
 
     return (
-      <div>
+      <div className="stats__chart-and-table">
         <div className="stats__chart" ref="chart" />
         { series && (
           <div className="stats-table">
