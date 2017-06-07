@@ -23,26 +23,18 @@
 
 .transitions-labels {
   &__item {
-    &--icon {
-      &.farming {
-        background: #06FF00;
-      }
+    padding: $micro-spacing 0px;
+    display: flex;
+    align-items: center;
 
-      &.forest {
-        background: #FF0000;
-      }
-
-      &.forestry {
-        background: #A55CD6;
-      }
-
-      &.no_transition {
-        background: #CECECE;
-      }
-
-      &.water {
-        background: #1E90FF;
-      }
+    label {
+      margin-bottom: 0;
     }
+  }
+
+  &__icon {
+    margin-right: $small-spacing;
+    font-size: 22px;
+    cursor: pointer;
   }
 }

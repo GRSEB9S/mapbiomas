@@ -54,6 +54,7 @@ export default class Map extends React.Component {
       territory: null,
       transition: null,
       transitions: [],
+      transitionsLayers: [1, 2, 3, 4, 5],
       transitionsPeriod: '',
       viewOptionsIndex: {
         coverage: 0,
@@ -126,6 +127,7 @@ export default class Map extends React.Component {
       ...transitionInfo,
       year_t0: this.years[0],
       year_t1: this.years[1],
+      transitions_group: this.state.transitionsLayers,
       transparent: true
     }
   }
@@ -253,6 +255,12 @@ export default class Map extends React.Component {
       classifications: ids.map((id) => (
         this.props.availableClassifications.find((c) => c.id === id)
       ))
+    });
+  }
+
+  handleTransitionsLayersChange(ids) {
+    this.setState({
+      transitionsLayers: ids
     });
   }
 
@@ -590,8 +598,10 @@ export default class Map extends React.Component {
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
                   baseMaps={this.baseMaps}
                   availableBaseMaps={this.props.availableBaseMaps}
+                  handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   layers={this.layers}
+                  transitionsLayers={this.state.transitionsLayers}
                   availableLayers={this.props.availableLayers}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                 />

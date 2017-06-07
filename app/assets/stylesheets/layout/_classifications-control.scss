@@ -13,13 +13,13 @@
   }
 
   &__node {
-    padding: 5px 0px;
+    padding: $micro-spacing 0px;
     display: flex;
     align-items: center;
   }
 
   &__node-icon {
-    margin-right: 7px;
+    margin-right: $small-spacing;
     font-size: 22px;
     cursor: pointer;
   }

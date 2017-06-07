@@ -2,17 +2,19 @@ import React from 'react';
 import cx from 'classnames';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TogglesControl from '../../controls/toggles';
-import TransitionsLabels from './labels';
+import TransitionsLayersControl from '../../controls/transitions_layers';
 
 const CoverageAuxiliarControls = ({
-  viewOptionsIndex,
-  handleViewOptionsIndexSelect,
-  baseMaps,
   availableBaseMaps,
-  handleBaseMapsChange,
-  layers,
   availableLayers,
-  handleLayersChange
+  baseMaps,
+  handleBaseMapsChange,
+  handleLayersChange,
+  handleTransitionsLayersChange,
+  handleViewOptionsIndexSelect,
+  layers,
+  transitionsLayers,
+  viewOptionsIndex
 }) => (
   <Tabs
       className="map-panel__action-panel map-panel__tab-panel"
@@ -24,7 +26,9 @@ const CoverageAuxiliarControls = ({
       <Tab>{I18n.t('map.index.layers.title')}</Tab>
     </TabList>
     <TabPanel>
-      <TransitionsLabels
+      <TransitionsLayersControl
+        layers={transitionsLayers}
+        onChange={handleTransitionsLayersChange}
         calcMaxHeight={() => (
           $('#transitions-auxiliar-controls').height() - 55
         )}
