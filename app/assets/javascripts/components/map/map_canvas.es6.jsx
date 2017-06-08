@@ -195,7 +195,7 @@ export class MapCanvas extends React.Component {
       this.updateBaseLayers();
     }
 
-    if (this.props.mode == 'transitions' && prevProps.years != this.props.years) {
+    if (this.props.mode == 'transitions' && !_.isEqual(prevProps.years, this.props.years)) {
       this.updateBaseLayers();
     }
 
