@@ -6,6 +6,7 @@ import TransitionsLayersControl from '../../controls/transitions_layers';
 const CoverageAuxiliarControls = ({
   availableBaseMaps,
   availableLayers,
+  availableTransitionsLayers,
   baseMaps,
   handleBaseMapsChange,
   handleLayersChange,
@@ -26,7 +27,8 @@ const CoverageAuxiliarControls = ({
     </TabList>
     <TabPanel>
       <TransitionsLayersControl
-        layers={transitionsLayers}
+        options={transitionsLayers}
+        availableOptions={availableTransitionsLayers}
         onChange={handleTransitionsLayersChange}
         calcMaxHeight={() => (
           $('#transitions-auxiliar-controls').height() - 55

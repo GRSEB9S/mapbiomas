@@ -31,8 +31,9 @@ pt-BR:
       opacity: Opacidade
       classifications:
         title: Classes
-        classifications_description: |
+        description: |
           Clique <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/Descri%C3%A7%C3%A3o_Legenda_Cole%C3%A7%C3%A3o_2.pdf">aqui</a> e veja a descrição das classes
+        select_all: Selecionar todas as classes
       base_maps:
         title: Imagem de fundo
         rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (específica de cada ano)
@@ -54,6 +55,7 @@ pt-BR:
         details: Ver detalhes
       transitions:
         title: Transições
+        select_all: Selecionar todas as camadas
         analysis: Análise de transição
         labels:
           title: Legenda

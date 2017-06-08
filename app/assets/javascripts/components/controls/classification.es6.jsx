@@ -79,7 +79,7 @@ class ClassificationControl extends Component {
         <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
           <label
             dangerouslySetInnerHTML={{
-              __html: I18n.t('map.index.classifications.classifications_description')
+              __html: I18n.t('map.index.classifications.description')
             }}>
           </label>
 
@@ -89,7 +89,8 @@ class ClassificationControl extends Component {
               checked={allClassificationsSelected}
               onChange={this.handleAllClassificationsChange.bind(this)}
             />
-            Selecionar todas as classes
+
+            {I18n.t('map.index.classifications.select_all')}
           </label>
 
           <ul className="classifications-control__inner">

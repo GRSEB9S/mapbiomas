@@ -4,17 +4,17 @@ import ClassificationControl from '../../controls/classification';
 import TogglesControl from '../../controls/toggles';
 
 const CoverageAuxiliarControls = ({
-  viewOptionsIndex,
-  handleViewOptionsIndexSelect,
-  classifications,
-  availableClassifications,
-  handleClassificationsChange,
-  baseMaps,
   availableBaseMaps,
-  handleBaseMapsChange,
-  layers,
+  availableClassifications,
   availableLayers,
-  handleLayersChange
+  baseMaps,
+  classifications,
+  handleBaseMapsChange,
+  handleClassificationsChange,
+  handleLayersChange,
+  handleViewOptionsIndexSelect,
+  layers,
+  viewOptionsIndex
 }) => (
   <Tabs
       className="map-panel__action-panel map-panel__tab-panel"

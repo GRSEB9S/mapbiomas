@@ -22,6 +22,19 @@
 }
 
 .transitions-labels {
+  &__select {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin-left: 0;
+    }
+  }
+
+  &__items {
+    margin-top: $small-spacing;
+  }
+
   &__item {
     padding: $micro-spacing 0px;
     display: flex;

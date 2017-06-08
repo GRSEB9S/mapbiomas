@@ -12,17 +12,23 @@ const labels = {
 
 class TransitionsLabels extends Component {
   isChecked(id) {
-    return _.contains(this.props.layers, id);
+    return _.contains(this.props.options, id);
   }
 
   handleLayerCheck(id, checked) {
-    let ids = _.clone(this.props.layers);
+    let ids = _.clone(this.props.options);
 
     if(checked) {
       ids.push(id);
     } else {
       ids = _.without(ids, id);
     }
+
+    this.props.onChange(ids);
+  }
+
+  handleAllLayersChange(e) {
+    let ids = e.target.checked ? this.props.availableOptions : [];
 
     this.props.onChange(ids);
   }
@@ -54,14 +60,26 @@ class TransitionsLabels extends Component {
   }
 
   render() {
+    let allLayersSelected = this.props.options.length == this.props.availableOptions.length;
+
     return (
       <Scrollable calcMaxHeight={this.props.calcMaxHeight} className="map-panel__action-panel">
         <div className="map-panel__content">
-          {
-            ['farming', 'water', 'forestry', 'forest', 'no_transition'].map((l, i) => {
-              return this.renderLayer(l, i);
-            })
-          }
+            <label className="transitions-labels__select">
+              <input
+                type="checkbox"
+                checked={allLayersSelected}
+                onChange={this.handleAllLayersChange.bind(this)}
+              />
+
+              {I18n.t('map.index.transitions.select_all')}
+            </label>
+
+            <div className="transitions-labels__items">
+              {['farming', 'water', 'forestry', 'forest', 'no_transition'].map((l, i) => {
+                return this.renderLayer(l, i);
+              })}
+            </div>
         </div>
       </Scrollable>
     );

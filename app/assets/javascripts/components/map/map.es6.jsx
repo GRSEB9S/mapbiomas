@@ -34,7 +34,7 @@ export default class Map extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = this.initialState = {
       baseMaps: null,
       classifications: null,
       hide: false,
@@ -576,17 +576,17 @@ export default class Map extends React.Component {
             {COVERAGE && (
               <div className="map-panel__grow map-panel-can-hide" id="coverage-auxiliar-controls">
                 <CoverageAuxiliarControls
-                  viewOptionsIndex={this.state.viewOptionsIndex.coverage}
-                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'coverage')}
-                  classifications={this.classifications}
                   availableClassifications={this.props.availableClassifications}
-                  handleClassificationsChange={this.handleClassificationsChange.bind(this)}
-                  baseMaps={this.baseMaps}
+                  classifications={this.classifications}
                   availableBaseMaps={this.props.availableBaseMaps}
-                  handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-                  layers={this.layers}
+                  baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
+                  layers={this.layers}
+                  viewOptionsIndex={this.state.viewOptionsIndex.coverage}
+                  handleClassificationsChange={this.handleClassificationsChange.bind(this)}
+                  handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'coverage')}
                 />
               </div>
             )}
@@ -594,16 +594,17 @@ export default class Map extends React.Component {
             {TRANSITIONS && (
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <TransitionsAuxiliarControls
-                  viewOptionsIndex={this.state.viewOptionsIndex.transitions}
-                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
-                  baseMaps={this.baseMaps}
+                  availableTransitionsLayers={this.initialState.transitionsLayers}
+                  transitionsLayers={this.state.transitionsLayers}
                   availableBaseMaps={this.props.availableBaseMaps}
+                  baseMaps={this.baseMaps}
+                  availableLayers={this.props.availableLayers}
+                  layers={this.layers}
+                  viewOptionsIndex={this.state.viewOptionsIndex.transitions}
                   handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
-                  layers={this.layers}
-                  transitionsLayers={this.state.transitionsLayers}
-                  availableLayers={this.props.availableLayers}
                   handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
                 />
               </div>
             )}
