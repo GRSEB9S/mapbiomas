@@ -104,6 +104,7 @@ export class MapCanvas extends React.Component {
   removeMapLayer(slug) {
     if (this.mapLayers[slug]) {
       const layer = this.mapLayers[slug];
+
       delete this.mapLayers[slug];
       this.map.removeLayer(layer);
     }
@@ -135,7 +136,13 @@ export class MapCanvas extends React.Component {
     };
 
     if (this.dataLayer) {
+      if (layerOptions.transitions_group && _.isEmpty(layerOptions.transitions_group)) {
+        this.dataLayer.setOpacity(0);
+        return;
+      }
+
       this.dataLayer.setParams(options);
+      this.dataLayer.setOpacity(this.props.opacity);
     } else {
       this.dataLayer = L.tileLayer.wms(`${url}/wms`, options)
         .addTo(this.map);
