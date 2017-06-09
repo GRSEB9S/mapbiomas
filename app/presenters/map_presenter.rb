@@ -103,12 +103,42 @@ class MapPresenter
     }
   end
 
+  def openstreet_mapnik
+    {
+      id: 4,
+      slug: 'openstreet-mapnik',
+      name: 'Estradas',
+      link: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    }
+  end
+
+  def esri_imagery
+    {
+      id: 5,
+      slug: 'esri-imagery',
+      name: 'Imagens',
+      link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+    }
+  end
+
+  def esri_relief
+    {
+      id: 6,
+      slug: 'esri-relief',
+      name: 'Relevo',
+      link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
+    }
+  end
+
   def base_maps
     [
       rgb_landsat,
-      satellite_map,
-      roadmap_map,
-      terrain_map
+      esri_imagery,
+      openstreet_mapnik,
+      esri_relief
+      # satellite_map,
+      # roadmap_map,
+      # terrain_map
     ]
   end
 
