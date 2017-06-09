@@ -103,21 +103,21 @@ class MapPresenter
     }
   end
 
-  def openstreet_mapnik
-    {
-      id: 4,
-      slug: 'openstreet-mapnik',
-      name: 'Estradas',
-      link: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    }
-  end
-
   def esri_imagery
     {
       id: 5,
       slug: 'esri-imagery',
-      name: 'Imagens',
+      name: I18n.t('map.index.base_maps.esri_imagery'),
       link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+    }
+  end
+
+  def openstreet_mapnik
+    {
+      id: 4,
+      slug: 'openstreet-mapnik',
+      name: I18n.t('map.index.base_maps.openstreet_mapnik'),
+      link: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     }
   end
 
@@ -125,7 +125,7 @@ class MapPresenter
     {
       id: 6,
       slug: 'esri-relief',
-      name: 'Relevo',
+      name: I18n.t('map.index.base_maps.esri_relief'),
       link: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}'
     }
   end

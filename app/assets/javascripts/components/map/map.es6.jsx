@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 import classNames from 'classnames';
 import Select from 'react-select-plus';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Tabs } from 'react-tabs';
 
 import { MapCanvas } from '../map/map_canvas';
 
