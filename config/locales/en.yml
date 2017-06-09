@@ -1,5 +1,5 @@
 en:
   number:
     format:
-      delimiter: '.'
-      separator: ','
+      delimiter: ','
+      separator: '.'
