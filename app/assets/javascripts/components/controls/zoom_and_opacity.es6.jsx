@@ -9,7 +9,7 @@ const positionRelative = {
 class ZoomAndOpacityControl extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = { showOpacityDropdown: false };
+    this.state = { showOpacityDropdown: true };
   }
 
   toggleOpacityDropdown() {
