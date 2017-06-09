@@ -36,10 +36,20 @@ pt-BR:
         select_all: Selecionar todas as classes
       base_maps:
         title: Imagem de fundo
+        tooltip: |
+          <p>Fonte dos mapas de fundo:</p>
+          <ul>
+            <li><b>Imagem - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
+            <li><b>Estradas - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
+            <li><b>Relevo - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+          </ul>
         rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (específica de cada ano)
         satellite: Google Satellite
         roadmap: Google Roadmap
         terrain: Google Terrain
+        esri_imagery: Imagem (sem ano específico)
+        openstreet_mapnik: Estradas
+        esri_relief: Relevo
       layers:
         title: Camadas
         countries: Países
