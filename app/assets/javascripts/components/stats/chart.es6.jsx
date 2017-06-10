@@ -2,6 +2,9 @@ import React from 'react';
 import _ from 'underscore';
 import { API } from '../../lib/api';
 import Highcharts from 'highcharts';
+import Exporting from 'highcharts/modules/exporting';
+
+Exporting(Highcharts);
 
 const formatNumber = (number) => (
   number
@@ -20,6 +23,17 @@ export default class Chart extends React.Component {
   }
 
   componentDidMount() {
+    Highcharts.setOptions({
+      lang: {
+        contextButtonTitle: I18n.t('charts.buttons.context_button.title'),
+        downloadJPEG: I18n.t('charts.lang.download_jpeg'),
+        downloadPDF: I18n.t('charts.lang.download_pdf'),
+        downloadPNG: I18n.t('charts.lang.download_png'),
+        downloadSVG: I18n.t('charts.lang.download_svg'),
+        printChart: I18n.t('charts.lang.print_chart')
+      }
+    });
+
     this.fetchData();
   }
 
@@ -86,6 +100,14 @@ export default class Chart extends React.Component {
       series: series,
       xAxis: {
         categories: this.props.years
+      },
+      exporting: {
+        enabled: true,
+        buttons: {
+          contextButton: {
+            text: I18n.t('charts.buttons.context_button.text')
+          }
+        }
       }
     };
   }
@@ -124,5 +146,3 @@ export default class Chart extends React.Component {
     );
   }
 }
-
-
