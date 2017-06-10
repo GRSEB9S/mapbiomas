@@ -404,14 +404,14 @@ export default class Map extends React.Component {
     });
   }
 
-  downloadSpreadsheet() {
+  downloadTransitions() {
     let params = {
       territory_id: this.territory.id,
       territory_name: this.territory.name,
       year: this.years.join(',')
     };
 
-    return Routes.download_path(params);
+    return Routes.download_transitions_path(params);
   }
 
   loadCards() {
@@ -478,7 +478,7 @@ export default class Map extends React.Component {
           setTransition={this.handleTransitionChange.bind(this)}
           onClose={this.closeModal.bind(this, 'transitions')}
           years={this.years}
-          downloadUrl={this.downloadSpreadsheet()}
+          downloadUrl={this.downloadTransitions()}
           transition={this.transition}
           transitions={this.state.transitions}
           classifications={this.classifications}

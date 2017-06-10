@@ -1,9 +1,10 @@
 class DownloadsController < ApplicationController
   respond_to :xlsx
 
-  def download
-    @download_presenter = DownloadPresenter.new(params)
-    render xlsx: 'download/download',
+  def transitions
+    @download_presenter = Downloads::TransitionsPresenter.new(params)
+
+    render xlsx: 'downloads/transitions',
            filename: @download_presenter.filename
   end
 end
