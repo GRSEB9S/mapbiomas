@@ -123,7 +123,10 @@ export default class Chart extends React.Component {
             <table>
               <thead>
                 <tr>
-                  <th>Classes</th>
+                  {this.props.territories.length > 1 && this.props.classifications.length == 1 ?
+                    <th>{I18n.t('stats.territories.title')}</th> :
+                    <th>{I18n.t('stats.classifications.title')}</th>
+                  }
                   {this.props.years.map((year) => (
                     <th key={year}>{year}</th>
                   ))}
