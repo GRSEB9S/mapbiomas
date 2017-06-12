@@ -16,7 +16,10 @@ $(function() {
 <section class="home__video">
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
-  <button class="button primary video" data-video="https://www.youtube.com/embed/AAEbeMQlJc4" data-toggle="modal" data-target="#videoModal">Watch the project video</button>
+    <p><strong>MapBiomas</strong> is a multi-institutional initiative involving universities, NGOs and technology 
+companies that have come together to contribute to the understanding of Brazilian territory 
+transformations based on the annual mapping of land cover and use in Brazil.</p>
+  <button class="button primary video" data-video="https://www.youtube.com/embed/AAEbeMQlJc4" data-toggle="modal" data-target="#videoModal">Watch Project Video</button>
   </div>
   <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
     <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
@@ -34,48 +37,48 @@ $(function() {
 <article class="home__coating">
   <div class="home__coating-content">
     <%= image_tag "cobertura.png", class: "home__coating-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COBERTURA E USO DO SOLO</a></h1>
-    <p>Conheça a cobertura e uso do solo anual do Brasil entre 2000 e 2016 navegando na coleção 2 do MapBiomas</p>
-    <a class="button primary" href="http://mapbiomas.org/map#coverage">Acesse aqui</a>
+    <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COVERING AND USE OF SOIL</a></h1>
+    <p>Get to know the coverage and use of Brazil's annual soil between 2000 and 2016 by browsing the collection 2 of MapBiomas</p>
+    <a class="button primary" href="http://mapbiomas.org/map#coverage">Access here</a>
   </div>
 </article>
 
 <article class="home__changes">
   <div class="home__changes-content">
     <%= image_tag "sankey.png", class: "home__changes-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#transitions">MUDANÇAS</a></h1>
-    <p>Acompanhe as mudanças do território nos<br> últimos 17 anos</p>
-    <a class="button primary"  href="http://mapbiomas.org/map#transitions">Acesse aqui</a>
+    <h1 class="page__title"><a href="http://mapbiomas.org/map#transitions">CHANGES</a></h1>
+    <p>Follow the changes of the territory <br> in the last 17 years </p>
+    <a class="button primary"  href="http://mapbiomas.org/map#transitions">Access here</a>
   </div>
 </article>
 
 <article class="home__numbers">
   <div class="home__numbers-content">
     <%= image_tag "chart.png", class: "home__numbers-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/stats">NÚMEROS</a></h1>
-    <p>Navegue pelas estatísticas de cobertura e <br>uso do solo do Brasil</p>
-    <a class="button primary"  href="http://mapbiomas.org/stats">Acesse aqui</a>
+    <h1 class="page__title"><a href="http://mapbiomas.org/stats">NUMBERS</a></h1>
+    <p>Navigate coverage statistics and <br> land use in Brazil</p>
+    <a class="button primary"  href="http://mapbiomas.org/stats">Access here</a>
   </div>
 </article>
 
 <article class="home__quality">
   <div class="home__quality-content">
     <%= image_tag "landsat.png", class: "home__quality-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#quality">QUALIDADE DOS DADOS</a></h1>
-    <p>Veja a qualidade dos dados para cada uma das cartas analisadas pela equipe do MapBiomas</p>
-    <a class="button primary"  href="http://mapbiomas.org/map#quality">Acesse aqui</a>
+    <h1 class="page__title"><a href="http://mapbiomas.org/map#quality">QUALITY OF THE DATA</a></h1>
+    <p>See the quality of the data for each of the charts analyzed by the MapBiomas team</p>
+    <a class="button primary"  href="http://mapbiomas.org/map#quality">Access here</a>
   </div>
 </article>
 
 <article class="home__partners">
   <div class="home__partners-content">
-    <h1 class="page__title">O MAPBIOMAS É UMA INICIATIVA DE</h1>
+    <h1 class="page__title">MAPBIOMAS IS A INITIATIVE OF</h1>
     <div class="text-center">
       <%= image_tag "oc.png", class: "home__partners-image" %>
       <%= image_tag "seeg.png", class: "home__partners-image" %>
     </div>
 
-    <h1>CO-CRIADORES</h1>
+    <h1>CO-CREATORS</h1>
     <%= image_tag "lapig.png" %>
     <%= image_tag "sos-pantanal.png" %>
     <%= image_tag "sos-mata-atlantica.png" %>
@@ -88,18 +91,18 @@ $(function() {
     <%= image_tag "ipam.png" %>
     <%= image_tag "agro-satelite.png" %>
 
-    <h1>FINANCIAMENTO</h1>
+    <h1>FINANCING</h1>
     <%= image_tag "moore.png" %>
     <%= image_tag "climate.png" %>
     <%= image_tag "nicfi.png" %>
     <%= image_tag "instituto-arapyau.png" %>
 
-    <h1>PARCEIROS DE TECNOLOGIA</h1>
+    <h1>TECHNOLOGY PARTNERS</h1>
     <%= image_tag "ecostage.png" %>
     <%= image_tag "google.png" %>
     <%= image_tag "terras.png" %>
 
-    <h1>APOIO INSTITUCIONAL</h1>
+    <h1>INSTITUTIONAL SUPPORT</h1>
     <%= image_tag "ids.png" %>
     <%= image_tag "avina.png" %>
     <%= image_tag "wri.png" %>
