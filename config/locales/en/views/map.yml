@@ -69,11 +69,11 @@ en:
         analysis: Transitions analysis
         labels:
           title: Labels
-          farming: Transições de classes de agropecuária ou áreas não vegetadas para cobertura florestal ou áreas naturais não florestais.
-          water: Transições que acrescem áreas de água
-          forestry: Transições com ganho de áreas de silvicultura.
-          forest: Transições de cobertura florestal ou áreas naturais não florestais para agropecuária ou areas não vegetadas.
-          no_transition: Áreas sem transição ou transições que envolvem áreas não observadas ou transições entre classes dentro do nivel 1 de legenda.
+          farming: Transitions from farming classes or non-vegetated areas to forest cover or non-forest natural areas.
+          water: Transitions that add areas of water
+          forestry: Transitions with gain of forest plantations
+          forest: Forest cover transitions or non-forest natural areas for agriculture or non-vegetated areas.
+          no_transition: Areas without transitions or transitions involving unobserved areas or transitions between classes within the caption level 1.
         matrix:
           title: Transitions matrix
           total: Total
