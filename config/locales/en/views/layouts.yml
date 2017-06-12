@@ -20,21 +20,24 @@ en:
           terras_developers: Workspace developers team - TERRAS
           ecostage_developers: Website Developers team - ECOSTAGE
           support: Technical Support
-          record: 'registry, communication and administration'
+          record: 'Registry, communication and administration'
           google_partners: GOOGLE colaborators
           coordination: Coordination
           coordinator: (Coordinator)
           workspace_coordinator: (Workspace Coordinator)
           dashboard_coordinator: (Dashboard Coordinator)
           designer: (Designer)
-          record_coordinator: (Record and Communication Coordinator)
+          record_coordinator: (Registry and Communication Coordinator)
           communication_counsellor: (Communication Counsellor)
           project_management: (Project Management)
           documentarian: (Documentary Filmmaker)
           general_coordination: (General Coordination)
           scientific_coordination: (Technical-Scientific Coordination)
-          programming_process: (Programação e processamento)
-          statistical: Estatístico
+          programming_process: (Programming and Processing)
+          statistical: (Statistics)
+          wri_project_management: (Project Management - WRI)
+          scientific_committee_secretary: (Secretary of the Committee of Scientific Advice)
+          tnc_project_management: (Project Management - TNC)
       map_data:
         title: Map & Data
         land_cover: Land cover/use
