@@ -1,17 +1,55 @@
 en:
   map:
     warning:
-      title: Cautionary Note
-      body: |
-        <p>All maps of MAPBIOMAS Project are part of the collection 1 that includes annual data for the period 2008-2015.</p>
-        <p>This collection is the result of the first work year of MapBiomas project that was intended to test the feasibility and efficiency of both production methodology of annual series of maps cover and land use as the operation of the Web platform designed to facilitate collaborative work of the different partners involved.</p>
-        <p>The maps still have a series of imperfections among which stand out possible spatial inconsistencies in the thematic classifications, the timeline ( and between cards) and between thematic classes and cross-cutting issues (agriculture and pasture) . A validation process with the use of sampling plots for accuracy analysis is in implementation for application in the next collections.</p>
+      coverage:
+        title: CAUTION NOTICE (Coverage)
+        body: |
+          <p>This is MapBiomas Collection 2 which includes annual land cover and land use data for the period 2000 to 2016.</p>
+          <p>This collection is the result of the first 20 months of work of the MapBiomas project and is in constant development. The consolidation of the methodology and production will be finalized in the Collection 3 scheduled for the year 2018.</p>
+          <p>The presented maps still have a series of imperfections, among which are possible spatial inconsistencies in thematic classifications, in the temporal (and between letters) and between thematic classes and transversal themes (eg agriculture and pasture).</p>
+          <p>If you have suggestions, criticisms and ideas to improve the work, contact us at <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
+      transitions:
+        title: CAUTION NOTICE (transition)
+        body: |
+          <p>Here we observe the pixel to pixel class differences between the maps of the following periods: (A) any consecutive years (eg 2001-2002); (B) five-year periods 2000-2005 / 2005-2010 / 2010-2015; (C) 2008-2015; (D) 2002-2010 and (D) 2000-2016.</p>
+          <p>Select the desired period and observe the changes in the map and the Sankey diagram. Click on the different transitions in the diagram to see the different transitions on the map.</p>
+          <p>This transition representation between classes from one year to another is made from the pixel-to-pixel comparison. You can also view an array of transitions.</p>
+          <p class="warning"><strong>ATTENTION:</strong>
+          <blockquote>
+            In MapBiomas Collection 2 the class transitions represent both effective land use changes as well as classification inconsistencies. Therefore, the same should not be taken a faithful representation of land use changes in the period.</p>
+          </blockquote>
+      quality:
+        title: Mosaic Quality
+        body: |
+          <p>The mosaic is a composition of pixels from various Landsat scenes over a period of time. These scenes have a proportion of clouds and other interferences. Thus each working tile in each year was classified into three categories according to cloud percentages and verified interference:</p>
+            <ul>
+              <li>1 – Bad: > 30%</li>
+              <li>2 – Regular: 10 a 30%</li>
+              <li>3 – Good: < 10%</li>
+            </ul>
     index:
       opacity: Opacity
-      classifications: Classes
+      classifications:
+        title: Classes
+        description: |
+          Click <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/Descri%C3%A7%C3%A3o_Legenda_Cole%C3%A7%C3%A3o_2.pdf">here</a> and see the classification description
+        select_all: Select all classifications
       base_maps:
         title: Images
-        satellite: Satellite
+        tooltip: |
+          <p>Fonte dos mapas de fundo:</p>
+          <ul>
+            <li><b>Imagem - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
+            <li><b>Estradas - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
+            <li><b>Relevo - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+          </ul>
+        rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (específica de cada ano)
+        satellite: Google Satellite
+        roadmap: Google Roadmap
+        terrain: Google Terrain
+        esri_imagery: Imagem (sem ano específico)
+        openstreet_mapnik: Estradas
+        esri_relief: Relevo
       layers:
         title: Layers
         countries: Countries
@@ -19,22 +57,36 @@ en:
         cities: Cities
         biomes: Biomes
         contour_maps: Contour maps
-        indigenous_lands: Terras indígenas
-        conservation_units: Unidades de conservação
+        indigenous_lands: Indigenous Lands
+        conservation_units: Conservation Units
       coverage:
         title: Coverage
         analysis: Coverage analysis
+        details: See details
       transitions:
         title: Transitions
+        select_all: Selecionar todas as camadas
         analysis: Transitions analysis
+        labels:
+          title: Labels
+          farming: Transições de classes de agropecuária ou áreas não vegetadas para cobertura florestal ou áreas naturais não florestais.
+          water: Transições que acrescem áreas de água
+          forestry: Transições com ganho de áreas de silvicultura.
+          forest: Transições de cobertura florestal ou áreas naturais não florestais para agropecuária ou areas não vegetadas.
+          no_transition: Áreas sem transição ou transições que envolvem áreas não observadas ou transições entre classes dentro do nivel 1 de legenda.
         matrix:
           title: Transitions matrix
           total: Total
           download: Download
           download_file: "Transitions Matrix %{from_year} - %{to_year}"
+        all_years: Todos os anos
+        forest_code: Código florestal
+        subsequent_years: Anos subsequentes
+        five_years: 5 em 5 anos
+        period: "%{first_year} à %{second_year}"
       quality:
         title: Quality
-        analysis: Quality analysis
+        analysis: Mosaic Quality
         labels:
           title: Labels
           subtitle: Threshold for accepted percentage of clouds and other interferences accepted in the images that form the mosaic
@@ -42,7 +94,7 @@ en:
           regular: "Regular: between 10 and 30%"
           good: "Good: < 10%"
         chart:
-          tooltip: Cards on this category
+          tooltip: Cartas nesta categoria
           bad: Bad
           regular: Regular
           good: Good
@@ -53,6 +105,7 @@ en:
       chart:
         tooltip: Move your mouse over the chart to see its values.
         year: "Year: %{year}"
+        territory: "Territory: %{territory}"
       download:
         title: Download data
         classification: Classification
@@ -60,14 +113,5 @@ en:
         percentage: Percentage of total area
       locales:
         warning: Language not available
-    tooltip: |
-      <ul>
-        <li><strong>Floresta:</strong> formações florestais com  porte arbóreo superior a seis metros de altura e cobertura do dossel superior a  50%.</li>
-        <li><strong>Floresta plantada:</strong> plantios de espécies florestais arbóreas, predominantemente homogêneas, para uso comercial (madeira e fibras)  e com ciclos de corte raso.</li>
-        <li><strong>Agricultura:</strong> áreas de culturas temporárias com grandes extensões,  além de cana de açúcar na região sudeste e centro oeste.</li>
-        <li><strong>Pastagem:</strong> pastos nativos ou cultivados.</li>
-        <li><strong>Água:</strong> lagos, lagoas, reservatórios artificiais e rios com largura superior a 30 metros de largura.</li>
-        <li><strong>Outros:</strong> outras formações vegetais naturais, áreas não vegetadas, áreas não observadas e áreas não classificadas.</li>
-      </ul>
     modal:
       ok: OK
