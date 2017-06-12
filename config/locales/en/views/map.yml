@@ -39,17 +39,17 @@ en:
         tooltip: |
           <p>Fonte dos mapas de fundo:</p>
           <ul>
-            <li><b>Imagem - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
-            <li><b>Estradas - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
-            <li><b>Relevo - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+            <li><b>Image - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
+            <li><b>Roads - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
+            <li><b>Relief - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
           </ul>
         rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (específica de cada ano)
         satellite: Google Satellite
         roadmap: Google Roadmap
         terrain: Google Terrain
-        esri_imagery: Imagem (sem ano específico)
-        openstreet_mapnik: Estradas
-        esri_relief: Relevo
+        esri_imagery: Image (without specific year)
+        openstreet_mapnik: Roads
+        esri_relief: Relief
       layers:
         title: Layers
         countries: Countries
@@ -65,7 +65,7 @@ en:
         details: See details
       transitions:
         title: Transitions
-        select_all: Selecionar todas as camadas
+        select_all: Select all layers
         analysis: Transitions analysis
         labels:
           title: Labels
@@ -79,11 +79,11 @@ en:
           total: Total
           download: Download
           download_file: "Transitions Matrix %{from_year} - %{to_year}"
-        all_years: Todos os anos
-        forest_code: Código florestal
-        subsequent_years: Anos subsequentes
-        five_years: 5 em 5 anos
-        period: "%{first_year} à %{second_year}"
+        all_years: All years
+        forest_code: Forest Code
+        subsequent_years: Subsequent years
+        five_years: 5 in 5 years
+        period: "%{first_year} to %{second_year}"
       quality:
         title: Quality
         analysis: Mosaic Quality
@@ -94,7 +94,7 @@ en:
           regular: "Regular: between 10 and 30%"
           good: "Good: < 10%"
         chart:
-          tooltip: Cartas nesta categoria
+          tooltip: Cards on this category
           bad: Bad
           regular: Regular
           good: Good
