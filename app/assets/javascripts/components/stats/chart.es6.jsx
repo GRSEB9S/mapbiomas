@@ -22,6 +22,10 @@ export default class Chart extends React.Component {
     };
   }
 
+  startDownload() {
+    window.location.href = this.props.downloadUrl;
+  }
+
   componentDidMount() {
     Highcharts.setOptions({
       lang: {
@@ -82,6 +86,7 @@ export default class Chart extends React.Component {
 
   buildOptions() {
     const series = this.buildSeries();
+
     this.setState({ series });
 
     return {
@@ -120,6 +125,10 @@ export default class Chart extends React.Component {
         <div className="stats__chart" ref="chart" />
         { series && (
           <div className="stats-table">
+            <button className="map-modal__download primary" onClick={this.startDownload.bind(this)}>
+              {I18n.t('stats.table.download')}
+            </button>
+
             <table>
               <thead>
                 <tr>

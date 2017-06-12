@@ -7,4 +7,11 @@ class DownloadsController < ApplicationController
     render xlsx: 'downloads/transitions',
            filename: @download_presenter.filename
   end
+
+  def statistics
+    @download_presenter = Downloads::StatisticsPresenter.new(params)
+
+    render xlsx: 'downloads/statistics',
+           filename: @download_presenter.filename
+  end
 end

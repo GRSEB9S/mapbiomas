@@ -6,6 +6,9 @@ Rails.application.routes.draw do
       to: 'downloads#transitions',
       as: :download_transitions, defaults: { format: :xlsx }
   get '/stats', to: 'stats#show', as: :stats
+  get '/download/statistics',
+      to: 'downloads#statistics',
+      as: :download_statistics, defaults: { format: :xlsx }
 
   namespace :api, defaults: { format: :json } do
     resources :classifications, only: :index
