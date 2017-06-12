@@ -1,19 +1,18 @@
 <script type="text/javascript">
   function buildUrl(biome, collection, year){
-    if(collection == '1'){
+    if (collection == '1') {
       return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
-    }else{
+    } else {
       return 'http://maps.lapig.iesa.ufg.br/mapbiomas/'+ year + '/' + biome + '.tif';
     }
   }
 
-  function refreshUrls(){
+  function refreshUrls() {
     var collection = $('#collection').val();
     var year = $('#year').val();
-    
     var url = ''
     
-    $('a[biome]').each(function(){
+    $('a[biome]').each(function() {
       var biome = $(this).attr('biome');
       var url = buildUrl(biome, collection, year);
 
@@ -21,23 +20,24 @@
     });
   }
 
-  $(document).on('change', '#collection', function(){
-    if($(this).val() == '1'){
+  $(document).on('change', '#collection', function() {
+    if($(this).val() == '1') {
       $('#year').find('option[value="2016"]').prop('disabled', true);
-    }else{
+    } else {
       $('#year').find('option[value="2016"]').prop('disabled', false);
     }
+
     $('#year').find('option:first-child').prop('selected', true)
     $('#year').trigger('change');
     
     refreshUrls();
   });
 
-  $(document).on('change', '#year', function(){
+  $(document).on('change', '#year', function() {
     refreshUrls();
   });
 
-  $(function(){
+  $(function() {
     $('#collection').trigger('change');
     refreshUrls();
   });
@@ -45,14 +45,14 @@
 
 <article class="page">
   <div class="page__container">
-    <h1 class="page__title">Coleções MAPBIOMAS</h1>
+    <h1 class="page__title">Coleções MapBiomas</h1>
 
     <p>A partir dos mosaicos LANDSAT são realizadas as classificações que resultam nos mapas de cobertura e uso do solo para cada ano. Dentro da lógica proposta pelo MAPBIOMAS os mapas serão atualizados cada vez que houver um aperfeiçoamento nos algoritmos de classificação. A metodologia de classificação é dinâmica e processual, com a finalidade de aperfeiçoar a classificação de cada tipologia.</p>
 
     <p>Aqui você poderá acessar os mapas de cobertura e uso do solo organizados por bioma e por ano.</p>
 
     <blockquote>
-      <strong>Importante:</strong> Ao compor um mosaico único ou calcular estatísticas sobre os mapas deve ser observado que:
+      <strong>Importante:</strong> ao compor um mosaico único ou calcular estatísticas sobre os mapas deve ser observado que:
       <ul>
         <li>Para cálculo de área é necessário utilizar uma projeção métrica adequada. </li>
         <li>Todos os dados estão no formato GeoTiff e possuem compressão LZW.</li>
@@ -100,6 +100,5 @@
         <a href='' biome='PAMPA' target="_blank">Pampa</a>
       </div>
     </div>
-
   </div>
 </article>
