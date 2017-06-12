@@ -13,7 +13,9 @@ class TerrasAPI
   end
 
   def self.classifications
-    get("/dashboard/services/classifications")
+    get("/dashboard/services/classifications", query: {
+      language: I18n.locale.to_s
+    })
   end
 
   def self.coverage(year, territory_id, classification_ids)
