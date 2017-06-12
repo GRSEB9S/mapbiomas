@@ -37,7 +37,7 @@ en:
       base_maps:
         title: Images
         tooltip: |
-          <p>Fonte dos mapas de fundo:</p>
+          <p>Source of background maps:</p>
           <ul>
             <li><b>Image - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
             <li><b>Roads - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
