@@ -10,18 +10,18 @@ en:
         team:
           title: Team
           cerrado: Team Cerrado
-          amazon: Team Amazônia
-          atlantica_pantanal: Team Mata Atlântica and Pantanal
+          amazon: Team Amazon
+          atlantica_pantanal: Team ATLANTIC FOREST & PANTANAL
           pampa: Team Pampa
           caatinga: Team Caatinga
           coastal_zone: Team Coastal Zone
           pasture: Team Pasture
           agriculture: Team Agriculture
-          terras_developers: Developers Team - Terras
-          ecostage_developers: Developers Team - EcoStage
-          support: Support
-          record: 'Record, Communication and Management'
-          google_partners: Google Partners
+          terras_developers: Workspace developers team - TERRAS
+          ecostage_developers: Website Developers team - ECOSTAGE
+          support: Technical Support
+          record: 'registry, communication and administration'
+          google_partners: GOOGLE colaborators
           coordination: Coordination
           coordinator: (Coordinator)
           workspace_coordinator: (Workspace Coordinator)
