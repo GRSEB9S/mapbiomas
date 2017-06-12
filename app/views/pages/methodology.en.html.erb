@@ -1,63 +1,62 @@
 <article class="page page--methodology">
   <div class="page__container">
-    <h1 class="page__title">Methodology</h1>
+    <h1 class="page__title">ATBD</h1>
 
-    <h2 class="page__title">Network of Co-Creation Efforts</h2>
+    <p>From MapBiomas Collection 2 the methodological notes were replaced by the ATBD (Algorithm Theoretical Basis Document) which describes the entire process of map development and production and the algorithms used.</p>
 
-    <p>MapBiomas is an initiative from the  SEEG / Climate Observatory and a joint co-creation effort by a network of NGOs, universities and private companies involved in the project. In an innovative approach, the methodology is being collectively conceived and improved, simultaneously to the generation of prototypes, to test  hypothesis, in order to process and classify images.</p>
-    <p>The institutions are based in nine states,  operating independently, but fully connected. Scripts and all working material are shared in a common working platform in three environments: Google Earth Engine Playground, Google Drive, and MapBiomas Workspace.</p>
+    <p>ATBD is a living document that is constantly updated to aggregate new information and learning.</p>
+    <p>There is a General ATBD for MapBiomas and others dealing with the specificities of each biome or theme.</p>
 
-    <h2 class="page__title">Methodological notes</h2>
+    <h2 class="page__title">GENERAL ATBD</h2>
 
-    <p>The working flow and steps are described in the <strong>Methodological Note v1.0</strong>, which can be found
-    <strong> <%= link_to 'here', "https://storage.googleapis.com/mapbiomas/Metodologia_Mapbiomas_23Nov2015.pdf", {target: "_blank"} %></strong>.</p>
+    <p>[<%= link_to 'version 1.0 - Collection 2', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD+MapBiomas+Geral+2017-03-22.pdf", {target: "_blank"} %>]</p>
 
-    <h2 class="page__title">Presentations by Biomes</h2>
-
-    <p>For each biome, a set of slides explaining the dynamics and specifics of the work can be downloaded at:</p>
+    <h2 class="page__title">BIOMES ATBDs</h2>
 
     <div class="methodology-presentation">
       <%= image_tag "amazonia.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Amazônia', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20AMAZONIA%20-%2023.11.2015.pdf", {target: "_blank"} %>
-      </div>
-    </div>
-    <div class="methodology-presentation">
-      <%= image_tag "pantanal.png" %>
-      <div class="methodology-presentation__title">
-        <%= link_to 'Pantanal', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20PANTANAL%20-%2023.11.2015.pdf", {target: "_blank"} %>
+        <%= link_to 'Amazon', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD-R+-+Bioma+Amaz%C3%B4nia+-+2017-03-16.pdf", {target: "_blank"} %>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "caatinga.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Caatinga', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20CAATINGA%20-%2023.11.2015.pdf", {target: "_blank"} %>
-      </div>
-    </div>
-    <div class="methodology-presentation">
-      <%= image_tag "mata_atlantica.png" %>
-      <div class="methodology-presentation__title">
-        <%= link_to 'Mata Atlântica', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20MATA%20ATLANTICA%20-%2023.11.2015.pdf", {target: "_blank"} %>
+        <%= link_to 'Caatinga', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD-R+-+Bioma+Caatinga+-2017-03-21(1).pdf", {target: "_blank"} %>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "cerrado.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Cerrado', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20CERRADO%20-%2023.11.2015.pdf", {target: "_blank"} %>
+        <%= link_to 'Cerrado', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD-R-Bioma-Cerrado-2017-05-04.pdf", {target: "_blank"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "mata_atlantica.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Atlatic Forest', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD-R+-+Mata+Atlantica+-+2017-03-17.pdf", {target: "_blank"} %>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pantanal.png" %>
+      <div class="methodology-presentation__title">
+        <%= link_to 'Pantanal', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD-R+-+Bioma+Pantanal+-+2017-03-17.pdf", {target: "_blank"} %>
       </div>
     </div>
     <div class="methodology-presentation">
       <%= image_tag "pampa.png" %>
       <div class="methodology-presentation__title">
-        <%= link_to 'Pampa', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20PAMPA%20-%2023.11.2015.pdf", {target: "_blank"} %>
+        <%= link_to 'Pampa', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD_R+-+Bioma+Pampa+2017-03-22.pdf", {target: "_blank"} %>
       </div>
     </div>
 
-    <h2 class="page__title">Presentations of Cross Cutting Issues</h2>
+    <h2 class="page__title">CROSS-CUTING ATBDS</h2>
 
-    <p>There are a collection of slides to explain the specific caractheristics of the work of each cross-cutting issues. Please access the links bellow:</p>
+    <%= link_to '[Agriculture]', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD_R-Agricultura-e-Floresta-Plantada-Colecao2-02-05-2017_en.pdf", {target: "_blank"} %> |
+    <%= link_to '[Pasture]', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD-R+-+Pastagem+-+2017-03-15.pdf", {target: "_blank"} %> |
+    <%= link_to '[Coastal Zone]', "https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Metodologia/ATBD_R+-+Zona+Costeira+-+2017-03-24.pdf", {target: "_blank"} %>
 
-    <%= link_to '[Agriculture and Pasture]', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20AGRICULTURA%20-%2025.11.2015.pdf", {target: "_blank"} %> |
-    <%= link_to '[Costal Zone]', "https://storage.googleapis.com/mapbiomas/slides/Apres%20Site%20MapBiomas%20-%20ZONA%20COSTERIA%20-%2023.11.2015.pdf", {target: "_blank"} %>
+    <!--<p><%= image_tag "methodology.png" %></p>-->
+
   </div>
 </article>
