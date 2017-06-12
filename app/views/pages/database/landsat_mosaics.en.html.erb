@@ -1,11 +1,19 @@
 <article class="page">
   <div class="page__container">
-    <h1 class="page__title">Landsat Mosaics</h1>
+    <h1 class="page__title">Mosaicos LANDSAT</h1>
 
-    <p>The classification and land use and lan cover presented in MapBiomas Collection are based on Landsat mosaics. For each map IBGE 1 : 250,000, in each of the years analyzed, a specific tile was produced . Each tile is produced by the spatial integration of different scenes Landsat present on each map and by the integration time pixel by pixel,  by calculating the median from the set of scenes available for a particular time interval. These time intervals were defined based on variation in phenology of plant types in each of the Brazilian biomes, as a strategy to improve the classification results.</p>
+    <p>The MAPBIOMAS land use and land cover classifications are based on LANDSAT mosaics. For each IBGE chart of 1: 250,000, in each of the evaluated years, a specific mosaic was produced. Each mosaic is produced by the spatial integration of the different LANDSAT scenes present in each chart and by the temporal integration pixel by pixel, based on the median calculation, from the set of scenes available for a given time interval. These time intervals were defined according to the variation of the phenology of the plant typologies in each of the Brazilian biomes, as strategy to improve the classification results.</p>
 
-    <p>Here you can access the mosaics generated for each of the map IBGE 1 : 250,000. Altogether, there will be 14 components by map, including up to 8 spectral bands , 4 components of the mixture model and NDFI and SMA indexes.</p>
+    <p>The mosaics are generated in 1: 250,000 IBGE charts for each year containing 28 components per pixel, including up to 8 spectral bands and 20 components of the mixing model or indices (eg NDFI, SMA).</p>
+
+    <p>For Collection 1 mosaics, you can download the RGB composition through the panel below.</p>
+    <p>For Collection 2, given the volume of data it represents (several terabites) we are still developing a method to facilitate downloading through the MapBiomas page. </p>
+
+    <p>For now you can access the Mosaics from Collection 2 directly in Google Earth Engine through the following public collection (asset): <strong>projects/mapbiomas-workspace/MOSAICOS/workspace</strong></p>
+
+    <p>Select the year and chart or click on the desired chart.</p>
 
     <%= react_component('LandsatDownload', LandsatMosaicsPresenter.new) %>
+
   </div>
 </article>

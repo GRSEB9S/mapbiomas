@@ -1,10 +1,105 @@
+<script type="text/javascript">
+  function buildUrl(biome, collection, year){
+    if(collection == '1'){
+      return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
+    }else{
+      return 'http://maps.lapig.iesa.ufg.br/mapbiomas/'+ year + '/' + biome + '.tif';
+    }
+  }
+
+  function refreshUrls(){
+    var collection = $('#collection').val();
+    var year = $('#year').val();
+    
+    var url = ''
+    
+    $('a[biome]').each(function(){
+      var biome = $(this).attr('biome');
+      var url = buildUrl(biome, collection, year);
+
+      $(this).attr('href', url);
+    });
+  }
+
+  $(document).on('change', '#collection', function(){
+    if($(this).val() == '1'){
+      $('#year').find('option[value="2016"]').prop('disabled', true);
+    }else{
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+    }
+    $('#year').find('option:first-child').prop('selected', true)
+    $('#year').trigger('change');
+    
+    refreshUrls();
+  });
+
+  $(document).on('change', '#year', function(){
+    refreshUrls();
+  });
+
+  $(function(){
+    $('#collection').trigger('change');
+    refreshUrls();
+  });
+</script>
+
 <article class="page">
   <div class="page__container">
-    <h1 class="page__title">MapBiomas Collections</h1>
+    <h1 class="page__title">Coleções MAPBIOMAS</h1>
 
-    <p>From the Landsat mosaics, classification are carried out to create the land use and land cover  maps for each year. Based on the methodology established by MapBiomas, the maps are generated. They  will be updated every time there is an improvement in ranking algorithms . The classification methodology and process is dynamic , in order to improve the classification of each type.</p>
-    <p>Here you can access the land use and lan cover maps, classified for each of the maps IBGE 1 : 250,000.</p>
+    <p>From the LANDSAT mosaics the classifications process starts, resulting in the annual land use land cover maps. Within the logic proposed by MAPBIOMAS the maps are updated every time there is an improvement in the classification algorithms. The classification methodology is dynamic and procedural, with the purpose of improving the classification of each typology.</p>
 
-    <p><strong>[COMMING SOON]</strong></p>
+    <p>Here you can access the land use and land cover maps organized per biome and year.</p>
+
+    <blockquote>
+      <strong>Warning:</strong> When composing a single mosaic or calculating statistics it should be noted that:
+      <ul>
+        <li>For area calculation, it is necessary to use a suitable metric projection.</li>
+        <li>All data are in GeoTiff format and have LZW compression.</li>
+      </ul>
+    </blockquote>
+
+    <div class="page__box-download">
+      <%= select_tag "collection", options_for_select([["Collection 2", 2], ["Collection 1", 1]]), id: "collection" %>
+      <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+    </div>
+
+    <div class="methodology-presentation">
+      <%= image_tag "amazonia.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='AMAZONIA' target="_blank">Amazon</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pantanal.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='PANTANAL' target="_blank">Pantanal</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "caatinga.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='CAATINGA' target="_blank">Caatinga</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "mata_atlantica.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='MATAATLANTICA' target="_blank">Atlantic Forest</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "cerrado.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='CERRADO' target="_blank">Cerrado</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pampa.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='PAMPA' target="_blank">Pampa</a>
+      </div>
+    </div>
+
   </div>
 </article>

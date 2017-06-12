@@ -1,39 +1,109 @@
-<article class="page page--home">
-  <div class="page__container">
-    <section class="page__section">
-      <div class="page__section-media--full">
-        <iframe style="width: 100%; height: 500px" src="https://www.youtube.com/embed/UDobZ3oB5TY" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+$(function() {
+  $(".video").click(function () {
+    var theModal = $(this).data("target"),
+    videoSRC = $(this).attr("data-video"),
+    videoSRCauto = videoSRC + "?modestbranding=0&rel=0&controls=1&showinfo=1&html5=1&autoplay=1";
+    $(theModal + ' iframe').attr('src', videoSRCauto);
+    $(theModal + ' button.close').click(function () {
+      $(theModal + ' iframe').attr('src', videoSRC);
+    });
+  });
+});
+</script>
 
-    <section class="page__section">
-      <div class="page__section-text">
-        <h2 class="page__title">Explore MapBiomas</h2>
-        <p>Get access to maps, data and reports</p>
-        <%= link_to 'View Map', map_path, class: 'button button--primary' %>
-      </div>
-      <div class="page__section-media">
-        <%= image_tag "platform-mockup.png" %>
-      </div>
-    </section>
+<section class="home__video">
+  <div class="home__video-content">
+    <p><%= image_tag "brand.svg" %></p>
+    <p>The <strong>MapBiomas</strong> - {Falta Traduzir}</p>
+  <button class="button primary video" data-video="https://www.youtube.com/embed/AAEbeMQlJc4" data-toggle="modal" data-target="#videoModal">Watch the project video</button>
+  </div>
+  <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
+    <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
+  </video>
+</section>
 
-    <section class="page__section">
-      <div class="page__section-media">
-        <iframe style="width: 100%; height: 300px" src="https://www.youtube.com/embed/rmz5BsZfPjE" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="page__section-text">
-        <h2 class="page__title">MapBiomas Launch Event</h2>
-        <p>New platform maps the dynamics of land use in Brazil in the last three decades. Watch the complete event!</p>
-        <%= link_to 'Press Release',
-          'https://storage.googleapis.com/mapbiomas/Release%20MapBiomas%20-%2026.11.2015.pdf', target: 
-          '_blank', class: 'button button--primary' %>
+<div class="modal-video fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-      </div>
-    </section>
+  <button type="button" class="button primary close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <iframe width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
+</div>
 
-    <section class="page__section--full">
-      <h2 class="page__title">Partners</h2>
-      <%= image_tag "partners.en.png" %>
-    </section>
+<article class="home__coating">
+  <div class="home__coating-content">
+    <%= image_tag "cobertura.png", class: "home__coating-image" %>
+    <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COBERTURA E USO DO SOLO</a></h1>
+    <p>Conheça a cobertura e uso do solo anual do Brasil entre 2000 e 2016 navegando na coleção 2 do MapBiomas</p>
+    <a class="button primary" href="http://mapbiomas.org/map#coverage">Acesse aqui</a>
+  </div>
+</article>
+
+<article class="home__changes">
+  <div class="home__changes-content">
+    <%= image_tag "sankey.png", class: "home__changes-image" %>
+    <h1 class="page__title"><a href="http://mapbiomas.org/map#transitions">MUDANÇAS</a></h1>
+    <p>Acompanhe as mudanças do território nos<br> últimos 17 anos</p>
+    <a class="button primary"  href="http://mapbiomas.org/map#transitions">Acesse aqui</a>
+  </div>
+</article>
+
+<article class="home__numbers">
+  <div class="home__numbers-content">
+    <%= image_tag "chart.png", class: "home__numbers-image" %>
+    <h1 class="page__title"><a href="http://mapbiomas.org/stats">NÚMEROS</a></h1>
+    <p>Navegue pelas estatísticas de cobertura e <br>uso do solo do Brasil</p>
+    <a class="button primary"  href="http://mapbiomas.org/stats">Acesse aqui</a>
+  </div>
+</article>
+
+<article class="home__quality">
+  <div class="home__quality-content">
+    <%= image_tag "landsat.png", class: "home__quality-image" %>
+    <h1 class="page__title"><a href="http://mapbiomas.org/map#quality">QUALIDADE DOS DADOS</a></h1>
+    <p>Veja a qualidade dos dados para cada uma das cartas analisadas pela equipe do MapBiomas</p>
+    <a class="button primary"  href="http://mapbiomas.org/map#quality">Acesse aqui</a>
+  </div>
+</article>
+
+<article class="home__partners">
+  <div class="home__partners-content">
+    <h1 class="page__title">O MAPBIOMAS É UMA INICIATIVA DE</h1>
+    <div class="text-center">
+      <%= image_tag "oc.png", class: "home__partners-image" %>
+      <%= image_tag "seeg.png", class: "home__partners-image" %>
+    </div>
+
+    <h1>CO-CRIADORES</h1>
+    <%= image_tag "lapig.png" %>
+    <%= image_tag "sos-pantanal.png" %>
+    <%= image_tag "sos-mata-atlantica.png" %>
+    <%= image_tag "imazon.png" %>
+    <%= image_tag "ufrgs.png" %>
+    <%= image_tag "uefs.png" %>
+    <%= image_tag "arcplan.png" %>
+    <%= image_tag "pne.png" %>
+    <%= image_tag "vale.png" %>
+    <%= image_tag "ipam.png" %>
+    <%= image_tag "agro-satelite.png" %>
+
+    <h1>FINANCIAMENTO</h1>
+    <%= image_tag "moore.png" %>
+    <%= image_tag "climate.png" %>
+    <%= image_tag "nicfi.png" %>
+    <%= image_tag "instituto-arapyau.png" %>
+
+    <h1>PARCEIROS DE TECNOLOGIA</h1>
+    <%= image_tag "ecostage.png" %>
+    <%= image_tag "google.png" %>
+    <%= image_tag "terras.png" %>
+
+    <h1>APOIO INSTITUCIONAL</h1>
+    <%= image_tag "ids.png" %>
+    <%= image_tag "avina.png" %>
+    <%= image_tag "wri.png" %>
+    <%= image_tag "tnc-brasil.png" %>
   </div>
 </article>

@@ -2,25 +2,41 @@
   <div class="page__container">
     <h1 class="page__title">Downloads</h1>
 
-    <p>Aqui é possível baixar os mapas e mosaicos de imagens Landsat das coleções 1 e 2 do MapBiomas. Também são fornecidos acessos a plataforma de downloads dos mapas de referencia utilizados pelo MapBiomas.</p>
+    <p>Here you can download maps and mosaics of Landsat images from collections 1 and 2 of MapBiomas. We also provided access to the download platform of the reference maps used by MapBiomas.</p>
     <div class="downloads">
       <div class="downloads__mapbiomas_collection">
         <div class="downloads__icon">
           <%= link_to (image_tag "icon-collection.png"), page_path('database/mapbiomas_collection') %>
         </div>
-        <strong><%= link_to 'Mapas das coleções', page_path('database/mapbiomas_collection') %></strong>
+        <strong><%= link_to 'Mapbiomas Collections', page_path('database/mapbiomas_collection') %></strong>
       </div>
+
       <div class="downloads__reference_maps">
         <div class="downloads__icon">
           <%= link_to (image_tag "icon-reference-pb.png"), page_path('database/reference_maps') %>
         </div>
-        <strong><%= link_to 'Mapas de referência', page_path('database/reference_maps') %></strong>
+        <strong><%= link_to 'Reference Maps', page_path('database/reference_maps') %></strong>
       </div>
+
       <div class="downloads__landsat_mosaics">
         <div class="downloads__icon">
           <%= link_to (image_tag "icon-landsat.png"), page_path('database/landsat_mosaics') %>
         </div>
         <strong><%= link_to 'Mosaicos Landsat', page_path('database/landsat_mosaics') %></strong>
+      </div>
+
+      <div class="downloads__cod_legend">
+        <div class="downloads__icon">
+          <%= link_to (image_tag "icon-cod_legend.png"), "https://s3.amazonaws.com/mapbiomas-ecostage/legenda_mapbiomas.pdf", target: "_blank" %>
+        </div>
+        <strong><%= link_to 'Legend codes', "https://s3.amazonaws.com/mapbiomas-ecostage/legend_codes.pdf", target: "_blank" %></strong>
+      </div>
+
+      <div class="downloads__mapbiomas_collection">
+        <div class="downloads__icon">
+          <%= link_to (image_tag "icon-mural.png"), page_path('mapa-mural') %>
+        </div>
+        <strong><%= link_to 'Mural Map', page_path('mapa-mural') %></strong>
       </div>
     </div>
   </div>
