@@ -2,19 +2,47 @@
   <div class="page__container">
     <h1 class="page__title">Workspace</h1>
 
-    <p>MapBiomas’ Workspace is a working environment platform,  which enables the team to fully access, in an user-friendly manner, the potential of Google Earth Engine tools (i.e. without the need of writing coding lines or scripts). </p>
+    <p>MapBiomas Workspace is the platform's working environment. It is through it that MapBiomas biome team accesses Earth Engine tools without the need to enter programming lines of code.</p>
 
-    <p>Developers and programmers have created an application that organizes the workflow and allows each analyst and member of the team to operate in parallel on the same platform and with full control of all important variables to generate the best image mosaics and the best classification for each cartographic tile  or region of interest.</p>
+    <p>Our developers and programmers have created an application that organizes the workflow and allows each analyst and team member to be able to operate in parallel on the same platform and with full control of all important variables to generate the best mosaic of images and the best classification for each chart or region of work.</p>
 
-    <p>The Workspace will be fully accessible and open to researchers and analysts of other institutions participating in MapBiomas,  even for the development of other projects. This level of interactivity and accessability will be implemented along the year of 2016. Interested parties have yet to experience the platform in guest mode.</p>
+    <p>The Workspace will be open to collaborators from other institutions participating in MapBiomas or even developing other projects. This modality will be implemented throughout 2016. Interested users, however, may already try the platform as visitors and process data, although without saving any parameter change.</p>
 
-    <p>To access MapBiomas Workspace, the user must have a GMAIL account and must register at Google Earth Engine platform through this link
-    <a href="https://earthengine.google.com">https://earthengine.google.com</a></p>
+    <p>To visit the workspace platform go here: 
+    <%= link_to 'http://workspace.mapbiomas.org', "http://workspace.mapbiomas.org", {target: "_blank"} %></p>
 
-    <p>Once registered, the user should request access to the MapBiomas Workspace filling the following form:
-    <a href="http://goo.gl/forms/k2J0IAFlmy">http://goo.gl/forms/k2J0IAFlmy</a></p>
+    <p><br><%= image_tag "workspace.jpg" %></p>
 
-    <p>If you are already registered in the Workspace please access the platform here:
-    <a href="http://workspace.mapbiomas.org">http://workspace.mapbiomas.org</a></p>
+    <h2 class="page__title">MAPBIOMAS COLLECTION 1 SCRIPTS</h2>
+
+    <p>The MapBiomas Collection 1 Scripts (Google Earth Engine) are public and can be <a href="https://s3.amazonaws.com/mapbiomas-ecostage/Base+de+dados/Ambiente+de+trabalho/Script+MapBiomas+-+Colec%CC%A7a%CC%83o+1+_Google+Earth+Engine+v1.3.1a.docx" target="_blank">downloaded here</a></p>
+
+    <p>To access and run proceed as follows:</p>
+
+    <ul>
+      <li>With a Gmail account sign up for the Google Earth Engine Platform through this link 
+      <%= link_to 'https://earthengine.google.com', "https://earthengine.google.com", {target: "_blank"} %></li>
+      <li>In a few days you will receive authorization to access the platform.</li>
+      <li>Once you have registered with Google Earth Engine enter the CODE EDITOR of the platform and paste / insert the MapBiomas script.</li>
+      <li>Change the parameters to get the desired map. For example, you can choose a biome or state, different periods of image acquisition, maximum cloud coverage, classification parameters, etc.</li>
+    </ul>
+
+    <p>We encourage users of MAPBIOMAS SCRIPTS to send us their suggestions for innovation so that we can constantly improve it.</p>
+
+    <p><br><%= image_tag "google-earth-engine.jpg" %></p>
+
+    <h2 class="page__title">WEB COLLECT</h2>
+
+    <p>One of the strategies to carry out an accuracy analysis of MapBiomas maps is to collect samples within visual analysis over high-resolution images. There will be about 20 thousand sampling points, each with nine samples replicated by three different analysts.</p>
+
+    <p>To manage the collection of samples, we joined the Collect Earth program developed by FAO to carry out forest inventory samples.</p>
+
+    <p>The Collect Earth program is originally prepared to operate in desktop format. To adapt to MapBiomas networking characteristics, the Web Collect application is being developed. This tool will allow multiple analysts to work in parallel with the sampling projects of each biome.</p>
+
+    <p>The Beta version of Web Collect can be viewed here:
+    <%= link_to 'http://webcollect.mapbiomas.org', "http://webcollect.mapbiomas.org", {target: "_blank"} %></p>
+
+    <p><br><%= image_tag "webcollect.png" %></p>
+
   </div>
 </article>
