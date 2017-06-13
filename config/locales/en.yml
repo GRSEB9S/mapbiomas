@@ -1,5 +1,16 @@
 en:
   number:
     format:
-      delimiter: '.'
-      separator: ','
+      delimiter: ','
+      separator: '.'
+  charts:
+    lang:
+      download_jpeg: Export as JPG
+      download_pdf: Export as PDF
+      download_png: Export as PNG
+      download_svg: Export as SVG
+      print_chart: Print chart
+    buttons:
+      context_button:
+        title: Export chart
+        text: Export
