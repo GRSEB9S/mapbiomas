@@ -75,7 +75,7 @@ class CoverageLineChart extends Component {
   loadCoverage(props) {
     API.coverage({
       territory_id: props.territory.id,
-      classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
+      classification_ids: props.defaultClassifications.map((c) => c.id).join(',')
     }).then((coverage) => {
       this.setState({ coverage: this.parseCoverage(coverage) }, () => {
         this.drawChart()

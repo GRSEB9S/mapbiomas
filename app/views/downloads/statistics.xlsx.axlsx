@@ -1,0 +1,18 @@
+workbook = xlsx_package.workbook
+center = workbook.styles.add_style(
+  alignment: {
+    horizontal: :center,
+    vertical: :center,
+    wrap_text: true
+  }
+)
+
+workbook.add_worksheet(:name => @download_presenter.worksheet_name) do |sheet|
+  sheet.add_row(@download_presenter.header, style: center)
+
+  @download_presenter.value_rows.each do |row|
+    sheet.add_row(row, style: center)
+  end
+
+  sheet.merge_cells(sheet.cols.first[1..@download_presenter.span])
+end

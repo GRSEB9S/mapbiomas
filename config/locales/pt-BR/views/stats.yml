@@ -16,4 +16,6 @@ pt-BR:
     chart:
       yAxis:
         title: 'Área'
-
+    table:
+      download: Download
+      download_file: Estatísticas
