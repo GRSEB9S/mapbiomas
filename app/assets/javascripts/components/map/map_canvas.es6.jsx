@@ -32,20 +32,23 @@ export class MapCanvas extends React.Component {
     let layer;
 
     if (baseMap.wms) {
-      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions)
-      .addTo(this.map);
+      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions);
     } else {
-      if(baseMap.googleMap) {
+      /*if(baseMap.googleMap) {
         layer = new L.Google(baseMap.type);
 
         this.map.addLayer(layer);
-      } else {
-        layer = L.tileLayer(baseMap.link, {
-          zIndex: 1,
-          attribution: baseMap.attribution
-        }).addTo(this.map);
-      }
+      }*/
+
+      layer = L.tileLayer(baseMap.link, {
+        zIndex: 1,
+        attribution: baseMap.attribution
+      }).addTo(this.map);
     }
+
+    layer.on('loading', () => this.map.spin(true))
+         .on('load', () => this.map.spin(false))
+         .addTo(this.map);
 
     this.baseLayers[baseMap.slug] = layer;
   }
@@ -90,15 +93,18 @@ export class MapCanvas extends React.Component {
     }
 
     cartodb.createLayer(this.map, mapLayer.link)
-    .addTo(this.map)
-    .done((layer) => {
-      if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
-        layer.setZIndex(10);
-        this.mapLayers[mapLayer.slug] = layer;
-      } else {
-        this.map.removeLayer(layer);
-      }
-    });
+      .addTo(this.map)
+      .done((layer) => {
+        layer.on('loading', () => this.map.spin(true));
+        layer.on('load', () => this.map.spin(false));
+
+        if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
+          layer.setZIndex(10);
+          this.mapLayers[mapLayer.slug] = layer;
+        } else {
+          this.map.removeLayer(layer);
+        }
+      });
   }
 
   removeMapLayer(slug) {
@@ -145,6 +151,9 @@ export class MapCanvas extends React.Component {
       this.dataLayer.setOpacity(this.props.opacity);
     } else {
       this.dataLayer = L.tileLayer.wms(`${url}/wms`, options)
+        .on('loading', () => this.map.spin(true))
+        .on('load', () => this.map.spin(false))
+        .on('tileunload', () => this.map.spin(false))
         .addTo(this.map);
     }
   }
@@ -222,7 +231,9 @@ export class MapCanvas extends React.Component {
 
   componentDidMount() {
     const node = this.refs.element;
-    this.map = L.map(node, { zoomControl: false, minZoom: 4 }).setView([-20, -45], 6);
+    this.map = L.map(node, { zoomControl: false, minZoom: 4 })
+                .setView([-20, -45], 6)
+                .on('layerremove', () => this.map.spin(false));
 
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'

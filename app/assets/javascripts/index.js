@@ -1,5 +1,7 @@
 import 'highcharts_config';
-import 'vendor/leaflet-google';
+//import 'vendor/leaflet-google';
+import 'vendor/spin';
+import 'vendor/leaflet-spin';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
