@@ -2,6 +2,7 @@ import 'highcharts_config';
 //import 'vendor/leaflet-google';
 import 'vendor/spin';
 import 'vendor/leaflet-spin';
+import { Locale } from 'lib/locale';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -12,7 +13,9 @@ import Stats from './components/stats/stats';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
+
 window.LandsatDownload = LandsatDownload;
 window.Map = Map;
 window.Menu = Menu;
 window.Stats = Stats;
+window.Locale = Locale;

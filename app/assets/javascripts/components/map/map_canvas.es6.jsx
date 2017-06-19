@@ -174,6 +174,7 @@ export class MapCanvas extends React.Component {
       weight: 0.2
     };
 
+    this.map.spin(true);
     this.cardsLayer = L.geoJson(this.props.cards, {
       style: (feature) => {
         const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
@@ -189,6 +190,7 @@ export class MapCanvas extends React.Component {
       }
     })
     .addTo(this.map);
+    this.map.spin(false);
   }
 
   componentDidUpdate(prevProps) {

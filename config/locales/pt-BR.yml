@@ -9,6 +9,7 @@ pt-BR:
       download_pdf: Exportar como PDF
       download_png: Exportar como PNG
       download_svg: Exportar como SVG
+      loading: Carregando...
       print_chart: Imprimir gráfico
     buttons:
       context_button:
