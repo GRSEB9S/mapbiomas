@@ -1,7 +1,7 @@
 en:
   stats:
     title: 'Statistics'
-    subtitle: Selecione nas caixas abaixo os territórios (país, estado, município ou bioma) e as classes para os quais deseja ver a estatística ao longo do período da coleção do MapBiomas.
+    subtitle: Select in the boxes below the territories (country, state, municipality or biome) and the classes for which you want to see the statistics over the period of the MapBiomas collection.
     searching: 'Searching...'
     territories:
       title: 'Territories'
