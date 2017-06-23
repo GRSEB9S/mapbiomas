@@ -16,3 +16,6 @@ en:
     chart:
       yAxis:
         title: 'Area'
+    table:
+      download: Download
+      download_file: Statistics
