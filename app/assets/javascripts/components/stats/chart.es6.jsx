@@ -94,8 +94,8 @@ export default class Chart extends React.Component {
     this.chart.showLoading();
 
     API.groupedCoverage({
-      territory_id: props.territories.map(t => t.value).join(','),
-      classification_id: props.classifications.map((c) => c.value).join(',')
+      territory_id: this.props.territories.map(t => t.value).join(','),
+      classification_id: this.props.classifications.map((c) => c.value).join(',')
     }).then(data => this.setState({ data }, () => {
       this.chart.hideLoading();
     }));
