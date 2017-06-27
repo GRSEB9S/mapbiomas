@@ -1,4 +1,5 @@
 import 'highcharts_config';
+import 'vendor/leaflet-side-by-side';
 //import 'vendor/leaflet-google';
 import 'vendor/spin';
 import 'vendor/leaflet-spin';

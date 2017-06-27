@@ -7,32 +7,51 @@ export class MapCanvas extends React.Component {
 
     this.baseLayers = {};
     this.mapLayers = {};
+    this.sideBySideLayers = {};
     this.classificationLayers = {};
     this.dataLayer = null;;
     this.cardsLayer = null;
   }
 
   get getBaseLayerOptions() {
-    let year = this.props.mode == 'transitions' ? this.props.years[1] : this.props.year;
-
     return {
       layers: 'rgb',
       map: "wms/classification/rgb.map",
-      year: year,
+      year: this.props.year,
       format: 'image/png',
       transparent: true
     };
   }
 
+  addBaseWMSLayer(baseMap) {
+    let leftLayer = L.tileLayer.wms(baseMap.link, {
+      ...this.getBaseLayerOptions,
+      year: this.props.years[0]
+    }).addTo(this.map);
+    let rightLayer = L.tileLayer.wms(baseMap.link, {
+      ...this.getBaseLayerOptions,
+      year: this.props.years[1]
+    }).addTo(this.map);
+    let layer = L.control.sideBySide(leftLayer, rightLayer);
+
+    this.sideBySideLayers[baseMap.slug] = layer;
+    layer.addTo(this.map);
+  }
+
   addBaseLayer(baseMap) {
-    if (this.baseLayers[baseMap.slug]) {
+    if (this.sideBySideLayers[baseMap.slug] || this.baseLayers[baseMap.slug]) {
       return;
     }
 
     let layer;
 
     if (baseMap.wms) {
-      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions);
+      if (this.props.mode == 'transitions') {
+        this.addBaseWMSLayer(baseMap);
+        return;
+      } else {
+        layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions);
+      }
     } else {
       /*if(baseMap.googleMap) {
         layer = new L.Google(baseMap.type);

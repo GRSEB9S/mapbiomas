@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'underscore';
 import classNames from 'classnames';
 import Scrollable from '../../lib/scrollable';
 
