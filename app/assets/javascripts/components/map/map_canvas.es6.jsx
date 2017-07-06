@@ -78,7 +78,9 @@ export class MapCanvas extends React.Component {
       delete this.baseLayers[slug];
       this.map.removeLayer(layer);
     }
+  }
 
+  removeSideBySideLayer(slug) {
     if (this.sideBySideLayers[slug]) {
       const control = this.sideBySideLayers[slug];
       delete this.sideBySideLayers[slug];
@@ -102,15 +104,27 @@ export class MapCanvas extends React.Component {
       {...acc, [slug]: true}
     ), {});
 
-    _.each(baseMaps, this.addBaseLayer.bind(this));
+    _.each(baseMaps, (map) => {
+      if (this.props.mode == 'transitions' && map.wms) {
+        this.removeBaseLayer(map.slug);
+      }
+
+      if (this.props.mode != 'transitions' && map.wms) {
+        this.removeSideBySideLayer(map.slug);
+      }
+
+      this.addBaseLayer(map);
+    })
+
     _.each(this.baseLayers, (layer, slug) => {
       if (!baseMapsSlugs[slug]) {
         this.removeBaseLayer(slug);
       }
     });
+
     _.each(this.sideBySideLayers, (layer, slug) => {
       if (!baseMapsSlugs[slug]) {
-        this.removeBaseLayer(slug);
+        this.removeSideBySideLayer(slug);
       }
     });
   }
@@ -230,7 +244,7 @@ export class MapCanvas extends React.Component {
       this.setupTerritory();
     }
 
-    if (prevProps.selectedBaseMaps != this.props.selectedBaseMaps) {
+    if ((prevProps.selectedBaseMaps != this.props.selectedBaseMaps) || (prevProps.mode != this.props.mode)) {
       this.setupBaseLayers();
     }
 
