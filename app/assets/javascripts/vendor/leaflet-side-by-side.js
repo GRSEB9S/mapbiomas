@@ -104,11 +104,22 @@ L.Control.SideBySide = L.Control.extend({
       this._rightLayer.getContainer().style.clip = ""
     }
     this._removeEvents()
-    L.DomUtil.remove(this._container)
 
-    this._map = null
+    var parent = this._container.parentNode;
+
+    if (parent) {
+      parent.removeChild(this._container);
+    }
 
     return this
+  },
+
+  getLeftLayer: function() {
+    return this._leftLayer;
+  },
+
+  getRightLayer: function() {
+    return this._rightLayer;
   },
 
   setLeftLayers: function (leftLayers) {

@@ -78,6 +78,14 @@ export class MapCanvas extends React.Component {
       delete this.baseLayers[slug];
       this.map.removeLayer(layer);
     }
+
+    if (this.sideBySideLayers[slug]) {
+      const control = this.sideBySideLayers[slug];
+      delete this.sideBySideLayers[slug];
+      this.map.removeLayer(control.getLeftLayer());
+      this.map.removeLayer(control.getRightLayer());
+      control.remove();
+    }
   }
 
   updateBaseLayers() {
@@ -96,6 +104,11 @@ export class MapCanvas extends React.Component {
 
     _.each(baseMaps, this.addBaseLayer.bind(this));
     _.each(this.baseLayers, (layer, slug) => {
+      if (!baseMapsSlugs[slug]) {
+        this.removeBaseLayer(slug);
+      }
+    });
+    _.each(this.sideBySideLayers, (layer, slug) => {
       if (!baseMapsSlugs[slug]) {
         this.removeBaseLayer(slug);
       }
