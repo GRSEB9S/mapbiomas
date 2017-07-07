@@ -23,15 +23,23 @@ export class MapCanvas extends React.Component {
     };
   }
 
-  addBaseWMSLayer(baseMap) {
-    let leftLayer = L.tileLayer.wms(baseMap.link, {
+  get leftLayerOptions() {
+    return {
       ...this.getBaseLayerOptions,
       year: this.props.years[0]
-    }).addTo(this.map);
-    let rightLayer = L.tileLayer.wms(baseMap.link, {
+    }
+  }
+
+  get rightLayerOptions() {
+    return {
       ...this.getBaseLayerOptions,
       year: this.props.years[1]
-    }).addTo(this.map);
+    }
+  }
+
+  addBaseWMSLayer(baseMap) {
+    let leftLayer = L.tileLayer.wms(baseMap.link, this.leftLayerOptions).addTo(this.map);
+    let rightLayer = L.tileLayer.wms(baseMap.link, this.rightLayerOptions).addTo(this.map);
     let layer = L.control.sideBySide(leftLayer, rightLayer);
 
     this.sideBySideLayers[baseMap.slug] = layer;
@@ -91,6 +99,11 @@ export class MapCanvas extends React.Component {
   }
 
   updateBaseLayers() {
+    _.each(this.sideBySideLayers, (layer) => {
+      layer.getLeftLayer().setParams(this.leftLayerOptions);
+      layer.getRightLayer().setParams(this.rightLayerOptions);
+    })
+
     _.each(this.baseLayers, (layer) => {
       if (layer.wmsParams) {
         layer.setParams(this.getBaseLayerOptions);
