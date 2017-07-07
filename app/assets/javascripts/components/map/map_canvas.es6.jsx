@@ -7,32 +7,59 @@ export class MapCanvas extends React.Component {
 
     this.baseLayers = {};
     this.mapLayers = {};
+    this.sideBySideLayers = {};
     this.classificationLayers = {};
     this.dataLayer = null;;
     this.cardsLayer = null;
   }
 
   get getBaseLayerOptions() {
-    let year = this.props.mode == 'transitions' ? this.props.years[1] : this.props.year;
-
     return {
       layers: 'rgb',
       map: "wms/classification/rgb.map",
-      year: year,
+      year: this.props.year,
       format: 'image/png',
       transparent: true
     };
   }
 
+  get leftLayerOptions() {
+    return {
+      ...this.getBaseLayerOptions,
+      year: this.props.years[0]
+    }
+  }
+
+  get rightLayerOptions() {
+    return {
+      ...this.getBaseLayerOptions,
+      year: this.props.years[1]
+    }
+  }
+
+  addBaseWMSLayer(baseMap) {
+    let leftLayer = L.tileLayer.wms(baseMap.link, this.leftLayerOptions).addTo(this.map);
+    let rightLayer = L.tileLayer.wms(baseMap.link, this.rightLayerOptions).addTo(this.map);
+    let layer = L.control.sideBySide(leftLayer, rightLayer);
+
+    this.sideBySideLayers[baseMap.slug] = layer;
+    layer.addTo(this.map);
+  }
+
   addBaseLayer(baseMap) {
-    if (this.baseLayers[baseMap.slug]) {
+    if (this.sideBySideLayers[baseMap.slug] || this.baseLayers[baseMap.slug]) {
       return;
     }
 
     let layer;
 
     if (baseMap.wms) {
-      layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions);
+      if (this.props.mode == 'transitions') {
+        this.addBaseWMSLayer(baseMap);
+        return;
+      } else {
+        layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions);
+      }
     } else {
       /*if(baseMap.googleMap) {
         layer = new L.Google(baseMap.type);
@@ -61,7 +88,22 @@ export class MapCanvas extends React.Component {
     }
   }
 
+  removeSideBySideLayer(slug) {
+    if (this.sideBySideLayers[slug]) {
+      const control = this.sideBySideLayers[slug];
+      delete this.sideBySideLayers[slug];
+      this.map.removeLayer(control.getLeftLayer());
+      this.map.removeLayer(control.getRightLayer());
+      control.remove();
+    }
+  }
+
   updateBaseLayers() {
+    _.each(this.sideBySideLayers, (layer) => {
+      layer.getLeftLayer().setParams(this.leftLayerOptions);
+      layer.getRightLayer().setParams(this.rightLayerOptions);
+    })
+
     _.each(this.baseLayers, (layer) => {
       if (layer.wmsParams) {
         layer.setParams(this.getBaseLayerOptions);
@@ -75,10 +117,27 @@ export class MapCanvas extends React.Component {
       {...acc, [slug]: true}
     ), {});
 
-    _.each(baseMaps, this.addBaseLayer.bind(this));
+    _.each(baseMaps, (map) => {
+      if (this.props.mode == 'transitions' && map.wms) {
+        this.removeBaseLayer(map.slug);
+      }
+
+      if (this.props.mode != 'transitions' && map.wms) {
+        this.removeSideBySideLayer(map.slug);
+      }
+
+      this.addBaseLayer(map);
+    })
+
     _.each(this.baseLayers, (layer, slug) => {
       if (!baseMapsSlugs[slug]) {
         this.removeBaseLayer(slug);
+      }
+    });
+
+    _.each(this.sideBySideLayers, (layer, slug) => {
+      if (!baseMapsSlugs[slug]) {
+        this.removeSideBySideLayer(slug);
       }
     });
   }
@@ -198,7 +257,7 @@ export class MapCanvas extends React.Component {
       this.setupTerritory();
     }
 
-    if (prevProps.selectedBaseMaps != this.props.selectedBaseMaps) {
+    if ((prevProps.selectedBaseMaps != this.props.selectedBaseMaps) || (prevProps.mode != this.props.mode)) {
       this.setupBaseLayers();
     }
 
