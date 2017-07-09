@@ -102,17 +102,7 @@ export default class Map extends React.Component {
     return this.state.mode;
   }
 
-  get mapPath() {
-    if (this.mode == 'transitions' && !this.state.transition) {
-      return 'wms/classification/transitions_group.map';
-    } else if (this.mode == 'transitions') {
-      return 'wms/classification/transitions.map';
-    } else {
-      return 'wms/classification/coverage.map';
-    }
-  }
-
-  get transitionsLayerOptions() {
+  get transitionsDataLayerOptions() {
     let fromId, toId;
     let transitionInfo = {};
 
@@ -132,7 +122,7 @@ export default class Map extends React.Component {
     }
   }
 
-  get coverageLayerOptions() {
+  get coverageDataLayerOptions() {
     let ids = this.classifications.map((c) => c.id);
 
     return {
@@ -141,20 +131,10 @@ export default class Map extends React.Component {
     };
   }
 
-  get tileOptions() {
-    let layerOptions = this.mode == 'coverage' ? this.coverageLayerOptions :
-                       this.transitionsLayerOptions;
-
+  get dataLayerOptions() {
     return {
-      layerOptions: {
-        ...layerOptions,
-        url: this.props.apiUrl,
-        layers: this.mode,
-        map: this.mapPath,
-        territory_id: this.territory.id,
-        format: 'image/png'
-      },
-      opacity: this.state.opacity
+      coverage: this.coverageDataLayerOptions,
+      transitions: this.transitionsDataLayerOptions
     };
   }
 
@@ -530,7 +510,10 @@ export default class Map extends React.Component {
         {this.renderWarning('quality')}
 
         <MapCanvas
-          {...this.tileOptions}
+          dataLayerOptions={this.dataLayerOptions}
+          apiUrl={this.props.apiUrl}
+          transition={this.state.transition}
+          opacity={this.state.opacity}
           ref="canvas"
           cards={this.state.cards}
           baseMaps={this.props.availableBaseMaps}

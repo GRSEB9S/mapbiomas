@@ -130,8 +130,22 @@ class MapPresenter
     }
   end
 
+  def coverage_data
+    {
+      id: 7,
+      slug: 'coverage-data',
+      name: I18n.t('map.index.base_maps.coverage_data'),
+      data: true,
+      mode: 'coverage',
+      wms: true,
+      color: nil,
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms"
+    }
+  end
+
   def base_maps
     [
+      coverage_data,
       rgb_landsat,
       esri_imagery,
       openstreet_mapnik,

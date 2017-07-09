@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'underscore';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ClassificationControl from '../../controls/classification';
 import TogglesControl from '../../controls/toggles';
@@ -10,6 +11,10 @@ class CoverageAuxiliarControls extends React.Component {
       theme: 'tooltip-custom-theme',
       content: $(I18n.t('map.index.base_maps.tooltip'))
     });
+  }
+
+  get baseMapsOptions() {
+    return _.filter(this.props.availableBaseMaps, (m) => !m.data);
   }
 
   render() {
@@ -47,7 +52,7 @@ class CoverageAuxiliarControls extends React.Component {
           <TogglesControl
             className="map-panel__content"
             options={this.props.baseMaps}
-            availableOptions={this.props.availableBaseMaps}
+            availableOptions={this.baseMapsOptions}
             onChange={this.props.handleBaseMapsChange}
           />
         </TabPanel>

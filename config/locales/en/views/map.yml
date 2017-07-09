@@ -43,6 +43,7 @@ en:
             <li><b>Roads - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
             <li><b>Relief - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
           </ul>
+        coverage_data: Land Use and Cover Mapping
         rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (specific to each year)
         satellite: Google Satellite
         roadmap: Google Roadmap
