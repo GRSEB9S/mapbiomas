@@ -34,7 +34,8 @@ export class MapCanvas extends React.Component {
 
     return {
       ...options,
-      year: this.props.years[0]
+      year: this.props.years[0],
+      zIndex: 2
     }
   }
 
@@ -49,7 +50,8 @@ export class MapCanvas extends React.Component {
 
     return {
       ...options,
-      year: this.props.years[1]
+      year: this.props.years[1],
+      zIndex: 2
     }
   }
 
@@ -100,7 +102,10 @@ export class MapCanvas extends React.Component {
         this.addBaseWMSLayer(baseMap);
         return;
       } else {
-        layer = L.tileLayer.wms(baseMap.link, this.baseLayerOptions);
+        layer = L.tileLayer.wms(baseMap.link, {
+          ...this.baseLayerOptions,
+          zIndex: 2
+        });
       }
     } else {
       /*if(baseMap.googleMap) {
