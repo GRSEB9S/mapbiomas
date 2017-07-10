@@ -13,7 +13,7 @@ export class MapCanvas extends React.Component {
     this.cardsLayer = null;
   }
 
-  get getBaseLayerOptions() {
+  get baseLayerOptions() {
     return {
       layers: 'rgb',
       map: "wms/classification/rgb.map",
@@ -23,23 +23,65 @@ export class MapCanvas extends React.Component {
     };
   }
 
-  get leftLayerOptions() {
+  leftLayerOptions(mode) {
+    let options;
+
+    if (mode) {
+      options = this.dataLayerOptions(mode);
+    } else {
+      options = this.baseLayerOptions;
+    }
+
     return {
-      ...this.getBaseLayerOptions,
-      year: this.props.years[0]
+      ...options,
+      year: this.props.years[0],
+      zIndex: 2
     }
   }
 
-  get rightLayerOptions() {
-    return {
-      ...this.getBaseLayerOptions,
-      year: this.props.years[1]
+  rightLayerOptions(mode) {
+    let options;
+
+    if (mode) {
+      options = this.dataLayerOptions(mode);
+    } else {
+      options = this.baseLayerOptions;
     }
+
+    return {
+      ...options,
+      year: this.props.years[1],
+      zIndex: 2
+    }
+  }
+
+  mapPath(mode = this.props.mode) {
+    if (mode == 'transitions' && !this.props.transition) {
+      return 'wms/classification/transitions_group.map';
+    } else if (mode == 'transitions') {
+      return 'wms/classification/transitions.map';
+    } else {
+      return 'wms/classification/coverage.map';
+    }
+  }
+
+  dataLayerOptions(mode = this.props.mode) {
+    return {
+      ...this.props.dataLayerOptions[mode],
+      layers: mode,
+      map: this.mapPath(mode),
+      territory_id: this.props.territory.id,
+      format: 'image/png',
+      transparent: true
+    };
   }
 
   addBaseWMSLayer(baseMap) {
-    let leftLayer = L.tileLayer.wms(baseMap.link, this.leftLayerOptions).addTo(this.map);
-    let rightLayer = L.tileLayer.wms(baseMap.link, this.rightLayerOptions).addTo(this.map);
+    let leftOptions = this.leftLayerOptions(baseMap.mode);
+    let rightOptions = this.rightLayerOptions(baseMap.mode);
+
+    let leftLayer = L.tileLayer.wms(baseMap.link, leftOptions).addTo(this.map);
+    let rightLayer = L.tileLayer.wms(baseMap.link, rightOptions).addTo(this.map);
     let layer = L.control.sideBySide(leftLayer, rightLayer);
 
     this.sideBySideLayers[baseMap.slug] = layer;
@@ -47,7 +89,9 @@ export class MapCanvas extends React.Component {
   }
 
   addBaseLayer(baseMap) {
-    if (this.sideBySideLayers[baseMap.slug] || this.baseLayers[baseMap.slug]) {
+    if (this.sideBySideLayers[baseMap.slug] ||
+        this.baseLayers[baseMap.slug] ||
+        (baseMap.data && this.props.mode != 'transitions')) {
       return;
     }
 
@@ -58,7 +102,10 @@ export class MapCanvas extends React.Component {
         this.addBaseWMSLayer(baseMap);
         return;
       } else {
-        layer = L.tileLayer.wms(baseMap.link, this.getBaseLayerOptions);
+        layer = L.tileLayer.wms(baseMap.link, {
+          ...this.baseLayerOptions,
+          zIndex: 2
+        });
       }
     } else {
       /*if(baseMap.googleMap) {
@@ -99,14 +146,17 @@ export class MapCanvas extends React.Component {
   }
 
   updateBaseLayers() {
-    _.each(this.sideBySideLayers, (layer) => {
-      layer.getLeftLayer().setParams(this.leftLayerOptions);
-      layer.getRightLayer().setParams(this.rightLayerOptions);
+    _.each(this.sideBySideLayers, (layer, slug) => {
+      let baseLayer = _.find(this.props.baseMaps, (m) => m.slug == slug)
+      let mode = baseLayer.mode;
+
+      layer.getLeftLayer().setParams(this.leftLayerOptions(mode));
+      layer.getRightLayer().setParams(this.rightLayerOptions(mode));
     })
 
     _.each(this.baseLayers, (layer) => {
       if (layer.wmsParams) {
-        layer.setParams(this.getBaseLayerOptions);
+        layer.setParams(this.baseLayerOptions);
       }
     });
   }
@@ -190,7 +240,7 @@ export class MapCanvas extends React.Component {
   }
 
   setupDataLayer() {
-    const { url, ...layerOptions } = this.props.layerOptions;
+    const layerOptions = this.dataLayerOptions();
     const options = {
       format: 'image/png',
       transparent: true,
@@ -209,7 +259,7 @@ export class MapCanvas extends React.Component {
       this.dataLayer.setParams(options);
       this.dataLayer.setOpacity(this.props.opacity);
     } else {
-      this.dataLayer = L.tileLayer.wms(`${url}/wms`, options)
+      this.dataLayer = L.tileLayer.wms(`${this.props.apiUrl}/wms`, options)
         .on('loading', () => this.map.spin(true))
         .on('load', () => this.map.spin(false))
         .on('tileunload', () => this.map.spin(false))
@@ -269,7 +319,7 @@ export class MapCanvas extends React.Component {
       this.updateBaseLayers();
     }
 
-    if (!_.isEqual(prevProps.layerOptions, this.props.layerOptions)) {
+    if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.dataLayerOptions, this.props.dataLayerOptions)) {
       this.setupDataLayer();
     }
 
