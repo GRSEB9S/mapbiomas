@@ -7,6 +7,7 @@ class TerrasAPI
 
   def self.territories(name = nil, category = nil)
     get("/dashboard/services/territories", query: {
+      language: I18n.locale.to_s,
       category: category,
       name: name
     }.compact)
