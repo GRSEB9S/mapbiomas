@@ -48,8 +48,7 @@ class TerrasAPI
   end
 
   def self.statistics(territory_id, classification_ids)
-    # Statistics API isn't in TERRAS_API_URL yet, so we use this URL
-    HTTParty.get("http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover", query: {
+    HTTParty.get("dashboard/services/statistics/groupedcover", query: {
       territory_id: territory_id,
       classification_id: classification_ids
     })
