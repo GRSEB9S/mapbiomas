@@ -48,7 +48,7 @@ class TerrasAPI
   end
 
   def self.statistics(territory_id, classification_ids)
-    HTTParty.get("dashboard/services/statistics/groupedcover", query: {
+    get("/dashboard/services/statistics/groupedcover", query: {
       territory_id: territory_id,
       classification_id: classification_ids
     })
