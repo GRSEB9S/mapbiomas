@@ -52,6 +52,7 @@ export default class Map extends React.Component {
         transitions: false
       },
       territory: null,
+      territoryTab: 0,
       transition: null,
       transitions: [],
       transitionsLayers: [1, 2, 3, 4, 5],
@@ -212,9 +213,16 @@ export default class Map extends React.Component {
 
   //Handlers
   handleModeChange(mode) {
-    this.setState({ mode });
+    this.setState({
+      mode,
+      territory: null,
+      territoryTab: 0
+    });
     window.location.hash = `#${mode}`;
-    this.setState({ territory: null });
+  }
+
+  handleTerritoryTabChange(territoryTab) {
+    this.setState({ territoryTab });
   }
 
   handleTerritoryChange(territory) {
@@ -540,8 +548,10 @@ export default class Map extends React.Component {
               hidePanels={this.toggleHide.bind(this)}
             />
             <TerritoryControl
+              tabIndex={this.state.territoryTab}
               territory={this.territory}
               loadTerritories={this.loadTerritories.bind(this)}
+              onTabChange={this.handleTerritoryTabChange.bind(this)}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
             />
 
