@@ -44,7 +44,7 @@ en:
             <li><b>Relief - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
           </ul>
         coverage_data: Land Use and Cover Mapping
-        rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (specific to each year)
+        rgb_landsat: Landsat MapBiomas Mosaic (RGB) (specific to each year)
         satellite: Google Satellite
         roadmap: Google Roadmap
         terrain: Google Terrain
