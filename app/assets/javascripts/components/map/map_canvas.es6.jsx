@@ -305,6 +305,7 @@ export class MapCanvas extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.territory.id != this.props.territory.id) {
       this.setupTerritory();
+      this.setupDataLayer();
     }
 
     if ((prevProps.selectedBaseMaps != this.props.selectedBaseMaps) || (prevProps.mode != this.props.mode)) {
