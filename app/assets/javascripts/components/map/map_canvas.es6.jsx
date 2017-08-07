@@ -150,8 +150,8 @@ export class MapCanvas extends React.Component {
       let baseLayer = _.find(this.props.baseMaps, (m) => m.slug == slug)
       let mode = baseLayer.mode;
 
-      layer.getLeftLayer().setParams(this.leftLayerOptions(mode));
-      layer.getRightLayer().setParams(this.rightLayerOptions(mode));
+      layer.updateLeftLayer(this.leftLayerOptions(mode));
+      layer.updateRightLayer(this.rightLayerOptions(mode));
     })
 
     _.each(this.baseLayers, (layer) => {

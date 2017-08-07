@@ -55,7 +55,7 @@ function noop () {
 L.Control.SideBySide = L.Control.extend({
   options: {
     thumbSize: 42,
-    padding: 0
+    padding: 108
   },
 
   initialize: function (leftLayers, rightLayers, options) {
@@ -81,6 +81,11 @@ L.Control.SideBySide = L.Control.extend({
     var container = this._container = L.DomUtil.create('div', 'leaflet-sbs', map._controlContainer)
 
     this._divider = L.DomUtil.create('div', 'leaflet-sbs-divider', container)
+    this._leftLabel = L.DomUtil.create('div', 'leaflet-sbs-left-label', this._divider)
+    this._rightLabel = L.DomUtil.create('div', 'leaflet-sbs-right-label', this._divider)
+
+    L.DomUtil.create('div', 'leaflet-sbs-divider-line', this._divider)
+
     var range = this._range = L.DomUtil.create('input', 'leaflet-sbs-range', container)
     range.type = 'range'
     range.min = 0
@@ -90,6 +95,7 @@ L.Control.SideBySide = L.Control.extend({
     range.style.paddingLeft = range.style.paddingRight = this.options.padding + 'px'
     this._addEvents()
     this._updateLayers()
+    this._updateLabels()
     return this
   },
 
@@ -132,6 +138,16 @@ L.Control.SideBySide = L.Control.extend({
     this._rightLayers = asArray(rightLayers)
     this._updateLayers()
     return this
+  },
+
+  updateLeftLayer(params) {
+    this._leftLayer.setParams(params);
+    this._leftLabel.innerHTML = params.year;
+  },
+
+  updateRightLayer(params) {
+    this._rightLayer.setParams(params);
+    this._rightLabel.innerHTML = params.year;
   },
 
   _updateClip: function () {
@@ -179,6 +195,16 @@ L.Control.SideBySide = L.Control.extend({
       this._rightLayer && this.fire('rightlayeradd', {layer: this._rightLayer})
     }
     this._updateClip()
+  },
+
+  _updateLabels: function () {
+    if (this._leftLayer) {
+      this._leftLabel.innerHTML = this._leftLayer.options.year
+    }
+
+    if (this._rightLayer) {
+      this._rightLabel.innerHTML = this._rightLayer.options.year
+    }
   },
 
   _addEvents: function () {

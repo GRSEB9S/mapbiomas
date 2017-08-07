@@ -1,0 +1,34 @@
+.leaflet-sbs-divider {
+  display: flex;
+  width: auto !important;
+  margin-left: -110px !important;
+  background: none !important;
+}
+
+.leaflet-sbs-left-label, .leaflet-sbs-right-label {
+  width: 100px;
+  margin-bottom: 8px;
+  align-self: flex-end;
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  background: #4fb377;
+  color: #fff;
+}
+
+.leaflet-sbs-left-label {
+  margin-right: 8px;
+  order: 1;
+}
+
+.leaflet-sbs-right-label {
+  margin-left: 8px;
+  order: 3;
+}
+
+.leaflet-sbs-divider-line {
+  width: 4px;
+  background: #fff;
+  order: 2;
+}
