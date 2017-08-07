@@ -35,11 +35,16 @@ const renderTabPanel = (
 };
 
 const Territory = ({
+  tabIndex,
   territory,
   loadTerritories,
+  onTabChange,
   onTerritoryChange
 }) => (
-  <Tabs className="map-panel__action-panel map-panel__tab-panel map-panel-can-hide">
+  <Tabs className="map-panel__action-panel map-panel__tab-panel map-panel-can-hide"
+    selectedIndex={tabIndex}
+    onSelect={(index) => onTabChange(index)}
+  >
     <TabList className="four-tabbed">
       <Tab>{I18n.t('map.index.layers.countries')}</Tab>
       <Tab>{I18n.t('map.index.layers.states')}</Tab>
