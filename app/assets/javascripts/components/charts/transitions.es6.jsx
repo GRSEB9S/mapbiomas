@@ -55,7 +55,8 @@ export default class TransitionsChart extends React.Component {
         .on('click', (d) => {
           this.props.setTransition({
             from: d.source.id,
-            to: d.target.id
+            to: d.target.id,
+            area: d.value
           })
         });
 

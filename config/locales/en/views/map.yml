@@ -68,6 +68,12 @@ en:
         title: Transitions
         select_all: Select all layers
         analysis: Transitions analysis
+        selected_transition:
+          title: Selected transition
+          from: "From: %{from}"
+          to: "To: %{to}"
+          area: "Area: %{area} ha"
+          all_transitions: Check all transitions
         labels:
           title: Labels
           farming: Transitions from farming classes or non-vegetated areas to forest cover or non-forest natural areas.

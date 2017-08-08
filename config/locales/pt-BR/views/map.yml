@@ -68,6 +68,12 @@ pt-BR:
         title: Transições
         select_all: Selecionar todas as camadas
         analysis: Análise de transição
+        selected_transition:
+          title: Transição selecionada
+          from: "De: %{from}"
+          to: "Para: %{to}"
+          area: "Área: %{area} ha"
+          all_transitions: Visualizar todas as transições
         labels:
           title: Legenda
           farming: Transições de classes de agropecuária ou áreas não vegetadas para cobertura florestal ou áreas naturais não florestais.
