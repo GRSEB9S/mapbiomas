@@ -86,6 +86,8 @@ pt-BR:
           total: Total
           download: Download
           download_file: "Matriz de Transição %{from_year} - %{to_year}"
+        sankey:
+          title: Diagrama Sankey de transições
         all_years: Todos os anos
         forest_code: Código florestal
         subsequent_years: Anos subsequentes

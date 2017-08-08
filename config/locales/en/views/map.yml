@@ -86,6 +86,8 @@ en:
           total: Total
           download: Download
           download_file: "Transitions Matrix %{from_year} - %{to_year}"
+        sankey:
+          title: Sankey diagram for transitions
         all_years: All years
         forest_code: Forest Code
         subsequent_years: Subsequent years
