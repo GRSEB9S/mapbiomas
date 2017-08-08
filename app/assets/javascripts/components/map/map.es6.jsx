@@ -226,7 +226,10 @@ export default class Map extends React.Component {
   }
 
   handleTerritoryChange(territory) {
-    this.setState({ territory })
+    this.setState({
+      territory,
+      transition: null
+    })
   }
 
   handleYearChange(newYear) {
@@ -276,6 +279,10 @@ export default class Map extends React.Component {
         transitions: false
       }
     });
+  }
+
+  handleTransitionReset() {
+    this.setState({ transition: null });
   }
 
   handleTransitionsLoad(transitions) {
@@ -593,11 +600,14 @@ export default class Map extends React.Component {
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
+                  transition={this.state.transition}
+                  classifications={this.classifications}
                   viewOptionsIndex={this.state.viewOptionsIndex.transitions}
                   handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
+                  handleTransitionReset={this.handleTransitionReset.bind(this)}
                 />
               </div>
             )}
@@ -649,7 +659,6 @@ export default class Map extends React.Component {
                     years={this.years}
                     onExpandModal={this.expandModal.bind(this, 'transitions')}
                     onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-                    setTransition={this.handleTransitionChange.bind(this)}
                   />
                 )}
                 qualityPanel={(

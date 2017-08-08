@@ -3,7 +3,6 @@ import _ from 'underscore';
 import classNames from 'classnames';
 import { API } from '../../../lib/api';
 import { Classifications } from '../../../lib/classifications';
-import TransitionsChart from '../../charts/transitions';
 
 export default class TransitionsMenu extends React.Component {
   constructor(props) {
