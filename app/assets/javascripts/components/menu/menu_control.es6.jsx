@@ -99,6 +99,11 @@ export class MenuControl extends React.Component {
                   {I18n.t('layouts.header.methodology.tools')}
                 </a>
               </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('scripts')}>
+                  {I18n.t('layouts.header.methodology.scripts')}
+                </a>
+              </li>
             </ul>
           </li>
 
