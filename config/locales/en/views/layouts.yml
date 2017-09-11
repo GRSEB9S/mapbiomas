@@ -49,6 +49,7 @@ en:
         title: Methodology
         atbd: ATBD
         tools: Tools
+        scripts: Scripts
       communication:
         title: Communication
         release_collection2: Launch Collection 2
