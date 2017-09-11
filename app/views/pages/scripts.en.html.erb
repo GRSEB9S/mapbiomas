@@ -1,1 +1,37 @@
-scripts.en.html.erb
+<article class="page">
+  <div class="page__container">
+    <h2 class="page__title">SCRIPT MAPBIOMAS COLLECTION 2</h2>
+    <p>The script for MapBiomas Collection 2 Google Earth Engine is public and can be downloaded <%= link_to 'here', "https://s3.amazonaws.com/mapbiomas-ecostage/mapbiomas-script-colecao-2.txt", {target: "_blank"} %></p>
+    <p>To access and run follow the following instructions:</p>
+    <ul>
+      <li>With a Gmail account sign up for the Google Earth Engine Platform through this link <%= link_to 'https://earthengine.google.com', "https://earthengine.google.com", {target: "_blank"} %></li>
+      <li>In a few days you will receive authorization to access the platform.</li>
+      <li>Once you have registered with Google Earth Engine enter the CODE EDITOR of the platform and paste / insert the MapBiomas script.</li>
+      <li>Change the parameters to get the desired map. For example, you can choose a biome or state, different periods of image acquisition, maximum cloud coverage, classification parameters, etc.</li>
+    </ul>
+    <p>We encourage users of MAPBIOMAS SCRIPT to send us their suggestions for innovation so that we can constantly improve it.</p>
+    <p><img src="#"></p>
+    <p></p>
+    <h2 class="page__title">ACCESS TO MAPBIOMES COLLECTIONS ON GOOGLE EARTH ENGINE</h2>
+    <p>MapBiomas Images and Map collections are available to be accessed as an asset directly on Google Earth Engine, without the need to download or upload the data. It is possible to access even the intermediate products produced. Here are the available products and their access IDs in Google Earth Engine:</p>
+    <p></p>
+    <p>
+      Landsat Image Mosaic for each year of Collection 2<br>
+      <b>id: projects / mapbiomas-workspace / MOSAICOS / workspace</b>
+    </p>
+    <p>
+      Integrated Final Maps of Collection 2<br>
+      <b>id: projects / mapbiomas-workspace / COLECAO2_1 / integration</b>
+    </p>
+    <p>
+      Maps of each biome without temporal filter and before integration with crosscutting themes<br>
+      <b>id: projects / mapbiomas-workspace / COLECAO2_1 / grading</b>
+    </p>
+    <p>
+      Maps of each biome with temporal filter and before integration with crosscutting themes<br>
+      <b>id: projects / mapbiomas-workspace / COLECAO2_1 / classification-ft</b>
+    </p>
+
+
+  </div>
+</article>
