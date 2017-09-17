@@ -39,9 +39,15 @@ en:
         tooltip: |
           <p>Source of background maps:</p>
           <ul>
-            <li><b>Image - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
-            <li><b>Roads - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
-            <li><b>Relief - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+            <li><b>Image - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</a>
+            </li>
+            <li><b>Roads - Open Street Map:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</a>
+            </li>
+            <li><b>Relief - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</a>
+            </li>
           </ul>
         coverage_data: Land Use and Cover Mapping
         rgb_landsat: Landsat MapBiomas Mosaic (RGB) (specific to each year)

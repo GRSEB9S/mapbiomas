@@ -1757,10 +1757,6 @@ jquery.scrollbar@^0.2.11:
   version "0.2.11"
   resolved "https://registry.yarnpkg.com/jquery.scrollbar/-/jquery.scrollbar-0.2.11.tgz#e91bd4a97d83859463024d26e730dc36676ab59d"
 
-jquery@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.1.1.tgz#828fc60f50f7ee5983363ef4eb01c5f70af4bd5b"
-
 js-base64@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.1.9.tgz#f0e80ae039a4bd654b5f281fc93f04a914a7fcce"
@@ -3073,11 +3069,9 @@ to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
 
-tooltipster@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/tooltipster/-/tooltipster-1.0.9.tgz#765eb061bca755bee2c8c0bb7b5d39f963176e31"
-  dependencies:
-    jquery "2.1.1"
+tooltipster@^4.2.5:
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/tooltipster/-/tooltipster-4.2.5.tgz#e492fc3984576418f8c18b1aaee1456c1bd8b0a9"
 
 tough-cookie@~2.3.0:
   version "2.3.2"

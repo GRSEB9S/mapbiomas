@@ -39,9 +39,15 @@ pt-BR:
         tooltip: |
           <p>Fonte dos mapas de fundo:</p>
           <ul>
-            <li><b>Imagem - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
-            <li><b>Estradas - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
-            <li><b>Relevo - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+            <li><b>Imagem - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</a>
+            </li>
+            <li><b>Estradas - Open Street Map:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</a>
+            </li>
+            <li><b>Relevo - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</a>
+            </li>
           </ul>
         coverage_data: Mapas de Cobertura e Uso da Terra
         rgb_landsat: Mosaico Landsat MapBiomas (RGB) (específica de cada ano)

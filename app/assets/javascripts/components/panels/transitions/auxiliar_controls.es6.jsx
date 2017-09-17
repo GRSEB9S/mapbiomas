@@ -64,6 +64,8 @@ class TransitionsAuxiliarControls extends React.Component {
   componentDidMount() {
     $('#base-maps-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',
+      interactive: true,
+      contentAsHTML: true,
       content: $(I18n.t('map.index.base_maps.tooltip'))
     });
   }
