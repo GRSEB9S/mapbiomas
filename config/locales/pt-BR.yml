@@ -3,6 +3,9 @@ pt-BR:
     format:
       delimiter: '.'
       separator: ','
+  geolocation:
+    latitude: Latitude
+    longitude: Longitude
   charts:
     lang:
       download_jpeg: Exportar como JPG

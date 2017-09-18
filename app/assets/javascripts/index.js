@@ -3,6 +3,7 @@ import 'vendor/leaflet-side-by-side';
 //import 'vendor/leaflet-google';
 import 'vendor/spin';
 import 'vendor/leaflet-spin';
+import 'vendor/leaflet-coordinates';
 import { Locale } from 'lib/locale';
 
 import React from 'react';

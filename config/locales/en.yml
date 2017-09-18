@@ -3,6 +3,9 @@ en:
     format:
       delimiter: ','
       separator: '.'
+  geolocation:
+    latitude: Latitude
+    longitude: Longitude
   charts:
     lang:
       download_jpeg: Export as JPG
