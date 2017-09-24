@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   before_action :set_language
   before_action :check_maintenance
 
+  def after_sign_in_path_for(_user)
+    views_path
+  end
+
   private
 
   def check_maintenance

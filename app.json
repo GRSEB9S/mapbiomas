@@ -4,6 +4,9 @@
     "postdeploy": "bin/setup"
   },
   "env": {
+    "HEROKU_APP_NAME": {
+      "required": true
+    },
     "TERRAS_API_URL": {
       "required": true
     },
