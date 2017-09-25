@@ -44,18 +44,19 @@ group :staging, :production do
 end
 
 group :development, :test do
-  gem 'rubocop', require: false
-  gem 'pry'
-  gem 'letter_opener'
   gem 'awesome_print'
+  gem 'byebug'
+  gem 'capybara'
+  gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'rspec-rails'
-  gem 'capybara'
+  gem 'letter_opener'
+  gem 'mailcatcher', require: false
   gem 'poltergeist'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'web-console', '~> 2.0'
 end
