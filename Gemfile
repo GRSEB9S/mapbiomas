@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
+gem 'rails', '4.2.3'
 
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
@@ -7,6 +8,7 @@ gem 'bitters'
 gem 'bourbon'
 gem 'cachebar'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'devise'
 gem 'font-awesome-sass'
 gem 'high_voltage'
 gem 'http_accept_language'
@@ -21,7 +23,6 @@ gem 'mina-puma', :require => false
 gem 'neat'
 gem 'pg'
 gem 'rack-timeout'
-gem 'rails', '4.2.3'
 gem 'rails-settings-cached', '~> 0.4.0'
 gem 'react-rails'
 gem 'redis'
@@ -43,18 +44,19 @@ group :staging, :production do
 end
 
 group :development, :test do
-  gem 'rubocop', require: false
-  gem 'pry'
-  gem 'letter_opener'
   gem 'awesome_print'
+  gem 'byebug'
+  gem 'capybara'
+  gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
-  gem 'database_cleaner'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'rspec-rails'
-  gem 'capybara'
+  gem 'letter_opener'
+  gem 'mailcatcher', require: false
   gem 'poltergeist'
+  gem 'pry'
+  gem 'rspec-rails'
+  gem 'rubocop', require: false
+  gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'web-console', '~> 2.0'
 end

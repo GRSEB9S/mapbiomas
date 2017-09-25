@@ -11,6 +11,26 @@ export class MenuControl extends React.Component {
     });
   }
 
+  renderSignInButton() {
+    if(this.props.userSignedIn) {
+      return (
+        <li className="menu__item login">
+          <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>
+            {I18n.t('devise.sessions.destroy.sign_out')}
+          </a>
+        </li>
+      );
+    } else {
+      return (
+        <li className="menu__item login">
+          <a className="menu__link" href={Routes.new_user_session_path()}>
+            {I18n.t('devise.sessions.new.sign_in')}
+          </a>
+        </li>
+      );
+    }
+  }
+
   render() {
     return (
       <nav className={classNames("menu", { "menu--expanded": this.props.menu_on })}>
@@ -135,6 +155,8 @@ export class MenuControl extends React.Component {
               {I18n.t('layouts.header.contact.title')}
             </a>
           </li>
+
+          {this.renderSignInButton()}
 
           {<li className="menu__item translation main-nav__menu__item main-nav__translation">
             <i className="material-icons translation__icon">&#xE8E2;</i>

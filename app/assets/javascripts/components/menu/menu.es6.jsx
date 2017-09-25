@@ -14,8 +14,15 @@ export default class Menu extends React.Component {
   render() {
     return (
       <div>
-        <MenuButton menu_fn={this.toggleMenu.bind(this)} menu_on={this.state.menuOpen}/>
-        <MenuControl menu_fn={this.toggleMenu.bind(this)} menu_on={this.state.menuOpen}/>
+        <MenuButton
+          menu_fn={this.toggleMenu.bind(this)}
+          menu_on={this.state.menuOpen}
+        />
+        <MenuControl
+          {...this.props}
+          menu_fn={this.toggleMenu.bind(this)}
+          menu_on={this.state.menuOpen}
+        />
       </div>
     )
   }

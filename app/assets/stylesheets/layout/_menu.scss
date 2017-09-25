@@ -138,9 +138,11 @@
   }
 }
 
-.translation {
+.translation, .login {
   padding-left: $big-spacing;
+}
 
+.translation {
   @include media ($tablet) {
     padding-left: $base-spacing;
   }
