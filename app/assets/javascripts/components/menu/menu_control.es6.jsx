@@ -35,7 +35,8 @@ export class MenuControl extends React.Component {
     return (
       <nav className={classNames("menu", { "menu--expanded": this.props.menu_on })}>
         <div className="menu__header">
-          {I18n.t('layouts.header.menu')}
+          <h2>{I18n.t('layouts.header.menu')}</h2>
+
           <button className="trigger" onClick={this.props.menu_fn}>
             <span className="fa fa-close"></span>
           </button>
@@ -52,7 +53,6 @@ export class MenuControl extends React.Component {
                   {I18n.t('layouts.header.about.project')}
                 </a>
               </li>
-
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("about/products")}>
                   {I18n.t('layouts.header.about.products')}

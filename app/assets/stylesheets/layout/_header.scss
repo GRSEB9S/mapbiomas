@@ -1,20 +1,30 @@
 .header {
   background: $header-color;
-  padding: 0 $base-spacing;
+  padding: $micro-spacing $base-spacing;
   border-bottom: 1px solid rgba($light-gray, .4);
 
-  @include media($mobile) {
-    margin: 0 $small-spacing;
-  }
-
   &__nav {
-    padding: 6px 0;
-    @include clearfix;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  &__logo img {
-    float: left;
-    height: 36px;
-    margin: 6px 0;
+  &__logo {
+    a {
+      display: flex;
+    }
+
+    img {
+      height: 36px;
+      margin: $micro-spacing 0;
+    }
+  }
+
+  &__menu-trigger {
+    display: none;
+
+    @include media ($tablet) {
+      display: block;
+    }
   }
 }
