@@ -1,6 +1,9 @@
 // Typography
-$base-font-family: "Open Sans", sans-serif;
-$heading-font-family: "Lato", sans-serif;
+$font-lato: "Lato", sans-serif;
+$font-open-sans: "Open Sans", sans-serif;
+
+$base-font-family: $font-open-sans;
+$heading-font-family: $font-lato;
 
 // Font Sizes
 $base-font-size: rem(13px);
@@ -10,7 +13,7 @@ $subtitle-font-size: rem(24px);
 $heading-font-size: rem(20px);
 
 // Line height
-$base-line-height: 1.5;
+$base-line-height: 1.6;
 $heading-line-height: 1.2;
 
 // Colors
@@ -21,22 +24,24 @@ $light-blue: #75c7e0;
 $medium-blue: #62a5bb;
 $light-green: #84caa0;
 $medium-green: #77b893;
-$dark-gray: #333;
-$medium-gray: #7f8184;
 $light-gray: #bbb;
 $lighter-gray: #eee;
+$medium-gray: #7f8184;
+$dark-gray: #333;
+$white-smoke: #edecec;
 
 $header-color: $white;
 $footer-color: $dark-gray;
 
 // Other Sizes
-$base-border-radius: 1px;
-$base-spacing: rem(16px);
-$small-spacing: rem(8px);
 $micro-spacing: rem(4px);
-$medium-spacing: rem(30px);
+$small-spacing: rem(8px);
+$base-spacing: rem(16px);
+$medium-spacing: rem(24px);
 $big-spacing: rem(40px);
 $large-spacing: rem(48px);
+
+$base-border-radius: 2px;
 $base-z-index: 0;
 $base-box-shadow: 1px 1px 2px rgba($medium-gray, 0.4);
 
@@ -45,13 +50,13 @@ $page-subtitle-font-size: 1.3rem;
 $page-base-spacing: 1.4rem;
 
 // Font Colors
-$base-background-color: #fff;
+$base-background-color: $white;
 $base-font-color: $dark-gray;
 $primary-action-color: $light-green;
-$action-color: $light-gray;
+$action-color: $medium-green;
 
 // Border
-$base-border-color: rgba($light-gray, 0.8);
+$base-border-color: $white-smoke;
 $base-border: 1px solid $base-border-color;
 
 //React timeline slider
@@ -63,3 +68,7 @@ $control-color: $light-green;
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease;

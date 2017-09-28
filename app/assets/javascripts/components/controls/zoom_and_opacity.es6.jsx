@@ -25,24 +25,24 @@ class ZoomAndOpacityControl extends Component {
     const { className, zoomIn, zoomOut, opacity, hiddenPanels, hidePanels } = this.props;
 
     return (
-      <div className="map-panel__action-panel" style={positionRelative}>
-        <button className="button button--primary" onClick={zoomIn}>
+      <div className="map-panel__action-panel map-panel__action-panel--zoom-and-opacity" style={positionRelative}>
+        <button className="primary" onClick={zoomIn}>
           <i className="fa fa-plus" />
         </button>
-        <button className="button button--primary" onClick={zoomOut}>
+        <button className="primary" onClick={zoomOut}>
           <i className="fa fa-minus" />
         </button>
-        <button className="button button--primary" onClick={hidePanels}>
+        <button className="primary" onClick={hidePanels}>
           <i className="fa fa-eye-slash" />
         </button>
         <button
-          className={classNames('button button--primary', showOpacityDropdown && 'active')}
+          className={classNames('primary', showOpacityDropdown && 'active')}
           onClick={this.toggleOpacityDropdown.bind(this)}
         >
           <i className="fa fa-sun-o" />
         </button>
         {showOpacityDropdown && !hiddenPanels && (
-          <div className="map-panels--zoom-and-opacity-panel--opacity-dropdown">
+          <div>
             <input
               min="0"
               max="100"
