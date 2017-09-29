@@ -1,5 +1,6 @@
 .page {
   margin: $big-spacing $small-spacing;
+  flex: 1;
 
   ul {
     @extend %default-ul;

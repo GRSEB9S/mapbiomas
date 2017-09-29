@@ -1,15 +1,17 @@
 .map__wrapper {
-  display: table-row;
+  display: flex;
 }
 
 .map,
 .map__wrapper,
 .map__canvas {
-  height: 100%;
+  flex: 1;
+  min-height: 100%;
   width: 100%;
 }
 
 .map {
+  display: flex;
   position: relative;
   z-index: 1;
 }
