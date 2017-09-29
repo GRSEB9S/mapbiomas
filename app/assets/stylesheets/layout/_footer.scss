@@ -1,48 +1,39 @@
 .footer {
-  position: fixed;
-  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
+  padding: $small-spacing $base-spacing;
   background-color: $footer-color;
 
-  @include clearfix;
-
   @include media($mobile) {
-    height: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__partners {
+    display: flex;
+
+    @include media($mobile) {
+      width: 100%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__seeg {
+    padding-right: $base-spacing;
   }
 
   &__copyright {
     color: $light-gray;
-    text-align: center;
-    padding-top: $small-spacing;
     white-space: nowrap;
     font-size: 0.6rem;
-    margin-top: 6px;
-    position: absolute;
-    left: 50%;
-    margin-left: -100px;
     width: 200px;
+    padding: 0 $small-spacing;
 
     @include media($mobile) {
       font-size: 0.5rem;
-    }
-  }
-
-  &__seeg,
-  &__gee {
-    float: left;
-  }
-
-  &__ecostage {
-    float: right;
-  }
-
-  &__gee,
-  &__seeg,
-  &__ecostage {
-    padding: $small-spacing $base-spacing;
-
-    @include media($mobile) {
-      padding: 0 ($small-spacing / 2) 0 ($small-spacing / 2);
+      padding: $small-spacing 0;
     }
   }
 

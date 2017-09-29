@@ -122,62 +122,60 @@ export default class Stats extends React.Component {
 
   render() {
     return (
-      <article className="page">
-        <div className="page__container">
-          <h1 className="page__title">{I18n.t('stats.title')}</h1>
-          {I18n.t('stats.subtitle')}
+      <div className="page__container">
+        <h1 className="page__title">{I18n.t('stats.title')}</h1>
+        {I18n.t('stats.subtitle')}
 
-          <div className="stats">
-            <div className="stats__filter-box">
-              <div className="stats__filter">
-                <label className="stats__label">
-                  {I18n.t('stats.territories.title')}
-                  <i id="territories-tooltip"
-                    className="material-icons tooltip">
-                    &#xE88E;
-                  </i>
-                </label>
+        <div className="stats">
+          <div className="stats__filter-box">
+            <div className="stats__filter">
+              <label className="stats__label">
+                {I18n.t('stats.territories.title')}
+                <i id="territories-tooltip"
+                  className="material-icons tooltip">
+                  &#xE88E;
+                </i>
+              </label>
 
-                <Select.Async
-                  name="territory-select"
-                  value={this.state.selectedTerritories}
-                  loadOptions={this.loadTerritories()}
-                  onChange={this.onTerritoryChange.bind(this)}
-                  clearable={false}
-                  ignoreAccents={false}
-                  noResultsText={false}
-                  searchingText={I18n.t('stats.index.searching')}
-                  multi={true}
-                />
-              </div>
-              <div className="stats__filter">
-                <label className="stats__label">
-                  {I18n.t('stats.classifications.title')}
-                  <i id="classifications-tooltip"
-                    className="material-icons tooltip">
-                    &#xE88E;
-                  </i>
-                </label>
-
-                <Select
-                  name="class-select"
-                  value={this.state.selectedClassifications}
-                  options={this.classificationsOptions}
-                  onChange={this.onClassificationChange.bind(this)}
-                  clearable={false}
-                  ignoreAccents={false}
-                  noResultsText={false}
-                  searchingText={I18n.t('stats.index.searching')}
-                  multi={true}
-                />
-              </div>
+              <Select.Async
+                name="territory-select"
+                value={this.state.selectedTerritories}
+                loadOptions={this.loadTerritories()}
+                onChange={this.onTerritoryChange.bind(this)}
+                clearable={false}
+                ignoreAccents={false}
+                noResultsText={false}
+                searchingText={I18n.t('stats.index.searching')}
+                multi={true}
+              />
             </div>
-            <div className="stats__chart-container">
-              {this.renderCharts()}
+            <div className="stats__filter">
+              <label className="stats__label">
+                {I18n.t('stats.classifications.title')}
+                <i id="classifications-tooltip"
+                  className="material-icons tooltip">
+                  &#xE88E;
+                </i>
+              </label>
+
+              <Select
+                name="class-select"
+                value={this.state.selectedClassifications}
+                options={this.classificationsOptions}
+                onChange={this.onClassificationChange.bind(this)}
+                clearable={false}
+                ignoreAccents={false}
+                noResultsText={false}
+                searchingText={I18n.t('stats.index.searching')}
+                multi={true}
+              />
             </div>
           </div>
+          <div className="stats__chart-container">
+            {this.renderCharts()}
+          </div>
         </div>
-      </article>
+      </div>
     );
   }
 }
