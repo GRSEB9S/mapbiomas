@@ -3,13 +3,20 @@
     <h1 class="page__title"><%= I18n.t('layouts.header.contact.title') %></h1>
 
     <form action="//formspree.io/<%= ENV["CONTACT_EMAIL"] %>" method="POST">
-      <label for="name"><%= I18n.t('layouts.header.contact.name') %></label>
-      <input type="text" name="name">
-      <label for="_replyto"><%= I18n.t('layouts.header.contact.email') %></label>
-      <input type="email" name="_replyto">
-      <label for="body"><%= I18n.t('layouts.header.contact.content') %></label>
-      <textarea rows="15" name="body"></textarea>
-      <input type="submit" class="primary" value="<%= I18n.t('layouts.header.contact.submit') %>">
+      <div class="field">
+        <label for="name"><%= I18n.t('layouts.header.contact.name') %></label>
+        <input type="text" name="name">
+      </div>
+      <div class="field">
+        <label for="_replyto"><%= I18n.t('layouts.header.contact.email') %></label>
+        <input type="email" name="_replyto">
+      </div>
+      <div class="field">
+        <label for="body"><%= I18n.t('layouts.header.contact.content') %></label>
+        <textarea rows="15" name="body"></textarea>
+      </div>
+
+      <input type="submit" class="primary submit" value="<%= I18n.t('layouts.header.contact.submit') %>">
     </form>
   </div>
 </article>
