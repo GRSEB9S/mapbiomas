@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/map', to: 'map#index', as: :map
+  get '/my_maps', to: 'map#my_maps', as: :my_maps
+  post '/map', to: 'map#create', as: :create_map
   get 'locales/set_language', to: 'locales#set_language', as: :set_language
   get '/download/transitions',
       to: 'downloads#transitions',
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
       to: 'downloads#statistics',
       as: :download_statistics, defaults: { format: :xlsx }
   get '/stats', to: 'stats#show', as: :stats
-  get '/views', to: 'views#index', as: :views
 
   namespace :api, defaults: { format: :json } do
     resources :classifications, only: :index

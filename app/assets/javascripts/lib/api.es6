@@ -18,4 +18,14 @@ export class API {
   static transitions(params) {
     return $.get(Routes.api_transitions_path(params));
   }
+
+  static createMap(params) {
+    return $.ajax({
+      url: Routes.create_map_path(),
+      data: JSON.stringify({ map: params }),
+      method: 'POST',
+      dataType: 'JSON',
+      contentType: 'application/json; charset=utf-8'
+    });
+  }
 }

@@ -5,6 +5,7 @@ import Select from 'react-select-plus';
 import { Tabs } from 'react-tabs';
 
 import { MapCanvas } from '../map/map_canvas';
+import { MyMaps } from '../map/my_maps';
 
 import { API } from '../../lib/api';
 import { Classifications } from '../../lib/classifications';
@@ -40,8 +41,10 @@ export default class Map extends React.Component {
       hide: false,
       layers: null,
       mode: location.hash.replace('#', '') || 'coverage',
+      myMaps: null,
       opacity: 1,
       qualities: [],
+      selectedMap: null,
       showWarning: {
         coverage: true,
         transitions: true,
@@ -104,7 +107,6 @@ export default class Map extends React.Component {
   }
 
   get transitionsDataLayerOptions() {
-    let fromId, toId;
     let transitionInfo = {};
 
     if(this.state.transition) {
@@ -149,6 +151,10 @@ export default class Map extends React.Component {
     } else {
       return this.state.years
     }
+  }
+
+  get myMaps() {
+    return this.state.myMaps || this.props.myMaps;
   }
 
   get transitionsPeriod() {
@@ -218,6 +224,7 @@ export default class Map extends React.Component {
       territory: null,
       territoryTab: 0
     });
+
     window.location.hash = `#${mode}`;
   }
 
@@ -314,6 +321,73 @@ export default class Map extends React.Component {
     this.setState({
       years: period.value.split('-'),
       transitionsPeriod: period.value
+    });
+  }
+
+  filterOptions(collection, selectedOptions) {
+    return _.filter(collection, (m) => {
+      return _.include(selectedOptions, m.id);
+    });
+  }
+
+  handleMapSelect(map) {
+    let selectedMap = this.props.myMaps.find((m) => m.id == map.value);
+    let options = selectedMap.options;
+    let layerOptions = {};
+
+    if (options.mode == 'coverage') {
+      layerOptions = {
+        classifications: this.filterOptions(this.props.availableClassifications, options.classification_ids),
+        year: parseInt(options.year)
+      };
+    } else {
+      layerOptions = {
+        years: [options.year_t0, options.year_t1],
+        transitionsLayers: options.transitions_group
+      };
+
+      if (options.transition_c0 && options.transition_c1) {
+        layerOptions = {
+          ...layerOptions,
+          transition: {
+            from: options.transition_c0,
+            to: options.transition_c1
+          }
+        };
+      }
+    }
+
+    this.setState({
+      ...this.initialState,
+      ...layerOptions,
+      selectedMap: selectedMap,
+      mode: options.mode,
+      baseMaps: this.filterOptions(this.props.availableBaseMaps, options.base_maps),
+      layers: this.filterOptions(this.props.availableLayers, options.layers),
+      territory: options.territory
+    });
+  }
+
+  handleMapSave(name) {
+    let params = {
+      name: name,
+      options: {
+        mode: this.mode,
+        base_maps: this.baseMaps.map((m) => m.id),
+        layers: this.layers.map((l) => l.id),
+        territory: this.territory,
+        ...this.dataLayerOptions[this.mode]
+      }
+    };
+
+    API.createMap(params).then((response) => {
+      this.setState({
+        selectedMap: response,
+        myMaps: [
+          ...this.myMaps,
+          response
+        ]
+      });
     });
   }
 
@@ -453,7 +527,7 @@ export default class Map extends React.Component {
   }
 
   renderStatsModal() {
-    if(this.state.showModals.coverage) {
+    if(!this.props.myMapsPage && this.state.showModals.coverage) {
       return (
         <StatsModal
           classifications={this.props.defaultClassifications}
@@ -467,7 +541,7 @@ export default class Map extends React.Component {
   }
 
   renderTransitionsModal() {
-    if(this.state.showModals.transitions) {
+    if(!this.props.myMapsPage && this.state.showModals.transitions) {
       return (
         <TransitionsModal
           setTransition={this.handleTransitionChange.bind(this)}
@@ -485,7 +559,7 @@ export default class Map extends React.Component {
   }
 
   renderWarning(key) {
-    if(this.mode == key && this.state.showWarning[key]) {
+    if(!this.props.myMapsPage && this.mode == key && this.state.showWarning[key]) {
       return(
         <WarningModal
           title={I18n.t(`map.warning.${key}.title`)}
@@ -554,6 +628,16 @@ export default class Map extends React.Component {
               setOpacity={this.setOpacity.bind(this)}
               hidePanels={this.toggleHide.bind(this)}
             />
+
+            {this.props.myMapsPage && (
+              <MyMaps
+                maps={this.myMaps}
+                selectedMap={this.state.selectedMap}
+                onMapSelect={this.handleMapSelect.bind(this)}
+                onMapSave={this.handleMapSave.bind(this)}
+              />
+            )}
+
             <TerritoryControl
               tabIndex={this.state.territoryTab}
               territory={this.territory}
@@ -632,6 +716,7 @@ export default class Map extends React.Component {
             <div className="map-panel__grow" id="right-sidebar-grown-panel">
               <MainMenu
                 mode={this.mode}
+                myMapsPage={this.props.myMapsPage}
                 onModeChange={this.handleModeChange.bind(this)}
                 calcMaxHeight={() => (
                   $('#right-sidebar-grown-panel').height() - (

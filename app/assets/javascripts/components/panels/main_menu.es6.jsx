@@ -16,6 +16,7 @@ const INDEX_TAB_MAP = {
 
 const MainMenu = ({
   mode,
+  myMapsPage,
   onModeChange,
   coveragePanel,
   transitionsPanel,
@@ -27,10 +28,10 @@ const MainMenu = ({
       selectedIndex={TAB_INDEX_MAP[mode]}
       onSelect={(index) => onModeChange(INDEX_TAB_MAP[index])}
     >
-      <TabList className="three-tabbed">
+      <TabList className={myMapsPage ? "two-tabbed" : "three-tabbed"}>
         <Tab>{I18n.t('map.index.coverage.title')}</Tab>
         <Tab>{I18n.t('map.index.transitions.title')}</Tab>
-        <Tab>{I18n.t('map.index.quality.title')}</Tab>
+        {!myMapsPage && <Tab>{I18n.t('map.index.quality.title')}</Tab>}
       </TabList>
       <TabPanel>
         <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__content">
@@ -42,11 +43,13 @@ const MainMenu = ({
           {transitionsPanel}
         </Scrollable>
       </TabPanel>
-      <TabPanel>
-        <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__content">
-          {qualityPanel}
-        </Scrollable>
-      </TabPanel>
+      {!myMapsPage && (
+        <TabPanel>
+          <Scrollable calcMaxHeight={calcMaxHeight} className="map-panel__content">
+            {qualityPanel}
+          </Scrollable>
+        </TabPanel>
+      )}
     </Tabs>
   </div>
 );
