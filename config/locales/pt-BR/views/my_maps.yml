@@ -2,6 +2,7 @@ pt-BR:
   my_maps:
     title: Meus mapas
     no_maps: Você ainda não possui mapas.
+    embed_code: Incorporar
     new_map:
       title: Novo mapa
       subtitle: Escolha os parâmetros desejados, além de um nome para o seu mapa.

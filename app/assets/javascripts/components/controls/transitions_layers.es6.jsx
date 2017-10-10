@@ -67,7 +67,7 @@ class TransitionsLabels extends Component {
 
     return (
       <Scrollable calcMaxHeight={this.props.calcMaxHeight} className="map-panel__action-panel">
-        <div className="map-panel__content">
+        <div className="map-panel__content map-panel-can-hide">
           {this.props.iframe && (
             <h3>{I18n.t('map.index.transitions.labels.title')}</h3>
           )}

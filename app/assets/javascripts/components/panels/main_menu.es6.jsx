@@ -37,11 +37,13 @@ export default class MainMenu extends React.Component {
               {this.props.transitionsPanel}
             </Scrollable>
           </TabPanel>
+          {!this.props.myMapsPage && (
             <TabPanel>
               <Scrollable calcMaxHeight={this.props.calcMaxHeight} className="map-panel__content">
                 {this.props.qualityPanel}
               </Scrollable>
             </TabPanel>
+          )}
         </Tabs>
       </div>
     );

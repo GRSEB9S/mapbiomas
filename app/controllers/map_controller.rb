@@ -19,6 +19,19 @@ class MapController < ApplicationController
       myMapsPage: true,
       myMaps: current_user.maps
     })
+
+    render 'index'
+  end
+
+  def iframe
+    map = Map.find(params[:id])
+
+    @map_props = MapPresenter.new.as_json.merge({
+      iframe: true,
+      iframeMap: map
+    })
+
+    render 'index', layout: 'iframe'
   end
 
   private

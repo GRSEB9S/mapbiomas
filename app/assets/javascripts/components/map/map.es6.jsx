@@ -333,7 +333,14 @@ export default class Map extends React.Component {
   }
 
   handleMapSelect(map) {
-    let selectedMap = this.props.myMaps.find((m) => m.id == map.value);
+    let selectedMap;
+
+    if (this.props.iframe) {
+      selectedMap = map;
+    } else {
+      selectedMap = this.props.myMaps.find((m) => m.id == map.value);
+    }
+
     let options = selectedMap.options;
     let layerOptions = {};
 
@@ -574,6 +581,10 @@ export default class Map extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.iframe) {
+      this.handleMapSelect(this.props.iframeMap);
+    }
+
     this.loadCards();
     this.loadQualities(this.year);
     window.addEventListener("hashchange", () =>
@@ -652,10 +663,10 @@ export default class Map extends React.Component {
             )}
 
             {this.props.iframe && COVERAGE && (
-              <div className="map-panel__content map-panel__info">
+              <div className="map-panel__content map-panel-can-hide map-panel__info">
                 <h3>{I18n.t('iframe.title')}</h3>
 
-                <label>{I18n.t('iframe.name', {name: 'Some map title here'})}</label>
+                <label>{I18n.t('iframe.name', {name: this.props.iframeMap.name})}</label>
                 <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
                 <label>{I18n.t('iframe.territory', {territory: this.territory.name})}</label>
                 <label>{I18n.t('iframe.year', {year: this.year})}</label>
@@ -680,10 +691,10 @@ export default class Map extends React.Component {
             )}
 
             {this.props.iframe && TRANSITIONS && (
-              <div className="map-panel__content map-panel__info">
+              <div className="map-panel__content map-panel-can-hide map-panel__info">
                 <h3>{I18n.t('iframe.title')}</h3>
 
-                <label>{I18n.t('iframe.name', {name: 'Some map title here'})}</label>
+                <label>{I18n.t('iframe.name', {name: this.props.iframeMap.name})}</label>
                 <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
                 <label>{I18n.t('iframe.territory', {territory: this.territory.name})}</label>
                 <label>{I18n.t('iframe.years', {year_0: this.years[0], year_1: this.years[1]})}</label>
