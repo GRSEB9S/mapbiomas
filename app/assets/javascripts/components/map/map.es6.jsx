@@ -15,6 +15,7 @@ import StatsModal from '../modals/stats';
 import TransitionsModal from '../modals/transitions_chart_and_matrix';
 import WarningModal from '../modals/warning';
 
+import ClassificationControl from '../controls/classification';
 import TerritoryControl from '../controls/territory';
 import YearControl from '../controls/year';
 import ZoomAndOpacityControl from '../controls/zoom_and_opacity';
@@ -26,6 +27,7 @@ import QualityLabels from '../panels/quality/labels';
 import QualityMenu from '../panels/quality/menu';
 import TransitionsMenu from '../panels/transitions/menu';
 import TransitionsAuxiliarControls from '../panels/transitions/auxiliar_controls';
+import TransitionsLabels from '../panels/transitions/labels';
 
 Tabs.setUseDefaultStyles(false);
 
@@ -527,7 +529,7 @@ export default class Map extends React.Component {
   }
 
   renderStatsModal() {
-    if(!this.props.myMapsPage && this.state.showModals.coverage) {
+    if(this.state.showModals.coverage) {
       return (
         <StatsModal
           classifications={this.props.defaultClassifications}
@@ -541,9 +543,10 @@ export default class Map extends React.Component {
   }
 
   renderTransitionsModal() {
-    if(!this.props.myMapsPage && this.state.showModals.transitions) {
+    if(this.state.showModals.transitions) {
       return (
         <TransitionsModal
+          iframe={this.props.iframe}
           setTransition={this.handleTransitionChange.bind(this)}
           onClose={this.closeModal.bind(this, 'transitions')}
           years={this.years}
@@ -559,7 +562,7 @@ export default class Map extends React.Component {
   }
 
   renderWarning(key) {
-    if(!this.props.myMapsPage && this.mode == key && this.state.showWarning[key]) {
+    if(!this.props.myMapsPage && !this.props.iframe && this.mode == key && this.state.showWarning[key]) {
       return(
         <WarningModal
           title={I18n.t(`map.warning.${key}.title`)}
@@ -629,7 +632,7 @@ export default class Map extends React.Component {
               hidePanels={this.toggleHide.bind(this)}
             />
 
-            {this.props.myMapsPage && (
+            {this.props.myMapsPage && !this.props.iframe && (
               <MyMaps
                 maps={this.myMaps}
                 selectedMap={this.state.selectedMap}
@@ -638,15 +641,68 @@ export default class Map extends React.Component {
               />
             )}
 
-            <TerritoryControl
-              tabIndex={this.state.territoryTab}
-              territory={this.territory}
-              loadTerritories={this.loadTerritories.bind(this)}
-              onTabChange={this.handleTerritoryTabChange.bind(this)}
-              onTerritoryChange={this.handleTerritoryChange.bind(this)}
-            />
+            {!this.props.iframe && (
+              <TerritoryControl
+                tabIndex={this.state.territoryTab}
+                territory={this.territory}
+                loadTerritories={this.loadTerritories.bind(this)}
+                onTabChange={this.handleTerritoryTabChange.bind(this)}
+                onTerritoryChange={this.handleTerritoryChange.bind(this)}
+              />
+            )}
 
-            {TRANSITIONS && (
+            {this.props.iframe && COVERAGE && (
+              <div className="map-panel__content map-panel__info">
+                <h3>{I18n.t('iframe.title')}</h3>
+
+                <label>{I18n.t('iframe.name', {name: 'Some map title here'})}</label>
+                <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
+                <label>{I18n.t('iframe.territory', {territory: this.territory.name})}</label>
+                <label>{I18n.t('iframe.year', {year: this.year})}</label>
+              </div>
+            )}
+
+            {this.props.iframe && COVERAGE && (
+              <div className="map-panel__grow map-panel-can-hide" id="iframe-coverage-data">
+                <div className="map-panel__action-panel">
+                  <ClassificationControl
+                    className="map-panel__content"
+                    iframe={this.props.iframe}
+                    options={this.classifications}
+                    availableOptions={this.props.availableClassifications}
+                    onChange={this.handleClassificationsChange.bind(this)}
+                    calcMaxHeight={() => (
+                      $('#iframe-coverage-data').height() - 20
+                    )}
+                  />
+                </div>
+              </div>
+            )}
+
+            {this.props.iframe && TRANSITIONS && (
+              <div className="map-panel__content map-panel__info">
+                <h3>{I18n.t('iframe.title')}</h3>
+
+                <label>{I18n.t('iframe.name', {name: 'Some map title here'})}</label>
+                <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
+                <label>{I18n.t('iframe.territory', {territory: this.territory.name})}</label>
+                <label>{I18n.t('iframe.years', {year_0: this.years[0], year_1: this.years[1]})}</label>
+              </div>
+            )}
+
+            {this.props.iframe && TRANSITIONS && (
+              <TransitionsLabels
+                iframe={this.props.iframe}
+                transition={this.state.transition}
+                transitionsLayers={this.state.transitionsLayers}
+                classifications={this.classifications}
+                availableTransitionsLayers={this.initialState.transitionsLayers}
+                handleTransitionReset={this.handleTransitionReset.bind(this)}
+                handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
+              />
+            )}
+
+            {!this.props.iframe && TRANSITIONS && (
               <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
                 <Select
                   options={this.periodOptions}
@@ -657,7 +713,7 @@ export default class Map extends React.Component {
               </div>
             )}
 
-            {COVERAGE && (
+            {!this.props.iframe && COVERAGE && (
               <div className="map-panel__grow map-panel-can-hide" id="coverage-auxiliar-controls">
                 <CoverageAuxiliarControls
                   availableClassifications={this.props.availableClassifications}
@@ -675,7 +731,7 @@ export default class Map extends React.Component {
               </div>
             )}
 
-            {TRANSITIONS && (
+            {!this.props.iframe && TRANSITIONS && (
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <TransitionsAuxiliarControls
                   availableTransitionsLayers={this.initialState.transitionsLayers}
@@ -702,20 +758,24 @@ export default class Map extends React.Component {
               </div>
             )}
           </div>
+
           <div className="map-panel__area map-panel__main map-panel-can-hide">
-            {!TRANSITIONS && (
-                <YearControl
-                  className="map-panel__bottom"
-                  playStop={true}
-                  onValueChange={this.handleYearChange.bind(this)}
-                  defaultValue={this.timelineDefaultValue()}
-                  range={this.props.availableYears} />
+            {!this.props.iframe && !TRANSITIONS && (
+              <YearControl
+                className="map-panel__bottom"
+                playStop={true}
+                onValueChange={this.handleYearChange.bind(this)}
+                defaultValue={this.timelineDefaultValue()}
+                range={this.props.availableYears}
+              />
             )}
           </div>
+
           <div className="map-panel__area map-panel__sidebar map-panel-can-hide">
             <div className="map-panel__grow" id="right-sidebar-grown-panel">
               <MainMenu
                 mode={this.mode}
+                iframe={this.props.iframe}
                 myMapsPage={this.props.myMapsPage}
                 onModeChange={this.handleModeChange.bind(this)}
                 calcMaxHeight={() => (
