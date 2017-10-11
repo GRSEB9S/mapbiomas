@@ -67,6 +67,16 @@ export class MyMaps extends React.Component {
               <h3>{I18n.t('my_maps.title')}</h3>
 
               { this.renderMapSelect() }
+
+              {this.props.selectedMap && (
+                <div className="my-maps__embed-code">
+                  <h3>{I18n.t('my_maps.embed_code')}</h3>
+
+                  <blockquote>
+                    &lt;iframe width="960" height="720" src={window.location.origin + Routes.iframe_path(this.props.selectedMap.id)} frameborder="0"&gt;&lt;/iframe&gt;
+                  </blockquote>
+                </div>
+              )}
             </div>
           </TabPanel>
           <TabPanel>

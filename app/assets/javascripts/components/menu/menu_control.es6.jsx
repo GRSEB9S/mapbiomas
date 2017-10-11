@@ -20,6 +20,12 @@ export class MenuControl extends React.Component {
           </a>
           <ul className="submenu__items">
             <li className="menu__item">
+              <a className="menu__link" href={Routes.my_maps_path()}>
+                {I18n.t('my_maps.title')}
+              </a>
+            </li>
+
+            <li className="menu__item">
               <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>
                 {I18n.t('devise.sessions.destroy.sign_out')}
               </a>

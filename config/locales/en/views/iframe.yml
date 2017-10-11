@@ -1,0 +1,8 @@
+en:
+  iframe:
+    title: Map info
+    name: 'Title: %{name}'
+    mode: 'Type: %{mode}'
+    territory: 'Territory: %{territory}'
+    year: 'Year: %{year}'
+    years: 'Period: %{year_0} - %{year_1}'

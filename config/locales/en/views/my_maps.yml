@@ -2,6 +2,7 @@ en:
   my_maps:
     title: My maps
     no_maps: You don't have any maps.
+    embed_code: Embed Code
     new_map:
       title: New map
       subtitle: Choose the desired params and a title for your map.
