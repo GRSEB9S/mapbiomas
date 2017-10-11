@@ -7,6 +7,7 @@ import TransitionsChart from '../charts/transitions';
 import TransitionsMatrix from '../panels/transitions/matrix';
 
 const TransitionsModal = ({
+  iframe,
   onClose,
   years,
   downloadUrl,
@@ -78,6 +79,7 @@ const TransitionsModal = ({
             <li className="transitions-sankey__label"><label>{years.join('-')}</label></li>
             <li>
               <TransitionsChart
+                iframe={iframe}
                 transition={transition}
                 setTransition={setTransition}
                 nodes={nodes}

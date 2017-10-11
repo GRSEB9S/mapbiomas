@@ -12,12 +12,25 @@ export class MenuControl extends React.Component {
   }
 
   renderSignInButton() {
-    if(this.props.userSignedIn) {
+    if(this.props.currentUser.signedIn) {
       return (
         <li className="menu__item login">
-          <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>
-            {I18n.t('devise.sessions.destroy.sign_out')}
+          <a className="menu__link" href='#'>
+            {this.props.currentUser.name}
           </a>
+          <ul className="submenu__items">
+            <li className="menu__item">
+              <a className="menu__link" href={Routes.my_maps_path()}>
+                {I18n.t('my_maps.title')}
+              </a>
+            </li>
+
+            <li className="menu__item">
+              <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>
+                {I18n.t('devise.sessions.destroy.sign_out')}
+              </a>
+            </li>
+          </ul>
         </li>
       );
     } else {

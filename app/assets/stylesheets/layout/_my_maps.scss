@@ -1,0 +1,19 @@
+.my-maps {
+  &__description {
+    padding-bottom: $small-spacing;
+  }
+
+  &__embed-code {
+    h3 {
+      padding-top: $base-spacing;
+    }
+
+    blockquote {
+      overflow-x: auto;
+    }
+  }
+
+  &__actions {
+    padding-top: $base-spacing;
+  }
+}
