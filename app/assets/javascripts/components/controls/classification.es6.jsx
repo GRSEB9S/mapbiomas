@@ -46,7 +46,9 @@ class ClassificationControl extends Component {
         <div className="classifications-control__node">
           <i style={{ color: node.color }}
             onClick={(e) => {
-              this.handleClassificationCheck(node.id, !checked);
+              if (!this.props.iframe) {
+                return this.handleClassificationCheck(node.id, !checked);
+              }
             }}
             className={classNames(
               'classifications-control__node-icon',
@@ -77,21 +79,29 @@ class ClassificationControl extends Component {
     return (
       <div className={this.props.className}>
         <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
-          <label
-            dangerouslySetInnerHTML={{
-              __html: I18n.t('map.index.classifications.description')
-            }}>
-          </label>
+          {!this.props.iframe && (
+            <label
+              dangerouslySetInnerHTML={{
+                __html: I18n.t('map.index.classifications.description')
+              }}>
+            </label>
+          )}
 
-          <label className="classifications-control__select">
-            <input
-              type="checkbox"
-              checked={allClassificationsSelected}
-              onChange={this.handleAllClassificationsChange.bind(this)}
-            />
+          {!this.props.iframe && (
+            <label className="classifications-control__select">
+              <input
+                type="checkbox"
+                checked={allClassificationsSelected}
+                onChange={this.handleAllClassificationsChange.bind(this)}
+              />
 
-            {I18n.t('map.index.classifications.select_all')}
-          </label>
+              {I18n.t('map.index.classifications.select_all')}
+            </label>
+          )}
+
+          {this.props.iframe && (
+            <h3>{I18n.t('map.index.classifications.title')}</h3>
+          )}
 
           <ul className="classifications-control__inner">
             {_.map(tree, (node) => this.renderNode(node, index++))}

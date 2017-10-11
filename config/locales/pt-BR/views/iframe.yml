@@ -1,0 +1,8 @@
+pt-BR:
+  iframe:
+    title: Informações do mapa
+    name: 'Título: %{name}'
+    mode: 'Tipo: %{mode}'
+    territory: 'Território: %{territory}'
+    year: 'Ano: %{year}'
+    years: 'Período: %{year_0} - %{year_1}'

@@ -53,11 +53,13 @@ export default class TransitionsChart extends React.Component {
         .style("stroke-width", (d) => Math.max(1, d.dy))
         .sort((a, b) => b.dy - a.dy)
         .on('click', (d) => {
-          this.props.setTransition({
-            from: d.source.id,
-            to: d.target.id,
-            area: d.value
-          })
+          if (!this.props.iframe) {
+            this.props.setTransition({
+              from: d.source.id,
+              to: d.target.id,
+              area: d.value
+            })
+          }
         });
 
     link.append("title")

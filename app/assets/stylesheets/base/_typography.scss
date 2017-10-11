@@ -16,7 +16,7 @@ h6 {
   font-family: $heading-font-family;
   font-size: $heading-font-size;
   line-height: $heading-line-height;
-  margin: 0 0 $small-spacing;
+  margin: 0 0 $base-spacing;
   font-weight: 400;
   color: $medium-gray;
   text-transform: uppercase;
@@ -27,6 +27,7 @@ p {
 }
 
 a {
+  font-family: $link-font-family;
   color: $primary-action-color;
   text-decoration: none;
   transition: color 0.1s linear;

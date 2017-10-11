@@ -43,9 +43,15 @@
     width: 320px;
   }
 
-  &__action-panel {
+  &__action-panel, &__info {
     pointer-events: all;
     margin-bottom: 10px;
+
+    &--zoom-and-opacity {
+      button {
+        padding: 0.75em 1em;
+      }
+    }
   }
 
   &__content {

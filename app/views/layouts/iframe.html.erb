@@ -4,6 +4,7 @@
   <title>MapBiomas</title>
   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css">
   <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKmfqKhMGWUDdg_6ZntoBWBpRnFZIUfww" async defer></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -43,14 +44,10 @@
     ga('send', 'pageview');
   </script>
 </head>
-
-<body class="credentials__background">
-  <%= render 'layouts/header' %>
-  <section class="credentials__wrapper">
+<body>
+  <div class="wrapper">
     <%= yield %>
-  </section>
-  <div class="image-copy">
-    Foto: Jacques Descloitres, MODIS Land Rapid Response Team, NASA/GSFC
+    <%= render 'layouts/footer' %>
   </div>
 </body>
 <script type="text/javascript">

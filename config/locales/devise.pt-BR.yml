@@ -27,11 +27,20 @@ pt-BR:
       failure: "Não foi possível autenticá-lo como %{kind} porque %{reason}."
       success: "Autenticado com sucesso com uma conta de %{kind}."
     passwords:
+      characters_minimum: "Mínimo de %{minimum} caracteres"
       no_token: "Você só pode acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se a URL fornecida está completa."
       send_instructions: "Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha."
       send_paranoid_instructions: "Se o seu endereço de e-mail estiver cadastrado, você receberá um link de recuperação da senha via e-mail."
       updated: "Sua senha foi alterada com sucesso. Você está logado."
       updated_not_active: "Sua senha foi alterada com sucesso."
+      new:
+        forgot_your_password: "Esqueceu sua senha?"
+        send_me_reset_password_instructions: "Enviar instruções para redefinição da senha"
+      edit:
+        change_my_password: "Alterar minha senha"
+        change_your_password: "Alterar sua senha"
+        confirm_new_password: "Confirme sua nova senha"
+        new_password: "Nova senha"
     registrations:
       destroyed: "Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve."
       signed_up: "Login efetuado com sucesso. Se não foi autorizado, a confirmação será enviada por e-mail."
@@ -40,19 +49,28 @@ pt-BR:
       signed_up_but_unconfirmed: "Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta."
       update_needs_confirmation: "Você atualizou a sua conta com sucesso, mas o seu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos."
       updated: "Sua conta foi atualizada com sucesso."
+      new:
+        sign_up: "Inscrever-se"
     sessions:
       signed_in: "Login efetuado com sucesso!"
       signed_out: "Saiu com sucesso."
       already_signed_out: "Saiu com sucesso."
       new:
-        sign_in: "Login"
+        sign_in: "Entrar"
       destroy:
         sign_out: "Sair"
     unlocks:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Efetue login para continuar."
-
+    shared:
+      links:
+        didn_t_receive_confirmation_instructions: "Não recebeu instruções de confirmação?"
+        didn_t_receive_unlock_instructions: "Não recebeu instruções de desbloqueio?"
+        forgot_your_password: "Esqueceu sua senha?"
+        sign_in: "Entrar"
+        sign_in_with_provider: "Entrar com %{provider}"
+        sign_up: "Inscrever-se"
   errors:
     messages:
       already_confirmed: "já foi confirmado"

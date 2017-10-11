@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    attributes:
+      user:
+        name: Nome
+        email: Email
+        password: Senha
+        password_confirmation: Confirmar senha
+        remember_me: Lembrar minha senha

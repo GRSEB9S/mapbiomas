@@ -42,7 +42,9 @@ class TransitionsLabels extends Component {
       <div key={index} className="transitions-labels__item">
         <i style={{ color: labelObj.color }}
           onClick={(e) => {
-            this.handleLayerCheck(labelObj.id, !checked);
+            if (!this.props.iframe) {
+              this.handleLayerCheck(labelObj.id, !checked);
+            }
           }}
           className={classNames(
             'transitions-labels__icon',
@@ -65,7 +67,12 @@ class TransitionsLabels extends Component {
 
     return (
       <Scrollable calcMaxHeight={this.props.calcMaxHeight} className="map-panel__action-panel">
-        <div className="map-panel__content">
+        <div className="map-panel__content map-panel-can-hide">
+          {this.props.iframe && (
+            <h3>{I18n.t('map.index.transitions.labels.title')}</h3>
+          )}
+
+          {!this.props.iframe && (
             <label className="transitions-labels__select">
               <input
                 type="checkbox"
@@ -75,12 +82,13 @@ class TransitionsLabels extends Component {
 
               {I18n.t('map.index.transitions.select_all')}
             </label>
+          )}
 
-            <div className="transitions-labels__items">
-              {['farming', 'water', 'forestry', 'forest', 'no_transition'].map((l, i) => {
-                return this.renderLayer(l, i);
-              })}
-            </div>
+          <div className="transitions-labels__items">
+            {['farming', 'water', 'forestry', 'forest', 'no_transition'].map((l, i) => {
+              return this.renderLayer(l, i);
+            })}
+          </div>
         </div>
       </Scrollable>
     );
