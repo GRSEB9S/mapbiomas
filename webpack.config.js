@@ -10,8 +10,8 @@ module.exports = {
    output: { path: sourcePath, filename: 'bundle.js' },
    devtool: 'source-map',
    resolve: {
-      modulesDirectories: ['node_modules', 'app/assets/javascripts', 'vendor/assets/javascripts'],
-      extensions: ['', '.js', '.jsx', '.es6', '.es6.jsx'],
+      modules: ['node_modules', 'app/assets/javascripts', 'vendor/assets/javascripts'],
+      extensions: ['.js', '.jsx', '.es6', '.es6.jsx'],
       alias: {
         jquery: path.join(sourcePath, 'jquery_alias.js')
       }
