@@ -373,7 +373,8 @@ export default class Map extends React.Component {
       mode: options.mode,
       baseMaps: this.filterOptions(this.props.availableBaseMaps, options.base_maps),
       layers: this.filterOptions(this.props.availableLayers, options.layers),
-      territory: options.territory
+      territory: options.territory,
+      myMaps: this.myMaps
     });
   }
 
