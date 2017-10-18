@@ -581,6 +581,19 @@ export default class Map extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.state.selectedMap) {
+      let src = window.location.origin + Routes.iframe_path(this.state.selectedMap.id)
+
+      $('#embed-code-tooltip').tooltipster({
+        theme: 'tooltip-custom-theme',
+        interactive: true,
+        contentAsHTML: true,
+        content: $(I18n.t('my_maps.embed_code.tooltip', { src: src }))
+      });
+    }
+  }
+
   componentDidMount() {
     if (this.props.iframe) {
       this.handleMapSelect(this.props.iframeMap);
@@ -784,7 +797,7 @@ export default class Map extends React.Component {
           </div>
 
           <div className="map-panel__area map-panel__sidebar map-panel-can-hide">
-            <div className="map-panel__grow" id="right-sidebar-grown-panel">
+            <div className="map-panel__grow map-panel__main-menu" id="right-sidebar-grown-panel">
               <MainMenu
                 mode={this.mode}
                 iframe={this.props.iframe}
@@ -794,7 +807,7 @@ export default class Map extends React.Component {
                   $('#right-sidebar-grown-panel').height() - (
                     this.mode === 'quality' ? (
                       $('#quality-labels').height() + 55
-                    ) : 55
+                    ) : 105
                   )
                 )}
                 coveragePanel={(
@@ -830,6 +843,15 @@ export default class Map extends React.Component {
                   />
                 )}
               />
+
+              {this.props.myMapsPage && this.state.selectedMap && (
+                <div className="map-panel__action-panel map-panel__action-panel--embed-code">
+                  <i id="embed-code-tooltip"
+                    className="material-icons tooltip">
+                    &#xE86F;
+                  </i>
+                </div>
+              )}
             </div>
           </div>
         </div>

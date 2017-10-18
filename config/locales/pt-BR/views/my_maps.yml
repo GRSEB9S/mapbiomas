@@ -2,7 +2,13 @@ pt-BR:
   my_maps:
     title: Meus mapas
     no_maps: Você ainda não possui mapas.
-    embed_code: Incorporar
+    embed_code:
+      tooltip: |
+        <h3>Incorporar</h3>
+
+        <blockquote>
+          &lt;iframe width="960" height="720" src=%{src} frameborder="0"&gt;&lt;/iframe&gt;
+        </blockquote>
     new_map:
       title: Novo mapa
       subtitle: Escolha os parâmetros desejados, além de um nome para o seu mapa.

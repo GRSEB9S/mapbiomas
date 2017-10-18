@@ -2,7 +2,13 @@ en:
   my_maps:
     title: My maps
     no_maps: You don't have any maps.
-    embed_code: Embed Code
+    embed_code:
+      tooltip: |
+        <h3>Embed</h3>
+
+        <blockquote>
+          &lt;iframe width="960" height="720" src=%{src} frameborder="0"&gt;&lt;/iframe&gt;
+        </blockquote>
     new_map:
       title: New map
       subtitle: Choose the desired params and a title for your map.
