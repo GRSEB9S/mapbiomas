@@ -44,6 +44,7 @@ export default class Map extends React.Component {
       layers: null,
       mode: location.hash.replace('#', '') || 'coverage',
       myMaps: null,
+      myMapTerritories: null,
       opacity: 1,
       qualities: [],
       selectedMap: null,
@@ -90,14 +91,26 @@ export default class Map extends React.Component {
     return this.state.layers || this.props.defaultLayers;
   }
 
-  get territory() {
-    if(_.isEmpty(this.state.territory)) {
-      let defaultTerritory = new Territories([this.props.defaultTerritory]).withOptions();
+  get defaultTerritory() {
+    let defaultTerritory = new Territories([this.props.defaultTerritory]).withOptions();
 
-      return _.first(defaultTerritory);
-    } else {
-      return this.state.territory;
+    return _.first(defaultTerritory);
+  }
+
+  get territory() {
+    if (!_.isEmpty(this.state.myMapTerritories)) {
+      return this.state.myMapTerritories;
     }
+
+    if (_.isEmpty(this.state.territory)) {
+      if (this.props.myMapsPage) {
+        return [this.defaultTerritory];
+      }
+
+      return this.defaultTerritory;
+    }
+
+    return this.state.territory;
   }
 
   get transition() {
@@ -374,8 +387,13 @@ export default class Map extends React.Component {
       baseMaps: this.filterOptions(this.props.availableBaseMaps, options.base_maps),
       layers: this.filterOptions(this.props.availableLayers, options.layers),
       territory: options.territory,
-      myMaps: this.myMaps
+      myMaps: this.myMaps,
+      myMapTerritories: null
     });
+  }
+
+  handleMapTerritoriesSelect(myMapTerritories) {
+    this.setState({ myMapTerritories });
   }
 
   handleMapSave(name) {
@@ -660,13 +678,15 @@ export default class Map extends React.Component {
             {this.props.myMapsPage && !this.props.iframe && (
               <MyMaps
                 maps={this.myMaps}
+                territories={this.state.myMapTerritories}
                 selectedMap={this.state.selectedMap}
+                onTerritorySelect={this.handleMapTerritoriesSelect.bind(this)}
                 onMapSelect={this.handleMapSelect.bind(this)}
                 onMapSave={this.handleMapSave.bind(this)}
               />
             )}
 
-            {!this.props.iframe && (
+            {!this.props.iframe && !this.props.myMapsPage && (
               <TerritoryControl
                 tabIndex={this.state.territoryTab}
                 territory={this.territory}

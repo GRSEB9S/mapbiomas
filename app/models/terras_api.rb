@@ -20,25 +20,31 @@ class TerrasAPI
   end
 
   def self.coverage(year, territory_id, classification_ids)
-    if year.present?
-      get("/dashboard/services/statistics/coverage", query: {
-        year: year,
-        territory_id: territory_id,
-        classification_ids: classification_ids
-      })
-    else
-      get("/dashboard/services/statistics/coverage", query: {
-        territory_id: territory_id,
-        classification_ids: classification_ids
-      })
+    query_params = { classification_ids: classification_ids }
+    territory_ids = territory_id.split(',')
+
+    query_params = query_params.merge(year: year) if year.present?
+
+    coverage_data = territory_ids.map do |id|
+      get("/dashboard/services/statistics/coverage", query:
+          query_params.merge(territory_id: id)).as_json
     end
+
+    sum_areas(coverage_data, coverage_keys)
   end
 
   def self.transitions(year, territory_id)
-    get("/dashboard/services/statistics/transitions", query: {
-      year: year,
-      territory_id: territory_id
-    })
+    query_params = { year: year }
+    territory_ids = territory_id.split(',')
+
+    data = territory_ids.map do |id|
+      get("/dashboard/services/statistics/transitions", query:
+        query_params.merge(territory_id: id)).as_json
+    end
+
+    transitions = data.map { |d| d['transitions'] }
+
+    sum_areas(transitions, transitions_keys)
   end
 
   def self.qualities(year)
@@ -52,5 +58,24 @@ class TerrasAPI
       territory_id: territory_id,
       classification_id: classification_ids
     })
+  end
+
+  def self.transitions_keys
+    %w(from from_l1 from_l2 from_l3 to to_l1 to_l2 to_l3)
+  end
+
+  def self.coverage_keys
+    %w(id l1 l2 l3 year)
+  end
+
+  def self.sum_areas(collection, keys)
+    collection
+      .flatten
+      .group_by { |t| keys.map { |k| t[k] } }
+      .transform_values { |value| value.map { |v| v['area'] }.reduce(&:+) }
+      .to_a
+      .map do |(grouped_values, area)|
+        Hash[keys.zip(grouped_values)].merge(area: area)
+      end
   end
 end

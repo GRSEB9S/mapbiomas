@@ -11,8 +11,10 @@ export class Territories {
       
       return [
         ...acc, {
+          ...territory,
           label: `${territory.name} (${territory.category})`,
-          value: territory.id
+          value: territory.id,
+          bounds: territory.bounds
         }
       ];
     }, []);

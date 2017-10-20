@@ -75,8 +75,16 @@ class CoverageLineChart extends Component {
   loadCoverage(props) {
     this.chart.showLoading();
 
+    let territoryId;
+
+    if (_.isArray(props.territory)) {
+      territoryId = props.territory.map((t) => t.id).join(',');
+    } else {
+      territoryId = props.territory.id
+    }
+
     API.coverage({
-      territory_id: props.territory.id,
+      territory_id: territoryId,
       classification_ids: props.defaultClassifications.map((c) => c.id).join(',')
     }).then((coverage) => {
       this.setState({ coverage: this.parseCoverage(coverage) }, () => {

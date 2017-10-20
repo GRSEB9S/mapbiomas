@@ -11,6 +11,26 @@ class CoveragePieChart extends Component {
     };
   }
 
+  get isSingleTerritory() {
+    return !_.isArray(this.props.territory);
+  }
+
+  get isSingleTerritoryArray() {
+    return this.props.territory.length == 1;
+  }
+
+  get territoryName() {
+    if (this.isSingleTerritory) {
+      return this.props.territory.name;
+    }
+
+    if (this.isSingleTerritoryArray) {
+      return this.props.territory[0].name;
+    }
+
+    return _.map(this.props.territory, (t) => t.name).join(', ');
+  }
+
   get chartSeries() {
     let data = this.state.coverage.map((coverageItem) => {
       let classification = this.findCoverageClassification(coverageItem);
@@ -67,8 +87,16 @@ class CoveragePieChart extends Component {
   loadCoverage(props = this.props) {
     this.chart.showLoading();
 
+    let territoryId;
+
+    if (_.isArray(props.territory)) {
+      territoryId = props.territory.map((t) => t.id).join(',');
+    } else {
+      territoryId = props.territory.id
+    }
+
     API.coverage({
-      territory_id: props.territory.id,
+      territory_id: territoryId,
       classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
       year: props.year
     }).then((coverage) => {
@@ -109,7 +137,7 @@ class CoveragePieChart extends Component {
         <div className="map-control__content map-control__content-no-max-height">
           <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
           <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
-          <label>{I18n.t('map.index.chart.territory', {territory: this.props.territory.name})}</label>
+          <label>{I18n.t('map.index.chart.territory', {territory: this.territoryName})}</label>
           <div className="coverage-chart" ref="chartElement"></div>
         </div>
       </div>

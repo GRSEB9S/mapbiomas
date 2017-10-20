@@ -13,6 +13,14 @@ export class MapCanvas extends React.Component {
     this.cardsLayer = null;
   }
 
+  get territory() {
+    if(_.isArray(this.props.territory)) {
+      return this.props.territory;
+    } else {
+      return [this.props.territory];
+    }
+  }
+
   get baseLayerOptions() {
     return {
       layers: 'rgb',
@@ -70,7 +78,7 @@ export class MapCanvas extends React.Component {
       ...this.props.dataLayerOptions[mode],
       layers: mode,
       map: this.mapPath(mode),
-      territory_id: this.props.territory.id,
+      territory_id: _.map(this.territory, (t) => t.value),
       format: 'image/png',
       transparent: true
     };
@@ -193,7 +201,7 @@ export class MapCanvas extends React.Component {
   }
 
   setupTerritory() {
-    this.map.fitBounds(this.props.territory.bounds);
+    this.map.fitBounds(_.last(this.territory).bounds);
   }
 
   addMapLayer(mapLayer) {
@@ -313,7 +321,13 @@ export class MapCanvas extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.territory.id != this.props.territory.id) {
+    let sameTerritory = !_.isArray(this.props.territory) && prevProps.territory.id != this.props.territory.id;
+    let sameTerritories = _.isArray(this.props.territory) && (prevProps.territory.length == this.props.territory.length) &&
+      _.every(this.props.territory, (t) => {
+        return _.contains(prevProps, t);
+      });
+
+    if (!sameTerritory || !sameTerritories) {
       this.setupTerritory();
       this.setupDataLayer();
     }

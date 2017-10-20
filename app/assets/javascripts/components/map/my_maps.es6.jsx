@@ -3,6 +3,9 @@ import _ from 'underscore';
 import Select from 'react-select-plus';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import { API } from '../../lib/api';
+import { Territories } from '../../lib/territories';
+
 export class MyMaps extends React.Component {
   constructor(props) {
     super(props);
@@ -28,6 +31,27 @@ export class MyMaps extends React.Component {
 
   handleTabChange(selectedIndex) {
     this.setState({ selectedIndex });
+  }
+
+  loadTerritories() {
+    return (input, callback) => {
+      clearTimeout(this.timeoutId);
+
+      if (input) {
+        this.timeoutId = setTimeout(() => {
+          API.territories({
+            name: input.toUpperCase()
+          })
+          .then((territories) => {
+            callback(null, {
+              options: new Territories(territories).withCategory()
+            });
+          });
+        }, 500);
+      } else {
+        callback(null, { options: [] });
+      }
+    };
   }
 
   saveMap() {
@@ -82,6 +106,19 @@ export class MyMaps extends React.Component {
                     type="text"
                     value={this.state.name}
                     onChange={this.handleNameChange.bind(this)}
+                  />
+
+                  <label>Territórios</label>
+                  <Select.Async
+                    name="territory-select"
+                    value={this.props.territories}
+                    loadOptions={this.loadTerritories()}
+                    onChange={this.props.onTerritorySelect}
+                    clearable={false}
+                    ignoreAccents={false}
+                    noResultsText={false}
+                    searchingText={I18n.t('stats.index.searching')}
+                    multi={true}
                   />
                 </div>
               </form>

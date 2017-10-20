@@ -20,7 +20,7 @@ export default class MainMenu extends React.Component {
       <div className="map-panel__action-panel map-panel__tab-panel">
         <Tabs
           selectedIndex={TAB_INDEX_MAP[this.props.mode]}
-          onSelect={(index) => onModeChange(INDEX_TAB_MAP[index])}
+          onSelect={(index) => this.props.onModeChange(INDEX_TAB_MAP[index])}
         >
           <TabList className={this.props.myMapsPage ? "two-tabbed" : "three-tabbed"}>
             <Tab>{I18n.t('map.index.coverage.title')}</Tab>
