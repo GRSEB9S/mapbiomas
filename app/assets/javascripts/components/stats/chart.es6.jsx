@@ -22,39 +22,12 @@ export default class Chart extends React.Component {
     };
   }
 
-  componentDidMount() {
-    Highcharts.setOptions({
-      lang: {
-        contextButtonTitle: I18n.t('charts.buttons.context_button.title'),
-        downloadJPEG: I18n.t('charts.lang.download_jpeg'),
-        downloadPDF: I18n.t('charts.lang.download_pdf'),
-        downloadPNG: I18n.t('charts.lang.download_png'),
-        downloadSVG: I18n.t('charts.lang.download_svg'),
-        printChart: I18n.t('charts.lang.print_chart')
-      }
-    });
-
-    this.fetchData();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if(!_.isEqual(prevProps, this.props)) {
-      this.fetchData();
+  get chartSeries() {
+    if (_.isEmpty(this.state.data)) {
+      return [];
     }
-    if(!_.isEqual(prevState.data, this.state.data)) {
-      this.chart = new Highcharts.Chart(this.refs.chart, this.buildOptions());
-    }
-  }
 
-  fetchData() {
-    API.groupedCoverage({
-      territory_id: this.props.territories.map(t => t.value).join(','),
-      classification_id: this.props.classifications.map((c) => c.value).join(',')
-    }).then(data => this.setState({ data }));
-  }
-
-  buildSeries() {
-    if(this.props.territories.length > 1) {
+    if (this.props.territories.length > 1) {
       return this.props.territories.map(t => {
         return {
           name: t.label,
@@ -80,11 +53,16 @@ export default class Chart extends React.Component {
     }
   }
 
-  buildOptions() {
-    const series = this.buildSeries();
+  get chartOptions() {
+    const series = this.chartSeries;
+    const el = this.refs.chartElement;
+
     this.setState({ series });
 
     return {
+      chart: {
+        renderTo: el
+      },
       title: {
         text: this.props.territories.map(t => t.label).join(', ')
       },
@@ -112,18 +90,58 @@ export default class Chart extends React.Component {
     };
   }
 
+  loadStatistics() {
+    this.chart.showLoading();
+
+    API.groupedCoverage({
+      territory_id: this.props.territories.map(t => t.value).join(','),
+      classification_id: this.props.classifications.map((c) => c.value).join(',')
+    }).then(data => this.setState({ data }, () => {
+      this.chart.hideLoading();
+    }));
+  }
+
+  startDownload() {
+    window.location.href = this.props.downloadUrl;
+  }
+
+  drawChart() {
+    this.chart = new Highcharts.Chart(this.chartOptions);
+  }
+
+  componentDidMount() {
+    this.drawChart();
+    this.loadStatistics();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(!_.isEqual(prevProps, this.props)) {
+      this.loadStatistics();
+    }
+    if(!_.isEqual(prevState.data, this.state.data)) {
+      this.drawChart();
+    }
+  }
+
   render() {
     const { series } = this.state;
 
     return (
       <div className="stats__chart-and-table">
-        <div className="stats__chart" ref="chart" />
+        <div className="stats__chart" ref="chartElement" />
         { series && (
           <div className="stats-table">
+            <button className="map-modal__download primary" onClick={this.startDownload.bind(this)}>
+              {I18n.t('stats.table.download')}
+            </button>
+
             <table>
               <thead>
                 <tr>
-                  <th>Classes</th>
+                  {this.props.territories.length > 1 && this.props.classifications.length == 1 ?
+                    <th>{I18n.t('stats.territories.title')}</th> :
+                    <th>{I18n.t('stats.classifications.title')}</th>
+                  }
                   {this.props.years.map((year) => (
                     <th key={year}>{year}</th>
                   ))}

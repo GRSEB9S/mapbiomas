@@ -40,6 +40,18 @@ export default class Stats extends React.Component {
     return new Classifications(this.props.classifications).toOptions();
   }
 
+  downloadStatistics(territories) {
+    let sortedTerritories = territories.sort((t) => t.id || t.value);
+
+    let params = {
+      territory_ids: sortedTerritories.map((t) => t.id || t.value).join(),
+      territory_names: sortedTerritories.map((t) => t.name || t.label).join(', '),
+      classification_ids: this.state.selectedClassifications.map((c) => c.value).join(',')
+    };
+
+    return Routes.download_statistics_path(params);
+  }
+
   onTerritoryChange(selectedTerritories) {
     this.setState({ selectedTerritories })
   }
@@ -82,24 +94,30 @@ export default class Stats extends React.Component {
   }
 
   renderCharts() {
-    if(this.state.selectedTerritories.length > 1 && this.state.selectedClassifications.length > 1) {
-      return this.state.selectedTerritories.map((territory, i) =>
-        <Chart
-          key={i}
-          years={this.props.years.sort()}
-          territories={[territory]}
-          classifications={this.state.selectedClassifications}
-        />
-      );
-    } else {
-      return (
-        <Chart
-          years={this.props.years.sort()}
-          territories={this.state.selectedTerritories}
-          classifications={this.state.selectedClassifications}
-        />
-      );
+    if (!_.isEmpty(this.state.selectedTerritories) && !_.isEmpty(this.state.selectedClassifications)) {
+      if (this.state.selectedTerritories.length > 1 && this.state.selectedClassifications.length > 1) {
+        return this.state.selectedTerritories.map((territory, i) =>
+          <Chart
+            key={i}
+            years={this.props.years.sort()}
+            territories={[territory]}
+            classifications={this.state.selectedClassifications}
+            downloadUrl={this.downloadStatistics([territory])}
+          />
+        );
+      } else {
+        return (
+          <Chart
+            years={this.props.years.sort()}
+            territories={this.state.selectedTerritories}
+            classifications={this.state.selectedClassifications}
+            downloadUrl={this.downloadStatistics(this.state.selectedTerritories)}
+          />
+        );
+      }
     }
+
+    return null;
   }
 
   render() {

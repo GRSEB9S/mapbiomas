@@ -52,6 +52,7 @@ export default class Map extends React.Component {
         transitions: false
       },
       territory: null,
+      territoryTab: 0,
       transition: null,
       transitions: [],
       transitionsLayers: [1, 2, 3, 4, 5],
@@ -102,17 +103,7 @@ export default class Map extends React.Component {
     return this.state.mode;
   }
 
-  get mapPath() {
-    if (this.mode == 'transitions' && !this.state.transition) {
-      return 'wms/classification/transitions_group.map';
-    } else if (this.mode == 'transitions') {
-      return 'wms/classification/transitions.map';
-    } else {
-      return 'wms/classification/coverage.map';
-    }
-  }
-
-  get transitionsLayerOptions() {
+  get transitionsDataLayerOptions() {
     let fromId, toId;
     let transitionInfo = {};
 
@@ -132,7 +123,7 @@ export default class Map extends React.Component {
     }
   }
 
-  get coverageLayerOptions() {
+  get coverageDataLayerOptions() {
     let ids = this.classifications.map((c) => c.id);
 
     return {
@@ -141,20 +132,10 @@ export default class Map extends React.Component {
     };
   }
 
-  get tileOptions() {
-    let layerOptions = this.mode == 'coverage' ? this.coverageLayerOptions :
-                       this.transitionsLayerOptions;
-
+  get dataLayerOptions() {
     return {
-      layerOptions: {
-        ...layerOptions,
-        url: this.props.apiUrl,
-        layers: this.mode,
-        map: this.mapPath,
-        territory_id: this.territory.id,
-        format: 'image/png'
-      },
-      opacity: this.state.opacity
+      coverage: this.coverageDataLayerOptions,
+      transitions: this.transitionsDataLayerOptions
     };
   }
 
@@ -232,13 +213,23 @@ export default class Map extends React.Component {
 
   //Handlers
   handleModeChange(mode) {
-    this.setState({ mode });
+    this.setState({
+      mode,
+      territory: null,
+      territoryTab: 0
+    });
     window.location.hash = `#${mode}`;
-    this.setState({ territory: null });
+  }
+
+  handleTerritoryTabChange(territoryTab) {
+    this.setState({ territoryTab });
   }
 
   handleTerritoryChange(territory) {
-    this.setState({ territory })
+    this.setState({
+      territory,
+      transition: null
+    })
   }
 
   handleYearChange(newYear) {
@@ -288,6 +279,10 @@ export default class Map extends React.Component {
         transitions: false
       }
     });
+  }
+
+  handleTransitionReset() {
+    this.setState({ transition: null });
   }
 
   handleTransitionsLoad(transitions) {
@@ -404,14 +399,14 @@ export default class Map extends React.Component {
     });
   }
 
-  downloadSpreadsheet() {
+  downloadTransitions() {
     let params = {
       territory_id: this.territory.id,
       territory_name: this.territory.name,
       year: this.years.join(',')
     };
 
-    return Routes.download_path(params);
+    return Routes.download_transitions_path(params);
   }
 
   loadCards() {
@@ -478,7 +473,7 @@ export default class Map extends React.Component {
           setTransition={this.handleTransitionChange.bind(this)}
           onClose={this.closeModal.bind(this, 'transitions')}
           years={this.years}
-          downloadUrl={this.downloadSpreadsheet()}
+          downloadUrl={this.downloadTransitions()}
           transition={this.transition}
           transitions={this.state.transitions}
           classifications={this.classifications}
@@ -530,7 +525,10 @@ export default class Map extends React.Component {
         {this.renderWarning('quality')}
 
         <MapCanvas
-          {...this.tileOptions}
+          dataLayerOptions={this.dataLayerOptions}
+          apiUrl={this.props.apiUrl}
+          transition={this.state.transition}
+          opacity={this.state.opacity}
           ref="canvas"
           cards={this.state.cards}
           baseMaps={this.props.availableBaseMaps}
@@ -557,8 +555,10 @@ export default class Map extends React.Component {
               hidePanels={this.toggleHide.bind(this)}
             />
             <TerritoryControl
+              tabIndex={this.state.territoryTab}
               territory={this.territory}
               loadTerritories={this.loadTerritories.bind(this)}
+              onTabChange={this.handleTerritoryTabChange.bind(this)}
               onTerritoryChange={this.handleTerritoryChange.bind(this)}
             />
 
@@ -600,11 +600,14 @@ export default class Map extends React.Component {
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
+                  transition={this.state.transition}
+                  classifications={this.classifications}
                   viewOptionsIndex={this.state.viewOptionsIndex.transitions}
                   handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
+                  handleTransitionReset={this.handleTransitionReset.bind(this)}
                 />
               </div>
             )}
@@ -656,7 +659,6 @@ export default class Map extends React.Component {
                     years={this.years}
                     onExpandModal={this.expandModal.bind(this, 'transitions')}
                     onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
-                    setTransition={this.handleTransitionChange.bind(this)}
                   />
                 )}
                 qualityPanel={(

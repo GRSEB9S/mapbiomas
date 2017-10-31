@@ -1,4 +1,4 @@
-class DownloadPresenter
+class Downloads::TransitionsPresenter
   def initialize(params)
     @year = params[:year]
     @territory_id = params[:territory_id]
@@ -17,12 +17,14 @@ class DownloadPresenter
     classifications.count + 1
   end
 
+  def worksheet_name
+    I18n.t('map.index.transitions.title')
+  end
+
   def filename
     "[#{@territory_name}] " +
       I18n.t('map.index.transitions.matrix.download_file',
-             from_year: years.first,
-             to_year: years.last
-            ) + ".xlsx"
+             from_year: years.first, to_year: years.last) + '.xlsx'
   end
 
   private
@@ -54,7 +56,7 @@ class DownloadPresenter
   end
 
   def classifications_header
-    header = classifications.map { |c| c["name"] }
+    header = classifications.map { |c| c['name'] }
     header.unshift('', '')
   end
 
@@ -62,7 +64,7 @@ class DownloadPresenter
     data = []
 
     classifications.each do |from|
-      row = [years.first, from["name"]]
+      row = [years.first, from['name']]
 
       classifications.each do |to|
         row << transition_area(from, to)
@@ -76,10 +78,10 @@ class DownloadPresenter
 
   def transition_area(from, to)
     transition = transitions.find do |t|
-      t["from"] == from["id"] && t["to"] == to["id"]
+      t['from'] == from['id'] && t['to'] == to['id']
     end
 
-    return transition["area"] if transition
+    return transition['area'] if transition
     '-'
   end
 end

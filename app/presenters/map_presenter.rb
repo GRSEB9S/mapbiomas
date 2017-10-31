@@ -32,12 +32,12 @@ class MapPresenter
   ].freeze
 
   LAYERS_KEYS = {
-    states:            '4dd47a54-01a8-11e6-86a9-0e31c9be1b51',
-    cities:            '72b94172-0263-11e6-a087-0e5db1731f59',
-    contour_maps:       '1413c17c-0274-11e6-ae17-0e787de82d45',
-    biomes:            '201bcb2a-026c-11e6-9f9a-0e3ff518bd15',
-    indigenous_lands:   '9294ef0a-04f2-11e6-8a00-0e31c9be1b51',
-    conservation_units: 'c6f498c2-04f2-11e6-bedf-0ecd1babdde5'
+    states: '4dd47a54-01a8-11e6-86a9-0e31c9be1b51',
+    cities: '72b94172-0263-11e6-a087-0e5db1731f59',
+    contour_maps: '1413c17c-0274-11e6-ae17-0e787de82d45',
+    biomes: '201bcb2a-026c-11e6-9f9a-0e3ff518bd15',
+    indigenous_lands: 'adecbf9e-1c1e-43ec-ae8b-f9d340d7fc6f',
+    conservation_units: 'e916c222-1999-412f-b2eb-666c8958dfcd'
   }.freeze
 
   def as_json(*_)
@@ -130,8 +130,22 @@ class MapPresenter
     }
   end
 
+  def coverage_data
+    {
+      id: 7,
+      slug: 'coverage-data',
+      name: I18n.t('map.index.base_maps.coverage_data'),
+      data: true,
+      mode: 'coverage',
+      wms: true,
+      color: nil,
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms"
+    }
+  end
+
   def base_maps
     [
+      coverage_data,
       rgb_landsat,
       esri_imagery,
       openstreet_mapnik,

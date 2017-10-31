@@ -3,7 +3,7 @@ en:
     header:
       menu: Menu
       about:
-        title: About Mapbiomas
+        title: About MapBiomas
         project: Project
         products: Products
         about_us: Who we are
@@ -45,10 +45,12 @@ en:
         statistics: Statistics
         quality_and_accuracy: Quality of mosaics
         downloads: Downloads
+        terms_of_use: Terms of use
       methodology:
         title: Methodology
         atbd: ATBD
         tools: Tools
+        scripts: Scripts
       communication:
         title: Communication
         release_collection2: Launch Collection 2

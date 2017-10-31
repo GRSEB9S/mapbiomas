@@ -3,12 +3,16 @@ pt-BR:
     format:
       delimiter: '.'
       separator: ','
+  geolocation:
+    latitude: Latitude
+    longitude: Longitude
   charts:
     lang:
       download_jpeg: Exportar como JPG
       download_pdf: Exportar como PDF
       download_png: Exportar como PNG
       download_svg: Exportar como SVG
+      loading: Carregando...
       print_chart: Imprimir gráfico
     buttons:
       context_button:

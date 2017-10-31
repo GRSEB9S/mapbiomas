@@ -3,7 +3,7 @@
     if (collection == '1') {
       return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
     } else {
-      return 'http://maps.lapig.iesa.ufg.br/mapbiomas/'+ year + '/' + biome + '.tif';
+      return 'http://storage.googleapis.com/mapbiomas-public/COLECAO/2/CONSOLIDACAO/' + year + '/' + biome + '_' + year + '.tif';
     }
   }
 
@@ -55,9 +55,12 @@
       <strong>Importante:</strong> ao compor um mosaico único ou calcular estatísticas sobre os mapas deve ser observado que:
       <ul>
         <li>Para cálculo de área é necessário utilizar uma projeção métrica adequada. </li>
+        <li>Os limites de Biomas foram adaptados pelo projeto da escala original publicada pelo IBGE de 1:5.000.000 para 1:1.000.000 a partir dos Mapas de limites territoriais do Brasil 1:250.000 (IBGE) e fitofisionomias 1:1.000.000, também do IBGE. O Shape des limites esta disponível para download junto com os mapas de referência.</li>
         <li>Todos os dados estão no formato GeoTiff e possuem compressão LZW.</li>
       </ul>
     </blockquote>
+
+    <p>Alternativamente você pode acessar e processar a Coleção 2 do MapBiomas diretamente como Google Earth Engine (GEE). Acesse o asset público <%= link_to 'aqui', page_path('scripts') %>  para acessar os IDs do asset.</p>
 
     <div class="page__box-download">
       <%= select_tag "collection", options_for_select([["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>

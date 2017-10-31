@@ -21,6 +21,16 @@
   }
 }
 
+.transition-label {
+  &__container {
+    margin-bottom: $base-spacing;
+  }
+
+  &__item {
+    margin-bottom: 0;
+  }
+}
+
 .transitions-labels {
   &__select {
     display: flex;

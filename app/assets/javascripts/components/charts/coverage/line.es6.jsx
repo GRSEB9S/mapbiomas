@@ -22,7 +22,7 @@ class CoverageLineChart extends Component {
   }
 
   get chartOptions() {
-    let el = this.refs.chartElement;
+    const el = this.refs.chartElement;
 
     return {
       chart: {
@@ -73,12 +73,15 @@ class CoverageLineChart extends Component {
   }
 
   loadCoverage(props) {
+    this.chart.showLoading();
+
     API.coverage({
       territory_id: props.territory.id,
-      classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
+      classification_ids: props.defaultClassifications.map((c) => c.id).join(',')
     }).then((coverage) => {
       this.setState({ coverage: this.parseCoverage(coverage) }, () => {
-        this.drawChart()
+        this.drawChart();
+        this.chart.hideLoading();
       });
     })
   }
@@ -88,6 +91,7 @@ class CoverageLineChart extends Component {
   }
 
   componentDidMount() {
+    this.drawChart();
     this.loadCoverage(this.props);
   }
 

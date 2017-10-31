@@ -70,8 +70,8 @@ const TransitionsModal = ({
     >
       <Tabs>
         <TabList className="two-tabbed">
-          <Tab>Diagrama Sankey de transições</Tab>
-          <Tab>Matriz de transições</Tab>
+          <Tab>{I18n.t('map.index.transitions.sankey.title')}</Tab>
+          <Tab>{I18n.t('map.index.transitions.matrix.title')}</Tab>
         </TabList>
         <TabPanel>
           <ul className="transitions-sankey">

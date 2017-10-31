@@ -45,10 +45,12 @@ pt-BR:
         statistics: Estatísticas
         quality_and_accuracy: Qualidade dos mosaicos
         downloads: Downloads
+        terms_of_use: Termos de uso
       methodology:
         title: Metodologia
         atbd: ATBD
         tools: Ferramentas
+        scripts: Scripts
       communication:
         title: Comunicação
         release_collection2: Lançamento da Coleção 2

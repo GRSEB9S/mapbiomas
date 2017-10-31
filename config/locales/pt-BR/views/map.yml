@@ -39,11 +39,18 @@ pt-BR:
         tooltip: |
           <p>Fonte dos mapas de fundo:</p>
           <ul>
-            <li><b>Imagem - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
-            <li><b>Estradas - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
-            <li><b>Relevo - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+            <li><b>Imagem - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</a>
+            </li>
+            <li><b>Estradas - Open Street Map:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</a>
+            </li>
+            <li><b>Relevo - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</a>
+            </li>
           </ul>
-        rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (específica de cada ano)
+        coverage_data: Mapas de Cobertura e Uso da Terra
+        rgb_landsat: Mosaico Landsat MapBiomas (RGB) (específica de cada ano)
         satellite: Google Satellite
         roadmap: Google Roadmap
         terrain: Google Terrain
@@ -67,6 +74,12 @@ pt-BR:
         title: Transições
         select_all: Selecionar todas as camadas
         analysis: Análise de transição
+        selected_transition:
+          title: Transição selecionada
+          from: "De: %{from}"
+          to: "Para: %{to}"
+          area: "Área: %{area} ha"
+          all_transitions: Visualizar todas as transições
         labels:
           title: Legenda
           farming: Transições de classes de agropecuária ou áreas não vegetadas para cobertura florestal ou áreas naturais não florestais.
@@ -79,6 +92,8 @@ pt-BR:
           total: Total
           download: Download
           download_file: "Matriz de Transição %{from_year} - %{to_year}"
+        sankey:
+          title: Diagrama Sankey de transições
         all_years: Todos os anos
         forest_code: Código florestal
         subsequent_years: Anos subsequentes

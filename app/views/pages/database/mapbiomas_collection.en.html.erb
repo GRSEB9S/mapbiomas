@@ -3,7 +3,7 @@
     if (collection == '1') {
       return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
     } else {
-      return 'http://maps.lapig.iesa.ufg.br/mapbiomas/'+ year + '/' + biome + '.tif';
+      return 'http://storage.googleapis.com/mapbiomas-public/COLECAO/2/CONSOLIDACAO/' + year + '/' + biome + '_' + year + '.tif';
     }
   }
 
@@ -55,9 +55,12 @@
       <strong>Warning:</strong> When composing a single mosaic or calculating statistics it should be noted that:
       <ul>
         <li>For area calculation, it is necessary to use a suitable metric projection.</li>
+        <li>The limits of Biomes were adapted by MapBiomas team from the original scale 1:5.000.000 published by the IBGE to 1: 1,000,000. This adaptation was based on the Territorial Boundaries Maps of Brazil 1: 250,000 (IBGE) and physiognomies map 1: 1,000,000 also from the IBGE. The Shape of those limits is available for download along with the reference maps.</li>
         <li>All data are in GeoTiff format and have LZW compression.</li>
       </ul>
     </blockquote>
+
+    <p> Alternatively you can access and process MapBiomas Collection 2 directly as Google Earth Engine (GEE). Access the public asset <%= link_to 'here', page_path('scripts') %> to access the asset IDs.</p>
 
     <div class="page__box-download">
       <%= select_tag "collection", options_for_select([["Collection 2", 2], ["Collection 1", 1]]), id: "collection" %>

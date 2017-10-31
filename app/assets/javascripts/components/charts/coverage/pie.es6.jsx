@@ -34,7 +34,7 @@ class CoveragePieChart extends Component {
   }
 
   get chartOptions() {
-    let el = this.refs.chartElement;
+    const el = this.refs.chartElement;
 
     return {
       chart: {
@@ -64,20 +64,24 @@ class CoveragePieChart extends Component {
     };
   }
 
-  loadCoverage(props) {
+  loadCoverage(props = this.props) {
+    this.chart.showLoading();
+
     API.coverage({
       territory_id: props.territory.id,
       classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
       year: props.year
     }).then((coverage) => {
       this.setState({ coverage: coverage }, () => {
-        this.drawChart()
+        this.drawChart();
+        this.chart.hideLoading();
       });
     })
   }
 
   componentDidMount() {
-    this.loadCoverage(this.props);
+    this.drawChart();
+    this.loadCoverage();
   }
 
   componentWillReceiveProps(nextProps) {

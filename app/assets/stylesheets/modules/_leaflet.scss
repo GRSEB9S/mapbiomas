@@ -15,3 +15,13 @@
 .leaflet-top, .leaflet-bottom {
   z-index: 5;
 }
+
+.leaflet-left .leaflet-control {
+  margin: 0;
+  border-radius: 0;
+  font-size: 11px;
+
+  .label {
+    margin: 0px 5px;
+  }
+}

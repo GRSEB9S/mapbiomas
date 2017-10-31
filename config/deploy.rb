@@ -23,7 +23,8 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['log', 'tmp/pids', 'config/puma.rb']
+set :shared_dirs, ['log', 'tmp/pids']
+set :shared_files, ['config/puma.rb']
 
 # Optional settings:
 #   set :user, 'foobar'    # Username in the server to SSH to.
@@ -46,22 +47,22 @@ end
 # For Rails apps, we'll make some of the shared paths that are shared between
 # all releases.
 task :setup => :environment do
-  command! %[mkdir -p "#{deploy_to}/#{shared_path}/log"]
-  command! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/log"]
+  command! %[mkdir -p "#{fetch(:shared_path)}/log"]
+  command! %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/log"]
 
-  command! %[mkdir -p "#{deploy_to}/#{shared_path}/config"]
-  command! %[chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/config"]
+  command! %[mkdir -p "#{fetch(:shared_path)}/config"]
+  command! %[chmod g+rx,u+rwx "#{fetch(:shared_path)}/config"]
 
-  command! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/sockets")
-  command! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/sockets")
-  command! %(mkdir -p "#{deploy_to}/#{shared_path}/tmp/pids")
-  command! %(chmod g+rx,u+rwx "#{deploy_to}/#{shared_path}/tmp/pids")
+  command! %(mkdir -p "#{fetch(:shared_path)}/tmp/sockets")
+  command! %(chmod g+rx,u+rwx "#{fetch(:shared_path)}/tmp/sockets")
+  command! %(mkdir -p "#{fetch(:shared_path)}/tmp/pids")
+  command! %(chmod g+rx,u+rwx "#{fetch(:shared_path)}/tmp/pids")
 
   command! %(echo "#Add by Mina" >> ~/.bashrc)
-  command! %(echo 'while read p; do eval "export $p"; done < #{deploy_to}/#{shared_path}/config/env' >> ~/.bashrc)
-  command! %(echo 'APP_DEPLOY_PATH=#{deploy_to}' >> #{deploy_to}/#{shared_path}/config/env)
-  command! %(echo 'APP_SHARED_PATH=#{deploy_to}/#{shared_path}' >> #{deploy_to}/#{shared_path}/config/env)
-  command! %(echo 'APP_PATH=#{current_path}' >> #{deploy_to}/#{shared_path}/config/env)
+  command! %(echo 'while read p; do eval "export $p"; done < #{fetch(:shared_path)}/config/env' >> ~/.bashrc)
+  command! %(echo 'APP_DEPLOY_PATH=#{fetch(:deploy_to)}' >> #{fetch(:shared_path)}/config/env)
+  command! %(echo 'APP_SHARED_PATH=#{fetch(:shared_path)}' >> #{fetch(:shared_path)}/config/env)
+  command! %(echo 'APP_PATH=#{fetch(:current_path)}' >> #{fetch(:shared_path)}/config/env)
 
   if repository
       repo_host = repository.split(%r{@|://}).last.split(%r{:|\/}).first
@@ -77,7 +78,7 @@ end
 
 desc "Deploys the current version to the server."
 task :deploy => :environment do
-  to :before_hook do
+  on :before_hook do
     # Put things to run locally before ssh
   end
   deploy do
@@ -93,9 +94,9 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-    to :launch do
-      command "mkdir -p #{deploy_to}/#{current_path}/tmp/"
-      command "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
+    on :launch do
+      command "mkdir -p#{fetch(:current_path)}/tmp/"
+      command "touch #{fetch(:current_path)}/tmp/restart.txt"
       invoke :'puma:phased_restart'
     end
   end

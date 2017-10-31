@@ -1,18 +1,21 @@
 en:
   stats:
     title: 'Statistics'
-    subtitle: Selecione nas caixas abaixo os territórios (país, estado, município ou bioma) e as classes para os quais deseja ver a estatística ao longo do período da coleção do MapBiomas.
+    subtitle: Select in the boxes below the territories (country, state, municipality or biome) and the classes for which you want to see the statistics over the period of the MapBiomas collection.
     searching: 'Searching...'
     territories:
       title: 'Territories'
       tooltip: |
-        <p>Escreva o nome do território para o qual deseja ver os dados históricos (Brasil, estado, município e bioma). É possível selecionar mais de um território, sendo os gráficos plotados um abaixo do outro (use o <i>scroll down</i> para ver).</p>
+        <p>Type the name of the  territory you would like to see the statistics (Country, state, municipality or biome). It's possible to select more than one territory and they will be plotted in separate graphics. Scroll down to see all.</p>
     classifications:
       title: 'Classes'
       tooltip: |
-        <p>Selecione as classes para as quais quer ver os dados históricos. Note que a escala do gráfico está sempre em hectares e se adapta aos dados mostrados.</p>
-        <p>As classes são hierárquicas. A classe nível 1 inclui todos os dados do nível 2. Podem ser colocadas múltiplas classes.</p>
-        <p>Com o gráfico plotado é possível ligar e desligar classes clicando na legenda abaixo do gráfico.</p>
+        <p>Type the classes for which you would like to see the graphic and table with historical data. Note that scale is in hectares and vary according to the classes selected.</p>
+        <p>The classes are hierarchical. The Nivel 1 includes all data from Nivel 2 and 3. Ex. 1. Forests Formations includes all types of forests.</p>
+        <p>When graph is plotted you can turn on/off any class in the graphic by clicking on the legend bellow the graph.</p>
     chart:
       yAxis:
         title: 'Area'
+    table:
+      download: Download
+      download_file: Statistics

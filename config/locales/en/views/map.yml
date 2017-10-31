@@ -39,11 +39,18 @@ en:
         tooltip: |
           <p>Source of background maps:</p>
           <ul>
-            <li><b>Image - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</li>
-            <li><b>Roads - Open Street Map:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</li>
-            <li><b>Relief - ESRI:</b> http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</li>
+            <li><b>Image - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery</a>
+            </li>
+            <li><b>Roads - Open Street Map:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=OpenStreetMap.Mapnik</a>
+            </li>
+            <li><b>Relief - ESRI:</b>
+              <a target="_blank" href="http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief">http://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldShadedRelief</a>
+            </li>
           </ul>
-        rgb_landsat: Mosaico Landsat Mapbiomas (RGB) (specific to each year)
+        coverage_data: Land Use and Cover Mapping
+        rgb_landsat: Landsat MapBiomas Mosaic (RGB) (specific to each year)
         satellite: Google Satellite
         roadmap: Google Roadmap
         terrain: Google Terrain
@@ -67,6 +74,12 @@ en:
         title: Transitions
         select_all: Select all layers
         analysis: Transitions analysis
+        selected_transition:
+          title: Selected transition
+          from: "From: %{from}"
+          to: "To: %{to}"
+          area: "Area: %{area} ha"
+          all_transitions: Check all transitions
         labels:
           title: Labels
           farming: Transitions from farming classes or non-vegetated areas to forest cover or non-forest natural areas.
@@ -79,6 +92,8 @@ en:
           total: Total
           download: Download
           download_file: "Transitions Matrix %{from_year} - %{to_year}"
+        sankey:
+          title: Sankey diagram for transitions
         all_years: All years
         forest_code: Forest Code
         subsequent_years: Subsequent years

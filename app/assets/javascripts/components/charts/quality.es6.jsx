@@ -7,7 +7,7 @@ class QualityChart extends React.Component {
     super(props);
   }
 
-  seriesData() {
+  get seriesData() {
     return this.props.qualityInfo.map(qi => {
       const count = _.filter(this.props.qualities, { quality: Number(qi.api_name) }).length;
       return {
@@ -18,12 +18,16 @@ class QualityChart extends React.Component {
     });
   }
 
-  chartSeries() {
+  get chartSeries() {
+    if (_.isEmpty(this.props.qualities)) {
+      return [];
+    }
+
     return (
       [
         {
           name: I18n.t('map.index.quality.chart.tooltip'),
-          data: this.seriesData(),
+          data: this.seriesData,
         }
       ]
     );
@@ -55,7 +59,7 @@ class QualityChart extends React.Component {
         enabled: false
       },
       title: false,
-      series: this.chartSeries()
+      series: this.chartSeries
     };
   }
 
@@ -63,18 +67,26 @@ class QualityChart extends React.Component {
     window.open(this.props.qualityDataUrl, '_blank');
   }
 
-  renderChart() {
+  drawChart() {
     this.chart = new Highcharts.Chart(this.chartOptions());
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if(!_.isEqual(this.props.qualities, prevProps.qualities)) {
-      this.renderChart();
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEqual(this.props.qualities, nextProps.qualities)) {
+      this.chart.showLoading();
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    window.setTimeout(() => {
+      if(!_.isEqual(this.props.qualities, prevProps.qualities)) {
+        this.drawChart();
+      }
+    }, 200)
+  }
+
   componentDidMount() {
-    this.renderChart();
+    this.drawChart();
 
     $('#quality-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',

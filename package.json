@@ -21,8 +21,9 @@
     "react-tabs": "^0.8.3",
     "react-timeline-slider": "^0.0.4",
     "react-toggle": "^4.0.1",
-    "tooltipster": "^1.0.9",
-    "underscore": "^1.8.3"
+    "tooltipster": "^4.2.5",
+    "underscore": "^1.8.3",
+    "webpack": "^1.13.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.7",
@@ -31,7 +32,7 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.0",
+    "url-loader": "^0.5.9",
     "webpack-dev-server": "^1.14.1"
   }
 }

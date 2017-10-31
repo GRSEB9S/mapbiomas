@@ -7,6 +7,7 @@ class TerrasAPI
 
   def self.territories(name = nil, category = nil)
     get("/dashboard/services/territories", query: {
+      language: I18n.locale.to_s,
       category: category,
       name: name
     }.compact)
@@ -43,6 +44,13 @@ class TerrasAPI
   def self.qualities(year)
     get("/dashboard/services/qualities", query: {
       year: year
+    })
+  end
+
+  def self.statistics(territory_id, classification_ids)
+    get("/dashboard/services/statistics/groupedcover", query: {
+      territory_id: territory_id,
+      classification_id: classification_ids
     })
   end
 end
