@@ -61,18 +61,63 @@ export class MyMaps extends React.Component {
   renderMapSelect() {
     if (!_.isEmpty(this.props.maps)) {
       return (
-        <Select
-          options={this.mapsOptions}
-          onChange={this.props.onMapSelect}
-          value={this.props.selectedMap && this.props.selectedMap.id}
-          clearable={false}
-        />
+        <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
+          <h3>{I18n.t('my_maps.title')}</h3>
+
+          <Select
+            options={this.mapsOptions}
+            onChange={this.props.onMapSelect}
+            value={this.props.selectedMap && this.props.selectedMap.id}
+            clearable={false}
+          />
+        </div>
       );
     } else {
       return (
-        <label>{I18n.t('my_maps.no_maps')}</label>
+        <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
+          <h3>{I18n.t('my_maps.title')}</h3>
+          <label>{I18n.t('my_maps.no_maps')}</label>
+        </div>
       );
     }
+  }
+
+  renderMapForm() {
+    return (
+      <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
+        <h3>{I18n.t('my_maps.new_map.title')}</h3>
+
+        <label className="my-maps__description">{I18n.t('my_maps.new_map.subtitle')}</label>
+
+        <form className="my-maps__form">
+          <div className="my-maps__form">
+            <label>{I18n.t('my_maps.new_map.name')}</label>
+            <input
+              type="text"
+              value={this.state.name}
+              onChange={this.handleNameChange.bind(this)}
+            />
+
+            <label>Territórios</label>
+            <Select.Async
+              name="territory-select"
+              value={this.props.territories}
+              loadOptions={this.loadTerritories()}
+              onChange={this.props.onTerritorySelect}
+              clearable={false}
+              ignoreAccents={false}
+              noResultsText={false}
+              searchingText={I18n.t('stats.index.searching')}
+              multi={true}
+            />
+          </div>
+        </form>
+
+        <div className="my-maps__actions">
+          <button onClick={this.saveMap.bind(this)}>{I18n.t('my_maps.new_map.submit')}</button>
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -87,46 +132,10 @@ export class MyMaps extends React.Component {
             <Tab>{I18n.t('my_maps.tabs.new_map')}</Tab>
           </TabList>
           <TabPanel>
-            <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
-              <h3>{I18n.t('my_maps.title')}</h3>
-
-              { this.renderMapSelect() }
-            </div>
+            { this.renderMapSelect() }
           </TabPanel>
           <TabPanel>
-            <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
-              <h3>{I18n.t('my_maps.new_map.title')}</h3>
-
-              <label className="my-maps__description">{I18n.t('my_maps.new_map.subtitle')}</label>
-
-              <form className="my-maps__form">
-                <div className="my-maps__form--input">
-                  <label>{I18n.t('my_maps.new_map.name')}</label>
-                  <input
-                    type="text"
-                    value={this.state.name}
-                    onChange={this.handleNameChange.bind(this)}
-                  />
-
-                  <label>Territórios</label>
-                  <Select.Async
-                    name="territory-select"
-                    value={this.props.territories}
-                    loadOptions={this.loadTerritories()}
-                    onChange={this.props.onTerritorySelect}
-                    clearable={false}
-                    ignoreAccents={false}
-                    noResultsText={false}
-                    searchingText={I18n.t('stats.index.searching')}
-                    multi={true}
-                  />
-                </div>
-              </form>
-
-              <div className="my-maps__actions">
-                <button onClick={this.saveMap.bind(this)}>{I18n.t('my_maps.new_map.submit')}</button>
-              </div>
-            </div>
+            { this.renderMapForm() }
           </TabPanel>
         </Tabs>
       </div>
