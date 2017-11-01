@@ -20,6 +20,11 @@
   }
 
   &__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__actions, &__edit {
     padding-top: $base-spacing;
   }
 }

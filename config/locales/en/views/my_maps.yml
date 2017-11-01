@@ -9,11 +9,17 @@ en:
         <blockquote>
           &lt;iframe width="960" height="720" src=%{src} frameborder="0"&gt;&lt;/iframe&gt;
         </blockquote>
-    new_map:
+    new:
       title: New map
       subtitle: Choose the desired params and a title for your map.
       name: Map title
-      submit: New map
+      submit: Save
+    edit:
+      title: Edit map
+      subtitle: Choose the new params
+      submit: Save
+      cancel: Cancel
     tabs:
       my_maps: My maps
       new_map: New map
+      edit: Edit map

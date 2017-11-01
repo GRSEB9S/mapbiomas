@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'underscore';
-import classNames from 'classnames';
 import Select from 'react-select-plus';
 import { Tabs } from 'react-tabs';
 
@@ -232,6 +231,19 @@ export default class Map extends React.Component {
     ]
   }
 
+  params(name) {
+    return {
+      name: name,
+      options: {
+        mode: this.mode,
+        base_maps: this.baseMaps.map((m) => m.id),
+        layers: this.layers.map((l) => l.id),
+        territory: this.territory,
+        ...this.dataLayerOptions[this.mode]
+      }
+    };
+  }
+
   //Handlers
   handleModeChange(mode) {
     this.setState({
@@ -388,7 +400,7 @@ export default class Map extends React.Component {
       layers: this.filterOptions(this.props.availableLayers, options.layers),
       territory: options.territory,
       myMaps: this.myMaps,
-      myMapTerritories: null
+      myMapTerritories: options.territory
     });
   }
 
@@ -397,18 +409,7 @@ export default class Map extends React.Component {
   }
 
   handleMapSave(name) {
-    let params = {
-      name: name,
-      options: {
-        mode: this.mode,
-        base_maps: this.baseMaps.map((m) => m.id),
-        layers: this.layers.map((l) => l.id),
-        territory: this.territory,
-        ...this.dataLayerOptions[this.mode]
-      }
-    };
-
-    API.createMap(params).then((response) => {
+    API.createMap(this.params(name)).then((response) => {
       this.setState({
         selectedMap: response,
         myMaps: [
@@ -416,6 +417,20 @@ export default class Map extends React.Component {
           response
         ]
       });
+    });
+  }
+
+  handleMapEdit(name) {
+    API.updateMap(this.state.selectedMap.id, this.params(name)).then((response) => {
+      let myMaps = _.reject(_.clone(this.state.myMaps), (m) => m.id == response.id);
+
+      this.setState({
+        selectedMap: response,
+        myMaps: [
+          ...myMaps,
+          response
+        ]
+      })
     });
   }
 
@@ -683,6 +698,7 @@ export default class Map extends React.Component {
                 onTerritorySelect={this.handleMapTerritoriesSelect.bind(this)}
                 onMapSelect={this.handleMapSelect.bind(this)}
                 onMapSave={this.handleMapSave.bind(this)}
+                onMapEdit={this.handleMapEdit.bind(this)}
               />
             )}
 

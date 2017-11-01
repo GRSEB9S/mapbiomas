@@ -1,5 +1,6 @@
 class MapController < ApplicationController
   before_action :authenticate_user!, except: :index
+  before_action :set_map, only: [:update, :iframe]
   respond_to :json, only: :create
 
   def index
@@ -14,6 +15,12 @@ class MapController < ApplicationController
     respond_with(@map)
   end
 
+  def update
+    @map.update(map_params)
+
+    render json: @map
+  end
+
   def my_maps
     @map_props = MapPresenter.new.as_json.merge({
       myMapsPage: true,
@@ -24,17 +31,19 @@ class MapController < ApplicationController
   end
 
   def iframe
-    map = Map.find(params[:id])
-
     @map_props = MapPresenter.new.as_json.merge({
       iframe: true,
-      iframeMap: map
+      iframeMap: @map
     })
 
     render 'index', layout: 'iframe'
   end
 
   private
+
+  def set_map
+    @map = Map.find(params[:id])
+  end
 
   def map_params
     params.require(:map).permit(
