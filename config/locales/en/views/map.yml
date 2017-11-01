@@ -120,7 +120,7 @@ en:
       chart:
         tooltip: Move your mouse over the chart to see its values.
         year: "Year: %{year}"
-        territory: "Territory: %{territory}"
+        territory: "Territory/Territories: %{territory}"
       download:
         title: Download data
         classification: Classification

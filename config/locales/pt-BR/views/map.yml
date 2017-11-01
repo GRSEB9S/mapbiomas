@@ -120,7 +120,7 @@ pt-BR:
       chart:
         tooltip: Passe o mouse por cima do gráfico para visualizar os valores obtidos.
         year: "Ano: %{year}"
-        territory: "Território: %{territory}"
+        territory: "Território(s): %{territory}"
       download:
         title: Baixe os dados
         classification: Classe

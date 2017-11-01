@@ -14,10 +14,10 @@ export default class TransitionsMenu extends React.Component {
 
   loadTransitions(props) {
     API.transitions({
-      territory_id: props.territory.id,
+      territory_id: props.territory.map((t) => t.id).join(','),
       year: props.years.join(',')
     }).then((transitions) => {
-      this.props.onTransitionsLoad(transitions.transitions)
+      this.props.onTransitionsLoad(transitions)
     })
   }
 

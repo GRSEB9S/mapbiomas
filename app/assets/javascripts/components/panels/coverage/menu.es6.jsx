@@ -16,13 +16,17 @@ const CoverageMenu = ({
       territory={territory}
       year={year}
     />
+
     <CoverageLineChart
       availableClassifications={availableClassifications}
       defaultClassifications={defaultClassifications}
       territory={territory}
       year={year}
-      onExpandModal={onExpandModal}
     />
+
+    <button className="primary" onClick={onExpandModal.bind(this)}>
+      {I18n.t('map.index.coverage.details')}
+    </button>
   </div>
 );
 

@@ -44,6 +44,7 @@ export default class Map extends React.Component {
       layers: null,
       mode: location.hash.replace('#', '') || 'coverage',
       myMaps: null,
+      myMapTerritories: null,
       opacity: 1,
       qualities: [],
       selectedMap: null,
@@ -90,14 +91,26 @@ export default class Map extends React.Component {
     return this.state.layers || this.props.defaultLayers;
   }
 
-  get territory() {
-    if(_.isEmpty(this.state.territory)) {
-      let defaultTerritory = new Territories([this.props.defaultTerritory]).withOptions();
+  get defaultTerritory() {
+    let defaultTerritory = new Territories([this.props.defaultTerritory]).withOptions();
 
-      return _.first(defaultTerritory);
-    } else {
-      return this.state.territory;
+    return _.first(defaultTerritory);
+  }
+
+  get territory() {
+    if (!_.isEmpty(this.state.myMapTerritories)) {
+      return this.state.myMapTerritories;
     }
+
+    if (_.isEmpty(this.state.territory)) {
+      if (this.props.myMapsPage) {
+        return [this.defaultTerritory];
+      }
+
+      return this.defaultTerritory;
+    }
+
+    return this.state.territory;
   }
 
   get transition() {
@@ -373,8 +386,14 @@ export default class Map extends React.Component {
       mode: options.mode,
       baseMaps: this.filterOptions(this.props.availableBaseMaps, options.base_maps),
       layers: this.filterOptions(this.props.availableLayers, options.layers),
-      territory: options.territory
+      territory: options.territory,
+      myMaps: this.myMaps,
+      myMapTerritories: null
     });
+  }
+
+  handleMapTerritoriesSelect(myMapTerritories) {
+    this.setState({ myMapTerritories });
   }
 
   handleMapSave(name) {
@@ -541,7 +560,7 @@ export default class Map extends React.Component {
         <StatsModal
           classifications={this.props.defaultClassifications}
           years={this.props.availableYears}
-          selectedTerritories={[this.territory]}
+          selectedTerritories={this.territory}
           selectedClassifications={this.firstLevelClassifications}
           onClose={this.closeModal.bind(this, 'coverage')}
         />
@@ -577,6 +596,19 @@ export default class Map extends React.Component {
           html={I18n.t(`map.warning.${key}.body`)}
         />
       );
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.selectedMap) {
+      let src = window.location.origin + Routes.iframe_path(this.state.selectedMap.id)
+
+      $('#embed-code-tooltip').tooltipster({
+        theme: 'tooltip-custom-theme',
+        interactive: true,
+        contentAsHTML: true,
+        content: $(I18n.t('my_maps.embed_code.tooltip', { src: src }))
+      });
     }
   }
 
@@ -646,13 +678,15 @@ export default class Map extends React.Component {
             {this.props.myMapsPage && !this.props.iframe && (
               <MyMaps
                 maps={this.myMaps}
+                territories={this.state.myMapTerritories}
                 selectedMap={this.state.selectedMap}
+                onTerritorySelect={this.handleMapTerritoriesSelect.bind(this)}
                 onMapSelect={this.handleMapSelect.bind(this)}
                 onMapSave={this.handleMapSave.bind(this)}
               />
             )}
 
-            {!this.props.iframe && (
+            {!this.props.iframe && !this.props.myMapsPage && (
               <TerritoryControl
                 tabIndex={this.state.territoryTab}
                 territory={this.territory}
@@ -783,7 +817,7 @@ export default class Map extends React.Component {
           </div>
 
           <div className="map-panel__area map-panel__sidebar map-panel-can-hide">
-            <div className="map-panel__grow" id="right-sidebar-grown-panel">
+            <div className="map-panel__grow map-panel__main-menu" id="right-sidebar-grown-panel">
               <MainMenu
                 mode={this.mode}
                 iframe={this.props.iframe}
@@ -793,7 +827,7 @@ export default class Map extends React.Component {
                   $('#right-sidebar-grown-panel').height() - (
                     this.mode === 'quality' ? (
                       $('#quality-labels').height() + 55
-                    ) : 55
+                    ) : 105
                   )
                 )}
                 coveragePanel={(
@@ -829,6 +863,15 @@ export default class Map extends React.Component {
                   />
                 )}
               />
+
+              {this.props.myMapsPage && this.state.selectedMap && (
+                <div className="map-panel__action-panel map-panel__action-panel--embed-code">
+                  <i id="embed-code-tooltip"
+                    className="material-icons tooltip">
+                    &#xE86F;
+                  </i>
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ const renderTabPanel = (
 ) => {
   let value, label;
 
-  if(territory && territory.category.toLowerCase() === category.toLowerCase()) {
+  if (territory && territory.category.toLowerCase() === category.toLowerCase()) {
     value = territory.value;
     label = territory.label;
   }

@@ -75,8 +75,16 @@ class CoverageLineChart extends Component {
   loadCoverage(props) {
     this.chart.showLoading();
 
+    let territoryId;
+
+    if (_.isArray(props.territory)) {
+      territoryId = props.territory.map((t) => t.id).join(',');
+    } else {
+      territoryId = props.territory.id
+    }
+
     API.coverage({
-      territory_id: props.territory.id,
+      territory_id: territoryId,
       classification_ids: props.defaultClassifications.map((c) => c.id).join(',')
     }).then((coverage) => {
       this.setState({ coverage: this.parseCoverage(coverage) }, () => {
@@ -84,10 +92,6 @@ class CoverageLineChart extends Component {
         this.chart.hideLoading();
       });
     })
-  }
-
-  expandModal() {
-    this.props.onExpandModal();
   }
 
   componentDidMount() {
@@ -115,9 +119,6 @@ class CoverageLineChart extends Component {
     return (
       <div className="map-panel__item-content">
         <div className="coverage-chart" ref="chartElement"></div>
-        <button className="primary" onClick={this.expandModal.bind(this)}>
-          {I18n.t('map.index.coverage.details')}
-        </button>
       </div>
     );
   }
