@@ -560,7 +560,7 @@ export default class Map extends React.Component {
         <StatsModal
           classifications={this.props.defaultClassifications}
           years={this.props.availableYears}
-          selectedTerritories={[this.territory]}
+          selectedTerritories={this.territory}
           selectedClassifications={this.firstLevelClassifications}
           onClose={this.closeModal.bind(this, 'coverage')}
         />
