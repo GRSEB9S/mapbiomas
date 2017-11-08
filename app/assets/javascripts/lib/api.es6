@@ -4,7 +4,7 @@ export class API {
   }
 
   static groupedCoverage(params) {
-    return $.get('http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover', params)
+    return $.get('http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover', params);
   }
 
   static qualities(params) {
@@ -24,6 +24,16 @@ export class API {
       url: Routes.create_map_path(),
       data: JSON.stringify({ map: params }),
       method: 'POST',
+      dataType: 'JSON',
+      contentType: 'application/json; charset=utf-8'
+    });
+  }
+
+  static updateMap(id, params) {
+    return $.ajax({
+      url: Routes.update_map_path(id),
+      data: JSON.stringify({ map: params }),
+      method: 'PATCH',
       dataType: 'JSON',
       contentType: 'application/json; charset=utf-8'
     });

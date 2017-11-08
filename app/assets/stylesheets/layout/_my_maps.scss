@@ -3,6 +3,12 @@
     padding-bottom: $small-spacing;
   }
 
+  &__form {
+    input {
+      margin-bottom: $small-spacing;
+    }
+  }
+
   &__embed-code {
     h3 {
       padding-top: $base-spacing;
@@ -14,6 +20,11 @@
   }
 
   &__actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__actions, &__edit {
     padding-top: $base-spacing;
   }
 }

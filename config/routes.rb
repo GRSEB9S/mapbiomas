@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/my_maps', to: 'map#my_maps', as: :my_maps
   get '/iframe/:id', to: 'map#iframe', as: :iframe
   post '/map', to: 'map#create', as: :create_map
+  patch '/map/:id', to: 'map#update', as: :update_map
 
   get 'locales/set_language', to: 'locales#set_language', as: :set_language
 

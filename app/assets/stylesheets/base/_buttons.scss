@@ -66,6 +66,17 @@ button,
     }
   }
 
+  &--cancel {
+    background-color: lighten($red, 15%);
+
+    &.active,
+    &:hover,
+    &:focus {
+      background-color: lighten($red, 5%);
+      color: $white;
+    }
+  }
+
   &__icon {
     line-height: 0.8rem;
     font-size: 1rem;
