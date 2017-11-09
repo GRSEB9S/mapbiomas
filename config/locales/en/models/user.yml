@@ -1,9 +1,43 @@
 en:
   activerecord:
     attributes:
+      enums:
+        user:
+          occupation_areas:
+            health: Health
+            environment: Environment
+            farming: Farming
+            economy: Economy
+            geography: Geography
+            education: Education
+            others: Others
+          biomes_and_transversal_themes:
+            atlantic_forest: Atlantic forest
+            amazon: Amazon
+            cerrado: Cerrado
+            caatinga: Caatinga
+            pampa: Pampa
+            coastal_zone: Coastal zone
+            pantanal: Pantanal
+            agriculture: Agriculture
+            livestock: Livestock
+            urban_areas: Urban areaas
       user:
         name: Name
         email: Email
         password: Password
         password_confirmation: Password confirmation
         remember_me: Remember me
+        institution: Institution / Website
+        occupation: Occupation
+        occupation_area: Occupation Area
+        project_description: Project description / Context in which MapBiomas data are used
+        biomes_and_transversal_themes: Biomes / Transversal themes you work on
+        linkedin_url: Linkedin
+        facebook_url: Facebook
+        lattes_url: Lattes
+        phone: Phone number / WhatsApp
+        city: City
+        state: State
+        receive_newsletter: Would you like do receive news from this platform by email?
+        participate_of_groups: Would you like to participate of WhatsApp groups formed by MapBiomas users?

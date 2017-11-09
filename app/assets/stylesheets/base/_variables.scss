@@ -57,9 +57,14 @@ $base-font-color: $dark-gray;
 $primary-action-color: $light-green;
 $action-color: $medium-green;
 
+//Message validations
+$alert-color: #ffeacb !default;
+$error-color: #f6675d !default;
+
 // Border
 $base-border-color: $white-smoke;
 $base-border: 1px solid $base-border-color;
+$alert-border-radius: 4px;
 
 //React timeline slider
 $background-color: rgba($white, 0.8);

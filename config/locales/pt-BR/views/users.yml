@@ -1,0 +1,9 @@
+pt-BR:
+  users:
+    profile:
+      title: Perfil
+      description: O MapBiomas é um projeto colaborativo. Você pode participar como Usuário Colaborador contribuindo com dados, críticas, sugestões de melhorias ou apenas divulgando o seu uso. Para receber informações e atualizações sobre os dados e ferramentas do MapBiomas úteis a sua iniciativa, preencha os dados abaixo.
+      submit: Salvar
+      flashes:
+        success: Perfil atualizado com sucesso.
+        error: Não foi possível atualizar o perfil.

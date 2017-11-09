@@ -1,0 +1,25 @@
+.flash {
+  width: 100%;
+  padding: $micro-spacing;
+  text-align: center;
+  margin-bottom: $small-spacing;
+  border-radius: $alert-border-radius;
+
+  &.success{
+    border: solid 1px lighten($medium-green, 20%);
+    background-color: lighten($medium-green, 30%);
+    color: darken($medium-green, 20%);
+  }
+
+  &.error{
+    border: solid 1px lighten($error-color, 20%);
+    background-color: lighten($error-color, 30%);
+    color: darken($error-color, 10%);
+  }
+
+  &.warning {
+    border: solid 1px darken($alert-color, 20%);
+    background-color: $alert-color;
+    color: darken($alert-color, 40%);
+  }
+}

@@ -1,0 +1,100 @@
+<div class="page page__container profile">
+   <% if flash.any? %>
+      <% flash.each do |key, value| %>
+         <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+   <% end %>
+
+   <h1><%= I18n.t('users.profile.title') %></h1>
+
+   <span><%= I18n.t('users.profile.description') %>
+
+   <%= form_for(@user, url: update_user_path(@user), html: { class: "form" }) do |f| %>
+      <div class="field">
+         <%= f.label :name %>
+         <%= f.text_field :name, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :email %>
+         <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :institution %>
+         <%= f.text_field :institution, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :occupation %>
+         <%= f.text_field :occupation, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :occupation_area %>
+         <%= f.select :occupation_area, User.occupation_areas_options, autofocus: true, include_blank: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :biomes_and_transversal_themes %>
+
+         <div class="checkbox-container">
+            <% User.biomes_and_transversal_themes_options.each do |key, value| %>
+               <div class="checkbox">
+                  <%= f.check_box :biomes_and_transversal_themes, { multiple: true }, value, nil %>
+                  <%= f.label key%>
+               </div>
+            <% end %>
+         </div>
+      </div>
+
+      <div class="field">
+         <%= f.label :project_description %>
+         <%= f.text_area :project_description, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :phone %>
+         <%= f.text_field :phone, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :city %>
+         <%= f.text_field :city, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :state %>
+         <%= f.text_field :state, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :linkedin_url %>
+         <%= f.text_field :linkedin_url, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :facebook_url %>
+         <%= f.text_field :facebook_url, autofocus: true %>
+      </div>
+
+      <div class="field">
+         <%= f.label :lattes_url %>
+         <%= f.text_field :lattes_url, autofocus: true %>
+      </div>
+
+      <div class="field checkbox">
+         <%= f.check_box :receive_newsletter %>
+         <%= f.label :receive_newsletter %>
+      </div>
+
+      <div class="field checkbox">
+         <%= f.check_box :participate_in_groups %>
+         <%= f.label :participate_of_groups %>
+      </div>
+
+      <div class="form-actions">
+         <%= f.submit t('users.profile.submit') %></h2>
+      </div>
+   <% end %>
+</div>

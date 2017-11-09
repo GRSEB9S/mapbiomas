@@ -1,8 +1,19 @@
+.form {
+  margin-top: $medium-spacing;
+}
+
 .field {
   margin-bottom: $base-spacing;
 }
 
-.remember_me {
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100px;
+}
+
+.checkbox {
   display: flex;
   align-items: center;
 }

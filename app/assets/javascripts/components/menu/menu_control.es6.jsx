@@ -26,6 +26,12 @@ export class MenuControl extends React.Component {
             </li>
 
             <li className="menu__item">
+              <a className="menu__link" href={Routes.user_profile_path()}>
+                {I18n.t('users.profile.title')}
+              </a>
+            </li>
+
+            <li className="menu__item">
               <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>
                 {I18n.t('devise.sessions.destroy.sign_out')}
               </a>

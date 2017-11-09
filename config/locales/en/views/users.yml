@@ -1,0 +1,9 @@
+en:
+  users:
+    profile:
+      title: Profile
+      description: MapBiomas is a collaborative project, you can participate as a Collaborating User by contributing with data, suggestions for improvements or just by promoting use of data. To receive information and updates about MapBiomas data and tools useful to you, please tell us more about you by fill in the form below.
+      submit: Save
+      flashes:
+        success: Profile updated successfully.
+        error: Couldn't update profile.

@@ -1,9 +1,43 @@
 pt-BR:
   activerecord:
     attributes:
+      enums:
+        user:
+          occupation_areas:
+            health: Saúde
+            environment: Meio ambiente
+            farming: Agropecuária
+            economy: Economia
+            geography: Geografia
+            education: Educação
+            others: Outros
+          biomes_and_transversal_themes:
+            atlantic_forest: Mata atlântica
+            amazon: Amazônia
+            cerrado: Cerrado
+            caatinga: Caatinga
+            pampa: Pampa
+            coastal_zone: Zona Costeira
+            pantanal: Pantanal
+            agriculture: Agricultura
+            livestock: Pecuária
+            urban_areas: Áreas urbanas
       user:
         name: Nome
         email: Email
         password: Senha
         password_confirmation: Confirmar senha
         remember_me: Lembrar minha senha
+        institution: Instituição / Website
+        occupation: Cargo / Função
+        occupation_area: Área de trabalho
+        project_description: Descrição de projeto / Contexto em que usa dados do MapBiomas
+        biomes_and_transversal_themes: Trabalha em algum bioma ou tema específico?
+        linkedin_url: Linkedin
+        facebook_url: Facebook
+        lattes_url: Lattes
+        phone: Celular / WhatsApp
+        city: Cidade
+        state: Estado
+        receive_newsletter: Gostaria de receber notícias sobre novidades na plataforma por email?
+        participate_of_groups: Gostaria de entrar para grupos de WhatsApp de usuários do MapBiomas?
