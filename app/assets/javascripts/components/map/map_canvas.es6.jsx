@@ -65,11 +65,11 @@ export class MapCanvas extends React.Component {
 
   mapPath(mode = this.props.mode) {
     if (mode == 'transitions' && !this.props.transition) {
-      return 'wms/classification/transitions_group.map';
+      return 'wms/v/2.3/classification/transitions_group.map';
     } else if (mode == 'transitions') {
-      return 'wms/classification/transitions.map';
+      return 'wms/v/2.3/classification/transitions.map';
     } else {
-      return 'wms/classification/coverage.map';
+      return 'wms/v/2.3/classification/coverage.map';
     }
   }
 
