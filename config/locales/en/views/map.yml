@@ -121,6 +121,7 @@ en:
         tooltip: Move your mouse over the chart to see its values.
         year: "Year: %{year}"
         territory: "Territory/Territories: %{territory}"
+        map: "Map: %{map}"
       download:
         title: Download data
         classification: Classification

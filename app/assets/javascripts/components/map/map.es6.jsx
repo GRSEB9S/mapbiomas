@@ -850,6 +850,7 @@ export default class Map extends React.Component {
                   <CoverageMenu
                     {...this.props}
                     territory={this.territory}
+                    map={this.state.selectedMap}
                     year={this.year}
                     classifications={this.classifications}
                     onExpandModal={this.expandModal.bind(this, 'coverage')}

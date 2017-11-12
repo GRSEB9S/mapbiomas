@@ -3,32 +3,12 @@ import _ from 'underscore';
 import Highcharts from 'highcharts';
 import { API } from '../../../lib/api';
 
-class CoveragePieChart extends Component {
+export default class CoveragePieChart extends Component {
   constructor(props) {
     super(props);
     this.state = {
       coverage: []
     };
-  }
-
-  get isSingleTerritory() {
-    return !_.isArray(this.props.territory);
-  }
-
-  get isSingleTerritoryArray() {
-    return this.props.territory.length == 1;
-  }
-
-  get territoryName() {
-    if (this.isSingleTerritory) {
-      return this.props.territory.name;
-    }
-
-    if (this.isSingleTerritoryArray) {
-      return this.props.territory[0].name;
-    }
-
-    return _.map(this.props.territory, (t) => t.name).join(', ');
   }
 
   get chartSeries() {
@@ -131,18 +111,10 @@ class CoveragePieChart extends Component {
   render() {
     return (
       <div className="map-panel__item-content">
-        <h3 className="map-control__header">
-          {I18n.t('map.index.coverage.analysis')}
-        </h3>
         <div className="map-control__content map-control__content-no-max-height">
-          <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
-          <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
-          <label>{I18n.t('map.index.chart.territory', {territory: this.territoryName})}</label>
           <div className="coverage-chart" ref="chartElement"></div>
         </div>
       </div>
     );
   }
 }
-
-export default CoveragePieChart;
