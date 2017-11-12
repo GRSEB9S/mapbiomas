@@ -363,7 +363,7 @@ export default class Map extends React.Component {
     if (this.props.iframe) {
       selectedMap = map;
     } else {
-      selectedMap = this.props.myMaps.find((m) => m.id == map.value);
+      selectedMap = this.myMaps.find((m) => m.id == map.value);
     }
 
     let options = selectedMap.options;
