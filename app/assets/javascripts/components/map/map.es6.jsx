@@ -231,15 +231,15 @@ export default class Map extends React.Component {
     ]
   }
 
-  params(name) {
+  mapParams(name) {
     return {
       name: name,
       options: {
-        mode: this.mode,
         base_maps: this.baseMaps.map((m) => m.id),
         layers: this.layers.map((l) => l.id),
         territory: this.territory,
-        ...this.dataLayerOptions[this.mode]
+        ...this.coverageDataLayerOptions,
+        ...this.transitionsDataLayerOptions
       }
     };
   }
@@ -369,33 +369,28 @@ export default class Map extends React.Component {
     let options = selectedMap.options;
     let layerOptions = {};
 
-    if (options.mode == 'coverage') {
-      layerOptions = {
-        classifications: this.filterOptions(this.props.availableClassifications, options.classification_ids),
-        year: parseInt(options.year)
-      };
-    } else {
-      layerOptions = {
-        years: [options.year_t0, options.year_t1],
-        transitionsLayers: options.transitions_group
-      };
 
-      if (options.transition_c0 && options.transition_c1) {
-        layerOptions = {
-          ...layerOptions,
-          transition: {
-            from: options.transition_c0,
-            to: options.transition_c1
-          }
-        };
-      }
+    layerOptions = {
+      classifications: this.filterOptions(this.props.availableClassifications, options.classification_ids),
+      year: parseInt(options.year),
+      years: [options.year_t0, options.year_t1],
+      transitionsLayers: options.transitions_group
+    };
+
+    if (options.transition_c0 && options.transition_c1) {
+      layerOptions = {
+        ...layerOptions,
+        transition: {
+          from: options.transition_c0,
+          to: options.transition_c1
+        }
+      };
     }
 
     this.setState({
       ...this.initialState,
       ...layerOptions,
       selectedMap: selectedMap,
-      mode: options.mode,
       baseMaps: this.filterOptions(this.props.availableBaseMaps, options.base_maps),
       layers: this.filterOptions(this.props.availableLayers, options.layers),
       territory: options.territory,
@@ -409,7 +404,7 @@ export default class Map extends React.Component {
   }
 
   handleMapSave(name) {
-    API.createMap(this.params(name)).then((response) => {
+    API.createMap(this.mapParams(name)).then((response) => {
       this.setState({
         selectedMap: response,
         myMaps: [
@@ -421,7 +416,7 @@ export default class Map extends React.Component {
   }
 
   handleMapEdit(name) {
-    API.updateMap(this.state.selectedMap.id, this.params(name)).then((response) => {
+    API.updateMap(this.state.selectedMap.id, this.mapParams(name)).then((response) => {
       let myMaps = _.reject(_.clone(this.state.myMaps), (m) => m.id == response.id);
 
       this.setState({

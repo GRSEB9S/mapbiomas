@@ -11,7 +11,7 @@ const labels = {
   'no_transition': { id: 5, color: '#CECECE' }
 }
 
-class TransitionsLabels extends Component {
+class TransitionsLayers extends Component {
   isChecked(id) {
     return _.contains(this.props.options, id);
   }
@@ -95,4 +95,4 @@ class TransitionsLabels extends Component {
   }
 }
 
-export default TransitionsLabels;
+export default TransitionsLayers;
