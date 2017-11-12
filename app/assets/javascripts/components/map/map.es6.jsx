@@ -568,8 +568,10 @@ export default class Map extends React.Component {
     if(this.state.showModals.coverage) {
       return (
         <StatsModal
+          myMapsPage={this.props.myMapsPage}
           classifications={this.props.defaultClassifications}
           years={this.props.availableYears}
+          selectedMap={this.state.selectedMap}
           selectedTerritories={this.territory}
           selectedClassifications={this.firstLevelClassifications}
           onClose={this.closeModal.bind(this, 'coverage')}

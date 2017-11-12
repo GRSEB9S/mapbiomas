@@ -4,7 +4,7 @@ export class API {
   }
 
   static groupedCoverage(params) {
-    return $.get('http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover', params);
+    return $.get(Routes.api_statistics_path(params));
   }
 
   static qualities(params) {

@@ -27,7 +27,7 @@ export default class Chart extends React.Component {
       return [];
     }
 
-    if (this.props.territories.length > 1) {
+    if (!this.props.myMapsPage && this.props.territories.length > 1) {
       return this.props.territories.map(t => {
         return {
           name: t.label,
@@ -93,10 +93,16 @@ export default class Chart extends React.Component {
   loadStatistics() {
     this.chart.showLoading();
 
-    API.groupedCoverage({
+    let params = {
       territory_id: this.props.territories.map(t => t.value).join(','),
       classification_id: this.props.classifications.map((c) => c.value).join(',')
-    }).then(data => this.setState({ data }, () => {
+    };
+
+    if (this.props.myMapsPage) {
+      params = { ...params, grouped: true };
+    }
+
+    API.groupedCoverage(params).then(data => this.setState({ data }, () => {
       this.chart.hideLoading();
     }));
   }

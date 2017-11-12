@@ -49,6 +49,14 @@ export default class Stats extends React.Component {
       classification_ids: this.state.selectedClassifications.map((c) => c.value).join(',')
     };
 
+    if (this.props.myMapsPage) {
+      params = {
+        ...params,
+        grouped: true,
+        map_name: this.props.selectedMap.name
+      }
+    }
+
     return Routes.download_statistics_path(params);
   }
 
@@ -95,7 +103,7 @@ export default class Stats extends React.Component {
 
   renderCharts() {
     if (!_.isEmpty(this.state.selectedTerritories) && !_.isEmpty(this.state.selectedClassifications)) {
-      if (this.state.selectedTerritories.length > 1 && this.state.selectedClassifications.length > 1) {
+      if (!this.props.myMapsPage && this.state.selectedTerritories.length > 1 && this.state.selectedClassifications.length > 1) {
         return this.state.selectedTerritories.map((territory, i) =>
           <Chart
             key={i}
@@ -108,6 +116,7 @@ export default class Stats extends React.Component {
       } else {
         return (
           <Chart
+            myMapsPage={this.props.myMapsPage}
             years={this.props.years.sort()}
             territories={this.state.selectedTerritories}
             classifications={this.state.selectedClassifications}

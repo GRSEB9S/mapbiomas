@@ -24,8 +24,7 @@ class Downloads::StatisticsPresenter
   end
 
   def filename
-    "[#{@territory_names}] " +
-      I18n.t('stats.table.download_file') + '.xlsx'
+    "[#{@territory_names}] " + I18n.t('stats.table.download_file') + '.xlsx'
   end
 
   private

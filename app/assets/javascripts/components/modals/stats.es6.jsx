@@ -4,7 +4,9 @@ import Stats from '../stats/stats';
 
 const StatsModal = ({
   classifications,
+  myMapsPage,
   onClose,
+  selectedMap,
   selectedClassifications,
   selectedTerritories,
   years
@@ -20,7 +22,9 @@ const StatsModal = ({
     >
       <div className="stats-modal">
         <Stats
+          myMapsPage={myMapsPage}
           classifications={classifications}
+          selectedMap={selectedMap}
           selectedClassifications={selectedClassifications}
           selectedTerritories={selectedTerritories}
           years={years}

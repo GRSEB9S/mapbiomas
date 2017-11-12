@@ -28,5 +28,6 @@ Rails.application.routes.draw do
     resources :territories, only: :index
     resources :transitions, only: :index
     resources :qualities, only: :index
+    resources :statistics, only: :index
   end
 end
