@@ -846,6 +846,7 @@ export default class Map extends React.Component {
                 coveragePanel={(
                   <CoverageMenu
                     {...this.props}
+                    myMapsPage={this.props.myMapsPage}
                     territory={this.territory}
                     map={this.state.selectedMap}
                     year={this.year}

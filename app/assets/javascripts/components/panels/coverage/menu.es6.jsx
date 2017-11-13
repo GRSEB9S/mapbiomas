@@ -3,22 +3,29 @@ import _ from 'underscore';
 import CoverageLineChart from '../../charts/coverage/line';
 import CoveragePieChart from '../../charts/coverage/pie';
 
-const territoryName = (territory, map) => {
-  if (!_.isArray(territory)) {
-    return I18n.t('map.index.chart.territory', { territory: territory.name });
+const territoryName = (myMapsPage, territory, map) => {
+  let label;
+
+  if (myMapsPage && map) {
+    return (
+      <label>{ I18n.t('map.index.chart.map', { map: map.name }) }</label>
+    );
   }
 
-  if (territory.length == 1) {
-    return I18n.t('map.index.chart.territory', { territory: territory[0].name });
+  if (!myMapsPage) {
+    return (
+      <label>{ I18n.t('map.index.chart.territory', { territory: territory.name }) }</label>
+    );
   }
 
-  return I18n.t('map.index.chart.map', { map: map.name });
+  return null;
 };
 
 const CoverageMenu = ({
   availableClassifications,
   defaultClassifications,
   map,
+  myMapsPage,
   onExpandModal,
   territory,
   year
@@ -30,7 +37,7 @@ const CoverageMenu = ({
     <div>
       <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
       <label>{I18n.t('map.index.chart.year', {year: year})}</label>
-      <label>{ territoryName(territory, map) }</label>
+      { territoryName(myMapsPage, territory, map) }
     </div>
 
     <CoveragePieChart
