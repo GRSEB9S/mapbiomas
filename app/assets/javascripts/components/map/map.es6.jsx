@@ -657,6 +657,7 @@ export default class Map extends React.Component {
         {this.renderWarning('quality')}
 
         <MapCanvas
+          myMapsPage={this.props.myMapsPage}
           dataLayerOptions={this.dataLayerOptions}
           apiUrl={this.props.apiUrl}
           transition={this.state.transition}

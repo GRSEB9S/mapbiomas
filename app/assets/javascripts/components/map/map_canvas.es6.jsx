@@ -201,7 +201,21 @@ export class MapCanvas extends React.Component {
   }
 
   setupTerritory() {
-    this.map.fitBounds(_.last(this.territory).bounds);
+    if (!this.props.myMapsPage) {
+      this.map.fitBounds(_.last(this.territory).bounds);
+    }
+  }
+
+  setupMyMapTerritories() {
+    if (this.props.myMapsPage) {
+      let result = new L.LatLngBounds;
+
+      _.each(this.props.territory, (t) => {
+        result = result.extend(t.bounds);
+      });
+
+      this.map.fitBounds(result);
+    }
   }
 
   addMapLayer(mapLayer) {
@@ -329,6 +343,7 @@ export class MapCanvas extends React.Component {
 
     if (!sameTerritory || !sameTerritories) {
       this.setupTerritory();
+      this.setupMyMapTerritories();
       this.setupDataLayer();
     }
 
@@ -376,6 +391,7 @@ export class MapCanvas extends React.Component {
     }).addTo(this.map);
 
     this.setupTerritory();
+    this.setupMyMapTerritories();
     this.setupCardsLayer();
     this.setupDataLayer();
     this.setupBaseLayers();
