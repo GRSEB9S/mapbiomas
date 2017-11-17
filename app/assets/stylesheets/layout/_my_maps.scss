@@ -9,6 +9,13 @@
     }
   }
 
+  &__select {
+    .Select-multi-value-wrapper {
+      max-height: 100px;
+      overflow-y: auto;
+    }
+  }
+
   &__embed-code {
     h3 {
       padding-top: $base-spacing;

@@ -149,18 +149,21 @@ export class MyMaps extends React.Component {
               onChange={this.handleNameChange.bind(this)}
             />
 
-            <label>Territórios</label>
-            <Select.Async
-              name="territory-select"
-              value={this.props.territories}
-              loadOptions={this.loadTerritories()}
-              onChange={this.props.onTerritorySelect}
-              clearable={false}
-              ignoreAccents={false}
-              noResultsText={false}
-              searchingText={I18n.t('stats.index.searching')}
-              multi={true}
-            />
+            <label>{I18n.t('stats.territories.title')}</label>
+
+            <div className="my-maps__select">
+              <Select.Async
+                name="territory-select"
+                value={this.props.territories}
+                loadOptions={this.loadTerritories()}
+                onChange={this.props.onTerritorySelect}
+                clearable={false}
+                ignoreAccents={false}
+                noResultsText={false}
+                searchingText={I18n.t('stats.index.searching')}
+                multi={true}
+              />
+            </div>
           </div>
         </form>
 
