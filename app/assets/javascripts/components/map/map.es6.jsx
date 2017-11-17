@@ -248,7 +248,6 @@ export default class Map extends React.Component {
   handleModeChange(mode) {
     this.setState({
       mode,
-      territory: null,
       territoryTab: 0
     });
 
@@ -578,6 +577,8 @@ export default class Map extends React.Component {
         />
       );
     }
+
+    return null;
   }
 
   renderTransitionsModal() {
@@ -597,6 +598,8 @@ export default class Map extends React.Component {
         />
       );
     }
+
+    return null;
   }
 
   renderWarning(key) {
@@ -609,6 +612,8 @@ export default class Map extends React.Component {
         />
       );
     }
+
+    return null;
   }
 
   componentDidUpdate() {
