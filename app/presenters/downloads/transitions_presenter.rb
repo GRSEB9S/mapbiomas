@@ -3,6 +3,7 @@ class Downloads::TransitionsPresenter
     @year = params[:year]
     @territory_id = params[:territory_id]
     @territory_name = params[:territory_name]
+    @map_name = params[:map_name]
   end
 
   def headers
@@ -22,9 +23,15 @@ class Downloads::TransitionsPresenter
   end
 
   def filename
-    "[#{@territory_name}] " +
-      I18n.t('map.index.transitions.matrix.download_file',
-             from_year: years.first, to_year: years.last) + '.xlsx'
+    if @map_name
+      "[#{@map_name}] " +
+        I18n.t('map.index.transitions.matrix.download_file',
+               from_year: years.first, to_year: years.last) + '.xlsx'
+    else
+      "[#{@territory_name}] " +
+        I18n.t('map.index.transitions.matrix.download_file',
+               from_year: years.first, to_year: years.last) + '.xlsx'
+    end
   end
 
   private
@@ -38,9 +45,7 @@ class Downloads::TransitionsPresenter
   end
 
   def transitions
-    @transitions ||= TerrasAPI.transitions(
-      @year, @territory_id
-    )["transitions"]
+    @transitions ||= TerrasAPI.transitions(@year, @territory_id)
   end
 
   def generate_headers
@@ -81,7 +86,7 @@ class Downloads::TransitionsPresenter
       t['from'] == from['id'] && t['to'] == to['id']
     end
 
-    return transition['area'] if transition
+    return transition[:area] if transition
     '-'
   end
 end

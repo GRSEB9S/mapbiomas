@@ -116,6 +116,10 @@ export default class Map extends React.Component {
     return this.state.transition || this.state.transitions[0];
   }
 
+  get transitionsLayers() {
+    return this.state.transitionsLayers || [];
+  }
+
   get mode() {
     return this.state.mode;
   }
@@ -134,7 +138,7 @@ export default class Map extends React.Component {
       ...transitionInfo,
       year_t0: this.years[0],
       year_t1: this.years[1],
-      transitions_group: this.state.transitionsLayers,
+      transitions_group: this.transitionsLayers,
       transparent: true
     }
   }
@@ -372,9 +376,15 @@ export default class Map extends React.Component {
     layerOptions = {
       classifications: this.filterOptions(this.props.availableClassifications, options.classification_ids),
       year: parseInt(options.year),
-      years: [options.year_t0, options.year_t1],
       transitionsLayers: options.transitions_group
     };
+
+    if (options.year_t0 && options.year_t1) {
+      layerOptions = {
+        ...layerOptions,
+        years: [options.year_t0, options.year_t1],
+      }
+    }
 
     if (options.transition_c0 && options.transition_c1) {
       layerOptions = {
@@ -512,10 +522,17 @@ export default class Map extends React.Component {
 
   downloadTransitions() {
     let params = {
-      territory_id: this.territory.id,
-      territory_name: this.territory.name,
+      territory_id: this.territory.map((t) => t.id).join(','),
+      territory_name: this.territory.map((t) => t.name || t.label).join(', '),
       year: this.years.join(',')
     };
+
+    if (this.state.selectedMap) {
+      params = {
+        ...params,
+        map_name: this.state.selectedMap.name
+      }
+    }
 
     return Routes.download_transitions_path(params);
   }
@@ -592,7 +609,7 @@ export default class Map extends React.Component {
           downloadUrl={this.downloadTransitions()}
           transition={this.transition}
           transitions={this.state.transitions}
-          classifications={this.classifications}
+          classifications={this.props.defaultClassifications}
           toTotalData={this.toTotalData()}
           fromTotalData={this.fromTotalData()}
         />
@@ -758,7 +775,7 @@ export default class Map extends React.Component {
               <TransitionsLabels
                 iframe={this.props.iframe}
                 transition={this.state.transition}
-                transitionsLayers={this.state.transitionsLayers}
+                transitionsLayers={this.transitionsLayers}
                 classifications={this.classifications}
                 availableTransitionsLayers={this.initialState.transitionsLayers}
                 handleTransitionReset={this.handleTransitionReset.bind(this)}
@@ -799,7 +816,7 @@ export default class Map extends React.Component {
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <TransitionsAuxiliarControls
                   availableTransitionsLayers={this.initialState.transitionsLayers}
-                  transitionsLayers={this.state.transitionsLayers}
+                  transitionsLayers={this.transitionsLayers}
                   availableBaseMaps={this.props.availableBaseMaps}
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
