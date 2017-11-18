@@ -49,7 +49,7 @@ export default class Stats extends React.Component {
       classification_ids: this.state.selectedClassifications.map((c) => c.value).join(',')
     };
 
-    if (this.props.myMapsPage) {
+    if (this.props.selectedMap) {
       params = {
         ...params,
         grouped: true,
@@ -117,6 +117,7 @@ export default class Stats extends React.Component {
         return (
           <Chart
             myMapsPage={this.props.myMapsPage}
+            selectedMap={this.props.selectedMap}
             years={this.props.years.sort()}
             territories={this.state.selectedTerritories}
             classifications={this.state.selectedClassifications}

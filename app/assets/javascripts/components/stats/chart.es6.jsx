@@ -56,6 +56,13 @@ export default class Chart extends React.Component {
   get chartOptions() {
     const series = this.chartSeries;
     const el = this.refs.chartElement;
+    let title;
+
+    if (this.props.selectedMap) {
+      title = this.props.selectedMap.name;
+    } else {
+      title = this.props.territories.map(t => t.label).join(', ');
+    }
 
     this.setState({ series });
 
@@ -64,7 +71,7 @@ export default class Chart extends React.Component {
         renderTo: el
       },
       title: {
-        text: this.props.territories.map(t => t.label).join(', ')
+        text: title
       },
       yAxis: {
         title: {
