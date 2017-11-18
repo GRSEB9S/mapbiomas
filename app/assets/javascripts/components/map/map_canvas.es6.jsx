@@ -335,13 +335,12 @@ export class MapCanvas extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    let sameTerritory = !_.isArray(this.props.territory) && prevProps.territory.id != this.props.territory.id;
-    let sameTerritories = _.isArray(this.props.territory) && (prevProps.territory.length == this.props.territory.length) &&
-      _.every(this.props.territory, (t) => {
-        return _.contains(prevProps, t);
-      });
+    let sameTerritory = prevProps.territory.id != this.props.territory.id;
+    let sameTerritories = (prevProps.territory.length == this.props.territory.length) && _.every(this.props.territory, (t) => {
+      return _.find(prevProps.territory, (p) => p.id == t.id);
+    });
 
-    if (!sameTerritory || !sameTerritories) {
+    if ((!_.isArray(this.props.territory) && !sameTerritory) || (_.isArray(this.props.territory) && !sameTerritories)) {
       this.setupTerritory();
       this.setupMyMapTerritories();
       this.setupDataLayer();
