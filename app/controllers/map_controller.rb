@@ -36,7 +36,7 @@ class MapController < ApplicationController
       iframeMap: @map
     })
 
-    response.set_header('X-Frame-Options', 'ALLOWALL')
+    response.headers['X-Frame-Options'] = 'ALLOWALL'
 
     render 'index', layout: 'iframe'
   end
