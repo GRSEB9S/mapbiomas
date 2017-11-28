@@ -14,7 +14,7 @@ class TerrasAPI
   end
 
   def self.classifications
-    get("/dashboard/services/classifications", query: {
+    get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/classifications", query: {
       language: I18n.locale.to_s
     })
   end
