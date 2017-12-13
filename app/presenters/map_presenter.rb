@@ -33,7 +33,7 @@ class MapPresenter
 
   LAYERS_KEYS = {
     states: '4dd47a54-01a8-11e6-86a9-0e31c9be1b51',
-    cities: '72b94172-0263-11e6-a087-0e5db1731f59',
+    cities: 'e39c46c1-a410-43db-9af3-000cd2967463',
     contour_maps: '1413c17c-0274-11e6-ae17-0e787de82d45',
     biomes: '201bcb2a-026c-11e6-9f9a-0e3ff518bd15',
     indigenous_lands: 'adecbf9e-1c1e-43ec-ae8b-f9d340d7fc6f',
@@ -163,7 +163,7 @@ class MapPresenter
         slug: layer.to_s.tr('_', '-'),
         name: I18n.t(layer, scope: 'map.index.layers'),
         fromCarto: true,
-        link: "https://karydja.cartodb.com/api/v2/viz/#{key}/viz.json"
+        link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
     end
   end
