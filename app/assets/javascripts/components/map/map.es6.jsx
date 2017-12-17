@@ -106,7 +106,7 @@ export default class Map extends React.Component {
         return [this.defaultTerritory];
       }
 
-      return this.defaultTerritory;
+      return [this.defaultTerritory];
     }
 
     return this.state.territory;
@@ -725,7 +725,7 @@ export default class Map extends React.Component {
             {!this.props.iframe && !this.props.myMapsPage && (
               <TerritoryControl
                 tabIndex={this.state.territoryTab}
-                territory={this.territory}
+                territory={_.first(this.territory)}
                 loadTerritories={this.loadTerritories.bind(this)}
                 onTabChange={this.handleTerritoryTabChange.bind(this)}
                 onTerritoryChange={this.handleTerritoryChange.bind(this)}

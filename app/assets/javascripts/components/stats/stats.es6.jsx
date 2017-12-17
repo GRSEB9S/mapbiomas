@@ -20,7 +20,11 @@ export default class Stats extends React.Component {
 
   get selectedTerritories() {
     if (this.props.selectedTerritories) {
-      return this.props.selectedTerritories
+      if (_.isArray(this.props.selectedTerritories)) {
+        return this.props.selectedTerritories;
+      }
+
+      return [this.props.selectedTerritories];
     } else {
       return [];
     }
