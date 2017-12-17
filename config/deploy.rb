@@ -95,7 +95,7 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     on :launch do
-      command "mkdir -p#{fetch(:current_path)}/tmp/"
+      command "mkdir -p #{fetch(:current_path)}/tmp/"
       command "touch #{fetch(:current_path)}/tmp/restart.txt"
       invoke :'puma:phased_restart'
     end
