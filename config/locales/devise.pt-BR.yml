@@ -50,7 +50,9 @@ pt-BR:
       update_needs_confirmation: "Você atualizou a sua conta com sucesso, mas o seu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos."
       updated: "Sua conta foi atualizada com sucesso."
       new:
-        sign_up: "Inscrever-se"
+        sign_up:
+          title: "Inscrever-se"
+          subtitle: "Inscreva-se aqui e comece a criar e salvar seus mapas customizados. É gratuito e super simples de utilizar."
     sessions:
       signed_in: "Login efetuado com sucesso!"
       signed_out: "Saiu com sucesso."
