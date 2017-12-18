@@ -140,6 +140,29 @@
   ul {
     left: $medium-spacing;
   }
+
+  & .menu__link {
+    color: $medium-green;
+  }
+}
+
+.new {
+  position: relative;
+
+  &:after {
+    content: attr(data-new);
+    color: $orange;
+    position: absolute;
+    top: rem(-1px);
+    font-size: rem(11px);
+    -ms-transform: rotate(7deg);
+    -webkit-transform: rotate(7deg);
+    transform: rotate(7deg);
+    border-radius: rem(4px);
+    line-height: normal;
+    padding: rem(2px) rem(4px);
+    left: 90%;
+  }
 }
 
 .translation {
