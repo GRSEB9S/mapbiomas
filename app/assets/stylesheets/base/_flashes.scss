@@ -22,4 +22,17 @@
     background-color: $alert-color;
     color: darken($alert-color, 40%);
   }
+
+  &.new-collection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 0;
+
+    span {
+      font-size: $heading-font-size;
+      font-weight: bold;
+    }
+  }
 }
