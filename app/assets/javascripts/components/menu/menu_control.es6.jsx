@@ -41,7 +41,7 @@ export class MenuControl extends React.Component {
       );
     } else {
       return (
-        <li className="menu__item login">
+        <li className="menu__item login new" data-new={I18n.t('new')}>
           <a className="menu__link" href={Routes.new_user_session_path()}>
             {I18n.t('devise.sessions.new.sign_in')}
           </a>
