@@ -27,6 +27,12 @@ Layout/IndentationWidth:
   Exclude:
     - 'config/deploy.rb'
 
+# Offense count: 32
+# Cop supports --auto-correct.
+Lint/LiteralInInterpolation:
+  Exclude:
+    - 'config/deploy.rb'
+
 # Offense count: 1
 Lint/UselessAssignment:
   Exclude:
@@ -108,7 +114,7 @@ Style/GlobalVars:
   Exclude:
     - 'config/initializers/redis.rb'
 
-# Offense count: 4
+# Offense count: 5
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
 # SupportedStyles: ruby19, hash_rockets, no_mixed_keys, ruby19_no_mixed_keys

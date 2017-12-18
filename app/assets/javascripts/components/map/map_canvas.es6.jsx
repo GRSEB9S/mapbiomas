@@ -335,7 +335,7 @@ export class MapCanvas extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    let sameTerritory = prevProps.territory.id != this.props.territory.id;
+    let sameTerritory = prevProps.territory.id == this.props.territory.id;
     let sameTerritories = (prevProps.territory.length == this.props.territory.length) && _.every(this.props.territory, (t) => {
       return _.find(prevProps.territory, (p) => p.id == t.id);
     });

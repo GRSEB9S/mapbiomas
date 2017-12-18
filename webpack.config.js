@@ -10,21 +10,30 @@ module.exports = {
    output: { path: sourcePath, filename: 'bundle.js' },
    devtool: 'source-map',
    resolve: {
-      modulesDirectories: ['node_modules', 'app/assets/javascripts', 'vendor/assets/javascripts'],
-      extensions: ['', '.js', '.jsx', '.es6', '.es6.jsx'],
+      modules: ['node_modules', 'app/assets/javascripts', 'vendor/assets/javascripts'],
+      extensions: ['.js', '.jsx', '.es6', '.es6.jsx'],
       alias: {
         jquery: path.join(sourcePath, 'jquery_alias.js')
       }
    },
    module: {
-      loaders: [
-         { test: /\.css$/, loader: 'style-loader!css-loader' },
-         { test: /\.jsx?|\.es6$/, exclude: /node_modules/, loader: 'babel-loader' },
+      rules: [
+         {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+         },
+         {
+            test: /\.jsx?|\.es6$/,
+            exclude: /node_modules/,
+            use: ['babel-loader']
+         },
          {
             test: /\.(png|jpg|gif)$/,
-            loader: 'url-loader',
-            options: {
-               limit: 8192
+            use: {
+               loader: 'url-loader',
+               query: {
+                  limit: 8192
+               }
             }
          }
       ]

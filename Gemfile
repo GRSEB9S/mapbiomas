@@ -18,7 +18,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'js-routes'
-gem 'mina', :require => false
+gem 'mina', '~> 1.0.7', :require => false
+gem 'mina-npm', :require => false
 gem 'mina-puma', :require => false
 gem 'neat'
 gem 'pg'
