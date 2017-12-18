@@ -62,14 +62,14 @@ class TerrasAPI
 
       grouped_coverage_data = territory_ids.map do |id|
         # get("/dashboard/services/statistics/groupedcover", query: {
-        get("http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover", query:
+        get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/groupedcover", query:
           query_params.merge(territory_id: id))
       end
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
       # get("/dashboard/services/statistics/groupedcover", query: {
-      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover", query: {
+      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/groupedcover", query: {
         territory_id: territory_id,
         classification_id: classification_ids
       })
