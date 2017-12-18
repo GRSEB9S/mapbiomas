@@ -102,14 +102,10 @@ export default class Map extends React.Component {
     }
 
     if (_.isEmpty(this.state.territory)) {
-      if (this.props.myMapsPage) {
-        return [this.defaultTerritory];
-      }
-
-      return this.defaultTerritory;
+      return [this.defaultTerritory];
     }
 
-    return this.state.territory;
+    return [this.state.territory];
   }
 
   get transition() {
@@ -738,7 +734,7 @@ export default class Map extends React.Component {
 
                 <label>{I18n.t('iframe.name', {name: this.props.iframeMap.name})}</label>
                 <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
-                <label>{I18n.t('iframe.territory', {territory: this.territory.name})}</label>
+                <label>{I18n.t('iframe.territory', {territory: _.first(this.territory).name})}</label>
                 <label>{I18n.t('iframe.year', {year: this.year})}</label>
               </div>
             )}
@@ -766,7 +762,7 @@ export default class Map extends React.Component {
 
                 <label>{I18n.t('iframe.name', {name: this.props.iframeMap.name})}</label>
                 <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
-                <label>{I18n.t('iframe.territory', {territory: this.territory.name})}</label>
+                <label>{I18n.t('iframe.territory', {territory: _.first(this.territory).name})}</label>
                 <label>{I18n.t('iframe.years', {year_0: this.years[0], year_1: this.years[1]})}</label>
               </div>
             )}
