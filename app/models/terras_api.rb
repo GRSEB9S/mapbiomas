@@ -26,7 +26,8 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/coverage", query:
+      # get("/dashboard/services/statistics/coverage", query:
+      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/coverage", query:
           query_params.merge(territory_id: id)).as_json
     end
 
@@ -38,7 +39,8 @@ class TerrasAPI
     territory_ids = territory_id.split(',')
 
     data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/transitions", query:
+      # get("/dashboard/services/statistics/transitions", query:
+      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/transitions", query:
         query_params.merge(territory_id: id)).as_json
     end
 
