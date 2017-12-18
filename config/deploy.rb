@@ -17,6 +17,7 @@ set :domain, 'mapbiomas.org'
 set :deploy_to, '/var/www/mapbiomas'
 set :repository, 'git@github.com:ecostage/mapbiomas.git'
 set :branch, 'master'
+set :force_precompile, -> { true }
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
