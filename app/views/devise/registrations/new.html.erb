@@ -1,5 +1,6 @@
 <div class="credentials__content">
-  <h2><%= t('devise.registrations.new.sign_up') %></h2>
+  <h2><%= t('devise.registrations.new.sign_up.title') %></h2>
+  <h3 class="sign-up__subtitle"><%= t('devise.registrations.new.sign_up.subtitle') %></h3>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
