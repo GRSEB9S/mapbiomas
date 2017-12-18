@@ -106,7 +106,7 @@ export default class Map extends React.Component {
         return [this.defaultTerritory];
       }
 
-      return [this.defaultTerritory];
+      return this.defaultTerritory;
     }
 
     return this.state.territory;

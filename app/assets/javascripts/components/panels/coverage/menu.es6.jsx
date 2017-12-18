@@ -14,7 +14,7 @@ const territoryName = (myMapsPage, territory, map) => {
 
   if (!myMapsPage) {
     return (
-      <label>{ I18n.t('map.index.chart.territory', { territory: _.first(territory).name }) }</label>
+      <label>{ I18n.t('map.index.chart.territory', { territory: territory.name }) }</label>
     );
   }
 
