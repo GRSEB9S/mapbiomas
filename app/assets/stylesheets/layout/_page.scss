@@ -18,6 +18,12 @@
     max-width: 100%;
   }
 
+  &__mapbiomas-collections {
+    select option[disabled] {
+      display: none;
+    }
+  }
+
   &__title {
     font-size: $title-font-size;
     margin: 0 0 $base-spacing 0;
