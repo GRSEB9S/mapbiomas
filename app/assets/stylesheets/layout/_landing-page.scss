@@ -176,6 +176,20 @@ html, body {
   }
 }
 
+.financing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .moore, .good-energies {
+    width: 180px;
+  }
+
+  .nicfi {
+    width: 250px;
+  }
+}
+
 .modal-video {
   position: fixed;
   top: 0%;
