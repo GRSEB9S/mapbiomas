@@ -68,7 +68,7 @@ en:
         conservation_units: Conservation Units
       coverage:
         title: Coverage
-        analysis: Coverage analysis
+        analysis: Land Cover Data
         details: See details
       transitions:
         title: Transitions
