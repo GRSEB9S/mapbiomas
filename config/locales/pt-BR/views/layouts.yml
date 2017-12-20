@@ -51,6 +51,7 @@ pt-BR:
         atbd: ATBD
         tools: Ferramentas
         scripts: Scripts
+        analysis: Análise de Acurácia
       communication:
         title: Comunicação
         release_collection2: Lançamento da Coleção 2
