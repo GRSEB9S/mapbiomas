@@ -2,26 +2,25 @@ pt-BR:
   map:
     warning:
       coverage:
-        title: Nota de precaução
+        title: Nota de precaução (Cobertura)
         body: |
-          <p>Esta é Coleção 2 do MapBiomas que incluem dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
-          <p>Esta coleção é fruto dos primeiros 20 meses de trabalho do projeto MapBiomas e esta em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018.</p>
-          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
-          <p>Caso tenha sugestões, críticas e idéias aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
+          <p>Esta é Coleção 2.3 do MapBiomas que incluem dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
+          <p>Esta coleção é fruto dos primeiros 2 anos de trabalho do projeto MapBiomas e está em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018, cobrindo o período de 1985 a 2017.</p>
+          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
+          <p>Caso tenha sugestões, críticas e idéias para aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
-        title: Análise de Transição
+        title: Nota de precaução (Transições)
         body: |
           <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas dos seguintes períodos: (a) quaisquer anos consecutivos (ex. 2001-2002); (b) períodos de cinco anos 2000-2005/ 2005-2010 / 2010-2015; (c) 2008-2015 e (d) 2000-2016.</p>
           <p>Selecione o período desejado e observe as mudanças no mapa e no diagrama de Sankey. Clique nas diferentes transições do diagrama para ver as diferentes transições no mapa.</p>
-          <p>Esta representação de transição entre classes de um ano para outro é feita a partir da comparação pixel a pixel. Você também podem visualizar uma matriz de transições.</p>
           <p class="warning"><strong>ATENÇÃO:</strong>
           <blockquote>
-            Na Coleção 2 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+            Na Coleção 2.3 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas podem não ser uma representação fiel das mudanças de uso da terra no período.</p>
           </blockquote>
       quality:
         title: Qualidade do Mosaico
         body: |
-          <p>O mosaico é uma composição de pixels de várias cenas do Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim cada carta em cada ano foi classificada em três categorias de acordo com a porcentagens de nuvens e interferências verificadas:</p>
+          <p>O mosaico é uma composição de pixels de várias cenas do Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim cada carta em cada ano foi classificada em três categorias de acordo com as porcentagens de nuvens e interferências verificadas:</p>
             <ul>
               <li>1 – Ruim: > 30%</li>
               <li>2 – Regular: 10 a 30%</li>
@@ -157,5 +156,5 @@ pt-BR:
       locales:
         warning: Idioma não disponível no momento
     modal:
-      ok: OK
-      tutorial: Ver tutorial
+      ok: Continuar
+      tutorial: Acessar o tutorial da plataforma
