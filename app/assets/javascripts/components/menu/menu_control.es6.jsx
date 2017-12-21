@@ -154,7 +154,7 @@ export class MenuControl extends React.Component {
                 </a>
               </li>
               <li className="menu__item">
-                <a className="menu__link" href={Routes.page_path('analysis')}>
+                <a className="menu__link" href={Routes.page_path('accuracy-analysis')}>
                   {I18n.t('layouts.header.methodology.analysis')}
                 </a>
               </li>
