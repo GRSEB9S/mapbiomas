@@ -15,7 +15,7 @@ export class MenuControl extends React.Component {
     if(this.props.currentUser.signedIn) {
       return (
         <li className="menu__item login">
-          <a className="menu__link" href='#'>
+          <a className="menu__link menu__link--user" href='#'>
             {this.props.currentUser.name}
           </a>
           <ul className="submenu__items">
