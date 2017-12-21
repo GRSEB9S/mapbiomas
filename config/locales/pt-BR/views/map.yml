@@ -2,14 +2,14 @@ pt-BR:
   map:
     warning:
       coverage:
-        title: Nota de precaução (Cobertura)
+        title: Nota de precaução
         body: |
           <p>Esta é Coleção 2.3 do MapBiomas que incluem dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
           <p>Esta coleção é fruto dos primeiros 2 anos de trabalho do projeto MapBiomas e está em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018, cobrindo o período de 1985 a 2017.</p>
           <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
           <p>Caso tenha sugestões, críticas e idéias para aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
-        title: Nota de precaução (Transições)
+        title: Nota de precaução
         body: |
           <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas dos seguintes períodos: (a) quaisquer anos consecutivos (ex. 2001-2002); (b) períodos de cinco anos 2000-2005/ 2005-2010 / 2010-2015; (c) 2008-2015 e (d) 2000-2016.</p>
           <p>Selecione o período desejado e observe as mudanças no mapa e no diagrama de Sankey. Clique nas diferentes transições do diagrama para ver as diferentes transições no mapa.</p>
