@@ -2,21 +2,20 @@ en:
   map:
     warning:
       coverage:
-        title: CAUTION NOTICE (Coverage)
+        title: Caution notice (Coverage)
         body: |
-          <p>This is MapBiomas Collection 2 which includes annual land cover and land use data for the period 2000 to 2016.</p>
-          <p>This collection is the result of the first 20 months of work of the MapBiomas project and is in constant development. The consolidation of the methodology and production will be finalized in the Collection 3 scheduled for the year 2018.</p>
-          <p>The presented maps still have a series of imperfections, among which are possible spatial inconsistencies in thematic classifications, in the temporal (and between letters) and between thematic classes and transversal themes (eg agriculture and pasture).</p>
+          <p>This is MapBiomas Collection 2.3 which includes annual land cover and land use data for the period 2000 to 2016.</p>
+          <p>This collection is the result of the first two years of work of the MapBiomas project and is in constant development. The consolidation of the methodology and production will be finalized in the Collection 3 scheduled for the year 2018 covering the period of 1985 to 2017.</p>
+          <p>The presented maps still have a series of imperfections, among which are possible spatial inconsistencies in thematic classifications, in the temporal line and between thematic classes and transversal themes (eg agriculture and pasture).</p>
           <p>If you have suggestions, criticisms and ideas to improve the work, contact us at <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
-        title: CAUTION NOTICE (transitions)
+        title: Caution notice (transitions)
         body: |
-          <p>Here we observe the pixel to pixel class differences between the maps of the following periods: (A) any consecutive years (eg 2001-2002); (B) five-year periods 2000-2005 / 2005-2010 / 2010-2015; (C) 2008-2015; (D) 2002-2010 and (D) 2000-2016.</p>
-          <p>Select the desired period and observe the changes in the map and the Sankey diagram. Click on the different transitions in the diagram to see the different transitions on the map.</p>
-          <p>This transition representation between classes from one year to another is made from the pixel-to-pixel comparison. You can also view an array of transitions.</p>
+          <p>Here we observe the pixel to pixel class differences between the maps of the following periods: (A) any consecutive years (eg 2001-2002); (B) five-year periods 2000-2005 / 2005-2010 / 2010-2015; (C) 2008-2015 and (D) 2000-2016.</p>
+          <p>Select the desired period and observe the changes in the map and in the Sankey diagram. Click on the different transitions in the diagram to see the different transitions on the map.</p>
           <p class="warning"><strong>ATTENTION:</strong>
           <blockquote>
-            In MapBiomas Collection 2 the class transitions represent both effective land use changes as well as classification inconsistencies. Therefore, the same should not be taken a faithful representation of land use changes in the period.</p>
+            In MapBiomas Collection 2.3 the class transitions represent both effective land use changes as well as classification inconsistencies. Therefore, the same should not be taken a faithful representation of land use changes in the period.</p>
           </blockquote>
       quality:
         title: Mosaic Quality
@@ -157,5 +156,5 @@ en:
       locales:
         warning: Language not available
     modal:
-      ok: OK
-      tutorial: Check tutorial
+      ok: Continue
+      tutorial: Access tutorial
