@@ -16,7 +16,7 @@ export class MapModal extends React.Component {
   renderTutorialButton() {
     if(this.props.showTutorialButton) {
       return (
-        <button className="map-modal__tutorial primary" onClick={this.props.onTutorialClick}>
+        <button className="map-modal__tutorial--button primary" onClick={this.props.onTutorialClick}>
           {I18n.t('map.modal.tutorial')}
         </button>
       );

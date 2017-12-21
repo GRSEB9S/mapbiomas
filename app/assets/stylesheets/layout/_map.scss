@@ -100,7 +100,14 @@
   }
 
   &__tutorial {
-    margin-right: $small-spacing;
+    &--button {
+      margin-right: $small-spacing;
+    }
+
+    ol {
+      @extend %default-ol;
+      list-style-type: decimal;
+    }
   }
 
   &__download {
