@@ -58,6 +58,9 @@ pt-BR:
               <li>Para acrescentar <b>camadas de informação</b> sobre o mapa de cobertura e uso clique em [CAMADAS] no box de legenda a esquerda.</li>
               <li>No box do lado direito clique em [+] para acessar os <b>dados detalhados de transição</b> de todas as classes, tanto graficamente no diagrama de Sankey quando a matriz de transição.</li>
             </ol>
+        quality:
+          title: .
+          body: .
       opacity: Opacidade
       classifications:
         title: Classes

@@ -31,17 +31,19 @@ en:
         coverage:
           title: Tutorial (Coverage)
           body: |
-            <p>To <b>navigate</b> the map you can double-click to zoom in or use the [+] and [-] buttons on upper left corner.</p>
-            <p>To <b>hide the captions and info box</b> click the eye in the upper left corner.</p>
-            <p>To make the map <b>transparent</b> and to be able to see the background layer, use the transparency bar in the upper left corner.</p>
-            <p>To <b>navigate between different years</b> of the collection use the lower center bar.</p>
-            <p>By default the page opens with the Map of Brazil. To <b>choose another territory</b> use the first frame on the left side. Choose the type of territory (State / City / Biome) and enter in the box the name of the desired territory.</p>
-            <p>To <b>view different classes in the legend</b> deselect all classes and then click in the desired classes. Note that the legend is hierarchical. The top level is always below the levels of greater detail. Example: Mangrove stands above Forest Formations that sits above Forest. To view level 1 (more aggregate) of the legend select only classes 1, 2, 3, 4, 5 and 6.</p>
-            <p>To change <b>image background</b> layers select [IMAGES] in the left caption box.</p>
-            <p>To add <b>layers of information</b> about the coverage map and use click on [LAYERS] in the left caption box.</p>
-            <p>In the box on the right side accompany the <b>statistical data on land cover and use</b> for the selected territory. To see more details click on the [SEE DETAILS] button.</p>
-            <p>To <b>download</b> coverage maps in raster format (GeoTiff) go to MAP & DATA > DONWLOADS.</p>
-            <p>To view map and statistics for more than one territory at a time and <b>save your queries</b>, log in to the site by clicking [LOG IN] in the main menu.</p>
+            <ol>
+              <li>To <b>navigate</b> the map you can double-click to zoom in or use the [+] and [-] buttons on upper left corner.</li>
+              <li>To <b>hide the captions and info box</b> click the eye in the upper left corner.</li>
+              <li>To make the map <b>transparent</b> and to be able to see the background layer, use the transparency bar in the upper left corner.</li>
+              <li>To <b>navigate between different years</b> of the collection use the lower center bar.</li>
+              <li>By default the page opens with the Map of Brazil. To <b>choose another territory</b> use the first frame on the left side. Choose the type of territory (State / City / Biome) and enter in the box the name of the desired territory.</li>
+              <li>To <b>view different classes in the legend</b> deselect all classes and then click in the desired classes. Note that the legend is hierarchical. The top level is always below the levels of greater detail. Example: Mangrove stands above Forest Formations that sits above Forest. To view level 1 (more aggregate) of the legend select only classes 1, 2, 3, 4, 5 and 6.</li>
+              <li>To change <b>image background</b> layers select [IMAGES] in the left caption box.</li>
+              <li>To add <b>layers of information</b> about the coverage map and use click on [LAYERS] in the left caption box.</li>
+              <li>In the box on the right side accompany the <b>statistical data on land cover and use</b> for the selected territory. To see more details click on the [SEE DETAILS] button.</li>
+              <li>To <b>download</b> coverage maps in raster format (GeoTiff) go to MAP & DATA > DONWLOADS.</li>
+              <li>To view map and statistics for more than one territory at a time and <b>save your queries</b>, log in to the site by clicking [LOG IN] in the main menu.</li>
+            </ol>
         transitions:
           title: Tutorial (Transitions)
           body: |
@@ -56,6 +58,9 @@ en:
               <li>To add <b>layers of information</b> about the coverage map and use click on [LAYERS] in the left caption box.</li>
               <li>In the right-side box click [+] to access the <b>detailed transition data</b> of all classes, both graphically in the Sankey diagram and table through a transition matrix.</li>
             </ol>
+        quality:
+          title: .
+          body: .
       opacity: Opacity
       classifications:
         title: Classes
