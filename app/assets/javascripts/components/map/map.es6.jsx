@@ -650,7 +650,7 @@ export default class Map extends React.Component {
   }
 
   renderTutorial() {
-    if(!this.props.myMapsPage && !this.props.iframe && this.state.showTutorial) {
+    if(!this.props.iframe && this.state.showTutorial) {
       return(
         <TutorialModal
           mode={this.mode}
