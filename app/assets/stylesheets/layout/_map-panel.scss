@@ -13,7 +13,6 @@
     left: 0;
     right: 0;
     pointer-events: none;
-    z-index: 2;
   }
 
   &__area {
@@ -47,6 +46,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+
+  &__tutorial {
+    z-index: 30;
+    pointer-events: none;
   }
 
   &__action-panel, &__info {
