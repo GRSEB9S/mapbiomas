@@ -28,6 +28,33 @@ pt-BR:
               <li>3 – Bom: < 10%</li>
             </ul>
     index:
+      tutorial:
+        coverage:
+          title: Tutorial (Cobertura)
+          body: |
+            <p>Para navegar pelo mapa você pode clicar duas vezes para ampliar o zoom ou usar os botões [+] e [-].</p>
+            <p>Para ocultar as legendas e box de informação clique no olho no canto superior esquerdo.</p>
+            <p>Para dar transparência ao mapa e poder visualizar a camada de fundo use a barra de transparência no canto superior esquerdo.</p>
+            <p>Por padrão a página abre com o Mapa do Brasil. Para escolher outro território use a primeiro quadro do lado esquerdo. Escolha o tipo de território (Estado / Município / Bioma] e digite no box o nome do território desejado.</p>
+            <p>Para visualizar diferentes classes na legenda desselecione todas as classes e depois fique nas classes desejadas. Note que a legenda é hierarquizada. O nível superior fica sempre por baixo dos níveis de maior detalhes. Exemplo: Mangue fica por cima de Formações Florestais que fica por cima de Floresta. Para visualizar o nível 1 (mais agregado) da legenda selecione apenas as classes 1, 2, 3, 4, 5 e 6.</p>
+            <p>Classes de fundo das imagens são selecionadas [Imagem de fundo] no box de legenda à esquerda.</p>
+            <p>Para acrescentar camadas de informação sobre o mapa de cobertura e uso clique em [CAMADAS] no box de legenda a esquerda.</p>
+            <p>Para navegar entre os diferentes anos da coleção use a barra central inferior.</p>
+            <p>No box do lado direito acompanhe dos dados estatísticos de cobertura e uso do solo para o território selecionado. Para ver mais detalhes clique no botão [MAIS DETALHES].</p>
+            <p>Para fazer o download dos mapas de cobertura em formato raster (GeoTiff) acesse MAPAS E DADOS > DONWLOADS.</p>
+            <p>Para visualizar mapa e estatísticas de mais de um território ao mesmo tempo e salvar suas consultas faça o login no site clicando em [ENTRAR] no menu principal.</p>
+        transitions:
+          title: Tutorial (Transições)
+          body: |
+            <p>Para navegar pelo mapa você pode clicar duas vezes para ampliar o zoom ou usar os botões [+] e [-].</p>
+            <p>Para ocultar as legendas e box de informação clique no olho no canto superior esquerdo.</p>
+            <p>Para dar transparência ao mapa e poder visualizar a camada de fundo use a barra de transparência no canto superior esquerdo.</p>
+            <p>Para navegar entre as diferentes períodos de transição selecione o período desejado no segundo box à esquerda. Por padrão a página abre com o período entre o primeiro e último ano da coleção.</p>
+            <p>Por padrão a página abre com o Mapa do Brasil. Para escolher outro território use a primeiro quadro do lado esquerdo. Escolha o tipo de território (Estado / Município / Bioma] e digite no box o nome do território desejado.</p>
+            <p>A legenda é simplificada e agrupa as transições em cinco classes: [vermelho] toda as transições de vegetação natural para aéreas antropizadas; [verde] todas as transições de areas autorizadas para cobertura vegetal natural; [azul] todas as transições para água; [roxo] transições para florestas plantadas; [cinza] outras transições ou sem transição.</p>
+            <p>Classes de fundo das imagens são selecionadas [Imagem de fundo] no box de legenda à esquerda.</p>
+            <p>Para acrescentar camadas de informação sobre o mapa de cobertura e uso clique em [CAMADAS] no box de legenda a esquerda.</p>
+            <p>No box do lado direito clique em [+] para acessar os dados detalhados de transição-de todas as classes, tanto graficamente no diagrama de Sankey quando a matriz de transição.</p>
       opacity: Opacidade
       classifications:
         title: Classes
@@ -131,3 +158,4 @@ pt-BR:
         warning: Idioma não disponível no momento
     modal:
       ok: OK
+      tutorial: Ver tutorial

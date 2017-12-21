@@ -10,6 +10,7 @@ import { API } from '../../lib/api';
 import { Classifications } from '../../lib/classifications';
 import { Territories } from '../../lib/territories';
 
+import TutorialModal from '../modals/tutorial';
 import StatsModal from '../modals/stats';
 import TransitionsModal from '../modals/transitions_chart_and_matrix';
 import WarningModal from '../modals/warning';
@@ -47,6 +48,7 @@ export default class Map extends React.Component {
       opacity: 1,
       qualities: [],
       selectedMap: null,
+      showTutorial: false,
       showWarning: {
         coverage: true,
         transitions: true,
@@ -498,6 +500,20 @@ export default class Map extends React.Component {
     })
   }
 
+  expandTutorial(mode) {
+    this.setState({
+      showWarning: {
+        ...this.state.showWarning,
+        [mode]: false
+      },
+      showTutorial: true
+    });
+  }
+
+  closeTutorial() {
+    this.setState({ showTutorial: false });
+  }
+
   expandModal(mode) {
     this.setState({
       showModals: {
@@ -616,12 +632,31 @@ export default class Map extends React.Component {
   }
 
   renderWarning(key) {
+    let showTutorialButton = this.mode == 'coverage' || this.mode == 'transitions';
+
     if(!this.props.myMapsPage && !this.props.iframe && this.mode == key && this.state.showWarning[key]) {
       return(
         <WarningModal
           title={I18n.t(`map.warning.${key}.title`)}
           onClose={this.closeWarning.bind(this, key)}
+          showTutorialButton={showTutorialButton}
+          onTutorialClick={this.expandTutorial.bind(this, key)}
           html={I18n.t(`map.warning.${key}.body`)}
+        />
+      );
+    }
+
+    return null;
+  }
+
+  renderTutorial() {
+    if(!this.props.myMapsPage && !this.props.iframe && this.state.showTutorial) {
+      return(
+        <TutorialModal
+          mode={this.mode}
+          title={I18n.t(`map.index.tutorial.${this.mode}.title`)}
+          onClose={this.closeTutorial.bind(this)}
+          html={I18n.t(`map.index.tutorial.${this.mode}.body`)}
         />
       );
     }
@@ -649,6 +684,7 @@ export default class Map extends React.Component {
 
     this.loadCards();
     this.loadQualities(this.year);
+
     window.addEventListener("hashchange", () =>
       this.setState({ mode: location.hash.replace('#', '') }), false);
   }
@@ -668,6 +704,7 @@ export default class Map extends React.Component {
 
     return (
       <div className={`map ${this.state.hide ? 'hide-panels' : ''}`}>
+        {this.renderTutorial()}
         {this.renderStatsModal()}
         {this.renderTransitionsModal()}
         {this.renderWarning('coverage')}
@@ -704,6 +741,7 @@ export default class Map extends React.Component {
               hiddenPanels={this.state.hide}
               setOpacity={this.setOpacity.bind(this)}
               hidePanels={this.toggleHide.bind(this)}
+              showTutorial={this.expandTutorial.bind(this, this.mode)}
             />
 
             {this.props.myMapsPage && !this.props.iframe && (

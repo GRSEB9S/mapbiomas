@@ -62,7 +62,7 @@
     bottom: 0;
     background: #000;
     opacity: 0.4;
-    z-index: 9;
+    z-index: 20;
   }
 
   &__header {
@@ -75,7 +75,8 @@
   &__content {
     overflow: auto;
     padding: $micro-spacing;
-    max-height: 100%;
+    max-height: 450px;
+    scroll-y: auto;
 
     ul {
       list-style-type: none;
@@ -87,10 +88,19 @@
     }
   }
 
-  &__ok, &__download {
-    float: right;
-    padding-left: 30px;
-    padding-right: 30px;
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $small-spacing;
+
+    button {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  &__tutorial {
+    margin-right: $small-spacing;
   }
 
   &__download {

@@ -9,7 +9,7 @@ en:
           <p>The presented maps still have a series of imperfections, among which are possible spatial inconsistencies in thematic classifications, in the temporal (and between letters) and between thematic classes and transversal themes (eg agriculture and pasture).</p>
           <p>If you have suggestions, criticisms and ideas to improve the work, contact us at <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
-        title: CAUTION NOTICE (transition)
+        title: CAUTION NOTICE (transitions)
         body: |
           <p>Here we observe the pixel to pixel class differences between the maps of the following periods: (A) any consecutive years (eg 2001-2002); (B) five-year periods 2000-2005 / 2005-2010 / 2010-2015; (C) 2008-2015; (D) 2002-2010 and (D) 2000-2016.</p>
           <p>Select the desired period and observe the changes in the map and the Sankey diagram. Click on the different transitions in the diagram to see the different transitions on the map.</p>
@@ -28,6 +28,33 @@ en:
               <li>3 – Good: < 10%</li>
             </ul>
     index:
+      tutorial:
+        coverage:
+          title: Tutorial (Coverage)
+          body: |
+            <p>To navigate the map you can double-click to zoom in or use the [+] and [-] buttons on upper left corner.</p>
+            <p>To hide the captions and info box click the eye in the upper left corner.</p>
+            <p>To make the map transparent and to be able to see the background layer, use the transparency bar in the upper left corner.</p>
+            <p>By default the page opens with the Map of Brazil. To choose another territory use the first frame on the left side. Choose the type of territory (State / City / Biome) and enter in the box the name of the desired territory.</p>
+            <p>To change Image background layers select [IMAGES] in the left caption box.</p>
+            <p>To view different classes in the legend deselect all classes and then click in the desired classes. Note that the legend is hierarchical. The top level is always below the levels of greater detail. Example: Mangrove stands above Forest Formations that sits above Forest. To view level 1 (more aggregate) of the legend select only classes 1, 2, 3, 4, 5 and 6.</p>
+            <p>To add layers of information about the coverage map and use click on [LAYERS] in the left caption box.</p>
+            <p>To navigate between different years of the collection use the lower center bar.</p>
+            <p>In the box on the right side accompany the statistical data on land cover and use for the selected territory. To see more details click on the [SEE DETAILS] button.</p>
+            <p>To download coverage maps in raster format (GeoTiff) go to MAP & DATA > DONWLOADS.</p>
+            <p>To view map and statistics for more than one territory at a time and save your queries, log in to the site by clicking [LOG IN] in the main menu.</p>
+        transitions:
+          title: Tutorial (Transitions)
+          body: |
+            <p>To navigate the map you can double-click to zoom in or use the [+] and [-] buttons on upper left corner.</p>
+            <p>To hide the captions and info box click the eye in the upper left corner.</p>
+            <p>To make the map transparent and to be able to see the background layer, use the transparency bar in the upper left corner.</p>
+            <p>To navigate between different transition periods select the desired period in the second box on the left. By default the page opens with the period between the first and last year of the collection.</p>
+            <p>By default the page opens in the territory that is selected in the COVERAGE screen. To choose another territory use the first frame on the left side. Choose the type of territory (State / City / Biome) and enter in the box the name of the desired territory.</p>
+            <p>The legend is simplified and groups the transitions into five classes: [red] all transitions from natural vegetation to anthropic areas; [green] all transitions from farming and non-vegetation areas to natural vegetation cover; [blue] all transitions to water; [purple] transitions to planted forests; [gray] other transitions or no transition.</p>
+            <p>Image background classes select [Background image] in the left caption box. When selecting the [LANDSAT MOSAIC] background image the screen will have a split in half. On the left side will appear the image of the start year of the transition and the right side will show the image of final year. When scrolling the vertical bar left and right you can see the transition in the Landsat images used by MapBiomas. For better viewing use the transparency bar in the upper left corner.</p>
+            <p>To add layers of information about the coverage map and use click on [LAYERS] in the left caption box.</p>
+            <p>In the right-side box click [+] to access the detailed transition data of all classes, both graphically in the Sankey diagram and table through a transition matrix.</p>
       opacity: Opacity
       classifications:
         title: Classes
@@ -131,3 +158,4 @@ en:
         warning: Language not available
     modal:
       ok: OK
+      tutorial: Check tutorial
