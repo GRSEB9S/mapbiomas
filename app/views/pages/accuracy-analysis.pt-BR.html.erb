@@ -21,7 +21,7 @@
         <b>Acurácias do produtor:</b> São as estimativas das frações de píxels de cada classe corretamente atribuídos às suas classes pelo mapeamento. A acurácia do produtor está associada ao <b>erro de omissão</b>, que ocorre quando deixamos de mapear um pixel da classe j corretamente. A acurácia do produtor para a classe j é estimada por <%= image_tag "formula8.png", class: "inside_text" %> e o erro de omissão por <%= image_tag "formula9.png", class: "inside_text" %>. Essas métricas estão associadas à <b>sensibilidade</b> do classificador, ou seja, a capacidade de distinguir corretamente determinada classe entre demais.
       </li>
       <li>
-        <b>Acurácia global:</b> É a estimativa da proporção global de píxeis do mapeamento corretamente mapeada. A estimativa é dada por <%= image_tag "formula10_n.png", class: "inside_text" %>, a soma da diagonal principal da matriz de proporções. O complementar da acurácia, ou o <b>erro total</b> <%= image_tag "formula11.png", class: "inside_text" %> ainda é decomposto em discordância de área e discordância de alocação (XXX). A discordância de área mede a fração do erro atribuída à quantidade de área atribuída incorretamente às classes pelo mapeamento, enquanto a discordância de alocação à proporção de erros de deslocamento.
+        <b>Acurácia global:</b> É a estimativa da proporção global de píxeis do mapeamento corretamente mapeada. A estimativa é dada por <%= image_tag "formula10_n.png", class: "inside_text" %>, a soma da diagonal principal da matriz de proporções. O complementar da acurácia, ou o <b>erro total</b> <%= image_tag "formula11.png", class: "inside_text" %> ainda é decomposto em discordância de área e discordância de alocação. A discordância de área mede a fração do erro atribuída à quantidade de área atribuída incorretamente às classes pelo mapeamento, enquanto a discordância de alocação à proporção de erros de deslocamento.
       </li>
     </ol>
 
@@ -56,7 +56,7 @@
     <br>
     <center>
       <%= link_to 'analysis' do %>
-        <button class="primary">Acesse o painel de estatística de acurácia</button>
+        <button class="primary">ESTIMATIVAS DA ACURÁCIA DO MAPEAMENTO DA COBERTURA DO SOLO PELO PROJETO MAPBIOMAS</button>
       <% end %>
     </center>
   </div>
