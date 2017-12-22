@@ -2,6 +2,14 @@ en:
   my_maps:
     title: My maps
     no_maps: You don't have any maps.
+    tooltip: |
+      <p>1. Select [new map] in the upper left box</p>
+      <p>2. Select the territories you would like to include in the map [State(s), Municipality(s) or Biome(s)]. Note that statistics and transition data will be generated aggregated for all territories selected.</p>
+      <p>3. Select the classes of legend, background images and layers that you would like to see in the map through the inferior left box.</p>
+      <p>4. Clink [SAVE]. Define a name for the map.</p>
+      <p>5. Your maps will be salved and stored and will be accessible in “MY MAPS” under users account.</p>
+      <p>6. You can edit your maps clicking on [EDIT] on the upper left box.</p>
+      <p>7. If you would like to embed the saved map in your website, generate a link by clicking at < > in the bottom left corner. The map is dynamic and allow to navigate through cover and transition directly in your site.</p>
     embed_code:
       tooltip: |
         <h3>Embed</h3>
