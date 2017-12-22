@@ -15,7 +15,7 @@ export class MenuControl extends React.Component {
     if(this.props.currentUser.signedIn) {
       return (
         <li className="menu__item login">
-          <a className="menu__link" href='#'>
+          <a className="menu__link menu__link--user" href='#'>
             {this.props.currentUser.name}
           </a>
           <ul className="submenu__items">
@@ -151,6 +151,11 @@ export class MenuControl extends React.Component {
               <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path('scripts')}>
                   {I18n.t('layouts.header.methodology.scripts')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('accuracy-analysis')}>
+                  {I18n.t('layouts.header.methodology.analysis')}
                 </a>
               </li>
               <li className="menu__item">

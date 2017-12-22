@@ -51,6 +51,7 @@ en:
         atbd: ATBD
         tools: Tools
         scripts: Scripts
+        analysis: Accuracy Analysis
       communication:
         title: Communication
         release_collection2: Launch Collection 2

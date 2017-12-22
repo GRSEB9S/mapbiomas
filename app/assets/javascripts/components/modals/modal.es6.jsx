@@ -13,6 +13,16 @@ export class MapModal extends React.Component {
     }
   }
 
+  renderTutorialButton() {
+    if(this.props.showTutorialButton) {
+      return (
+        <button className="map-modal__tutorial--button primary" onClick={this.props.onTutorialClick}>
+          {I18n.t('map.modal.tutorial')}
+        </button>
+      );
+    }
+  }
+
   renderOkButton() {
     if(this.props.showOkButton) {
       return (
@@ -47,7 +57,10 @@ export class MapModal extends React.Component {
             { this.props.children }
           </div>
 
-          {this.renderOkButton()}
+          <div className="map-modal__buttons">
+            {this.renderTutorialButton()}
+            {this.renderOkButton()}
+          </div>
         </div>
       </div>
     );

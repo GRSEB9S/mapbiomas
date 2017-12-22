@@ -6,10 +6,20 @@
     @extend %default-ul;
   }
 
+  ol.numeric_list {
+    list-style-type: decimal; margin: 0.5rem 0 0.5rem 1rem; padding-left: 1rem;
+  }
+
   h2.page__title {
     color: $light-green;
     margin-top: $big-spacing;
     font-size: $subtitle-font-size;
+  }
+
+  h3.page__section {
+    font-size: 1rem;
+    margin: 0 0 $small-spacing 0;
+    color: $light-green;
   }
 
   img {
@@ -22,6 +32,14 @@
     select option[disabled] {
       display: none;
     }
+  }
+
+  img.inside_text{
+    display: inline;
+  }
+
+  .img-align-left{
+    margin: initial;
   }
 
   &__title {
