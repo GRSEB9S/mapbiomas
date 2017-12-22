@@ -100,7 +100,10 @@ export class MyMaps extends React.Component {
     if (!_.isEmpty(this.props.maps)) {
       return (
         <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
-          <h3>{I18n.t('my_maps.title')}</h3>
+          <h3>
+            {I18n.t('my_maps.title')}
+            <i id="my-maps-tooltip" className="material-icons tooltip">&#xE88E;</i>
+          </h3>
 
           <Select
             options={this.mapsOptions}
