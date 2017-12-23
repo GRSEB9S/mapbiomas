@@ -1,6 +1,12 @@
 <article class="page">
   <div class="page__container">
     <h1 class="page__title">ACCURACY ASSESSMENT ANALYSIS OF MAPBIOMAS’ LAND COVER (AND LAND USE) MAPPING</h1>
+    <center>
+      <%= link_to 'analysis' do %>
+        <button class="primary">Access the accuracy statistics panel</button>
+      <% end %>
+    </center>
+    <br>
     <p>Accuracy analysis is the main way of assessing the quality of mapping performed by Mapbiomas. In addition to telling the overall mapping accuracy, the analysis also reveals the accuracy for each mapped class and also estimates of the fraction of area of ​​each class of land cover and use that we currently fail to map correctly. MapBiomas evaluated the accuracy of the global and per-class coverage for each year between 2000 and 2016.</p>
 
     <p>Accuracy estimates were based on the evaluation of a sample of pixels, which we call the reference database. The number of pixels in the reference database was pre-determined by statistical sampling techniques. Each year, each pixel in the reference database was carefully evaluated by three technicians trained in visual interpretation of Lansat images. The evaluation of a pixel in a given year was considered valid only when two or three technicians agreed on the class observed in the pixel. Accuracy assessment is then done using metrics that compare the class mapped with the class evaluated by the technicians in the reference database. We report yearly accuracy estimates with c.a. of 5% error for each class in the mapping.</p>
@@ -56,7 +62,7 @@
     <br>
     <center>
       <%= link_to 'analysis' do %>
-        <button class="primary">ESTIMATES OF THE ACCURACY OF MAPPING OF SOIL COVERAGE BY MAPBIOMAS PROJECT</button>
+        <button class="primary">Access the accuracy statistics panel</button>
       <% end %>
     </center>
   </div>
