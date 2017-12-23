@@ -1,6 +1,12 @@
 <article class="page">
   <div class="page__container">
     <h1 class="page__title">ESTIMATIVAS DA ACURÁCIA DO MAPEAMENTO DA COBERTURA DO SOLO PELO PROJETO MAPBIOMAS</h1>
+    <center>
+      <%= link_to 'analysis' do %>
+        <button class="primary">Acesse o painel de estatística de acurácia</button>
+      <% end %>
+    </center>
+    <br>
     <p>A análise de acurácia é a principal forma de avaliação da qualidade do mapeamento realizado pelo Mapbiomas. Além de dizer qual a taxa de acerto geral dos mapas, a análise de acurácia também revela estimativas da taxa de acerto de cada classe mapeada e também a fração de área de cada classe de cobertura e uso do solo que deixamos de mapear corretamente. O MapBiomas avaliou a acurácia do mapeamento global e para cada classe cobertura para cada ano entre 2000 e 2016.</p>
 
     <p>As estimativas da acurácia foram baseadas na avaliação de uma amostra de píxeis, que chamamos de base de dados de referência. O número de píxeis na base de <b>dados de referência</b> foi pré-determinado por técnicas de amostragem estatística. Em cada ano, cada píxel da base de dados de referência foi avaliado cuidadosamente por três técnicos treinados em interpretação visual de imagens Lansat. A avaliação de um píxel em um determinado ano foi considerado válido apenas quando dois ou três técnicos concordaram quanto à classe observada no píxel. A avaliação da acurácia é então feita usando métricas que comparam a classe mapeada com a classe avaliada pelos técnicos na base de dados de referência. A acurácia reportada c.a. de 5% de erro para cada classe mapeada em cada ano.</p>
@@ -56,7 +62,7 @@
     <br>
     <center>
       <%= link_to 'analysis' do %>
-        <button class="primary">ESTIMATIVAS DA ACURÁCIA DO MAPEAMENTO DA COBERTURA DO SOLO PELO PROJETO MAPBIOMAS</button>
+        <button class="primary">Acesse o painel de estatística de acurácia</button>
       <% end %>
     </center>
   </div>
