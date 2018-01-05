@@ -28,6 +28,12 @@
     max-width: 100%;
   }
 
+  &__mapbiomas-collections {
+    select option[disabled] {
+      display: none;
+    }
+  }
+
   img.inside_text{
     display: inline;
   }
