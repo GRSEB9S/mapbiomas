@@ -12,11 +12,11 @@
         <strong><%= link_to 'Mapas das coleções', page_path('database/mapbiomas_collection') %></strong>
       </div>
 
-      <div class="downloads__reference_maps">
+      <div class="downloads__mapbiomas_collection">
         <div class="downloads__icon">
-          <%= link_to (image_tag "icon-reference-pb.png"), page_path('database/reference_maps') %>
+          <%= link_to (image_tag "icon-stats.png"), page_path('estatisticas') %>
         </div>
-        <strong><%= link_to 'Mapas de referência', page_path('database/reference_maps') %></strong>
+        <strong><%= link_to 'Estatísticas', page_path('estatisticas') %></strong>
       </div>
 
       <div class="downloads__landsat_mosaics">
@@ -28,9 +28,9 @@
 
       <div class="downloads__cod_legend">
         <div class="downloads__icon">
-          <%= link_to (image_tag "icon-cod_legend.png"), "https://s3.amazonaws.com/mapbiomas-ecostage/legenda_mapbiomas.pdf", target: "_blank" %>
+          <%= link_to (image_tag "icon-cod_legend.png"), page_path('legenda') %>
         </div>
-        <strong><%= link_to 'Código da legenda', "https://s3.amazonaws.com/mapbiomas-ecostage/legenda_mapbiomas.pdf", target: "_blank" %></strong>
+        <strong><%= link_to 'Código da legenda', page_path('legenda') %></strong>
       </div>
 
       <div class="downloads__mapbiomas_collection">
@@ -38,6 +38,13 @@
           <%= link_to (image_tag "icon-mural.png"), page_path('mapa-mural') %>
         </div>
         <strong><%= link_to 'Mapa Mural', page_path('mapa-mural') %></strong>
+      </div>
+
+      <div class="downloads__reference_maps">
+        <div class="downloads__icon">
+          <%= link_to (image_tag "icon-reference-pb.png"), page_path('database/reference_maps') %>
+        </div>
+        <strong><%= link_to 'Mapas de referência', page_path('database/reference_maps') %></strong>
       </div>
     </div>
   </div>

@@ -4,35 +4,68 @@ pt-BR:
       coverage:
         title: Nota de precaução
         body: |
-          <p>Esta é Coleção 2 do MapBiomas que incluem dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
-          <p>Esta coleção é fruto dos primeiros 20 meses de trabalho do projeto MapBiomas e esta em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018.</p>
-          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal (e entre cartas) e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
-          <p>Caso tenha sugestões, críticas e idéias aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
+          <p>Esta é Coleção 2.3 do MapBiomas que incluem dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
+          <p>Esta coleção é fruto dos primeiros 2 anos de trabalho do projeto MapBiomas e está em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018, cobrindo o período de 1985 a 2017.</p>
+          <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
+          <p>Caso tenha sugestões, críticas e idéias para aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
-        title: Análise de Transição
+        title: Nota de precaução
         body: |
           <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas dos seguintes períodos: (a) quaisquer anos consecutivos (ex. 2001-2002); (b) períodos de cinco anos 2000-2005/ 2005-2010 / 2010-2015; (c) 2008-2015 e (d) 2000-2016.</p>
           <p>Selecione o período desejado e observe as mudanças no mapa e no diagrama de Sankey. Clique nas diferentes transições do diagrama para ver as diferentes transições no mapa.</p>
-          <p>Esta representação de transição entre classes de um ano para outro é feita a partir da comparação pixel a pixel. Você também podem visualizar uma matriz de transições.</p>
           <p class="warning"><strong>ATENÇÃO:</strong>
           <blockquote>
-            Na Coleção 2 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas não devem ser tomadas uma representação fiel das mudanças de uso da terra no período.</p>
+            Na Coleção 2.3 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas podem não ser uma representação fiel das mudanças de uso da terra no período.</p>
           </blockquote>
       quality:
         title: Qualidade do Mosaico
         body: |
-          <p>O mosaico é uma composição de pixels de várias cenas do Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim cada carta em cada ano foi classificada em três categorias de acordo com a porcentagens de nuvens e interferências verificadas:</p>
+          <p>O mosaico é uma composição de pixels de várias cenas do Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim cada carta em cada ano foi classificada em três categorias de acordo com as porcentagens de nuvens e interferências verificadas:</p>
             <ul>
               <li>1 – Ruim: > 30%</li>
               <li>2 – Regular: 10 a 30%</li>
               <li>3 – Bom: < 10%</li>
             </ul>
     index:
+      tutorial:
+        coverage:
+          title: Tutorial (Cobertura)
+          body: |
+            <ol>
+              <li>Para <b>navegar</b> pelo mapa você pode clicar duas vezes para ampliar o zoom ou usar os botões [+] e [-].</li>
+              <li>Para <b>ocultar as legendas e box</b> de informação clique no olho no canto superior esquerdo.</li>
+              <li>Para dar <b>transparência</b> ao mapa e poder visualizar a camada de fundo use a barra de transparência no canto superior esquerdo.</li>
+              <li>Para <b>navegar entre os diferentes anos</b> da coleção use a barra central inferior.</li>
+              <li>Por padrão a página abre com o Mapa do Brasil. Para <b>escolher outro território</b> use a primeiro quadro do lado esquerdo. Escolha o tipo de território (Estado / Município / Bioma] e digite no box o nome do território desejado.</li>
+              <li>Para <b>visualizar diferentes classes na legenda</b> desselecione todas as classes e depois fique nas classes desejadas. Note que a legenda é hierarquizada. O nível superior fica sempre por baixo dos níveis de maior detalhes. Exemplo: Mangue fica por cima de Formações Florestais que fica por cima de Floresta. Para visualizar o nível 1 (mais agregado) da legenda selecione apenas as classes 1, 2, 3, 4, 5 e 6.</li>
+              <li>Para alterar as <b>imagens de fundo</b> selecione [Imagem de fundo] no box de legenda à esquerda.</li>
+              <li>Para acrescentar <b>camadas de informação</b> sobre o mapa de cobertura e uso clique em [CAMADAS] no box de legenda a esquerda.</li>
+              <li>No box do lado direito acompanhe dos dados <b>estatísticos de cobertura</b> e uso do solo para o território selecionado. Para ver mais detalhes clique no botão [MAIS DETALHES].</li>
+              <li>Para fazer o <b>download</b> dos mapas de cobertura em formato raster (GeoTiff) acesse MAPAS E DADOS > DONWLOADS.</li>
+              <li>Para visualizar mapa e estatísticas de mais de um território ao mesmo tempo e <b>salvar suas consultas</b> faça o login no site clicando em [ENTRAR] no menu principal.</li>
+            </ol>
+        transitions:
+          title: Tutorial (Transições)
+          body: |
+            <ol>
+              <li>Para <b>navegar</b> pelo mapa você pode clicar duas vezes para ampliar o zoom ou usar os botões [+] e [-].</li>
+              <li>Para <b>ocultar as legendas e box</b> de informação clique no olho no canto superior esquerdo.</li>
+              <li>Para dar <b>transparência</b> ao mapa e poder visualizar a camada de fundo use a barra de transparência no canto superior esquerdo.</li>
+              <li>Para <b>navegar entre os diferentes períodos de transição</b> selecione o período desejado no segundo box à esquerda. Por padrão a página abre com o período entre o primeiro e último ano da coleção.</li>
+              <li>Por padrão a página abre com o Mapa do Brasil. Para <b>escolher outro território</b> use a primeiro quadro do lado esquerdo. Escolha o tipo de território (Estado / Município / Bioma] e digite no box o nome do território desejado.</li>
+              <li>A legenda é simplificada e agrupa as transições em <b>cinco classes</b>: [vermelho] toda as transições de vegetação natural para aéreas antropizadas; [verde] todas as transições de areas autorizadas para cobertura vegetal natural; [azul] todas as transições para água; [roxo] transições para florestas plantadas; [cinza] outras transições ou sem transição.</li>
+              <li><b>Imagens de fundo</b> são selecionadas [Imagem de fundo] no box de legenda à esquerda. Ao selecionar a imagem de fundo [MOSICO LANDSAT] a tela apresentará uma divisão ao meio. No lado esquerdo aparecerá a imagem do ano de inicio da transição visualizada e do lado direito o ano final. Ao rolar a barrara um aldo e outro vc pode ver a transição nas imagens Landsat utilizadas pelo MapBiomas. Para melhor a visualização use a barra de transparência no canto superior esquerdo.</li>
+              <li>Para acrescentar <b>camadas de informação</b> sobre o mapa de cobertura e uso clique em [CAMADAS] no box de legenda a esquerda.</li>
+              <li>No box do lado direito clique em [+] para acessar os <b>dados detalhados de transição</b> de todas as classes, tanto graficamente no diagrama de Sankey quando a matriz de transição.</li>
+            </ol>
+        quality:
+          title: .
+          body: .
       opacity: Opacidade
       classifications:
         title: Classes
         description: |
-          Clique <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/Descri%C3%A7%C3%A3o_Legenda_Cole%C3%A7%C3%A3o_2.pdf">aqui</a> e veja a descrição das classes
+          Clique <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/1_-_Legenda_Cole%C3%A7%C3%A3o_2.3_-_Descricao_Detalhada.pdf">aqui</a> e veja a descrição das classes
         select_all: Selecionar todas as classes
       base_maps:
         title: Imagem de fundo
@@ -68,7 +101,7 @@ pt-BR:
         conservation_units: Unidades de conservação
       coverage:
         title: Cobertura
-        analysis: Análise de cobertura
+        analysis: Dados de Cobertura
         details: Ver detalhes
       transitions:
         title: Transições
@@ -130,4 +163,5 @@ pt-BR:
       locales:
         warning: Idioma não disponível no momento
     modal:
-      ok: OK
+      ok: Continuar
+      tutorial: Acessar o tutorial da plataforma

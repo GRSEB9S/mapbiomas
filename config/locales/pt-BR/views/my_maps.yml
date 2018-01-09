@@ -2,6 +2,14 @@ pt-BR:
   my_maps:
     title: Meus mapas
     no_maps: Você ainda não possui mapas.
+    tooltip: |
+      <p>1. Selecione [novo mapa] no box superior esquerdo</p>
+      <p>2. Selecione os territórios que gostaria de incluir no mapa como Estado(s), Município(s), Bioma(s). Note que as estatísticas e dados de transição serão gerados de forma agregada para o conjunto que você inserir.</p>
+      <p>3. Selecione as classes da legenda, imagem de fundo e camadas que gostaria de visualizar no box inferior esquerdo.</p>
+      <p>4. Clique em Salvar. Defina um nome para o seu mapa.</p>
+      <p>5. Seus mapas salvos serão armazenados e ficaram disponíveis em “Meus Mapas” no MENU SUPERIOR direito onde estão nome do usuário.</p>
+      <p>6. Os seus mapas podem ser editados clicando em [EDITAR] no box superior esquerdo.</p>
+      <p>7. Caso queira inserir o seu mapa salvo em um website próprio gere o link clicando em < > no canto inferior direito. O mapa será dinâmico e permitira navegar pelo mapa diretamente no seu site.</p>
     embed_code:
       tooltip: |
         <h3>Incorporar</h3>

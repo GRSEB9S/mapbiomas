@@ -14,6 +14,12 @@ $(function() {
 </script>
 
 <section class="home__video">
+  <div class="flash success new-collection">
+    <span>
+      <%= link_to 'COLEÇÃO 2.3 - DADOS ATUALIZADOS - VERSÃO DE DEZEMBRO DE 2017', page_path('announcement_note_collection2_3') %>
+    </span>
+  </div>
+
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
     <p>O <strong>MapBiomas</strong> é uma iniciativa multi institucional envolvendo universidades, ONGs e empresas de tecnologia que se uniram para contribuir com o entendimento das transformações do território brasileiro a partir do mapeamento anual da cobertura e uso do solo no Brasil.</p>
@@ -36,7 +42,7 @@ $(function() {
   <div class="home__coating-content">
     <%= image_tag "cobertura.png", class: "home__coating-image" %>
     <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COBERTURA E USO DO SOLO</a></h1>
-    <p>Conheça a cobertura e uso do solo anual do Brasil entre 2000 e 2016 navegando na coleção 2 do MapBiomas</p>
+    <p>Conheça a cobertura e uso do solo anual do Brasil entre 2000 e 2016</p>
     <a class="button primary" href="http://mapbiomas.org/map#coverage">Acesse aqui</a>
   </div>
 </article>
@@ -62,9 +68,9 @@ $(function() {
 <article class="home__quality">
   <div class="home__quality-content">
     <%= image_tag "landsat.png", class: "home__quality-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#quality">QUALIDADE DOS DADOS</a></h1>
-    <p>Veja a qualidade dos dados para cada uma das cartas analisadas pela equipe do MapBiomas</p>
-    <a class="button primary"  href="http://mapbiomas.org/map#quality">Acesse aqui</a>
+    <h1 class="page__title"><a href="/pages/accuracy-analysis">QUALIDADE DOS DADOS</a></h1>
+    <p>Veja a análise de acurácia dos mapas do MapBiomas</p>
+    <a class="button primary"  href="/pages/accuracy-analysis">Acesse aqui</a>
   </div>
 </article>
 
@@ -88,12 +94,18 @@ $(function() {
     <%= image_tag "vale.png" %>
     <%= image_tag "ipam.png" %>
     <%= image_tag "agro-satelite.png" %>
+    <%= image_tag "solved.png" %>
 
     <h1>FINANCIAMENTO</h1>
-    <%= image_tag "moore.png" %>
-    <%= image_tag "climate.png" %>
-    <%= image_tag "nicfi.png" %>
-    <%= image_tag "instituto-arapyau.png" %>
+    <div class="financing">
+      <%= image_tag "moore.png", class: "moore" %>
+      <%= image_tag "nicfi.png", class: "nicfi" %>
+      <%= image_tag "good-energies.png", class: "good-energies" %>
+    </div>
+    <div class="financing">
+      <%= image_tag "climate.png" %>
+      <%= image_tag "instituto-arapyau.png" %>
+    </div>
 
     <h1>PARCEIROS DE TECNOLOGIA</h1>
     <%= image_tag "ecostage.png" %>

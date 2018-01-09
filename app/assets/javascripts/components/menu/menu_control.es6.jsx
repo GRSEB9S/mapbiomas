@@ -15,7 +15,7 @@ export class MenuControl extends React.Component {
     if(this.props.currentUser.signedIn) {
       return (
         <li className="menu__item login">
-          <a className="menu__link" href='#'>
+          <a className="menu__link menu__link--user" href='#'>
             {this.props.currentUser.name}
           </a>
           <ul className="submenu__items">
@@ -41,7 +41,7 @@ export class MenuControl extends React.Component {
       );
     } else {
       return (
-        <li className="menu__item login">
+        <li className="menu__item login new" data-new={I18n.t('new')}>
           <a className="menu__link" href={Routes.new_user_session_path()}>
             {I18n.t('devise.sessions.new.sign_in')}
           </a>
@@ -85,6 +85,11 @@ export class MenuControl extends React.Component {
               <li className="menu__item" >
                 <a className="menu__link" href={Routes.page_path("team")}>
                   {I18n.t('layouts.header.about.team.title')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path("terms_of_use")}>
+                  {I18n.t('layouts.header.map_data.terms_of_use')}
                 </a>
               </li>
             </ul>
@@ -148,6 +153,16 @@ export class MenuControl extends React.Component {
                   {I18n.t('layouts.header.methodology.scripts')}
                 </a>
               </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('accuracy-analysis')}>
+                  {I18n.t('layouts.header.methodology.analysis')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path("terms_of_use")}>
+                  {I18n.t('layouts.header.map_data.terms_of_use')}
+                </a>
+              </li>
             </ul>
           </li>
 
@@ -157,6 +172,11 @@ export class MenuControl extends React.Component {
             </a>
             <ul className="submenu__items">
               <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path('announcement_note_collection2_3')}>
+                  {I18n.t('layouts.header.communication.news')}
+                </a>
+              </li>
+              <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path('release_collection2')}>
                   {I18n.t('layouts.header.communication.release_collection2')}
                 </a>
@@ -164,6 +184,11 @@ export class MenuControl extends React.Component {
               <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path('video')}>
                   {I18n.t('layouts.header.communication.project_video')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.page_path("terms_of_use")}>
+                  {I18n.t('layouts.header.map_data.terms_of_use')}
                 </a>
               </li>
             </ul>

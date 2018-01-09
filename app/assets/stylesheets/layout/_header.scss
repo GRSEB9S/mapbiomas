@@ -18,6 +18,25 @@
       height: 36px;
       margin: $micro-spacing 0;
     }
+
+    &--version {
+      position: relative;
+
+      &:after {
+        content: attr(version);
+        color: rgba($medium-green, 0.5);
+        position: absolute;
+        top: 15px;
+        left: 102%;
+      }
+
+      &:focus,
+      &:hover {
+        &:after {
+          color: $medium-green;
+        }
+      }
+    }
   }
 
   &__menu-trigger {

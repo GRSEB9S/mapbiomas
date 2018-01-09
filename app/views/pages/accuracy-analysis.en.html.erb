@@ -1,0 +1,69 @@
+<article class="page">
+  <div class="page__container">
+    <h1 class="page__title">ACCURACY ASSESSMENT ANALYSIS OF MAPBIOMAS’ LAND COVER (AND LAND USE) MAPPING</h1>
+    <center>
+      <%= link_to 'analysis' do %>
+        <button class="primary">Access the accuracy statistics panel</button>
+      <% end %>
+    </center>
+    <br>
+    <p>Accuracy analysis is the main way of assessing the quality of mapping performed by Mapbiomas. In addition to telling the overall mapping accuracy, the analysis also reveals the accuracy for each mapped class and also estimates of the fraction of area of ​​each class of land cover and use that we currently fail to map correctly. MapBiomas evaluated the accuracy of the global and per-class coverage for each year between 2000 and 2016.</p>
+
+    <p>Accuracy estimates were based on the evaluation of a sample of pixels, which we call the reference database. The number of pixels in the reference database was pre-determined by statistical sampling techniques. Each year, each pixel in the reference database was carefully evaluated by three technicians trained in visual interpretation of Lansat images. The evaluation of a pixel in a given year was considered valid only when two or three technicians agreed on the class observed in the pixel. Accuracy assessment is then done using metrics that compare the class mapped with the class evaluated by the technicians in the reference database. We report yearly accuracy estimates with c.a. of 5% error for each class in the mapping.</p>
+
+    <p>In each year, the accuracy analysis is done by cross-tabulating the sample frequencies of the mapped and real classes, in the format of Table 1. The frequencies <b><i>n<sub>i,j</sub></i></b> represent the number of pixels in the sample classified as class i, and evaluated as class j. The line marginal totals, <%= image_tag "formula1.png", class: "inside_text" %>, represent the number of samples mapped as class i, while the column marginal totals,<%= image_tag "formula2.png", class: "inside_text" %> , represent the number of samples that were evaluated by the technicians as class j. Table 1 is commonly called the <b>error matrix</b> or <b>confusion matrix</b>.</p>
+
+    <p><b>Table 1:</b> Generic sample error matrix</p>
+    <%= image_tag "tabela1_mapbiomas_en.png" %>
+    <br>
+    <br>
+    <p>From the results in Table 1, the population proportions of the total area of ​​the mapping in each cell of the table are estimated by <%= image_tag "formula3.png", class: "inside_text" %>, where <%= image_tag "formula4.png", class: "inside_text" %> is the proportion of pixels mapped as class i in the entire map. The matrix of values <%= image_tag "formula5.png", class: "inside_text" %> is used to estimate:</p>
+
+    <ol class="numeric_list">
+      <li>
+        <b>User’s Accuracies:</b> These are the estimates of the fractions of the mapping pixels, for each class, correctly classified. The user’s accuracy is associated with the <b>error of commission</b>, which is the error of  assigning a pixel to class i, when it belongs to some other class. The user’s accuracy for class i is estimated by <%= image_tag "formula6.png", class: "inside_text" %>  and the commission error by <%= image_tag "formula7.png", class: "inside_text" %>. These metrics are associated with the <b>reliability</b> of each mapped class.
+      </li>
+      <li>
+        <b>Producer’s Accuracies:</b> Are estimates of the fractions of pixels of each land cover/use class correctly assigned to their classes in the mapping. The producer's accuracy is associated with the <b>omission error</b>, which occurs when we fail to map a class j pixel correctly. The producer 's accuracy for class j is estimated by <%= image_tag "formula8.png", class: "inside_text" %> and the omission error by <%= image_tag "formula9.png", class: "inside_text" %>. These metrics are associated with the <b>sensitivity</b> of the classifier, that is, the ability to correctly distinguish one class from another.
+      </li>
+      <li>
+        <b>Global Accuracy:</b> It is the estimate of the overall proportion of pixels of the mapping correctly classified. The estimate is given by <%= image_tag "formula10_n.png", class: "inside_text" %>, the sum of the main diagonal of the proportions matrix. The complement of the total accuracy, or the <b>total error</b> <%= image_tag "formula11.png", class: "inside_text" %> is still decomposed into area (or quantity) disagreement and allocation disagreement. Area disagreement measures the fraction of the error attributed to the amount of area allocated incorrectly to the classes by the mapping, while the mismatch allocation to the ratio of class-displacement errors.
+      </li>
+    </ol>
+
+    <p>The matrix also provides estimates of the different types of errors. For example, we show estimates of true class area composition in each mapping class. Thus, in addition to the hit rate of the class mapped as forest, for example, we also estimate the fraction of these areas that could be pasture or other classes of cover and land use, for each year. We understand that this level of transparency informs users and maximizes the potential of use across multiple types of users. For this, we build an <%= link_to 'application', 'analysis' %> to facilitate the visualization of the accuracy and the errors of the mapping</p>
+    <br>
+
+    <h2 class="page__subtitle">Understand the graphics</h2>
+    <br>
+
+    <h3 class="page__section">Overall Statistics</h3>
+    <p>They show the mean annual total accuracy and the error, decomposed in area and allocation disagreements.</p>
+    <%= image_tag "acuracia_img1_en.png" %>
+    <br>
+
+    <h3 class="page__section">Graph 1. Annual Total Accuracy Chart:</h3>
+    <p>This graph shows the total accuracy and the total error per year. The total error is decomposed into area and allocation disagreements. Accuracy is plotted at the top and errors at the bottom of the chart.</p>
+    <%= image_tag "acuracia_img2_en.png" %>
+    <br>
+
+    <h3 class="page__section">Graph 2: Matrix of errors</h3>
+    <p>This graph shows the user’s and producer’s accuracy, and the confusions between classes for each year. The first shows the confusions for each mapped class. The second shows the confusions for each real class.</p>
+    <%= image_tag "acuracia_img3_en.png" %>
+    <br>
+    <%= image_tag "acuracia_img4_en.png" %>
+    <br>
+
+    <h3 class="page__section">Graph 3: Class History</h3>
+    <p>This graph allows you to inspect the confusions of a particular class over time. The user’s r and producer’s accuracies for each class is displayed along with the confusions in each year.</p>
+    <%= image_tag "acuracia_img5_en.png" %>
+    <br>
+    <%= image_tag "acuracia_img6_en.png" %>
+    <br>
+    <center>
+      <%= link_to 'analysis' do %>
+        <button class="primary">Access the accuracy statistics panel</button>
+      <% end %>
+    </center>
+  </div>
+</article>

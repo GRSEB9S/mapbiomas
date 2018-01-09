@@ -1,11 +1,13 @@
 import React from 'react';
 import { MapModal } from './modal';
 
-const TransitionsMatrixModal = ({ title, html, onClose }) => (
+const WarningModal = ({ title, html, onClose, showTutorialButton, onTutorialClick }) => (
   <MapModal
     title={title}
     showCloseButton={false}
     showOkButton={true}
+    showTutorialButton={showTutorialButton}
+    onTutorialClick={onTutorialClick}
     verticalSmaller={true}
     horizontalSmaller={true}
     overlay={true}
@@ -14,4 +16,4 @@ const TransitionsMatrixModal = ({ title, html, onClose }) => (
   </MapModal>
 );
 
-export default TransitionsMatrixModal;
+export default WarningModal;

@@ -1,4 +1,8 @@
 pt-BR:
+  new: Novo
+  errors:
+    messages:
+      blank: 'não pode ficar vazio(a)'
   number:
     format:
       delimiter: '.'

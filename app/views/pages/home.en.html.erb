@@ -14,11 +14,15 @@ $(function() {
 </script>
 
 <section class="home__video">
+  <div class="flash success new-collection">
+    <span>
+      <%= link_to 'COLLECTION 2.3 - UPDATED DATA - DECEMBER 2017 VERSION', page_path('announcement_note_collection2_3') %>
+    </span>
+  </div>
+
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
-    <p><strong>MapBiomas</strong> is a multi-institutional initiative involving universities, NGOs and technology 
-companies that have come together to contribute to the understanding of Brazilian territory 
-transformations based on the annual mapping of land cover and use in Brazil.</p>
+    <p><strong>MapBiomas</strong> is a multi-institutional initiative involving universities, NGOs and technology companies that have come together to contribute to the understanding of Brazilian territory transformations based on the annual mapping of land cover and use in Brazil.</p>
   <button class="button primary video" data-video="https://www.youtube.com/embed/AAEbeMQlJc4" data-toggle="modal" data-target="#videoModal">Watch Project Video</button>
   </div>
   <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
@@ -38,7 +42,7 @@ transformations based on the annual mapping of land cover and use in Brazil.</p>
   <div class="home__coating-content">
     <%= image_tag "cobertura.png", class: "home__coating-image" %>
     <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COVERING AND USE OF SOIL</a></h1>
-    <p>Get to know the coverage and use of Brazil's annual soil between 2000 and 2016 by browsing the collection 2 of MapBiomas</p>
+    <p>Discover the land cover & land use of Brazil between 2000 and 2016</p>
     <a class="button primary" href="http://mapbiomas.org/map#coverage">Access here</a>
   </div>
 </article>
@@ -64,9 +68,9 @@ transformations based on the annual mapping of land cover and use in Brazil.</p>
 <article class="home__quality">
   <div class="home__quality-content">
     <%= image_tag "landsat.png", class: "home__quality-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#quality">QUALITY OF THE DATA</a></h1>
-    <p>See the quality of the data for each of the charts analyzed by the MapBiomas team</p>
-    <a class="button primary"  href="http://mapbiomas.org/map#quality">Access here</a>
+    <h1 class="page__title"><a href="/pages/accuracy-analysis">QUALITY OF THE DATA</a></h1>
+    <p>Lern about the accuracy of MapBiomas Maps</p>
+    <a class="button primary"  href="/pages/accuracy-analysis">Access here</a>
   </div>
 </article>
 
@@ -90,12 +94,18 @@ transformations based on the annual mapping of land cover and use in Brazil.</p>
     <%= image_tag "vale.png" %>
     <%= image_tag "ipam.png" %>
     <%= image_tag "agro-satelite.png" %>
+    <%= image_tag "solved.png" %>
 
     <h1>FINANCING</h1>
-    <%= image_tag "moore.png" %>
-    <%= image_tag "climate.png" %>
-    <%= image_tag "nicfi.png" %>
-    <%= image_tag "instituto-arapyau.png" %>
+    <div class="financing">
+      <%= image_tag "moore.png", class: "moore" %>
+      <%= image_tag "nicfi.png", class: "nicfi" %>
+      <%= image_tag "good-energies.png", class: "good-energies" %>
+    </div>
+    <div class="financing">
+      <%= image_tag "climate.png" %>
+      <%= image_tag "instituto-arapyau.png" %>
+    </div>
 
     <h1>TECHNOLOGY PARTNERS</h1>
     <%= image_tag "ecostage.png" %>

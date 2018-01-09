@@ -14,7 +14,7 @@ class TerrasAPI
   end
 
   def self.classifications
-    get("/dashboard/services/classifications", query: {
+    get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/classifications", query: {
       language: I18n.locale.to_s
     })
   end
@@ -26,7 +26,8 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/coverage", query:
+      # get("/dashboard/services/statistics/coverage", query:
+      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/coverage", query:
           query_params.merge(territory_id: id)).as_json
     end
 
@@ -38,7 +39,8 @@ class TerrasAPI
     territory_ids = territory_id.split(',')
 
     data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/transitions", query:
+      # get("/dashboard/services/statistics/transitions", query:
+      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/transitions", query:
         query_params.merge(territory_id: id)).as_json
     end
 
@@ -60,14 +62,14 @@ class TerrasAPI
 
       grouped_coverage_data = territory_ids.map do |id|
         # get("/dashboard/services/statistics/groupedcover", query: {
-        get("http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover", query:
+        get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/groupedcover", query:
           query_params.merge(territory_id: id))
       end
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
       # get("/dashboard/services/statistics/groupedcover", query: {
-      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao2/dashboard/services/statistics/groupedcover", query: {
+      get("http://dev.seeg-mapbiomas.terras.agr.br/colecao/2.3/dashboard/services/statistics/groupedcover", query: {
         territory_id: territory_id,
         classification_id: classification_ids
       })

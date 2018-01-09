@@ -7,6 +7,15 @@ import { API } from '../../lib/api';
 import { Territories } from '../../lib/territories';
 
 export class MyMaps extends React.Component {
+  componentDidMount() {
+    $('#my-maps-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      interactive: true,
+      contentAsHTML: true,
+      content: $(I18n.t('my_maps.tooltip'))
+    });
+  }
+
   constructor(props) {
     super(props);
 
@@ -91,7 +100,10 @@ export class MyMaps extends React.Component {
     if (!_.isEmpty(this.props.maps)) {
       return (
         <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
-          <h3>{I18n.t('my_maps.title')}</h3>
+          <h3>
+            {I18n.t('my_maps.title')}
+            <i id="my-maps-tooltip" className="material-icons tooltip">&#xE88E;</i>
+          </h3>
 
           <Select
             options={this.mapsOptions}
@@ -116,7 +128,11 @@ export class MyMaps extends React.Component {
     } else {
       return (
         <div className="map-panel__content map-panel__action-panel map-panel-can-hide">
-          <h3>{I18n.t('my_maps.title')}</h3>
+          <h3>
+            {I18n.t('my_maps.title')}
+            <i id="my-maps-tooltip" className="material-icons tooltip">&#xE88E;</i>
+          </h3>
+          
           <label>{I18n.t('my_maps.no_maps')}</label>
         </div>
       );

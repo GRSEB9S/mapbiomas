@@ -2,8 +2,10 @@
   function buildUrl(biome, collection, year){
     if (collection == '1') {
       return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
-    } else {
+    } else if (collection == '2') {
       return 'http://storage.googleapis.com/mapbiomas-public/COLECAO/2/CONSOLIDACAO/' + year + '/' + biome + '_' + year + '.tif';
+    } else {
+      return 'http://storage.googleapis.com/mapbiomas-public/COLECAO/2_3/CONSOLIDACAO/' + biome + '.tif';
     }
   }
 
@@ -22,12 +24,21 @@
 
   $(document).on('change', '#collection', function() {
     if($(this).val() == '1') {
-      $('#year').find('option[value="2016"]').prop('disabled', true);
-    } else {
+      $('#year').find('option').prop('disabled', false);
+      $('#year').find('option[value="2016"]', 'option').prop('disabled', true);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true)
+    } else if($(this).val() == '2') {
+      $('#year').find('option').prop('disabled', false);
       $('#year').find('option[value="2016"]').prop('disabled', false);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true)
+    } else {
+      $('#year').find('option').prop('disabled', true);
+      $('#year').find('option[value="all_years"]').prop('disabled', false);
+      $('#year').find('option[value="all_years"]').prop('selected', true);
     }
 
-    $('#year').find('option:first-child').prop('selected', true)
     $('#year').trigger('change');
     
     refreshUrls();
@@ -43,7 +54,7 @@
   });
 </script>
 
-<article class="page">
+<article class="page page__mapbiomas-collections">
   <div class="page__container">
     <h1 class="page__title">Coleções MAPBIOMAS</h1>
 
@@ -60,11 +71,11 @@
       </ul>
     </blockquote>
 
-    <p> Alternatively you can access and process MapBiomas Collection 2 directly as Google Earth Engine (GEE). Access the public asset <%= link_to 'here', page_path('scripts') %> to access the asset IDs.</p>
+    <p> Alternatively you can access and process MapBiomas Collection 2.3 directly as Google Earth Engine (GEE). Access the public asset <%= link_to 'here', page_path('scripts') %> to access the asset IDs.</p>
 
     <div class="page__box-download">
-      <%= select_tag "collection", options_for_select([["Collection 2", 2], ["Collection 1", 1]]), id: "collection" %>
-      <%= select_tag "year", options_for_select(Setting.available_years), id: "year" %>
+      <%= select_tag "collection", options_for_select([["Collection 2.3", 3], ["Collection 2", 2], ["Collection 1", 1]]), id: "collection" %>
+      <%= select_tag "year", options_for_select(Setting.available_years << ['All years', 'all_years']), id: "year" %>
     </div>
 
     <div class="methodology-presentation">
