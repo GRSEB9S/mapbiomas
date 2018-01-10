@@ -671,9 +671,10 @@ export default class Map extends React.Component {
       $('#embed-code-tooltip').tooltipster({
         theme: 'tooltip-custom-theme',
         interactive: true,
-        contentAsHTML: true,
-        content: $(I18n.t('my_maps.embed_code.tooltip', { src: src }))
+        contentAsHTML: true
       });
+
+      $('#embed-code-tooltip').tooltipster('content', $(I18n.t('my_maps.embed_code.tooltip', { src: src })));
     }
   }
 
