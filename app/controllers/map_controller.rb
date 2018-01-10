@@ -1,5 +1,5 @@
 class MapController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :iframe]
   before_action :set_map, only: [:update, :iframe]
   respond_to :json, only: :create
 
