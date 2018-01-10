@@ -713,6 +713,7 @@ export default class Map extends React.Component {
 
         <MapCanvas
           myMapsPage={this.props.myMapsPage}
+          iframe={this.props.iframe}
           dataLayerOptions={this.dataLayerOptions}
           apiUrl={this.props.apiUrl}
           transition={this.state.transition}

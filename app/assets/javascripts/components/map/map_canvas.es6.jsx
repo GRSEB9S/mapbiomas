@@ -201,7 +201,7 @@ export class MapCanvas extends React.Component {
   }
 
   setupTerritory() {
-    if (!this.props.myMapsPage) {
+    if (!this.props.myMapsPage && !this.props.iframe) {
       this.map.fitBounds(_.last(this.territory).bounds);
     }
   }
