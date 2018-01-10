@@ -207,7 +207,7 @@ export class MapCanvas extends React.Component {
   }
 
   setupMyMapTerritories() {
-    if (this.props.myMapsPage) {
+    if (this.props.myMapsPage || this.props.iframe) {
       let result = new L.LatLngBounds;
 
       _.each(this.props.territory, (t) => {
