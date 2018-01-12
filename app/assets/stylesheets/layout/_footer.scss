@@ -37,6 +37,13 @@
     }
   }
 
+  .pipe{
+    display: inline-block;
+    color: $white;
+    font-size: 17px;
+    vertical-align: middle;
+    margin: 0 $small-spacing 0 0;
+  }
   .ecostage-label,
   .gee-label,
   .seeg-label {
