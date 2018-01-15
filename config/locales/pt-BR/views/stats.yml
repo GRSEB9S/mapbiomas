@@ -15,7 +15,7 @@ pt-BR:
         <p>Com o gráfico plotado é possível ligar e desligar classes clicando na legenda abaixo do gráfico.</p>
     chart:
       yAxis:
-        title: 'Área'
+        title: 'Área (ha)'
     table:
       download: Download
       download_file: Estatísticas
