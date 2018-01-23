@@ -8,11 +8,17 @@ export class Territories {
   withCategory() {
     return this.territories.reduce((acc, territory) => {
       if(!territory) return acc;
+
+      let category = territory.category;
+
+      if (territory.state) {
+        category = category + ` - ${territory.state}`;
+      }
       
       return [
         ...acc, {
           ...territory,
-          label: `${territory.name} (${territory.category})`,
+          label: `${territory.name} (${category})`,
           value: territory.id,
           bounds: territory.bounds
         }
