@@ -20,7 +20,7 @@ export class MyMaps extends React.Component {
     super(props);
 
     this.state = this.initialState = {
-      name: '',
+      name: I18n.t('my_maps.new.placeholder'),
       selectedIndex: 0,
       editMap: false
     };
