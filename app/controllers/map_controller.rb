@@ -1,7 +1,7 @@
 class MapController < ApplicationController
   before_action :authenticate_user!, except: [:index, :iframe]
-  before_action :set_map, only: [:update, :iframe]
-  respond_to :json, only: :create
+  before_action :set_map, only: [:update, :destroy, :iframe]
+  respond_to :json, only: [:create, :destroy]
 
   def index
     @map_props = MapPresenter.new
@@ -19,6 +19,12 @@ class MapController < ApplicationController
     @map.update(map_params)
 
     render json: @map
+  end
+
+  def destroy
+    @map.destroy
+
+    respond_with(@map)
   end
 
   def my_maps

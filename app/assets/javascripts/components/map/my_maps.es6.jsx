@@ -96,6 +96,12 @@ export class MyMaps extends React.Component {
     }
   }
 
+  handleMapDelete() {
+    if (confirm(I18n.t('my_maps.delete.confirm'))) {
+      this.props.onMapDelete();
+    }
+  }
+
   renderMapSelect() {
     if (!_.isEmpty(this.props.maps)) {
       return (
@@ -115,6 +121,7 @@ export class MyMaps extends React.Component {
           { this.props.selectedMap && !this.state.editMap && (
             <div className="my-maps__actions">
               <button onClick={this.editMap.bind(this)}>{I18n.t('my_maps.edit.title')}</button>
+              <button className="button--delete" onClick={this.handleMapDelete.bind(this)}>{I18n.t('my_maps.delete.title')}</button>
             </div>
           )}
 

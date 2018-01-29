@@ -29,6 +29,14 @@ export class API {
     });
   }
 
+  static deleteMap(id) {
+    return $.ajax({
+      url: Routes.delete_map_path(id),
+      method: 'DELETE',
+      contentType: 'application/json; charset=utf-8'
+    });
+  }
+
   static updateMap(id, params) {
     return $.ajax({
       url: Routes.update_map_path(id),

@@ -27,6 +27,9 @@ pt-BR:
       subtitle: Escolha os novos parâmetros
       submit: Salvar
       cancel: Cancelar
+    delete:
+      title: Excluir mapa
+      confirm: Você tem certeza de que deseja excluir esse mapa?
     tabs:
       my_maps: Meus mapas
       new_map: Novo mapa
