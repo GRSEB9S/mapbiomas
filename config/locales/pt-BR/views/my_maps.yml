@@ -20,8 +20,10 @@ pt-BR:
     new:
       title: Novo mapa
       subtitle: Escolha os parâmetros desejados, além de um nome para o seu mapa.
-      name: Título do mapa
-      placeholder: Título do meu mapa
+      name:
+        title: Título do mapa
+        placeholder: Título do meu mapa
+        empty: Por favor, escolha um título para o mapa
       submit: Salvar
     edit:
       title: Editar mapa

@@ -20,8 +20,10 @@ en:
     new:
       title: New map
       subtitle: Choose the desired params and a title for your map.
-      name: Map title
-      placeholder: My map title
+      name:
+        title: Map title
+        placeholder: My map title
+        empty: Please, choose a map title
       submit: Save
     edit:
       title: Edit map

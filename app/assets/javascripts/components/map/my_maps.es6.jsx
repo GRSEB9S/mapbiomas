@@ -20,7 +20,7 @@ export class MyMaps extends React.Component {
     super(props);
 
     this.state = this.initialState = {
-      name: I18n.t('my_maps.new.placeholder'),
+      name: I18n.t('my_maps.new.name.placeholder'),
       selectedIndex: 0,
       editMap: false
     };
@@ -79,10 +79,20 @@ export class MyMaps extends React.Component {
   }
 
   handleMapSave() {
+    if (_.isEmpty(this.state.name.trim())) {
+      alert(I18n.t('my_maps.new.name.empty'));
+      return;
+    }
+
     this.setState(this.initialState, this.props.onMapSave(this.state.name));
   }
 
   handleMapEdit() {
+    if (_.isEmpty(this.state.name.trim())) {
+      alert(I18n.t('my_maps.new.name.empty'));
+      return;
+    }
+
     this.setState(this.initialState, this.props.onMapEdit(this.state.name));
   }
 
@@ -158,7 +168,7 @@ export class MyMaps extends React.Component {
 
         <form className="my-maps__form">
           <div className="my-maps__form">
-            <label>{I18n.t('my_maps.new.name')}</label>
+            <label>{I18n.t('my_maps.new.name.title')}</label>
             <input
               type="text"
               value={this.state.name}
