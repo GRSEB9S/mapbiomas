@@ -436,6 +436,18 @@ export default class Map extends React.Component {
     });
   }
 
+  handleMapDelete() {
+    API.deleteMap(this.state.selectedMap.id)
+    .then(() => {
+      let myMaps = _.without(this.myMaps, _.find(this.myMaps, (m) => m.id == this.state.selectedMap.id));
+
+      this.setState({
+        ...this.initialState,
+        myMaps: myMaps
+      })
+    })
+  }
+
   timelineDefaultValue() {
     if(this.mode == 'transitions') {
       return this.years;
@@ -755,6 +767,7 @@ export default class Map extends React.Component {
                 onMapSelect={this.handleMapSelect.bind(this)}
                 onMapSave={this.handleMapSave.bind(this)}
                 onMapEdit={this.handleMapEdit.bind(this)}
+                onMapDelete={this.handleMapDelete.bind(this)}
               />
             )}
 

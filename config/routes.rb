@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   get '/my_maps', to: 'map#my_maps', as: :my_maps
   get '/iframe/:id', to: 'map#iframe', as: :iframe
   get 'profile', to: 'users#profile', as: :user_profile
+  patch '/users/:id', to: 'users#update', as: :update_user
+
   post '/map', to: 'map#create', as: :create_map
   patch '/map/:id', to: 'map#update', as: :update_map
-  patch '/users/:id', to: 'users#update', as: :update_user
+  delete '/map/:id', to: 'map#destroy', as: :delete_map
 
   get 'locales/set_language', to: 'locales#set_language', as: :set_language
 
