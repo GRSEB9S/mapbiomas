@@ -46,9 +46,7 @@ class ClassificationControl extends Component {
         <div className="classifications-control__node">
           <i style={{ color: node.color }}
             onClick={(e) => {
-              if (!this.props.iframe) {
-                return this.handleClassificationCheck(node.id, !checked);
-              }
+              return this.handleClassificationCheck(node.id, !checked);
             }}
             className={classNames(
               'classifications-control__node-icon',
