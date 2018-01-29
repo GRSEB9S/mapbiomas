@@ -66,7 +66,6 @@ const TransitionsModal = ({
       showCloseButton={true}
       showOkButton={false}
       onClose={onClose}
-      verticalSmaller={true}
       overlay={true}
     >
       <Tabs>
