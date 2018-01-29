@@ -17,7 +17,6 @@ const StatsModal = ({
       showCloseButton={true}
       showOkButton={false}
       onClose={onClose}
-      verticalSmaller={true}
       overlay={true}
     >
       <div className="stats-modal">

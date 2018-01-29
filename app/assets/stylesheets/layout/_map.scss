@@ -23,6 +23,8 @@
 }
 
 .map-modal {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   left: 0;
@@ -75,7 +77,6 @@
   &__content {
     overflow: auto;
     padding: $micro-spacing;
-    max-height: 450px;
     scroll-y: auto;
 
     ul {
