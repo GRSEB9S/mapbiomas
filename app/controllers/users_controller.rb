@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def registered
+    authorize current_user, :access_registered?
+
+    @users = User.all
+  end
+
   private
 
   def set_user

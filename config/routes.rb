@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   get '/map', to: 'map#index', as: :map
   get '/my_maps', to: 'map#my_maps', as: :my_maps
   get '/iframe/:id', to: 'map#iframe', as: :iframe
+
   get 'profile', to: 'users#profile', as: :user_profile
   patch '/users/:id', to: 'users#update', as: :update_user
+  get 'registered', to: 'users#registered', as: :registered_users
 
   post '/map', to: 'map#create', as: :create_map
   patch '/map/:id', to: 'map#update', as: :update_map

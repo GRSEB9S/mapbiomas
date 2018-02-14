@@ -7,3 +7,5 @@ pt-BR:
       flashes:
         success: Perfil atualizado com sucesso.
         error: Não foi possível atualizar o perfil.
+    registered:
+      title: Usuários cadastrados

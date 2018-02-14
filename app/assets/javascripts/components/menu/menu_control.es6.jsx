@@ -11,8 +11,20 @@ export class MenuControl extends React.Component {
     });
   }
 
+  renderRegisteredUsersButton() {
+    if(this.props.currentUser.isAdmin) {
+      return (
+        <li className="menu__item">
+          <a className="menu__link" href={Routes.registered_users_path()}>
+            {I18n.t('users.registered.title')}
+          </a>
+        </li>
+      );
+    }
+  }
+
   renderSignInButton() {
-    if(this.props.currentUser.signedIn) {
+    if(this.props.currentUser.isSignedIn) {
       return (
         <li className="menu__item login">
           <a className="menu__link menu__link--user" href='#'>
@@ -30,6 +42,8 @@ export class MenuControl extends React.Component {
                 {I18n.t('users.profile.title')}
               </a>
             </li>
+
+            {this.renderRegisteredUsersButton()}
 
             <li className="menu__item">
               <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>

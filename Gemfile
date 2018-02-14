@@ -23,6 +23,7 @@ gem 'mina-npm', :require => false
 gem 'mina-puma', :require => false
 gem 'neat'
 gem 'pg'
+gem 'pundit'
 gem 'rack-timeout'
 gem 'rails-settings-cached', '~> 0.4.0'
 gem 'rake', '< 11.0'

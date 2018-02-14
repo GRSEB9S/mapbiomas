@@ -6,10 +6,12 @@ class User < ActiveRecord::Base
 
   enum occupation_area: [:health, :environment, :farming, :economy, :geography,
                          :education, :others]
+  enum role: [:ordinary_user, :admin]
 
   has_many :maps
 
   validates :name, presence: true
+  validates :role, presence: true
 
   def self.biomes_and_transversal_themes
     {
