@@ -3,6 +3,9 @@ pt-BR:
   errors:
     messages:
       blank: 'não pode ficar vazio(a)'
+  time:
+    formats:
+      short: '%d-%m-%Y'
   number:
     format:
       delimiter: '.'

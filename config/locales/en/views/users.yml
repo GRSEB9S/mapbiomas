@@ -7,3 +7,5 @@ en:
       flashes:
         success: Profile updated successfully.
         error: Couldn't update profile.
+    registered:
+      title: Registered users

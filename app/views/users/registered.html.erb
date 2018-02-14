@@ -1,0 +1,16 @@
+<div class="page page__container">
+   <h1><%= I18n.t('users.registered.title') %></h1>
+
+   <table>
+      <tr>
+         <th><%= t('activerecord.attributes.user.id') %></th>
+         <th><%= t('activerecord.attributes.user.name') %></th>
+         <th><%= t('activerecord.attributes.user.email') %></th>
+         <th><%= t('activerecord.attributes.user.created_at') %></th>
+         <th><%= t('activerecord.attributes.user.institution') %></th>
+         <th><%= t('activerecord.attributes.user.occupation') %></th>
+      </tr>
+
+      <%= render @users %>
+   </table>
+</div>

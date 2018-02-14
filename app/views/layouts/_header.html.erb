@@ -6,7 +6,8 @@
 
     <%= react_component('Menu', { currentUser: {
       name: current_user.try(:name),
-      signedIn: user_signed_in?
+      isSignedIn: user_signed_in?,
+      isAdmin: current_user.try(:admin?)
     }}) %>
   </div>
 </header>

@@ -23,6 +23,7 @@ pt-BR:
             livestock: Pecuária
             urban_areas: Áreas urbanas
       user:
+        id: ID
         name: Nome
         email: Email
         password: Senha
@@ -41,3 +42,4 @@ pt-BR:
         state: Estado
         receive_newsletter: Gostaria de receber notícias sobre novidades na plataforma por email?
         participate_of_groups: Gostaria de entrar para grupos de WhatsApp de usuários do MapBiomas?
+        created_at: Data de cadastro
