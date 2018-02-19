@@ -9,3 +9,4 @@ en:
         error: Couldn't update profile.
     registered:
       title: Registered users
+      subtitle: 'Total: %{total}'

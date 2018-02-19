@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def registered
     authorize current_user, :access_registered?
 
-    @users = User.all
+    @users = User.order(:id)
   end
 
   private
