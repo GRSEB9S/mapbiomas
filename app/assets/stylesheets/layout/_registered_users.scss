@@ -1,0 +1,20 @@
+.registered-users {
+  th {
+    cursor: pointer;
+  }
+
+  &__column-name {
+    padding-right: 5px;
+    padding-left: 5px;
+    vertical-align: middle;
+  }
+
+  &__ordering {
+    vertical-align: middle;
+    color: $white-smoke;
+
+    &--active {
+      color: $medium-blue;
+    }
+  }
+}

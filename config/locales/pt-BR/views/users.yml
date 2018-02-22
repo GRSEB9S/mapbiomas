@@ -9,3 +9,4 @@ pt-BR:
         error: Não foi possível atualizar o perfil.
     registered:
       title: Usuários cadastrados
+      subtitle: 'Total: %{total}'
