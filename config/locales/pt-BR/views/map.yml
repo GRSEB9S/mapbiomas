@@ -99,6 +99,8 @@ pt-BR:
         contour_maps: Cartas
         indigenous_lands: Terras indígenas
         conservation_units: Unidades de conservação
+        drainage_basins_level_1: Bacias hidrográficas, nível 1
+        drainage_basins_level_2: Bacias hidrográficas, nível 2
       coverage:
         title: Cobertura
         analysis: Dados de Cobertura
