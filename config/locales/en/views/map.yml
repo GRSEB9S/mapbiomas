@@ -96,6 +96,7 @@ en:
         states: States
         cities: Cities
         biomes: Biomes
+        drainage_basins: Basins
         contour_maps: Contour maps
         indigenous_lands: Indigenous Lands
         conservation_units: Conservation Units
