@@ -22,26 +22,31 @@
     });
   }
 
-  $(document).on('change', '#collection', function() {
-    if($(this).val() == '1') {
+  function setupOptions() {
+    var value = $('#collection').val();
+
+    if(value == '1') {
       $('#year').find('option').prop('disabled', false);
       $('#year').find('option[value="2016"]', 'option').prop('disabled', true);
       $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
       $('#year').find('option:first-child').prop('selected', true)
-    } else if($(this).val() == '2') {
+    } else if(value == '2') {
       $('#year').find('option').prop('disabled', false);
       $('#year').find('option[value="2016"]').prop('disabled', false);
       $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
       $('#year').find('option:first-child').prop('selected', true)
     } else {
-      $('#year').find('option').prop('disabled', true);
-      $('#year').find('option[value="all_years"]').prop('disabled', false);
+      $('#year').find('option[value!="all_years"]').prop('disabled', true);
       $('#year').find('option[value="all_years"]').prop('selected', true);
     }
 
     $('#year').trigger('change');
     
     refreshUrls();
+  }
+
+  $(document).on('change', '#collection', function() {
+    setupOptions();
   });
 
   $(document).on('change', '#year', function() {
@@ -49,7 +54,7 @@
   });
 
   $(function() {
-    $('#collection').trigger('change');
+    setupOptions();
     refreshUrls();
   });
 </script>
