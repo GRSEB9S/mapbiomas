@@ -25,6 +25,8 @@
   }
 
   &__TabList {
+    display: flex;
+    justify-content: center;
     padding: $small-spacing $small-spacing 0;
     border-bottom: $base-border;
   }
