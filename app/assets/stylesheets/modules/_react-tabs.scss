@@ -32,9 +32,10 @@
   }
 
   &__Tab {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     bottom: rem(-1px);
-    position: relative;
     list-style: none;
     padding: $micro-spacing $base-spacing;
     cursor: pointer;
