@@ -224,7 +224,7 @@ export class MyMaps extends React.Component {
           selectedIndex={this.state.selectedIndex}
           onSelect={this.handleTabChange.bind(this)}
         >
-          <TabList className="two-tabbed">
+          <TabList>
             <Tab>{I18n.t('my_maps.tabs.my_maps')}</Tab>
             <Tab>{I18n.t('my_maps.tabs.new_map')}</Tab>
           </TabList>

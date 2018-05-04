@@ -99,8 +99,10 @@ en:
         contour_maps: Contour maps
         indigenous_lands: Indigenous Lands
         conservation_units: Conservation Units
-        drainage_basins_level_1: Drainage basins, level 1
-        drainage_basins_level_2: Drainage basins, level 2
+        watersheds_level_1: Watersheds L1
+        watersheds_level_2: Watersheds L2
+        macro_watersheds: Macro watersheds
+        watersheds: Watersheds - Level 2
       coverage:
         title: Coverage
         analysis: Land Cover Data

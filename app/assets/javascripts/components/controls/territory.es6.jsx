@@ -2,6 +2,13 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Select from 'react-select-plus';
 
+const preloadedLayers = [
+  'país',
+  'bioma',
+  'Bacias Nivel 1',
+  'Bacias Nivel 2'
+]
+
 const renderTabPanel = (
   category,
   territory,
@@ -9,6 +16,7 @@ const renderTabPanel = (
   onTerritoryChange
 ) => {
   let value, label;
+  let preload = _.includes(preloadedLayers, category);
 
   if (territory && territory.category.toLowerCase() === category.toLowerCase()) {
     value = territory.value;
@@ -21,7 +29,7 @@ const renderTabPanel = (
         <Select.Async
           name="territory-select"
           value={value}
-          loadOptions={loadTerritories(category, (category === 'país' || category === 'bioma' || category === 'Bacias Nivel 1' || category === 'Bacias Nivel 2'))}
+          loadOptions={loadTerritories(category, preload)}
           onChange={onTerritoryChange}
           clearable={false}
           ignoreAccents={false}
@@ -51,8 +59,8 @@ const Territory = ({
         <Tab>{I18n.t('map.index.layers.states')}</Tab>
         <Tab>{I18n.t('map.index.layers.cities')}</Tab>
         <Tab>{I18n.t('map.index.layers.biomes')}</Tab>
-        <Tab>{I18n.t('map.index.layers.drainage_basins_level_1')}</Tab>
-        <Tab>{I18n.t('map.index.layers.drainage_basins_level_2')}</Tab>
+        <Tab>{I18n.t('map.index.layers.watersheds_level_1')}</Tab>
+        <Tab>{I18n.t('map.index.layers.watersheds_level_2')}</Tab>
       </TabList>
       {renderTabPanel('país', territory, loadTerritories, onTerritoryChange)}
       {renderTabPanel('estado', territory, loadTerritories, onTerritoryChange)}

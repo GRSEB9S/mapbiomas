@@ -20,7 +20,7 @@ class TransitionsAuxiliarControls extends React.Component {
           className="map-panel__action-panel map-panel__tab-panel"
           selectedIndex={this.props.viewOptionsIndex}
           onSelect={this.props.handleViewOptionsIndexSelect}>
-        <TabList className="three-tabbed">
+        <TabList>
           <Tab>{I18n.t('map.index.transitions.labels.title')}</Tab>
           <Tab>
             <div>

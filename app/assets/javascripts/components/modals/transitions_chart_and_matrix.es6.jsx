@@ -69,7 +69,7 @@ const TransitionsModal = ({
       overlay={true}
     >
       <Tabs>
-        <TabList className="two-tabbed">
+        <TabList>
           <Tab>{I18n.t('map.index.transitions.sankey.title')}</Tab>
           <Tab>{I18n.t('map.index.transitions.matrix.title')}</Tab>
         </TabList>
