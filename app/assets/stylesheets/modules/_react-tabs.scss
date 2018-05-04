@@ -10,20 +10,6 @@
     display: none;
   }
 
-  .two-tabbed {
-    & > li{
-      width: 50%;
-      text-align: center;
-    }
-  }
-
-  .three-tabbed {
-    & > li{
-      width: calc(100% / 3);
-      text-align: center;
-    }
-  }
-
   &__TabList {
     display: flex;
     justify-content: center;
@@ -32,11 +18,15 @@
   }
 
   &__Tab {
-    display: inline-block;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
     bottom: rem(-1px);
-    position: relative;
     list-style: none;
-    padding: $micro-spacing $base-spacing;
+    padding-top: $micro-spacing;
+    padding-bottom: $micro-spacing;
+    text-align: center;
     cursor: pointer;
     color: $light-gray;
 

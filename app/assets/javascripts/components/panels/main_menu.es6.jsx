@@ -22,7 +22,7 @@ export default class MainMenu extends React.Component {
           selectedIndex={TAB_INDEX_MAP[this.props.mode]}
           onSelect={(index) => this.props.onModeChange(INDEX_TAB_MAP[index])}
         >
-          <TabList className={this.props.myMapsPage ? "two-tabbed" : "three-tabbed"}>
+          <TabList>
             <Tab>{I18n.t('map.index.coverage.title')}</Tab>
             <Tab>{I18n.t('map.index.transitions.title')}</Tab>
             {!this.props.myMapsPage && <Tab>{I18n.t('map.index.quality.title')}</Tab>}

@@ -96,12 +96,13 @@ pt-BR:
         states: Estados
         cities: Municípios
         biomes: Biomas
-        drainage_basins: Bacias
         contour_maps: Cartas
         indigenous_lands: Terras indígenas
         conservation_units: Unidades de conservação
-        drainage_basins_level_1: Bacias hidrográficas, nível 1
-        drainage_basins_level_2: Bacias hidrográficas, nível 2
+        watersheds_level_1: Bacias N1
+        watersheds_level_2: Bacias N2
+        macro_watersheds: Regiões hidrográficas
+        watersheds: Bacias hidrográficas
       coverage:
         title: Cobertura
         analysis: Dados de Cobertura
