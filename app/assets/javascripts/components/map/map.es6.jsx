@@ -594,7 +594,7 @@ export default class Map extends React.Component {
           })
           .then((territories) => {
             callback(null, {
-              options: new Territories(territories).withOptions()
+              options: new Territories(territories).withCategory()
             });
           });
         }, 500);
