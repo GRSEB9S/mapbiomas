@@ -6,7 +6,9 @@ const preloadedLayers = [
   'país',
   'bioma',
   'Bacias Nivel 1',
-  'Bacias Nivel 2'
+  'Bacias Nivel 2',
+  'Terra Indígena',
+  'UC'
 ]
 
 const renderTabPanel = (
@@ -61,6 +63,8 @@ const Territory = ({
         <Tab>{I18n.t('map.index.layers.biomes')}</Tab>
         <Tab>{I18n.t('map.index.layers.watersheds_level_1')}</Tab>
         <Tab>{I18n.t('map.index.layers.watersheds_level_2')}</Tab>
+        <Tab>{I18n.t('map.index.layers.indigenous_lands')}</Tab>
+        <Tab>{I18n.t('map.index.layers.conservation_units')}</Tab>
       </TabList>
       {renderTabPanel('país', territory, loadTerritories, onTerritoryChange)}
       {renderTabPanel('estado', territory, loadTerritories, onTerritoryChange)}
@@ -68,6 +72,8 @@ const Territory = ({
       {renderTabPanel('bioma', territory, loadTerritories, onTerritoryChange)}
       {renderTabPanel('Bacias Nivel 1', territory, loadTerritories, onTerritoryChange)}
       {renderTabPanel('Bacias Nivel 2', territory, loadTerritories, onTerritoryChange)}
+      {renderTabPanel('Terra Indígena', territory, loadTerritories, onTerritoryChange)}
+      {renderTabPanel('UC', territory, loadTerritories, onTerritoryChange)}
     </Tabs>
   </div>
 );

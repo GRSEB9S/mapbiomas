@@ -12,6 +12,7 @@
 
   &__TabList {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     padding: $small-spacing $small-spacing 0;
     border-bottom: $base-border;
