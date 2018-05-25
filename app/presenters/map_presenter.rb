@@ -44,8 +44,8 @@ class MapPresenter
 
   def as_json(*_)
     {
-      availableClassifications: TerrasAPI.classifications,
-      defaultClassifications: TerrasAPI.classifications,
+      availableClassifications: sorted_classifications,
+      defaultClassifications: sorted_classifications,
       availableBaseMaps: base_maps,
       defaultBaseMaps: [],
       availableLayers: layers,
@@ -60,6 +60,10 @@ class MapPresenter
   end
 
   private
+
+  def sorted_classifications
+    @sorted_classifications ||= TerrasAPI.classifications.sort_by { |c| c['id'] }
+  end
 
   def rgb_landsat
     {
@@ -146,16 +150,7 @@ class MapPresenter
   end
 
   def base_maps
-    [
-      coverage_data,
-      rgb_landsat,
-      esri_imagery,
-      openstreet_mapnik,
-      esri_relief
-      # satellite_map,
-      # roadmap_map,
-      # terrain_map
-    ]
+    [coverage_data, rgb_landsat, esri_imagery, openstreet_mapnik, esri_relief]
   end
 
   def layers
