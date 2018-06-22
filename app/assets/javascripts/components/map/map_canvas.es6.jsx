@@ -223,19 +223,29 @@ export class MapCanvas extends React.Component {
       return;
     }
 
-    cartodb.createLayer(this.map, mapLayer.link)
-      .addTo(this.map)
-      .done((layer) => {
-        layer.on('loading', () => this.map.spin(true));
-        layer.on('load', () => this.map.spin(false));
+    if (mapLayer.fromCarto) {
+      cartodb.createLayer(this.map, mapLayer.link)
+        .addTo(this.map)
+        .done((layer) => {
+          layer.on('loading', () => this.map.spin(true));
+          layer.on('load', () => this.map.spin(false));
 
-        if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
-          layer.setZIndex(10);
-          this.mapLayers[mapLayer.slug] = layer;
-        } else {
-          this.map.removeLayer(layer);
-        }
-      });
+          if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
+            layer.setZIndex(10);
+            this.mapLayers[mapLayer.slug] = layer;
+          } else {
+            this.map.removeLayer(layer);
+          }
+        });
+    } else {
+      let layer = L.tileLayer.wms(mapLayer.link, mapLayer.params)
+        .on('loading', () => this.map.spin(true))
+        .on('load', () => this.map.spin(false))
+        .addTo(this.map)
+
+      layer.setZIndex(10);
+      this.mapLayers[mapLayer.slug] = layer;
+    }
   }
 
   removeMapLayer(slug) {

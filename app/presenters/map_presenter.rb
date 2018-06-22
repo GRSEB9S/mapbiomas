@@ -1,8 +1,4 @@
 class MapPresenter
-  MAPS_COLORS = {
-    satellite: '#081B47'
-  }
-
   QUALITY_INFO = [
     {
       api_name: '1',
@@ -149,6 +145,38 @@ class MapPresenter
     }
   end
 
+  def smallholder_settlements
+    {
+      id: 8,
+      slug: 'smallholder-settlements',
+      name: I18n.t('map.index.base_maps.smallholder_settlements'),
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+      params: {
+        map: 'wms/v/2.3/territories/assentamentos.map',
+        color_id: 2,
+        layers: 'assentamentos',
+        format: 'image/png',
+        transparent: true
+      }
+    }
+  end
+
+  def afro_brazilian_settlements
+    {
+      id: 9,
+      slug: 'afro-brazilian-settlements',
+      name: I18n.t('map.index.base_maps.afro_brazilian_settlements'),
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+      params: {
+        map: 'wms/v/2.3/territories/quilombolas.map',
+        color_id: 2,
+        layers: 'quilombolas',
+        format: 'image/png',
+        transparent: true
+      }
+    }
+  end
+
   def base_maps
     [coverage_data, rgb_landsat, esri_imagery, openstreet_mapnik, esri_relief]
   end
@@ -162,6 +190,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end
+    end << smallholder_settlements << afro_brazilian_settlements
   end
 end
