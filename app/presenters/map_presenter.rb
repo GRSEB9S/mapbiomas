@@ -150,6 +150,7 @@ class MapPresenter
       id: 8,
       slug: 'smallholder-settlements',
       name: I18n.t('map.index.base_maps.smallholder_settlements'),
+      wms: true,
       link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
       params: {
         map: 'wms/v/2.3/territories/assentamentos.map',
@@ -166,6 +167,7 @@ class MapPresenter
       id: 9,
       slug: 'afro-brazilian-settlements',
       name: I18n.t('map.index.base_maps.afro_brazilian_settlements'),
+      wms: true,
       link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
       params: {
         map: 'wms/v/2.3/territories/quilombolas.map',
@@ -173,6 +175,22 @@ class MapPresenter
         layers: 'quilombolas',
         format: 'image/png',
         transparent: true
+      }
+    }
+  end
+
+  def car
+    {
+      id: 10,
+      slug: 'car',
+      name: 'CAR',
+      wmts: true,
+      link: 'http://geoserver.imaflora.org/geoserver/gwc/service/wmts',
+      params: {
+        layer: 'ima-geo:v_car0518_mapbiomas',
+        style: 'normal',
+        tilematrixSet: 'EPSG:3857',
+        format: 'image/png'
       }
     }
   end
@@ -190,6 +208,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end << smallholder_settlements << afro_brazilian_settlements
+    end << smallholder_settlements << afro_brazilian_settlements << car
   end
 end

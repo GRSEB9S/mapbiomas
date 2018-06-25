@@ -4,6 +4,7 @@ import 'vendor/leaflet-side-by-side';
 import 'vendor/spin';
 import 'vendor/leaflet-spin';
 import 'vendor/leaflet-coordinates';
+import 'vendor/leaflet-wmts';
 import { Locale } from 'lib/locale';
 
 import React from 'react';

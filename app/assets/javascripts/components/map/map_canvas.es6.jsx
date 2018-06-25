@@ -238,10 +238,22 @@ export class MapCanvas extends React.Component {
           }
         });
     } else {
-      let layer = L.tileLayer.wms(mapLayer.link, mapLayer.params)
-        .on('loading', () => this.map.spin(true))
-        .on('load', () => this.map.spin(false))
-        .addTo(this.map)
+      let layer;
+
+      if (mapLayer.wms) {
+        layer = L.tileLayer.wms(mapLayer.link, mapLayer.params)
+          .on('loading', () => this.map.spin(true))
+          .on('load', () => this.map.spin(false))
+          .addTo(this.map)
+      }
+
+      else {
+        layer = new L.TileLayer.WMTS(mapLayer.link, mapLayer.params)
+          .on('loading', () => this.map.spin(true))
+          .on('load', () => this.map.spin(false))
+
+        this.map.addLayer(layer);
+      }
 
       layer.setZIndex(10);
       this.mapLayers[mapLayer.slug] = layer;
