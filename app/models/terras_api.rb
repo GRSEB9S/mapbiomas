@@ -26,7 +26,7 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/coverage", query:
+      get("/dashboard/services/statistics/coveragec3", query:
           query_params.merge(territory_id: id)).as_json
     end
 
