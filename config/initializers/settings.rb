@@ -1,1 +1,1 @@
-Setting.defaults[:available_years] = (2000..2016).to_a
+Setting.defaults[:available_years] = (1985..2017).to_a
