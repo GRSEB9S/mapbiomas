@@ -69,7 +69,7 @@ export class MapCanvas extends React.Component {
     } else if (mode == 'transitions') {
       return 'wms/v/2.3/classification/transitions.map';
     } else {
-      return 'wms/v/2.3/classification/coverage.map';
+      return 'wms/v/3.0/classification/coverage.map';
     }
   }
 
