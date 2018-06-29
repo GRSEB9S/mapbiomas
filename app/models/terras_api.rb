@@ -26,7 +26,7 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/coveragec3", query:
+      get("/dashboard/services/statistics/coverage", query:
           query_params.merge(territory_id: id)).as_json
     end
 
@@ -38,7 +38,7 @@ class TerrasAPI
     territory_ids = territory_id.split(',')
 
     data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/transitionsc3", query:
+      get("/dashboard/services/statistics/transitions", query:
         query_params.merge(territory_id: id)).as_json
     end
 
@@ -59,13 +59,13 @@ class TerrasAPI
       territory_ids = territory_id.split(',')
 
       grouped_coverage_data = territory_ids.map do |id|
-        get("/dashboard/services/statistics/groupedcoverc3", query:
+        get("/dashboard/services/statistics/groupedcover", query:
           query_params.merge(territory_id: id))
       end
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
-      get("/dashboard/services/statistics/groupedcoverc3", query: {
+      get("/dashboard/services/statistics/groupedcover", query: {
         territory_id: territory_id,
         classification_id: classification_ids
       })
