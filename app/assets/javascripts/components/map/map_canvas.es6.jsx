@@ -24,7 +24,7 @@ export class MapCanvas extends React.Component {
   get baseLayerOptions() {
     return {
       layers: 'rgb',
-      map: "wms/classification/rgb.map",
+      map: "wms/v/3.0/classification/rgb.map",
       year: this.props.year,
       format: 'image/png',
       transparent: true
@@ -65,7 +65,7 @@ export class MapCanvas extends React.Component {
 
   mapPath(mode = this.props.mode) {
     if (mode == 'transitions' && !this.props.transition) {
-      return 'wms/v/2.3/classification/transitions_group.map';
+      return 'wms/v/3.0/classification/transitions_group.map';
     } else if (mode == 'transitions') {
       return 'wms/v/2.3/classification/transitions.map';
     } else {
