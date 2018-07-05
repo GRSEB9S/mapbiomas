@@ -18,6 +18,38 @@ export default class Stats extends React.Component {
     };
   }
 
+  get collectionOptions() {
+    return [
+      { value: 'collection3', label: I18n.t('stats.collections.3') },
+      { value: 'collection2', label: I18n.t('stats.collections.2') },
+      { value: 'allCollections', label: I18n.t('stats.collections.2_and_3') }
+    ]
+  }
+
+  get collectionsDataFunctions() {
+    return {
+      'collection2': this.groupedCoverageCollection2,
+      'collection3': this.groupedCoverage,
+      'allCollections': this.groupedCoverageAllCollections
+    }
+  }
+
+  get selectedCollection() {
+    return this.state.selectedCollection || _.first(this.collectionOptions);
+  }
+
+  groupedCoverage(params) {
+    return API.groupedCoverage(params);
+  }
+
+  groupedCoverageCollection2(params) {
+    return API.groupedCoverageCollection2(params)
+  }
+
+  groupedCoverageAllCollections(params) {
+    return Promise.all([API.groupedCoverage(params), API.groupedCoverageCollection2(params)]);
+  }
+
   get selectedTerritories() {
     if (this.props.selectedTerritories) {
       if (_.isArray(this.props.selectedTerritories)) {
@@ -65,11 +97,15 @@ export default class Stats extends React.Component {
   }
 
   onTerritoryChange(selectedTerritories) {
-    this.setState({ selectedTerritories })
+    this.setState({ selectedTerritories });
   }
 
   onClassificationChange(selectedClassifications) {
-    this.setState({ selectedClassifications })
+    this.setState({ selectedClassifications });
+  }
+
+  onCollectionChange(selectedCollection) {
+    this.setState({ selectedCollection });
   }
 
   loadTerritories() {
@@ -114,6 +150,7 @@ export default class Stats extends React.Component {
             years={this.props.years.sort()}
             territories={[territory]}
             classifications={this.state.selectedClassifications}
+            collectionFunction={this.collectionsDataFunctions[this.selectedCollection.value]}
             downloadUrl={this.downloadStatistics([territory])}
           />
         );
@@ -125,6 +162,7 @@ export default class Stats extends React.Component {
             years={this.props.years.sort()}
             territories={this.state.selectedTerritories}
             classifications={this.state.selectedClassifications}
+            collectionFunction={this.collectionsDataFunctions[this.selectedCollection.value]}
             downloadUrl={this.downloadStatistics(this.state.selectedTerritories)}
           />
         );
@@ -182,6 +220,19 @@ export default class Stats extends React.Component {
                 noResultsText={false}
                 searchingText={I18n.t('stats.index.searching')}
                 multi={true}
+              />
+            </div>
+            <div className="stats__filter">
+              <label className="stats__label">
+                {I18n.t('stats.collections.title')}
+              </label>
+
+              <Select
+                name="class-select"
+                value={this.selectedCollection}
+                options={this.collectionOptions}
+                onChange={this.onCollectionChange.bind(this)}
+                clearable={false}
               />
             </div>
           </div>

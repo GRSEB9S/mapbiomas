@@ -13,6 +13,11 @@ en:
         <p>Type the classes for which you would like to see the graphic and table with historical data. Note that scale is in hectares and vary according to the classes selected.</p>
         <p>The classes are hierarchical. The Nivel 1 includes all data from Nivel 2 and 3. Ex. 1. Forests Formations includes all types of forests.</p>
         <p>When graph is plotted you can turn on/off any class in the graphic by clicking on the legend bellow the graph.</p>
+    collections:
+      title: Collection
+      2: Collection 2.3
+      3: Collection 3.0
+      2_and_3: Collections 2.3 e 3.0
     chart:
       yAxis:
         title: 'Area'
