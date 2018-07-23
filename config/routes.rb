@@ -34,4 +34,6 @@ Rails.application.routes.draw do
     resources :qualities, only: :index
     resources :statistics, only: :index
   end
+
+  get 'discourse/sso', to: 'discourse_sso_sessions#authenticate'
 end
