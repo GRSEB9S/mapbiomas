@@ -22,6 +22,6 @@ class DiscourseSsoSessionsController < ApplicationController
   def sso
     @sso ||= DiscourseApi::SingleSignOn
              .parse(query_string, DISCOURSE_SSO_SECRET)
-             .tap { |sso| sso.sso_url = DISCOURSE_SSO_URL }
+             .tap { |sso| sso.sso_url = "#{ENV['DISCOURSE_URL']}/session/sso_login" }
   end
 end
