@@ -5,6 +5,8 @@ class DiscourseSsoSessionsController < ApplicationController
     authenticate_user!
 
     sso.email = current_user.email
+    sso.name = current_user.name
+    sso.username = current_user.name
     sso.external_id = current_user.id
 
     redirect_to sso.to_url
