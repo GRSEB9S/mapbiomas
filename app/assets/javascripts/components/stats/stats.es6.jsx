@@ -20,7 +20,9 @@ export default class Stats extends React.Component {
 
   get collectionOptions() {
     return [
-      { value: 'collection3', label: I18n.t('stats.collections.3') },
+      { value: 'collection3', label: I18n.t('stats.collections.3.title') },
+      { value: 'filteredCollection3', label: I18n.t('stats.collections.3.filtered') },
+      { value: 'unfilteredCollection3', label: I18n.t('stats.collections.3.unfiltered') },
       { value: 'collection2', label: I18n.t('stats.collections.2') },
       { value: 'allCollections', label: I18n.t('stats.collections.2_and_3') }
     ]
@@ -30,6 +32,8 @@ export default class Stats extends React.Component {
     return {
       'collection2': this.groupedCoverageCollection2,
       'collection3': this.groupedCoverage,
+      'filteredCollection3': this.filteredGroupedCoverage,
+      'unfilteredCollection3': this.unfilteredGroupedCoverage,
       'allCollections': this.groupedCoverageAllCollections
     }
   }
@@ -40,6 +44,14 @@ export default class Stats extends React.Component {
 
   groupedCoverage(params) {
     return API.groupedCoverage(params);
+  }
+
+  filteredGroupedCoverage(params) {
+    return API.filteredGroupedCoverage(params);
+  }
+
+  unfilteredGroupedCoverage(params) {
+    return API.unfilteredGroupedCoverage(params);
   }
 
   groupedCoverageCollection2(params) {

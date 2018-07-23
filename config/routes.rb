@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
     get '/inspector', to: 'inspector#index', as: :inspector
     get '/statistics/collection_2', to: 'statistics#collection_2', as: :collection_2_statistics
+    get '/statistics/filtered', to: 'statistics#filtered', as: :filtered_statistics
+    get '/statistics/unfiltered', to: 'statistics#unfiltered', as: :unfiltered_statistics
   end
 
   get 'discourse/sso', to: 'discourse_sso_sessions#authenticate'

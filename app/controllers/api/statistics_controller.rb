@@ -7,6 +7,18 @@ class API::StatisticsController < ApplicationController
     respond_with(@statistics)
   end
 
+  def filtered
+    @statistics = TerrasAPI.filtered_statistics(*statistics_params)
+
+    respond_with(@statistics)
+  end
+
+  def unfiltered
+    @statistics = TerrasAPI.unfiltered_statistics(*statistics_params)
+
+    respond_with(@statistics)
+  end
+
   def collection_2
     @statistics = TerrasAPI.collection_2_statistics(*statistics_params)
 

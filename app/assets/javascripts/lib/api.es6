@@ -7,6 +7,14 @@ export class API {
     return $.get(Routes.api_statistics_path(params));
   }
 
+  static filteredGroupedCoverage(params) {
+    return $.get(Routes.api_filtered_statistics_path(params));
+  }
+
+  static unfilteredGroupedCoverage(params) {
+    return $.get(Routes.api_unfiltered_statistics_path(params));
+  }
+
   static groupedCoverageCollection2(params) {
     return $.get(Routes.api_collection_2_statistics_path(params));
   }

@@ -16,7 +16,10 @@ pt-BR:
     collections:
       title: Coleção
       2: Coleção 2.3
-      3: Coleção 3.0
+      3:
+        title: Coleção 3.0
+        filtered: Coleção 3.0 com filtro
+        unfiltered: Coleção 3.0 sem filtro
       2_and_3: Coleções 2.3 e 3.0
     chart:
       yAxis:

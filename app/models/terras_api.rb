@@ -1,8 +1,10 @@
 class TerrasAPI
   include HTTParty
 
-  COLLECTION_2_STATISTICS_URL = 'http://seeg-mapbiomas.terras.agr.br/dashboard/services/statistics/groupedcover'
   GROUPED_COVER_FILE_PATH = '/dashboard/services/statistics/groupedcover'
+  COLLECTION_2_STATISTICS_URL = "http://seeg-mapbiomas.terras.agr.br#{GROUPED_COVER_FILE_PATH}"
+  FILTERED_STATISTICS_URL = "http://seeg-mapbiomas.terras.agr.br:82#{GROUPED_COVER_FILE_PATH}"
+  UNFILTERED_STATISTICS_URL = "http://seeg-mapbiomas.terras.agr.br:83#{GROUPED_COVER_FILE_PATH}"
 
   base_uri ENV['TERRAS_API_URL']
   format :json
@@ -72,6 +74,14 @@ class TerrasAPI
         classification_id: classification_ids
       })
     end
+  end
+
+  def self.filtered_statistics(territory_id, classification_ids, grouped = false)
+    statistics(territory_id, classification_ids, grouped, FILTERED_STATISTICS_URL)
+  end
+
+  def self.unfiltered_statistics(territory_id, classification_ids, grouped = false)
+    statistics(territory_id, classification_ids, grouped, UNFILTERED_STATISTICS_URL)
   end
 
   def self.collection_2_statistics(territory_id, classification_ids, grouped = false)
