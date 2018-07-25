@@ -348,12 +348,16 @@ export class MapCanvas extends React.Component {
 
   setupMapCoordinatesControl() {
     L.control.coordinates({
-      position: 'bottomleft',
+      position: 'bottomright',
       decimalSeperator: I18n.t('number.format.separator'),
       useLatLngOrder: true,
       labelTemplateLat: `${I18n.t('geolocation.latitude')}: {y}`,
       labelTemplateLng: `${I18n.t('geolocation.longitude')}: {x}`
     }).addTo(this.map);
+  }
+
+  setupScaleControl() {
+    L.control.betterscale({ imperial: false, metric: true }).addTo(this.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -418,6 +422,7 @@ export class MapCanvas extends React.Component {
     this.setupBaseLayers();
     this.setupMapLayers();
     this.setupMapCoordinatesControl();
+    this.setupScaleControl();
   }
 
   zoomIn() {
