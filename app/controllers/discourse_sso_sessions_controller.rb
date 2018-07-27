@@ -9,7 +9,9 @@ class DiscourseSsoSessionsController < ApplicationController
     sso.username = current_user.name
     sso.external_id = current_user.id
 
-    redirect_to sso.to_url
+    locale = cookies[:locale].to_s.tr('-', '_')
+
+    redirect_to sso.to_url + "&locale=#{locale}"
   end
 
   private
