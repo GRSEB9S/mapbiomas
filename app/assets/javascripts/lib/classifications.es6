@@ -1,4 +1,5 @@
 import _ from 'underscore';
+import lodash from 'lodash';
 
 export class Classifications {
   constructor(classifications) {
@@ -44,6 +45,13 @@ export class Classifications {
     })
 
     return result;
+  }
+
+  getTreeIds(obj = this.buildTree(), ids = []) {
+    return lodash.toPairs(obj).reduce((ids, [id, child]) => {
+      ids.push(lodash.toNumber(id))
+      return this.getTreeIds(child.children, ids)
+    }, ids)
   }
 
   buildTree(idProp = 'id', parentIdProp = 'parentId') {

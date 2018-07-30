@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'underscore';
+import _ from 'lodash';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { MapModal } from './modal';
 import { Classifications } from '../../lib/classifications';
@@ -19,8 +19,8 @@ const TransitionsModal = ({
   fromTotalData
 }) => {
   let newClassifications = new Classifications(classifications);
-  let newTransitions = transitions;
-  let nodes = newTransitions.reduce((memo, transition) => {
+  let treeIds = newClassifications.getTreeIds();
+  let nodes = transitions.reduce((memo, transition) => {
     let from = newClassifications.findById(transition.from);
     let to = newClassifications.findById(transition.to);
 
@@ -41,9 +41,10 @@ const TransitionsModal = ({
     ]);
   }, []);
 
-  nodes = _.uniq(nodes, (n) => `${n.type}->${n.name}`);
+  nodes = _.uniqBy(nodes, (n) => [n.type, n.name].join());
+  nodes = _.sortBy(nodes, (n) => _.indexOf(treeIds, n.id));
 
-  let links = newTransitions.map((transition) => {
+  let links = transitions.map((transition) => {
     let fromIndex = _.findIndex(nodes, (n) => {
       return n.id == transition.from && n.type == 'from';
     });
@@ -59,6 +60,7 @@ const TransitionsModal = ({
       value: parseFloat(transition.area)
     };
   }).filter((t) => !_.isUndefined(t) && parseFloat(t.value) != 0);
+  let sortedClassifications = _.sortBy(classifications, (c) => _.indexOf(treeIds, c.id));
 
   return (
     <MapModal
@@ -92,7 +94,7 @@ const TransitionsModal = ({
             years={years}
             downloadUrl={downloadUrl}
             transitions={transitions}
-            classifications={classifications}
+            classifications={sortedClassifications}
             toTotalData={toTotalData}
             fromTotalData={fromTotalData}
           />
