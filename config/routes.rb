@@ -42,7 +42,10 @@ Rails.application.routes.draw do
 
   namespace :cms do
     resources :glossaries, only: [:new, :edit, :create, :update, :destroy]
+    resources :faqs, only: [:new, :edit, :create, :update, :destroy]
   end
+
+  resources :faqs, only: :index, path: 'faq'
 
   resources :glossaries, only: :index, path: 'glossary'
 end
