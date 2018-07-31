@@ -36,7 +36,7 @@ class Cms::GlossariesController < ApplicationController
   private
 
   def set_glossary
-    @glossary = glossary.find(params[:id] || params[:glossary_id])
+    @glossary = Glossary.find(params[:id])
   end
 
   def glossary_params

@@ -38,7 +38,7 @@ class Cms::GlossaryCategoriesController < ApplicationController
   private
 
   def set_glossary_category
-    @glossary_category = GlossaryCategory.find(params[:id] || params[:glossary_category_id])
+    @glossary_category = GlossaryCategory.find(params[:id])
   end
 
   def glossary_category_params
