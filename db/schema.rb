@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20180731143233) do
   enable_extension "plpgsql"
 
   create_table "glossaries", force: :cascade do |t|
-    t.string   "word"
-    t.text     "definition"
+    t.string   "word",                 null: false
+    t.text     "definition",           null: false
     t.integer  "glossary_category_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
