@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 20180807125201) do
     t.string   "locale",     default: "pt-BR", null: false
   end
 
+  create_table "faq_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "faqs", force: :cascade do |t|
+    t.string   "question"
+    t.text     "answer"
+    t.integer  "faq_category_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "faqs", ["faq_category_id"], name: "index_faqs_on_faq_category_id", using: :btree
+
   create_table "maps", force: :cascade do |t|
     t.string  "name",                 null: false
     t.json    "options", default: {}, null: false
@@ -74,4 +90,5 @@ ActiveRecord::Schema.define(version: 20180807125201) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "faqs", "faq_categories"
 end
