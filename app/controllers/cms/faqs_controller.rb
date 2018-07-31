@@ -39,6 +39,6 @@ class Cms::FaqsController < ApplicationController
   end
 
   def faq_params
-    params.require(:faq).permit(:name)
+    params.require(:faq).permit(:question, :answer, :faq_category_id)
   end
 end
