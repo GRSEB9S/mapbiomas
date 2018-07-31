@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20180807125201) do
   end
 
   create_table "faqs", force: :cascade do |t|
-    t.string   "question"
-    t.text     "answer"
+    t.string   "question",        null: false
+    t.text     "answer",          null: false
     t.integer  "faq_category_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
