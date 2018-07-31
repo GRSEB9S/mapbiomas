@@ -1,0 +1,43 @@
+Palavras,Definição
+Acurácia,Análise quantitativa da exatidão do mapeamento
+Algoritmo,Conjunto de regras e procedimentos estabelecidos para solucionar uma tarefa
+Amostras de Acurácia,Pontos coletados nas imagens por ano e classificados pelo interpréte com uma classe de cobertura ou uso da terra
+Amostras de Treinamento,Pontos ou polígonos utilizados para treinar o classificador
+Árvore de Decisão Empírica,Caminho com parâmetros utilizados para classificação (árvores de decisão são modelos estáticos que utilizam um treinamento supervisionado para a classifica;áo e previsão de dados)
+Asset,Conjunto de dados (disponivel para uso)
+ATBD (Algorithm Theoretical Basis Document),Documento com descrição metodológica e dos algoritmos utilizados
+Banda espectral ,Intervalo entre dois comprimentos de onda no espectro eletromagnético
+Carta ou Carta ao Milionésimo,Divisão cartográfica do território brasileiro definido pelo IBGE integrado a Carta Internacional do Mundo ao Milionésimo (CIM)
+Cena,Referente a imagem gerada pelo sensor de um satélite
+Classificação,Distribuição de valores em classes
+Classificador,Nome genérico para um método de classificação
+Code Editor,Ferramenta de programação do Google Earth Engine
+CollectMobile,Ferramenta para coleta de (informação pontual) pontos no celular
+Coleção,Conjunto de mapas gerados a partir da mesma metodologia
+Computação em Nuvem,"Tecnologia que permite o acesso de serviços, dados e análises pela internet"
+Consistência espacial,
+Consistencia temporal,
+Dashboard (painel de controle),Plataforma de apresentação visual das informações e dados consolidados para fácil acompanhamento das informações
+Feature Space,"Conjunto de informações espectrais com as bandas, índices e métricas utilizadas na classificação do random forest"
+Filtro Espacial,Análise de pós-classificação para corrigir erros de consistência espacial em uma classe
+Filtro Temporal,Análise de pós-classificação para corrigir erros de consistência temporal entre classes e anos
+Fusion Table,Tabela de dados que se conecta com ferramentas da Google
+Google Cloud Storage,Ferramenta da Google para armazenar grande quantidade de informações em nuvem
+Google Earth Engine,Plataforma de análise e visualização de dados espaciais científicos em computação em nuvem sobre a superfície da Terra
+Imagem Landsat,Imagem gerada pelo um conjunto de satélites Landsat
+Integração,Rotina de sobreposição das classificações dos biomas e temas gerando mapas integrados
+Mapa de Integração,Mapa final que consolida os mapas dos biomas e temas
+Mapa de Transição,Mapa que apresenta as principais transições de cobertura e uso da terra
+Mosaico de imagem,"Conjunto de pixels Landsat com boa qualidade (pouca interferencia de nuvens, por exemplo) selecionados em um período determinado para melhor visualização e classificaão"
+Índice espectral,
+Pixel,"A menor unidade em uma imagem digital. Uma imagem de satélite é composta por uma matriz de pixels, cada pixel com um valor digital. O pixel no MapBiomas corresponde ao pixel das imagens landsat com 30m de resolução. A área do pixel sofre variações de acordo com latitude quando mais distante do equador a área tende a ser menor."
+Pós-classificação,Rotinas automatizadas de melhoria da consistencia dos mapas executadas após a integração dos temas
+Random Forest,Método de classificação supervisionada que se baseia em arvores de decisao
+Raster,"Imagem digital, composta por uma matriz de valores (pixel)"
+Resolução espacial,Descreve o nível de detalhe de uma imagem
+Scripts,Conjunto de instruções escritas em linguagem de programação para que uma função seja executada
+Sensor remoto,Instrumento para detecção remota de energia 
+Shapefile,Formato de arquivo com um conjunto de dados espaciais no formato vetorial
+Temas Transversais,"Classes importantes de cobertura e uso da terra mapeadas no país todo e não apenas por bioma. Os temas transversais do MapBiomas são: agricultura, pastagem, areas urbanas, mineração, xxxxxx"
+WebCollect,Plataforma de coleta de pontos utiizados para análise de acurácia
+Workspace,Plataforma desenvolvida pelo MapBiomas para parametrização e classificação de mapas de cobertura e uso da terra
