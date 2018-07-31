@@ -39,4 +39,8 @@ Rails.application.routes.draw do
   end
 
   get 'discourse/sso', to: 'discourse_sso_sessions#authenticate'
+
+  resources :glossaries, only: [:index, :create, :update, :destroy, :show]
+
+  resources :glossary_categories, only: [:index, :create, :update, :destroy, :show]
 end
