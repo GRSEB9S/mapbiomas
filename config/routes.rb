@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     resources :transitions, only: :index
     resources :qualities, only: :index
     resources :statistics, only: :index
+
+    get '/statistics/collection_2', to: 'statistics#collection_2', as: :collection_2_statistics
   end
 
   get 'discourse/sso', to: 'discourse_sso_sessions#authenticate'

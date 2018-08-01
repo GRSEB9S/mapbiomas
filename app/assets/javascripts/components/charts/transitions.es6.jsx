@@ -35,7 +35,7 @@ export default class TransitionsChart extends React.Component {
     sankey
         .nodes(this.props.nodes)
         .links(this.props.links)
-        .layout(16);
+        .layout(0);
 
     let link = svg.append("g")
         .selectAll(".link")

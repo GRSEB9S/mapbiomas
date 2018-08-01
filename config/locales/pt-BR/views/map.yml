@@ -83,6 +83,8 @@ pt-BR:
             </li>
           </ul>
         coverage_data: Mapas de Cobertura e Uso da Terra
+        afro_brazilian_settlements: Quilombolas
+        smallholder_settlements: Assentamentos
         rgb_landsat: Mosaico Landsat MapBiomas (RGB) (específica de cada ano)
         satellite: Google Satellite
         roadmap: Google Roadmap

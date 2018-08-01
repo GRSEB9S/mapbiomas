@@ -6,12 +6,14 @@ import Exporting from 'highcharts/modules/exporting';
 
 Exporting(Highcharts);
 
-const formatNumber = (number) => (
-  number
-  .toFixed(2)
-  .replace(".", ",")
-  .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
-);
+const formatNumber = (number) => {
+  if (_.isNumber(number)) {
+    return number
+    .toFixed(2)
+    .replace(".", ",")
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+  }
+}
 
 export default class Chart extends React.Component {
   constructor(props) {
@@ -34,22 +36,40 @@ export default class Chart extends React.Component {
           data: this.props.years.map(y => {
             const d = _.find(this.state.data, { year: y, territory: t.value });
             if(d && _.isNumber(d.area)) return d.area;
-            return 0;
+            return null;
           })
         };
       });
     } else {
-      return this.props.classifications.map(c => {
-        return {
-          name: c.label,
-          color: c.color,
-          data: this.props.years.map(y => {
-            const d = _.find(this.state.data, { year: y, id: c.value });
-            if(d && _.isNumber(d.area)) return d.area;
-            return 0;
-          })
-        };
-      });
+      if (_.some(this.state.data, _.isArray)) {
+        let data = this.props.classifications.map(c => {
+          return this.state.data.map(data => {
+            return {
+              name: c.label,
+              color: c.color,
+              data: this.props.years.map(y => {
+                const d = _.find(data, { year: y, id: c.value });
+                if(d && _.isNumber(d.area)) return d.area;
+                return null;
+              })
+            };
+          });
+        });
+
+        return _.flatten(data);
+      } else {
+        return this.props.classifications.map(c => {
+          return {
+            name: c.label,
+            color: c.color,
+            data: this.props.years.map(y => {
+              const d = _.find(this.state.data, { year: y, id: c.value });
+              if(d && _.isNumber(d.area)) return d.area;
+              return null;
+            })
+          };
+        });
+      }
     }
   }
 
@@ -109,7 +129,7 @@ export default class Chart extends React.Component {
       params = { ...params, grouped: true };
     }
 
-    API.groupedCoverage(params).then(data => this.setState({ data }, () => {
+    this.props.collectionFunction(params).then(data => this.setState({ data }, () => {
       this.chart.hideLoading();
     }));
   }
@@ -164,9 +184,13 @@ export default class Chart extends React.Component {
                 {_.map(series, (serie, i) => (
                   <tr key={i}>
                     <td>{serie.name}</td>
-                    {_.map(serie.data, (area, j) => (
-                      <td key={j}>{formatNumber(area)} ha</td>
-                    ))}
+                    {_.map(serie.data, (area, j) => {
+                      if (_.isNumber(area)) {
+                        return <td key={j}>{formatNumber(area)} ha</td>
+                      } else {
+                        return <td key={j}></td>
+                      }
+                    })}
                   </tr>
                 ))}
               </tbody>

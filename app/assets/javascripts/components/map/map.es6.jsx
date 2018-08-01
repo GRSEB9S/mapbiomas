@@ -590,7 +590,7 @@ export default class Map extends React.Component {
         this.timeoutId = setTimeout(() => {
           API.territories({
             category,
-            name: input.toUpperCase()
+            name: `%${input.toUpperCase()}%`
           })
           .then((territories) => {
             callback(null, {
@@ -739,7 +739,6 @@ export default class Map extends React.Component {
           year={this.year}
           years={this.years}
           territory={this.territory}
-          layers={this.props.availableLayers}
           selectedLayers={this.state.layers}
           qualities={this.state.qualities}
           qualityInfo={this.props.qualityInfo}

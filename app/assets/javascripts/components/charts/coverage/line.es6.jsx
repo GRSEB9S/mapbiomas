@@ -33,7 +33,7 @@ class CoverageLineChart extends Component {
       },
       plotOptions: {
         series: {
-          pointStart: 2000
+          pointStart: _.first(this.props.availableYears)
         }
       },
       yAxis: {

@@ -13,6 +13,11 @@ pt-BR:
         <p>Selecione as classes para as quais quer ver os dados históricos. Note que a escala do gráfico está sempre em hectares e se adapta aos dados mostrados.</p>
         <p>As classes são hierárquicas. A classe nível 1 inclui todos os dados do nível 2. Podem ser colocadas múltiplas classes.</p>
         <p>Com o gráfico plotado é possível ligar e desligar classes clicando na legenda abaixo do gráfico.</p>
+    collections:
+      title: Coleção
+      2: Coleção 2.3
+      3: Coleção 3.0
+      2_and_3: Coleções 2.3 e 3.0
     chart:
       yAxis:
         title: 'Área (ha)'

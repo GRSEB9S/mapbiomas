@@ -16,7 +16,11 @@
   z-index: 5;
 }
 
-.leaflet-left .leaflet-control {
+.leaflet-bottom, .leaflet-right {
+  display: flex;
+}
+
+.leaflet-right .leaflet-control {
   margin: 0;
   border-radius: 0;
   font-size: 11px;

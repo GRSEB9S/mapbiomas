@@ -24,7 +24,7 @@ export class MapCanvas extends React.Component {
   get baseLayerOptions() {
     return {
       layers: 'rgb',
-      map: "wms/classification/rgb.map",
+      map: "wms/v/3.0/classification/rgb.map",
       year: this.props.year,
       format: 'image/png',
       transparent: true
@@ -65,11 +65,11 @@ export class MapCanvas extends React.Component {
 
   mapPath(mode = this.props.mode) {
     if (mode == 'transitions' && !this.props.transition) {
-      return 'wms/v/2.3/classification/transitions_group.map';
+      return 'wms/v/3.0/classification/transitions_group.map';
     } else if (mode == 'transitions') {
       return 'wms/v/2.3/classification/transitions.map';
     } else {
-      return 'wms/v/2.3/classification/coverage.map';
+      return 'wms/v/3.0/classification/coverage.map';
     }
   }
 
@@ -223,19 +223,41 @@ export class MapCanvas extends React.Component {
       return;
     }
 
-    cartodb.createLayer(this.map, mapLayer.link)
-      .addTo(this.map)
-      .done((layer) => {
-        layer.on('loading', () => this.map.spin(true));
-        layer.on('load', () => this.map.spin(false));
+    if (mapLayer.fromCarto) {
+      cartodb.createLayer(this.map, mapLayer.link)
+        .addTo(this.map)
+        .done((layer) => {
+          layer.on('loading', () => this.map.spin(true));
+          layer.on('load', () => this.map.spin(false));
 
-        if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
-          layer.setZIndex(10);
-          this.mapLayers[mapLayer.slug] = layer;
-        } else {
-          this.map.removeLayer(layer);
-        }
-      });
+          if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
+            layer.setZIndex(10);
+            this.mapLayers[mapLayer.slug] = layer;
+          } else {
+            this.map.removeLayer(layer);
+          }
+        });
+    } else {
+      let layer;
+
+      if (mapLayer.wms) {
+        layer = L.tileLayer.wms(mapLayer.link, mapLayer.params)
+          .on('loading', () => this.map.spin(true))
+          .on('load', () => this.map.spin(false))
+          .addTo(this.map)
+      }
+
+      else {
+        layer = new L.TileLayer.WMTS(mapLayer.link, mapLayer.params)
+          .on('loading', () => this.map.spin(true))
+          .on('load', () => this.map.spin(false))
+
+        this.map.addLayer(layer);
+      }
+
+      layer.setZIndex(10);
+      this.mapLayers[mapLayer.slug] = layer;
+    }
   }
 
   removeMapLayer(slug) {
@@ -326,12 +348,16 @@ export class MapCanvas extends React.Component {
 
   setupMapCoordinatesControl() {
     L.control.coordinates({
-      position: 'bottomleft',
+      position: 'bottomright',
       decimalSeperator: I18n.t('number.format.separator'),
       useLatLngOrder: true,
       labelTemplateLat: `${I18n.t('geolocation.latitude')}: {y}`,
       labelTemplateLng: `${I18n.t('geolocation.longitude')}: {x}`
     }).addTo(this.map);
+  }
+
+  setupScaleControl() {
+    L.control.betterscale({ imperial: false, metric: true }).addTo(this.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -396,6 +422,7 @@ export class MapCanvas extends React.Component {
     this.setupBaseLayers();
     this.setupMapLayers();
     this.setupMapCoordinatesControl();
+    this.setupScaleControl();
   }
 
   zoomIn() {

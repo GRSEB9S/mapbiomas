@@ -7,6 +7,10 @@ export class API {
     return $.get(Routes.api_statistics_path(params));
   }
 
+  static groupedCoverageCollection2(params) {
+    return $.get(Routes.api_collection_2_statistics_path(params));
+  }
+
   static qualities(params) {
     return $.get(Routes.api_qualities_path(params));
   }

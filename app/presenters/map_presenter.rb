@@ -1,8 +1,4 @@
 class MapPresenter
-  MAPS_COLORS = {
-    satellite: '#081B47'
-  }
-
   QUALITY_INFO = [
     {
       api_name: '1',
@@ -44,8 +40,8 @@ class MapPresenter
 
   def as_json(*_)
     {
-      availableClassifications: TerrasAPI.classifications,
-      defaultClassifications: TerrasAPI.classifications,
+      availableClassifications: sorted_classifications,
+      defaultClassifications: sorted_classifications,
       availableBaseMaps: base_maps,
       defaultBaseMaps: [],
       availableLayers: layers,
@@ -60,6 +56,10 @@ class MapPresenter
   end
 
   private
+
+  def sorted_classifications
+    @sorted_classifications ||= TerrasAPI.classifications.sort_by { |c| c['id'] }
+  end
 
   def rgb_landsat
     {
@@ -145,17 +145,58 @@ class MapPresenter
     }
   end
 
+  def smallholder_settlements
+    {
+      id: 8,
+      slug: 'smallholder-settlements',
+      name: I18n.t('map.index.base_maps.smallholder_settlements'),
+      wms: true,
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+      params: {
+        map: 'wms/v/2.3/territories/assentamentos.map',
+        color_id: 2,
+        layers: 'assentamentos',
+        format: 'image/png',
+        transparent: true
+      }
+    }
+  end
+
+  def afro_brazilian_settlements
+    {
+      id: 9,
+      slug: 'afro-brazilian-settlements',
+      name: I18n.t('map.index.base_maps.afro_brazilian_settlements'),
+      wms: true,
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+      params: {
+        map: 'wms/v/2.3/territories/quilombolas.map',
+        color_id: 2,
+        layers: 'quilombolas',
+        format: 'image/png',
+        transparent: true
+      }
+    }
+  end
+
+  def car
+    {
+      id: 10,
+      slug: 'car',
+      name: 'CAR',
+      wmts: true,
+      link: 'http://geoserver.imaflora.org/geoserver/gwc/service/wmts',
+      params: {
+        layer: 'ima-geo:v_car0518_mapbiomas',
+        style: 'normal',
+        tilematrixSet: 'EPSG:3857',
+        format: 'image/png'
+      }
+    }
+  end
+
   def base_maps
-    [
-      coverage_data,
-      rgb_landsat,
-      esri_imagery,
-      openstreet_mapnik,
-      esri_relief
-      # satellite_map,
-      # roadmap_map,
-      # terrain_map
-    ]
+    [coverage_data, rgb_landsat, esri_imagery, openstreet_mapnik, esri_relief]
   end
 
   def layers
@@ -167,6 +208,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end
+    end << smallholder_settlements << afro_brazilian_settlements << car
   end
 end

@@ -5,6 +5,8 @@
   }
 
   &__filter-box {
+    display: flex;
+    justify-content: space-around;
     margin: $big-spacing 0;
     padding: $big-spacing;
     background-color: $lighter-gray;
@@ -13,7 +15,6 @@
 
   &__filter {
     width: 47.5%;
-    display: inline-block;
     margin-right: 5%;
   }
 

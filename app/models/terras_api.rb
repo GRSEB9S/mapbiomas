@@ -1,9 +1,11 @@
 class TerrasAPI
   include HTTParty
 
+  COLLECTION_2_STATISTICS_URL = 'http://seeg-mapbiomas.terras.agr.br/dashboard/services/statistics/groupedcover'
+  GROUPED_COVER_FILE_PATH = '/dashboard/services/statistics/groupedcover'
+
   base_uri ENV['TERRAS_API_URL']
   format :json
-  caches_api_responses key_name: "terras", expire_in: 1.month
 
   def self.territories(name = nil, category = nil)
     get("/dashboard/services/territories", query: {
@@ -53,23 +55,27 @@ class TerrasAPI
     })
   end
 
-  def self.statistics(territory_id, classification_ids, grouped = false)
+  def self.statistics(territory_id, classification_ids, grouped = false, file_path = GROUPED_COVER_FILE_PATH)
     if grouped
       query_params = { classification_id: classification_ids }
       territory_ids = territory_id.split(',')
 
       grouped_coverage_data = territory_ids.map do |id|
-        get("/dashboard/services/statistics/groupedcover", query:
+        get(file_path, query:
           query_params.merge(territory_id: id))
       end
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
-      get("/dashboard/services/statistics/groupedcover", query: {
+      get(file_path, query: {
         territory_id: territory_id,
         classification_id: classification_ids
       })
     end
+  end
+
+  def self.collection_2_statistics(territory_id, classification_ids, grouped = false)
+    statistics(territory_id, classification_ids, grouped, COLLECTION_2_STATISTICS_URL)
   end
 
   def self.transitions_keys

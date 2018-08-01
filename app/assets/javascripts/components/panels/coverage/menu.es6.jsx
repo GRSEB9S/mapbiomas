@@ -22,6 +22,7 @@ const territoryName = (myMapsPage, territory, map) => {
 };
 
 const CoverageMenu = ({
+  availableYears,
   availableClassifications,
   defaultClassifications,
   map,
@@ -48,6 +49,7 @@ const CoverageMenu = ({
     />
 
     <CoverageLineChart
+      availableYears={availableYears}
       availableClassifications={availableClassifications}
       defaultClassifications={defaultClassifications}
       territory={territory}
