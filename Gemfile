@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.3.1'
-gem 'rails', '4.2.3'
+gem 'rails', '4.2.10'
 
 gem 'axlsx', '= 2.0.1'
 gem 'axlsx_rails'
