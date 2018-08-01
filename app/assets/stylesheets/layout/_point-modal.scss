@@ -1,0 +1,54 @@
+.point-modal {
+  display: flex;
+  height: 100%;
+
+  .leaflet-container {
+    cursor: grab;
+  }
+
+  &__instructions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    label {
+      text-transform: uppercase;
+      font-size: $big-font-size;
+    }
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    margin-right: $base-spacing;
+    padding: $base-spacing;
+    background-color: $lighter-gray;
+    border-radius: $base-border-radius;
+
+    h2 {
+      font-size: $big-font-size;
+      margin-bottom: $small-spacing;
+    }
+  }
+
+  &__coordinates {
+    margin-bottom: $base-spacing;
+    padding-bottom: $small-spacing;
+    border-bottom: 1px solid $light-gray;
+  }
+
+  &__data {
+    width: 75%;
+
+    .ReactTabs__TabPanel {
+      overflow-x: hidden;
+    }
+
+    .page__container {
+      max-width: 100%;
+      padding-left: $small-spacing;
+      padding-right: $small-spacing;
+    }
+  }
+}

@@ -12,11 +12,13 @@
 @import "landing-page";
 @import "landsat-mosaics";
 @import "map";
+@import "map-modal";
 @import "map-panel";
 @import "menu";
 @import "methodology";
 @import "my_maps";
 @import "page";
+@import "point-modal";
 @import "profile";
 @import "quality-control";
 @import "registered_users";
@@ -27,3 +29,5 @@
 @import "toggle";
 @import "transitions-control";
 @import "transitions-matrix";
+@import "transitions-modal";
+@import "transitions-sankey";

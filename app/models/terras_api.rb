@@ -78,6 +78,14 @@ class TerrasAPI
     statistics(territory_id, classification_ids, grouped, COLLECTION_2_STATISTICS_URL)
   end
 
+  def self.inspector(year, latitude, longitude)
+    get("/dashboard/services/statistics/inspector", query: {
+      year: year,
+      lat: latitude,
+      lng: longitude
+    })
+  end
+
   def self.transitions_keys
     %w(from from_l1 from_l2 from_l3 to to_l1 to_l2 to_l3)
   end

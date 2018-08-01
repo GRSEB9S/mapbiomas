@@ -57,14 +57,14 @@ const Territory = ({
       onSelect={(index) => onTabChange(index)}
     >
       <TabList>
-        <Tab>{I18n.t('map.index.layers.countries')}</Tab>
-        <Tab>{I18n.t('map.index.layers.states')}</Tab>
-        <Tab>{I18n.t('map.index.layers.cities')}</Tab>
-        <Tab>{I18n.t('map.index.layers.biomes')}</Tab>
-        <Tab>{I18n.t('map.index.layers.watersheds_level_1')}</Tab>
-        <Tab>{I18n.t('map.index.layers.watersheds_level_2')}</Tab>
-        <Tab>{I18n.t('map.index.layers.indigenous_lands')}</Tab>
-        <Tab>{I18n.t('map.index.layers.conservation_units')}</Tab>
+        <Tab>{I18n.t('map.index.layers.countries.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.states.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.cities.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.biomes.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.watersheds_level_1.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.watersheds_level_2.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.indigenous_lands.many')}</Tab>
+        <Tab>{I18n.t('map.index.layers.conservation_units.many')}</Tab>
       </TabList>
       {renderTabPanel('país', territory, loadTerritories, onTerritoryChange)}
       {renderTabPanel('estado', territory, loadTerritories, onTerritoryChange)}

@@ -47,11 +47,12 @@ export class MapModal extends React.Component {
       <div className="map-modal__wrapper">
         {overlay}
         <div className={classes}>
-          <h2 className="map-modal__header">
-            {this.props.title}
-          </h2>
-
-          {this.renderCloseButton()}
+          <div className="map-modal__header">
+            <h2 className="map-modal__title">
+              {this.props.title}
+            </h2>
+            {this.renderCloseButton()}
+          </div>
 
           <div className="map-modal__content">
             { this.props.children }

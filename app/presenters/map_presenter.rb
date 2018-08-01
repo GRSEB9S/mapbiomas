@@ -204,7 +204,7 @@ class MapPresenter
       {
         id: id,
         slug: layer.to_s.tr('_', '-'),
-        name: I18n.t(layer, scope: 'map.index.layers'),
+        name: I18n.t("map.index.layers.#{layer}.many"),
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }

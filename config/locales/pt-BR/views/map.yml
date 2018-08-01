@@ -92,19 +92,47 @@ pt-BR:
         esri_imagery: Imagem (sem ano específico)
         openstreet_mapnik: Estradas
         esri_relief: Relevo
+      point_info:
+        title: Informações sobre o ponto
+        no_info: Não há informações para o ponto selecionado
+        category:
+          not_found: Nâo encontrado
+        map: Mapa
+        coverage: Cobertura
+        transitions: Transições
       layers:
         title: Camadas
-        countries: Países
-        states: Estados
-        cities: Municípios
-        biomes: Biomas
-        contour_maps: Cartas
-        indigenous_lands: Terras indígenas
-        conservation_units: Unidades de conservação
-        watersheds_level_1: Bacias N1
-        watersheds_level_2: Bacias N2
-        macro_watersheds: Regiões hidrográficas
-        watersheds: Bacias hidrográficas
+        countries:
+          one: País
+          many: Países
+        states:
+          one: Estado
+          many: Estados
+        cities:
+          one: Município
+          many: Municípios
+        biomes:
+          one: Bioma
+          many: Biomas
+        contour_maps:
+          one: Carta
+          many: Cartas
+        indigenous_lands:
+          one: Terra indígena
+          many: Terras indígenas
+        conservation_units:
+          one: Unidade de conservação
+          many: Unidades de conservação
+        watersheds_level_1:
+          one: Bacia N1
+          many: Bacias N1
+        watersheds_level_2:
+          one: Bacia N2
+          many: Bacias N2
+        macro_watersheds:
+          many: Regiões hidrográficas
+        watersheds:
+          many: Bacias hidrográficas
       coverage:
         title: Cobertura
         analysis: Dados de Cobertura
