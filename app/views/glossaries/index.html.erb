@@ -1,0 +1,10 @@
+<div class="page">
+  <div className="page__container">
+    <h1 className="page__title"><%= I18n.t('glossaries.title') %></h1>
+    <% @glossaries.each do |glossary| %>
+      <%= glossary.word %>
+    <% end %>
+  </div>
+</div>
+
+

@@ -1,0 +1,33 @@
+<div class="page">
+  <div class="glossary__container">
+    <div class="glossary__box">
+      <h2><%= t('glossaries.new_item') %></h2>
+      <div class="glossary__form">
+        <%= form_for [:cms, @glossary] do |f| %>
+          <div class="form-inputs">
+            <div class="field">
+              <%= f.label :word %>
+              <%= f.text_field :word, class: 'form-control' %>
+            </div>
+
+            <div class="field">
+              <%= f.label :glossary_category %>
+              <%= f.select :glossary_category_id, GlossaryCategory.all.pluck(:name, :id) %>
+            </div>
+
+            <div class="field">
+              <%= f.label :definition %>
+              <%= f.text_area :definition, class: 'form-control' %>
+            </div>
+
+            <div class="glossary__form-actions form-actions">
+              <button type="submit">
+                <%= t('glossaries.submit') %>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
