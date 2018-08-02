@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    attributes:
+      glossary:
+        id: ID
+        word: Palavra
+        definition: Definição
+        glossary_category: Categoria do Glossário
+        glossary_category_id: ID da Categoria do Glossário
