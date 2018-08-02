@@ -8,6 +8,6 @@
       name: current_user.try(:name),
       isSignedIn: user_signed_in?,
       isAdmin: current_user.try(:admin?)
-    }}) %>
+    }, forumUrl: ENV['DISCOURSE_URL']}) %>
   </div>
 </header>

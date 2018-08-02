@@ -1,6 +1,8 @@
 en:
   layouts:
     header:
+      forum:
+        title: Forum
       menu: Menu
       about:
         title: About MapBiomas
