@@ -1,13 +1,8 @@
 class Cms::GlossariesController < ApplicationController
-  before_action :set_glossary, only: [:show, :update, :destroy]
+  before_action :set_glossary, only: %i[update destroy]
 
-  def index
-    @glossaries = Glossary.all
-    render json: @glossaries
-  end
-
-  def show
-    render json: @glossary
+  def new
+    @glossary = Glossary.new
   end
 
   def create
@@ -29,8 +24,9 @@ class Cms::GlossariesController < ApplicationController
   end
 
   def destroy
+    glossary = @glossary
     @glossary.destroy
-    render json: @glossary, status: :ok
+    redirect_to new_cms_glossary_path, flash[:notice] = t(:glossary_destroy, word: glossary.word)
   end
 
   private
