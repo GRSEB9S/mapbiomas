@@ -11,11 +11,6 @@
             </div>
 
             <div class="field">
-              <%= f.label :glossary_category %>
-              <%= f.select :glossary_category_id, GlossaryCategory.all.pluck(:name, :id) %>
-            </div>
-
-            <div class="field">
               <%= f.label :definition %>
               <%= f.text_area :definition, class: 'form-control' %>
             </div>

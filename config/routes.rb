@@ -42,7 +42,6 @@ Rails.application.routes.draw do
 
   namespace :cms do
     resources :glossaries, only: [:new, :edit, :create, :update, :destroy]
-    resources :glossary_categories, only: [:create, :update, :destroy]
   end
 
   resources :glossaries, only: :index, path: 'glossary'
