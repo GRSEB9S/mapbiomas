@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_language
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   protected
 
   def after_sign_in_path_for(_user)
@@ -28,5 +30,10 @@ class ApplicationController < ActionController::Base
     available_locales = I18n.available_locales
     cookies[:locale] ||= http_accept_language.preferred_language_from(available_locales)
     I18n.locale = cookies[:locale]
+  end
+
+  def user_not_authorized
+    flash[:error] = "I18n.t('users.not_authorized')"
+    redirect_to(root_path)
   end
 end
