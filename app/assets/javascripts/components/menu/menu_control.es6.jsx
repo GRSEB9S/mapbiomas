@@ -214,6 +214,12 @@ export class MenuControl extends React.Component {
             </a>
           </li>
 
+          <li className="menu__item">
+            <a className="menu__link" target="_blank" href={this.props.forumUrl}>
+              {I18n.t('layouts.header.forum.title')}
+            </a>
+          </li>
+
           {this.renderSignInButton()}
 
           {<li className="menu__item translation main-nav__menu__item main-nav__translation">

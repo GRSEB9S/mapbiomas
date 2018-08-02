@@ -2,6 +2,8 @@ pt-BR:
   layouts:
     header:
       menu: Menu
+      forum:
+        title: Fórum
       about:
         title: Conheça o MapBiomas
         project: O projeto
