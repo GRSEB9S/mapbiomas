@@ -179,6 +179,11 @@ export class MenuControl extends React.Component {
                 </a>
               </li>
               <li className="menu__item">
+                <a className="menu__link" href={Routes.glossaries_path()}>
+                  {I18n.t('glossaries.title')}
+                </a>
+              </li>
+              <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path("terms_of_use")}>
                   {I18n.t('layouts.header.map_data.terms_of_use')}
                 </a>
