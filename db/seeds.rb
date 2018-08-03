@@ -10,13 +10,11 @@ require 'csv'
 puts 'Cleaning Glossary DB'
 
 Glossary.destroy_all
-GlossaryCategory.destroy_all
 puts 'Done'
 
 puts 'Seeding DB'
 CSV.foreach("#{ Rails.root }/db/data/glossary_seed.csv", headers: true) do |row|
   # TODO WAITING GLOSSARY FINAL VERSION WITH CATEGORY FIELD
-  category = GlossaryCategory.find_by(name: 'Outros') || GlossaryCategory.create(name: 'Outros')
-  Glossary.create(word: row['Palavras'], definition: row['Definição'], glossary_category: category)
+  Glossary.create(word: row['Palavras'], definition: row['Definição'])
 end
 puts "Done - #{Glossary.count} words created"
