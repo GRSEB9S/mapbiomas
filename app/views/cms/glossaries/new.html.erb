@@ -17,12 +17,9 @@
           </div>
         <% end %>
       <% end %>
-
       <h2><%= t('glossaries.new_item') %></h2>
       <div class="glossary__form">
         <%= form_for [:cms, @glossary] do |f| %>
-
-
           <div class="form-inputs">
             <div class="field">
               <%= f.label :word %>
