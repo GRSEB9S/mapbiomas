@@ -1,6 +1,11 @@
 pt-BR:
   glossaries:
     title: Glossário
+    subtitle: Neste glossário estão termos comumente utilizados na descrição de metodologia e produtos do MapBiomas
     new_item: Novo item do Glossário
     submit: Salvar item
+    create_error: Falha ao salvar item no glossário
+    update_error: Falha ao atualizar item no glossário
+    word: Palavra
+    definition: Definição
 

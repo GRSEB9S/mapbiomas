@@ -3,6 +3,7 @@ pt-BR:
   errors:
     messages:
       blank: 'não pode ficar vazio(a)'
+      taken: já existe
   time:
     formats:
       short: '%d-%m-%Y'
