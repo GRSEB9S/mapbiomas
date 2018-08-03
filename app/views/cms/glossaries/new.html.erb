@@ -1,9 +1,28 @@
 <div class="page">
   <div class="glossary__container">
     <div class="glossary__box">
+      <% if flash.any? %>
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %>">
+            <%= value %>
+            <% if @glossary.errors.any? %>
+              <div class="errors-container">
+                <ul class="list-unstyled">
+                  <% @glossary.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
       <h2><%= t('glossaries.new_item') %></h2>
       <div class="glossary__form">
         <%= form_for [:cms, @glossary] do |f| %>
+
+
           <div class="form-inputs">
             <div class="field">
               <%= f.label :word %>
