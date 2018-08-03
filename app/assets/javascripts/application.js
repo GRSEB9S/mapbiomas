@@ -4,4 +4,5 @@
 //= require i18n.js
 //= require i18n/translations
 //= require js-routes
+//= require routes
 //= require bundle
