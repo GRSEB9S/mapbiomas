@@ -6,4 +6,6 @@ en:
     submit: Create Item
     create_error: Failed to create glossary item
     update_error: Failed to update glossary item
+    word: Word
+    definition: Definition
 
