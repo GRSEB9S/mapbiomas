@@ -1,6 +1,6 @@
 class Cms::GlossariesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_glossary, only: %i[update destroy]
+  before_action :set_glossary, only: %i[edit update destroy]
 
   def new
     @glossary = Glossary.new
@@ -17,6 +17,8 @@ class Cms::GlossariesController < ApplicationController
       render :new
     end
   end
+
+  def edit; end
 
   def update
     authorize @glossary
