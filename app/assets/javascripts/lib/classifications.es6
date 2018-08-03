@@ -47,13 +47,6 @@ export class Classifications {
     return result;
   }
 
-  getTreeIds(obj = this.buildTree(), ids = []) {
-    return lodash.toPairs(obj).reduce((ids, [id, child]) => {
-      ids.push(lodash.toNumber(id))
-      return this.getTreeIds(child.children, ids)
-    }, ids)
-  }
-
   buildTree(idProp = 'id', parentIdProp = 'parentId') {
     const parsedOptions = _.map(this.classifications, (item) => ({
       ...item,

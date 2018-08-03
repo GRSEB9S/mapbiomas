@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import lodash from 'lodash';
 import Select from 'react-select-plus';
 import { Tabs } from 'react-tabs';
 
@@ -11,6 +12,7 @@ import { Classifications } from '../../lib/classifications';
 import { Territories } from '../../lib/territories';
 
 import TutorialModal from '../modals/tutorial';
+import PointModal from '../modals/point';
 import StatsModal from '../modals/stats';
 import TransitionsModal from '../modals/transitions_chart_and_matrix';
 import WarningModal from '../modals/warning';
@@ -31,7 +33,16 @@ import TransitionsLabels from '../panels/transitions/labels';
 
 Tabs.setUseDefaultStyles(false);
 
-const DENSE_FOREST_ID = 3;
+const TERRITORY_CATEGORIES = {
+  country: 'País',
+  state: 'Estado',
+  city: 'Municipio',
+  biome: 'Bioma',
+  watershedLevel1: 'Bacias Nivel 1',
+  watershedLevel2: 'Bacias Nivel 2',
+  indigenousLand: 'Terra Indígena',
+  conservationUnit: 'UC'
+}
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -47,6 +58,7 @@ export default class Map extends React.Component {
       myMapTerritories: null,
       opacity: 1,
       qualities: [],
+      selectedPoint: {},
       selectedMap: null,
       showTutorial: false,
       showWarning: {
@@ -56,7 +68,8 @@ export default class Map extends React.Component {
       },
       showModals: {
         coverage: false,
-        transitions: false
+        transitions: false,
+        point: false
       },
       territory: null,
       territoryTab: 0,
@@ -78,10 +91,16 @@ export default class Map extends React.Component {
     return this.state.classifications || this.props.defaultClassifications;
   }
 
-  get firstLevelClassifications() {
-    let tree = new Classifications(this.props.defaultClassifications).buildTree();
+  get defaultClassificationsObject() {
+    return new Classifications(this.props.defaultClassifications);
+  }
 
-    return _.map(tree, (c, i) => parseInt(i));
+  get defaultClassificationsTree() {
+    return this.defaultClassificationsObject.buildTree();
+  }
+
+  get firstLevelClassifications() {
+    return _.map(this.defaultClassificationsTree, (c, i) => parseInt(i));
   }
 
   get baseMaps() {
@@ -233,6 +252,13 @@ export default class Map extends React.Component {
     ]
   }
 
+  defaultClassificationsTreeIds(tree = this.defaultClassificationsTree, ids = []) {
+    return lodash.toPairs(tree).reduce((ids, [id, child]) => {
+      ids.push(lodash.toNumber(id))
+      return this.defaultClassificationsTreeIds(child.children, ids)
+    }, ids)
+  }
+
   mapParams(name) {
     return {
       name: name,
@@ -247,6 +273,39 @@ export default class Map extends React.Component {
   }
 
   //Handlers
+  handlePointClick(e) {
+    API.inspector({
+      year: this.year,
+      lat: e.latlng.lat,
+      lng: e.latlng.lng
+    }).then((result) => {
+      let newState = {
+        showModals: {
+          point: true
+        },
+        selectedPoint: {
+          latitude: e.latlng.lat,
+          longitude: e.latlng.lng
+        }
+      }
+
+      if (!_.isEmpty(result)) {
+        let categories = lodash.reduce(TERRITORY_CATEGORIES, (obj, value, key) => {
+          obj[key] = lodash.find(result, ['categoria', value]);
+
+          return obj;
+        }, {});
+
+        newState.selectedPoint = {
+          ...newState.selectedPoint,
+          categories: categories
+        }
+      }
+
+      this.setState(newState);
+    })
+  }
+
   handleModeChange(mode) {
     this.setState({
       mode,
@@ -318,10 +377,6 @@ export default class Map extends React.Component {
 
   handleTransitionReset() {
     this.setState({ transition: null });
-  }
-
-  handleTransitionsLoad(transitions) {
-    this.setState({ transitions });
   }
 
   setOpacity(opacity) {
@@ -567,6 +622,15 @@ export default class Map extends React.Component {
     });
   }
 
+  loadTransitions(props = { territory: this.territory, years: this.years }) {
+    API.transitions({
+      territory_id: props.territory.map((t) => t.id).join(','),
+      year: props.years.join(',')
+    }).then((transitions) => {
+      this.setState({ transitions });
+    })
+  }
+
   loadQualities(year) {
     API.qualities({year: year})
     .then((qualities) => {
@@ -604,6 +668,28 @@ export default class Map extends React.Component {
     };
   }
 
+  renderPointModal() {
+    if(this.state.showModals.point) {
+      return (
+        <PointModal
+          {...this.props}
+          point={this.state.selectedPoint}
+          year={this.year}
+          years={this.years}
+          territory={this.territory}
+          selectedClassifications={this.firstLevelClassifications}
+          dataLayerOptions={this.dataLayerOptions}
+          onClose={this.closeModal.bind(this, 'point')}
+          transition={this.transition}
+          classifications={this.props.defaultClassifications}
+          setTransition={this.handleTransitionChange.bind(this)}
+        />
+      );
+    }
+
+    return null;
+  }
+
   renderStatsModal() {
     if(this.state.showModals.coverage) {
       return (
@@ -628,7 +714,7 @@ export default class Map extends React.Component {
         <TransitionsModal
           iframe={this.props.iframe}
           setTransition={this.handleTransitionChange.bind(this)}
-          onClose={this.closeModal.bind(this, 'transitions')}
+          treeIds={this.defaultClassificationsTreeIds()}
           years={this.years}
           downloadUrl={this.downloadTransitions()}
           transition={this.transition}
@@ -636,6 +722,7 @@ export default class Map extends React.Component {
           classifications={this.props.defaultClassifications}
           toTotalData={this.toTotalData()}
           fromTotalData={this.fromTotalData()}
+          onClose={this.closeModal.bind(this, 'transitions')}
         />
       );
     }
@@ -718,6 +805,7 @@ export default class Map extends React.Component {
     return (
       <div className={`map ${this.state.hide ? 'hide-panels' : ''}`}>
         {this.renderTutorial()}
+        {this.renderPointModal()}
         {this.renderStatsModal()}
         {this.renderTransitionsModal()}
         {this.renderWarning('coverage')}
@@ -725,6 +813,7 @@ export default class Map extends React.Component {
         {this.renderWarning('quality')}
 
         <MapCanvas
+          mainMap={true}
           myMapsPage={this.props.myMapsPage}
           iframe={this.props.iframe}
           dataLayerOptions={this.dataLayerOptions}
@@ -743,6 +832,7 @@ export default class Map extends React.Component {
           qualities={this.state.qualities}
           qualityInfo={this.props.qualityInfo}
           qualityCardsUrl={this.props.qualityCardsUrl}
+          onPointClick={this.handlePointClick.bind(this)}
         />
 
         <div className="map-panel__wrapper">
@@ -845,6 +935,7 @@ export default class Map extends React.Component {
             {!this.props.iframe && COVERAGE && (
               <div className="map-panel__grow map-panel-can-hide" id="coverage-auxiliar-controls">
                 <CoverageAuxiliarControls
+                  defaultClassificationsTree={this.defaultClassificationsTree}
                   availableClassifications={this.props.availableClassifications}
                   classifications={this.classifications}
                   availableBaseMaps={this.props.availableBaseMaps}
@@ -908,11 +999,7 @@ export default class Map extends React.Component {
                 myMapsPage={this.props.myMapsPage}
                 onModeChange={this.handleModeChange.bind(this)}
                 calcMaxHeight={() => (
-                  $('#right-sidebar-grown-panel').height() - (
-                    this.mode === 'quality' ? (
-                      $('#quality-labels').height() + 55
-                    ) : 105
-                  )
+                  $('#right-sidebar-grown-panel').height() - 55
                 )}
                 coveragePanel={(
                   <CoverageMenu
@@ -934,7 +1021,7 @@ export default class Map extends React.Component {
                     territory={this.territory}
                     years={this.years}
                     onExpandModal={this.expandModal.bind(this, 'transitions')}
-                    onTransitionsLoad={this.handleTransitionsLoad.bind(this)}
+                    transitionsLoad={this.loadTransitions.bind(this)}
                   />
                 )}
                 qualityPanel={(

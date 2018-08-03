@@ -1,0 +1,133 @@
+.map-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: $base-spacing;
+  box-shadow: $base-box-shadow;
+  border-radius: $base-border-radius;
+  background: $white;
+  padding: $base-spacing;
+  z-index: 9999;
+  max-height: 100%;
+
+  .ReactTabs {
+    height: 100%;
+    overflow: hidden;
+
+    &__TabList {
+      margin-top: 0;
+      margin-left: 0;
+      padding: 0;
+    }
+
+    &__TabPanel {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      overflow: auto;
+    }
+  }
+
+  &--vertical-smaller {
+    bottom: auto;
+    margin: $base-spacing;
+
+    @include media($mobile) {
+      @include map-modal-smaller;
+    }
+  }
+
+  &--horizontal-smaller {
+    margin: $base-spacing auto;
+    width: 700px;
+
+    @include media($mobile) {
+      @include map-modal-smaller;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0.4;
+    z-index: 20;
+  }
+
+  &__header {
+    display: flex;
+    border-bottom: 1px solid $light-gray;
+    padding-bottom: $small-spacing;
+    margin-bottom: $base-spacing;
+  }
+
+  &__title {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+  }
+
+  &__content {
+    height: 100%;
+    overflow: auto;
+    padding: $micro-spacing;
+    scroll-y: auto;
+
+    ul {
+      list-style-type: none;
+      margin: $small-spacing 0 $small-spacing $base-spacing;
+    }
+
+    @include media($mobile) {
+      height: calc(100% - 40px);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $small-spacing;
+
+    button {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
+
+  &__tutorial {
+    &--button {
+      margin-right: $small-spacing;
+    }
+
+    ol {
+      @extend %default-ol;
+      list-style-type: decimal;
+    }
+  }
+
+  &__download {
+    margin: $small-spacing;
+  }
+
+  &__close {
+    cursor: pointer;
+    color: $medium-gray;
+
+    &:hover, &:active, &:focus {
+      color: $dark-gray;
+    }
+  }
+
+  .page__container {
+    .stats__chart-and-table {
+      margin-bottom: 0;
+    }
+  }
+}

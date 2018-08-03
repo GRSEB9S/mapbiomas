@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'underscore';
-import classNames from 'classnames';
 import { API } from '../../../lib/api';
 import { Classifications } from '../../../lib/classifications';
 
@@ -12,21 +11,12 @@ export default class TransitionsMenu extends React.Component {
     };
   }
 
-  loadTransitions(props) {
-    API.transitions({
-      territory_id: props.territory.map((t) => t.id).join(','),
-      year: props.years.join(',')
-    }).then((transitions) => {
-      this.props.onTransitionsLoad(transitions)
-    })
-  }
-
   expandModal() {
     this.props.onExpandModal();
   }
 
   componentDidMount() {
-    this.loadTransitions(this.props);
+    this.props.transitionsLoad(this.props);
 
     $('#transitions-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',
@@ -37,7 +27,7 @@ export default class TransitionsMenu extends React.Component {
   componentWillReceiveProps(nextProps) {
     if(!_.isEqual(this.props.territory, nextProps.territory) ||
        !_.isEqual(this.props.years, nextProps.years)){
-      this.loadTransitions(nextProps)
+      this.props.transitionsLoad(nextProps);
     }
   }
 

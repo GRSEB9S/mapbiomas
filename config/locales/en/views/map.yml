@@ -92,19 +92,47 @@ en:
         esri_imagery: Image (without specific year)
         openstreet_mapnik: Roads
         esri_relief: Relief
+      point_info:
+        title: Point info
+        no_info: There's no information about the selected point
+        category:
+          not_found: Not found
+        map: Map
+        coverage: Coverage
+        transitions: Transitions
       layers:
         title: Layers
-        countries: Countries
-        states: States
-        cities: Cities
-        biomes: Biomes
-        contour_maps: Contour maps
-        indigenous_lands: Indigenous Lands
-        conservation_units: Conservation Units
-        watersheds_level_1: Watersheds L1
-        watersheds_level_2: Watersheds L2
-        macro_watersheds: Macro watersheds
-        watersheds: Watersheds - Level 2
+        countries:
+          one: Country
+          many: Countries
+        states:
+          one: State
+          many: States
+        cities:
+          one: City
+          many: Cities
+        biomes:
+          one: Biome
+          many: Biomes
+        contour_maps:
+          one: Contour map
+          many: Contour maps
+        indigenous_lands:
+          one: Indigenous Land
+          many: Indigenous Lands
+        conservation_units:
+          one: Conservation Unit
+          many: Conservation Units
+        watersheds_level_1:
+          one: Watershed L1
+          many: Watersheds L1
+        watersheds_level_2:
+          one: Watershed L2
+          many: Watersheds L2
+        macro_watersheds:
+          many: Macro watersheds
+        watersheds:
+          many: Watersheds - Level 2
       coverage:
         title: Coverage
         analysis: Land Cover Data

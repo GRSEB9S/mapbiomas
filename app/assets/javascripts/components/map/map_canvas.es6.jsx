@@ -1,5 +1,6 @@
-import _ from 'underscore';
 import React from 'react';
+import _ from 'underscore';
+import classNames from 'classnames';
 
 export class MapCanvas extends React.Component {
   constructor() {
@@ -347,17 +348,21 @@ export class MapCanvas extends React.Component {
   }
 
   setupMapCoordinatesControl() {
-    L.control.coordinates({
-      position: 'bottomright',
-      decimalSeperator: I18n.t('number.format.separator'),
-      useLatLngOrder: true,
-      labelTemplateLat: `${I18n.t('geolocation.latitude')}: {y}`,
-      labelTemplateLng: `${I18n.t('geolocation.longitude')}: {x}`
-    }).addTo(this.map);
+    if (this.props.mainMap){
+      L.control.coordinates({
+        position: 'bottomright',
+        decimalSeperator: I18n.t('number.format.separator'),
+        useLatLngOrder: true,
+        labelTemplateLat: `${I18n.t('geolocation.latitude')}: {y}`,
+        labelTemplateLng: `${I18n.t('geolocation.longitude')}: {x}`
+      }).addTo(this.map);
+    }
   }
 
   setupScaleControl() {
-    L.control.betterscale({ imperial: false, metric: true }).addTo(this.map);
+    if (this.props.mainMap){
+      L.control.betterscale({ imperial: false, metric: true }).addTo(this.map);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -411,6 +416,10 @@ export class MapCanvas extends React.Component {
                 .setView([-20, -45], 6)
                 .on('layerremove', () => this.map.spin(false));
 
+    if (this.props.mainMap) {
+      this.map.on('click', (e) => this.props.onPointClick(e));
+    }
+
     L.tileLayer('http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
@@ -434,8 +443,14 @@ export class MapCanvas extends React.Component {
   }
 
   render() {
+    let classes = classNames(
+      'map__canvas', {
+        'main-map': this.props.mainMap
+      }
+    );
+
     return (
-      <div className="map__canvas" ref="element" />
+      <div className={ classes } ref="element" />
     );
   }
 }

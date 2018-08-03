@@ -42,6 +42,7 @@ class CoverageAuxiliarControls extends React.Component {
         <TabPanel>
           <ClassificationControl
             className="map-panel__content"
+            defaultClassificationsTree={this.props.defaultClassificationsTree}
             options={this.props.classifications}
             availableOptions={this.props.availableClassifications}
             onChange={this.props.handleClassificationsChange}

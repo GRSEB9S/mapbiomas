@@ -70,7 +70,6 @@ class ClassificationControl extends Component {
   }
 
   render() {
-    const tree = new Classifications(this.props.availableOptions).buildTree();
     let index = 1;
     let allClassificationsSelected = this.ids.length == this.props.availableOptions.length;
 
@@ -102,7 +101,7 @@ class ClassificationControl extends Component {
           )}
 
           <ul className="classifications-control__inner">
-            {_.map(tree, (node) => this.renderNode(node, index++))}
+            {_.map(this.props.defaultClassificationsTree, (node) => this.renderNode(node, index++))}
           </ul>
         </Scrollable>
       </div>

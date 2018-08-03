@@ -1,12 +1,23 @@
+.transitions-matrix,
+.transitions-matrix__container,
+.transitions-matrix__container > table {
+  width: 100%;
+  height: 100%;
+}
+
 .transitions-matrix {
+  overflow: auto;
+
   &__container {
-    overflow: auto;
+    display: flex;
+    flex-direction: column;
   }
 
-  width: 100%;
-  table-layout: auto;
-  font-size: 0.8rem;
-  margin-bottom: $small-spacing;
+  table {
+    table-layout: auto;
+    font-size: 0.8rem;
+    margin-bottom: $small-spacing;
+  }
 
   td {
     padding: $small-spacing/2 $small-spacing;

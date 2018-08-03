@@ -138,9 +138,9 @@ class TransitionsMatrix extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="transitions-matrix__container">
-          <table className="transitions-matrix">
+      <div className="transitions-matrix__container">
+        <div className="transitions-matrix">
+          <table>
             <tbody>
               <tr>
                 <td></td>
@@ -164,9 +164,11 @@ class TransitionsMatrix extends React.Component {
           </table>
         </div>
 
-        <button className="map-modal__download primary" onClick={this.startDownload.bind(this)}>
-          {I18n.t('map.index.transitions.matrix.download')}
-        </button>
+        <div>
+          <button className="map-modal__download primary" onClick={this.startDownload.bind(this)}>
+            {I18n.t('map.index.transitions.matrix.download')}
+          </button>
+        </div>
       </div>
     );
   }

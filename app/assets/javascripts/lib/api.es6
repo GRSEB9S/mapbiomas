@@ -11,6 +11,10 @@ export class API {
     return $.get(Routes.api_collection_2_statistics_path(params));
   }
 
+  static inspector(params) {
+    return $.get(Routes.api_inspector_path(params));
+  }
+
   static qualities(params) {
     return $.get(Routes.api_qualities_path(params));
   }
