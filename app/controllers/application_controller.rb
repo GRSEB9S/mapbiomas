@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    flash[:error] = "I18n.t('users.not_authorized')"
     redirect_to(root_path)
   end
 end
