@@ -4,6 +4,10 @@
 
   ul {
     @extend %default-ul;
+    .list-unstyled {
+      list-style: none !important;
+      list-style-type: none !important;
+    }
   }
 
   ol.numeric_list {
