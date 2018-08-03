@@ -1,5 +1,7 @@
 pt-BR:
   new: Novo
+  edit: Editar
+  destroy: Excluir
   errors:
     messages:
       blank: 'não pode ficar vazio(a)'

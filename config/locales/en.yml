@@ -1,5 +1,7 @@
 en:
   new: New
+  edit: Edit
+  destroy: Delete
   time:
     formats:
       short: '%Y-%m-%d'
