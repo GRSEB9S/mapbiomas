@@ -2,12 +2,13 @@
   margin: $big-spacing $small-spacing;
   flex: 1;
 
+  .list-unstyled {
+    list-style: none !important;
+    list-style-type: none !important;
+  }
+
   ul {
     @extend %default-ul;
-    .list-unstyled {
-      list-style: none !important;
-      list-style-type: none !important;
-    }
   }
 
   ol.numeric_list {

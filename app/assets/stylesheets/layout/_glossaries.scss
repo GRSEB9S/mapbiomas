@@ -48,4 +48,14 @@
 
 .glossary-table {
   margin-top: 10px;
+  .cms {
+    text-align: center;
+    .fa-trash {
+      color: $light-gray;
+      transition: all 0.35s ease;
+      &:hover {
+        color: red;
+      }
+    }
+  }
 }
