@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+
+puts 'Cleaning Glossary DB'
+
+Glossary.destroy_all
+puts 'Done'
+
+puts 'Seeding DB'
+CSV.foreach("#{ Rails.root }/db/data/glossary_seed.csv", headers: true) do |row|
+  # TODO WAITING GLOSSARY FINAL VERSION WITH CATEGORY FIELD
+  Glossary.create(word: row['Palavras'], definition: row['Definição'])
+end
+puts "Done - #{Glossary.count} words created"

@@ -10,3 +10,4 @@ en:
     registered:
       title: Registered users
       subtitle: 'Total: %{total}'
+    not_authorized: You are not authorized to continue.

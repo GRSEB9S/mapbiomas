@@ -1,0 +1,12 @@
+en:
+  glossaries:
+    title: Glossary
+    subtitle: In this glossary are terms commonly used in describing MapBiomas's methodology and products
+    new_item: New Glossary item
+    edit_item: Edit Glossary item
+    submit: Create Item
+    create_error: Failed to create glossary item
+    update_error: Failed to update glossary item
+    word: Word
+    definition: Definition
+

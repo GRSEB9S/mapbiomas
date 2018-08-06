@@ -1,0 +1,44 @@
+Palavras,Definição
+Acurácia (Anáilise da Acurácia),Análise quantitativa da exatidão do mapeamento. Indica o erro de alocação e o erro de área.
+Algoritmo,Conjunto de regras e procedimentos estabelecidos para solucionar uma tarefa.
+Amostras de Acurácia,Pontos coletados nas imagens por ano e classificados pelo intérprete com uma classe de cobertura ou uso da terra.
+Amostras de Treinamento,Pontos ou polígonos utilizados para treinar o classificador.
+Árvore de Decisão Empírica,"Arvore de decisão um caminho com bifurcações geridas por parâmetros para se chegar a classificação do pixel. Nas árvores de decisão empíricas o formato e os parâmetros da árvore são definidos pelos analistas, assim como a parametrização de cada nó de decisão. "
+Asset,"Coleção de mapas, imagens ou dados georeferenciados disponíveis para processamento e análise no Google Earth Engine."
+ATBD (Algorithm Theoretical Basis Document),Documento com descrição metodológica e dos algoritmos utilizados.
+Banda,Refere-se a cada camada de informação de uma Asset - seja mapas ou imagens.
+Banda espectral ,Intervalo entre dois comprimentos de onda no espectro eletromagnético. O Landsat possui 7 bandas espectrais cada qual cobrindo uma faixa do espectro eletromagnético.
+Carta ou Carta ao Milionésimo,"Divisão cartográfica do território brasileiro definido pelo IBGE integrado a Carta Internacional do Mundo ao Milionésimo (CIM). Esta divisão é utilizada para organizar o trabalho de processamento dos mapas do MapBiomas. Cada carta abrange uma área de aproximadamente 18,7 mil Km2 e cerca de 20 milhões de pixels."
+Cena,Referente a imagem gerada pelo sensor de um satélite. Para cobrir o terrritório brasileiro são necessárias 380 cenas do Landsat.
+Classificação,Distribuição dos pixels em classes de um determinado bioma ou tema. 
+Classificador,Nome genérico para um método de classificação automatizada (exemplo de um classificador é o Random Forest).
+Code Editor,Ferramenta de programação do Google Earth Engine com interface gráfica para visualização dos resultados.
+CollectMobile,Aplicativo para ceular desenvolvido pelo MapBiomas para coleta de dados de referencia no campo. 
+Coleção,"Cada versão da série histórica anual de mapas e dados de cobertura e uso solo do projeto MapBiomas. As coleções podem variar no período coberto, metetodologia e legenda."
+Computação em Nuvem,Processamento de dados realizado de forma distribuída em processadores disponíveis na rede mundial de computadores. No MapBiomas utiliza computação em nuvem através do Google Earth Engine e Google Cloud Computing.
+Consistência espacial,"Distribuição dos pixel de uma classe no espaço é coerente com a paisagem do local. Por exemplo, no meio de uma área de floresta em encosta aparecem vários pixels como água o que indica uma inconsistência espacial."
+Consistência temporal,"História de classificação de um pixel no tempo é coerente com as transições possíveis ou prováveis de cobertura ou uso do solo. Por exemplo, um pixel que é classificado como florestal por 20 anos mas em um ano no meio da série aparece como não floresta. É provável que seja um erro de classificação."
+Dashboard (painel de controle),Plataforma de apresentação visual das informações e dados consolidados para fácil acompanhamento das informações.
+Feature Space,"Conjunto de informações espectrais com as bandas, índices e métricas utilizadas na classificação do random forest."
+Filtro Espacial,Análise de pós-classificação para corrigir erros de consistência espacial em uma classe.
+Filtro Temporal,Análise de pós-classificação para corrigir erros de consistência temporal entre classes e anos.
+Fusion Table,Tabela de dados que se conecta com ferramentas da Google. Muito usado para parametrizar variáveis e regras de processamento (regras para aplicação do filtro de transição).
+Google Cloud Storage,Ferramenta da Google para armazenar grande quantidade de informações em nuvem.
+Google Earth Engine,Plataforma de análise e visualização de dados espaciais científicos em computação em nuvem sobre a superfície da Terra. Todo processamento de imagens e produçãodos mapas do MapBiomas é feito nesta plataforma.
+Imagem Landsat,Imagem gerada pelo um conjunto de satélites Landsat - lançados pela NASA e operados pelo Serviço Geológico Americano.
+Integração,Rotina de sobreposição das classificações dos biomas e temas gerando mapas integrados. Os mapas das diferentes classes do MapBiomas são feitos separadamente e depois integrados utilizando regras de prevalência para o caso de um pixel recer mais de uma classificação.
+Mapa de Integração,Mapa final que consolida os mapas dos biomas e temas.
+Mapa de Transição,Mapa que apresenta as principais transições de cobertura e uso da terra. É produzido a partir comparação entre um par de mapas (ex. 2000 x 2016). Nestes mapas cada pixel pode ser classificado sem mudança ou com mudança. E para cada mudança recebe um código que representa a classe em T1 e a classe em T2.
+Mosaico de imagem,"Conjunto de pixels Landsat com boa qualidade (pouca interferência de nuvens, por exemplo) selecionados em um período determinado. Os mosaicos do MapBiomas são construídos analisando individualmente cada pixel das imagens Landsat disponíveis para o periodo de análise. No mosaico busca-se representar da melhor forma possível a área de análise para um período especificado. No MapBiomas os mosaicos de imagem em geral representam o período de um ano. "
+Índice espectral,"Um índice espectral é o resultado de operações matemáticas entre valores numéricos de pixels das bandas espectrais de uma imagem. Por exemplo, o Índice de Vegetação da Diferença Normalizada (NDVI) é calculado por: (NIR - R) / (NIR + R) - sendo NIR a banda do infravermelho próximo e R a banda do Vermelho. "
+Pixel,"A menor unidade em uma imagem digital. Uma imagem de satélite é composta por uma matriz de pixels, cada pixel com um valor digital. O pixel no MapBiomas corresponde ao pixel das imagens Landsat com 30m de resolução. A área do pixel sofre variações de acordo com latitude quando mais distante do equador a área tende a ser menor."
+Pós-classificação,Rotinas automatizadas de melhoria da consistência dos mapas executadas após a classificação e a integração dos mapas. Os filtro temporal e espacial são exemplos de pós classificação.
+Random Forest,Método de classificação supervisionada que se baseia em arvores de decisão.
+Raster,"Imagem digital, composta por uma matriz de valores (pixel)."
+Resolução espacial,Descreve o nível de detalhe de uma imagem. As imagens Landsat (TM) tem uma resolução espacial média de 30m.
+Scripts,Conjunto de instruções escritas em linguagem de programação para que uma função seja executada
+Sensor do satélite,Instrumento de um satélite para detecção remota de energia eletromagnética. Um satélite pode ter múltiplos sensores para captação de intervalos espectrais distintos.
+Shapefile,Formato de arquivo com um conjunto de dados espaciais no formato vetorial.
+Temas Transversais,"Classes de uso que ocorrem pelos diferentes biomas e que são mapeadas por processo único para todo o país. Os temas transversais do MapBiomas incluem agricultura, pastagem, floresta plantada, área urbana, mineração, mangue, apincum, aquicultura, praia e dunas."
+WebCollect,Plataforma de coleta de pontos utilizados para treinamento dos classificadores ou análise de acurácia.
+Workspace,Plataforma Web desenvolvida pelo MapBiomas para parametrização e classificação de mapas de cobertura e uso da terra. A plataforma serve de interface entre o trabalho dos analistas e o processamento no Google Earth Engine.

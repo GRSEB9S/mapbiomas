@@ -1,0 +1,29 @@
+<div class="page">
+  <div class="page__container">
+    <h1 class="page__title"><%= I18n.t('glossaries.title') %></h1>
+    <%= I18n.t('glossaries.subtitle') %>
+    <table class="glossary-table">
+      <tr>
+        <th><%= I18n.t('glossaries.word') %></th>
+        <th><%= I18n.t('glossaries.definition') %></th>
+        <% if user_signed_in? && current_user.admin? %>
+          <th><%= I18n.t('edit') %></th>
+          <th><%= I18n.t('destroy') %></th>
+        <% end %>
+      </tr>
+      <% @glossaries.each do |glossary| %>
+        <tr>
+          <td><%= glossary.word %></td>
+          <td><%= glossary.definition %></td>
+          <% if user_signed_in? && current_user.admin? %>
+            <td class="cms"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_cms_glossary_path(glossary) %></td>
+            <td class="cms"><%= link_to '<i class="fa fa-trash"></i>'.html_safe, cms_glossary_path(glossary), method: :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @glossaries %>
+  </div>
+</div>
+
+

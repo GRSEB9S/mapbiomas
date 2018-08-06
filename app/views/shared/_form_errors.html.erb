@@ -1,0 +1,16 @@
+<% if flash.key?(:error) || flash.key?(:success) %>
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>">
+      <%= value %>
+      <% if record.errors.any? %>
+        <div class="errors-container">
+          <ul class="list-unstyled">
+            <% record.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

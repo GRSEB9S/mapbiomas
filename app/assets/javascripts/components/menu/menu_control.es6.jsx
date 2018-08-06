@@ -11,15 +11,21 @@ export class MenuControl extends React.Component {
     });
   }
 
-  renderRegisteredUsersButton() {
+  renderAdminButtons() {
     if(this.props.currentUser.isAdmin) {
-      return (
-        <li className="menu__item">
-          <a className="menu__link" href={Routes.registered_users_path()}>
-            {I18n.t('users.registered.title')}
-          </a>
-        </li>
-      );
+      return ([
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.registered_users_path()}>
+                  {I18n.t('users.registered.title')}
+                </a>
+              </li>,
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.new_cms_glossary_path()}>
+                  {I18n.t('glossaries.title')
+                }
+                </a>
+              </li>
+            ]);
     }
   }
 
@@ -43,7 +49,7 @@ export class MenuControl extends React.Component {
               </a>
             </li>
 
-            {this.renderRegisteredUsersButton()}
+            {this.renderAdminButtons()}
 
             <li className="menu__item">
               <a className="menu__link" data-method="delete" href={Routes.destroy_user_session_path()}>
@@ -170,6 +176,11 @@ export class MenuControl extends React.Component {
               <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path('accuracy-analysis')}>
                   {I18n.t('layouts.header.methodology.analysis')}
+                </a>
+              </li>
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.glossaries_path()}>
+                  {I18n.t('glossaries.title')}
                 </a>
               </li>
               <li className="menu__item">

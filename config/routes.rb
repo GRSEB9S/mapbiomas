@@ -39,4 +39,10 @@ Rails.application.routes.draw do
   end
 
   get 'discourse/sso', to: 'discourse_sso_sessions#authenticate'
+
+  namespace :cms do
+    resources :glossaries, only: [:new, :edit, :create, :update, :destroy]
+  end
+
+  resources :glossaries, only: :index, path: 'glossary'
 end
