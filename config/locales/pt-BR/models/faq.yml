@@ -1,0 +1,7 @@
+pt-BR:
+  activerecord:
+    attributes:
+      faq:
+        id: ID
+        question: Pergunta
+        answer: Resposta

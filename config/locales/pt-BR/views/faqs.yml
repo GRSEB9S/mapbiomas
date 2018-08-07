@@ -1,0 +1,13 @@
+en:
+  faqs:
+    en: Inglês
+    pt_br: Brazilian Portuguese
+    title: FAQ
+    new_item: Nova pergunta do FAQ
+    edit_item: Editar pergunta do FAQ
+    submit: Criar pergunta
+    create_error: Erro ao criar pergunta
+    update_error: Erro ao atualizar pergunta
+    question: Pergunta
+    answer: Resposta
+
