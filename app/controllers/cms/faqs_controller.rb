@@ -1,35 +1,39 @@
 class Cms::FaqsController < ApplicationController
-  before_action :set_faq, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_faq, only: %i[edit update destroy]
 
-  def index
-    @faqs = Faq.all
-    render json: @faqs
-  end
-
-  def show
-    render json: @faq
+  def new
+    @faq = Faq.new
+    authorize @faq
   end
 
   def create
     @faq = Faq.new(faq_params)
+    authorize @faq
     if @faq.save
-      render json: @faq, status: :created
+      redirect_to faqs_path
     else
-      render json: @faq.errors, status: :unprocessable_entity
+      flash.now[:error] = I18n.t('faqs.create_error')
+      render :new
     end
   end
 
+  def edit; end
+
   def update
+    authorize @faq
     if @faq.update(faq_params)
-      render json: @faq, status: :ok
+      redirect_to faqs_path
     else
-      render json: @faq.errors, status: :unprocessable_entity
+      flash.now[:error] = I18n.t('faqs.update_error')
+      render :edit
     end
   end
 
   def destroy
+    authorize @faq
     @faq.destroy
-    render json: @faq, status: :ok
+    redirect_to faqs_path
   end
 
   private
@@ -39,6 +43,6 @@ class Cms::FaqsController < ApplicationController
   end
 
   def faq_params
-    params.require(:faq).permit(:question, :answer, :faq_category_id)
+    params.require(:faq).permit(:question, :answer, :locale)
   end
 end

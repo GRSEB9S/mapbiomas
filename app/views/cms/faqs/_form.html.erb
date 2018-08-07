@@ -1,0 +1,24 @@
+<%= form_for [:cms, @faq] do |f| %>
+  <div class="form-inputs">
+    <div class="field">
+      <%= f.label :question %>
+      <%= f.text_field :question, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :locale %>
+      <%= f.select :locale, [[I18n.t('faqs.pt_br'), 'pt-br'], [I18n.t('faqs.en'), 'en']], class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :answer %>
+      <%= f.text_area :answer, class: 'form-control' %>
+    </div>
+
+    <div class="glossary__form-actions form-actions">
+      <button type="submit">
+        <%= t('faqs.submit') %>
+      </button>
+    </div>
+  </div>
+<% end %>

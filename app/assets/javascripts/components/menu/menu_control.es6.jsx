@@ -24,6 +24,12 @@ export class MenuControl extends React.Component {
                   {I18n.t('glossaries.title')
                 }
                 </a>
+              </li>,
+              <li className="menu__item">
+                <a className="menu__link" href={Routes.new_cms_faq_path()}>
+                  {I18n.t('faqs.title')
+                }
+                </a>
               </li>
             ]);
     }
