@@ -14,7 +14,7 @@ puts 'Done'
 
 puts 'Seeding DB'
 CSV.foreach("#{ Rails.root }/db/data/glossary_seed.csv", headers: true) do |row|
-  # TODO WAITING GLOSSARY FINAL VERSION WITH CATEGORY FIELD
-  Glossary.create(word: row['Palavras'], definition: row['Definição'])
+  locale = row['Língua'] || 'pt-BR'
+  Glossary.create(word: row['Palavras'], definition: row['Definição'], locale: locale.chomp)
 end
 puts "Done - #{Glossary.count} words created"
