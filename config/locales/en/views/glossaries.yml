@@ -1,5 +1,7 @@
 en:
   glossaries:
+    en: English
+    pt_br: Brazilian Portuguese
     title: Glossary
     subtitle: In this glossary are terms commonly used in describing MapBiomas's methodology and products
     new_item: New Glossary item

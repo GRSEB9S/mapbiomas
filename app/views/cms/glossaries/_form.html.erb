@@ -6,6 +6,11 @@
     </div>
 
     <div class="field">
+      <%= f.label :locale %>
+      <%= f.select :locale, [[I18n.t('glossaries.pt_br'), 'pt-br'], [I18n.t('glossaries.en'), 'en']], class: 'form-control' %>
+    </div>
+
+    <div class="field">
       <%= f.label :definition %>
       <%= f.text_area :definition, class: 'form-control' %>
     </div>

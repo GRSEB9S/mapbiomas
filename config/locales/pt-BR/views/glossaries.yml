@@ -1,5 +1,7 @@
 pt-BR:
   glossaries:
+    en: Inglês
+    pt_br: Português Brasileiro
     title: Glossário
     subtitle: Neste glossário estão termos comumente utilizados na descrição de metodologia e produtos do MapBiomas
     new_item: Novo item do Glossário
