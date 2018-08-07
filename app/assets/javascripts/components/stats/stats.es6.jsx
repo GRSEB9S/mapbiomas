@@ -172,6 +172,22 @@ export default class Stats extends React.Component {
     return null;
   }
 
+  componentDidUpdate(prevProps) {
+    let newState = {};
+
+    if (!_.isEmpty(this.props.selectedTerritories)) {
+      newState['selectedTerritories'] = prevProps.selectedTerritories;
+    }
+
+    if (!_.isEmpty(this.props.selectedClassifications)) {
+      newState['selectedClassifications'] = prevProps.selectedClassifications;
+    }
+
+    if (!_.isEmpty(newState)) {
+      this.setState(newState);
+    }
+  }
+
   render() {
     return (
       <div className="page__container">
