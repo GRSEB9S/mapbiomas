@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180802203603) do
+ActiveRecord::Schema.define(version: 20180807125201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "glossaries", force: :cascade do |t|
-    t.string   "word",       null: false
-    t.text     "definition", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "word",                         null: false
+    t.text     "definition",                   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "locale",     default: "pt-BR", null: false
   end
 
   create_table "maps", force: :cascade do |t|
