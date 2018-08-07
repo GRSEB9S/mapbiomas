@@ -1,5 +1,4 @@
 class Faq < ActiveRecord::Base
-  belongs_to :faq_category
-
-  validates :name, presence: true, uniqueness: true
+  validates :question, presence: true, uniqueness: { scope: :locale }
+  validates :answer, presence: :true
 end
