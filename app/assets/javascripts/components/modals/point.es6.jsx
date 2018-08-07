@@ -38,10 +38,12 @@ export default class PointModal extends React.Component {
         year: this.props.years.join(',')
       })
     ]).then((values) => {
-      let territory = new Territories(values[0]).withOptions();
+      let newTerritory = _.find(values[0], ['id', territory.id])
+
+      newTerritory = new Territories([newTerritory]).withOptions();
 
       this.setState({
-        territory: territory,
+        territory: newTerritory,
         transitions: values[1]
       });
     });
