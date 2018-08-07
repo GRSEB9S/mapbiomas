@@ -61,7 +61,12 @@ pt-BR:
         quality:
           title: .
           body: .
-      opacity: Opacidade
+      zoom_in: Aumentar zoom
+      zoom_out: Diminuir zoom
+      hide_panels: Ocultar paineis
+      opacity_dropdown: Exibir controle de opacidade
+      tutorial: Tutorial
+      point_click: Habilitar clique em pontos do mapa
       classifications:
         title: Classes
         description: |

@@ -52,6 +52,7 @@ export default class Map extends React.Component {
       baseMaps: null,
       classifications: null,
       hide: false,
+      pointClick: false,
       layers: null,
       mode: location.hash.replace('#', '') || 'coverage',
       myMaps: null,
@@ -274,36 +275,38 @@ export default class Map extends React.Component {
 
   //Handlers
   handlePointClick(e) {
-    API.inspector({
-      year: this.year,
-      lat: e.latlng.lat,
-      lng: e.latlng.lng
-    }).then((result) => {
-      let newState = {
-        showModals: {
-          point: true
-        },
-        selectedPoint: {
-          latitude: e.latlng.lat,
-          longitude: e.latlng.lng
+    if (this.state.pointClick) {
+      API.inspector({
+        year: this.year,
+        lat: e.latlng.lat,
+        lng: e.latlng.lng
+      }).then((result) => {
+        let newState = {
+          showModals: {
+            point: true
+          },
+          selectedPoint: {
+            latitude: e.latlng.lat,
+            longitude: e.latlng.lng
+          }
         }
-      }
 
-      if (!_.isEmpty(result)) {
-        let categories = lodash.reduce(TERRITORY_CATEGORIES, (obj, value, key) => {
-          obj[key] = lodash.find(result, ['categoria', value]);
+        if (!_.isEmpty(result)) {
+          let categories = lodash.reduce(TERRITORY_CATEGORIES, (obj, value, key) => {
+            obj[key] = lodash.find(result, ['categoria', value]);
 
-          return obj;
-        }, {});
+            return obj;
+          }, {});
 
-        newState.selectedPoint = {
-          ...newState.selectedPoint,
-          categories: categories
+          newState.selectedPoint = {
+            ...newState.selectedPoint,
+            categories: categories
+          }
         }
-      }
 
-      this.setState(newState);
-    })
+        this.setState(newState);
+      });
+    }
   }
 
   handleModeChange(mode) {
@@ -385,6 +388,10 @@ export default class Map extends React.Component {
 
   toggleHide() {
     this.setState({ hide: !this.state.hide });
+  }
+
+  togglePointClick() {
+    this.setState({ pointClick: !this.state.pointClick });
   }
 
   handleMainMenuIndexSelect(index) {
@@ -814,6 +821,7 @@ export default class Map extends React.Component {
 
         <MapCanvas
           mainMap={true}
+          pointClick={this.state.pointClick}
           myMapsPage={this.props.myMapsPage}
           iframe={this.props.iframe}
           dataLayerOptions={this.dataLayerOptions}
@@ -842,7 +850,9 @@ export default class Map extends React.Component {
               zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
               hiddenPanels={this.state.hide}
+              pointClick={this.state.pointClick}
               setOpacity={this.setOpacity.bind(this)}
+              enablePointClick={this.togglePointClick.bind(this)}
               hidePanels={this.toggleHide.bind(this)}
               showTutorial={this.expandTutorial.bind(this, this.mode)}
             />

@@ -22,26 +22,40 @@ class ZoomAndOpacityControl extends Component {
 
   render() {
     const { showOpacityDropdown } = this.state;
-    const { className, zoomIn, zoomOut, opacity, hiddenPanels, hidePanels, showTutorial } = this.props;
+    const {
+      className,
+      enablePointClick,
+      hiddenPanels,
+      hidePanels,
+      opacity,
+      pointClick,
+      showTutorial,
+      zoomIn,
+      zoomOut
+    } = this.props;
 
     return (
       <div className="map-panel__action-panel map-panel__action-panel--zoom-and-opacity" style={positionRelative}>
-        <button className="primary" onClick={zoomIn}>
+        <button title={I18n.t('map.index.zoom_in')} className="primary" onClick={zoomIn}>
           <i className="fa fa-plus" />
         </button>
-        <button className="primary" onClick={zoomOut}>
+        <button title={I18n.t('map.index.zoom_out')} className="primary" onClick={zoomOut}>
           <i className="fa fa-minus" />
         </button>
-        <button className="primary" onClick={hidePanels}>
+        <button title={I18n.t('map.index.hide_panels')} className="primary" onClick={hidePanels}>
           <i className="fa fa-eye-slash" />
         </button>
         <button
+          title={I18n.t('map.index.opacity_dropdown')}
           className={classNames('primary', showOpacityDropdown && 'active')}
           onClick={this.toggleOpacityDropdown.bind(this)}
         >
           <i className="fa fa-sun-o" />
         </button>
-        <button className="primary" onClick={showTutorial}>?</button>
+        <button title={I18n.t('map.index.tutorial')} className="primary" onClick={showTutorial}>?</button>
+        <button title={I18n.t('map.index.point_click')} className={classNames('primary', pointClick && 'active')} onClick={enablePointClick}>
+          <i className="fa fa-binoculars" />
+        </button>
         {showOpacityDropdown && !hiddenPanels && (
           <div>
             <input

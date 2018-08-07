@@ -444,8 +444,8 @@ export class MapCanvas extends React.Component {
 
   render() {
     let classes = classNames(
-      'map__canvas', {
-        'main-map': this.props.mainMap
+      'map__canvas leaflet-container', {
+        'point-click': this.props.pointClick
       }
     );
 

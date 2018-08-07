@@ -61,7 +61,12 @@ en:
         quality:
           title: .
           body: .
-      opacity: Opacity
+      zoom_in: Zoom in
+      zoom_out: Zoom out
+      hide_panels: Hide panels
+      opacity_dropdown: Show opacity control
+      tutorial: Tutorial
+      point_click: Enable clicking on map points
       classifications:
         title: Classes
         description: |
