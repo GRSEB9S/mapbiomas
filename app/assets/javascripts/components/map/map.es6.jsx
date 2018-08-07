@@ -130,6 +130,14 @@ export default class Map extends React.Component {
     return [this.state.territory];
   }
 
+  get territoryArray() {
+    if(_.isArray(this.territory)) {
+      return this.territory;
+    } else {
+      return [this.territory];
+    }
+  }
+
   get transition() {
     return this.state.transition || this.state.transitions[0];
   }
@@ -142,38 +150,62 @@ export default class Map extends React.Component {
     return this.state.mode;
   }
 
+  get coverageDataLayerOptions() {
+    let ids = this.classifications.map((c) => c.id);
+
+    return {
+      layers: 'coverage',
+      map: 'wms/v/3.0/classification/coverage.map',
+      territory_id: _.map(this.territoryArray, (t) => t.value),
+      year: this.year,
+      classification_ids: ids
+    };
+  }
+
   get transitionsDataLayerOptions() {
     let transitionInfo = {};
+    let map;
 
     if(this.state.transition) {
       transitionInfo = {
         transition_c0: this.state.transition.from,
         transition_c1: this.state.transition.to
       }
+    } else {
+      transitionInfo = {
+        transitions_group: this.transitionsLayers
+      }
+    }
+
+    if (this.mode == 'transitions' && !this.state.transition) {
+      map = 'wms/v/3.0/classification/transitions_group.map';
+    } else {
+      map = 'wms/v/3.0/classification/transitions.map';
     }
 
     return {
       ...transitionInfo,
+      layers: 'transitions',
+      map: map,
+      territory_id: _.map(this.territoryArray, (t) => t.value),
       year_t0: this.years[0],
-      year_t1: this.years[1],
-      transitions_group: this.transitionsLayers,
-      transparent: true
-    }
+      year_t1: this.years[1]
+    };
   }
 
-  get coverageDataLayerOptions() {
-    let ids = this.classifications.map((c) => c.id);
-
+  get qualityDataLayerOptions() {
     return {
-      year: this.year,
-      classification_ids: ids
+      layers: 'availability',
+      map: 'wms/v/3.0/classification/availability.map',
+      year: this.year
     };
   }
 
   get dataLayerOptions() {
     return {
       coverage: this.coverageDataLayerOptions,
-      transitions: this.transitionsDataLayerOptions
+      transitions: this.transitionsDataLayerOptions,
+      quality: this.qualityDataLayerOptions
     };
   }
 
@@ -838,8 +870,6 @@ export default class Map extends React.Component {
           territory={this.territory}
           selectedLayers={this.state.layers}
           qualities={this.state.qualities}
-          qualityInfo={this.props.qualityInfo}
-          qualityCardsUrl={this.props.qualityCardsUrl}
           onPointClick={this.handlePointClick.bind(this)}
         />
 
@@ -981,12 +1011,6 @@ export default class Map extends React.Component {
                 />
               </div>
             )}
-
-            {QUALITY && (
-              <div className="map-panel-can-hide" id="quality-labels">
-                <QualityLabels />
-              </div>
-            )}
           </div>
 
           <div className="map-panel__area map-panel__main map-panel-can-hide">
@@ -1034,17 +1058,7 @@ export default class Map extends React.Component {
                     transitionsLoad={this.loadTransitions.bind(this)}
                   />
                 )}
-                qualityPanel={(
-                  <QualityMenu
-                    {...this.props}
-                    cards={this.state.cards}
-                    territory={this.territory}
-                    year={this.year}
-                    classifications={this.classifications}
-                    qualities={this.state.qualities}
-                    qualityInfo={this.props.qualityInfo}
-                  />
-                )}
+                qualityPanel={null}
               />
 
               {this.props.myMapsPage && this.state.selectedMap && (

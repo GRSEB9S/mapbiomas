@@ -49,8 +49,6 @@ class MapPresenter
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
       qualityInfo: QUALITY_INFO,
-      qualityCardsUrl: 'https://s3.amazonaws.com/mapbiomas-ecostage/cartas_ibge_250000.geojson',
-      qualityDataUrl: 'https://s3.amazonaws.com/mapbiomas-ecostage/Avalia%C3%A7%C3%A3o_Qualitativa_Mosaicos_COLECAO++1+-+V3.xlsx',
       apiUrl: ENV['TERRAS_MAP_API_URL']
     }
   end

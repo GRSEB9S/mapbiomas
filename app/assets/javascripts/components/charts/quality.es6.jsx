@@ -63,10 +63,6 @@ class QualityChart extends React.Component {
     };
   }
 
-  handleDownloadButton() {
-    window.open(this.props.qualityDataUrl, '_blank');
-  }
-
   drawChart() {
     this.chart = new Highcharts.Chart(this.chartOptions());
   }
@@ -106,12 +102,6 @@ class QualityChart extends React.Component {
         <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
         <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
         <div className="quality-chart" ref="chartElement"></div>
-        {/*<button
-          className="primary"
-          onClick={this.handleDownloadButton.bind(this)}
-        >
-          {I18n.t('map.index.quality.download')}
-        </button>*/}
       </div>
     );
   }
