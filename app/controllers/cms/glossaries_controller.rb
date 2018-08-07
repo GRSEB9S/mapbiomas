@@ -43,6 +43,6 @@ class Cms::GlossariesController < ApplicationController
   end
 
   def glossary_params
-    params.require(:glossary).permit(:word, :definition)
+    params.require(:glossary).permit(:word, :definition, :locale)
   end
 end
