@@ -84,7 +84,7 @@ export default class PointModal extends React.Component {
     } else {
       return (
         <div className="point-modal__instructions">
-          <h2>Escolha ao lado um corte territorial ou tema para ver mapa e estatística</h2>
+          <h2>{ I18n.t('map.index.point_info.instructions') }</h2>
         </div>
       );
     }
@@ -103,7 +103,7 @@ export default class PointModal extends React.Component {
     } else {
       return (
         <div className="point-modal__instructions">
-          <h2>Escolha ao lado um corte territorial ou tema para ver mapa e estatística</h2>
+          <h2>{ I18n.t('map.index.point_info.instructions') }</h2>
         </div>
       );
     }
@@ -127,7 +127,7 @@ export default class PointModal extends React.Component {
     } else {
       return (
         <div className="point-modal__instructions">
-          <h2>Escolha ao lado um corte territorial ou tema para ver mapa e estatística</h2>
+          <h2>{ I18n.t('map.index.point_info.instructions') }</h2>
         </div>
       );
     }

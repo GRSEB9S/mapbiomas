@@ -99,6 +99,7 @@ pt-BR:
         esri_relief: Relevo
       point_info:
         title: Informações sobre o ponto
+        instructions: Escolha ao lado um corte territorial ou tema para ver o mapa e a estatística
         no_info: Não há informações para o ponto selecionado
         category:
           not_found: Nâo encontrado

@@ -99,6 +99,7 @@ en:
         esri_relief: Relief
       point_info:
         title: Point info
+        instructions: Choose territory framework or cross cutting theme to see the map and the statistic
         no_info: There's no information about the selected point
         category:
           not_found: Not found
