@@ -180,10 +180,7 @@ pt-BR:
         analysis: Qualidade do mosaico
         labels:
           title: Legenda
-          subtitle: Porcentagem de nuvens ou interferências aceita nas imagens que compuseram o mosaico
-          bad: "Ruim: > 30%"
-          regular: "Regular: entre 10 e 30%"
-          good: "Boa: < 10%"
+          subtitle: Quantidade disponível de observações sem nuvens por pixel para o ano selecionado
         chart:
           tooltip: Cartas nesta categoria
           bad: Ruim

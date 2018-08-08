@@ -82,7 +82,7 @@ class QualityChart extends React.Component {
   }
 
   componentDidMount() {
-    this.drawChart();
+    // this.drawChart();
 
     $('#quality-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',

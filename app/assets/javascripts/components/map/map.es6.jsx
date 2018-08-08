@@ -655,12 +655,6 @@ export default class Map extends React.Component {
     return Routes.download_transitions_path(params);
   }
 
-  loadCards() {
-    $.getJSON(this.props.qualityCardsUrl, (cards) => {
-      this.setState({ cards });
-    });
-  }
-
   loadTransitions(props = { territory: this.territory, years: this.years }) {
     API.transitions({
       territory_id: props.territory.map((t) => t.id).join(','),
@@ -821,7 +815,6 @@ export default class Map extends React.Component {
       this.handleMapSelect(this.props.iframeMap);
     }
 
-    this.loadCards();
     this.loadQualities(this.year);
 
     window.addEventListener("hashchange", () =>
@@ -1011,6 +1004,12 @@ export default class Map extends React.Component {
                 />
               </div>
             )}
+
+            {QUALITY && (
+              <div className="map-panel-can-hide" id="quality-labels">
+                <QualityLabels />
+              </div>
+            )}
           </div>
 
           <div className="map-panel__area map-panel__main map-panel-can-hide">
@@ -1058,7 +1057,17 @@ export default class Map extends React.Component {
                     transitionsLoad={this.loadTransitions.bind(this)}
                   />
                 )}
-                qualityPanel={null}
+                qualityPanel={(
+                  <QualityMenu
+                    {...this.props}
+                    cards={this.state.cards}
+                    territory={this.territory}
+                    year={this.year}
+                    classifications={this.classifications}
+                    qualities={this.state.qualities}
+                    qualityInfo={this.props.qualityInfo}
+                  />
+                )}
               />
 
               {this.props.myMapsPage && this.state.selectedMap && (
