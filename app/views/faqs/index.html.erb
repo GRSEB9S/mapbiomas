@@ -2,10 +2,22 @@
   <div class="page__container">
     <h1 class="page__title"><%= I18n.t('faqs.title') %></h1>
     <% @faqs.each do |faq| %>
-      <details>
-        <summary><%= faq.question %></summary>
-        <%= faq.answer %>
-      </details>
+      <div class="faq-card">
+        <details>
+          <summary><%= faq.question %></summary>
+          <div class="faq-card__content">
+            <div class="faq-card__answer">
+              <p><%= faq.answer.html_safe %></p>
+            </div>
+            <div class="faq-card__actions">
+              <% if user_signed_in? && current_user.admin? %>
+                <spam class="cms"><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_cms_faq_path(faq) %></spam>
+                <spam class="cms"><%= link_to '<i class="fa fa-trash"></i>'.html_safe, cms_faq_path(faq), method: :delete %></spam>
+              <% end %>
+            </div>
+          </div>
+        </details>
+      </div>
     <% end %>
   </div>
 </div>
