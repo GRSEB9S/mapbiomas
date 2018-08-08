@@ -66,7 +66,10 @@ pt-BR:
       hide_panels: Ocultar paineis
       opacity_dropdown: Exibir controle de opacidade
       tutorial: Tutorial
-      point_click: Habilitar clique em pontos do mapa
+      point_click:
+        <p>
+          Com este botão ativado vc pode clicar em qualquer ponto do mapa e saber todas as camadas de dados atividades e suas respectivas estatísticas e mapas (ex. estado, município, terra indígena, bacia hidrográfica)
+        </p>
       classifications:
         title: Classes
         description: |

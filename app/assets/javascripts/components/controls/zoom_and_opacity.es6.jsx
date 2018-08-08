@@ -20,6 +20,15 @@ class ZoomAndOpacityControl extends Component {
     this.props.setOpacity(value / 100);
   }
 
+  componentDidMount() {
+    $('#point-info-tooltip').tooltipster({
+      theme: 'tooltip-custom-theme',
+      interactive: true,
+      contentAsHTML: true,
+      content: $(I18n.t('map.index.point_click'))
+    });
+  }
+
   render() {
     const { showOpacityDropdown } = this.state;
     const {
@@ -53,7 +62,7 @@ class ZoomAndOpacityControl extends Component {
           <i className="fa fa-sun-o" />
         </button>
         <button title={I18n.t('map.index.tutorial')} className="primary" onClick={showTutorial}>?</button>
-        <button title={I18n.t('map.index.point_click')} className={classNames('primary', pointClick && 'active')} onClick={enablePointClick}>
+        <button id="point-info-tooltip" className={classNames('primary', pointClick && 'active')} onClick={enablePointClick}>
           <i className="fa fa-binoculars" />
         </button>
         {showOpacityDropdown && !hiddenPanels && (
