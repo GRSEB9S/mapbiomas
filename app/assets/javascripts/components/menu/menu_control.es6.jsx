@@ -198,6 +198,12 @@ export class MenuControl extends React.Component {
           </li>
 
           <li className="menu__item">
+            <a className="menu__link" href={Routes.faqs_path()}>
+              {I18n.t('faqs.title')}
+            </a>
+          </li>
+
+          <li className="menu__item">
             <a className="menu__link" href='#'>
               {I18n.t('layouts.header.communication.title')}
             </a>
