@@ -20,7 +20,7 @@ end
 
 CSV.foreach("#{ Rails.root }/db/data/faq_seed.csv", headers: true) do |row|
   locale = row['Língua'] || 'pt-BR'
-  Faq.create(question: row['Pergunta'], answer: row['Resposta'], locale: locale.downcase.chomp)
+  Faq.create(ordination: row['ID'], question: row['Pergunta'], answer: row['Resposta'], locale: locale.downcase.chomp)
 end
 puts "Done - #{Glossary.count} words created"
 puts "Done - #{Faq.count} questions created"
