@@ -9,7 +9,6 @@ class Cms::FaqsController < ApplicationController
 
   def create
     @faq = Faq.new(faq_params)
-    @faq.ordination = Faq.count + 1 unless @faq.ordination
     authorize @faq
     if @faq.save
       redirect_to faqs_path
