@@ -1,0 +1,44 @@
+.faq-card {
+  width: 100%;
+  &__answer {
+    display: flex;
+    flex: 1;
+  }
+  &__actions {
+    .cms {
+      text-align: center;
+      font-size: 14px;
+      .fa-trash {
+        color: $light-gray;
+        transition: all 0.35s ease;
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+details {
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  padding: .5em .5em 0;
+  margin: 10px 0px;
+  transition: all 0.35s ease;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin: -.5em -.5em 0;
+  padding: .5em;
+}
+
+details[open] {
+  padding: .5em;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: .5em;
+}

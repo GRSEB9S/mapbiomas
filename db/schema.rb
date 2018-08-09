@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180807125201) do
+ActiveRecord::Schema.define(version: 20180807194823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "faqs", force: :cascade do |t|
+    t.string   "question",                     null: false
+    t.text     "answer",                       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "locale",     default: "pt-br", null: false
+  end
 
   create_table "glossaries", force: :cascade do |t|
     t.string   "word",                         null: false

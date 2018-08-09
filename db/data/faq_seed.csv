@@ -1,0 +1,119 @@
+ID,Pergunta,Resposta,Língua
+1,O que é o MapBiomas?,"O projeto MapBiomas é uma iniciativa do Observatório do Clima co-criada e desenvolvida por uma rede multi-institucional envolvendo universidades, ONGs e empresas de tecnologia com o propósito de mapear anualmente a cobertura e uso do solo do Brasil e monitorar as mudanças do território.",PT-BR
+2,Quem produz os mapas do MapBiomas?,"O MapBiomas envolve pesquisadores e especialistas em sensoriamento remoto, ciência da computação e dos biomas e dos principais usos do solo do país. Esta equipe trabalha e seus escritórios e laboratórios espalhados por várias cidades brasileiras incluindo Belém, Recife, Florianópolis, São Paulo, Brasília, Feira de Santana e Porto Alegre. Todo o trabalho é feito utilizando computação em nuvem através da plataforma Google Earth Engine.",PT-BR
+3,Qual a diferença entre as coleções do MapBiomas?,"Foram produzidas 4 coleções de mapas do MapBIomas desde o início do projeto em julho de 2015. As coleções representam alterações nos períodos de abrangência dos mapa anuais, mudanças na legenda ou correções frente a versão anterior.
+
+Foram quatro coleções de dados publicadas: (1) coleção 1 (beta) novembro de 2015 que cobre o período de 2008 a 2015, (ii) coleção 2, lançada em abril de 2017, que cobrem o período de 2000 a 2016, (iii) Coleção 2.3 que foi uma versão bastante melhorada da Coleção 2 lançada em dezembro de 2017 e (iv) Coleção 3 – lançada em agosto de 2018 cobrindo o período de 1985 a 2017.
+
+Todas as coleções do MapBiomas tem toda a série histórica revisada.",PT-BR
+4,Como faço para baixar os mapas do MapBiomas?,"Os mapas podem ser baixados diretamente na plataforma através do link:
+http://mapbiomas.org/pages/downloads
+
+Não esqueça de baixar também os códigos da legenda em:
+http://mapbiomas.org/pages/legenda
+
+Também é possível baixar os dados diretamente do Google Earth Engine quando se necessita de cortes territoriais ou temporais específicos.
+
+No Google Earth Engine é possível também acessar todos os dados do Mosaico Landsat e os mapas de transição. Para obter os IDs das coleções do MapBiomas no Google Earth Engine acesse:
+http://mapbiomas.org/pages/scripts",PT-BR
+5,Porque os arquivos baixados tem várias camadas de dados?,"Cada camada representa um ano da série. Por exemplo na Coleção 2.3 a camada 0 = 2000 e a camada 17=2016.
+Também é possível baixar os dados diretamente do Google Earth Engine quando se necessita de cortes territoriais ou temporais específicos.",PT-BR
+6,Porque os mapas são apresentados somente em formato raster?,"Mapas de cobertura e uso da terra feitos na escala do MapBiomas (pixel de 30m) e série temporal longa são impraticáveis em formato vetorial. Todo o processamento do projeto é feito em formato raster, pixel a pixel.",PT-BR
+7,Posso baixar os dados em formato Shapefile?,"Não tem esta possibilidade da plataforma MapBiomas. A vetorização dos mapas é extremamente custosa e pouco prática para todo o território. A solução recomendada caso queira trabalhar com vetor é baixar o dado, realizar o recorte territorial e espacial de interesse e fazer a vetorização em seguida usando seu software favorito.",PT-BR
+8,Os dados do MapBiomas são públicos?,"Sim, os dados do MapBiomas são públicos e gratuitos para uso não comercial ou com fins de interesse público.",PT-BR
+9,"É possível trabalhar com os dados do MapBiomas na nuvem, sem ter que baixá-los?","Sim, as coleções do MapBiomas estão disponíveis como ASSETS na plataforma Google Earth Engine e podem ser acessados, processados e analisados diretamente na plataforma sem necessidade baixar os dados.
+
+Estão disponíveis três coleções de dados principais:
+> mapas anuais de cobertura e uso do solo do Brasil entre 1985 a 2017
+> mapas de transição para períodos selecionados entre 1985 a 2017
+> mosaicos de imagens Landsat para cada ano da série entre 1985 a 2017
+
+Para obter os IDs das coleções do MapBiomas no Google Earth Engine acesse:
+http://mapbiomas.org/pages/scripts",PT-BR
+10,Como faço para citar os dados do MapBiomas?,"Os dados do MapBiomas são públicos e gratuitos mediante a simples referência da fonte observando o seguinte formato:
+""Projeto MapBiomas – Coleção [versão] da Série Anual de Mapas de Cobertura e Uso de Solo do Brasil, acessado em [data] através do link: [LINK]""
+
+""Projeto MapBiomas - é uma iniciativa multi-institucional para gerar mapas anuais de cobertura e uso do solo a partir de processos de classificação automática aplicada a imagens de satélite. A descrição completa do projeto encontra-se em http://mapbiomas.org""",PT-BR
+11,Como faço para acessar os dados do MapBiomas no Google Earth Engine?,"É preciso ter uma conta no Google Earth Engine (GEE), o que pode ser feito através do seguinte link: https://earthengine.google.com
+
+Ao acessar o Code Editor do GEE (https://code.earthengine.google.com) você poderá iniciar scripts para visualizar e processar dados. No link abaixo da plataforma do MapBiomas você encontra exemplos de Scripts para acessar os dados do MapBiomas no Google Earth Engine.
+http://mapbiomas.org/pages/scripts",PT-BR
+12,Onde encontro a descrição detalhada da legenda?,"A descrição detalhada da legenda incluindo a correlação com as classes do IBGE, FAO e IPCC estão disponíveis para download em:
+http://mapbiomas.org/pages/downloads",PT-BR
+13,Posso baixar os dados tabulares de estatísticas de cobertura e uso do solo? Para quais recortes territoriais?,"Sim, as estatísticas de cobertura e uso do solo, bem como das matrizes de transição para todo o país e com recortes por bioma, estado e município estão disponíveis para download em:
+http://mapbiomas-staging.herokuapp.com/pages/estatisticas",PT-BR
+14,"Baixei os mapas de uma coleção do MapBiomas, como saber o significado de cada código de legenda?","O arquivo com os códigos de legenda pode ser acessado no seguinte link:
+http://mapbiomas-staging.herokuapp.com/pages/legenda",PT-BR
+15,Como fazer para baixar os mapas de um estado ou município?,"Na plataforma do MapBiomas os mapas são disponibilizados prontos para baixar com recorte de Biomas. Para o recorte de estados e municípios podem ser gerados no Google Earth Engine acessando script disponível no link abaixo. Você deve selecionar o estado e município e os anos de interesse e colocar para salvar em sua pasta no Google Drive.
+http://mapbiomas.org/pages/scripts",PT-BR
+16,Como é feito o cálculo de áreas do Mapas em formato raster do MapBiomas?,"O Landsat tem uma resolução média de 30m, por isso é comum associar a área de um pixel a 900 m2. Mas, como os dados originais do Mapbiomas são criados seguindo a representação padrão GEE (Lat/Long e WGS84), nativamente não se utiliza de uma projeção equivalente (equal area). Assim, a distância do alvo até a linha do equador influencia o tamanho do pixel. Portanto, na escala continental do Brasil, deve-se evitar o cálculo contando os pixels e multiplicando por 900 m2.
+
+No MapBiomas aplicamos dois métodos para cálculo de área.
+1 - Quando realizado fora do Google Earth Engine, reprojetamos o dado Mapbiomas para o sistema UTM e calculamos o valor métrico do pixel central, localizado na intersecção entre a carta 1:250.000 (padrão IBGE) e área de interesse. Em seguida, contabilizamos todos os pixels dentro da área de interesse e multiplicamos pelo valor de referência, em m², do pixel central anteriormente calculado. Este método foi aplicado por exemplo, em toda estatística das Coleções 2 e 2.3.
+2 - Quando o cálculo é realizado dentro do Google Earth Engine aplicamos a função ee.Image.pixelArea() que gera uma imagem na qual o valor de cada pixel é a área desse pixel em metros quadrados, levando em consideração eventuais distorções cartográficas. Este foi o método foi aplicado na Coleção 3.",PT-BR
+17,Porque as áreas dos estados e municípios não bate precisamente com as áreas do IBGE?,"Esta diferença ocorre porque o cálculo de área no MapBiomas é feito a partir da soma das áreas de cada pixel. Os pixels de borda são distribuídos entre as áreas fronteiriças. Em geral a diferença das áreas é menor do que 0,2% podendo em casos de municípios menores chegar a 0,5%.",PT-BR
+18,Como saber estatísticas de vários municípios ou vários recortes territoriais de forma agrupada?,"Crie uma conta na Plataforma MapBiomas através do link: http://mapbiomas.org/users/sign_in
+
+Ao logar aparece a opção MEUS MAPAS (http://mapbiomas.org/my_maps). Vc poderá criar seu mapa acrescentando diferentes recortes territoriais. Neste módulo as estatísticas são todas agrupadas para o mapa criado.",PT-BR
+19,Quais mapas foram utilizadas como referência para o mapeamento?,"Você pode acessar a descrição de todos os mapas de referência utilizados pelo MapBiomas em:
+http://mapbiomas.org/pages/database/reference_maps",PT-BR
+1,What is MapBiomas?,"The MapBiomas project is an initiative of the Climate Observatory co-created and developed by a multi-institutional network involving universities, NGOs, and technology companies with the purpose of annually map Brazil's land-use and land cover and monitor the changes in the territory.",EN
+2,Who produces MapBiomas maps?,"MapBiomas involves researchers and specialists in remote sensing, computer science, Brazilian biomes and the main land uses of the country. The team works in its offices and laboratories spread throughout several Brazilian cities including Belem, Recife, Florianopolis, São Paulo, Brasília, Feira de Santana and Porto Alegre. All work is done using cloud computing through the Google Earth Engine platform.",EN
+3,What is the difference between MapBiomas collections?,"Four collections of MapBiomas maps have been produced since the beginning of the project in July 2015. The collections represent changes in the coverage periods of the annual map, changes in the legend or corrections to the previous version.
+
+Four collections of data were published: (1) collection 1 (beta) November 2015 covering the period from 2008 to 2015; (ii) collection 2, launched in April 2017, including the period 2000 to 2016; ) Collection 2.3 which was a significantly improved version of Collection 2 released in December 2017 and (iv) Collection 3 - launched in August 2018 covering the period 1985 to 2017.
+
+Each MapBiomas collection reprocesses the entire time series.",EN
+4,How do I download MapBiomas maps?,"The maps can be downloaded directly on the platform through the link:
+http://mapbiomas.org/pages/downloads
+
+Do not forget to download the legend id’s as well:
+http://mapbiomas.org/pages/legenda
+
+It is possible to download data directly from Google Earth Engine and fit your request to specific territories or temporal windows.
+
+In Google Earth Engine you can also access all Landsat Mosaics and transition maps. To get MapBiomas collections IDs in Google Earth Engine, go to:
+http://mapbiomas.org/pages/scripts",EN
+5,Why do the downloaded files have multiple layers of data?,"Each layer represents one year of the time series. For example, in Collection 2.3 the layer 0 = 2000 and the layer 17 = 2016. It is possible to download data directly from Google Earth Engine and fit your request to specific territories or temporal windows.",EN
+6,Why are maps presented in raster format only?,"Land use and land cover maps made on the MapBiomas scale (30m pixel) and large time series are impractical in vector format. All data processing is performed in raster format, pixel by pixel.",EN
+7,Can I download the data in Shapefile format?,"There isn’t such possibility in the MapBiomas platform. The vectorization of maps is extremely costly and impractical for the whole territory. The recommended solution, if you want to work with vector, is to download the data, perform the territorial or spatial clipping of your interest and then vectorize using your favorite software.",EN
+8,Are MapBiomas data public?,"Yes, MapBiomas data is public and free for non-commercial use or general interest purposes.",EN
+9,Is it possible to work with MapBiomas data in the cloud without having to download them?,"Yes, MapBiomas collections are available as ASSETS on the Google Earth Engine platform and can be accessed, processed and analyzed directly on the platform without the need of downloading the data.
+
+Three main collections of data are available:
+> annual coverage and land use maps of Brazil between 1985 and 2017
+> transition maps for selected periods between 1985 and 2017
+> Landsat image mosaics for each year of the series between 1985 to 2017
+
+To get MapBiomas collections IDs in Google Earth Engine, go to:
+http://mapbiomas.org/pages/scripts",EN
+10,How do I cite MapBiomas data?,"MapBiomas data is public and free of charge by merely referring to the source in the following format:
+""MapBiomas Project - Collection [version] of the Annual Land Use Land Cover Maps of Brazil, accessed on [date] through the link: [LINK]""
+
+""MapBiomas Project - is a multi-institutional initiative to generate annual land use land cover maps based on automatic classification processes applied to satellite images. The complete project description can be found at http://mapbiomas.org.""",EN
+11,How do I access MapBiomas data in Google Earth Engine?,"You must have a Google Earth Engine (GEE) account, which can be registered through the following link: https://earthengine.google.com
+
+By accessing the GEE Code Editor (https://code.earthengine.google.com), you can start scripts to view and process data. In the link below the MapBiomas platform, you can find examples of Scripts to access MapBiomas data in Google Earth Engine.
+http://mapbiomas.org/pages/scripts",EN
+12,Where do I find the detailed description of the legend?,"The detailed description of the Project including the correlation with the IBGE, FAO, and IPCC classes are available for download at:
+http://mapbiomas.org/pages/downloads",EN
+13,Can I download tabular and statistical data of the land use land cover maps? To which territorial subsets?,"Yes, land use land cover statistics, as well as transitional matrices for the whole country, biomes, states, and municipalities are available for download at:
+http://mapbiomas-staging.herokuapp.com/pages/statisticas",EN
+14,"I’ve download maps from a MapBiomas collection, how do I know the meaning of each caption code?","The file with the caption codes can be accessed at the following link:
+http://mapbiomas-staging.herokuapp.com/pages/legenda",EN
+15,How to download maps from a state or county?,"Inside the MapBiomas platform, the maps are available and ready to use clipped by Brazilian Biomes. For states and municipalities subsets, it can be generated inside Google Earth Engine, by accessing the script available at the link below.
+You must select the state and county and years of interest and export it to your Google Drive folder.
+http://mapbiomas.org/pages/scripts",EN
+16,How is the area of MapBiomas raster data calculated?,"Landsat has an average resolution of 30m, so it is common to associate the area of ​​a pixel to 900 m2. But, since the original MapBiomas data is created following the GEE standard representation (Lat/Long and WGS84), it does not use a native equal-area projection. Thus, the distance from the target to the Equator Line influences the pixel size. Therefore, in the continental scale of Brazil area calculation counting the pixels and multiplying by 900 m2 should be avoided.
+
+In MapBiomas we apply two methods for area calculation.
+
+1 - When performed outside Google Earth Engine, we reproject MapBiomas data to the UTM system and calculate the metric value of the central pixel, located at the intersection between the 1: 250,000 (IBGE standard) chart and area of ​​interest. Next, we count all pixels within the area of ​​interest and multiply by the reference value, in m², as previously calculated. This method has been applied, for example, throughout all the statistics calculation in Collections 2 and 2.3.
+
+2 - When the calculation is performed within Google Earth Engine we apply the function ee.Image.pixelArea() that generates an image in which the value of each pixel is the area of that pixel in square meters, taking into consideration eventual cartographic distortions. This was the method applied in Collection 3.",EN
+17,Why do the areas of the states and municipalities do match precisely to IBGE areas?,"This difference occurs because the area calculation in MapBiomas is done from the sum of the areas of each pixel. The edge pixels are distributed between the border areas. In general, the difference in areas is less than 0.2%, and in cases of smaller municipalities, it can reach 0.5%.",EN
+18,How to know the statistics of several municipalities or several territorial subsets in a grouped manner?,"Create an account at MapBiomas Platform through the link: http://mapbiomas.org/users/sign_in
+
+When you log in, the MY MAPS option (http://mapbiomas.org/my_maps) appears. You can create your map by adding different places. In this module, the statistics are all grouped for the customized map.",EN
+19,Which maps were used as a reference for the mapping?,"You can access the description of all the reference maps used by MapBiomas in:
+http://mapbiomas.org/pages/database/reference_maps",EN

@@ -1,0 +1,13 @@
+en:
+  faqs:
+    en: English
+    pt_br: Brazilian Portuguese
+    title: FAQ
+    new_item: New FAQ question
+    edit_item: Edit FAQ question
+    submit: Save question
+    create_error: Failed to create question
+    update_error: Failed to update question
+    question: Question
+    answer: Answer
+

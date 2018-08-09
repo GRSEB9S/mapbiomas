@@ -1,0 +1,7 @@
+en:
+  activerecord:
+    attributes:
+      faq:
+        id: ID
+        question: Question
+        answer: Answer
