@@ -14,7 +14,7 @@ export class MapCanvas extends React.Component {
     this.cardsLayer = null;
   }
 
-  get territory() {
+  get territoryArray() {
     if(_.isArray(this.props.territory)) {
       return this.props.territory;
     } else {
@@ -62,27 +62,6 @@ export class MapCanvas extends React.Component {
       year: this.props.years[1],
       zIndex: 2
     }
-  }
-
-  mapPath(mode = this.props.mode) {
-    if (mode == 'transitions' && !this.props.transition) {
-      return 'wms/v/3.0/classification/transitions_group.map';
-    } else if (mode == 'transitions') {
-      return 'wms/v/2.3/classification/transitions.map';
-    } else {
-      return 'wms/v/3.0/classification/coverage.map';
-    }
-  }
-
-  dataLayerOptions(mode = this.props.mode) {
-    return {
-      ...this.props.dataLayerOptions[mode],
-      layers: mode,
-      map: this.mapPath(mode),
-      territory_id: _.map(this.territory, (t) => t.value),
-      format: 'image/png',
-      transparent: true
-    };
   }
 
   addBaseWMSLayer(baseMap) {
@@ -203,7 +182,7 @@ export class MapCanvas extends React.Component {
 
   setupTerritory() {
     if (!this.props.myMapsPage && !this.props.iframe) {
-      this.map.fitBounds(_.last(this.territory).bounds);
+      this.map.fitBounds(_.last(this.territoryArray).bounds);
     }
   }
 
@@ -285,8 +264,8 @@ export class MapCanvas extends React.Component {
   }
 
   setupDataLayer() {
-    const layerOptions = this.dataLayerOptions();
-    const options = {
+    let layerOptions = this.props.dataLayerOptions[this.props.mode];
+    let options = {
       format: 'image/png',
       transparent: true,
       opacity: 1,
@@ -310,41 +289,6 @@ export class MapCanvas extends React.Component {
         .on('tileunload', () => this.map.spin(false))
         .addTo(this.map);
     }
-  }
-
-  setupCardsLayer() {
-    if (this.cardsLayer) {
-      this.map.removeLayer(this.cardsLayer);
-    }
-
-    if (this.props.mode !== 'quality') {
-      return;
-    }
-
-    const style = {
-      color: '#000',
-      fillColor: '#aaa',
-      fillOpacity: 0.5,
-      weight: 0.2
-    };
-
-    this.map.spin(true);
-    this.cardsLayer = L.geoJson(this.props.cards, {
-      style: (feature) => {
-        const quality = _.findWhere(this.props.qualities, { name: feature.properties.name });
-
-        if (quality) {
-          return {
-            ...style,
-            fillColor: _.findWhere(this.props.qualityInfo, { api_name: String(quality.quality) }).color
-          };
-        } else {
-          return style;
-        }
-      }
-    })
-    .addTo(this.map);
-    this.map.spin(false);
   }
 
   setupMapCoordinatesControl() {
@@ -397,14 +341,6 @@ export class MapCanvas extends React.Component {
       this.dataLayer.setOpacity(this.props.opacity);
     }
 
-    if (
-      (prevProps.mode !== this.props.mode) ||
-      (!_.isEqual(prevProps.qualities, this.props.qualities)) ||
-      (!_.isEqual(prevProps.cards, this.props.cards))
-    ) {
-      this.setupCardsLayer();
-    }
-
     if (prevProps.selectedLayers != this.props.selectedLayers) {
       this.setupMapLayers();
     }
@@ -426,7 +362,6 @@ export class MapCanvas extends React.Component {
 
     this.setupTerritory();
     this.setupMyMapTerritories();
-    this.setupCardsLayer();
     this.setupDataLayer();
     this.setupBaseLayers();
     this.setupMapLayers();

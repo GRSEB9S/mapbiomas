@@ -180,10 +180,7 @@ en:
         analysis: Mosaic Quality
         labels:
           title: Labels
-          subtitle: Threshold for accepted percentage of clouds and other interferences accepted in the images that form the mosaic
-          bad: "Bad: > 30%"
-          regular: "Regular: between 10 and 30%"
-          good: "Good: < 10%"
+          subtitle: Available number of cloudless observations per pixel for selected year
         chart:
           tooltip: Cards on this category
           bad: Bad
