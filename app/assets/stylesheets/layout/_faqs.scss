@@ -5,6 +5,12 @@
     flex: 1;
   }
   &__actions {
+    float: right;
+    margin-right: 15px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0px 15px;
+    min-width: 100px;
     .cms {
       text-align: center;
       font-size: 14px;

@@ -43,6 +43,6 @@ class Cms::FaqsController < ApplicationController
   end
 
   def faq_params
-    params.require(:faq).permit(:question, :answer, :locale)
+    params.require(:faq).permit(:question, :answer, :locale, :ordination)
   end
 end

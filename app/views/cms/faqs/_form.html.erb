@@ -11,6 +11,11 @@
     </div>
 
     <div class="field">
+      <%= f.label :ordination %>
+      <%= f.number_field :ordination, min: 1, class: 'form-control' %>
+    </div>
+
+    <div class="field">
       <%= f.label :answer %>
       <%= f.text_area :answer, class: 'form-control' %>
     </div>
