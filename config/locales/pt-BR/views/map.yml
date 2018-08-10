@@ -146,6 +146,8 @@ pt-BR:
           many: Assentamentos
       territory:
         title: Territórios
+      infra_levels:
+        title: Infraestrutura
       layers:
         title: Camadas
         countries: Países

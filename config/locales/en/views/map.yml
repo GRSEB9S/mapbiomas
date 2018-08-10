@@ -146,6 +146,8 @@ en:
           many: Smallholder settlements
       territory:
         title: Territories
+      infra_levels:
+        title: Infrastructure
       layers:
         title: Layers
         countries: Countries
