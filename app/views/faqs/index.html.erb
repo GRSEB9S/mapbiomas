@@ -1,26 +1,28 @@
 <div class="page">
   <div class="page__container">
     <h1 class="page__title"><%= I18n.t('faqs.title') %></h1>
-    <% @faqs.each do |faq| %>
-      <div class="faq-card">
-        <details>
-          <summary><%= faq.question %>
-            <span class="faq-card__actions">
-              <% if user_signed_in? && current_user.admin? %>
-                <%= faq.ordination %>
-                <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_cms_faq_path(faq), class: "cms" %>
-                <%= link_to '<i class="fa fa-trash"></i>'.html_safe, cms_faq_path(faq), method: :delete, class: "cms" %>
-              <% end %>
-            </span>
-          </summary>
-          <div class="faq-card__content">
-            <div class="faq-card__answer">
-              <p><%= faq.answer.html_safe %></p>
+    <div id="faq-list">
+      <% @faqs.each do |faq| %>
+        <div class="faq-card">
+          <details>
+            <summary><%= faq.question %>
+              <span class="faq-card__actions">
+                <% if user_signed_in? && current_user.admin? %>
+                  <%= faq.ordination %>
+                  <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_cms_faq_path(faq), class: "cms" %>
+                  <%= link_to '<i class="fa fa-trash"></i>'.html_safe, cms_faq_path(faq), method: :delete, class: "cms" %>
+                <% end %>
+              </span>
+            </summary>
+            <div class="faq-card__content">
+              <div class="faq-card__answer">
+                <p><%= faq.answer.html_safe %></p>
+              </div>
             </div>
-          </div>
-        </details>
-      </div>
-    <% end %>
+          </details>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 

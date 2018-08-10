@@ -15,6 +15,7 @@ import Map from './components/map/map';
 import Menu from './components/menu/menu';
 import RegisteredUsers from './components/users/registered';
 import Stats from './components/stats/stats';
+import './linkify';
 
 window.React = React;
 window.ReactDOM = ReactDOM;
