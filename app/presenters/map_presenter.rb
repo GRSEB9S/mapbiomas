@@ -17,6 +17,7 @@ class MapPresenter
       availableBaseMaps: base_maps,
       defaultBaseMaps: [],
       availableLayers: layers,
+      availableInfraLevels: infra_levels,
       defaultLayers: [],
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
@@ -26,6 +27,10 @@ class MapPresenter
   end
 
   private
+
+  def infra_levels
+    @infra_levels ||= TerrasAPI.infra_levels
+  end
 
   def sorted_classifications
     @sorted_classifications ||= TerrasAPI.classifications.sort_by { |c| c['id'] }

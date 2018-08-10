@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ClassificationControl from '../../controls/classification';
+import InfraLevelsControl from '../../controls/infra_levels';
 import TogglesControl from '../../controls/toggles';
 
 class CoverageAuxiliarControls extends React.Component {
@@ -37,6 +38,7 @@ class CoverageAuxiliarControls extends React.Component {
             </div>
           </Tab>
           <Tab>{I18n.t('map.index.layers.title')}</Tab>
+          <Tab>{I18n.t('map.index.infra_levels.title')}</Tab>
         </TabList>
         <TabPanel>
           <ClassificationControl
@@ -64,6 +66,12 @@ class CoverageAuxiliarControls extends React.Component {
             options={this.props.layers}
             availableOptions={this.props.availableLayers}
             onChange={this.props.handleLayersChange}
+          />
+        </TabPanel>
+        <TabPanel>
+          <InfraLevelsControl
+            className="map-panel__content"
+            availableInfraLevels={this.props.availableInfraLevels}
           />
         </TabPanel>
       </Tabs>

@@ -1031,6 +1031,8 @@ export default class Map extends React.Component {
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
+                  infraLevels={this.infraLevels}
+                  availableInfraLevels={this.props.availableInfraLevels}
                   viewOptionsIndex={this.state.viewOptionsIndex.coverage}
                   handleClassificationsChange={this.handleClassificationsChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
