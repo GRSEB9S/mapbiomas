@@ -67,19 +67,19 @@ class QualityChart extends React.Component {
     this.chart = new Highcharts.Chart(this.chartOptions());
   }
 
-  componentWillReceiveProps(nextProps) {
+  /*componentWillReceiveProps(nextProps) {
     if (!_.isEqual(this.props.qualities, nextProps.qualities)) {
       this.chart.showLoading();
     }
-  }
+  }*/
 
-  componentDidUpdate(prevProps, prevState) {
+  /*componentDidUpdate(prevProps, prevState) {
     window.setTimeout(() => {
       if(!_.isEqual(this.props.qualities, prevProps.qualities)) {
         this.drawChart();
       }
     }, 200)
-  }
+  }*/
 
   componentDidMount() {
     // this.drawChart();
