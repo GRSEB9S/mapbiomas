@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20180809131818) do
     t.text     "definition",                   null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.string   "locale",     default: "pt-BR", null: false
+    t.string   "locale",     default: "pt-br", null: false
   end
 
   create_table "maps", force: :cascade do |t|
