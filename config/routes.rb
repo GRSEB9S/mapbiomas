@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     resources :transitions, only: :index
     resources :qualities, only: :index
     resources :statistics, only: :index
+    resources :infra_levels, only: :index
 
     get '/inspector', to: 'inspector#index', as: :inspector
     get '/statistics/collection_2', to: 'statistics#collection_2', as: :collection_2_statistics

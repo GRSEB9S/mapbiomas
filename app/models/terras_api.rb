@@ -17,6 +17,12 @@ class TerrasAPI
     end
   end
 
+  def self.infra_levels
+    get("/dashboard/services/statistics/infra_levels", query: {
+      language: I18n.locale.to_s
+    })
+  end
+
   def self.classifications
     cache("#{__method__.to_s}-#{locale}") do
       get("/dashboard/services/classifications", query: {
