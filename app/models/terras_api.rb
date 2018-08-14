@@ -8,17 +8,21 @@ class TerrasAPI
   format :json
 
   def self.territories(name = nil, category = nil)
-    get("/dashboard/services/territories", query: {
-      language: I18n.locale.to_s,
-      category: category,
-      name: name
-    }.compact)
+    cache(__method__.to_s) do
+      get("/dashboard/services/territories", query: {
+        language: I18n.locale.to_s,
+        category: category,
+        name: name
+      }.compact).parsed_response
+    end
   end
 
   def self.classifications
-    get("/dashboard/services/classifications", query: {
-      language: I18n.locale.to_s
-    })
+    cache(__method__.to_s) do
+      get("/dashboard/services/classifications", query: {
+        language: I18n.locale.to_s
+      }).parsed_response
+    end
   end
 
   def self.coverage(year, territory_id, classification_ids)
@@ -28,8 +32,10 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/coverage", query:
-          query_params.merge(territory_id: id)).as_json
+      cache(__method__.to_s) do
+        get("/dashboard/services/statistics/coverage", query:
+            query_params.merge(territory_id: id)).parsed_response
+      end
     end
 
     sum_areas(coverage_data, coverage_keys)
@@ -40,8 +46,10 @@ class TerrasAPI
     territory_ids = territory_id.split(',')
 
     data = territory_ids.map do |id|
-      get("/dashboard/services/statistics/transitions", query:
-        query_params.merge(territory_id: id)).as_json
+      cache(__method__.to_s) do
+        get("/dashboard/services/statistics/transitions", query:
+          query_params.merge(territory_id: id)).parsed_response
+      end
     end
 
     transitions_data = data.map { |d| d['transitions'] }
@@ -50,9 +58,11 @@ class TerrasAPI
   end
 
   def self.qualities(year)
-    get("/dashboard/services/qualities", query: {
-      year: year
-    })
+    cache(__method__.to_s) do
+      get("/dashboard/services/qualities", query: {
+        year: year
+      }).parsed_response
+    end
   end
 
   def self.statistics(territory_id, classification_ids, grouped = false, file_path = GROUPED_COVER_FILE_PATH)
@@ -67,10 +77,12 @@ class TerrasAPI
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
-      get(file_path, query: {
-        territory_id: territory_id,
-        classification_id: classification_ids
-      })
+      cache(__method__.to_s) do
+        get(file_path, query: {
+          territory_id: territory_id,
+          classification_id: classification_ids
+        }).parsed_response
+      end
     end
   end
 
@@ -79,11 +91,13 @@ class TerrasAPI
   end
 
   def self.inspector(year, latitude, longitude)
-    get("/dashboard/services/statistics/inspector", query: {
-      year: year,
-      lat: latitude,
-      lng: longitude
-    })
+    cache(__method__.to_s) do
+      get("/dashboard/services/statistics/inspector", query: {
+        year: year,
+        lat: latitude,
+        lng: longitude
+      }).parsed_response
+    end
   end
 
   def self.transitions_keys
@@ -107,5 +121,13 @@ class TerrasAPI
       .map do |(grouped_values, area)|
         Hash[keys.zip(grouped_values)].merge(area: area)
       end
+  end
+
+  private
+
+  def self.cache(name)
+    Rails.cache.fetch(name, expires_in: 1.month) do
+      yield
+    end
   end
 end
