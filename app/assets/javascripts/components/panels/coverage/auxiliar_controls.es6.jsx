@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ClassificationControl from '../../controls/classification';
-import InfraLevelsControl from '../../controls/infra_levels';
+import InfrastructureControl from '../../controls/infrastructure/infrastructure';
 import TogglesControl from '../../controls/toggles';
 
 class CoverageAuxiliarControls extends React.Component {
@@ -69,9 +69,12 @@ class CoverageAuxiliarControls extends React.Component {
           />
         </TabPanel>
         <TabPanel>
-          <InfraLevelsControl
+          <InfrastructureControl
             className="map-panel__content"
             availableInfraLevels={this.props.availableInfraLevels}
+            calcMaxHeight={() => (
+              $('#coverage-auxiliar-controls').height() - 55
+            )}
           />
         </TabPanel>
       </Tabs>
