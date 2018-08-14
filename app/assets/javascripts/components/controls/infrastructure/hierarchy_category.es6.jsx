@@ -13,7 +13,7 @@ export default class HierarchyCategory extends Component {
   renderCategory(category) {
     return(
       <li className="infra_levels__category content">
-        <Collapsible title={category.name}>
+        <Collapsible content={category.sub} title={category.name}>
           {this.renderSub(category.sub)}
         </Collapsible>
       </li>

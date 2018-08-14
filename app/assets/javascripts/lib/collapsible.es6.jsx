@@ -16,11 +16,23 @@ export default class Collapsible extends Component {
     })
   }
 
+  renderExpandBox() {
+    const content = this.props.content
+    if (!(content && content.constructor === Array && content.length === 0)) {
+      return (this.state.opened ? "[-] " : "[+] ")
+    }
+    return ""
+  }
+
+  renderTitle() {
+    return `${this.renderExpandBox()} ${this.props.title}`
+  }
+
   render() {
     return(
       <div>
         <div onClick={this.handleClick.bind(this)} className="collapsible">
-          {this.props.title}
+          {this.renderTitle()}
         </div>
         {this.state.opened && this.props.children}
       </div>
