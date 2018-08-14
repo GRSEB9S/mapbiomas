@@ -18,9 +18,21 @@ class TerrasAPI
   end
 
   def self.infra_levels
-    get("/dashboard/services/statistics/infra_levels", query: {
-      language: I18n.locale.to_s
-    })
+    cache(__method__.to_s) do
+      get("/dashboard/services/statistics/infra_levels", query: {
+        language: I18n.locale.to_s
+      }).parsed_response
+    end
+  end
+
+  def self.infra_buffer(territory_id, category_id, category_name)
+    cache("#{__method__.to_s}-#{territory_id}-#{category_id}-#{category_name}") do
+      get("/dashboard/services/statistics/infra_buffer", query: {
+        territorio_id: territory_id,
+        categoria_id: category_id,
+        categoria_name: category_name
+      }).parsed_response
+    end
   end
 
   def self.classifications
