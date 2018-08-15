@@ -33,17 +33,6 @@ import TransitionsLabels from '../panels/transitions/labels';
 
 Tabs.setUseDefaultStyles(false);
 
-const TERRITORY_CATEGORIES = {
-  country: 'País',
-  state: 'Estado',
-  city: 'Municipio',
-  biome: 'Bioma',
-  watershedLevel1: 'Bacias Nivel 1',
-  watershedLevel2: 'Bacias Nivel 2',
-  indigenousLand: 'Terra Indígena',
-  conservationUnit: 'UC'
-}
-
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -73,7 +62,7 @@ export default class Map extends React.Component {
         point: false
       },
       territory: null,
-      territoryTab: 0,
+      territoryCategory: null,
       transition: null,
       transitions: [],
       transitionsLayers: [1, 2, 3, 4, 5],
@@ -88,6 +77,25 @@ export default class Map extends React.Component {
   }
 
   //Props
+  get territoryCategories() {
+    return [
+      { id: 'country', value: 'País', label: I18n.t('map.index.category.countries'), preloaded: true },
+      { id: 'state', value: 'Estado', label: I18n.t('map.index.category.states'), preloaded: true },
+      { id: 'city', value: 'Municipio', label: I18n.t('map.index.category.cities') },
+      { id: 'biome', value: 'Bioma', label: I18n.t('map.index.category.biomes'), preloaded: true },
+      { id: 'watershedLevel1', value: 'Bacias Nivel 1', label: I18n.t('map.index.category.watersheds_level_1'), preloaded: true },
+      { id: 'watershedLevel2', value: 'Bacias Nivel 2', label: I18n.t('map.index.category.watersheds_level_2'), preloaded: true },
+      { id: 'indigenousLand', value: 'Terra Indígena', label: I18n.t('map.index.category.indigenous_lands'), preloaded: true },
+      { id: 'conservationUnit', value: 'UC', label: I18n.t('map.index.category.conservation_units'), preloaded: true },
+      { id: 'afroBrazilianSettlements', value: 'Quilombolas', label: I18n.t('map.index.category.afro_brazilian_settlements'), preloaded: true },
+      { id: 'smallholderSettlements', value: 'Assentamentos', label: I18n.t('map.index.category.smallholder_settlements'), preloaded: true }
+    ];
+  }
+
+  get territoryCategory() {
+    return this.state.territoryCategory || _.first(this.territoryCategories).value;
+  }
+
   get classifications() {
     return this.state.classifications || this.props.defaultClassifications;
   }
@@ -324,8 +332,8 @@ export default class Map extends React.Component {
         }
 
         if (!_.isEmpty(result)) {
-          let categories = lodash.reduce(TERRITORY_CATEGORIES, (obj, value, key) => {
-            obj[key] = lodash.find(result, ['categoria', value]);
+          let categories = lodash.reduce(this.territoryCategories, (obj, item) => {
+            obj[item.id] = lodash.find(result, ['categoria', item.value]);
 
             return obj;
           }, {});
@@ -344,14 +352,14 @@ export default class Map extends React.Component {
   handleModeChange(mode) {
     this.setState({
       mode,
-      territoryTab: 0
+      territoryCategory: this.initialState.territoryCategory
     });
 
     window.location.hash = `#${mode}`;
   }
 
-  handleTerritoryTabChange(territoryTab) {
-    this.setState({ territoryTab });
+  handleTerritoryTabChange(territoryCategory) {
+    this.setState({ territoryCategory: territoryCategory.value });
   }
 
   handleTerritoryChange(territory) {
@@ -895,7 +903,8 @@ export default class Map extends React.Component {
 
             {!this.props.iframe && !this.props.myMapsPage && (
               <TerritoryControl
-                tabIndex={this.state.territoryTab}
+                territoryCategory={this.territoryCategory}
+                territoryCategories={this.territoryCategories}
                 territory={_.first(this.territory)}
                 loadTerritories={this.loadTerritories.bind(this)}
                 onTabChange={this.handleTerritoryTabChange.bind(this)}

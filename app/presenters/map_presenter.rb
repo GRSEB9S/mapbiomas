@@ -173,7 +173,7 @@ class MapPresenter
       {
         id: id,
         slug: layer.to_s.tr('_', '-'),
-        name: I18n.t("map.index.layers.#{layer}.many"),
+        name: I18n.t("map.index.layers.#{layer}"),
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
