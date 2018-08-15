@@ -258,16 +258,40 @@ export default class Map extends React.Component {
       {
         label: I18n.t('map.index.transitions.all_years'),
         options: [{
-          label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2016}),
-          value: '2000-2016'
+          label: I18n.t('map.index.transitions.period', {first_year: 1985, second_year: 2017}),
+          value: '1985-2017'
         }]
       },
       {
         label: I18n.t('map.index.transitions.forest_code'),
         options: [{
-          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2016}),
-          value: '2008-2016'
+          label: I18n.t('map.index.transitions.period', {first_year: 2008, second_year: 2017}),
+          value: '2008-2017'
         }]
+      },
+      {
+        label: I18n.t('map.index.transitions.forest_code_approval'),
+        options: [{
+          label: I18n.t('map.index.transitions.period', {first_year: 2012, second_year: 2017}),
+          value: '2012-2017'
+        }]
+      },
+      {
+        label: I18n.t('map.index.transitions.national_emissions_inventory'),
+        options: [
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 1994, second_year: 2002}),
+            value: '1994-2002'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2010}),
+            value: '2000-2010'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 2010, second_year: 2016}),
+            value: '2010-2016'
+          }
+        ]
       },
       {
         label: I18n.t('map.index.transitions.subsequent_years'),
@@ -276,6 +300,18 @@ export default class Map extends React.Component {
       {
         label: I18n.t('map.index.transitions.five_years'),
         options: [
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 1985, second_year: 1990}),
+            value: '1985-1990'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 1990, second_year: 1995}),
+            value: '1990-1995'
+          },
+          {
+            label: I18n.t('map.index.transitions.period', {first_year: 1995, second_year: 2000}),
+            value: '1995-2000'
+          },
           {
             label: I18n.t('map.index.transitions.period', {first_year: 2000, second_year: 2005}),
             value: '2000-2005'

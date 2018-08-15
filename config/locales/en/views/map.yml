@@ -196,6 +196,8 @@ en:
           title: Sankey diagram for transitions
         all_years: All years
         forest_code: Forest Code
+        forest_code_approval: Forest Code approval
+        national_emissions_inventory: National Emissions Inventory
         subsequent_years: Subsequent years
         five_years: 5 in 5 years
         period: "%{first_year} to %{second_year}"

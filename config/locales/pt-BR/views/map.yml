@@ -194,6 +194,8 @@ pt-BR:
           title: Diagrama Sankey de transições
         all_years: Todos os anos
         forest_code: Código florestal
+        forest_code_approval: Aprovação do Código florestal
+        national_emissions_inventory: Inventário Nacional de Emissões
         subsequent_years: Anos subsequentes
         five_years: 5 em 5 anos
         period: "%{first_year} à %{second_year}"
