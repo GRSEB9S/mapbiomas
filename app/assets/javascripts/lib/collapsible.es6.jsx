@@ -18,11 +18,23 @@ export default class Collapsible extends Component {
 
   renderExpandBox() {
     const content = this.props.content
-    if (!(content && content.constructor === Array && content.length === 0)) {
+    if (!(content.length === 0)) {
       return (this.state.opened ? "[-] " : "[+] ")
     }
     return ""
   }
+
+  // handleCheck() {
+
+  // }
+
+  // renderToggle() {
+  //     <Toggle
+  //   className={`custom-toggle ${option.slug}`}
+  //   defaultChecked={this.isChecked(option.id)}
+  //   icons={false}
+  //   onChange={this.handleCheck.bind(this, option.id)} />
+  // }
 
   renderTitle() {
     return `${this.renderExpandBox()} ${this.props.title}`
