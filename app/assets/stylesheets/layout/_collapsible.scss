@@ -1,4 +1,4 @@
-.collapsible {
+.pointer {
   cursor: pointer;
 }
 
@@ -9,7 +9,7 @@
   &:nth-child(2) {
     display: block;
   }
-  padding: 0 18px;
+  padding: 0 10px;
   display: none;
   overflow: hidden;
   height: auto;
