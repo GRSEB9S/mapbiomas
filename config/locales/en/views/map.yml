@@ -111,19 +111,39 @@ en:
         transitions: Transitions
       category:
         title: Categories
-        countries: Countries
-        states: States
-        cities: Cities
-        biomes: Biomes
-        contour_maps: Contour maps
-        indigenous_lands: Indigenous Lands
-        conservation_units: Conservation Units
-        watersheds_level_1: Watersheds L1
-        watersheds_level_2: Watersheds L2
-        macro_watersheds: Macro watersheds
-        watersheds: Watersheds - Level 2
-        afro_brazilian_settlements: Afro-Brazilian settlements
-        smallholder_settlements: Smallholder settlements
+        countries:
+          one: Country
+          many: Countries
+        states:
+          one: State
+          many: States
+        cities:
+          one: City
+          many: Cities
+        biomes:
+          one: Biome
+          many: Biomes
+        contour_maps:
+          one: Contour map
+          many: Contour maps
+        indigenous_lands:
+          one: Indigenous Land
+          many: Indigenous Lands
+        conservation_units:
+          one: Conservation Unit
+          many: Conservation Units
+        macro_watersheds:
+          one: Macro watershed
+          many: Macro watersheds
+        watersheds:
+          one: Watershed - Level 2
+          many: Watersheds - Level 2
+        afro_brazilian_settlements:
+          one: Afro-Brazilian settlement
+          many: Afro-Brazilian settlements
+        smallholder_settlements:
+          one: Smallholder settlement
+          many: Smallholder settlements
       territory:
         title: Territories
       layers:
@@ -162,6 +182,11 @@ en:
           forestry: Transitions with gain of forest plantations
           forest: Forest cover transitions or non-forest natural areas for agriculture or non-vegetated areas.
           no_transition: Areas without transitions or transitions involving unobserved areas or transitions between classes within the caption level 1.
+        level_select:
+          title: Select a level
+          level_1: Level 1
+          level_2: Level 2
+          level_3: Level 3
         matrix:
           title: Transitions matrix
           total: Total

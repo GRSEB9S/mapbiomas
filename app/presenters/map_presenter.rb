@@ -20,6 +20,7 @@ class MapPresenter
       defaultLayers: [],
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
+      defaultYear: Setting.default_year,
       apiUrl: ENV['TERRAS_MAP_API_URL']
     }
   end

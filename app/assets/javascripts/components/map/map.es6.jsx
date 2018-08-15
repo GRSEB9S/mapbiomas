@@ -79,16 +79,16 @@ export default class Map extends React.Component {
   //Props
   get territoryCategories() {
     return [
-      { id: 'country', value: 'País', label: I18n.t('map.index.category.countries'), preloaded: true },
-      { id: 'state', value: 'Estado', label: I18n.t('map.index.category.states'), preloaded: true },
-      { id: 'city', value: 'Municipio', label: I18n.t('map.index.category.cities') },
-      { id: 'biome', value: 'Bioma', label: I18n.t('map.index.category.biomes'), preloaded: true },
-      { id: 'watershedLevel1', value: 'Bacias Nivel 1', label: I18n.t('map.index.category.watersheds_level_1'), preloaded: true },
-      { id: 'watershedLevel2', value: 'Bacias Nivel 2', label: I18n.t('map.index.category.watersheds_level_2'), preloaded: true },
-      { id: 'indigenousLand', value: 'Terra Indígena', label: I18n.t('map.index.category.indigenous_lands'), preloaded: true },
-      { id: 'conservationUnit', value: 'UC', label: I18n.t('map.index.category.conservation_units'), preloaded: true },
-      { id: 'afroBrazilianSettlements', value: 'Quilombolas', label: I18n.t('map.index.category.afro_brazilian_settlements'), preloaded: true },
-      { id: 'smallholderSettlements', value: 'Assentamentos', label: I18n.t('map.index.category.smallholder_settlements'), preloaded: true }
+      { id: 'country', value: 'País', label: I18n.t('map.index.category.countries.many'), preloaded: true },
+      { id: 'state', value: 'Estado', label: I18n.t('map.index.category.states.many'), preloaded: true },
+      { id: 'city', value: 'Municipio', label: I18n.t('map.index.category.cities.many') },
+      { id: 'biome', value: 'Bioma', label: I18n.t('map.index.category.biomes.many'), preloaded: true },
+      { id: 'watershedLevel1', value: 'Bacias Nivel 1', label: I18n.t('map.index.category.macro_watersheds.many'), preloaded: true },
+      { id: 'watershedLevel2', value: 'Bacias Nivel 2', label: I18n.t('map.index.category.watersheds.many'), preloaded: true },
+      { id: 'indigenousLand', value: 'Terra Indígena', label: I18n.t('map.index.category.indigenous_lands.many'), preloaded: true },
+      { id: 'conservationUnit', value: 'UC', label: I18n.t('map.index.category.conservation_units.many'), preloaded: true },
+      { id: 'afroBrazilianSettlements', value: 'Quilombolas', label: I18n.t('map.index.category.afro_brazilian_settlements.many'), preloaded: true },
+      { id: 'smallholderSettlements', value: 'Assentamentos', label: I18n.t('map.index.category.smallholder_settlements.many'), preloaded: true }
     ];
   }
 
@@ -218,7 +218,7 @@ export default class Map extends React.Component {
   }
 
   get year() {
-    return this.state.year || 2015;
+    return this.state.year || this.props.defaultYear;
   }
 
   get years() {
@@ -579,13 +579,20 @@ export default class Map extends React.Component {
 
     return this.props.defaultClassifications.map((element) => {
       let toTransitions = _.where(transitions, {to: element.id});
-      let fromToTotalToClassification = this.totalClassificationData(
+      let fromTotalToClassification = this.totalClassificationData(
         toTransitions,
         totalClassificationId,
         element.id
       );
 
-      return fromToTotalToClassification;
+      fromTotalToClassification = {
+        ...fromTotalToClassification,
+        to_l1: element.l1,
+        to_l2: element.l2,
+        to_l3: element.l3
+      };
+
+      return fromTotalToClassification;
     });
   }
 
@@ -600,6 +607,13 @@ export default class Map extends React.Component {
         element.id,
         totalClassificationId
       );
+
+      fromClassificationToTotal = {
+        ...fromClassificationToTotal,
+        from_l1: element.l1,
+        from_l2: element.l2,
+        from_l3: element.l3
+      };
 
       return fromClassificationToTotal;
     });
