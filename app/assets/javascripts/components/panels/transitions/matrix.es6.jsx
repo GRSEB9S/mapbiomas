@@ -36,12 +36,19 @@ class TransitionsMatrix extends React.Component {
   }
 
   renderTotalRow() {
-    return this.props.toTotalData.map((data) => {
-      let key = `transition-${data.to}-${data.from}`;
+    return this.props.classifications.map((c, i) => {
+      let data = _.find(this.props.toTotalData, (d) => d.to == c.id);
+      let key;
+
+      if (data) {
+        let key = `transition-${data.to}-${data.from}`;
+      } else {
+        let key = `transition-${c.id}-${i}`;
+      }
 
       return(
         <td key={key} className="transition-total-value highlight">
-          {Highcharts.numberFormat(data.area, 0, '.')} ha
+          {Highcharts.numberFormat(data && data.area, 0, '.')} ha
         </td>
       );
     });
@@ -80,7 +87,7 @@ class TransitionsMatrix extends React.Component {
 
     return(
       <td className="transition-total-value highlight">
-        {Highcharts.numberFormat(data.area, 0, '.')} ha
+        {Highcharts.numberFormat(data && data.area, 0, '.')} ha
       </td>
     );
   }

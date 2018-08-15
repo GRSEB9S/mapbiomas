@@ -171,14 +171,14 @@ export default class PointModal extends React.Component {
             <h2>{ `${I18n.t('geolocation.longitude')}: ${this.props.point.longitude}` }</h2>
           </div>
 
-          <h2>{I18n.t('map.index.layers.countries.one')}: {this.territory('country')}</h2>
-          <h2>{I18n.t('map.index.layers.states.one')}: {this.territory('state')}</h2>
-          <h2>{I18n.t('map.index.layers.cities.one')}: {this.territory('city')}</h2>
-          <h2>{I18n.t('map.index.layers.biomes.one')}: {this.territory('biome')}</h2>
-          <h2>{I18n.t('map.index.layers.watersheds_level_1.one')}: {this.territory('watershedLevel1')}</h2>
-          <h2>{I18n.t('map.index.layers.watersheds_level_2.one')}: {this.territory('watershedLevel2')}</h2>
-          <h2>{I18n.t('map.index.layers.indigenous_lands.one')}: {this.territory('indigenousLand')}</h2>
-          <h2>{I18n.t('map.index.layers.conservation_units.one')}: {this.territory('conservationUnit')}</h2>
+          <h2>{I18n.t('map.index.category.countries.one')}: {this.territory('country')}</h2>
+          <h2>{I18n.t('map.index.category.states.one')}: {this.territory('state')}</h2>
+          <h2>{I18n.t('map.index.category.cities.one')}: {this.territory('city')}</h2>
+          <h2>{I18n.t('map.index.category.biomes.one')}: {this.territory('biome')}</h2>
+          <h2>{I18n.t('map.index.category.macro_watersheds.one')}: {this.territory('watershedLevel1')}</h2>
+          <h2>{I18n.t('map.index.category.watersheds.one')}: {this.territory('watershedLevel2')}</h2>
+          <h2>{I18n.t('map.index.category.indigenous_lands.one')}: {this.territory('indigenousLand')}</h2>
+          <h2>{I18n.t('map.index.category.conservation_units.one')}: {this.territory('conservationUnit')}</h2>
         </div>
 
         <div className="point-modal__data">
