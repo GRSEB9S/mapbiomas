@@ -25,12 +25,13 @@ class TerrasAPI
     end
   end
 
-  def self.infra_buffer(territory_id, category_id, category_name)
-    cache("#{__method__.to_s}-#{territory_id}-#{category_id}-#{category_name}") do
+  def self.infra_buffer(params)
+    cache("#{__method__.to_s}-#{params[:territory_id]}-#{params[:category_id]}-#{params[:category_name]}-#{params[:buffer]}") do
       get("/dashboard/services/statistics/infra_buffer", query: {
-        territorio_id: territory_id,
-        categoria_id: category_id,
-        categoria_name: category_name
+        territorio_id: params[:territory_id],
+        categoria_id: params[:category_id],
+        categoria_name: params[:category_name],
+        buffer: params[:buffer]
       }).parsed_response
     end
   end
