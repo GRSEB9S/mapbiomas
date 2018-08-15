@@ -18,20 +18,28 @@ class TerrasAPI
   end
 
   def self.infra_levels
-    cache(__method__.to_s) do
+    cache("#{__method__.to_s}-#{locale}") do
       get("/dashboard/services/statistics/infra_levels", query: {
-        language: I18n.locale.to_s
+        language: locale
       }).parsed_response
     end
   end
 
   def self.infra_buffer(params)
-    cache("#{__method__.to_s}-#{params[:territory_id]}-#{params[:category_id]}-#{params[:category_name]}-#{params[:buffer]}") do
+    cache([
+     __method__.to_s,
+     params[:territory_id],
+     params[:category_id],
+     params[:category_name],
+     params[:buffer],
+     locale
+    ].join('-')) do
       get("/dashboard/services/statistics/infra_buffer", query: {
         territorio_id: params[:territory_id],
         categoria_id: params[:category_id],
         categoria_name: params[:category_name],
-        buffer: params[:buffer]
+        buffer: params[:buffer],
+        language: locale
       }).parsed_response
     end
   end
