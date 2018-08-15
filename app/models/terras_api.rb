@@ -8,7 +8,7 @@ class TerrasAPI
   format :json
 
   def self.territories(name = nil, category = nil)
-    cache(__method__.to_s) do
+    cache("#{__method__.to_s}-#{name}-#{category}") do
       get("/dashboard/services/territories", query: {
         language: I18n.locale.to_s,
         category: category,
@@ -32,7 +32,7 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      cache(__method__.to_s) do
+      cache("#{__method__.to_s}-#{year}-#{territory_id}-#{classification_ids}") do
         get("/dashboard/services/statistics/coverage", query:
             query_params.merge(territory_id: id)).parsed_response
       end
@@ -46,7 +46,7 @@ class TerrasAPI
     territory_ids = territory_id.split(',')
 
     data = territory_ids.map do |id|
-      cache(__method__.to_s) do
+      cache("#{__method__.to_s}-#{year}-#{territory_id}") do
         get("/dashboard/services/statistics/transitions", query:
           query_params.merge(territory_id: id)).parsed_response
       end
@@ -58,7 +58,7 @@ class TerrasAPI
   end
 
   def self.qualities(year)
-    cache(__method__.to_s) do
+    cache("#{__method__.to_s}-#{year}") do
       get("/dashboard/services/qualities", query: {
         year: year
       }).parsed_response
@@ -77,7 +77,7 @@ class TerrasAPI
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
-      cache(__method__.to_s) do
+      cache("#{__method__.to_s}-#{classification_ids}-#{grouped}-#{file_path}") do
         get(file_path, query: {
           territory_id: territory_id,
           classification_id: classification_ids
@@ -91,7 +91,7 @@ class TerrasAPI
   end
 
   def self.inspector(year, latitude, longitude)
-    cache(__method__.to_s) do
+    cache("#{__method__.to_s}-#{year}-#{latitude}-#{longitude}") do
       get("/dashboard/services/statistics/inspector", query: {
         year: year,
         lat: latitude,
