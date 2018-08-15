@@ -10,10 +10,17 @@ export default class HierarchyCategory extends Component {
     }
   }
 
+  subCategory(category) {
+    if (typeof category.sub === undefined) {
+      return []
+    }
+    return category.sub
+  }
+
   renderCategory(category) {
     return(
       <li className="infra_levels__category content">
-        <Collapsible content={category.sub} title={category.name}>
+        <Collapsible content={this.subCategory(category)} title={category.name}>
           {this.renderSub(category.sub)}
         </Collapsible>
       </li>
