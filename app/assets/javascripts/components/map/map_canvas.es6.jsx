@@ -274,8 +274,12 @@ export class MapCanvas extends React.Component {
       ...layerOptions
     };
 
+    if (options.territory_id) {
+      options.territory_id = _.map(this.territoryArray, (t) => t.value);
+    }
+
     if (this.dataLayer) {
-      if (layerOptions.transitions_group && _.isEmpty(layerOptions.transitions_group)) {
+      if (layerOptions && layerOptions.transitions_group && _.isEmpty(layerOptions.transitions_group)) {
         this.dataLayer.setOpacity(0);
         return;
       }
