@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { MapModal } from './modal';
 import { MapCanvas } from '../map/map_canvas';
+import YearControl from '../controls/year';
 import Stats from '../stats/stats';
 import TransitionsChart from '../charts/transitions';
 import { API } from '../../lib/api';
@@ -15,7 +16,8 @@ export default class PointModal extends React.Component {
 
     this.state = {
       territory: null,
-      transitions: []
+      transitions: [],
+      year: null
     };
   }
 
@@ -25,6 +27,10 @@ export default class PointModal extends React.Component {
 
   get emptyCategories() {
     return _.isEmpty(this.props.point.categories);
+  }
+
+  get year() {
+    return this.state.year || this.props.defaultYear;
   }
 
   setTerritory(territory) {
@@ -68,18 +74,35 @@ export default class PointModal extends React.Component {
     }
   }
 
+  handleYearChange(year) {
+    this.setState({ year })
+  }
+
   renderMap() {
     if (this.state.territory) {
       return (
-        <MapCanvas
-          dataLayerOptions={this.props.dataLayerOptions}
-          apiUrl={this.props.apiUrl}
-          ref="point-canvas"
-          baseMaps={this.props.availableBaseMaps}
-          mode='coverage'
-          year={this.props.year}
-          territory={this.state.territory}
-        />
+        <div className="map">
+          <MapCanvas
+            dataLayerOptions={this.props.dataLayerOptions}
+            apiUrl={this.props.apiUrl}
+            ref="point-canvas"
+            baseMaps={this.props.availableBaseMaps}
+            mode='coverage'
+            year={this.year}
+            territory={this.state.territory}
+          />
+          <div className="map-panel__wrapper">
+            <div className="map-panel__area map-panel__point-info">
+              <YearControl
+                className="map-panel__bottom"
+                playStop={true}
+                onValueChange={this.handleYearChange.bind(this)}
+                defaultValue={[this.year]}
+                range={this.props.availableYears}
+              />
+            </div>
+          </div>
+        </div>
       );
     } else {
       return (
