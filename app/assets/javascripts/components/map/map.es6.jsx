@@ -350,10 +350,7 @@ export default class Map extends React.Component {
   }
 
   handleModeChange(mode) {
-    this.setState({
-      mode,
-      territoryCategory: this.initialState.territoryCategory
-    });
+    this.setState({ mode });
 
     window.location.hash = `#${mode}`;
   }
