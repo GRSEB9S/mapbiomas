@@ -274,8 +274,16 @@ export class MapCanvas extends React.Component {
       ...layerOptions
     };
 
+    if (options.territory_id) {
+      options.territory_id = _.map(this.territoryArray, (t) => t.value);
+    }
+
+    if (options.year) {
+      options.year = this.props.year;
+    }
+
     if (this.dataLayer) {
-      if (layerOptions.transitions_group && _.isEmpty(layerOptions.transitions_group)) {
+      if (layerOptions && layerOptions.transitions_group && _.isEmpty(layerOptions.transitions_group)) {
         this.dataLayer.setOpacity(0);
         return;
       }
@@ -334,6 +342,10 @@ export class MapCanvas extends React.Component {
     }
 
     if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.dataLayerOptions, this.props.dataLayerOptions)) {
+      this.setupDataLayer();
+    }
+
+    if (!this.props.mainMap && !_.isEqual(prevProps.year, this.props.year)) {
       this.setupDataLayer();
     }
 
