@@ -218,7 +218,7 @@ export default class Map extends React.Component {
   }
 
   get year() {
-    return this.state.year || 2015;
+    return this.state.year || this.props.defaultYear;
   }
 
   get years() {
