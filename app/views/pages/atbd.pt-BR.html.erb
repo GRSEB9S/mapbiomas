@@ -1,0 +1,51 @@
+<section class="section--grayish section--bottom">
+  <div class="container">
+    <h1 class="container__title container__title--green">CONHEÇA OS PASSOS DA METODOLOGIA MAPBIOMAS</h1>
+    <p class="text-center">Abaixo você encontra as principais características, a forma de organização do trabalho e a visão geral da metodologia do MapBiomas para gerar os mapas de cobertura e uso do solo bem como os mapas de transição/mudança de uso do solo entre em diferentes pares de anos. Você pode acessar o ATBD (Documento Base da Teoria do Algoritmo) com toda descrição de metodologia e algoritmos acessando o link abaixo.</p>
+      <div class="text-center"><a href="" class="btn btn-green">BAixe a metodologia completa - ATBD</a></div>
+  </div>
+</section>
+
+<section class="section--white section--bottom section--top">
+  <div class="container">
+    <h1 class="container__title container__title--green">caracteristicas gerais</h1>
+    <p class="text-center">Todos os mapas anuais de cobertura e uso do solo do MapBiomas são produzidos a partir da classificação pixel a pixel de imagens das satélites Landsat. Todo processo é feito com extensivo algoritmos de aprendizagem de máquina (machine learning) através da plataforma Google Earth Engine que oferece imensa capacidade de processamento na nuvem. Para facilitar o parametrização dos algoritmos e a organização de todas as etapas de processamento utiliza-se as 556 cartas de 1 x 1,5o (lat/long) do IBGE.</p>
+    <div class="container container--grid">
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-02.svg" %>
+          <br />Based on landsat Collection <br /><small>(resolution 30 mt)</small>
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-10.svg" %>
+          <br />Processing pixel by pixel <br /><small>(30 x 30 mt)</small>
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-05.svg" %>
+          <br />Organize by standardized maps tiles <br /><small>(1 x 1,5o) (556 tiles for Brazil)</small>
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-01.svg" %>
+          <br />Cloud based processing
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--grayish">
+  <div class="container">
+    <h1 class="container__title container__title--green">Como nos organizamos</h1>
+    <p class="text-center">Para realizar o mapeamento as equipes de programadores, especialistas de sensoriamento remoto e especialistas em conservação e uso da terra são organizados em times para cada bioma e tema transversal que contam com instituições líderes conforme diagrama abaixo.</p>
+  </div>
+</section>
+
+<section class="section--white section--bottom section--top">
+  <div class="container">
+    <h1 class="container__title container__title--green">Visão geral da Metodologia</h1>
+    <p class="text-center">O diagrama abaixo ilustra as etapas principais do processo de geração dos mapas anuais de cobertura e uso da terra do MapBiomas bem como os mapas de transição.</p>
+
+    <%= image_tag "metodologia.svg" %>
+
+    <div class="text-center"><a href="" class="btn btn-green">Entenda cada etapa</a></div>
+
+  </div>
+</section>

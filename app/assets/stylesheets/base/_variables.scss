@@ -1,23 +1,22 @@
 // Typography
-$font-lato: "Lato", sans-serif;
-$font-open-sans: "Open Sans", sans-serif;
-
-$base-font-family: $font-open-sans;
+$font-lato: "Lato",
+sans-serif;
+$font-open-sans: "Open Sans",
+sans-serif;
+$base-font-family: $font-lato;
 $heading-font-family: $font-lato;
 $link-font-family: $font-lato;
-
 // Font Sizes
 $base-font-size: rem(13px);
+$text-font-size: rem(16px);
 $small-font-size: rem(10px);
 $big-font-size: rem(16px);
 $title-font-size: rem(32px);
 $subtitle-font-size: rem(24px);
 $heading-font-size: rem(20px);
-
 // Line height
 $base-line-height: 1.6;
 $heading-line-height: 1.2;
-
 // Colors
 $white: #fff;
 $black: #000;
@@ -31,11 +30,12 @@ $lighter-gray: #eee;
 $medium-gray: #7f8184;
 $dark-gray: #333;
 $white-smoke: #edecec;
-$orange: #e6843a; 
+$orange: #e6843a;
+$grayish: #f3f3f3;
+$gray: #f9f9f9;
 
 $header-color: $white;
 $footer-color: $dark-gray;
-
 // Other Sizes
 $micro-spacing: rem(4px);
 $small-spacing: rem(8px);
@@ -43,40 +43,34 @@ $base-spacing: rem(16px);
 $medium-spacing: rem(24px);
 $big-spacing: rem(40px);
 $large-spacing: rem(48px);
-
 $base-border-radius: 2px;
+$button-border-radius: 20px;
 $base-z-index: 0;
 $base-box-shadow: 1px 1px 2px rgba($medium-gray, 0.4);
-
 // Static Page Sizes
 $page-subtitle-font-size: 1.3rem;
 $page-base-spacing: 1.4rem;
-
 // Font Colors
 $base-background-color: $white;
 $base-font-color: $dark-gray;
 $primary-action-color: $light-green;
 $action-color: $medium-green;
-
 //Message validations
 $alert-color: #ffeacb !default;
 $error-color: #f6675d !default;
-
 // Border
 $base-border-color: $white-smoke;
 $base-border: 1px solid $base-border-color;
 $alert-border-radius: 4px;
-
 //React timeline slider
 $background-color: rgba($white, 0.8);
 $handler-color: $light-green;
 $connector-color: $light-green;
 $control-color: $light-green;
-
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
-$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
-
+$form-box-shadow-focus: $form-box-shadow,
+0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
 // Animations
 $base-duration: 150ms;
 $base-timing: ease;
