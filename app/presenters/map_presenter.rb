@@ -18,6 +18,8 @@ class MapPresenter
       defaultBaseMaps: [],
       availableLayers: layers,
       availableInfraLevels: infra_levels,
+      availableInfraLevelLayers: infra_level_layers,
+      defaultInfraLevelLayers: [],
       defaultLayers: [],
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
@@ -170,6 +172,20 @@ class MapPresenter
     }
   end
 
+  def infra_level_layers
+   {
+      id: 11,
+      slug: 'infra_buffer',
+      name: I18n.t('map.index.base_maps.infra_buffer'),
+      link: 'http://geoserver.ecostage.com.br/geoserver/mapbiomas/wms?service=WMS',
+      params: {
+        layer: 'mapbiomas:infrastructure_map',
+        style: 'normal',
+        format: 'image/png'
+      }
+    }
+  end
+
   def base_maps
     [coverage_data, rgb_landsat, esri_imagery, openstreet_mapnik, esri_relief]
   end
@@ -183,6 +199,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end << smallholder_settlements << afro_brazilian_settlements << car
+    end << smallholder_settlements << afro_brazilian_settlements << car << infra_level_layers
   end
 end
