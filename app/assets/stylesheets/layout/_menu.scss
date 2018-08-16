@@ -1,6 +1,5 @@
 .menu {
   line-height: $large-spacing;
-
   @include media ($tablet) {
     position: fixed;
     z-index: 10;
@@ -14,11 +13,9 @@
     line-height: $big-spacing;
     @include transition(all .5s ease-in-out);
   }
-
   &--expanded {
     left: 0;
   }
-
   &__header {
     display: none;
     height: 53px;
@@ -26,56 +23,50 @@
     margin-bottom: $micro-spacing;
     border-bottom: 1px solid rgba($light-green, 0.4);
     background: $light-green;
-
     @include media ($tablet) {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
     h2 {
       margin: 0;
       color: $white;
     }
-
     .trigger {
-      &, &:active, &:focus, &:hover {
+      &,
+      &:active,
+      &:focus,
+      &:hover {
         color: $white;
       }
     }
   }
-
   &__items {
     display: flex;
-
     @include media ($tablet) {
       display: block;
     }
   }
-
   &__item {
     padding: 0 0 0 $base-spacing;
     display: inline-block;
     position: relative;
-
     &:hover {
       .submenu__items {
         display: block;
       }
     }
-
     @include media ($tablet) {
       width: 100%;
     }
   }
-
   &__link {
     text-transform: uppercase;
     font-family: $heading-font-family;
     color: $medium-gray;
-
+    font-weight: 900;
     &:hover {
-      color: $dark-gray;
+      color: $medium-green;
     }
   }
 }
@@ -90,24 +81,23 @@
     background-color: $light-green;
     z-index: 5;
     box-shadow: $base-box-shadow;
-
+    border-radius: 10px;
+    padding: 10px;
     .menu__item {
       white-space: nowrap;
       line-height: $base-font-size;
       display: block;
       padding: 0;
-
+      border-radius: 10px;
       &:hover {
         background: $medium-green;
       }
     }
-
     .menu__link {
       display: block;
       padding: $base-spacing;
       color: $white;
     }
-
     &:hover {
       display: block;
     }
@@ -122,25 +112,28 @@
   color: $medium-gray;
   background: transparent !important;
   box-shadow: none;
-
-  &:active, &:focus {
+  &:active,
+  &:focus {
     color: $medium-gray;
   }
 }
 
-.translation, .login {
+.translation,
+.login {
   padding-left: $big-spacing;
-
   @include media ($tablet) {
     padding-left: $base-spacing;
   }
+}
+
+.translation {
+  display: none;
 }
 
 .login {
   ul {
     left: $medium-spacing;
   }
-
   & .menu__link--user {
     color: $medium-green;
   }
@@ -148,50 +141,29 @@
 
 .new {
   position: relative;
-
-  &:after {
-    content: attr(data-new);
-    color: $orange;
-    position: absolute;
-    top: rem(-1px);
-    font-size: rem(11px);
-    -ms-transform: rotate(7deg);
-    -webkit-transform: rotate(7deg);
-    transform: rotate(7deg);
-    border-radius: rem(4px);
-    line-height: normal;
-    padding: rem(2px) rem(4px);
-    left: 90%;
-  }
 }
 
 .translation {
   display: flex;
   align-items: center;
-
   @include media ($tablet) {
     display: block;
   }
-
   &__icon {
     color: $medium-gray;
     margin-right: $small-spacing;
     font-size: $base-font-size;
   }
-
   &__link {
     margin-right: $micro-spacing;
-
     &::after {
       content: '|';
       display: inline-block;
       margin-left: $micro-spacing;
     }
-
     &:last-child {
       margin-right: 0;
     }
-
     &:last-child::after {
       display: none;
     }

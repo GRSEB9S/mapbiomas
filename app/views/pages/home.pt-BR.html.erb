@@ -14,16 +14,10 @@ $(function() {
 </script>
 
 <section class="home__video">
-  <div class="flash success new-collection">
-    <span>
-      <%= link_to 'COLEÇÃO 2.3 - DADOS ATUALIZADOS - VERSÃO DE DEZEMBRO DE 2017', page_path('announcement_note_collection2_3') %>
-    </span>
-  </div>
-
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
     <p>O <strong>MapBiomas</strong> é uma iniciativa multi institucional envolvendo universidades, ONGs e empresas de tecnologia que se uniram para contribuir com o entendimento das transformações do território brasileiro a partir do mapeamento anual da cobertura e uso do solo no Brasil.</p>
-  <button class="button primary video" data-video="https://www.youtube.com/embed/QmwI5b8aTSg" data-toggle="modal" data-target="#videoModal">Assista ao vídeo do projeto</button>
+  <button class="btn btn-blue video" data-video="https://www.youtube.com/embed/QmwI5b8aTSg" data-toggle="modal" data-target="#videoModal">Assista ao vídeo do projeto</button>
   </div>
   <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
     <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
@@ -38,84 +32,166 @@ $(function() {
   <iframe width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
 </div>
 
-<article class="home__coating">
-  <div class="home__coating-content">
-    <%= image_tag "cobertura.png", class: "home__coating-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COBERTURA E USO DO SOLO</a></h1>
-    <p>Conheça a cobertura e uso do solo anual do Brasil entre 2000 e 2016</p>
-    <a class="button primary" href="http://mapbiomas.org/map#coverage">Acesse aqui</a>
+<section class="section--white">
+  <div class="container">
+    <h1 class="container__title container__title--green">cobertura e uso do solo</h1>
+    <p class="text-center">Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non dolor eu ligula ultrices pellentesque placerat imperdiet metus.</p>
+    <div class="container container--grid">
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-10.svg" %>
+          <br />Cobertura
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-08.svg" %>
+          <br />Mudança
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-07.svg" %>
+          <br />Estatísticas
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-09.svg" %>
+          <br />Qualidade
+      </div>
+    </div>
+    <p class="text-center"><a href="#" class="btn btn-green">Acesse a plataforma</a></p>
   </div>
-</article>
+</section>
 
-<article class="home__changes">
-  <div class="home__changes-content">
-    <%= image_tag "sankey.png", class: "home__changes-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#transitions">MUDANÇAS</a></h1>
-    <p>Acompanhe as mudanças do território nos<br> últimos 17 anos</p>
-    <a class="button primary"  href="http://mapbiomas.org/map#transitions">Acesse aqui</a>
-  </div>
-</article>
+<section class="section--gray">
+  <div class="container">
+    <h1 class="container__title container__title--blue">Novidades do MApBiomas 3.0</h1>
+    <p class="text-center">Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non dolor eu ligula ultrices pellentesque placerat imperdiet metus.</p>
 
-<article class="home__numbers">
-  <div class="home__numbers-content">
-    <%= image_tag "chart.png", class: "home__numbers-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/stats">NÚMEROS</a></h1>
-    <p>Navegue pelas estatísticas de cobertura e <br>uso do solo do Brasil</p>
-    <a class="button primary"  href="http://mapbiomas.org/stats">Acesse aqui</a>
-  </div>
-</article>
-
-<article class="home__quality">
-  <div class="home__quality-content">
-    <%= image_tag "landsat.png", class: "home__quality-image" %>
-    <h1 class="page__title"><a href="/pages/accuracy-analysis">QUALIDADE DOS DADOS</a></h1>
-    <p>Veja a análise de acurácia dos mapas do MapBiomas</p>
-    <a class="button primary"  href="/pages/accuracy-analysis">Acesse aqui</a>
-  </div>
-</article>
-
-<article class="home__partners">
-  <div class="home__partners-content">
-    <h1 class="page__title">O MAPBIOMAS É UMA INICIATIVA DE</h1>
-    <div class="text-center">
-      <%= image_tag "oc.png", class: "home__partners-image" %>
-      <%= image_tag "seeg.png", class: "home__partners-image" %>
+    <div class="container container--grid">
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>Série histórica ampliada</h3>
+          Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non
+          dolor eu ligula ultrices pellentesque placerat imperdiet metus.
+        </div>
+      </div>
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>Novos recortes territoriais e informações do CAR</h3>
+          Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non
+          dolor eu ligula ultrices pellentesque placerat imperdiet metus.
+        </div>
+      </div>
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>Informações da infraestrutura</h3>
+          Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non
+          dolor eu ligula ultrices pellentesque placerat imperdiet metus.
+        </div>
+      </div>
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>Inspetor de elementos</h3>
+          Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non
+          dolor eu ligula ultrices pellentesque placerat imperdiet metus.
+        </div>
+      </div>
     </div>
 
-    <h1>CO-CRIADORES</h1>
-    <%= image_tag "lapig.png" %>
-    <%= image_tag "sos-pantanal.png" %>
-    <%= image_tag "sos-mata-atlantica.png" %>
-    <%= image_tag "imazon.png" %>
-    <%= image_tag "ufrgs.png" %>
-    <%= image_tag "uefs.png" %>
-    <%= image_tag "arcplan.png" %>
-    <%= image_tag "pne.png" %>
-    <%= image_tag "vale.png" %>
-    <%= image_tag "ipam.png" %>
-    <%= image_tag "agro-satelite.png" %>
-    <%= image_tag "solved.png" %>
-
-    <h1>FINANCIAMENTO</h1>
-    <div class="financing">
-      <%= image_tag "moore.png", class: "moore" %>
-      <%= image_tag "nicfi.png", class: "nicfi" %>
-      <%= image_tag "good-energies.png", class: "good-energies" %>
-    </div>
-    <div class="financing">
-      <%= image_tag "climate.png" %>
-      <%= image_tag "instituto-arapyau.png" %>
-    </div>
-
-    <h1>PARCEIROS DE TECNOLOGIA</h1>
-    <%= image_tag "ecostage.png" %>
-    <%= image_tag "google.png" %>
-    <%= image_tag "terras.png" %>
-
-    <h1>APOIO INSTITUCIONAL</h1>
-    <%= image_tag "ids.png" %>
-    <%= image_tag "avina.png" %>
-    <%= image_tag "wri.png" %>
-    <%= image_tag "tnc-brasil.png" %>
+    <div class="text-center"><a href="#" class="btn btn-blue">Conheça as novidades</a></div>
   </div>
-</article>
+</section>
+
+<section class="section--grayish">
+  <div class="container">
+    <h1 class="container__title text-center container__title--orange">Infográficos</h1>
+    <p class="text-center">Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam
+      non dolor eu ligula ultrices pellentesque placerat imperdiet metus.</p>
+  </div>
+</section>
+
+<section class="section--gray">
+  <div class="container">
+    <h1 class="container__title text-center container__title--green">cobertura e uso do solo</h1>
+    <p class="text-center">Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam
+      non dolor eu ligula ultrices pellentesque placerat imperdiet metus.</p>
+    <div class="container container--grid">
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-06.svg" %>
+          <br />Crie mapas personalizados
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-11.svg" %>
+          <br />Participe do nosso forúm
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-04.svg" %>
+          <br />Tire dúvidas em nosso FAQ
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-03.svg" %>
+          <br />Download de documentos
+      </div>
+    </div>
+    <div class="text-center"><a href="#" class="btn btn-green">Acesse a plataforma</a></div>
+  </div>
+</section>
+
+<section class="section--grayish">
+  <div class="container">
+    <h1 class="container__title container__title--blue">Como Funciona o Mapbiomas</h1>
+    <p class="text-center">Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam
+      non dolor eu ligula ultrices pellentesque placerat imperdiet metus.</p>
+      <div class="text-center"><a href="" class="btn btn-blue">Acesse a metodologia</a></div>
+  </div>
+</section>
+
+<section class="home__partners">
+  <div class="container">
+    <div class="home__partners-content">
+      <h1 class="container__title container__title--green">Iniciativas Mapbiomas</h1>
+      <p class="text-center">Sed iaculis dapibus tellus eget condimentum. Curabitur ut tellus congue, convallis tortor et, pellentesque diam. Nullam non
+        dolor eu ligula ultrices pellentesque placerat imperdiet metus.</p>
+      <div class="text-center">
+        <%= image_tag "oc.png", class: "home__partners-image" %>
+        <%= image_tag "seeg.png", class: "home__partners-image" %>
+      </div>
+
+      <h2>CO-CRIADORES</h2>
+      <div class="container__title--imagens">
+        <%= image_tag "lapig.png" %>
+        <%= image_tag "sos-pantanal.png" %>
+        <%= image_tag "sos-mata-atlantica.png" %>
+        <%= image_tag "imazon.png" %>
+        <%= image_tag "ufrgs.png" %>
+        <%= image_tag "uefs.png" %>
+        <%= image_tag "arcplan.png" %>
+        <%= image_tag "pne.png" %>
+        <%= image_tag "vale.png" %>
+        <%= image_tag "ipam.png" %>
+        <%= image_tag "agro-satelite.png" %>
+        <%= image_tag "solved.png" %>
+      </div>
+
+      <h2>FINANCIAMENTO</h2>
+      <div class="financing">
+        <%= image_tag "moore.png", class: "moore" %>
+        <%= image_tag "nicfi.png", class: "nicfi" %>
+        <%= image_tag "good-energies.png", class: "good-energies" %>
+        <%= image_tag "climate.png" %>
+        <%= image_tag "instituto-arapyau.png" %>
+      </div>
+
+      <h2>PARCEIROS DE TECNOLOGIA</h2>
+      <div class="container__title--imagens">
+        <%= image_tag "ecostage.png" %>
+        <%= image_tag "google.png" %>
+        <%= image_tag "terras.png" %>
+      </div>
+
+      <h2>APOIO INSTITUCIONAL</h2>
+      <div class="container__title--imagens">
+        <%= image_tag "ids.png" %>
+        <%= image_tag "avina.png" %>
+        <%= image_tag "wri.png" %>
+        <%= image_tag "tnc-brasil.png" %>
+      </div>
+    </div>
+  </div>
+</section>

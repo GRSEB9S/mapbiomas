@@ -68,7 +68,7 @@ export class MenuControl extends React.Component {
     } else {
       return (
         <li className="menu__item login new" data-new={I18n.t('new')}>
-          <a className="menu__link" href={Routes.new_user_session_path()}>
+          <a className="btn btn-border-green" href={Routes.new_user_session_path()}>
             {I18n.t('devise.sessions.new.sign_in')}
           </a>
         </li>
@@ -244,20 +244,6 @@ export class MenuControl extends React.Component {
           </li>
 
           {this.renderSignInButton()}
-
-          {<li className="menu__item translation main-nav__menu__item main-nav__translation">
-            <i className="material-icons translation__icon">&#xE8E2;</i>
-            <a className="menu__link translation__link"
-              href="#"
-              onClick={this.setLocale.bind(this, "pt-BR")}>
-              PT-BR
-            </a>
-            <a className="menu__link translation__link"
-              href="#"
-              onClick={this.setLocale.bind(this, "en")}>
-              EN
-            </a>
-          </li>}
         </ul>
       </nav>
     )

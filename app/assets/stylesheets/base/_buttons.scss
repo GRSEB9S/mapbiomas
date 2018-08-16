@@ -19,31 +19,25 @@ button,
   user-select: none;
   vertical-align: middle;
   white-space: normal;
-
   &.active,
   &:hover,
   &:focus {
     background-color: darken($action-color, 15%);
   }
-
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;
-
     &:hover {
       background-color: $action-color;
     }
   }
-
   &.primary {
     background-color: $primary-action-color;
-
     &.active,
     &:hover,
     &:focus {
       background-color: darken($primary-action-color, 15%);
     }
-
     &:disabled {
       &:hover {
         background-color: $primary-action-color;
@@ -54,10 +48,8 @@ button,
 
 .button {
   @extend %button;
-
   &--primary {
     background-color: $primary-action-color;
-
     &.active,
     &:hover,
     &:focus {
@@ -65,10 +57,9 @@ button,
       color: $white;
     }
   }
-
-  &--cancel, &--delete {
+  &--cancel,
+  &--delete {
     background-color: lighten($red, 15%);
-
     &.active,
     &:hover,
     &:focus {
@@ -76,11 +67,45 @@ button,
       color: $white;
     }
   }
-
   &__icon {
     line-height: 0.8rem;
     font-size: 1rem;
     vertical-align: sub;
     margin-left: $small-spacing;
+  }
+}
+
+.btn {
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 30px;
+  display: inline-block;
+  line-height: 1;
+  padding: 15px 25px;
+  &-border-green {
+    color: $medium-green;
+    background-color: $white;
+    border: 2px solid $medium-green;
+    padding: 10px 20px;
+  }
+  &-blue {
+    color: $white;
+    background-color: $medium-blue;
+    margin: 20px 0;
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $light-blue;
+    }
+  }
+  &-green {
+    color: $white;
+    background-color: $medium-green;
+    margin: 20px 0;
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $light-green;
+    }
   }
 }

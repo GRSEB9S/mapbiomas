@@ -1,0 +1,49 @@
+<section class="section--grayish section--bottom section--top">
+  <div class="container">
+    <h1 class="container__title container__title--green">CONHEÇA OS PASSOS DA METODOLOGIA MAPBIOMAS</h1>
+    <p class="text-center">Aqui detalhamos a metodologia do MapBiomas passo a passo. Para cada clase e tema tratado no mapa existem peculiaridades e caracteristicas específicas que podem ser conferidas em detalhasse no ATBD (Documento Base Teórico do Algoritimo) e seus apêndices.</p>
+    <div class="text-center"><a href="" class="btn btn-green">BAixe a metodologia completa - ATBD</a></div>
+
+    <%= image_tag "metodologia.svg" %>
+  </div>
+</section>
+
+<section class="section--white section--top">
+  <div class="container">
+    <div class="my-slider">
+      <div><%= image_tag "atbd/atbd-01.png" %></div>
+      <div><%= image_tag "atbd/atbd-02.png" %></div>
+      <div><%= image_tag "atbd/atbd-03.png" %></div>
+      <div><%= image_tag "atbd/atbd-04.png" %></div>
+      <div><%= image_tag "atbd/atbd-05.png" %></div>
+      <div><%= image_tag "atbd/atbd-06.png" %></div>
+      <div><%= image_tag "atbd/atbd-07.png" %></div>
+    </div>
+
+    <ul class="thumbnails">
+      <li><%= image_tag "atbd/atbd-01.png" %></li>
+      <li><%= image_tag "atbd/atbd-02.png" %></li>
+      <li><%= image_tag "atbd/atbd-03.png" %></li>
+      <li><%= image_tag "atbd/atbd-04.png" %></li>
+      <li><%= image_tag "atbd/atbd-05.png" %></li>
+      <li><%= image_tag "atbd/atbd-06.png" %></li>
+      <li><%= image_tag "atbd/atbd-07.png" %></li>
+    </ul>
+  </div>
+</section>
+
+<script type="module">
+
+  var slider = tns({
+    container: '.my-slider',
+    items: 1,
+    navContainer: '.thumbnails',
+    navAsThumbnails: true,
+    autoplay: true,
+    swipeAngle: false,
+    gutter: 10,
+    controls: false
+  });
+  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/tiny-slider.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.8.5/min/tiny-slider.js"></script>
