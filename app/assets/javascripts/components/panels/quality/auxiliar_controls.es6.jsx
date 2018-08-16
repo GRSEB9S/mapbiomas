@@ -1,10 +1,9 @@
 import React from 'react';
-import _ from 'underscore';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import ClassificationControl from '../../controls/classification';
 import TogglesControl from '../../controls/toggles';
+import QualityLabels from './labels';
 
-class CoverageAuxiliarControls extends React.Component {
+class QualityAuxiliarControls extends React.Component {
   componentDidMount() {
     $('#base-maps-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',
@@ -25,7 +24,7 @@ class CoverageAuxiliarControls extends React.Component {
           selectedIndex={this.props.viewOptionsIndex}
           onSelect={this.props.handleViewOptionsIndexSelect}>
         <TabList>
-          <Tab>{I18n.t('map.index.classifications.title')}</Tab>
+          <Tab>{I18n.t('map.index.quality.labels.title')}</Tab>
           <Tab>
             <div>
               {I18n.t('map.index.base_maps.title')}
@@ -39,16 +38,9 @@ class CoverageAuxiliarControls extends React.Component {
           <Tab>{I18n.t('map.index.layers.title')}</Tab>
         </TabList>
         <TabPanel>
-          <ClassificationControl
-            className="map-panel__content"
-            defaultClassificationsTree={this.props.defaultClassificationsTree}
-            options={this.props.classifications}
-            availableOptions={this.props.availableClassifications}
-            onChange={this.props.handleClassificationsChange}
-            calcMaxHeight={() => (
-              $('#coverage-auxiliar-controls').height() - 55
-            )}
-          />
+          <div className="map-panel-can-hide" id="quality-labels">
+            <QualityLabels />
+          </div>
         </TabPanel>
         <TabPanel>
           <TogglesControl
@@ -71,4 +63,4 @@ class CoverageAuxiliarControls extends React.Component {
   }
 }
 
-export default CoverageAuxiliarControls;
+export default QualityAuxiliarControls;

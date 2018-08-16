@@ -25,8 +25,8 @@ import ZoomAndOpacityControl from '../controls/zoom_and_opacity';
 import CoverageAuxiliarControls from '../panels/coverage/auxiliar_controls';
 import CoverageMenu from '../panels/coverage/menu';
 import MainMenu from '../panels/main_menu';
-import QualityLabels from '../panels/quality/labels';
 import QualityMenu from '../panels/quality/menu';
+import QualityAuxiliarControls from '../panels/quality/auxiliar_controls';
 import TransitionsMenu from '../panels/transitions/menu';
 import TransitionsAuxiliarControls from '../panels/transitions/auxiliar_controls';
 import TransitionsLabels from '../panels/transitions/labels';
@@ -1061,9 +1061,19 @@ export default class Map extends React.Component {
               </div>
             )}
 
-            {QUALITY && (
-              <div className="map-panel-can-hide" id="quality-labels">
-                <QualityLabels />
+            {!this.props.iframe && QUALITY && (
+              <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
+                <QualityAuxiliarControls
+                  availableBaseMaps={this.props.availableBaseMaps}
+                  baseMaps={this.baseMaps}
+                  availableLayers={this.props.availableLayers}
+                  layers={this.layers}
+                  viewOptionsIndex={this.state.viewOptionsIndex.transitions}
+                  handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
+                  handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
+                  handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
+                />
               </div>
             )}
           </div>

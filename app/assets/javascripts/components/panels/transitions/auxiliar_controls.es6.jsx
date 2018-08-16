@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TransitionsLabels from './labels';
 import TogglesControl from '../../controls/toggles';
 
-
 class TransitionsAuxiliarControls extends React.Component {
   componentDidMount() {
     $('#base-maps-tooltip').tooltipster({
