@@ -212,10 +212,10 @@ en:
           subtitle: Available number of cloudless observations per pixel for selected year
         chart:
           tooltip: Cards on this category
-          bad: Bad
-          regular: Regular
-          good: Good
-          undefined: Undefined
+          zero: No observations
+          1_to_3: Between 1 and 3 observations
+          4_to_6: Between 4 and 6 observations
+          over_6: Over 6 observations
         download: Download data
       search: "Search for cities, states, protected areas..."
       searching: "Searching..."

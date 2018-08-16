@@ -1,5 +1,5 @@
 import React from 'react';
-import QualityChart from '../../charts/quality';
+import QualityPieChart from '../../charts/quality/pie';
 
 const QualityMenu = ({
   cards,
@@ -10,7 +10,7 @@ const QualityMenu = ({
   territory,
   year
 }) => (
-  <QualityChart
+  <QualityPieChart
     cards={cards}
     territory={territory}
     year={year}

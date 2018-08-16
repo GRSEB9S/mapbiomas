@@ -210,10 +210,10 @@ pt-BR:
           subtitle: Quantidade disponível de observações sem nuvens por pixel para o ano selecionado
         chart:
           tooltip: Cartas nesta categoria
-          bad: Ruim
-          regular: Regular
-          good: Boa
-          undefined: Não informado
+          zero: Nenhuma observação
+          1_to_3: Entre 1 e 3 observações
+          4_to_6: Entre 4 e 6 observações
+          over_6: Acima de 6 observações
         download: Download dos dados
       search: "Busque municípios, estados, biomas..."
       searching: "Procurando..."
