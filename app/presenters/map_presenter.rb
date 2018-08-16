@@ -18,8 +18,7 @@ class MapPresenter
       defaultBaseMaps: [],
       availableLayers: layers,
       availableInfraLevels: infra_levels,
-      availableInfraLevelLayers: infra_level_layers,
-      defaultInfraLevelLayers: [],
+      infraLayer: infra_layer,
       defaultLayers: [],
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
@@ -172,16 +171,15 @@ class MapPresenter
     }
   end
 
-  def infra_level_layers
-   {
-      id: 11,
-      slug: 'infra_buffer',
-      name: I18n.t('map.index.base_maps.infra_buffer'),
-      link: 'http://geoserver.ecostage.com.br/geoserver/mapbiomas/wms?service=WMS',
+  def infra_layer
+    {
+      link: 'http://geoserver.ecostage.com.br/geoserver/mapbiomas/wms',
       params: {
-        layer: 'mapbiomas:infrastructure_map',
-        style: 'normal',
-        format: 'image/png'
+        layers: 'mapbiomas:infrastructure_map',
+        format: 'image/png',
+        transparent: true,
+        tiled: true,
+        zIndex: 10
       }
     }
   end
@@ -199,6 +197,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end << smallholder_settlements << afro_brazilian_settlements << car << infra_level_layers
+    end << smallholder_settlements << afro_brazilian_settlements << car
   end
 end

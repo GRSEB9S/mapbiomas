@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 import HierarchyCategory from './hierarchy_category';
 import Scrollable from '../../../lib/scrollable';
 
 export default class InfrastructureControl extends Component {
 
   renderLevels() {
-    return <HierarchyCategory categories={this.props.availableInfraLevels[0]}/>
+    return (
+      <HierarchyCategory
+        categories={this.props.availableInfraLevels[0]}
+        onChange={this.props.onChange}
+      />
+    );
   }
 
   render() {

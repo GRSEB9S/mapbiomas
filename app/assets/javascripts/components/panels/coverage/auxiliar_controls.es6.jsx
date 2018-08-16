@@ -71,6 +71,7 @@ class CoverageAuxiliarControls extends React.Component {
         <TabPanel>
           <InfrastructureControl
             className="map-panel__content"
+            infraLevels={this.props.infraLevels}
             availableInfraLevels={this.props.availableInfraLevels}
             calcMaxHeight={() => (
               $('#coverage-auxiliar-controls').height() - 55

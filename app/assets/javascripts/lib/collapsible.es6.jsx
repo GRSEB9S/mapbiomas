@@ -7,21 +7,18 @@ export default class Collapsible extends Component {
     super(props)
 
     this.state = {
-      opened: false,
-      checked: false
+      open: false
     }
   }
 
   handleClick() {
     this.setState({
-      opened: !this.state.opened
+      open: !this.state.open
     })
   }
 
-  handleCheck() {
-    this.setState({
-      checked: !this.state.checked
-    })
+  handleCheck(e) {
+    this.props.onChange(e, this.props.category);
   }
 
   hasContent() {
@@ -31,23 +28,26 @@ export default class Collapsible extends Component {
 
   renderExpandBox() {
     if (this.hasContent()) {
-      return (this.state.opened ? "[-] " : "[+] ")
+      return (this.state.open ? "[-] " : "[+] ")
     }
     return ""
   }
 
   renderToggle() {
     if (!this.hasContent()) {
-      return (<Toggle
-                className='custom-toggle mini-toggle'
-                defaultChecked={false}
-                icons={false}
-                onChange={this.handleCheck.bind(this)} />)
+      return (
+        <Toggle
+          className='custom-toggle mini-toggle'
+          defaultChecked={false}
+          icons={false}
+          onChange={this.handleCheck.bind(this)}
+        />
+      )
     }
   }
 
   renderTitle() {
-    return `${this.renderExpandBox()} ${this.props.title}`
+    return `${this.renderExpandBox()} ${this.props.category.name}`
   }
 
   render() {
@@ -59,7 +59,7 @@ export default class Collapsible extends Component {
           </div>
           {this.renderToggle()}
         </div>
-        {this.state.opened && this.props.children}
+        {this.state.open && this.props.children}
       </div>
     )
   }
