@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'underscore';
+import lodash from 'lodash';
 import classNames from 'classnames';
 
 export class MapCanvas extends React.Component {
@@ -9,9 +10,8 @@ export class MapCanvas extends React.Component {
     this.baseLayers = {};
     this.mapLayers = {};
     this.sideBySideLayers = {};
-    this.classificationLayers = {};
     this.dataLayer = null;;
-    this.cardsLayer = null;
+    this.infraLayer = null;
   }
 
   get territoryArray() {
@@ -299,6 +299,44 @@ export class MapCanvas extends React.Component {
     }
   }
 
+  setupInfraLayer() {
+    if (this.infraLayer && this.props.mode == 'quality') {
+      this.infraLayer.setOpacity(0);
+      return;
+    }
+
+    if (this.props.mode != 'quality') {
+      if (this.infraLayer) {
+        let groupedInfraLayers = lodash.groupBy(this.props.selectedInfraLevels, 'categoria');
+        let cqlFilter = lodash.map(groupedInfraLayers, (value, key) => {
+          let categories = lodash.join(_.map(value, (v) => `'${v.name}'`), ',');
+
+          return `category_${key} IN (${categories})`
+        });
+        let options = lodash.clone(this.props.infraLayer.params);
+
+        cqlFilter = lodash.join(cqlFilter, ' OR ');
+        options = {
+          ...this.props.infraLayer.params,
+          cql_filter: cqlFilter
+        };
+
+        this.infraLayer.setParams(options);
+        this.infraLayer.setOpacity(1);
+      } else {
+        this.infraLayer = L.tileLayer.wms(this.props.infraLayer.link, this.props.infraLayer.params)
+          .on('loading', () => this.map.spin(true))
+          .on('load', () => this.map.spin(false))
+          .on('tileunload', () => this.map.spin(false))
+          .addTo(this.map);
+      }
+    }
+
+    if (_.isEmpty(this.props.selectedInfraLevels)) {
+      this.infraLayer.setOpacity(0);
+    }
+  }
+
   setupMapCoordinatesControl() {
     if (this.props.mainMap){
       L.control.coordinates({
@@ -356,6 +394,10 @@ export class MapCanvas extends React.Component {
     if (prevProps.selectedLayers != this.props.selectedLayers) {
       this.setupMapLayers();
     }
+
+    if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.selectedInfraLevels, this.props.selectedInfraLevels)) {
+      this.setupInfraLayer();
+    }
   }
 
   componentDidMount() {
@@ -375,6 +417,7 @@ export class MapCanvas extends React.Component {
     this.setupTerritory();
     this.setupMyMapTerritories();
     this.setupDataLayer();
+    this.setupInfraLayer();
     this.setupBaseLayers();
     this.setupMapLayers();
     this.setupMapCoordinatesControl();

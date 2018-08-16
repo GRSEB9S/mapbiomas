@@ -92,6 +92,7 @@ en:
           </ul>
         coverage_data: Land Use and Cover Mapping
         afro_brazilian_settlements: Afro-Brazilian settlements
+        infra_buffer: Infrastructure Buffer
         smallholder_settlements: Smallholder settlements
         rgb_landsat: Landsat MapBiomas Mosaic (RGB) (specific to each year)
         satellite: Google Satellite
@@ -146,6 +147,8 @@ en:
           many: Smallholder settlements
       territory:
         title: Territories
+      infra_levels:
+        title: Infrastructure
       layers:
         title: Layers
         countries: Countries

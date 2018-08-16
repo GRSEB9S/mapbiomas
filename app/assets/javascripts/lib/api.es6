@@ -27,6 +27,14 @@ export class API {
     return $.get(Routes.api_transitions_path(params));
   }
 
+  static infraLevels(params) {
+    return $.get(Routes.api_infra_levels_path(params));
+  }
+
+  static infraBuffer(params) {
+    return $.get(Routes.api_infra_buffers_path(params));
+  }
+
   static createMap(params) {
     return $.ajax({
       url: Routes.create_map_path(),

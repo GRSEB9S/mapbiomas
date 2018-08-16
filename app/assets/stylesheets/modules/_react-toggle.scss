@@ -21,6 +21,21 @@ $layers: (
   'smallholder-settlements': #FF4FD5
 );
 
+.custom-toggle.mini-toggle{
+  .react-toggle-track    {
+    width: 28px !important;
+    height: 13.5px !important;
+  }
+
+  .react-toggle-thumb {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  &.react-toggle--checked .react-toggle-thumb {
+    left: 16px;
+  }
+}
 .custom-toggle {
   .react-toggle-track {
     width: 42px;

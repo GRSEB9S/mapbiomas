@@ -19,10 +19,8 @@ export default class Scrollable extends Component {
     if(!this.props.calcMaxHeight) return;
 
     const maxHeight = this.props.calcMaxHeight();
-    const innerHeight = $(this.refs.inner).height();
-    const height = Math.min(innerHeight, maxHeight);
 
-    this.refs.content.parentNode.style.height = `${height}px`;
+    this.refs.content.parentNode.style.height = `${maxHeight}px`;
   }
 
   render() {

@@ -17,6 +17,8 @@ class MapPresenter
       availableBaseMaps: base_maps,
       defaultBaseMaps: [],
       availableLayers: layers,
+      availableInfraLevels: infra_levels,
+      infraLayer: infra_layer,
       defaultLayers: [],
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
@@ -26,6 +28,10 @@ class MapPresenter
   end
 
   private
+
+  def infra_levels
+    @infra_levels ||= TerrasAPI.infra_levels
+  end
 
   def sorted_classifications
     @sorted_classifications ||= TerrasAPI.classifications.sort_by { |c| c['id'] }
@@ -161,6 +167,19 @@ class MapPresenter
         style: 'normal',
         tilematrixSet: 'EPSG:3857',
         format: 'image/png'
+      }
+    }
+  end
+
+  def infra_layer
+    {
+      link: 'http://geoserver.ecostage.com.br/geoserver/mapbiomas/wms',
+      params: {
+        layers: 'mapbiomas:infrastructure_map',
+        format: 'image/png',
+        transparent: true,
+        tiled: true,
+        zIndex: 10
       }
     }
   end

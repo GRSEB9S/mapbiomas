@@ -40,6 +40,7 @@ export default class Map extends React.Component {
     this.state = this.initialState = {
       baseMaps: null,
       classifications: null,
+      infraLevels: [],
       hide: false,
       pointClick: false,
       layers: null,
@@ -439,6 +440,20 @@ export default class Map extends React.Component {
     })
 
     this.setState({ layers });
+  }
+
+  handleInfraLevelsChange(e, category) {
+    let newInfraLevels = [
+      ...this.state.infraLevels,
+    ];
+
+    if (e.target.checked) {
+      newInfraLevels = [...newInfraLevels, category];
+    } else {
+      newInfraLevels = _.without(newInfraLevels, category);
+    }
+
+    this.setState({ infraLevels: newInfraLevels });
   }
 
   handleTransitionChange(transition) {
@@ -910,8 +925,10 @@ export default class Map extends React.Component {
           opacity={this.state.opacity}
           ref="canvas"
           cards={this.state.cards}
+          infraLayer={this.props.infraLayer}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
+          selectedInfraLevels={this.state.infraLevels}
           mode={this.mode}
           year={this.year}
           years={this.years}
@@ -1031,10 +1048,13 @@ export default class Map extends React.Component {
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
+                  infraLevels={this.state.infraLevels}
+                  availableInfraLevels={this.props.availableInfraLevels}
                   viewOptionsIndex={this.state.viewOptionsIndex.coverage}
                   handleClassificationsChange={this.handleClassificationsChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'coverage')}
                 />
               </div>
@@ -1049,12 +1069,15 @@ export default class Map extends React.Component {
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
+                  infraLevels={this.state.infraLevels}
+                  availableInfraLevels={this.props.availableInfraLevels}
                   transition={this.state.transition}
                   classifications={this.classifications}
                   viewOptionsIndex={this.state.viewOptionsIndex.transitions}
                   handleTransitionsLayersChange={this.handleTransitionsLayersChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
                   handleTransitionReset={this.handleTransitionReset.bind(this)}
                 />
