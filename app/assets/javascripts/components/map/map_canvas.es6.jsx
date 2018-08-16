@@ -36,7 +36,7 @@ export class MapCanvas extends React.Component {
     let options;
 
     if (mode) {
-      options = this.dataLayerOptions(mode);
+      options = this.props.dataLayerOptions[this.props.mode];
     } else {
       options = this.baseLayerOptions;
     }
@@ -52,7 +52,7 @@ export class MapCanvas extends React.Component {
     let options;
 
     if (mode) {
-      options = this.dataLayerOptions(mode);
+      options = this.props.dataLayerOptions[this.props.mode];
     } else {
       options = this.baseLayerOptions;
     }
