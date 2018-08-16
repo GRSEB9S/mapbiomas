@@ -40,6 +40,7 @@ export default class Map extends React.Component {
     this.state = this.initialState = {
       baseMaps: null,
       classifications: null,
+      infra_level_layers: null,
       hide: false,
       pointClick: false,
       layers: null,

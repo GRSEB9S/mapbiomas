@@ -3,10 +3,9 @@ import className from 'classnames';
 import Collapsible from "lib/collapsible";
 
 export default class HierarchyCategory extends Component {
-
-  renderSub(sub) {
-    if (sub) {
-      return <HierarchyCategory categories={sub}/>
+  renderSub(category) {
+    if (category.sub && !(typeof category.sub === undefined)) {
+      return <HierarchyCategory categories={category.sub}/>
     }
   }
 
@@ -21,7 +20,7 @@ export default class HierarchyCategory extends Component {
     return(
       <li className="infra_levels__category content">
         <Collapsible content={this.subCategory(category)} title={category.name}>
-          {this.renderSub(category.sub)}
+          {this.renderSub(category)}
         </Collapsible>
       </li>
     )

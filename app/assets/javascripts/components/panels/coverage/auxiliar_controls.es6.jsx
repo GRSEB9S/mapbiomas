@@ -75,6 +75,7 @@ class CoverageAuxiliarControls extends React.Component {
             calcMaxHeight={() => (
               $('#coverage-auxiliar-controls').height() - 55
             )}
+            onChange={this.props.handleInfraLevelsChange}
           />
         </TabPanel>
       </Tabs>

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import className from 'classnames';
+import Toggle from 'react-toggle';
 
 export default class Collapsible extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      opened: false
+      opened: false,
+      checked: false
     }
   }
 
@@ -16,25 +18,33 @@ export default class Collapsible extends Component {
     })
   }
 
-  renderExpandBox() {
+  handleCheck() {
+    this.setState({
+      checked: !this.state.checked
+    })
+  }
+
+  hasContent() {
     const content = this.props.content
-    if (!(content.length === 0)) {
+    return !((content === undefined) || (content.length === 0))
+  }
+
+  renderExpandBox() {
+    if (this.hasContent()) {
       return (this.state.opened ? "[-] " : "[+] ")
     }
     return ""
   }
 
-  // handleCheck() {
-
-  // }
-
-  // renderToggle() {
-  //     <Toggle
-  //   className={`custom-toggle ${option.slug}`}
-  //   defaultChecked={this.isChecked(option.id)}
-  //   icons={false}
-  //   onChange={this.handleCheck.bind(this, option.id)} />
-  // }
+  renderToggle() {
+    if (!this.hasContent()) {
+      return (<Toggle
+                className='custom-toggle mini-toggle'
+                defaultChecked={false}
+                icons={false}
+                onChange={this.handleCheck.bind(this)} />)
+    }
+  }
 
   renderTitle() {
     return `${this.renderExpandBox()} ${this.props.title}`
@@ -43,8 +53,11 @@ export default class Collapsible extends Component {
   render() {
     return(
       <div>
-        <div onClick={this.handleClick.bind(this)} className="collapsible">
-          {this.renderTitle()}
+        <div className='infra-options'>
+          <div onClick={this.handleClick.bind(this)} className="collapsible pointer">
+            {this.renderTitle()}
+          </div>
+          {this.renderToggle()}
         </div>
         {this.state.opened && this.props.children}
       </div>
