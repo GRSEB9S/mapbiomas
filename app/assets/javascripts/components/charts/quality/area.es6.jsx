@@ -1,19 +1,26 @@
 import React from 'react';
 import _ from 'underscore';
+import lodash from 'lodash';
 import Highcharts from 'highcharts';
 
-class QualityPieChart extends React.Component {
+const COLORS = {
+  'zero': '#ff0001',
+  '1_to_3': '#ffb802',
+  '4_to_6': '#fffb03',
+  'over_6': '#87c947'
+}
+
+class QualityAreaChart extends React.Component {
   constructor(props) {
     super(props);
   }
 
   get seriesData() {
-    let data = this.props.qualityData[this.props.year];
-
-    return _.map(data, (value, key) => {
+    return _.map(['zero', '1_to_3', '4_to_6', 'over_6'], (key) => {
       return {
         name: I18n.t(key, {scope: 'map.index.quality.chart'}),
-        y: value
+        data: _.map(this.props.qualityData, (d) => d[key]),
+        color: COLORS[key]
       };
     });
   }
@@ -35,15 +42,18 @@ class QualityPieChart extends React.Component {
     return {
       chart: {
         renderTo: el,
-        type: 'pie'
+        type: 'area'
       },
       plotOptions: {
-        pie: {
+        area: {
+          stacking: 'normal',
           dataLabels: {
             enabled: false
-          },
-          colors: ['#ff0001', '#ffb802', '#fffb03', '#87c947']
-        },
+          }
+        }
+      },
+      xAxis: {
+        categories: _.range(1985, 2018)
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
@@ -55,26 +65,12 @@ class QualityPieChart extends React.Component {
         enabled: false
       },
       title: false,
-      series: this.chartSeries
+      series: this.seriesData
     };
   }
 
   drawChart() {
     this.chart = new Highcharts.Chart(this.chartOptions());
-  }
-
-  /*componentWillReceiveProps(nextProps) {
-    if (!_.isEqual(this.props.qualities, nextProps.qualities)) {
-      this.chart.showLoading();
-    }
-  }*/
-
-  componentDidUpdate(prevProps, prevState) {
-    window.setTimeout(() => {
-      if(!_.isEqual(this.props.year, prevProps.year)) {
-        this.drawChart();
-      }
-    }, 200)
   }
 
   componentDidMount() {
@@ -89,18 +85,10 @@ class QualityPieChart extends React.Component {
   render() {
     return (
       <div className="map-panel__item-content">
-        <h3 className="map-control__header">
-          {I18n.t('map.index.quality.analysis')}
-          <i id="quality-tooltip" className="material-icons tooltip">
-            &#xE88E;
-          </i>
-        </h3>
-        <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
-        <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
         <div className="quality-chart" ref="chartElement"></div>
       </div>
     );
   }
 }
 
-export default QualityPieChart;
+export default QualityAreaChart;
