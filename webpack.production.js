@@ -27,6 +27,15 @@ module.exports = {
             exclude: /node_modules/,
             use: ['babel-loader']
          },
+         {
+            test: /\.(png|jpg|gif)$/,
+            use: {
+               loader: 'url-loader',
+               query: {
+                  limit: 8192
+               }
+            }
+         }
       ]
    },
    plugins: [

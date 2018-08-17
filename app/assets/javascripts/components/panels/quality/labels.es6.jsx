@@ -1,4 +1,5 @@
 import React from 'react';
+import qualityLabels from '../../../../images/quality_labels.png';
 
 const QualityLabels = ({ mode }) => (
   <div className="map-panel__action-panel">
@@ -10,6 +11,13 @@ const QualityLabels = ({ mode }) => (
       <label className="quality-labels__subtitle">
         {I18n.t('map.index.quality.labels.subtitle')}
       </label>
+
+      <img src={qualityLabels}/>
+
+      <div className="quality-labels__labels">
+        <label>0</label>
+        <label>23</label>
+      </div>
     </div>
   </div>
 );
