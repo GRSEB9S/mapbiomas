@@ -3,6 +3,7 @@ import _ from 'underscore';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ClassificationControl from '../../controls/classification';
 import InfrastructureControl from '../../controls/infrastructure/infrastructure';
+import CarControl from '../../controls/car';
 import TogglesControl from '../../controls/toggles';
 
 class CoverageAuxiliarControls extends React.Component {
@@ -39,6 +40,7 @@ class CoverageAuxiliarControls extends React.Component {
           </Tab>
           <Tab>{I18n.t('map.index.layers.title')}</Tab>
           <Tab>{I18n.t('map.index.infra_levels.title')}</Tab>
+          <Tab>{I18n.t('map.index.car.title')}</Tab>
         </TabList>
         <TabPanel>
           <ClassificationControl
@@ -77,6 +79,11 @@ class CoverageAuxiliarControls extends React.Component {
               $('#coverage-auxiliar-controls').height() - 55
             )}
             onChange={this.props.handleInfraLevelsChange}
+          />
+        </TabPanel>
+        <TabPanel>
+          <CarControl
+            onCarLayerChange={this.props.handleCarLayerChange}
           />
         </TabPanel>
       </Tabs>
