@@ -48,6 +48,25 @@
       }
     }
   }
+  &__image {
+    display: inline-block;
+    width: 55%;
+    line-height: 1;
+    &--margin {
+      margin: 50px 0 20px;
+    }
+    &-list {
+      display: inline-block;
+      width: 40%;
+    }
+    &-item {
+      display: inline-block;
+      width: 43.5%;
+      text-align: center;
+      line-height: 1;
+      margin: 0 0 0 5px;
+    }
+  }
 }
 
 .section {
