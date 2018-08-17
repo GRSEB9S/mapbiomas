@@ -28,7 +28,7 @@ class CarControl extends Component {
             <label>{I18n.t('map.index.car.stats')}</label>
             <Toggle
               className='custom-toggle'
-              defaultChecked={this.props.showCarLayer}
+              defaultChecked={this.props.showCarStats}
               icons={false}
               onChange={this.handleCarStatsChange.bind(this)}
             />
