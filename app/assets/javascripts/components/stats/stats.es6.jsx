@@ -238,19 +238,6 @@ export default class Stats extends React.Component {
                 multi={true}
               />
             </div>
-            <div className="stats__filter">
-              <label className="stats__label">
-                {I18n.t('stats.collections.title')}
-              </label>
-
-              <Select
-                name="class-select"
-                value={this.selectedCollection}
-                options={this.collectionOptions}
-                onChange={this.onCollectionChange.bind(this)}
-                clearable={false}
-              />
-            </div>
           </div>
           <div className="stats__chart-container">
             {this.renderCharts()}
