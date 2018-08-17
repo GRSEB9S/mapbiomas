@@ -74,7 +74,7 @@ en:
       classifications:
         title: Classes
         description: |
-          Click <a target="_blank" href="https://storage.googleapis.com/mapbiomas/assets/1_-_Legenda_Cole%C3%A7%C3%A3o_2.3_-_Descricao_Detalhada.pdf">here</a> and see the classification description
+          Click <a target="_blank" href="https://storage.googleapis.com/mapbiomas/legenda/1%20-%20Legenda%20Cole%C3%A7%C3%A3o%203%20-%20Descricao%20Detalhada.xlsx%20-%20PDF.pdf">here</a> and see the classification description
         select_all: Select all classifications
       base_maps:
         title: Images
