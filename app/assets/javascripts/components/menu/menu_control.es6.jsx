@@ -1,37 +1,28 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Locale } from '../../lib/locale';
 
 export class MenuControl extends React.Component {
-  setLocale(locale) {
-    Locale.setLocale({locale: locale}).done(function() {
-      window.location.reload();
-    }).error(function(){
-      alert(I18n.t("map.index.locales.warning"));
-    });
-  }
-
   renderAdminButtons() {
     if(this.props.currentUser.isAdmin) {
       return ([
-              <li className="menu__item">
-                <a className="menu__link" href={Routes.registered_users_path()}>
-                  {I18n.t('users.registered.title')}
-                </a>
-              </li>,
-              <li className="menu__item">
-                <a className="menu__link" href={Routes.new_cms_glossary_path()}>
-                  {I18n.t('glossaries.title')
-                }
-                </a>
-              </li>,
-              <li className="menu__item">
-                <a className="menu__link" href={Routes.new_cms_faq_path()}>
-                  {I18n.t('faqs.title')
-                }
-                </a>
-              </li>
-            ]);
+        <li className="menu__item">
+          <a className="menu__link" href={Routes.registered_users_path()}>
+            {I18n.t('users.registered.title')}
+          </a>
+        </li>,
+        <li className="menu__item">
+          <a className="menu__link" href={Routes.new_cms_glossary_path()}>
+            {I18n.t('glossaries.title')
+          }
+          </a>
+        </li>,
+        <li className="menu__item">
+          <a className="menu__link" href={Routes.new_cms_faq_path()}>
+            {I18n.t('faqs.title')
+          }
+          </a>
+        </li>
+      ]);
     }
   }
 

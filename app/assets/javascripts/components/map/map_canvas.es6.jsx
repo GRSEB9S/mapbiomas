@@ -330,10 +330,10 @@ export class MapCanvas extends React.Component {
           .on('tileunload', () => this.map.spin(false))
           .addTo(this.map);
       }
-    }
 
-    if (_.isEmpty(this.props.selectedInfraLevels)) {
-      this.infraLayer.setOpacity(0);
+      if (_.isEmpty(this.props.selectedInfraLevels)) {
+        this.infraLayer.setOpacity(0);
+      }
     }
   }
 
