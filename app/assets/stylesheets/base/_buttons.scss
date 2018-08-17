@@ -108,4 +108,15 @@ button,
       background-color: $light-green;
     }
   }
+  &-orange {
+    color: $white;
+    background-color: $orange;
+    margin: 20px 0;
+    font-size: 16px;
+    &:hover,
+    &:focus {
+      color: $white;
+      background-color: $orange;
+    }
+  }
 }
