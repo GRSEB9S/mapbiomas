@@ -16,8 +16,8 @@ $(function() {
 <section class="home__video">
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
-    <p><strong>MapBiomas</strong> is a multi-institutional initiative involving universities, NGOs and technology companies that have come together to contribute to the understanding of Brazilian territory transformations based on the annual mapping of land cover and use in Brazil.</p>
-  <button class="button primary video" data-video="https://www.youtube.com/embed/AAEbeMQlJc4" data-toggle="modal" data-target="#videoModal">Watch Project Video</button>
+    <p>The <strong>MapBiomas</strong> is a multi institutional initiative involving universities, NGOs and technology companies that have come together to contribute to the understanding of the transformation of Brazilian territory through annual mapping of the land cover and land use.</p>
+    <a class="btn btn-orange" href="https://youtu.be/3icm9jwtu-k" target="_blank">Watch lauching of collection 3 of Mapbiomas LIVE starting 9am</a>
   </div>
   <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
     <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
@@ -32,84 +32,179 @@ $(function() {
   <iframe width="100%" height="350" src="" frameborder="0" allowfullscreen></iframe>
 </div>
 
-<article class="home__coating">
-  <div class="home__coating-content">
-    <%= image_tag "cobertura.png", class: "home__coating-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#coverage">COVERING AND USE OF SOIL</a></h1>
-    <p>Discover the land cover & land use of Brazil between 2000 and 2016</p>
-    <a class="button primary" href="http://mapbiomas.org/map#coverage">Access here</a>
-  </div>
-</article>
+<section class="section--white">
+  <div class="container">
+    <h1 class="container__title container__title--blue">NEW IN MAPBIOMAS COLLECTION 3</h1>
 
-<article class="home__changes">
-  <div class="home__changes-content">
-    <%= image_tag "sankey.png", class: "home__changes-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/map#transitions">CHANGES</a></h1>
-    <p>Follow the changes of the territory <br> in the last 17 years </p>
-    <a class="button primary"  href="http://mapbiomas.org/map#transitions">Access here</a>
-  </div>
-</article>
-
-<article class="home__numbers">
-  <div class="home__numbers-content">
-    <%= image_tag "chart.png", class: "home__numbers-image" %>
-    <h1 class="page__title"><a href="http://mapbiomas.org/stats">NUMBERS</a></h1>
-    <p>Navigate coverage statistics and <br> land use in Brazil</p>
-    <a class="button primary"  href="http://mapbiomas.org/stats">Access here</a>
-  </div>
-</article>
-
-<article class="home__quality">
-  <div class="home__quality-content">
-    <%= image_tag "landsat.png", class: "home__quality-image" %>
-    <h1 class="page__title"><a href="/pages/accuracy-analysis">QUALITY OF THE DATA</a></h1>
-    <p>Lern about the accuracy of MapBiomas Maps</p>
-    <a class="button primary"  href="/pages/accuracy-analysis">Access here</a>
-  </div>
-</article>
-
-<article class="home__partners">
-  <div class="home__partners-content">
-    <h1 class="page__title">MAPBIOMAS IS A INITIATIVE OF</h1>
-    <div class="text-center">
-      <%= image_tag "oc.png", class: "home__partners-image" %>
-      <%= image_tag "seeg.png", class: "home__partners-image" %>
+    <div class="container container--grid">
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>EXTENDED HISTORICAL SERIES</h3>
+          Now the data cover a 33 year period with data on annual land cover and land use changes from 1985 to 2017.
+        </div>
+      </div>
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>INSPECTOR OF ELEMENTS</h3>
+          By clicking on a point on the map you can access all available and active layers of information.
+        </div>
+      </div>
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>NEW TERRITORIAL ANALYSES</h3>
+          Maps and statistics can now be consulted by further territorial breakdowns beyond Biomes, States and Municipalities. New options include Watersheds, Protected Areas, Indigenous Lands and Rural Environmental Cadastre.
+        </div>
+      </div>
+      <div class="container__column container__column--6">
+        <div class="news__item">
+          <h3>INFRASTRUCTURE INFORMATION</h3>
+          Historical data on Brazil's energy and transport infrastructure were incorporated including roads, railways, airports, hydroelectric, thermoelectric and transmission lines, among others.
+        </div>
+      </div>
     </div>
-
-    <h1>CO-CREATORS</h1>
-    <%= image_tag "lapig.png" %>
-    <%= image_tag "sos-pantanal.png" %>
-    <%= image_tag "sos-mata-atlantica.png" %>
-    <%= image_tag "imazon.png" %>
-    <%= image_tag "ufrgs.png" %>
-    <%= image_tag "uefs.png" %>
-    <%= image_tag "arcplan.png" %>
-    <%= image_tag "pne.png" %>
-    <%= image_tag "vale.png" %>
-    <%= image_tag "ipam.png" %>
-    <%= image_tag "agro-satelite.png" %>
-    <%= image_tag "solved.png" %>
-
-    <h1>FINANCING</h1>
-    <div class="financing">
-      <%= image_tag "moore.png", class: "moore" %>
-      <%= image_tag "nicfi.png", class: "nicfi" %>
-      <%= image_tag "good-energies.png", class: "good-energies" %>
-    </div>
-    <div class="financing">
-      <%= image_tag "climate.png" %>
-      <%= image_tag "instituto-arapyau.png" %>
-    </div>
-
-    <h1>TECHNOLOGY PARTNERS</h1>
-    <%= image_tag "ecostage.png" %>
-    <%= image_tag "google.png" %>
-    <%= image_tag "terras.png" %>
-
-    <h1>INSTITUTIONAL SUPPORT</h1>
-    <%= image_tag "ids.png" %>
-    <%= image_tag "avina.png" %>
-    <%= image_tag "wri.png" %>
-    <%= image_tag "tnc-brasil.png" %>
   </div>
-</article>
+</section>
+
+<section class="section--gray">
+  <div class="container">
+    <h1 class="container__title container__title--green">MAPS AND DATA PLATFORM</h1>
+    <p class="text-center">Access maps and annual data on land cover and land use in Brazil from 1985 to 2017.</p>
+    <div class="container container--grid">
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-10.svg" %>
+          <br />Land cover
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-08.svg" %>
+          <br />Land use changes
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-07.svg" %>
+          <br />Statistics
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-09.svg" %>
+          <br />Quality
+      </div>
+    </div>
+    <p class="text-center"><a href="/map#coverage" class="btn btn-green">Access the platform</a></p>
+  </div>
+</section>
+
+<section class="section--grayish">
+  <div class="container">
+    <h1 class="container__title text-center container__title--orange">INFOGRAPHICS</h1>
+    <p class="text-center">Access the infographics of Collection 3 of MapBiomas</p>
+
+    <div class="container text-center container__image--margin">
+      <div class="container__image">
+        <a href="/infograficos-2018/brasil.jpg" target="_blank"><img src="infograficos-2018/brasil.jpg"></a>
+      </div>
+      <div class="container__image-list">
+        <div class="container__image-item">
+          <a href="/infograficos-2018/amazonia.jpg" target="_blank"><img src="infograficos-2018/amazonia.jpg"></a>
+        </div>
+        <div class="container__image-item">
+          <a href="/infograficos-2018/caatinga.jpg" target="_blank"><img src="infograficos-2018/caatinga.jpg"></a>
+        </div>
+        <div class="container__image-item">
+          <a href="/infograficos-2018/cerrado-a.jpg" target="_blank"><img src="infograficos-2018/cerrado-a.jpg"></a>
+        </div>
+        <div class="container__image-item">
+          <a href="/infograficos-2018/mata-atlantica.jpg" target="_blank"><img src="infograficos-2018/mata-atlantica.jpg"></a>
+        </div>
+        <div class="container__image-item">
+          <a href="/infograficos-2018/pampa.jpg" target="_blank"><img src="infograficos-2018/pampa.jpg"></a>
+        </div>
+        <div class="container__image-item">
+          <a href="/infograficos-2018/pantanal.jpg" target="_blank"><img src="infograficos-2018/pantanal.jpg"></a>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section class="section--gray">
+  <div class="container">
+    <h1 class="container__title text-center container__title--green">BE PART OF MAPBIOMAS NETWORK</h1>
+    <p class="text-center">interact with the MapBiomas network. Create your maps, take questions, participate in the discussions and share your experiences.</p>
+    <div class="container container--grid">
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-06.svg" %>
+          <br />Create customized maps
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-11.svg" %>
+          <br />Join in our forum
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-04.svg" %>
+          <br />FAQ
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-03.svg" %>
+          <br />Downloads
+      </div>
+    </div>
+    <div class="text-center"><a href="/users/sign_in" class="btn btn-green">Access the platform</a></div>
+  </div>
+</section>
+
+<section class="section--grayish">
+  <div class="container">
+    <h1 class="container__title container__title--blue">UNDERSTAND HOW MAPBIOMAS IS DONE</h1>
+    <p class="text-center">Learn about the methodology of MapBiomas and how the network organizes itself to generate the maps and data on land cover and use.</p>
+      <div class="text-center"><a href="/pages/atbd" class="btn btn-blue">Acesse a metodologia</a></div>
+  </div>
+</section>
+
+<section class="home__partners">
+  <div class="container">
+    <div class="home__partners-content">
+      <h1 class="container__title container__title--green">MapBiomas iniciative</h1>
+      <div class="text-center">
+        <%= image_tag "oc.png", class: "home__partners-image" %>
+        <%= image_tag "seeg.png", class: "home__partners-image" %>
+      </div>
+
+      <h2>CO-Creators</h2>
+      <div class="container__title--imagens">
+        <%= image_tag "lapig.png" %>
+        <%= image_tag "sos-pantanal.png" %>
+        <%= image_tag "sos-mata-atlantica.png" %>
+        <%= image_tag "imazon.png" %>
+        <%= image_tag "ufrgs.png" %>
+        <%= image_tag "uefs.png" %>
+        <%= image_tag "arcplan.png" %>
+        <%= image_tag "pne.png" %>
+        <%= image_tag "vale.png" %>
+        <%= image_tag "ipam.png" %>
+        <%= image_tag "agro-satelite.png" %>
+        <%= image_tag "solved.png" %>
+      </div>
+
+      <h2>Financing</h2>
+      <div class="financing">
+        <%= image_tag "moore.png", class: "moore" %>
+        <%= image_tag "nicfi.png", class: "nicfi" %>
+        <%= image_tag "good-energies.png", class: "good-energies" %>
+        <%= image_tag "climate.png" %>
+        <%= image_tag "instituto-arapyau.png" %>
+      </div>
+
+      <h2>Tecnologic Partners</h2>
+      <div class="container__title--imagens">
+        <%= image_tag "ecostage.png" %>
+        <%= image_tag "google.png" %>
+        <%= image_tag "terras.png" %>
+      </div>
+
+      <h2>Institutional support</h2>
+      <div class="container__title--imagens">
+        <%= image_tag "ids.png" %>
+        <%= image_tag "avina.png" %>
+        <%= image_tag "wri.png" %>
+        <%= image_tag "tnc-brasil.png" %>
+      </div>
+    </div>
+  </div>
+</section>
