@@ -47,7 +47,11 @@ export default class Collapsible extends Component {
   }
 
   renderTitle() {
-    return `${this.renderExpandBox()} ${this.props.category.name}`
+    return (
+      <label>
+        {this.renderExpandBox()} {this.props.category.name}
+      </label>
+    );
   }
 
   render() {

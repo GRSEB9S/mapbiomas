@@ -1,15 +1,19 @@
 .pointer {
-  cursor: pointer;
+  label {
+    cursor: pointer;
+  }
 }
 
 .content {
   &:nth-child(1) {
     display: block;
   }
+
   &:nth-child(2) {
     display: block;
   }
-  padding: 0 10px;
+
+  padding-left: $base-spacing;
   display: none;
   overflow: hidden;
   height: auto;
