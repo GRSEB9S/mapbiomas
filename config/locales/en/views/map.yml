@@ -149,6 +149,8 @@ en:
         title: Territories
       infra_levels:
         title: Infrastructure
+      car:
+        title: CAR
       layers:
         title: Layers
         countries: Countries

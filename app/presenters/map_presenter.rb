@@ -19,6 +19,7 @@ class MapPresenter
       availableLayers: layers,
       availableInfraLevels: infra_levels,
       infraLayer: infra_layer,
+      carLayer: car_layer,
       defaultLayers: [],
       defaultTerritory: TerrasAPI.territories.first,
       availableYears: Setting.available_years,
@@ -155,22 +156,6 @@ class MapPresenter
     }
   end
 
-  def car
-    {
-      id: 10,
-      slug: 'car',
-      name: 'CAR',
-      wmts: true,
-      link: 'http://geoserver.imaflora.org/geoserver/gwc/service/wmts',
-      params: {
-        layer: 'ima-geo:v_car0518_mapbiomas',
-        style: 'normal',
-        tilematrixSet: 'EPSG:3857',
-        format: 'image/png'
-      }
-    }
-  end
-
   def infra_layer
     {
       link: 'http://geoserver.ecostage.com.br/geoserver/mapbiomas/wms',
@@ -179,6 +164,19 @@ class MapPresenter
         format: 'image/png',
         transparent: true,
         tiled: true,
+        zIndex: 10
+      }
+    }
+  end
+
+  def car_layer
+    {
+      link: 'http://geoserver.imaflora.org/geoserver/ima-geo/wms',
+      params: {
+        layers: 'ima-geo:v_car0518_mapbiomas',
+        transparent: true,
+        tilematrixSet: 'EPSG:3857',
+        format: 'image/png',
         zIndex: 10
       }
     }
@@ -197,6 +195,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end << smallholder_settlements << afro_brazilian_settlements << car
+    end << smallholder_settlements << afro_brazilian_settlements
   end
 end

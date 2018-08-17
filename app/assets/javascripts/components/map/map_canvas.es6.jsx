@@ -12,6 +12,7 @@ export class MapCanvas extends React.Component {
     this.sideBySideLayers = {};
     this.dataLayer = null;;
     this.infraLayer = null;
+    this.carLayer = null;
   }
 
   get territoryArray() {
@@ -337,6 +338,23 @@ export class MapCanvas extends React.Component {
     }
   }
 
+  setupCarLayer() {
+    if (this.carLayer) {
+    } else {
+      this.carLayer = L.tileLayer.wms(this.props.carLayer.link, this.props.carLayer.params)
+        .on('loading', () => this.map.spin(true))
+        .on('load', () => this.map.spin(false))
+        .on('tileunload', () => this.map.spin(false))
+        .addTo(this.map);
+    }
+
+    if (this.props.showCarLayer) {
+      this.carLayer.setOpacity(1);
+    } else {
+      this.carLayer.setOpacity(0);
+    }
+  }
+
   setupMapCoordinatesControl() {
     if (this.props.mainMap){
       L.control.coordinates({
@@ -398,6 +416,10 @@ export class MapCanvas extends React.Component {
     if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.selectedInfraLevels, this.props.selectedInfraLevels)) {
       this.setupInfraLayer();
     }
+
+    if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.showCarLayer, this.props.showCarLayer)) {
+      this.setupCarLayer();
+    }
   }
 
   componentDidMount() {
@@ -418,6 +440,7 @@ export class MapCanvas extends React.Component {
     this.setupMyMapTerritories();
     this.setupDataLayer();
     this.setupInfraLayer();
+    this.setupCarLayer();
     this.setupBaseLayers();
     this.setupMapLayers();
     this.setupMapCoordinatesControl();

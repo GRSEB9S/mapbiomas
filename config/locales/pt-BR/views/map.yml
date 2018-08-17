@@ -149,6 +149,8 @@ pt-BR:
         title: Territórios
       infra_levels:
         title: Infraestrutura
+      car:
+        title: CAR
       layers:
         title: Camadas
         countries: Países
