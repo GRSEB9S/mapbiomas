@@ -1,105 +1,87 @@
 .page {
-  padding: $big-spacing $small-spacing 0;
+  padding: $large-spacing $small-spacing;
   flex: 1;
   background-color: $grayish;
-
+  font-size: 16px;
   .list-unstyled {
     list-style: none !important;
     list-style-type: none !important;
   }
-
   ul {
     @extend %default-ul;
   }
-
   ol.numeric_list {
-    list-style-type: decimal; margin: 0.5rem 0 0.5rem 1rem; padding-left: 1rem;
+    list-style-type: decimal;
+    margin: 0.5rem 0 0.5rem 1rem;
+    padding-left: 1rem;
   }
-
   h2.page__title {
     color: $light-green;
     margin-top: $big-spacing;
-    font-size: $subtitle-font-size;
   }
-
   h3.page__section {
-    font-size: 1rem;
     margin: 0 0 $small-spacing 0;
     color: $light-green;
   }
-
   img {
     display: block;
     margin: 0 auto 0 auto;
     max-width: 100%;
   }
-
   &__mapbiomas-collections {
     select option[disabled] {
       display: none;
     }
   }
-
-  img.inside_text{
+  img.inside_text {
     display: inline;
   }
-
-  .img-align-left{
+  .img-align-left {
     margin: initial;
   }
-
   &__title {
-    font-size: rem(32px);
-    margin: 0 0 $base-spacing 0;
     text-align: center;
+    font-weight: 900;
+    font-size: 2.25rem;
+    margin-bottom: 2.5rem;
+    color: $medium-green;
   }
-
   &__subtitle {
     font-size: $page-subtitle-font-size;
-    margin: 0 0 $small-spacing 0;
+    margin: $big-spacing 0;
     color: $light-green;
   }
-
   &__container {
     @include outer-container;
+    max-width: 900px;
   }
-
   &__section {
     margin: ($big-spacing*2) 0;
-
     &:first-child {
       margin-top: 0;
     }
-
     .page__title {
       color: $light-green;
     }
-
     .button {
       margin: $small-spacing;
     }
-
     &-text,
     &-media {
       @include span-columns(6);
-
       @include media($mobile) {
         margin: $small-spacing 0;
         @include span-columns(2);
       }
     }
-
     &-text {
       margin: $base-spacing auto;
     }
-
     @include clearfix;
   }
-
   &--home {
     text-align: center;
   }
-
   &__box-download {
     background: rgba($light-gray, 0.2);
     padding: 10px 10px 0;
@@ -107,7 +89,6 @@
     border-radius: 6px;
     text-align: center;
     width: 80%;
-
     select {
       background-color: white;
       border: 1px solid $light-gray;

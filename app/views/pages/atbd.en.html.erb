@@ -1,0 +1,53 @@
+<section class="section--grayish section--bottom">
+  <div class="container">
+    <h1 class="container__title container__title--green">CONHEÇA OS PASSOS DA METODOLOGIA MAPBIOMAS</h1>
+    <p class="text-center">Below you will find the main features, the organization of the work and the overview of the methodology of MapBiomas to generate the maps of land cover and use as well as the transition maps / land use change between different pairs of years.</p>
+    <p>You can access the ATBD (Base Document of Algorithm Theory) with all description of methodology and algorithms by going to the link below.</p>
+      <div class="text-center"><a href="/pages/methodology" class="btn btn-green">DOWNLOAD THE COMPLETE METHODOLOGY - ATBD</a></div>
+  </div>
+</section>
+
+<section class="section--white section--bottom section--top">
+  <div class="container">
+    <h1 class="container__title container__title--green">GENERAL CHARACTERISTICS</h1>
+    <p class="text-center">All the annual land cover/use maps of the MapBiomas are produced from the pixel-per-pixel classification of Landsat satellite images. Every process is done with extensive machine learning algorithms through the Google Earth Engine platform that offers immense processing power in the cloud. In order to facilitate the parameterization of the algorithms and the organization of all the processing steps, the IBGE's  1 x 1.5o (lat / long) tiles are used. There are 556 tiles covering Brazil.</p>
+    <div class="container container--grid">
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-02.svg" %>
+          <br />Based on landsat Collection <br /><small>(resolution 30 mt)</small>
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-10.svg" %>
+          <br />Processing pixel by pixel <br /><small>(30 x 30 mt)</small>
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-05.svg" %>
+          <br />Organize by standardized maps tiles <br /><small>(1 x 1,5o) (556 tiles for Brazil)</small>
+      </div>
+      <div class="container__column container__column--4">
+        <%= image_tag "icon-01.svg" %>
+          <br />Cloud based processing
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--grayish">
+  <div class="container">
+    <h1 class="container__title container__title--green">HOW WE GET ORGANIZED</h1>
+    <p class="text-center">In order to carry out the mapping, teams of programmers, remote sensing specialists and conservation and land use specialists are organized into teams for each biome and transversal theme that have leading institutions as shown in the diagram below.</p>
+    <%= image_tag "biomas.svg" %>
+  </div>
+</section>
+
+<section class="section--white section--bottom section--top">
+  <div class="container">
+    <h1 class="container__title container__title--green">OVERVIEW OF THE METHODOLOGY</h1>
+    <p class="text-center">The following diagram illustrates the key steps in the process of generating the annual land cover and land use Maps of MapBiomas as well as the transition maps.</p>
+
+    <%= image_tag "metodologia.svg" %>
+
+    <div class="text-center"><a href="/pages/atbd-steps" class="btn btn-green">KNOW THE STEPS</a></div>
+
+  </div>
+</section>

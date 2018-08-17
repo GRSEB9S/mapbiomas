@@ -2,25 +2,26 @@ en:
   map:
     warning:
       coverage:
-        title: Caution notice
+        title: Caution note
         body: |
-          <p>This is MapBiomas Collection 2.3 which includes annual land cover and land use data for the period 2000 to 2016.</p>
-          <p>This collection is the result of the first two years of work of the MapBiomas project and is in constant development. The consolidation of the methodology and production will be finalized in the Collection 3 scheduled for the year 2018 covering the period of 1985 to 2017.</p>
-          <p>The presented maps still have a series of imperfections, among which are possible spatial inconsistencies in thematic classifications, in the temporal line and between thematic classes and transversal themes (eg agriculture and pasture).</p>
-          <p>If you have suggestions, criticisms and ideas to improve the work, contact us at <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
+          <p>TThe MapBiomas Collection 3 includes annual land use and land cover data for the period of 1985 to 2017.</p>
+          <p>This collection results from the first 3 years of the project and it is under constant development.</p>
+          <p>The maps may present a series of imperfections such as possible spatial and temporal mapping inconsistencies that may affect the biomes and cross-cutting theme classes.</p>
+          <p>In case of doubt, critics and ideas to improve the data please contact: <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
-        title: Caution notice
+        title: Caution note
         body: |
-          <p>Here we observe the pixel to pixel class differences between the maps of the following periods: (A) any consecutive years (eg 2001-2002); (B) five-year periods 2000-2005 / 2005-2010 / 2010-2015; (C) 2008-2015 and (D) 2000-2016.</p>
-          <p>Select the desired period and observe the changes in the map and in the Sankey diagram. Click on the different transitions in the diagram to see the different transitions on the map.</p>
+          <p>Here pixel by pixel classification changes are demonstrated for the maps os the followed period: (a) All the years 1985 - 2017; (b) Forest Code 2008 à 2017; (c) Forest Code Approval 2012-2017; (d) GEE National Inventory (1994-2002; 2000-2010; 2010-2017); (e) Any consecutive years (e.g. 1985-1986); (f) 5 year period 1985-1990 / 1990-1995 / 1995-2000...
+          <p>Select the desired period and visualize the changes in the map and in the Sankey diagram. Click in the different diagram transitions to see the different class transitions of the map.</p>
           <p class="warning"><strong>ATTENTION:</strong>
           <blockquote>
-            In MapBiomas Collection 2.3 the class transitions represent both effective land use changes as well as classification inconsistencies. Therefore, the same should not be taken a faithful representation of land use changes in the period.</p>
+            <p>In MapBiomas Collection 3 the class transitions may represent effective land use changes as well as classification inconsistencies. Therefore, such changes may not be a reliable representation of this land use changes in the period.</p>
+            <p>The sum of each class total areas within in the transition table may present small differences when compared with the land cover data for the same period, this may be associated to the filter applied on the transition map</p>
           </blockquote>
       quality:
         title: Mosaic Quality
         body: |
-          <p>The mosaic is a composition of pixels from various Landsat scenes over a period of time. These scenes have a proportion of clouds and other interferences. Thus each working tile in each year was classified into three categories according to cloud percentages and verified interference:</p>
+          <p>A mosaic is a composition of pixels from several Landsat scenes among a specific period. Each scene may have a proportion of clouds and others interferences. Thus, each pixel in a given year was classified according to the quantity of available observations, which may vary from 0 to 23 observations per year.</p>
             <ul>
               <li>1 – Bad: > 30%</li>
               <li>2 – Regular: 10 a 30%</li>
