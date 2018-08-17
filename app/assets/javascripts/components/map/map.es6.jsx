@@ -954,6 +954,7 @@ export default class Map extends React.Component {
         <div className="map-panel__wrapper">
           <div className="map-panel__area map-panel__sidebar">
             <ZoomAndOpacityControl
+              mode={this.mode}
               zoomIn={this.zoomIn.bind(this)}
               zoomOut={this.zoomOut.bind(this)}
               opacity={this.state.opacity}
