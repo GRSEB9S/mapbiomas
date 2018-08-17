@@ -3,27 +3,36 @@
     @include outer-container;
     @include clearfix;
   }
-
+  &__no-collection,
+  &__collection {
+    display: inline-block;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    background-color: $medium-blue;
+    border: 2px solid $medium-blue;
+    margin: 0 1px;
+  }
+  &__no-collection {
+    background-color: transparent !important;
+  }
   &__item {
     @include span-columns(3);
     text-align: center;
     margin-right: 0px !important;
     padding-right: $page-base-spacing;
-
+    margin-bottom: 20px;
     @include media($tablet) {
       @include span-columns(2);
     }
-
     @include media($mobile) {
       @include span-columns(2);
     }
   }
-
   &__personal {
     padding: 0px;
     margin: 0px;
   }
-
   &__image {
     width: 180px;
     height: 180px;
@@ -34,21 +43,17 @@
     background-position: center top;
     border: 1px solid rgba($light-gray, .4);
   }
-
   &__name {
-    height:60px;
+    height: 60px;
   }
-
   &__collection {
     font-weight: bold;
     color: $medium-blue;
   }
-
   &__small {
     display: block;
     color: $light-gray;
   }
-
   &__title {
     font-size: $subtitle-font-size;
     margin: $page-base-spacing 0;

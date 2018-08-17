@@ -4,23 +4,24 @@ pt-BR:
       coverage:
         title: Nota de precaução
         body: |
-          <p>Esta é Coleção 2.3 do MapBiomas que inclue dados anuais de cobertura e uso do solo para o no período 2000 a 2016.</p>
-          <p>Esta coleção é fruto dos primeiros 2 anos de trabalho do projeto MapBiomas e está em constante desenvolvimento. A consolidação da metodologia e produção será finalizada na Coleção 3 prevista para o ano de 2018, cobrindo o período de 1985 a 2017.</p>
+          <p>Esta é a Coleção 3 do MapBiomas que inclui dados anuais de cobertura e uso do solo para o período de 1985 a 2017.</p>
+          <p>Esta coleção é fruto dos primeiros 3 anos de trabalho do projeto MapBiomas e está em constante desenvolvimento.</p>
           <p>Os mapas apresentados ainda possuem uma série de imperfeições entre as quais destacam-se possíveis inconsistências espaciais nas classificações temáticas, na linha temporal e entre classes temáticas e temas transversais (ex: agricultura e pastagem).</p>
-          <p>Caso tenha sugestões, críticas e idéias para aprimorar o trabalha entre em contato pelo e-mail <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
+          <p>Caso tenha sugestões, críticas e idéias para aprimorar o trabalho entre em contato pelo e-mail: <a href="mailto:contato@mapbiomas.org">contato@mapbiomas.org</a>.</p>
       transitions:
         title: Nota de precaução
         body: |
-          <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas dos seguintes períodos: (a) quaisquer anos consecutivos (ex. 2001-2002); (b) períodos de cinco anos 2000-2005/ 2005-2010 / 2010-2015; (c) 2008-2015 e (d) 2000-2016.</p>
+          <p>Aqui se observa as diferenças de classes pixel a pixel entre os mapas dos seguintes períodos: (a) Todos os anos 1985 - 2017; (b) Código Florestal 2008 à 2017; (c) Aprovação do Código Florestal 2012-2017; (d) Inventário Nacional de Emissões (1994-2002; 2000-2010; 2010-2017); (e) quaisquer anos consecutivos (ex. 1985-1986); (f) períodos de cinco anos 1985-1990 / 1990-1995 / 1995-2000...</p>
           <p>Selecione o período desejado e observe as mudanças no mapa e no diagrama de Sankey. Clique nas diferentes transições do diagrama para ver as diferentes transições no mapa.</p>
           <p class="warning"><strong>ATENÇÃO:</strong>
           <blockquote>
-            Na Coleção 2.3 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo como também inconsistências de classificação. Portanto, as mesmas podem não ser uma representação fiel das mudanças de uso da terra no período.</p>
+            Na Coleção 3 do MapBiomas as transições de classes representam tanto mudanças efetivas de uso do solo, como também inconsistências de classificação. Portanto, as mesmas podem não ser uma representação fiel das mudanças de uso da terra no período.</p>
+            <p>As somas das áreas totais de cada classe da tabela de transição podem ter pequenas alterações em relação aos dados de cobertura para o mesmo ano devido ao filtro aplicado aos mapas de transição.</p>
           </blockquote>
       quality:
         title: Qualidade do Mosaico
         body: |
-          <p>O mosaico é uma composição de pixels de várias cenas do Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim cada carta em cada ano foi classificada em três categorias de acordo com as porcentagens de nuvens e interferências verificadas:</p>
+          <p>O mosaico é uma composição de pixels de várias cenas Landsat ao longo de um período. Estas cenas tem uma proporção de nuvens e outras interferências. Assim, cada pixel em cada ano foi classificado de acordo com a quantidade de observações disponíveis, podendo ter de 0 a 23 observações por ano.</p>
             <ul>
               <li>1 – Ruim: > 30%</li>
               <li>2 – Regular: 10 a 30%</li>
