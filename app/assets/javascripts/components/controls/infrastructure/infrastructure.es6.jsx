@@ -17,7 +17,9 @@ export default class InfrastructureControl extends Component {
     return (
       <div className={`${this.props.className} infra-levels`} style={{height: "100%"}}>
         <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
-          {this.renderLevels()}
+          <div className="infra-levels__content">
+            {this.renderLevels()}
+          </div>
         </Scrollable>
       </div>
     )
