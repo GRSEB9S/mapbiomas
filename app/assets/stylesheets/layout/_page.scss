@@ -1,6 +1,7 @@
 .page {
-  margin: $big-spacing $small-spacing;
+  padding: $big-spacing $small-spacing 0;
   flex: 1;
+  background-color: $grayish;
 
   .list-unstyled {
     list-style: none !important;
@@ -48,8 +49,9 @@
   }
 
   &__title {
-    font-size: $title-font-size;
+    font-size: rem(32px);
     margin: 0 0 $base-spacing 0;
+    text-align: center;
   }
 
   &__subtitle {
