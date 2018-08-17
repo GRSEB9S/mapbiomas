@@ -86,12 +86,12 @@ export default class Map extends React.Component {
       { id: 'state', value: 'Estado', label: I18n.t('map.index.category.states.many'), preloaded: true },
       { id: 'city', value: 'Municipio', label: I18n.t('map.index.category.cities.many') },
       { id: 'biome', value: 'Bioma', label: I18n.t('map.index.category.biomes.many'), preloaded: true },
-      { id: 'watershedLevel1', value: 'Bacias Nivel 1', label: I18n.t('map.index.category.macro_watersheds.many'), preloaded: true },
+      // { id: 'watershedLevel1', value: 'Bacias Nivel 1', label: I18n.t('map.index.category.macro_watersheds.many'), preloaded: true },
       { id: 'watershedLevel2', value: 'Bacias Nivel 2', label: I18n.t('map.index.category.watersheds.many'), preloaded: true },
       { id: 'indigenousLand', value: 'Terra Indígena', label: I18n.t('map.index.category.indigenous_lands.many'), preloaded: true },
       { id: 'conservationUnit', value: 'UC', label: I18n.t('map.index.category.conservation_units.many'), preloaded: true },
-      { id: 'afroBrazilianSettlements', value: 'Quilombolas', label: I18n.t('map.index.category.afro_brazilian_settlements.many'), preloaded: true },
-      { id: 'smallholderSettlements', value: 'Assentamentos', label: I18n.t('map.index.category.smallholder_settlements.many'), preloaded: true }
+      // { id: 'afroBrazilianSettlements', value: 'Quilombolas', label: I18n.t('map.index.category.afro_brazilian_settlements.many'), preloaded: true },
+      // { id: 'smallholderSettlements', value: 'Assentamentos', label: I18n.t('map.index.category.smallholder_settlements.many'), preloaded: true }
     ];
   }
 
