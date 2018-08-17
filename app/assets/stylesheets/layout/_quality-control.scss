@@ -5,6 +5,11 @@
     margin-bottom: $small-spacing;
   }
 
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__item {
     position: relative;
     padding-left: $medium-spacing;
