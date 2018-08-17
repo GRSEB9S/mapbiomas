@@ -156,7 +156,7 @@ export class MenuControl extends React.Component {
             </a>
             <ul className="submenu__items">
               <li className="menu__item">
-                <a className="menu__link" href={Routes.page_path('methodology')}>
+                <a className="menu__link" href={Routes.page_path('atbd')}>
                   {I18n.t('layouts.header.methodology.atbd')}
                 </a>
               </li>
@@ -167,7 +167,7 @@ export class MenuControl extends React.Component {
               </li>
               <li className="menu__item">
                 <a className="menu__link" href={Routes.page_path('scripts')}>
-                  {I18n.t('layouts.header.methodology.scripts')}
+                  GOOGLE EARTH ENGINE
                 </a>
               </li>
               <li className="menu__item">
