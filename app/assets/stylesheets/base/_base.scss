@@ -2,7 +2,6 @@
 // http://bitters.bourbon.io
 // Copyright 2013-2015 thoughtbot, inc.
 // MIT License
-
 @import "variables";
 @import "grid-settings";
 @import "buttons";
@@ -12,8 +11,8 @@
 @import "tables";
 @import "fonts";
 @import "typography";
-
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
