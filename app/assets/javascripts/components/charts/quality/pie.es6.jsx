@@ -2,32 +2,28 @@ import React from 'react';
 import _ from 'underscore';
 import Highcharts from 'highcharts';
 
-class QualityChart extends React.Component {
+class QualityPieChart extends React.Component {
   constructor(props) {
     super(props);
   }
 
   get seriesData() {
-    return this.props.qualityInfo.map(qi => {
-      const count = _.filter(this.props.qualities, { quality: Number(qi.api_name) }).length;
+    let data = this.props.qualityData[this.props.year];
+
+    return _.map(data, (value, key) => {
       return {
-        name: qi.label,
-        y: count,
-        color: qi.color
+        name: I18n.t(key, {scope: 'map.index.quality.chart'}),
+        y: value
       };
     });
   }
 
   get chartSeries() {
-    if (_.isEmpty(this.props.qualities)) {
-      return [];
-    }
-
     return (
       [
         {
           name: I18n.t('map.index.quality.chart.tooltip'),
-          data: this.seriesData,
+          data: this.seriesData
         }
       ]
     );
@@ -35,7 +31,6 @@ class QualityChart extends React.Component {
 
   chartOptions() {
     let el = this.refs.chartElement;
-    let colors = _.map(this.props.qualityInfo, (q) => { return q.color });
 
     return {
       chart: {
@@ -46,11 +41,12 @@ class QualityChart extends React.Component {
         pie: {
           dataLabels: {
             enabled: false
-          }
+          },
+          colors: ['#ff0001', '#ffb802', '#fffb03', '#87c947']
         },
       },
       tooltip: {
-        valueSuffix: ' ({point.percentage:.2f}%)</b>'
+        pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
       },
       legend: {
         enabled: false
@@ -73,16 +69,16 @@ class QualityChart extends React.Component {
     }
   }*/
 
-  /*componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     window.setTimeout(() => {
-      if(!_.isEqual(this.props.qualities, prevProps.qualities)) {
+      if(!_.isEqual(this.props.year, prevProps.year)) {
         this.drawChart();
       }
     }, 200)
-  }*/
+  }
 
   componentDidMount() {
-    // this.drawChart();
+    this.drawChart();
 
     $('#quality-tooltip').tooltipster({
       theme: 'tooltip-custom-theme',
@@ -107,4 +103,4 @@ class QualityChart extends React.Component {
   }
 }
 
-export default QualityChart;
+export default QualityPieChart;
