@@ -31,18 +31,15 @@ a {
   color: $primary-action-color;
   text-decoration: none;
   transition: color 0.1s linear;
-
   &:active,
   &:focus,
   &:hover {
     color: darken($primary-action-color, 15%);
   }
-
   &:active,
   &:focus {
     outline: none;
   }
-
   &.link-overflow {
     display: block;
     white-space: nowrap;
@@ -63,7 +60,7 @@ hr {
 blockquote {
   background-color: rgba($light-gray, 0.4);
   padding: $base-spacing;
-  margin: $base-spacing;
+  margin: 0;
 }
 
 img,
@@ -74,4 +71,10 @@ picture {
 
 .text-justify {
   text-align: justify;
+}
+
+.box-orange {
+  background-color: $orange;
+  color: white;
+  padding: $base-spacing;
 }

@@ -1,13 +1,17 @@
 <article class="page">
   <div class="page__container">
     <h1 class="page__title">ESTIMATIVAS DA ACURÁCIA DO MAPEAMENTO DA COBERTURA DO SOLO PELO PROJETO MAPBIOMAS</h1>
-    <center>
+
+    <div class="text-center box-orange">
+      <strong>As estimativas de acurácia da coleção 3.0 estão em processamento</strong>
+    </div>
+
+    <p class="text-center">
       <%= link_to 'analysis' do %>
-        <button class="primary">Acesse o painel de estatística de acurácia da coleção 2.3</button>
+        <button class="btn btn-green">Acesse o painel de estatística de acurácia da coleção 2.3</button>
       <% end %>
-      <p><small>As estimativas de acurácia da coleção 3.0 estão em processamento</small></p>
-    </center>
-    <br>
+    </p>
+
     <p>A análise de acurácia é a principal forma de avaliação da qualidade do mapeamento realizado pelo Mapbiomas. Além de dizer qual a taxa de acerto geral, a análise de acurácia também revela estimativas das taxa de acerto e de erro para cada classe mapeada. O MapBiomas avaliou a acurácia global e para cada classe cobertura para cada ano entre 2000 e 2016.</p>
 
     <p>As estimativas da acurácia foram baseadas na avaliação de uma amostra de píxeis, que chamamos de base de <b>dados de referência</b>. O número de píxeis na base de <b>dados de referência</b> foi pré-determinado por técnicas de amostragem estatística. Em cada ano, cada píxel da base de dados de referência foi avaliado cuidadosamente por três técnicos treinados em interpretação visual de imagens Lansat. A avaliação de um píxel em um determinado ano foi considerado válido apenas quando dois ou três técnicos concordaram quanto à classe observada no píxel. A avaliação da acurácia é então feita usando métricas que comparam a classe mapeada com a classe avaliada pelos técnicos na base de dados de referência. A acurácia reportada c.a. de 5% de erro para cada classe mapeada em cada ano.</p>
@@ -66,7 +70,7 @@
     <br>
     <center>
       <%= link_to 'analysis' do %>
-        <button class="primary">Acesse o painel de estatística de acurácia</button>
+        <button class="btn btn-green">Acesse o painel de estatística de acurácia</button>
       <% end %>
     </center>
   </div>
