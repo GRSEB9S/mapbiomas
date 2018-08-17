@@ -28,6 +28,7 @@ en:
             </ul>
     index:
       tutorial:
+        title: Tutorial
         coverage:
           title: Tutorial (Coverage)
           body: |
@@ -65,7 +66,6 @@ en:
       zoom_out: Zoom out
       hide_panels: Hide panels
       opacity_dropdown: Show opacity control
-      tutorial: Tutorial
       point_click:
         <p>
           With this button activated you can click anywhere on the map and know all the layers of data actives and their respective statistics and maps (ex state, municipality, indigenous land, river basin)

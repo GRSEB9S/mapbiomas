@@ -32,6 +32,7 @@ class ZoomAndOpacityControl extends Component {
   render() {
     const { showOpacityDropdown } = this.state;
     const {
+      mode,
       className,
       enablePointClick,
       hiddenPanels,
@@ -61,7 +62,9 @@ class ZoomAndOpacityControl extends Component {
         >
           <i className="fa fa-sun-o" />
         </button>
-        <button title={I18n.t('map.index.tutorial')} className="primary" onClick={showTutorial}>?</button>
+        {mode != 'quality' && (
+          <button title={I18n.t('map.index.tutorial.title')} className="primary" onClick={showTutorial}>?</button>
+        )}
         <button id="point-info-tooltip" className={classNames('primary', pointClick && 'active')} onClick={enablePointClick}>
           <i className="fa fa-binoculars" />
         </button>
