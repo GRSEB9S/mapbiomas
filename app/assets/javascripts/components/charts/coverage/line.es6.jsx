@@ -83,15 +83,26 @@ class CoverageLineChart extends Component {
       territoryId = props.territory.id
     }
 
-    API.coverage({
-      territory_id: territoryId,
-      classification_ids: props.defaultClassifications.map((c) => c.id).join(',')
-    }).then((coverage) => {
-      this.setState({ coverage: this.parseCoverage(coverage) }, () => {
-        this.drawChart();
-        this.chart.hideLoading();
-      });
-    })
+    if (props.showCarStats) {
+      API.car({
+        territory_id: territoryId
+      }).then((coverage) => {
+        this.setState({ coverage: this.parseCoverage(coverage) }, () => {
+          this.drawChart();
+          this.chart.hideLoading();
+        });
+      })
+    } else {
+      API.coverage({
+        territory_id: territoryId,
+        classification_ids: props.defaultClassifications.map((c) => c.id).join(',')
+      }).then((coverage) => {
+        this.setState({ coverage: this.parseCoverage(coverage) }, () => {
+          this.drawChart();
+          this.chart.hideLoading();
+        });
+      })
+    }
   }
 
   componentDidMount() {
@@ -100,7 +111,7 @@ class CoverageLineChart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props.year, nextProps.year) || !_.isEqual(this.props.territory, nextProps.territory)) {
+    if(!_.isEqual(this.props.year, nextProps.year) || !_.isEqual(this.props.territory, nextProps.territory) || (this.props.showCarStats != nextProps.showCarStats)) {
       this.loadCoverage(nextProps)
     }
   }

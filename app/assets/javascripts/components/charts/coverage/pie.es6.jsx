@@ -75,16 +75,28 @@ export default class CoveragePieChart extends Component {
       territoryId = props.territory.id
     }
 
-    API.coverage({
-      territory_id: territoryId,
-      classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
-      year: props.year
-    }).then((coverage) => {
-      this.setState({ coverage: coverage }, () => {
-        this.drawChart();
-        this.chart.hideLoading();
-      });
-    })
+    if (props.showCarStats) {
+      API.car({
+        territory_id: territoryId,
+        year: props.year
+      }).then((coverage) => {
+        this.setState({ coverage: coverage }, () => {
+          this.drawChart();
+          this.chart.hideLoading();
+        });
+      })
+    } else {
+      API.coverage({
+        territory_id: territoryId,
+        classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
+        year: props.year
+      }).then((coverage) => {
+        this.setState({ coverage: coverage }, () => {
+          this.drawChart();
+          this.chart.hideLoading();
+        });
+      })
+    }
   }
 
   componentDidMount() {
@@ -93,7 +105,7 @@ export default class CoveragePieChart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props.year, nextProps.year) || !_.isEqual(this.props.territory, nextProps.territory)) {
+    if(!_.isEqual(this.props.year, nextProps.year) || !_.isEqual(this.props.territory, nextProps.territory) || (this.props.showCarStats != nextProps.showCarStats)) {
       this.loadCoverage(nextProps)
     }
   }
