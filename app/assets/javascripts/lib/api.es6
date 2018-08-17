@@ -1,4 +1,8 @@
 export class API {
+  static car(params) {
+    return $.get(Routes.api_car_index_path(params));
+  }
+
   static coverage(params) {
     return $.get(Routes.api_coverage_index_path(params));
   }

@@ -29,7 +29,8 @@ const CoverageMenu = ({
   myMapsPage,
   onExpandModal,
   territory,
-  year
+  year,
+  showCarStats
 }) => (
   <div>
     <h3 className="map-control__header">
@@ -46,6 +47,7 @@ const CoverageMenu = ({
       defaultClassifications={defaultClassifications}
       territory={territory}
       year={year}
+      showCarStats={showCarStats}
     />
 
     <CoverageLineChart
@@ -54,6 +56,7 @@ const CoverageMenu = ({
       defaultClassifications={defaultClassifications}
       territory={territory}
       year={year}
+      showCarStats={showCarStats}
     />
 
     <button className="primary" onClick={onExpandModal.bind(this)}>

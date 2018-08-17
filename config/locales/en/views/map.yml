@@ -151,6 +151,8 @@ en:
         title: Infrastructure
       car:
         title: CAR
+        layer: Habilitar camada CAR
+        stats: Visualizar estatísticas para CAR por recorte territorial (país ou estado)
       layers:
         title: Layers
         countries: Countries

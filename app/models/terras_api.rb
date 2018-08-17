@@ -25,6 +25,17 @@ class TerrasAPI
     end
   end
 
+  def self.car(year, territory_id)
+    query_params = { territory_id: "100000#{territory_id}" }
+
+    query_params = query_params.merge(year: year) if year.present?
+
+    cache("#{__method__.to_s}-#{year}-#{territory_id}-#{locale}") do
+      get("/dashboard/services/statistics/coverage", query:
+          query_params).parsed_response
+    end
+  end
+
   def self.infra_buffer(params)
     cache([
      __method__.to_s,
