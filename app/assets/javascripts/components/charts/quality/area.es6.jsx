@@ -16,7 +16,7 @@ class QualityAreaChart extends React.Component {
   }
 
   get seriesData() {
-    return _.map(['zero', '1_to_3', '4_to_6', 'over_6'], (key) => {
+    return _.map(['over_6', '4_to_6', '1_to_3', 'zero'], (key) => {
       return {
         name: I18n.t(key, {scope: 'map.index.quality.chart'}),
         data: _.map(this.props.qualityData, (d) => d[key]),
@@ -54,6 +54,9 @@ class QualityAreaChart extends React.Component {
       },
       xAxis: {
         categories: _.range(1985, 2018)
+      },
+      yAxis: {
+        visible: false
       },
       tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
