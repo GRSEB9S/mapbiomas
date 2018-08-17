@@ -41,6 +41,8 @@ export default class Map extends React.Component {
       baseMaps: null,
       classifications: null,
       infraLevels: [],
+      showCarLayer: false,
+      showCartStats: false,
       hide: false,
       pointClick: false,
       layers: null,
@@ -454,6 +456,14 @@ export default class Map extends React.Component {
     }
 
     this.setState({ infraLevels: newInfraLevels });
+  }
+
+  handleCarLayerChange() {
+    this.setState({ showCarLayer: !this.state.showCarLayer });
+  }
+
+  handleCarStatsChange() {
+    this.setState({ showCarStats: !this.state.showCarStats });
   }
 
   handleTransitionChange(transition) {
@@ -926,6 +936,9 @@ export default class Map extends React.Component {
           ref="canvas"
           cards={this.state.cards}
           infraLayer={this.props.infraLayer}
+          showCarLayer={this.state.showCarLayer}
+          showCarStats={this.state.showCarStats}
+          carLayer={this.props.carLayer}
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
           selectedInfraLevels={this.state.infraLevels}
@@ -1049,12 +1062,16 @@ export default class Map extends React.Component {
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
                   infraLevels={this.state.infraLevels}
+                  showCarLayer={this.state.showCarLayer}
+                  showCarStats={this.state.showCarStats}
                   availableInfraLevels={this.props.availableInfraLevels}
                   viewOptionsIndex={this.state.viewOptionsIndex.coverage}
                   handleClassificationsChange={this.handleClassificationsChange.bind(this)}
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                   handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
+                  handleCarLayerChange={this.handleCarLayerChange.bind(this)}
+                  handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'coverage')}
                 />
               </div>
@@ -1131,6 +1148,7 @@ export default class Map extends React.Component {
                     map={this.state.selectedMap}
                     year={this.year}
                     classifications={this.classifications}
+                    showCarStats={this.state.showCarStats}
                     onExpandModal={this.expandModal.bind(this, 'coverage')}
                   />
                 )}

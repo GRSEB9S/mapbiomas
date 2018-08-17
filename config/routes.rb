@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :statistics, only: :index
     resources :infra_levels, only: :index
     resources :infra_buffers, only: :index
+    resources :car, only: :index
 
     get '/inspector', to: 'inspector#index', as: :inspector
     get '/statistics/collection_2', to: 'statistics#collection_2', as: :collection_2_statistics
