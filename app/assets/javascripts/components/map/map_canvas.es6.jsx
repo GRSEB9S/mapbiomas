@@ -301,6 +301,10 @@ export class MapCanvas extends React.Component {
   }
 
   setupInfraLayer() {
+    if (!this.props.mainMap) {
+      return;
+    }
+
     if (this.infraLayer && this.props.mode == 'quality') {
       this.infraLayer.setOpacity(0);
       return;
@@ -339,6 +343,10 @@ export class MapCanvas extends React.Component {
   }
 
   setupCarLayer() {
+    if (!this.props.mainMap) {
+      return;
+    }
+
     if (this.carLayer) {
     } else {
       this.carLayer = L.tileLayer.wms(this.props.carLayer.link, this.props.carLayer.params)
