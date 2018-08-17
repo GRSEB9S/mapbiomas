@@ -151,8 +151,8 @@ pt-BR:
         title: Infraestrutura
       car:
         title: CAR
-        layer: View CAR layer
-        stats: View statistics for CAR per selected territory (country or state)
+        layer: Habilitar camada CAR
+        stats: Visualizar estatísticas para CAR por recorte territorial (país ou estado)
       layers:
         title: Camadas
         countries: Países
