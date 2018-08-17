@@ -2,16 +2,14 @@
   margin: $small-spacing;
   padding: $small-spacing;
   display: inline-block;
-  border: 1px solid $light-gray;
   width: 275px;
-
+  background-color: white;
+  border-radius: $base-border-radius;
   &__title {
     font-weight: 500;
     padding: $micro-spacing 0 0 0;
-    font-size: $base-font-size;
     text-align: center;
   }
-
   img {
     margin: 0;
   }
@@ -21,10 +19,48 @@
   img {
     margin: $base-spacing auto;
   }
-
   h2.page__title {
     color: $light-green;
     margin-top: $big-spacing;
-    font-size: $subtitle-font-size;
+  }
+}
+
+.my-slider {
+  .container {
+    padding: $base-spacing;
+    font-size: 16px;
+  }
+  h3 {
+    text-align: center;
+  }
+}
+
+.tns-controls {
+  position: relative;
+  button {
+    &[data-controls="prev"],
+    &[data-controls="next"] {
+      background-color: transparent;
+      color: transparent;
+      position: absolute;
+      top: 45%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 60px;
+      overflow: hidden;
+      height: 60px;
+      padding: 0;
+      margin: 0;
+      top: -90px;
+    }
+    &[data-controls="next"] {
+      right: -80px;
+      background-image: image-url('icon-next.svg');
+    }
+    &[data-controls="prev"] {
+      left: -80px;
+      background-image: image-url('icon-back.svg');
+    }
   }
 }
