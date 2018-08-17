@@ -83,6 +83,8 @@ class CoverageAuxiliarControls extends React.Component {
         </TabPanel>
         <TabPanel>
           <CarControl
+            showCarLayer={this.props.showCarLayer}
+            showCarStats={this.props.showCarStats}
             onCarLayerChange={this.props.handleCarLayerChange}
             onCarStatsChange={this.props.handleCarStatsChange}
           />
