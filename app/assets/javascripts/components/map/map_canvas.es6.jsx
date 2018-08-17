@@ -321,6 +321,7 @@ export class MapCanvas extends React.Component {
         let options = lodash.clone(this.props.infraLayer.params);
 
         cqlFilter = lodash.join(cqlFilter, ' OR ');
+        cqlFilter = `${cqlFilter} AND buffer IS NULL`;
         options = {
           ...this.props.infraLayer.params,
           cql_filter: cqlFilter
