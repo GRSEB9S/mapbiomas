@@ -58,9 +58,9 @@ hr {
 }
 
 blockquote {
-  background-color: rgba($light-gray, 0.4);
+  background-color: rgba($white, 0.4);
   padding: $base-spacing;
-  margin: 0;
+  margin: $base-spacing 0;
 }
 
 img,
