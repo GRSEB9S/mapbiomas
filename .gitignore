@@ -22,3 +22,4 @@
 /app/assets/javascripts/bundle.js*
 
 .tool-versions
+.DS_Store
