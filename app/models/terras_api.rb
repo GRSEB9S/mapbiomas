@@ -115,7 +115,7 @@ class TerrasAPI
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
     else
-      cache("#{__method__.to_s}-#{classification_ids}-#{grouped}-#{file_path}-#{locale}") do
+      cache("#{__method__.to_s}-#{territory_id}-#{classification_ids}-#{grouped}-#{file_path}-#{locale}") do
         get(file_path, query: {
           territory_id: territory_id,
           classification_id: classification_ids
