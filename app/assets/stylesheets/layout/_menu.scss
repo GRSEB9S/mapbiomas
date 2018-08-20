@@ -59,6 +59,12 @@
     @include media ($tablet) {
       width: 100%;
     }
+    &.login {
+      .submenu__items {
+        left: inherit !important;
+        right: 0;
+      }
+    }
   }
   &__link {
     text-transform: uppercase;
