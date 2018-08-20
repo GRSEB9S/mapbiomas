@@ -172,8 +172,12 @@ export default class Stats extends React.Component {
     return null;
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     let newState = {};
+    if (!_.isEqual(this.state.selectedClassifications, prevState.selectedClassifications)
+        || !_.isEqual(this.state.selectedTerritories, prevState.selectedTerritories)) {
+      return
+    }
 
     if (!_.isEmpty(this.props.selectedTerritories)) {
       newState['selectedTerritories'] = prevProps.selectedTerritories;
