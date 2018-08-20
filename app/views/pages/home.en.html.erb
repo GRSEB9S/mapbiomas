@@ -1,4 +1,3 @@
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script>
 $(function() {
   $(".video").click(function () {
@@ -6,7 +5,9 @@ $(function() {
     videoSRC = $(this).attr("data-video"),
     videoSRCauto = videoSRC + "?modestbranding=0&rel=0&controls=1&showinfo=1&html5=1&autoplay=1";
     $(theModal + ' iframe').attr('src', videoSRCauto);
+    $(theModal).removeClass("fade");
     $(theModal + ' button.close').click(function () {
+      $(theModal).addClass("fade");
       $(theModal + ' iframe').attr('src', videoSRC);
     });
   });
@@ -17,7 +18,7 @@ $(function() {
   <div class="home__video-content">
     <p><%= image_tag "brand.svg" %></p>
     <p>The <strong>MapBiomas</strong> is a multi institutional initiative involving universities, NGOs and technology companies that have come together to contribute to the understanding of the transformation of Brazilian territory through annual mapping of the land cover and land use.</p>
-    <a class="btn btn-orange" href="https://youtu.be/3icm9jwtu-k" target="_blank">Watch lauching of collection 3 of Mapbiomas LIVE starting 9am</a>
+    <button class="btn btn-blue video" data-video="https://www.youtube.com/embed/AAEbeMQlJc4" data-toggle="modal" data-target="#videoModal">Watch Project Video</button>
   </div>
   <video autoplay loop id="video-background" muted poster="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.jpg">
     <source src="https://storage.googleapis.com/mapbiomas/Mapbiomas55sec.mp4" type="video/mp4">
@@ -25,7 +26,6 @@ $(function() {
 </section>
 
 <div class="modal-video fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
   <button type="button" class="button primary close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
