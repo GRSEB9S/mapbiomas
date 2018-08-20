@@ -41,7 +41,7 @@
     background-image: image-url('profile.png');
     background-size: cover;
     background-position: center top;
-    border: 1px solid rgba($light-gray, .4);
+    border: 2px solid $white;
   }
   &__name {
     height: 60px;

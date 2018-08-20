@@ -2,16 +2,47 @@
   <div class="page__container">
     <h1 class="page__title">Mapa Mural</h1>
     <p>Download de arquivo para impressão:</p>
-    <ul>
       <!--<li><%= link_to 'TiFF (209 MB)', "https://storage.googleapis.com/mapbiomas/assets/colecao-2-3/Mapa_Mapbiomas_2015_Col2_3_Albers.tif", target: "_blank" %></li>-->
-      <li><%= link_to 'Brasil', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3.pdf", target: "_blank" %></li>
-      <li><%= link_to 'Amazônia', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_amazonia.pdf", target: "_blank" %></li>
-      <li><%= link_to 'Cerrado', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_cerrado.pdf", target: "_blank" %></li>
-      <li><%= link_to 'Pantanal', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_Pantanal.pdf", target: "_blank" %></li>
-      <li><%= link_to 'Caatinga', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_caatinga.pdf", target: "_blank" %></li>
-      <li><%= link_to 'Mata Atlântica', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_Mata_Atlantica.pdf", target: "_blank" %></li>
-      <li><%= link_to 'Pampa', "https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_Pampa.pdf", target: "_blank" %></li>
-    </ul>
-    <%= link_to (image_tag "mapa_mapbiomas_v3.png") %>
+
+    <div class="container text-center container__image--margin">
+      <div class="container__image">
+        <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3.pdf" target="_blank">
+          <%= image_tag "mapas-murais/brasil.jpg" %>
+        </a>
+      </div>
+      <div class="container__image-list">
+        <div class="container__image-item">
+          <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_amazonia.pdf" target="_blank">
+            <%= image_tag "mapas-murais/amazonia.jpg" %>
+          </a>
+        </div>
+        <div class="container__image-item">
+          <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_caatinga.pdf" target="_blank">
+            <%= image_tag "mapas-murais/caatinga.jpg" %>
+          </a>
+        </div>
+        <div class="container__image-item">
+          <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_cerrado.pdf" target="_blank">
+            <%= image_tag "mapas-murais/cerrado.jpg" %>
+          </a>
+        </div>
+        <div class="container__image-item">
+          <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_Mata_Atlantica.pdf" target="_blank">
+            <%= image_tag "mapas-murais/mata-atlantica.jpg" %>
+          </a>
+        </div>
+        <div class="container__image-item">
+          <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_Pampa.pdf" target="_blank">
+            <%= image_tag "mapas-murais/pampa.jpg" %>
+          </a>
+        </div>
+        <div class="container__image-item">
+          <a href="https://storage.googleapis.com/mapbiomas/mapas-murais/Mapa_Mapbiomas_2017_Col3_Pantanal.pdf" target="_blank">
+            <%= image_tag "mapas-murais/pantanal.jpg" %>
+          </a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </article>

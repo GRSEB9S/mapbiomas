@@ -11,9 +11,17 @@
         if($(this).val() == '1'){
           $('#collection1').show();
           $('#collection2').hide();
-        }else{
+          $('#collection3').hide();
+        }
+        if($(this).val() == '2'){
           $('#collection1').hide();
           $('#collection2').show();
+          $('#collection3').hide();
+        }
+        if($(this).val() == '3'){
+          $('#collection1').hide();
+          $('#collection2').hide();
+          $('#collection3').show();
         }
 
         $('#collection').trigger('change');
@@ -26,7 +34,7 @@
 
     </script>
     <div class="page__box-download">
-      <%= select_tag "collection", options_for_select([["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>
+      <%= select_tag "collection", options_for_select([["Coleção 3", 3], ["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>
     </div>
     <table id="collection1" class="table" style="display: none;">
       <tr>
@@ -160,7 +168,7 @@
 
     <!-- collection2 -->
 
-    <table id="collection2" class="table">
+    <table id="collection2" class="table" style="display: none;">
       <tr>
         <td><strong>Nome do Mapa / Produto</strong></td>
         <td><strong>Fonte / Autor</strong></td>
@@ -380,12 +388,265 @@
       <tr>
         <td>Land Cover Rondônia 1984 -2010</td>
         <td>University of California Santa Barbara (UCSB)</td>
-        <td>This project is part of a collaborative research effort between UCSB, Salisbury University (Maryland) and North Carolina State University. Under the direction of principal investigators Jill Caviglia-Harris, 
-Daniel Harris (Salisbury), Erin Sills (NCSU) and Dar Roberts (UCSB), we have been active in the production and management of a gapless annual Landsat imagery archive (1984-2009) covering the majority of the state of Rondonia</td>
+        <td>This project is part of a collaborative research effort between UCSB, Salisbury University (Maryland) and North Carolina State University. Under the direction of principal investigators Jill Caviglia-Harris, Daniel Harris (Salisbury), Erin Sills (NCSU) and Dar Roberts (UCSB), we have been active in the production and management of a gapless annual Landsat imagery archive (1984-2009) covering the majority of the state of Rondonia</td>
         <td>2010</td>
         <td>Restrito ao SEEG MapBiomas</td>
         <td><a href="https://sites.google.com/site/ucsbviperlab/project-definition#TOC-Land-use-and-land-cover-change-in-Rondonia-Brazil" class="link-overflow">https://sites.google.com/site/ucsbviperlab/project-definition#TOC-Land-use-and-land-cover-change-in-Rondonia-Brazil</a></td>
       </tr>
     </table>
+
+    <!-- collection3 -->
+
+    <table id="collection3" class="table">
+      <tbody>
+        <tr>
+          <td><strong>Nome do Mapa/Produto</strong></td>
+          <td><strong>Fonte / Autor</strong></td>
+          <td><strong>Descrição</strong></td>
+          <td><strong>Ano do Mapa</strong></td>
+          <td><strong>Endereço para download dos dados na fonte orignal (ex. endereco para baixar prodes no INPE)</strong></td>
+        </tr>
+        <tr>
+          <td>Mapa de Uso do Solo do Brasil</td>
+          <td>IBGE</td>
+          <td>Mapa de uso do solo baseado em Modis (250mt) com comparaçÕes entre os anos 2000, 2010 e 2012</td>
+          <td>2000, 2010, 2012</td>
+          <td><a target="_blank" href="ftp://geoftp.ibge.gov.br/mapas_tematicos/mapas_murais/shapes/cobertura_e_uso_da_terra/">Download</a></td>
+        </tr>
+        <tr>
+          <td>Terra Class Cerrado</td>
+          <td>MMA, IBAMA, EMBRAPA, INPE, UFG e UFU</td>
+          <td>Mapeamento do Uso e Cobertura da Terra do Cerrado</td>
+          <td>2013</td>
+          <td><a target="_blank" href="http://www.dpi.inpe.br/tccerrado/download.php">http://www.dpi.inpe.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Uso e cobertura vegetal do Estado do Rio Grande do Sul – situação em 2002. </td>
+          <td class="s5">Hasenack, H.; Cordeiro, J.L.P; Weber, E.J. (Org.). Porto Alegre: UFRGS IB Centro de Ecologia, 2015. 1a ed. ISBN 978-85-63843-15-9.</td>
+          <td
+          >Mapa de Cobertura vegetal do Rio Grande do Sul - ano base 2002, obtido por interpretação visual de imagens Landsat.
+            Nível de detalhe compatível com escala 1:250.000</td>
+          <td>2002</td>
+          <td class="s6"><a target="_blank" href="http://www.ecologia.ufrgs.br/labgeo">http://www.ecologia.ufrgs.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Uso e cobertura vegetal do Estado do Rio Grande do Sul – situação em 2009. </td>
+          <td>Weber, E.J.; Hoffmann, G.S.; Oliveira, C.V.; Hasenack, H. (Org.). <br> Porto Alegre: UFRGS IB Centro de Ecologia,
+            2016. 1a ed. ISBN 978-85-63843-20-3.</td>
+          <td>Mapa de Cobertura vegetal do Rio Grande do Sul - ano base 2009, obtido por interpretação visual de imagens Landsat.
+            Nível de detalhe compatível com escala 1:250.000</td>
+          <td>2009</td>
+          <td><a target="_blank" href="http://www.ecologia.ufrgs.br/labgeo">http://www.ecologia.ufrgs.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Uso e cobertura vegetal do Estado do Rio Grande do Sul – situação em 2015. </td>
+          <td>Hoffmann, G.S.; Weber, E.J.; Hasenack, H. (Org.). Porto Alegre: UFRGS IB Centro de Ecologia, 2018. 1a ed. ISBN 978-85-63843-22-7.</td>
+          <td
+          >Mapa de Cobertura vegetal do Rio Grande do Sul - ano base 2015, obtido por interpretação visual de imagens Landsat.
+            Nível de detalhe compatível com escala 1:250.000</td>
+          <td>2015</td>
+          <td><a target="_blank" href="http://www.ecologia.ufrgs.br/labgeo">http://www.ecologia.ufrgs.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Atlas da Mata Atlântica</td>
+          <td>SOS Mata Atlântica/INPE</td>
+          <td>Mapeamento das formações florestais e ecossistemas associados, ano de referência 2016</td>
+          <td>2016</td>
+          <td><a target="_blank" href="http://mapas.sosma.org.br/dados/">http://mapas.sosma.org.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Mapeamento da Bacia do Alto Paraguai</td>
+          <td>SOS Pantanal/WWF Brasil</td>
+          <td>Monitoramento do uso e cobertura vegetal da Bacia do Alto Paraguai, que inclui o Pantanal e suas cabeceiras. Dados
+            disponíveis para 2002, 2008, 2010, 2012 e 2014</td>
+          <td>2014</td>
+          <td><a target="_blank" href="https://panda.maps.arcgis.com/apps/MapJournal/?appid=1fa369eeb20f40f386c7b81fe1462927">https://panda.maps.arcgis.com/...</a></td>
+        </tr>
+        <tr>
+          <td>Mapa dos manguezais da região norte do Brasil</td>
+          <td>Nascimento Jr, W.R; Souza-Filho, P.W.M., et al.</td>
+          <td>Mapa das áreas de manguezal do Oiapoque-AP até a Ponta de Tubarão-MA gerado a partir da classificação de imagens
+            Landsat e ALOS PALSAR do ano de 2008</td>
+          <td>2008</td>
+          <td>acesso restrito</td>
+        </tr>
+        <tr>
+          <td>Mapa dos manguezais da região nordeste do Brasil</td>
+          <td>Pereira, E.A., Souza-Filho, P.W.M., et al.</td>
+          <td>Mapa das áreas de manguezal da Ponta de Tubarão-MA até o sul do Estado da Bahia a partir da classificação de imagens
+            Landsat e ALOS PALSAR do ano de 2008</td>
+          <td>2008</td>
+          <td>acesso restrito</td>
+        </tr>
+        <tr>
+          <td>Mapas da agricultura anual para a amazônia </td>
+          <td>Agrosatélite </td>
+          <td>
+            <div>Mapas que incluem as culturas de algodão, milho<br>e soja, cultivados em larga escala, para os anos/safra:<br>2000/2001,
+              2006/2007 e 2013/2014, 2016/2017</div>
+          </td>
+          <td class="s10 softmerge">
+            <div>2000/2001, 2006/2007, 2013/2014 e 2016/2017</div>
+          </td>
+          <td>acesso restrito</td>
+        </tr>
+        <tr>
+          <td>Mapas da agricultura anual para o cerrado (projeto: Geospatial analyses of the annual crops dynamic in the Brazilian
+            Cerrado biome: 2000 to 2014)</td>
+          <td>Agrosatélite </td>
+          <td>
+            <div>Mapas que incluem as culturas de algodão, milho<br>e soja, cultivados em larga escala, para os anos/safra:<br>2000/2001,
+              2006/2007 e 2013/2014.</div>
+          </td>
+          <td class="s11 softmerge">
+            <div>2000/2001, 2006/2007 e 2013/2014</div>
+          </td>
+          <td>acesso restrito</td>
+        </tr>
+        <tr>
+          <td>Mapa de florestas plantadas</td>
+          <td>GFW/WRI</td>
+          <td>Mapa de florestas plantadas para o Brasil</td>
+          <td>2014</td>
+          <td><a target="_blank" href="http://data.globalforestwatch.org/datasets/baae47df61ed4a73a6f54f00cb4207e0_5">Download</a></td>
+        </tr>
+        <tr>
+          <td>III Inventário Nacional de Emissões de Gases de Efeito Estufa (setor LULUCF)</td>
+          <td>MCTIC</td>
+          <td>Mapa das áreas de agricultura (anual, semi-perene e perene)</td>
+          <td>2010</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Canasat</td>
+          <td>INPE/Agrosatelite</td>
+          <td>Mapa da cana-de-açúcar para o centro-sul do Brasil</td>
+          <td>2003 a 2015</td>
+          <td>acesso restrito</td>
+        </tr>
+        <tr>
+          <td>Mapas de Cobertura Vegetal dos Biomas Brasileiros - ProBio</td>
+          <td>UEFS/APNE/EMBRAPA- Solos/UFCE/UFRN/UFRPE/UFPB/CRA/SEMARH-MMA</td>
+          <td>LEVANTAMENTO DA COBERTURA VEGETAL E DO USO DO SOLO DO BIOMA CAATINGA</td>
+          <td>2002-2004</td>
+          <td><a target="_blank" href="http://mapas.mma.gov.br/geodados/brasil/vegetacao/vegetacao2002/mosaicos_vegetacao/caatinga.zip">http://mapas.mma.gov.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Mapeamento Florestal do Estado de Sergipe </td>
+          <td class="s12">SEMARH-SE</td>
+          <td>Levantamento da cobertura Florestal do Estado de Sergipe</td>
+          <td>2010</td>
+          <td>link não disponível</td>
+        </tr>
+        <tr>
+          <td>Mapas da Agricultura do Cerrado</td>
+          <td>Agrosatélite </td>
+          <td>Map of the cultivated area of 1st crop season of soybean, corn, and cotton in the Cerrado biome</td>
+          <td>2000/2001, 2006/2007 e 2013/2014</td>
+          <td>acesso restrito</td>
+        </tr>
+        <tr>
+          <td>Mapeamento de uso da terra para o Cerrado e Mata Atlântica</td>
+          <td>FBDS</td>
+          <td>Mapeamento de uso da terra para o Cerrado e Mata Atlântica. Baseado em imagens de alta resolução RapidEye com resolução
+            de 5m.</td>
+          <td>2013</td>
+          <td><a target="_blank" href="http://geo.fbds.org.br/">http://geo.fbds.org.br/</a></td>
+        </tr>
+        <tr>
+          <td>Atlas da Mata Atlântica</td>
+          <td>SOS Mata Atlântica/INPE</td>
+          <td>Mapeamento detalhado com 1ha para o Estado de São Paulo</td>
+          <td>2014</td>
+          <td>solicitação por email para SOS Mata Atlântica/INPE</td>
+        </tr>
+        <tr>
+          <td>Atlas da Mata Atlântica</td>
+          <td>SOS Mata Atlântica/INPE</td>
+          <td>Mapeamento detalhado com 1ha para o Estado do Rio de Janeiro</td>
+          <td>2014</td>
+          <td>solicitação por email para SOS Mata Atlântica/INPE</td>
+        </tr>
+        <tr>
+          <td>Atlas da Mata Atlântica</td>
+          <td>SOS Mata Atlântica/INPE</td>
+          <td>Mapeamento detalhado com 1ha para o Estado do Paraná</td>
+          <td>2014</td>
+          <td>solicitação por email para SOS Mata Atlântica/INPE</td>
+        </tr>
+        <tr>
+          <td>Atlas da Mata Atlântica</td>
+          <td>SOS Mata Atlântica/INPE</td>
+          <td>Mapeamento detalhado com 1ha para o Estado de Santa Catarina</td>
+          <td>2014</td>
+          <td>solicitação por email para SOS Mata Atlântica/INPE</td>
+        </tr>
+        <tr>
+          <td>Global Distribution of Mangroves USGS</td>
+          <td>USGS</td>
+          <td>This dataset shows the global distribution of mangrove forests, derived from earth observation satellite imagery</td>
+          <td
+          >1997-2000</td>
+          <td><a target="_blank" href="http://sedac.ciesin.columbia.edu/data/set/lulc-global-mangrove-forests-distribution-2000/data-download">http://sedac.ciesin.columbia.edu/data...</a></td>
+        </tr>
+        <tr>
+          <td>Mapa Síntese de Pastagens do Brasil - v8</td>
+          <td>LAPIG/UFG</td>
+          <td>Mapeamento de áreas de pastagem, a partir de compilação de dados TerraClass Amazon; Funcate; PROBIO; Canasat e TNC.
+            Os mapeamentos que o compõem são: Bioma Pantanal - Mapeamento da Bacia do Alto Paraguai para 2014; Bioma Caatinga
+            ( Mapeamento Lapig - Versão 2 2014-2016) - Esse mapeamento classificou as áreas de pasto limpo, pasto sujo e área
+            degradada (solo exposto); Bioma Mata Atlântica (Mapeamento Lapig 2014-2016) - Esse mapeamento classificou as áreas
+            de pasto limpo, pasto sujo e área degradada (solo exposto); Bioma Pampa - Mapeamento realizado pelo IBGE para o
+            estado do Rio Grande do Sul (2012); Bioma Amazônia - Mapeamento TerraClass Amazônia 2014; Bioma Cerrado - Mapeamento
+            TerraClass Cerrado 2013.</td>
+          <td>2016</td>
+          <td class="s13"><a target="_blank" href="http://maps.lapig.iesa.ufg.br/?layers=pa_br_areas_pastagens_250_2016_lapig">http://maps.lapig.iesa.ufg.br/?layers...</a></td>
+        </tr>
+        <tr>
+          <td>Prodes</td>
+          <td>INPE</td>
+          <td>O projeto PRODES realiza o monitoramento por satélites do desmatamento por corte raso na Amazônia Legal e produz,
+            desde 1988, as taxas anuais de desmatamento na região, que são usadas pelo governo brasileiro para o estabelecimento
+            de políticas públicas. As taxas anuais são estimadas a partir dos incrementos de desmatamento identificados em
+            cada imagem de satélite que cobre a Amazônia Legal. A primeira apresentação dos dados é realizada para dezembro
+            de cada ano, na forma de estimativa. Os dados consolidados são apresentados no primeiro semestre do ano seguinte.<br></td>
+          <td
+          >2016</td>
+          <td><a target="_blank" href="http://www.dpi.inpe.br/prodesdigital/dadosn/">http://www.dpi.inpe.br/...</a></td>
+        </tr>
+        <tr>
+          <td>Terra Class Amazônia</td>
+          <td>INPE</td>
+          <td>Como principal resultado deste mapeamento é possível entender a dinâmica de uso e cobertura da Amazônia Legal Brasileira.
+            Para isto já foram mapeados cinco anos de uso e cobertura (2004, 2008, 2010, 2012 e 2014) permitirão uma análise
+            evolutiva de uma década que se inicia no ano da implantação do Plano de Prevenção e Controle do Desmatamento na
+            Amazônia Legal (PPCDAm). Com estes resultados é possível fazer uma avaliação da dinâmica do uso e ocupação das
+            áreas desflorestadas nestes 10 anos da implementação do PPCDAm. </td>
+          <td>2014</td>
+          <td><a target="_blank" href="http://www.inpe.br/cra/projetos_pesquisas/dados_terraclass.php">Download</a></td>
+        </tr>
+        <tr>
+          <td>Global Forest Change 2000–2015</td>
+          <td>University of Maryland</td>
+          <td>Results from time-series analysis of Landsat images in characterizing global forest extent and change from 2000 through
+            2015. For additional information about these results, please see the associated journal article (Hansen et al.,
+            Science 2013).</td>
+          <td>2015</td>
+          <td><a target="_blank" href="https://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.2.html">Download</a></td>
+        </tr>
+        <tr>
+          <td>Land Cover Rondônia 1984 -2010</td>
+          <td>University of California Santa Barbara (UCSB)</td>
+          <td><br>This project is part of a collaborative research effort between UCSB, Salisbury University (Maryland) and North
+            Carolina State University. Under the direction of principal investigators Jill Caviglia-Harris, <br>Daniel Harris
+            (Salisbury), Erin Sills (NCSU) and Dar Roberts (UCSB), we have been active in the production and management of
+            a gapless annual Landsat imagery archive (1984-2009) covering the majority of the state of Rondonia</td>
+          <td>2010</td>
+          <td><a target="_blank" href="https://sites.google.com/site/ucsbviperlab/project-definition#TOC-Land-use-and-land-cover-change-in-Rondonia-Brazil">https://sites.google.com/site...</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+
   </div>
 </article>

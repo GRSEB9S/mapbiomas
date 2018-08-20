@@ -13,7 +13,7 @@
     var collection = $('#collection').val();
     var year = $('#year').val();
     var url = ''
-    
+
     $('a[biome]').each(function() {
       var biome = $(this).attr('biome');
       var url = buildUrl(biome, collection, year);
@@ -41,7 +41,7 @@
     }
 
     $('#year').trigger('change');
-    
+
     refreshUrls();
   }
 
@@ -77,7 +77,15 @@
       </ul>
     </blockquote>
 
-    <p> Alternatively you can access and process MapBiomas Collection 2.3 directly as Google Earth Engine (GEE). Access the public asset <%= link_to 'here', page_path('scripts') %> to access the asset IDs.</p>
+    <p>Alternatively you can access and process MapBiomas Collection 3 directly as Google Earth Engine (GEE). Access the public asset <strong><%= link_to 'here', page_path('scripts') %></strong> to access the asset IDs.</p>
+
+    <p class="text-center"><strong>The collection 3 will be available for download on this page as of September 2018.</strong></p>
+
+    <h2 class="page__subtitle">MAPS BY STATE OR MUNICIPALITY</h2>
+
+    <p>You can access and export MapBiomas maps by Municipio or Estado for any year of Collection 3 through the following script in Google Earth Engine: <a href="https://code.earthengine.google.com/09f7c15bd05bf4b46ce612769a47d194" target="_blank">https://code.earthengine.google.com/09f7c15bd05bf4b46ce612769a47d194</a></p>
+
+    <p><br /></p>
 
     <div class="page__box-download">
       <%= select_tag "collection", options_for_select([["Collection 2.3", 3], ["Collection 2", 2], ["Collection 1", 1]]), id: "collection" %>
