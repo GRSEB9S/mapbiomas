@@ -91,7 +91,7 @@ button,
   &-blue {
     color: $white;
     background-color: $medium-blue;
-    margin: 20px 0;
+    margin: 20px 0 10px;
     &:hover,
     &:focus {
       color: $white;
@@ -101,7 +101,7 @@ button,
   &-green {
     color: $white;
     background-color: $medium-green;
-    margin: 20px 0;
+    margin: 20px 0 10px;
     &:hover,
     &:focus {
       color: $white;
@@ -111,8 +111,7 @@ button,
   &-orange {
     color: $white;
     background-color: $orange;
-    margin: 20px 0;
-    font-size: 16px;
+    margin: 20px 0 10px;
     &:hover,
     &:focus {
       color: $white;

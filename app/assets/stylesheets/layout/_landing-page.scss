@@ -191,6 +191,10 @@
           width: 200px;
         }
       }
+      a,
+      button {
+        font-size: 13px;
+      }
       .button {
         margin: 10px 0;
       }
@@ -397,4 +401,13 @@ section {
 
 .tns-outer button[data-action="stop"] {
   display: none;
+}
+
+.alert-default {
+  padding: 20px;
+  background-color: rgba($medium-blue, 0.3);
+  text-align: center;
+  font-weight: 900;
+  color: $medium-blue;
+  margin: 30px 0 0;
 }
