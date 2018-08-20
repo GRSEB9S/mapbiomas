@@ -109,8 +109,10 @@ class TerrasAPI
       territory_ids = territory_id.split(',')
 
       grouped_coverage_data = territory_ids.map do |id|
-        get(file_path, query:
-          query_params.merge(territory_id: id))
+        cache("#{__method__.to_s}-#{territory_id}-#{classification_ids}-#{grouped}-#{file_path}-#{locale}") do
+          get(file_path, query:
+            query_params.merge(territory_id: id)).parsed_response
+        end
       end
 
       sum_areas(grouped_coverage_data, grouped_coverage_keys)
