@@ -45,7 +45,7 @@ class MapPresenter
       name: I18n.t('map.index.base_maps.rgb_landsat'),
       wms: true,
       color: nil,
-      link: 'http://seeg-mapbiomas.terras.agr.br:3000'
+      link: 'http://seeg-mapbiomas.terras.agr.br/wms'
     }
   end
 
