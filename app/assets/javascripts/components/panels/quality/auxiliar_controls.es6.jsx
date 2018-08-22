@@ -2,6 +2,9 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TogglesControl from '../../controls/toggles';
 import QualityLabels from './labels';
+import CarControl from '../../controls/car';
+import InfrastructureControl from '../../controls/infrastructure/infrastructure';
+import Scrollable from 'lib/scrollable';
 
 class QualityAuxiliarControls extends React.Component {
   componentDidMount() {
@@ -36,6 +39,8 @@ class QualityAuxiliarControls extends React.Component {
             </div>
           </Tab>
           <Tab>{I18n.t('map.index.layers.title')}</Tab>
+          <Tab>{I18n.t('map.index.infra_levels.title')}</Tab>
+          <Tab>{I18n.t('map.index.car.title')}</Tab>
         </TabList>
         <TabPanel>
           <div className="map-panel-can-hide" id="quality-labels">
@@ -57,6 +62,29 @@ class QualityAuxiliarControls extends React.Component {
             availableOptions={this.props.availableLayers}
             onChange={this.props.handleLayersChange}
           />
+        </TabPanel>
+        <TabPanel>
+          <InfrastructureControl
+            className="map-panel__content"
+            infraLevels={this.props.infraLevels}
+            availableInfraLevels={this.props.availableInfraLevels}
+            calcMaxHeight={() => (
+              $('#transitions-auxiliar-controls').height() - 55
+            )}
+            onChange={this.props.handleInfraLevelsChange}
+          />
+        </TabPanel>
+        <TabPanel>
+          <Scrollable calcMaxHeight={() => (
+            $('#transitions-auxiliar-controls').height() - 55
+          )}>
+            <CarControl
+              showCarLayer={this.props.showCarLayer}
+              showCarStats={this.props.showCarStats}
+              onCarLayerChange={this.props.handleCarLayerChange}
+              onCarStatsChange={this.props.handleCarStatsChange}
+            />
+          </Scrollable>
         </TabPanel>
       </Tabs>
     );
