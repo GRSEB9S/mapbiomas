@@ -33,6 +33,10 @@ class CarControl extends Component {
               onChange={this.handleCarStatsChange.bind(this)}
             />
           </li>
+          <hr/>
+          <li>
+            <p>{I18n.t("map.index.car.description")}</p>
+          </li>
         </ul>
       </div>
     );

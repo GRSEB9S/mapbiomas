@@ -5,6 +5,7 @@ import ClassificationControl from '../../controls/classification';
 import InfrastructureControl from '../../controls/infrastructure/infrastructure';
 import CarControl from '../../controls/car';
 import TogglesControl from '../../controls/toggles';
+import Scrollable from 'lib/scrollable';
 
 class CoverageAuxiliarControls extends React.Component {
   componentDidMount() {
@@ -82,12 +83,16 @@ class CoverageAuxiliarControls extends React.Component {
           />
         </TabPanel>
         <TabPanel>
-          <CarControl
-            showCarLayer={this.props.showCarLayer}
-            showCarStats={this.props.showCarStats}
-            onCarLayerChange={this.props.handleCarLayerChange}
-            onCarStatsChange={this.props.handleCarStatsChange}
-          />
+          <Scrollable calcMaxHeight={() => (
+            $('#coverage-auxiliar-controls').height() - 55
+          )}>
+            <CarControl
+              showCarLayer={this.props.showCarLayer}
+              showCarStats={this.props.showCarStats}
+              onCarLayerChange={this.props.handleCarLayerChange}
+              onCarStatsChange={this.props.handleCarStatsChange}
+            />
+        </Scrollable>
         </TabPanel>
       </Tabs>
     );

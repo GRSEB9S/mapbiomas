@@ -4,6 +4,7 @@ import TogglesControl from '../../controls/toggles';
 import QualityLabels from './labels';
 import CarControl from '../../controls/car';
 import InfrastructureControl from '../../controls/infrastructure/infrastructure';
+import Scrollable from 'lib/scrollable';
 
 class QualityAuxiliarControls extends React.Component {
   componentDidMount() {
@@ -74,12 +75,16 @@ class QualityAuxiliarControls extends React.Component {
           />
         </TabPanel>
         <TabPanel>
-          <CarControl
-            showCarLayer={this.props.showCarLayer}
-            showCarStats={this.props.showCarStats}
-            onCarLayerChange={this.props.handleCarLayerChange}
-            onCarStatsChange={this.props.handleCarStatsChange}
-          />
+          <Scrollable calcMaxHeight={() => (
+            $('#transitions-auxiliar-controls').height() - 55
+          )}>
+            <CarControl
+              showCarLayer={this.props.showCarLayer}
+              showCarStats={this.props.showCarStats}
+              onCarLayerChange={this.props.handleCarLayerChange}
+              onCarStatsChange={this.props.handleCarStatsChange}
+            />
+          </Scrollable>
         </TabPanel>
       </Tabs>
     );

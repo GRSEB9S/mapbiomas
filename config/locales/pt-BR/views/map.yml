@@ -151,6 +151,8 @@ pt-BR:
       infra_levels:
         title: Infraestrutura
       car:
+        description: |
+          Atenção: os dados do CAR foram utilizados como uma camada única (raster) e não incluem correções que não tenham sido processadas no Serviço Florestal Brasileiro. Existem muitas sobreposições com UC’s, Terras Indigenas e Assentamentos. Os dados de área tendem a ser superestimado devido a existência de grandes polígonos (milhões de hectares) cadastrados que não condizem com propriedades no campo, especialmente na Amazônia.
         title: CAR
         layer: Habilitar camada CAR
         stats: Visualizar estatísticas para CAR por recorte territorial (país ou estado)
