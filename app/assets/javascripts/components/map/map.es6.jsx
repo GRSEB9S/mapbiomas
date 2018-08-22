@@ -1081,6 +1081,13 @@ export default class Map extends React.Component {
             {!this.props.iframe && TRANSITIONS && (
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <TransitionsAuxiliarControls
+                  infraLevels={this.state.infraLevels}
+                  showCarLayer={this.state.showCarLayer}
+                  showCarStats={this.state.showCarStats}
+                  handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
+                  handleCarLayerChange={this.handleCarLayerChange.bind(this)}
+                  handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   availableTransitionsLayers={this.initialState.transitionsLayers}
                   transitionsLayers={this.transitionsLayers}
                   availableBaseMaps={this.props.availableBaseMaps}
@@ -1105,6 +1112,14 @@ export default class Map extends React.Component {
             {!this.props.iframe && QUALITY && (
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <QualityAuxiliarControls
+                  infraLevels={this.state.infraLevels}
+                  availableInfraLevels={this.props.availableInfraLevels}
+                  showCarLayer={this.state.showCarLayer}
+                  showCarStats={this.state.showCarStats}
+                  handleLayersChange={this.handleLayersChange.bind(this)}
+                  handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
+                  handleCarLayerChange={this.handleCarLayerChange.bind(this)}
+                  handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   availableBaseMaps={this.props.availableBaseMaps}
                   baseMaps={this.baseMaps}
                   availableLayers={this.props.availableLayers}

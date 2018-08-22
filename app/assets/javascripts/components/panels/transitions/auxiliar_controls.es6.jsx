@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import TransitionsLabels from './labels';
 import InfrastructureControl from '../../controls/infrastructure/infrastructure';
 import TogglesControl from '../../controls/toggles';
+import CarControl from '../../controls/car';
 
 class TransitionsAuxiliarControls extends React.Component {
   componentDidMount() {
@@ -34,6 +35,7 @@ class TransitionsAuxiliarControls extends React.Component {
           </Tab>
           <Tab>{I18n.t('map.index.layers.title')}</Tab>
           <Tab>{I18n.t('map.index.infra_levels.title')}</Tab>
+          <Tab>{I18n.t('map.index.car.title')}</Tab>
         </TabList>
         <TabPanel>
           <TransitionsLabels
@@ -67,9 +69,17 @@ class TransitionsAuxiliarControls extends React.Component {
             infraLevels={this.props.infraLevels}
             availableInfraLevels={this.props.availableInfraLevels}
             calcMaxHeight={() => (
-              $('#coverage-auxiliar-controls').height() - 55
+              $('#transitions-auxiliar-controls').height() - 55
             )}
             onChange={this.props.handleInfraLevelsChange}
+          />
+        </TabPanel>
+        <TabPanel>
+          <CarControl
+            showCarLayer={this.props.showCarLayer}
+            showCarStats={this.props.showCarStats}
+            onCarLayerChange={this.props.handleCarLayerChange}
+            onCarStatsChange={this.props.handleCarStatsChange}
           />
         </TabPanel>
       </Tabs>
