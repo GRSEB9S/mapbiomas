@@ -3,7 +3,6 @@ class MapPresenter
     states: '4dd47a54-01a8-11e6-86a9-0e31c9be1b51',
     cities: 'e39c46c1-a410-43db-9af3-000cd2967463',
     contour_maps: '1413c17c-0274-11e6-ae17-0e787de82d45',
-    biomes: '201bcb2a-026c-11e6-9f9a-0e3ff518bd15',
     indigenous_lands: 'adecbf9e-1c1e-43ec-ae8b-f9d340d7fc6f',
     macro_watersheds: '93e5c68c-2189-4edb-a311-c9bca9db821b',
     watersheds: '31033250-92f9-49ac-bc02-87b68c67498a'
@@ -121,6 +120,23 @@ class MapPresenter
     }
   end
 
+  def biomes
+    {
+      id: 6,
+      slug: 'biomes',
+      name: I18n.t('map.index.layers.biomes'),
+      wms: true,
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+      params: {
+        map: "wms/v/3.0/territories/bioma_contorno.map",
+        layers: 'bioma',
+        format: 'image/png',
+        srs: "EPSG:4326",
+        transparent: true
+      }
+    }
+  end
+
   def conservation_units
     {
       id: 7,
@@ -211,6 +227,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end << conservation_units << smallholder_settlements << afro_brazilian_settlements
+    end << biomes << conservation_units << smallholder_settlements << afro_brazilian_settlements
   end
 end
