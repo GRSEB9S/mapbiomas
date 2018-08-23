@@ -351,15 +351,16 @@ export class MapCanvas extends React.Component {
     if (this.carLayer) {
     } else {
       this.carLayer = L.tileLayer.wms(this.props.carLayer.link, this.props.carLayer.params)
-        .on('loading', () => this.map.spin(true))
         .on('load', () => this.map.spin(false))
         .on('tileunload', () => this.map.spin(false))
         .addTo(this.map);
     }
 
     if (this.props.showCarLayer) {
+      this.map.spin(true);
       this.carLayer.setOpacity(1);
     } else {
+      this.map.spin(false);
       this.carLayer.setOpacity(0);
     }
   }
