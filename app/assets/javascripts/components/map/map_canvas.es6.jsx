@@ -33,41 +33,28 @@ export class MapCanvas extends React.Component {
     };
   }
 
-  leftLayerOptions(mode) {
+  sideBySideOptions(year, mode) {
     let options;
 
     if (mode) {
-      options = this.props.dataLayerOptions[this.props.mode];
+      options = this.props.dataLayerOptions[mode];
     } else {
       options = this.baseLayerOptions;
     }
 
     return {
+      format: 'image/png',
+      transparent: true,
+      opacity: 1,
       ...options,
-      year: this.props.years[0],
-      zIndex: 2
-    }
-  }
-
-  rightLayerOptions(mode) {
-    let options;
-
-    if (mode) {
-      options = this.props.dataLayerOptions[this.props.mode];
-    } else {
-      options = this.baseLayerOptions;
-    }
-
-    return {
-      ...options,
-      year: this.props.years[1],
+      year: year,
       zIndex: 2
     }
   }
 
   addBaseWMSLayer(baseMap) {
-    let leftOptions = this.leftLayerOptions(baseMap.mode);
-    let rightOptions = this.rightLayerOptions(baseMap.mode);
+    let leftOptions = this.sideBySideOptions(this.props.years[0], baseMap.mode);
+    let rightOptions = this.sideBySideOptions(this.props.years[1], baseMap.mode);
 
     let leftLayer = L.tileLayer.wms(baseMap.link, leftOptions).addTo(this.map);
     let rightLayer = L.tileLayer.wms(baseMap.link, rightOptions).addTo(this.map);
@@ -139,8 +126,8 @@ export class MapCanvas extends React.Component {
       let baseLayer = _.find(this.props.baseMaps, (m) => m.slug == slug)
       let mode = baseLayer.mode;
 
-      layer.updateLeftLayer(this.leftLayerOptions(mode));
-      layer.updateRightLayer(this.rightLayerOptions(mode));
+      layer.updateLeftLayer(this.sideBySideOptions(this.props.years[0], mode));
+      layer.updateRightLayer(this.sideBySideOptions(this.props.years[1], mode));
     })
 
     _.each(this.baseLayers, (layer) => {
@@ -351,15 +338,16 @@ export class MapCanvas extends React.Component {
     if (this.carLayer) {
     } else {
       this.carLayer = L.tileLayer.wms(this.props.carLayer.link, this.props.carLayer.params)
-        .on('loading', () => this.map.spin(true))
         .on('load', () => this.map.spin(false))
         .on('tileunload', () => this.map.spin(false))
         .addTo(this.map);
     }
 
     if (this.props.showCarLayer) {
+      this.map.spin(true);
       this.carLayer.setOpacity(1);
     } else {
+      this.map.spin(false);
       this.carLayer.setOpacity(0);
     }
   }
