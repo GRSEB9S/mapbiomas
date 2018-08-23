@@ -898,7 +898,15 @@ export default class Map extends React.Component {
     this.loadQualities(this.year);
 
     window.addEventListener("hashchange", () =>
-      this.setState({ mode: location.hash.replace('#', '') }), false);
+      this.setState({ mode: this.setMode() }), false);
+  }
+
+  setMode() {
+    if (location.hash === '') {
+      return this.mode
+    } else {
+      return location.hash.replace('#', '')
+    }
   }
 
   zoomIn() {
