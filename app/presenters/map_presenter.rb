@@ -5,7 +5,6 @@ class MapPresenter
     contour_maps: '1413c17c-0274-11e6-ae17-0e787de82d45',
     biomes: '201bcb2a-026c-11e6-9f9a-0e3ff518bd15',
     indigenous_lands: 'adecbf9e-1c1e-43ec-ae8b-f9d340d7fc6f',
-    conservation_units: 'e916c222-1999-412f-b2eb-666c8958dfcd',
     macro_watersheds: '93e5c68c-2189-4edb-a311-c9bca9db821b',
     watersheds: '31033250-92f9-49ac-bc02-87b68c67498a'
   }.freeze
@@ -122,6 +121,23 @@ class MapPresenter
     }
   end
 
+  def conservation_units
+    {
+      id: 7,
+      slug: 'conservation-units',
+      name: I18n.t('map.index.layers.conservation_units'),
+      wms: true,
+      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+      params: {
+        map: 'wms/v/3.0/territories/unidades_conservacao.map',
+        layers: 'ucs',
+        format: 'image/png',
+        srs: 'EPSG:4326',
+        transparent: true
+      }
+    }
+  end
+
   def smallholder_settlements
     {
       id: 8,
@@ -195,6 +211,6 @@ class MapPresenter
         fromCarto: true,
         link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
       }
-    end << smallholder_settlements << afro_brazilian_settlements
+    end << conservation_units << smallholder_settlements << afro_brazilian_settlements
   end
 end
