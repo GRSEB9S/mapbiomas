@@ -1,12 +1,10 @@
 table {
   border-collapse: collapse;
-
   th,
   td {
-    padding: $micro-spacing;
-    border: 1px solid $light-gray;
+    padding: 10px;
+    border: 1px solid rgba($light-gray, 0.5);
   }
-
   th {
     border-bottom: 2px solid $light-gray;
   }
@@ -14,7 +12,7 @@ table {
 
 .table {
   tbody {
-    tr:nth-child(odd){
+    tr:nth-child(odd) {
       background-color: whitesmoke;
     }
   }
@@ -22,4 +20,8 @@ table {
 
 .text-center {
   text-align: center;
+}
+
+.font-small {
+  font-size: 12px;
 }
