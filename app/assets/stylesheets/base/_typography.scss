@@ -43,7 +43,7 @@ a {
   &.link-overflow {
     display: block;
     white-space: nowrap;
-    width: 16em;
+    width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
