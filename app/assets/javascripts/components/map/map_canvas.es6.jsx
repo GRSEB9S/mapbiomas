@@ -191,41 +191,25 @@ export class MapCanvas extends React.Component {
       return;
     }
 
-    if (mapLayer.fromCarto) {
-      cartodb.createLayer(this.map, mapLayer.link)
+    let layer;
+
+    if (mapLayer.wms) {
+      layer = L.tileLayer.wms(mapLayer.link, mapLayer.params)
+        .on('loading', () => this.map.spin(true))
+        .on('load', () => this.map.spin(false))
         .addTo(this.map)
-        .done((layer) => {
-          layer.on('loading', () => this.map.spin(true));
-          layer.on('load', () => this.map.spin(false));
-
-          if (_.find(this.props.selectedLayers, { slug: mapLayer.slug })) {
-            layer.setZIndex(10);
-            this.mapLayers[mapLayer.slug] = layer;
-          } else {
-            this.map.removeLayer(layer);
-          }
-        });
-    } else {
-      let layer;
-
-      if (mapLayer.wms) {
-        layer = L.tileLayer.wms(mapLayer.link, mapLayer.params)
-          .on('loading', () => this.map.spin(true))
-          .on('load', () => this.map.spin(false))
-          .addTo(this.map)
-      }
-
-      else {
-        layer = new L.TileLayer.WMTS(mapLayer.link, mapLayer.params)
-          .on('loading', () => this.map.spin(true))
-          .on('load', () => this.map.spin(false))
-
-        this.map.addLayer(layer);
-      }
-
-      layer.setZIndex(10);
-      this.mapLayers[mapLayer.slug] = layer;
     }
+
+    else {
+      layer = new L.TileLayer.WMTS(mapLayer.link, mapLayer.params)
+        .on('loading', () => this.map.spin(true))
+        .on('load', () => this.map.spin(false))
+
+      this.map.addLayer(layer);
+    }
+
+    layer.setZIndex(10);
+    this.mapLayers[mapLayer.slug] = layer;
   }
 
   removeMapLayer(slug) {
