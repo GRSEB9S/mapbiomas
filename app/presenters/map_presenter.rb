@@ -1,11 +1,15 @@
 class MapPresenter
-  LAYERS_KEYS = {
-    states: '4dd47a54-01a8-11e6-86a9-0e31c9be1b51',
-    cities: 'e39c46c1-a410-43db-9af3-000cd2967463',
-    contour_maps: '1413c17c-0274-11e6-ae17-0e787de82d45',
-    indigenous_lands: 'adecbf9e-1c1e-43ec-ae8b-f9d340d7fc6f',
-    macro_watersheds: '93e5c68c-2189-4edb-a311-c9bca9db821b',
-    watersheds: '31033250-92f9-49ac-bc02-87b68c67498a'
+  LAYERS_MAPS_AND_LAYERS = {
+    states: { map: 'wms/v/3.0/territories/estados.map', layer: 'estados' },
+    cities: { map: 'wms/v/3.0/territories/municipios.map', layer: 'municipios' },
+    contour_maps: { map: 'wms/v/3.0/territories/cartas.map', layer: 'cartas' },
+    biomes: { map: 'wms/v/3.0/territories/bioma_contorno.map', layer: 'bioma' },
+    indigenous_lands: { map: 'wms/v/3.0/territories/terra_indigena.map', layer: 'tis' },
+    conservation_units: { map: 'wms/v/3.0/territories/unidades_conservacao.map', layer: 'ucs' },
+    macro_watersheds: { map: 'wms/v/3.0/territories/baciasn1.map', layer: 'baciasn1' },
+    watersheds: { map: 'wms/v/3.0/territories/baciasn2.map', layer: 'baciasn2' },
+    afro_brazilian_settlements: { map: 'wms/v/3.0/territories/quilombolas.map', layer: 'quilombolas' },
+    smallholder_settlements: { map: 'wms/v/3.0/territories/assentamentos.map', layer: 'assentamentos' }
   }.freeze
 
   def as_json(*_)
@@ -120,74 +124,6 @@ class MapPresenter
     }
   end
 
-  def biomes
-    {
-      id: 6,
-      slug: 'biomes',
-      name: I18n.t('map.index.layers.biomes'),
-      wms: true,
-      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
-      params: {
-        map: "wms/v/3.0/territories/bioma_contorno.map",
-        layers: 'bioma',
-        format: 'image/png',
-        srs: "EPSG:4326",
-        transparent: true
-      }
-    }
-  end
-
-  def conservation_units
-    {
-      id: 7,
-      slug: 'conservation-units',
-      name: I18n.t('map.index.layers.conservation_units'),
-      wms: true,
-      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
-      params: {
-        map: 'wms/v/3.0/territories/unidades_conservacao.map',
-        layers: 'ucs',
-        format: 'image/png',
-        srs: 'EPSG:4326',
-        transparent: true
-      }
-    }
-  end
-
-  def smallholder_settlements
-    {
-      id: 8,
-      slug: 'smallholder-settlements',
-      name: I18n.t('map.index.base_maps.smallholder_settlements'),
-      wms: true,
-      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
-      params: {
-        map: 'wms/v/2.3/territories/assentamentos.map',
-        color_id: 2,
-        layers: 'assentamentos',
-        format: 'image/png',
-        transparent: true
-      }
-    }
-  end
-
-  def afro_brazilian_settlements
-    {
-      id: 9,
-      slug: 'afro-brazilian-settlements',
-      name: I18n.t('map.index.base_maps.afro_brazilian_settlements'),
-      wms: true,
-      link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
-      params: {
-        map: 'wms/v/2.3/territories/quilombolas.map',
-        color_id: 2,
-        layers: 'quilombolas',
-        format: 'image/png',
-        transparent: true
-      }
-    }
-  end
-
   def infra_layer
     {
       link: 'http://geoserver.ecostage.com.br/geoserver/mapbiomas/wms',
@@ -219,14 +155,21 @@ class MapPresenter
   end
 
   def layers
-    LAYERS_KEYS.each_with_index.map do |(layer, key), id|
+    LAYERS_MAPS_AND_LAYERS.each_with_index.map do |(layer, hash), id|
       {
         id: id,
         slug: layer.to_s.tr('_', '-'),
         name: I18n.t("map.index.layers.#{layer}"),
-        fromCarto: true,
-        link: "https://karydja.carto.com/api/v2/viz/#{key}/viz.json"
+        wms: true,
+        link: "#{ENV['TERRAS_MAP_API_URL']}/wms",
+        params: {
+          map: hash[:map],
+          layers: hash[:layer],
+          format: 'image/png',
+          srs: 'EPSG:4326',
+          transparent: true
+        }
       }
-    end << biomes << conservation_units << smallholder_settlements << afro_brazilian_settlements
+    end
   end
 end
