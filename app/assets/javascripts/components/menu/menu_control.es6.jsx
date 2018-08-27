@@ -41,12 +41,6 @@ export class MenuControl extends React.Component {
             </li>
 
             <li className="menu__item">
-              <a className="menu__link" target="_blank" href={this.props.forumUrl}>
-                {I18n.t('layouts.header.forum.title')}
-              </a>
-            </li>
-
-            <li className="menu__item">
               <a className="menu__link" href={Routes.user_profile_path()}>
                 {I18n.t('users.profile.title')}
               </a>
@@ -231,6 +225,12 @@ export class MenuControl extends React.Component {
           <li className="menu__item">
             <a className="menu__link" href={Routes.page_path('contact')}>
               {I18n.t('layouts.header.contact.title')}
+            </a>
+          </li>
+
+          <li className="menu__item">
+            <a className="menu__link" target="_blank" href={this.props.forumUrl}>
+              {I18n.t('layouts.header.forum.title')}
             </a>
           </li>
 
