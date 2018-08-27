@@ -1,4 +1,5 @@
 // https://github.com/makinacorpus/Leaflet.Spin/blob/master/leaflet.spin.js
+import Spinner from './spin';
 
 (function (factory, window) {
     // define an AMD module that relies on 'leaflet'
