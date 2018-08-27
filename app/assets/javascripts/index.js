@@ -1,7 +1,8 @@
+import L from 'leaflet';
+window.L = L;
+
 import 'highcharts_config';
 import 'vendor/leaflet-side-by-side';
-//import 'vendor/leaflet-google';
-import 'vendor/spin';
 import 'vendor/leaflet-spin';
 import 'vendor/leaflet-betterscale';
 import 'vendor/leaflet-coordinates';
