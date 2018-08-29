@@ -6,9 +6,9 @@ import Scrollable from '../../lib/scrollable';
 const labels = {
   'water_reduction': { id: 0, color: '#FFA500' },
   'forest': { id: 1, color: '#FF0000' },
-  'no_transition': { id: 2, color: '#818181' },
+  'no_transition': { id: 2, color: '#AAA9A9' },
   'farming': { id: 3, color: '#06FF00' },
-  'water': { id: 4, color: '#4169E1' },
+  'water': { id: 4, color: '#3FACFF' },
   'forestry': { id: 5, color: '#8A2BE2' }
 }
 
