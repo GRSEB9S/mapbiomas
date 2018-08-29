@@ -188,9 +188,10 @@ pt-BR:
         labels:
           title: Legenda
           farming: Transições de classes de agropecuária ou áreas não vegetadas para cobertura florestal ou áreas naturais não florestais.
-          water: Transições que acrescem áreas de água
+          water: Transições que acrescem superfície de água
+          water_reduction: Transições que reduzem superfície de água
           forestry: Transições com ganho de áreas de silvicultura.
-          forest: Transições de cobertura florestal ou áreas naturais não florestais para agropecuária ou areas não vegetadas.
+          forest: Transições de cobertura florestal ou áreas naturais não florestais para agropecuária ou áreas não vegetadas.
           no_transition: Áreas sem transição ou transições que envolvem áreas não observadas ou transições entre classes dentro do nivel 1 de legenda.
         level_select:
           title: Selecione um nível
