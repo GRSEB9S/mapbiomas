@@ -4,11 +4,12 @@ import classNames from 'classnames';
 import Scrollable from '../../lib/scrollable';
 
 const labels = {
-  'farming': { id: 1, color: '#06FF00' },
-  'water': { id: 2, color: '#1E90FF' },
-  'forestry': { id: 3, color: '#A55CD6' },
-  'forest': { id: 4, color: '#FF0000' },
-  'no_transition': { id: 5, color: '#CECECE' }
+  'water_reduction': { id: 0, color: '#FFA500' },
+  'forest': { id: 1, color: '#FF0000' },
+  'no_transition': { id: 2, color: '#818181' },
+  'farming': { id: 3, color: '#06FF00' },
+  'water': { id: 4, color: '#4169E1' },
+  'forestry': { id: 5, color: '#8A2BE2' }
 }
 
 class TransitionsLayers extends Component {
@@ -85,7 +86,7 @@ class TransitionsLayers extends Component {
           )}
 
           <div className="transitions-labels__items">
-            {['farming', 'water', 'forestry', 'forest', 'no_transition'].map((l, i) => {
+            {['farming', 'water', 'water_reduction', 'forestry', 'forest', 'no_transition'].map((l, i) => {
               return this.renderLayer(l, i);
             })}
           </div>
