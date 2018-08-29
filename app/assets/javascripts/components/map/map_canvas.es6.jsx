@@ -3,6 +3,12 @@ import _ from 'underscore';
 import lodash from 'lodash';
 import classNames from 'classnames';
 
+const INFRA_BUFFER_OPTIONS = {
+  '5k': 5000,
+  '10k': 10000,
+  '20k': 20000
+}
+
 export class MapCanvas extends React.Component {
   constructor() {
     super();
@@ -254,6 +260,17 @@ export class MapCanvas extends React.Component {
       options.year = this.props.year;
     }
 
+    if (this.props.mode == 'coverage' && this.props.selectedInfraBuffer != 'none' && !_.isEmpty(this.props.selectedInfraLevels)) {
+      options = {
+        ...options,
+        territory_id: _.map(this.territoryArray, (t) => t.value),
+        infralevel_id: _.map(this.props.selectedInfraLevels, 'id'),
+        bufdist_id: INFRA_BUFFER_OPTIONS[this.props.selectedInfraBuffer],
+        map: "wms/v/3.0/classification/coverage_infra.map",
+        srs: 'EPSG:3857'
+      };
+    }
+
     if (this.dataLayer) {
       if (layerOptions && layerOptions.transitions_group && _.isEmpty(layerOptions.transitions_group)) {
         this.dataLayer.setOpacity(0);
@@ -276,41 +293,36 @@ export class MapCanvas extends React.Component {
       return;
     }
 
-    if (this.infraLayer && this.props.mode == 'quality') {
-      this.infraLayer.setOpacity(0);
-      return;
+    if (this.infraLayer) {
+      let options = lodash.clone(this.props.infraLayer.params);
+      let groupedInfraLayers = lodash.groupBy(this.props.selectedInfraLevels, 'categoria');
+      let layerFilter = lodash.map(groupedInfraLayers, (value, key) => {
+        let categories = lodash.join(_.map(value, (v) => `'${v.name}'`), ',');
+
+        return `category_${key} IN (${categories})`
+      });
+      let bufferFilter = this.props.selectedInfraBuffer == 'none' ? 'buffer IS NULL' :`buffer IN ('${this.props.selectedInfraBuffer}')`;
+      let cqlFilter;
+
+      layerFilter = lodash.join(layerFilter, ' OR ');
+      cqlFilter = `(${layerFilter}) AND ${bufferFilter}`;
+      options = {
+        ...this.props.infraLayer.params,
+        cql_filter: cqlFilter
+      };
+
+      this.infraLayer.setParams(options);
+      this.infraLayer.setOpacity(1);
+    } else {
+      this.infraLayer = L.tileLayer.wms(this.props.infraLayer.link, this.props.infraLayer.params)
+        .on('loading', () => this.map.spin(true))
+        .on('load', () => this.map.spin(false))
+        .on('tileunload', () => this.map.spin(false))
+        .addTo(this.map);
     }
 
-    if (this.props.mode != 'quality') {
-      if (this.infraLayer) {
-        let groupedInfraLayers = lodash.groupBy(this.props.selectedInfraLevels, 'categoria');
-        let cqlFilter = lodash.map(groupedInfraLayers, (value, key) => {
-          let categories = lodash.join(_.map(value, (v) => `'${v.name}'`), ',');
-
-          return `category_${key} IN (${categories})`
-        });
-        let options = lodash.clone(this.props.infraLayer.params);
-
-        cqlFilter = lodash.join(cqlFilter, ' OR ');
-        cqlFilter = `${cqlFilter} AND buffer IS NULL`;
-        options = {
-          ...this.props.infraLayer.params,
-          cql_filter: cqlFilter
-        };
-
-        this.infraLayer.setParams(options);
-        this.infraLayer.setOpacity(1);
-      } else {
-        this.infraLayer = L.tileLayer.wms(this.props.infraLayer.link, this.props.infraLayer.params)
-          .on('loading', () => this.map.spin(true))
-          .on('load', () => this.map.spin(false))
-          .on('tileunload', () => this.map.spin(false))
-          .addTo(this.map);
-      }
-
-      if (_.isEmpty(this.props.selectedInfraLevels)) {
-        this.infraLayer.setOpacity(0);
-      }
+    if (_.isEmpty(this.props.selectedInfraLevels)) {
+      this.infraLayer.setOpacity(0);
     }
   }
 
@@ -378,11 +390,13 @@ export class MapCanvas extends React.Component {
       this.updateBaseLayers();
     }
 
-    if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.dataLayerOptions, this.props.dataLayerOptions)) {
-      this.setupDataLayer();
-    }
-
-    if (!this.props.mainMap && !_.isEqual(prevProps.year, this.props.year)) {
+    if (
+      prevProps.mode != this.props.mode ||
+      !_.isEqual(prevProps.dataLayerOptions, this.props.dataLayerOptions) ||
+      (!this.props.mainMap && !_.isEqual(prevProps.year, this.props.year)) ||
+      (this.props.mode == 'coverage' && prevProps.selectedInfraBuffer != 'none' && !_.isEmpty(prevProps.selectedInfraLevels)) ||
+      (this.props.mode == 'coverage' && this.props.selectedInfraBuffer != 'none' && !_.isEmpty(this.props.selectedInfraLevels))
+    ) {
       this.setupDataLayer();
     }
 
@@ -394,7 +408,11 @@ export class MapCanvas extends React.Component {
       this.setupMapLayers();
     }
 
-    if (prevProps.mode != this.props.mode || !_.isEqual(prevProps.selectedInfraLevels, this.props.selectedInfraLevels)) {
+    if (
+      prevProps.mode != this.props.mode ||
+      !_.isEqual(prevProps.selectedInfraLevels, this.props.selectedInfraLevels) ||
+      (prevProps.selectedInfraBuffer != this.props.selectedInfraBuffer && !_.isEmpty(this.props.selectedInfraLevels))
+    ) {
       this.setupInfraLayer();
     }
 

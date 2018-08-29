@@ -92,7 +92,6 @@ pt-BR:
             </li>
           </ul>
         coverage_data: Mapas de Cobertura e Uso da Terra
-        infra_buffer: Buffer de Infraestrutura
         afro_brazilian_settlements: Quilombolas
         smallholder_settlements: Assentamentos
         rgb_landsat: Mosaico Landsat MapBiomas (RGB) (específica de cada ano)
@@ -150,6 +149,12 @@ pt-BR:
         title: Territórios
       infra_levels:
         title: Infraestrutura
+        buffer:
+          title: Buffer
+          none: Nenhum
+          5_k: 5k
+          10_k: 10k
+          20_k: 20k
       car:
         description: |
           Atenção: os dados do CAR foram utilizados como uma camada única (raster) e não incluem correções que não tenham sido processadas no Serviço Florestal Brasileiro. Existem muitas sobreposições com UC’s, Terras Indigenas e Assentamentos. Os dados de área tendem a ser superestimado devido a existência de grandes polígonos (milhões de hectares) cadastrados que não condizem com propriedades no campo, especialmente na Amazônia.
