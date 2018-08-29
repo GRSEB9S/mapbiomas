@@ -187,10 +187,11 @@ en:
           all_transitions: Check all transitions
         labels:
           title: Labels
-          farming: Transitions from farming classes or non-vegetated areas to forest cover or non-forest natural areas.
-          water: Transitions that add areas of water
+          farming: 'Transitions from farming classes or non-vegetated areas to forest cover or non-forest natural areas.'
+          water: Transitions that add water surface
+          water_reduction: Transition that reduce water surface
           forestry: Transitions with gain of forest plantations
-          forest: Forest cover transitions or non-forest natural areas for agriculture or non-vegetated areas.
+          forest: 'Forest cover transitions or non-forest natural areas for agriculture or non-vegetated areas.'
           no_transition: Areas without transitions or transitions involving unobserved areas or transitions between classes within the caption level 1.
         level_select:
           title: Select a level

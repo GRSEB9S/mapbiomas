@@ -68,7 +68,7 @@ export default class Map extends React.Component {
       territoryCategory: null,
       transition: null,
       transitions: [],
-      transitionsLayers: [1, 2, 3, 4, 5],
+      transitionsLayers: [0, 1, 2, 3, 4, 5],
       transitionsPeriod: '',
       viewOptionsIndex: {
         coverage: 0,
