@@ -33,6 +33,12 @@ import TransitionsLabels from '../panels/transitions/labels';
 
 Tabs.setUseDefaultStyles(false);
 
+const INFRA_BUFFER_OPTIONS = {
+  '5k': 'buffer_5k',
+  '10k': 'buffer_10k',
+  '20k': 'buffer_20k'
+};
+
 export default class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -41,6 +47,7 @@ export default class Map extends React.Component {
       baseMaps: null,
       classifications: null,
       infraLevels: [],
+      infraBuffer: 'none',
       showCarLayer: false,
       showCartStats: false,
       hide: false,
@@ -456,6 +463,24 @@ export default class Map extends React.Component {
     }
 
     this.setState({ infraLevels: newInfraLevels });
+  }
+
+  handleInfraBufferChange(infraBuffer) {
+    if (infraBuffer != 'none') {
+      let newInfraLevels = _.clone(this.state.infraLevels);
+      let bufferOption = INFRA_BUFFER_OPTIONS[infraBuffer.value];
+
+      newInfraLevels = _.filter(newInfraLevels, bufferOption);
+
+      this.setState({
+        infraBuffer: infraBuffer.value,
+        infraLevels: newInfraLevels
+      });
+    } else {
+      this.setState({
+        infraBuffer: infraBuffer.value
+      });
+    }
   }
 
   handleCarLayerChange() {
@@ -950,6 +975,7 @@ export default class Map extends React.Component {
           baseMaps={this.props.availableBaseMaps}
           selectedBaseMaps={this.state.baseMaps}
           selectedInfraLevels={this.state.infraLevels}
+          selectedInfraBuffer={this.state.infraBuffer}
           mode={this.mode}
           year={this.year}
           years={this.years}
@@ -1071,6 +1097,7 @@ export default class Map extends React.Component {
                   availableLayers={this.props.availableLayers}
                   layers={this.layers}
                   infraLevels={this.state.infraLevels}
+                  infraBuffer={this.state.infraBuffer}
                   showCarLayer={this.state.showCarLayer}
                   showCarStats={this.state.showCarStats}
                   availableInfraLevels={this.props.availableInfraLevels}
@@ -1079,6 +1106,7 @@ export default class Map extends React.Component {
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                   handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
+                  handleInfraBufferChange={this.handleInfraBufferChange.bind(this)}
                   handleCarLayerChange={this.handleCarLayerChange.bind(this)}
                   handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'coverage')}
@@ -1090,12 +1118,9 @@ export default class Map extends React.Component {
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <TransitionsAuxiliarControls
                   infraLevels={this.state.infraLevels}
+                  infraBuffer={this.state.infraBuffer}
                   showCarLayer={this.state.showCarLayer}
                   showCarStats={this.state.showCarStats}
-                  handleLayersChange={this.handleLayersChange.bind(this)}
-                  handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
-                  handleCarLayerChange={this.handleCarLayerChange.bind(this)}
-                  handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   availableTransitionsLayers={this.initialState.transitionsLayers}
                   transitionsLayers={this.transitionsLayers}
                   availableBaseMaps={this.props.availableBaseMaps}
@@ -1111,6 +1136,9 @@ export default class Map extends React.Component {
                   handleBaseMapsChange={this.handleBaseMapsChange.bind(this)}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                   handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
+                  handleInfraBufferChange={this.handleInfraBufferChange.bind(this)}
+                  handleCarLayerChange={this.handleCarLayerChange.bind(this)}
+                  handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   handleViewOptionsIndexSelect={this.handleViewOptionsIndexSelect.bind(this, 'transitions')}
                   handleTransitionReset={this.handleTransitionReset.bind(this)}
                 />
@@ -1121,11 +1149,13 @@ export default class Map extends React.Component {
               <div className="map-panel__grow map-panel-can-hide" id="transitions-auxiliar-controls">
                 <QualityAuxiliarControls
                   infraLevels={this.state.infraLevels}
+                  infraBuffer={this.state.infraBuffer}
                   availableInfraLevels={this.props.availableInfraLevels}
                   showCarLayer={this.state.showCarLayer}
                   showCarStats={this.state.showCarStats}
                   handleLayersChange={this.handleLayersChange.bind(this)}
                   handleInfraLevelsChange={this.handleInfraLevelsChange.bind(this)}
+                  handleInfraBufferChange={this.handleInfraBufferChange.bind(this)}
                   handleCarLayerChange={this.handleCarLayerChange.bind(this)}
                   handleCarStatsChange={this.handleCarStatsChange.bind(this)}
                   availableBaseMaps={this.props.availableBaseMaps}

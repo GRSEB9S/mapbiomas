@@ -7,6 +7,8 @@ export default class HierarchyCategory extends Component {
     if (category.sub && !(typeof category.sub === undefined)) {
       return (
         <HierarchyCategory
+          infraLevels={this.props.infraLevels}
+          infraBuffer={this.props.infraBuffer}
           categories={category.sub}
           onChange={this.props.onChange}
         />
@@ -24,8 +26,10 @@ export default class HierarchyCategory extends Component {
 
   renderCategory(category) {
     return(
-      <li className="infra_levels__category content">
+      <li key={category.id} className="infra_levels__category content">
         <Collapsible
+          infraLevels={this.props.infraLevels}
+          infraBuffer={this.props.infraBuffer}
           content={this.subCategory(category)}
           category={category}
           onChange={this.props.onChange}
