@@ -12,7 +12,7 @@
   function refreshUrls() {
     var collection = $('#collection').val();
     var year = $('#year').val();
-    var url = ''
+    var url = '';
 
     $('a[biome]').each(function() {
       var biome = $(this).attr('biome');
@@ -29,12 +29,12 @@
       $('#year').find('option').prop('disabled', false);
       $('#year').find('option[value="2016"]', 'option').prop('disabled', true);
       $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
-      $('#year').find('option:first-child').prop('selected', true)
+      $('#year').find('option:first-child').prop('selected', true);
     } else if(value == '2') {
       $('#year').find('option').prop('disabled', false);
       $('#year').find('option[value="2016"]').prop('disabled', false);
       $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
-      $('#year').find('option:first-child').prop('selected', true)
+      $('#year').find('option:first-child').prop('selected', true);
     } else {
       $('#year').find('option[value!="all_years"]').prop('disabled', true);
       $('#year').find('option[value="all_years"]').prop('selected', true);
