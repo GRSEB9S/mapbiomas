@@ -70,7 +70,7 @@ class TerrasAPI
     query_params = query_params.merge(year: year) if year.present?
 
     coverage_data = territory_ids.map do |id|
-      cache("#{__method__.to_s}-#{year}-#{territory_id}-#{classification_ids}-#{locale}") do
+      cache("#{__method__.to_s}-#{year}-#{id}-#{classification_ids}-#{locale}") do
         get("/dashboard/services/statistics/coverage", query:
             query_params.merge(territory_id: id)).parsed_response
       end
@@ -84,7 +84,7 @@ class TerrasAPI
     territory_ids = territory_id.split(',')
 
     data = territory_ids.map do |id|
-      cache("#{__method__.to_s}-#{year}-#{territory_id}-#{locale}") do
+      cache("#{__method__.to_s}-#{year}-#{id}-#{locale}") do
         get("/dashboard/services/statistics/transitions", query:
           query_params.merge(territory_id: id)).parsed_response
       end
@@ -109,7 +109,7 @@ class TerrasAPI
       territory_ids = territory_id.split(',')
 
       grouped_coverage_data = territory_ids.map do |id|
-        cache("#{__method__.to_s}-#{territory_id}-#{classification_ids}-#{grouped}-#{file_path}-#{locale}") do
+        cache("#{__method__.to_s}-#{id}-#{classification_ids}-#{grouped}-#{file_path}-#{locale}") do
           get(file_path, query:
             query_params.merge(territory_id: id)).parsed_response
         end
