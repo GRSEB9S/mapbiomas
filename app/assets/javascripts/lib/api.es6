@@ -1,6 +1,6 @@
 export class API {
-  static car(params) {
-    return $.get(Routes.api_car_index_path(params));
+  static carCoverage(params) {
+    return $.get(Routes.api_car_coverage_path(params));
   }
 
   static coverage(params) {
@@ -35,8 +35,8 @@ export class API {
     return $.get(Routes.api_infra_levels_path(params));
   }
 
-  static infraBuffer(params) {
-    return $.get(Routes.api_infra_buffers_path(params));
+  static infraCoverage(params) {
+    return $.get(Routes.api_infra_coverage_path(params));
   }
 
   static createMap(params) {

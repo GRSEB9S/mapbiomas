@@ -265,7 +265,7 @@ export class MapCanvas extends React.Component {
         ...options,
         territory_id: _.map(this.territoryArray, (t) => t.value),
         infralevel_id: _.map(this.props.selectedInfraLevels, 'id'),
-        bufdist_id: INFRA_BUFFER_OPTIONS[this.props.selectedInfraBuffer],
+        bufdist_id: INFRA_BUFFER_OPTIONS[this.props.selectedInfraBuffer.value],
         map: "wms/v/3.0/classification/coverage_infra.map",
         srs: 'EPSG:3857'
       };
@@ -394,8 +394,8 @@ export class MapCanvas extends React.Component {
       prevProps.mode != this.props.mode ||
       !_.isEqual(prevProps.dataLayerOptions, this.props.dataLayerOptions) ||
       (!this.props.mainMap && !_.isEqual(prevProps.year, this.props.year)) ||
-      (this.props.mode == 'coverage' && prevProps.selectedInfraBuffer != 'none' && !_.isEmpty(prevProps.selectedInfraLevels)) ||
-      (this.props.mode == 'coverage' && this.props.selectedInfraBuffer != 'none' && !_.isEmpty(this.props.selectedInfraLevels))
+      (this.props.mode == 'coverage' && prevProps.selectedInfraBuffer.value != 'none' && !_.isEmpty(prevProps.selectedInfraLevels)) ||
+      (this.props.mode == 'coverage' && this.props.selectedInfraBuffer.value != 'none' && !_.isEmpty(this.props.selectedInfraLevels))
     ) {
       this.setupDataLayer();
     }
@@ -411,7 +411,7 @@ export class MapCanvas extends React.Component {
     if (
       prevProps.mode != this.props.mode ||
       !_.isEqual(prevProps.selectedInfraLevels, this.props.selectedInfraLevels) ||
-      (prevProps.selectedInfraBuffer != this.props.selectedInfraBuffer && !_.isEmpty(this.props.selectedInfraLevels))
+      (!_.isEqual(prevProps.selectedInfraBuffer, this.props.selectedInfraBuffer) && !_.isEmpty(this.props.selectedInfraLevels))
     ) {
       this.setupInfraLayer();
     }
