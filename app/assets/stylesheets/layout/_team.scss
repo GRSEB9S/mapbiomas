@@ -21,7 +21,7 @@
     text-align: center;
     margin-right: 0px !important;
     padding-right: $page-base-spacing;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     @include media($tablet) {
       @include span-columns(2);
     }
