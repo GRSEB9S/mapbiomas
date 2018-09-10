@@ -34,10 +34,10 @@ Rails.application.routes.draw do
     resources :qualities, only: :index
     resources :statistics, only: :index
     resources :infra_levels, only: :index
-    resources :infra_buffers, only: :index
-    resources :car, only: :index
 
     get '/inspector', to: 'inspector#index', as: :inspector
+    get '/coverage/infra', to: 'coverage#infra', as: :infra_coverage
+    get '/coverage/car', to: 'coverage#car', as: :car_coverage
     get '/statistics/collection_2', to: 'statistics#collection_2', as: :collection_2_statistics
   end
 

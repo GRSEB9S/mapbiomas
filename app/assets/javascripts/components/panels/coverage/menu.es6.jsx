@@ -29,7 +29,10 @@ const CoverageMenu = ({
   myMapsPage,
   onExpandModal,
   territory,
+  infraLevels,
+  infraBuffer,
   year,
+  showInfraStats,
   showCarStats
 }) => (
   <div>
@@ -46,7 +49,10 @@ const CoverageMenu = ({
       availableClassifications={availableClassifications}
       defaultClassifications={defaultClassifications}
       territory={territory}
+      infraLevels={infraLevels}
+      infraBuffer={infraBuffer}
       year={year}
+      showInfraStats={showInfraStats}
       showCarStats={showCarStats}
     />
 
@@ -55,7 +61,10 @@ const CoverageMenu = ({
       availableClassifications={availableClassifications}
       defaultClassifications={defaultClassifications}
       territory={territory}
+      infraLevels={infraLevels}
+      infraBuffer={infraBuffer}
       year={year}
+      showInfraStats={showInfraStats}
       showCarStats={showCarStats}
     />
 

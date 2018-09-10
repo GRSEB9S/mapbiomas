@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import className from 'classnames';
 import Toggle from 'react-toggle';
 
-const INFRA_BUFFER_OPTIONS = {
-  '5k': 'buffer_5k',
-  '10k': 'buffer_10k',
-  '20k': 'buffer_20k'
-};
-
 export default class Collapsible extends Component {
   constructor(props) {
     super(props);
@@ -48,9 +42,8 @@ export default class Collapsible extends Component {
         checked: _.includes(this.props.infraLevels, this.props.category),
         icons: false
       };
-      let bufferOption = INFRA_BUFFER_OPTIONS[this.props.infraBuffer];
 
-      if (this.props.infraBuffer != 'none' && !this.props.category[bufferOption]) {
+      if (this.props.infraBuffer.value != 'none' && !this.props.category[this.props.infraBuffer.option]) {
         options = {
           ...options,
           disabled: true

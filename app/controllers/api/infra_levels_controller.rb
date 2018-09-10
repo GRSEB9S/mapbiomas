@@ -3,6 +3,7 @@ class API::InfraLevelsController < ApplicationController
 
   def index
     @infra_levels = TerrasAPI.infra_levels
+
     respond_with(@infra_levels)
   end
 end

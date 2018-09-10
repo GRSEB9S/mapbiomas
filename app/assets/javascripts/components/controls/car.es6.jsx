@@ -11,6 +11,22 @@ class CarControl extends Component {
     this.props.onCarStatsChange();
   }
 
+  renderStatsToggle() {
+    if (this.props.mode == 'coverage') {
+      return (
+        <li key='car-stats' className="toggle">
+          <label>{I18n.t('map.index.car.stats')}</label>
+          <Toggle
+            className='custom-toggle'
+            defaultChecked={this.props.showCarStats}
+            icons={false}
+            onChange={this.handleCarStatsChange.bind(this)}
+          />
+        </li>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="map-panel__content">
@@ -24,15 +40,8 @@ class CarControl extends Component {
               onChange={this.handleCarLayerChange.bind(this)}
             />
           </li>
-          <li key='car-stats' className="toggle">
-            <label>{I18n.t('map.index.car.stats')}</label>
-            <Toggle
-              className='custom-toggle'
-              defaultChecked={this.props.showCarStats}
-              icons={false}
-              onChange={this.handleCarStatsChange.bind(this)}
-            />
-          </li>
+
+          {this.renderStatsToggle()}
           <hr/>
           <li>
             <p>{I18n.t("map.index.car.description")}</p>

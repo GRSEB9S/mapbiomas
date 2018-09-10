@@ -155,6 +155,7 @@ en:
           5_k: 5k
           10_k: 10k
           20_k: 20k
+        statistics: View statistics for infrastructure
       car:
         description: |
           Attention: "<span>CAR data were used as a single layer (raster) and do not include corrections that have not been processed in the Brazilian Forestry Service.There are many overlaps with UC’s, Indigenous Lands and Settlements.The data on area tend to be overestimated due to the existence of large polygons (millions of hectares) registered that do not match properties in the field, especially in the Amazon.</span>"

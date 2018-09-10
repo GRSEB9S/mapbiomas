@@ -2,17 +2,9 @@ import React, { Component } from 'react';
 import HierarchyCategory from './hierarchy_category';
 import Scrollable from '../../../lib/scrollable';
 import Select from 'react-select';
+import Toggle from 'react-toggle';
 
 export default class InfrastructureControl extends Component {
-  get bufferOptions() {
-    return [
-      { value: 'none', label: I18n.t('map.index.infra_levels.buffer.none') },
-      { value: '5k', label: I18n.t('map.index.infra_levels.buffer.5_k') },
-      { value: '10k', label: I18n.t('map.index.infra_levels.buffer.10_k') },
-      { value: '20k', label: I18n.t('map.index.infra_levels.buffer.20_k') }
-    ];
-  }
-
   renderLevels() {
     return (
       <HierarchyCategory
@@ -24,15 +16,35 @@ export default class InfrastructureControl extends Component {
     );
   }
 
+  renderStatsToggle() {
+    if (this.props.mode == 'coverage') {
+      return (
+        <div className="toggles-list">
+          <div className="toggle">
+            <label>{I18n.t('map.index.infra_levels.statistics')}</label>
+            <Toggle
+              className='custom-toggle'
+              defaultChecked={this.props.showInfraStats}
+              icons={false}
+              onChange={this.props.onInfraStatsChange}
+            />
+          </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <div className={`${this.props.className} infra-levels`} style={{height: "100%"}}>
         <Scrollable calcMaxHeight={this.props.calcMaxHeight}>
           <div className="infra-levels__options">
+            {this.renderStatsToggle()}
+
             <div>
               <label>{I18n.t('map.index.infra_levels.buffer.title')}</label>
               <Select
-                options={this.bufferOptions}
+                options={this.props.infraBufferOptions}
                 onChange={this.props.onInfraBufferChange}
                 value={this.props.infraBuffer}
                 clearable={false}

@@ -3,6 +3,12 @@ import _ from 'underscore';
 import Highcharts from 'highcharts';
 import { API } from '../../../lib/api';
 
+const INFRA_BUFFER_OPTIONS = {
+  '5k': 5000,
+  '10k': 10000,
+  '20k': 20000
+}
+
 export default class CoveragePieChart extends Component {
   constructor(props) {
     super(props);
@@ -67,7 +73,7 @@ export default class CoveragePieChart extends Component {
   loadCoverage(props = this.props) {
     this.chart.showLoading();
 
-    let territoryId;
+    let territoryId, promise;
 
     if (_.isArray(props.territory)) {
       territoryId = props.territory.map((t) => t.id).join(',');
@@ -75,28 +81,34 @@ export default class CoveragePieChart extends Component {
       territoryId = props.territory.id
     }
 
-    if (props.showCarStats) {
-      API.car({
+    if (props.showInfraStats) {
+      let levelId = props.infraLevels.map((t) => t.id).join(',');
+
+      promise = API.infraCoverage({
+        territory_id: territoryId,
+        level_id: levelId,
+        buffer: INFRA_BUFFER_OPTIONS[props.infraBuffer.value],
+        year: props.year
+      });
+    } else if (props.showCarStats) {
+      promise = API.carCoverage({
         territory_id: territoryId,
         year: props.year
-      }).then((coverage) => {
-        this.setState({ coverage: coverage }, () => {
-          this.drawChart();
-          this.chart.hideLoading();
-        });
-      })
+      });
     } else {
-      API.coverage({
+      promise = API.coverage({
         territory_id: territoryId,
         classification_ids: props.defaultClassifications.map((c) => c.id).join(','),
         year: props.year
-      }).then((coverage) => {
-        this.setState({ coverage: coverage }, () => {
-          this.drawChart();
-          this.chart.hideLoading();
-        });
-      })
+      });
     }
+
+    promise.then((coverage) => {
+      this.setState({ coverage: coverage }, () => {
+        this.drawChart();
+        this.chart.hideLoading();
+      });
+    });
   }
 
   componentDidMount() {
@@ -105,7 +117,12 @@ export default class CoveragePieChart extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!_.isEqual(this.props.year, nextProps.year) || !_.isEqual(this.props.territory, nextProps.territory) || (this.props.showCarStats != nextProps.showCarStats)) {
+    if (
+      !_.isEqual(this.props.year, nextProps.year) ||
+      !_.isEqual(this.props.territory, nextProps.territory) ||
+      (this.props.showInfraStats != nextProps.showInfraStats) ||
+      (this.props.showCarStats != nextProps.showCarStats))
+    {
       this.loadCoverage(nextProps)
     }
   }
