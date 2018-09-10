@@ -147,13 +147,24 @@
 
 .new {
   position: relative;
+  .btn-border-green {
+    padding: 5px 10px;
+    top: 10px;
+    position: relative;
+  }
 }
 
 .translation {
   display: flex;
   align-items: center;
+  position: absolute;
+  top: 10px;
+  right: 20px;
   @include media ($tablet) {
-    display: block;
+    display: inline-block;
+    width: 120px;
+    right: 55px;
+    top: 30px;
   }
   &__icon {
     color: $medium-gray;
