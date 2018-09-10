@@ -35,6 +35,11 @@
       $('#year').find('option[value="2016"]').prop('disabled', false);
       $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
       $('#year').find('option:first-child').prop('selected', true);
+    } else if(value == '3') {
+      $('#year').find('option').prop('disabled', false);
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true);
     } else {
       $('#year').find('option[value!="all_years"]').prop('disabled', true);
       $('#year').find('option[value="all_years"]').prop('selected', true);
@@ -77,11 +82,12 @@
       </ul>
     </blockquote>
 
-    <p>Você pode acessar e processar a Coleção 3 do MapBiomas diretamente como Google Earth Engine (GEE). O ID da Coleção 3 do MapBiomas no Google Earth Engine é <strong><%= link_to 'aqui', page_path('scripts') %></strong>.</p>
+    <p>Os mapas da Colecao 3 podem ser exportados por bioma, estado ou municipio (para cada um dos anos da série) diretamente no google earth engine usando o <strong><%= link_to 'script', page_path('scripts') %></strong></p>
+    <p>Para acessar as coleções anteriores (Colecao 1, 2 e 2.3) acesso o o link abaixo (dados disponíveis por biomas/ano</p>
 
-    <p>Você pode acessar e exportar os mapas do MapBiomas por Municipio ou Estado para qualquer ano da Coleção 3 através do seguinte script no Google Earth Engine: <a href="https://code.earthengine.google.com/a49732829b18e4fdcd10814089b97731" target="_blank">https://code.earthengine.google.com/a49732829b18e4fdcd10814089b97731</a></p>
+    <p>Você pode acessar e processar a Coleção 3 do MapBiomas diretamente como Google Earth Engine (GEE). O ID da Coleção 3 do MapBiomas no Google Earth Engine é  <a href="https://code.earthengine.google.com/a49732829b18e4fdcd10814089b97731" target="_blank">https://code.earthengine.google.com/a49732829b18e4fdcd10814089b97731</a>.</p>
 
-    <div class="alert-default">A Coleção 3 estará disponível para Download nesta página a partir de Setembro de 2018.</div>
+    <!--<div class="alert-default">A Coleção 3 estará disponível para Download nesta página a partir de Setembro de 2018.</div>-->
 
     <p><br /></p>
 
