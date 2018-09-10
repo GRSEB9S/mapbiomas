@@ -35,6 +35,11 @@
       $('#year').find('option[value="2016"]').prop('disabled', false);
       $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
       $('#year').find('option:first-child').prop('selected', true);
+    } else if(value == '3') {
+      $('#year').find('option').prop('disabled', false);
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true);
     } else {
       $('#year').find('option[value!="all_years"]').prop('disabled', true);
       $('#year').find('option[value="all_years"]').prop('selected', true);
@@ -79,7 +84,7 @@
 
     <p>Alternatively you can access and process MapBiomas Collection 3 directly as Google Earth Engine (GEE). Access the public asset <strong><%= link_to 'here', page_path('scripts') %></strong> to access the asset IDs.</p>
 
-    <p class="text-center"><strong>The collection 3 will be available for download on this page as of September 2018.</strong></p>
+    <!--<p class="text-center"><strong>The collection 3 will be available for download on this page as of September 2018.</strong></p>-->
 
     <h2 class="page__subtitle">MAPS BY STATE OR MUNICIPALITY</h2>
 
