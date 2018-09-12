@@ -26,20 +26,23 @@
     var value = $('#collection').val();
 
     if(value == '1') {
-      $('#year').find('option').prop('disabled', false);
-      $('#year').find('option[value="2016"]', 'option').prop('disabled', true);
-      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
-      $('#year').find('option:first-child').prop('selected', true);
+      $('#year option').prop('disabled', false);
+      $('#year option').filter(function() {
+        var optionValue = parseInt(this.value);
+
+        return optionValue < 2008 || optionValue > 2015;
+      }).prop('disabled', true);
+      $('#year option[value="all_years"]').prop('disabled', true);
+      $('#year option:enabled').first().prop('selected', true);
     } else if(value == '2') {
-      $('#year').find('option').prop('disabled', false);
-      $('#year').find('option[value="2016"]').prop('disabled', false);
-      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
-      $('#year').find('option:first-child').prop('selected', true);
-    } else if(value == '3') {
-      $('#year').find('option').prop('disabled', false);
-      $('#year').find('option[value="2016"]').prop('disabled', false);
-      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
-      $('#year').find('option:first-child').prop('selected', true);
+      $('#year option').prop('disabled', false);
+      $('#year option').filter(function() {
+        var optionValue = parseInt(this.value);
+
+        return optionValue < 2000 || optionValue > 2016;
+      }).prop('disabled', true);
+      $('#year option[value="all_years"]').prop('disabled', true);
+      $('#year option:enabled').first().prop('selected', true);
     } else {
       $('#year').find('option[value!="all_years"]').prop('disabled', true);
       $('#year').find('option[value="all_years"]').prop('selected', true);
@@ -66,17 +69,17 @@
 
 <article class="page page__mapbiomas-collections">
   <div class="page__container">
-    <h1 class="page__title">Coleções MapBiomas</h1>
+    <h1 class="page__title">Coleções MAPBIOMAS</h1>
 
     <div class="page__box-download">
-      <%= select_tag "collection", options_for_select([['Coleção 2.3', 3], ["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>
-      <%= select_tag "year", options_for_select(Setting.available_years << ['Todos os anos', 'all_years']), id: "year" %>
+      <%= select_tag "collection", options_for_select([["Collection 2.3", 3], ["Collection 2", 2], ["Collection 1", 1]]), id: "collection" %>
+      <%= select_tag "year", options_for_select(Setting.available_years << ['All years', 'all_years']), id: "year" %>
     </div>
 
     <div class="methodology-presentation">
       <%= image_tag "amazonia.png" %>
       <div class="methodology-presentation__title">
-        <a href='' biome='AMAZONIA' target="_blank">Amazônia</a>
+        <a href='' biome='AMAZONIA' target="_blank">Amazon</a>
       </div>
     </div>
     <div class="methodology-presentation">
@@ -94,7 +97,7 @@
     <div class="methodology-presentation">
       <%= image_tag "mata_atlantica.png" %>
       <div class="methodology-presentation__title">
-        <a href='' biome='MATAATLANTICA' target="_blank">Mata Atlântica</a>
+        <a href='' biome='MATAATLANTICA' target="_blank">Atlantic Forest</a>
       </div>
     </div>
     <div class="methodology-presentation">
