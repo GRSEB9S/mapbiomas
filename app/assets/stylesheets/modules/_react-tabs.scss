@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: $small-spacing $small-spacing 0;
-    border-bottom: $base-border;
+    //border-bottom: $base-border;
   }
 
   &__Tab {
@@ -34,8 +34,10 @@
     cursor: pointer;
     color: $light-gray;
 
+    &:hover,
     &:focus {
       outline: none;
+      color: $medium-green;
     }
 
     &[aria-disabled=true] {
@@ -44,7 +46,17 @@
 
     &--selected {
       border-bottom: rem(3px) solid $medium-green;
-      color: $medium-green;
+      background-color: $medium-green;
+      border-radius: $base-border-radius;
+      font-weight: 700;
+      padding: 0 2px;
+
+      &,
+      &:hover,
+      &:focus {
+        color: white;
+        outline: none;
+      }
     }
   }
 
