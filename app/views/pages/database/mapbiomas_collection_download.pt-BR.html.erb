@@ -72,7 +72,7 @@
     <h1 class="page__title">Coleções MapBiomas</h1>
 
     <div class="page__box-download">
-      <%= select_tag "collection", options_for_select([['Coleção 2.3', 3], ["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>
+      <%= select_tag "collection", options_for_select([['Coleção 2.3 (2000-2016)', 3], ["Coleção 2 (2000-2016)", 2], ["Coleção 1 (2008-2015)", 1]]), id: "collection" %>
       <%= select_tag "year", options_for_select(Setting.available_years << ['Todos os anos', 'all_years']), id: "year" %>
     </div>
 
