@@ -1,0 +1,113 @@
+<script type="text/javascript">
+  function buildUrl(biome, collection, year){
+    if (collection == '1') {
+      return 'http://seeg-mapbiomas.terras.agr.br/dashboard/downloads/collection/CONSOLIDACAO/'+ biome + '/' + year ;
+    } else if (collection == '2') {
+      return 'http://storage.googleapis.com/mapbiomas-public/COLECAO/2/CONSOLIDACAO/' + year + '/' + biome + '_' + year + '.tif';
+    } else {
+      return 'http://storage.googleapis.com/mapbiomas-public/COLECAO/2_3/CONSOLIDACAO/' + biome + '.tif';
+    }
+  }
+
+  function refreshUrls() {
+    var collection = $('#collection').val();
+    var year = $('#year').val();
+    var url = '';
+
+    $('a[biome]').each(function() {
+      var biome = $(this).attr('biome');
+      var url = buildUrl(biome, collection, year);
+
+      $(this).attr('href', url);
+    });
+  }
+
+  function setupOptions() {
+    var value = $('#collection').val();
+
+    if(value == '1') {
+      $('#year').find('option').prop('disabled', false);
+      $('#year').find('option[value="2016"]', 'option').prop('disabled', true);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true);
+    } else if(value == '2') {
+      $('#year').find('option').prop('disabled', false);
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true);
+    } else if(value == '3') {
+      $('#year').find('option').prop('disabled', false);
+      $('#year').find('option[value="2016"]').prop('disabled', false);
+      $('#year').find('option[value="all_years"]', 'option').prop('disabled', true);
+      $('#year').find('option:first-child').prop('selected', true);
+    } else {
+      $('#year').find('option[value!="all_years"]').prop('disabled', true);
+      $('#year').find('option[value="all_years"]').prop('selected', true);
+    }
+
+    $('#year').trigger('change');
+
+    refreshUrls();
+  }
+
+  $(document).on('change', '#collection', function() {
+    setupOptions();
+  });
+
+  $(document).on('change', '#year', function() {
+    refreshUrls();
+  });
+
+  $(function() {
+    setupOptions();
+    refreshUrls();
+  });
+</script>
+
+<article class="page page__mapbiomas-collections">
+  <div class="page__container">
+    <h1 class="page__title">Coleções MapBiomas</h1>
+
+    <div class="page__box-download">
+      <%= select_tag "collection", options_for_select([['Coleção 2.3', 3], ["Coleção 2", 2], ["Coleção 1", 1]]), id: "collection" %>
+      <%= select_tag "year", options_for_select(Setting.available_years << ['Todos os anos', 'all_years']), id: "year" %>
+    </div>
+
+    <div class="methodology-presentation">
+      <%= image_tag "amazonia.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='AMAZONIA' target="_blank">Amazônia</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pantanal.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='PANTANAL' target="_blank">Pantanal</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "caatinga.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='CAATINGA' target="_blank">Caatinga</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "mata_atlantica.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='MATAATLANTICA' target="_blank">Mata Atlântica</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "cerrado.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='CERRADO' target="_blank">Cerrado</a>
+      </div>
+    </div>
+    <div class="methodology-presentation">
+      <%= image_tag "pampa.png" %>
+      <div class="methodology-presentation__title">
+        <a href='' biome='PAMPA' target="_blank">Pampa</a>
+      </div>
+    </div>
+  </div>
+</article>
