@@ -301,7 +301,7 @@ export class MapCanvas extends React.Component {
 
         return `category_${key} IN (${categories})`
       });
-      let bufferFilter = this.props.selectedInfraBuffer == 'none' ? 'buffer IS NULL' :`buffer IN ('${this.props.selectedInfraBuffer}')`;
+      let bufferFilter = this.props.selectedInfraBuffer.value == 'none' ? 'buffer IS NULL' :`buffer IN ('${this.props.selectedInfraBuffer.value}')`;
       let cqlFilter;
 
       layerFilter = lodash.join(layerFilter, ' OR ');
