@@ -3,75 +3,139 @@ import _ from 'underscore';
 import CoverageLineChart from '../../charts/coverage/line';
 import CoveragePieChart from '../../charts/coverage/pie';
 
-const territoryName = (myMapsPage, territory, map) => {
-  let label;
+const INFRA_MENU_OPTION = 3;
 
-  if (myMapsPage && map) {
-    return (
-      <label>{ I18n.t('map.index.chart.map', { map: map.name }) }</label>
-    );
+export default class CoverageMenu extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
-  if (!myMapsPage) {
-    return (
-      <label>{ I18n.t('map.index.chart.territory', { territory: _.first(territory).name }) }</label>
-    );
+  renderTerritoryName() {
+    let label;
+
+    if (this.props.myMapsPage && this.props.map) {
+      return (
+        <label>{ I18n.t('map.index.chart.map', { map: this.props.map.name }) }</label>
+      );
+    }
+
+    if (!this.props.myMapsPage) {
+      return (
+        <label>{ I18n.t('map.index.chart.territory', { territory: _.first(this.props.territory).name }) }</label>
+      );
+    }
+
+    return null;
+  };
+
+  renderInfraBufferInfo() {
+    if (this.props.viewOptionsIndex == INFRA_MENU_OPTION && this.props.showInfraStats) {
+      return (
+        <label>Buffer: { this.props.infraBuffer.label }</label>
+      );
+    }
+
+    return null;
   }
 
-  return null;
-};
+  renderInfraLevelsInfo() {
+    if (this.props.viewOptionsIndex == INFRA_MENU_OPTION && this.props.showInfraStats) {
+      if (_.isEmpty(this.props.infraLevels)) {
+        return null;
+      } else {
+        let infraLevels = _.map(this.props.infraLevels, 'name').join(',');
 
-const CoverageMenu = ({
-  availableYears,
-  availableClassifications,
-  defaultClassifications,
-  map,
-  myMapsPage,
-  onExpandModal,
-  territory,
-  infraLevels,
-  infraBuffer,
-  year,
-  showInfraStats,
-  showCarStats
-}) => (
-  <div>
-    <h3 className="map-control__header">
-      {I18n.t('map.index.coverage.analysis')}
-    </h3>
-    <div>
+        return (
+          <label>Categoria(s): { infraLevels }</label>
+        );
+      }
+    }
+  }
+
+  renderInstructions() {
+    if (this.props.showInfraStats && this.props.viewOptionsIndex == INFRA_MENU_OPTION && (this.props.infraBuffer == 'none' || _.isEmpty(this.props.infraLevels))) {
+      return (
+        <label className="chart-tooltip">Selecione um buffer e uma ou mais categorias para visualizar a estatística de infraestrutura para a(s) mesma(s).</label>
+      );
+    }
+
+    return (
       <label className="chart-tooltip">{I18n.t('map.index.chart.tooltip')}</label>
-      <label>{I18n.t('map.index.chart.year', {year: year})}</label>
-      { territoryName(myMapsPage, territory, map) }
-    </div>
+    );
+  }
 
-    <CoveragePieChart
-      availableClassifications={availableClassifications}
-      defaultClassifications={defaultClassifications}
-      territory={territory}
-      infraLevels={infraLevels}
-      infraBuffer={infraBuffer}
-      year={year}
-      showInfraStats={showInfraStats}
-      showCarStats={showCarStats}
-    />
+  renderPieChart() {
+    if (this.props.showInfraStats && this.props.viewOptionsIndex == INFRA_MENU_OPTION && (this.props.infraBuffer == 'none' || _.isEmpty(this.props.infraLevels))) {
+      return null;
+    }
 
-    <CoverageLineChart
-      availableYears={availableYears}
-      availableClassifications={availableClassifications}
-      defaultClassifications={defaultClassifications}
-      territory={territory}
-      infraLevels={infraLevels}
-      infraBuffer={infraBuffer}
-      year={year}
-      showInfraStats={showInfraStats}
-      showCarStats={showCarStats}
-    />
+    return (
+      <CoveragePieChart
+        availableClassifications={this.props.availableClassifications}
+        defaultClassifications={this.props.defaultClassifications}
+        territory={this.props.territory}
+        infraLevels={this.props.infraLevels}
+        infraBuffer={this.props.infraBuffer}
+        year={this.props.year}
+        showInfraStats={this.props.showInfraStats}
+        showCarStats={this.props.showCarStats}
+        viewOptionsIndex={this.props.viewOptionsIndex}
+      />
+    );
+  }
 
-    <button className="primary" onClick={onExpandModal.bind(this)}>
-      {I18n.t('map.index.coverage.details')}
-    </button>
-  </div>
-);
+  renderLineChart() {
+    if (this.props.showInfraStats && this.props.viewOptionsIndex == INFRA_MENU_OPTION && (this.props.infraBuffer == 'none' || _.isEmpty(this.props.infraLevels))) {
+      return null;
+    }
 
-export default CoverageMenu;
+    return (
+      <CoverageLineChart
+        availableYears={this.props.availableYears}
+        availableClassifications={this.props.availableClassifications}
+        defaultClassifications={this.props.defaultClassifications}
+        territory={this.props.territory}
+        infraLevels={this.props.infraLevels}
+        infraBuffer={this.props.infraBuffer}
+        year={this.props.year}
+        showInfraStats={this.props.showInfraStats}
+        showCarStats={this.props.showCarStats}
+        viewOptionsIndex={this.props.viewOptionsIndex}
+      />
+    );
+  }
+
+  renderDetailsButton() {
+    if (this.props.showInfraStats && this.props.viewOptionsIndex == INFRA_MENU_OPTION && (this.props.infraBuffer == 'none' || _.isEmpty(this.props.infraLevels))) {
+      return null;
+    }
+
+    return (
+      <button className="primary" onClick={this.props.onExpandModal}>
+        {I18n.t('map.index.coverage.details')}
+      </button>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <h3 className="map-control__header">
+          {I18n.t('map.index.coverage.analysis')}
+        </h3>
+
+        <div>
+          { this.renderInstructions() }
+          <label>{I18n.t('map.index.chart.year', {year: this.props.year})}</label>
+          { this.renderTerritoryName() }
+          { this.renderInfraBufferInfo() }
+          { this.renderInfraLevelsInfo() }
+        </div>
+
+        { this.renderPieChart() }
+        { this.renderLineChart() }
+        { this.renderDetailsButton() }
+      </div>
+    );
+  }
+}
