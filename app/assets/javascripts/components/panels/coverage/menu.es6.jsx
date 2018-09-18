@@ -43,7 +43,7 @@ export default class CoverageMenu extends React.Component {
       if (_.isEmpty(this.props.infraLevels)) {
         return null;
       } else {
-        let infraLevels = _.map(this.props.infraLevels, 'name').join(',');
+        let infraLevels = _.map(this.props.infraLevels, 'name').join(', ');
 
         return (
           <label>Categoria(s): { infraLevels }</label>

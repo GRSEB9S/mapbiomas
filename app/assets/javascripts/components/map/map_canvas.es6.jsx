@@ -295,11 +295,9 @@ export class MapCanvas extends React.Component {
 
     if (this.infraLayer) {
       let options = lodash.clone(this.props.infraLayer.params);
-      let groupedInfraLayers = lodash.groupBy(this.props.selectedInfraLevels, 'categoria');
-      let layerFilter = lodash.map(groupedInfraLayers, (value, key) => {
-        let categories = lodash.join(_.map(value, (v) => `'${v.name}'`), ',');
 
-        return `category_${key} IN (${categories})`
+      let layerFilter = _.map(this.props.selectedInfraLevels, (l) => {
+        return `category_${l.categoria} ILIKE '%${l.name}%'`;
       });
       let bufferFilter = this.props.selectedInfraBuffer.value == 'none' ? 'buffer IS NULL' :`buffer IN ('${this.props.selectedInfraBuffer.value}')`;
       let cqlFilter;
