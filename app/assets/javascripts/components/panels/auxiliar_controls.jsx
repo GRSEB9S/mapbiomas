@@ -40,7 +40,7 @@ class AuxiliarControls extends React.Component {
           availableOptions={this.props.availableClassifications}
           onChange={this.props.handleClassificationsChange}
           calcMaxHeight={() => (
-            $('#coverage-auxiliar-controls').height() - 55
+            $('#auxiliar-controls').height() - 55
           )}
         />
       );
@@ -66,7 +66,7 @@ class AuxiliarControls extends React.Component {
 
   render() {
     return (
-      <div className="map-panel__grow map-panel-can-hide" id="coverage-auxiliar-controls">
+      <div className="map-panel__grow map-panel-can-hide" id="auxiliar-controls">
         <Tabs
             className="map-panel__action-panel map-panel__tab-panel"
             selectedIndex={this.props.viewOptionsIndex}
@@ -116,7 +116,7 @@ class AuxiliarControls extends React.Component {
               infraBufferOptions={this.props.infraBufferOptions}
               availableInfraLevels={this.props.availableInfraLevels}
               calcMaxHeight={() => (
-                $('#coverage-auxiliar-controls').height() - 55
+                $('#auxiliar-controls').height() - 55
               )}
               onInfraLevelsChange={this.props.handleInfraLevelsChange}
               onInfraBufferChange={this.props.handleInfraBufferChange}
@@ -125,7 +125,7 @@ class AuxiliarControls extends React.Component {
           </TabPanel>
           <TabPanel>
             <Scrollable calcMaxHeight={() => (
-              $('#coverage-auxiliar-controls').height() - 55
+              $('#auxiliar-controls').height() - 55
             )}>
               <CarControl
                 mode={this.props.mode}
