@@ -19,15 +19,18 @@ export default class Scrollable extends Component {
     if(!this.props.calcMaxHeight) return;
 
     const maxHeight = this.props.calcMaxHeight();
+    const innerHeight = $(this.refs.inner).height();
+    const height = Math.min(innerHeight, maxHeight);
 
-    this.refs.content.parentNode.style.height = `${maxHeight}px`;
+    this.refs.content.parentNode.style.height = '100%';
+    this.refs.content.parentNode.style.maxHeight = `${maxHeight}px`;
   }
 
   render() {
     const { className, children, calcMaxHeight } = this.props;
 
     return (
-      <div className={className}>
+      <div className={className} style={{flexGrow: 1}}>
         <div ref="content" className={cx('scrollbar-inner')}>
           <div ref="inner">
             {children}
