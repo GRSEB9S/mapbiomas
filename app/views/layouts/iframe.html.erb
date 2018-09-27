@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>MapBiomas</title>
-  <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css">
-  <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKmfqKhMGWUDdg_6ZntoBWBpRnFZIUfww" async defer></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,8 +28,8 @@
   <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'global_dependencies' %>
   <%= csrf_meta_tags %>
 
   <script>
@@ -49,6 +47,8 @@
     <%= yield %>
     <%= render 'layouts/footer_iframe' %>
   </div>
+
+  <%= javascript_include_tag 'application' %>
 </body>
 <script type="text/javascript">
   I18n.defaultLocale = "<%= I18n.default_locale %>";

@@ -1024,7 +1024,7 @@ export default class Map extends React.Component {
               />
             )}
 
-            {this.props.iframe && COVERAGE && (
+            {this.props.iframe && (COVERAGE || TRANSITIONS) && (
               <div className="map-panel__content map-panel-can-hide map-panel__info">
                 <h3>{I18n.t('iframe.title')}</h3>
 
@@ -1041,6 +1041,7 @@ export default class Map extends React.Component {
                   <ClassificationControl
                     className="map-panel__content"
                     iframe={this.props.iframe}
+                    defaultClassificationsTree={this.defaultClassificationsTree}
                     options={this.classifications}
                     availableOptions={this.props.availableClassifications}
                     onChange={this.handleClassificationsChange.bind(this)}
@@ -1049,17 +1050,6 @@ export default class Map extends React.Component {
                     )}
                   />
                 </div>
-              </div>
-            )}
-
-            {this.props.iframe && TRANSITIONS && (
-              <div className="map-panel__content map-panel-can-hide map-panel__info">
-                <h3>{I18n.t('iframe.title')}</h3>
-
-                <label>{I18n.t('iframe.name', {name: this.props.iframeMap.name})}</label>
-                <label>{I18n.t('iframe.mode', {mode: this.mode})}</label>
-                <label>{I18n.t('iframe.territory', {territory: _.first(this.territory).name})}</label>
-                <label>{I18n.t('iframe.years', {year_0: this.years[0], year_1: this.years[1]})}</label>
               </div>
             )}
 
